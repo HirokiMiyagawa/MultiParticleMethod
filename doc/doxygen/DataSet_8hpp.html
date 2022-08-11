@@ -1,0 +1,1028 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Multi Particle Method: /home/hhhhhhhhhhhhhhhhhh/kyutech/research/MultiParticleMethod/src/hpp/Base/DataSet.hpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Multi Particle Method
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('DataSet_8hpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#enum-members">列挙型</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">DataSet.hpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="InputParam_8hpp_source.html">InputParam.hpp</a>&quot;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+DataSet.hpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="DataSet_8hpp__incl.png" border="0" usemap="#_2home_2hhhhhhhhhhhhhhhhhh_2kyutech_2research_2MultiParticleMethod_2src_2hpp_2Base_2DataSet_8hpp" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><div class="textblock"><div class="dynheader">
+被依存関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="DataSet_8hpp__dep__incl.png" border="0" usemap="#_2home_2hhhhhhhhhhhhhhhhhh_2kyutech_2research_2MultiParticleMethod_2src_2hpp_2Base_2DataSet_8hppdep" alt=""/></div>
+<!-- MAP 1 -->
+</div>
+</div>
+<p><a href="DataSet_8hpp_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMoveXYZ.html">MoveXYZ</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBoundaryCondition.html">BoundaryCondition</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classC.html">C</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">x,y,z方向に値を持つ  <a href="classC.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structQuarter.html">Quarter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">i,j方向にプラスマイナスの構造体  <a href="structQuarter.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPreDirection.html">PreDirection</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">i,j方向にプラスマイナスの構造体  <a href="structPreDirection.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structDirection.html">Direction</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">iとjのプラマイ方向を2つずつ格納する  <a href="structDirection.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structVector.html">Vector</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ベクトルと長さを格納する  <a href="structVector.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structArea.html">Area</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">i, jのx,y,z方向成分  <a href="structArea.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structTmp.html">Tmp</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">一時的に使用する構造体  <a href="structTmp.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structOuterMostParameter.html">OuterMostParameter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">stock outer most parameter. we use it when Non Cylinder Boundary  <a href="structOuterMostParameter.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structVirtualParticle.html">VirtualParticle</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">仮想粒子関係の計算結果を格納する構造体  <a href="structVirtualParticle.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+列挙型</h2></td></tr>
+<tr class="memitem:adb1fad3b6a121acd6db0b9eda7fd5111"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111">Positions</a> { <br />
+&#160;&#160;<a class="el" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111aaa79b7c40b072fdcab65bfa11d732389">Center</a> = 0b00000000, 
+<a class="el" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111ad48f7af8c070184f3774c8e85854eb66">Right</a> = 0b00000001, 
+<a class="el" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a9d4d8b0b72fc2659da772d761a3c5ecb">Left</a> = 0b00000010, 
+<a class="el" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a05cdd4fa6b505ee008f4e865acfecccb">Bottom</a> = 0b00000100, 
+<br />
+&#160;&#160;<a class="el" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a47321105d20c4efd6c573a6d829e1ad9">Top</a> = 0b00001000, 
+<a class="el" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a458931b2927cee9a56c790e42443420d">RightBottom</a> = 0b00000101, 
+<a class="el" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111abd3e8bedb2ce4ade9c345f01c14b4767">RightTop</a> = 0b00001001, 
+<a class="el" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a5d59bca9398fa4454b493dbabfcd3cdd">LeftBottom</a> = 0b00000110, 
+<br />
+&#160;&#160;<a class="el" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a0abc1dd13d4d2628e9c814911ff99c1d">LeftTop</a> = 0b00001010
+<br />
+ }</td></tr>
+<tr class="separator:adb1fad3b6a121acd6db0b9eda7fd5111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a836c27e2d64d0efa4a526150bdf6f3e5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a836c27e2d64d0efa4a526150bdf6f3e5">Communication</a> { <a class="el" href="DataSet_8hpp.html#a836c27e2d64d0efa4a526150bdf6f3e5afc4acfd87c9c7965d3c7437519dabcac">Send</a> = 0x01, 
+<a class="el" href="DataSet_8hpp.html#a836c27e2d64d0efa4a526150bdf6f3e5a70a0d8cc25f82b780e11763b3ecc6568">Recv</a> = 0x02, 
+<a class="el" href="DataSet_8hpp.html#a836c27e2d64d0efa4a526150bdf6f3e5a891fbec6fb0d74aea9e064d13b59c9e0">Empty</a> = 0x03
+ }</td></tr>
+<tr class="separator:a836c27e2d64d0efa4a526150bdf6f3e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a225dfcb31b145ff5d0649bd794b269db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classC.html">C</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a225dfcb31b145ff5d0649bd794b269db">operator+</a> (const <a class="el" href="classC.html">C</a> &amp;v)</td></tr>
+<tr class="separator:a225dfcb31b145ff5d0649bd794b269db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d133e3841b1222219eb5c8807779d60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classC.html">C</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a0d133e3841b1222219eb5c8807779d60">operator-</a> (const <a class="el" href="classC.html">C</a> &amp;v)</td></tr>
+<tr class="separator:a0d133e3841b1222219eb5c8807779d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0bb420828f0fe13865719f31c02dd0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classC.html">C</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#ad0bb420828f0fe13865719f31c02dd0b">operator+</a> (const <a class="el" href="classC.html">C</a> &amp;a, const <a class="el" href="classC.html">C</a> &amp;b)</td></tr>
+<tr class="separator:ad0bb420828f0fe13865719f31c02dd0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0254dcf9f1309be8c2f9e815362e0d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classC.html">C</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#aa0254dcf9f1309be8c2f9e815362e0d2">operator-</a> (const <a class="el" href="classC.html">C</a> &amp;a, const <a class="el" href="classC.html">C</a> &amp;b)</td></tr>
+<tr class="separator:aa0254dcf9f1309be8c2f9e815362e0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a678a49378fd9c5b2b9028c995b65c811"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classC.html">C</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a678a49378fd9c5b2b9028c995b65c811">operator*</a> (const double &amp;d, const <a class="el" href="classC.html">C</a> &amp;v)</td></tr>
+<tr class="separator:a678a49378fd9c5b2b9028c995b65c811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a883dd26638106f37e2979340d52a4235"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classC.html">C</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a883dd26638106f37e2979340d52a4235">operator*</a> (const <a class="el" href="classC.html">C</a> &amp;v, const double &amp;d)</td></tr>
+<tr class="separator:a883dd26638106f37e2979340d52a4235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ddfcccc5a19092f514eef7268a81c07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classC.html">C</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a2ddfcccc5a19092f514eef7268a81c07">operator*</a> (const <a class="el" href="classC.html">C</a> &amp;a, const <a class="el" href="classC.html">C</a> &amp;b)</td></tr>
+<tr class="separator:a2ddfcccc5a19092f514eef7268a81c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a7647ce25adf631693f34c16ffe3b7e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a4a7647ce25adf631693f34c16ffe3b7e">operator%</a> (const <a class="el" href="classC.html">C</a> &amp;a, const <a class="el" href="classC.html">C</a> &amp;b)</td></tr>
+<tr class="separator:a4a7647ce25adf631693f34c16ffe3b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad41bd42a3733d68b9a769f80b7bec1ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classC.html">C</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#ad41bd42a3733d68b9a769f80b7bec1ce">operator*</a> (const <a class="el" href="classC.html">C</a> &amp;v, const int &amp;i)</td></tr>
+<tr class="separator:ad41bd42a3733d68b9a769f80b7bec1ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8c9aafdab3e03684e688cc780f3cff3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classC.html">C</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#aa8c9aafdab3e03684e688cc780f3cff3">operator/</a> (const <a class="el" href="classC.html">C</a> &amp;v, const double &amp;d)</td></tr>
+<tr class="separator:aa8c9aafdab3e03684e688cc780f3cff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a702ad28cb6147c7996e631ee57e63f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classC.html">C</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a0a702ad28cb6147c7996e631ee57e63f">operator/</a> (const <a class="el" href="classC.html">C</a> &amp;v, const int &amp;i)</td></tr>
+<tr class="separator:a0a702ad28cb6147c7996e631ee57e63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1872ce1e5b20d9bcebd620cb8e01f69a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classC.html">C</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a1872ce1e5b20d9bcebd620cb8e01f69a">cross</a> (const <a class="el" href="classC.html">C</a> &amp;a, const <a class="el" href="classC.html">C</a> &amp;b)</td></tr>
+<tr class="separator:a1872ce1e5b20d9bcebd620cb8e01f69a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae72b247e3e7af8c0a4db5911c07c49c8"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#ae72b247e3e7af8c0a4db5911c07c49c8">dot</a> (const <a class="el" href="classC.html">C</a> &amp;a, const <a class="el" href="classC.html">C</a> &amp;b)</td></tr>
+<tr class="separator:ae72b247e3e7af8c0a4db5911c07c49c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48c0e9af3de44d063a435d6e53401134"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a48c0e9af3de44d063a435d6e53401134">abs</a> (const <a class="el" href="classC.html">C</a> &amp;v)</td></tr>
+<tr class="separator:a48c0e9af3de44d063a435d6e53401134"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae40511871d8ac1d4ec9df67382f0ae8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#ae40511871d8ac1d4ec9df67382f0ae8e">print</a> (const <a class="el" href="classC.html">C</a> &amp;v)</td></tr>
+<tr class="separator:ae40511871d8ac1d4ec9df67382f0ae8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a7555faeff9764e3cc71c04dfab3ef1a2"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a7555faeff9764e3cc71c04dfab3ef1a2">BIT_RIGHT</a> = (1 &lt;&lt; 0)</td></tr>
+<tr class="separator:a7555faeff9764e3cc71c04dfab3ef1a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a47d92184cebfc849b898866a0f1136"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a2a47d92184cebfc849b898866a0f1136">BIT_LEFT</a> = (1 &lt;&lt; 1)</td></tr>
+<tr class="separator:a2a47d92184cebfc849b898866a0f1136"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9c7cfa7bd60073f735eec8b9baa9152"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#aa9c7cfa7bd60073f735eec8b9baa9152">BIT_BOTTOM</a> = (1 &lt;&lt; 2)</td></tr>
+<tr class="separator:aa9c7cfa7bd60073f735eec8b9baa9152"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe6f2baebbf577121c49d46e4c043b9e"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#afe6f2baebbf577121c49d46e4c043b9e">BIT_TOP</a> = (1 &lt;&lt; 3)</td></tr>
+<tr class="separator:afe6f2baebbf577121c49d46e4c043b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bead453dbaf873a5e212f61b2b367cc"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a3bead453dbaf873a5e212f61b2b367cc">BIT_RIGHTSIDE</a> = (1 &lt;&lt; 4)</td></tr>
+<tr class="separator:a3bead453dbaf873a5e212f61b2b367cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24b569e3f971ff33ab8ed81691b37a64"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a24b569e3f971ff33ab8ed81691b37a64">BIT_BACK</a> = (1 &lt;&lt; 5)</td></tr>
+<tr class="separator:a24b569e3f971ff33ab8ed81691b37a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ac4ccd5c0207f72e82b03102aac5986"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a2ac4ccd5c0207f72e82b03102aac5986">BIT_CEILING</a> = (1 &lt;&lt; 6)</td></tr>
+<tr class="separator:a2ac4ccd5c0207f72e82b03102aac5986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31fb5cd2b9170e44a228e2e2b2554589"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#a31fb5cd2b9170e44a228e2e2b2554589">BIT_EDGE</a> = (1 &lt;&lt; 7)</td></tr>
+<tr class="separator:a31fb5cd2b9170e44a228e2e2b2554589"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbc66332fe923693dee80a6cbfef0590"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DataSet_8hpp.html#acbc66332fe923693dee80a6cbfef0590">BIT_NONE</a> = 0b00000000</td></tr>
+<tr class="separator:acbc66332fe923693dee80a6cbfef0590"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>///////////////////////////////////////////////////////////////////////////////</p>
+<p>/////////////////////////////////////////////////////////////////////////////// </p>
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> に定義があります。</p>
+</div><h2 class="groupheader">列挙型詳解</h2>
+<a id="a836c27e2d64d0efa4a526150bdf6f3e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a836c27e2d64d0efa4a526150bdf6f3e5">&#9670;&nbsp;</a></span>Communication</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="DataSet_8hpp.html#a836c27e2d64d0efa4a526150bdf6f3e5">Communication</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a836c27e2d64d0efa4a526150bdf6f3e5afc4acfd87c9c7965d3c7437519dabcac"></a>Send&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a836c27e2d64d0efa4a526150bdf6f3e5a70a0d8cc25f82b780e11763b3ecc6568"></a>Recv&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a836c27e2d64d0efa4a526150bdf6f3e5a891fbec6fb0d74aea9e064d13b59c9e0"></a>Empty&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00200">200</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                   { <a class="code" href="DataSet_8hpp.html#a836c27e2d64d0efa4a526150bdf6f3e5afc4acfd87c9c7965d3c7437519dabcac">Send</a>  = 0x01,</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                     <a class="code" href="DataSet_8hpp.html#a836c27e2d64d0efa4a526150bdf6f3e5a70a0d8cc25f82b780e11763b3ecc6568">Recv</a>  = 0x02,</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                     <a class="code" href="DataSet_8hpp.html#a836c27e2d64d0efa4a526150bdf6f3e5a891fbec6fb0d74aea9e064d13b59c9e0">Empty</a> = 0x03 };</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adb1fad3b6a121acd6db0b9eda7fd5111"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb1fad3b6a121acd6db0b9eda7fd5111">&#9670;&nbsp;</a></span>Positions</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111">Positions</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="adb1fad3b6a121acd6db0b9eda7fd5111aaa79b7c40b072fdcab65bfa11d732389"></a>Center&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adb1fad3b6a121acd6db0b9eda7fd5111ad48f7af8c070184f3774c8e85854eb66"></a>Right&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adb1fad3b6a121acd6db0b9eda7fd5111a9d4d8b0b72fc2659da772d761a3c5ecb"></a>Left&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adb1fad3b6a121acd6db0b9eda7fd5111a05cdd4fa6b505ee008f4e865acfecccb"></a>Bottom&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adb1fad3b6a121acd6db0b9eda7fd5111a47321105d20c4efd6c573a6d829e1ad9"></a>Top&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adb1fad3b6a121acd6db0b9eda7fd5111a458931b2927cee9a56c790e42443420d"></a>RightBottom&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adb1fad3b6a121acd6db0b9eda7fd5111abd3e8bedb2ce4ade9c345f01c14b4767"></a>RightTop&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adb1fad3b6a121acd6db0b9eda7fd5111a5d59bca9398fa4454b493dbabfcd3cdd"></a>LeftBottom&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adb1fad3b6a121acd6db0b9eda7fd5111a0abc1dd13d4d2628e9c814911ff99c1d"></a>LeftTop&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00022">22</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;               {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111aaa79b7c40b072fdcab65bfa11d732389">Center</a> = 0b00000000,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111ad48f7af8c070184f3774c8e85854eb66">Right</a>  = 0b00000001,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a9d4d8b0b72fc2659da772d761a3c5ecb">Left</a>   = 0b00000010,</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a05cdd4fa6b505ee008f4e865acfecccb">Bottom</a> = 0b00000100,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a47321105d20c4efd6c573a6d829e1ad9">Top</a>    = 0b00001000,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a458931b2927cee9a56c790e42443420d">RightBottom</a> = 0b00000101,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111abd3e8bedb2ce4ade9c345f01c14b4767">RightTop</a>    = 0b00001001,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a5d59bca9398fa4454b493dbabfcd3cdd">LeftBottom</a>  = 0b00000110,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a0abc1dd13d4d2628e9c814911ff99c1d">LeftTop</a>     = 0b00001010,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">// Center = 0x00,</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// Left   = 0x01,</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// Right  = 0x02,</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// Bottom = 0x03,</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// Top    = 0x04,</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">// LeftBottom  = 0x05,</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">// LeftTop     = 0x06,</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// RightBottom = 0x07,</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// RightTop    = 0x08,</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a48c0e9af3de44d063a435d6e53401134"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48c0e9af3de44d063a435d6e53401134">&#9670;&nbsp;</a></span>abs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double abs </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00402">402</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;{ <span class="keywordflow">return</span> v.<a class="code" href="classC.html#afacdb9896d2186d346cc9efc3d778de8">abs</a>(); }</div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="DataSet_8hpp_a48c0e9af3de44d063a435d6e53401134_cgraph.png" border="0" usemap="#DataSet_8hpp_a48c0e9af3de44d063a435d6e53401134_cgraph" alt=""/></div>
+<!-- MAP 2 -->
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="DataSet_8hpp_a48c0e9af3de44d063a435d6e53401134_icgraph.png" border="0" usemap="#DataSet_8hpp_a48c0e9af3de44d063a435d6e53401134_icgraph" alt=""/></div>
+<!-- MAP 3 -->
+</div>
+
+</div>
+</div>
+<a id="a1872ce1e5b20d9bcebd620cb8e01f69a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1872ce1e5b20d9bcebd620cb8e01f69a">&#9670;&nbsp;</a></span>cross()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classC.html">C</a> cross </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00400">400</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;{ <span class="keywordflow">return</span> (a * b); }</div>
+</div><!-- fragment --><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="DataSet_8hpp_a1872ce1e5b20d9bcebd620cb8e01f69a_icgraph.png" border="0" usemap="#DataSet_8hpp_a1872ce1e5b20d9bcebd620cb8e01f69a_icgraph" alt=""/></div>
+<!-- MAP 4 -->
+</div>
+
+</div>
+</div>
+<a id="ae72b247e3e7af8c0a4db5911c07c49c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae72b247e3e7af8c0a4db5911c07c49c8">&#9670;&nbsp;</a></span>dot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double dot </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00401">401</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;{ <span class="keywordflow">return</span> (a % b); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4a7647ce25adf631693f34c16ffe3b7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a7647ce25adf631693f34c16ffe3b7e">&#9670;&nbsp;</a></span>operator%()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double operator% </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00331">331</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                                                {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="keywordflow">return</span> (a.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a> * b.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a> + a.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a> * b.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a> + a.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a> * b.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a>);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2ddfcccc5a19092f514eef7268a81c07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ddfcccc5a19092f514eef7268a81c07">&#9670;&nbsp;</a></span>operator*() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classC.html">C</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00326">326</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                                           {</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classC.html">C</a>(a.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a> * b.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a> - a.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a> * b.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a>, a.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a> * b.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a> - a.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a> * b.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a>,</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;             a.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a> * b.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a> - a.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a> * b.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a>);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a883dd26638106f37e2979340d52a4235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a883dd26638106f37e2979340d52a4235">&#9670;&nbsp;</a></span>operator*() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classC.html">C</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00322">322</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                                                {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classC.html">C</a>(d * v.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a>, d * v.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a>, d * v.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a>);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad41bd42a3733d68b9a769f80b7bec1ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad41bd42a3733d68b9a769f80b7bec1ce">&#9670;&nbsp;</a></span>operator*() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classC.html">C</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00335">335</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                                             {</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="keywordtype">double</span> d = (double)i;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classC.html">C</a>(d * v.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a>, d * v.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a>, d * v.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a>);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a678a49378fd9c5b2b9028c995b65c811"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a678a49378fd9c5b2b9028c995b65c811">&#9670;&nbsp;</a></span>operator*() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classC.html">C</a> operator* </td>
+          <td>(</td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00318">318</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                                                {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classC.html">C</a>(d * v.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a>, d * v.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a>, d * v.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a>);</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad0bb420828f0fe13865719f31c02dd0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0bb420828f0fe13865719f31c02dd0b">&#9670;&nbsp;</a></span>operator+() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classC.html">C</a> operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00311">311</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                                           {</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classC.html">C</a>(a.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a> + b.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a>, a.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a> + b.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a>, a.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a> + b.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a>);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a225dfcb31b145ff5d0649bd794b269db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a225dfcb31b145ff5d0649bd794b269db">&#9670;&nbsp;</a></span>operator+() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classC.html">C</a> operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00309">309</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;{ <span class="keywordflow">return</span> v; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa0254dcf9f1309be8c2f9e815362e0d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0254dcf9f1309be8c2f9e815362e0d2">&#9670;&nbsp;</a></span>operator-() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classC.html">C</a> operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00314">314</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                                           {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classC.html">C</a>(a.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a> - b.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a>, a.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a> - b.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a>, a.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a> - b.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a>);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0d133e3841b1222219eb5c8807779d60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d133e3841b1222219eb5c8807779d60">&#9670;&nbsp;</a></span>operator-() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classC.html">C</a> operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00310">310</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classC.html">C</a>(-v.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a>, -v.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a>, -v.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a>); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa8c9aafdab3e03684e688cc780f3cff3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8c9aafdab3e03684e688cc780f3cff3">&#9670;&nbsp;</a></span>operator/() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classC.html">C</a> operator/ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00340">340</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                                                {</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classC.html">C</a>(v.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a> / d, v.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a> / d, v.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a> / d);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0a702ad28cb6147c7996e631ee57e63f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a702ad28cb6147c7996e631ee57e63f">&#9670;&nbsp;</a></span>operator/() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classC.html">C</a> operator/ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00343">343</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                                             {</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordtype">double</span> d = (double)i;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classC.html">C</a>(v.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a> / d, v.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a> / d, v.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a> / d);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae40511871d8ac1d4ec9df67382f0ae8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae40511871d8ac1d4ec9df67382f0ae8e">&#9670;&nbsp;</a></span>print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classC.html">C</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00403">403</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;{ cout &lt;&lt; v.<a class="code" href="classC.html#ad806ec554132edd18f84dba875299913">x</a> &lt;&lt; <span class="charliteral">&#39;,&#39;</span> &lt;&lt; v.<a class="code" href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">y</a> &lt;&lt; <span class="charliteral">&#39;,&#39;</span> &lt;&lt; v.<a class="code" href="classC.html#a726ab34c19365df870cafb22a302bb6f">z</a> &lt;&lt; endl; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a24b569e3f971ff33ab8ed81691b37a64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24b569e3f971ff33ab8ed81691b37a64">&#9670;&nbsp;</a></span>BIT_BACK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int BIT_BACK = (1 &lt;&lt; 5)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00052">52</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="aa9c7cfa7bd60073f735eec8b9baa9152"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9c7cfa7bd60073f735eec8b9baa9152">&#9670;&nbsp;</a></span>BIT_BOTTOM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int BIT_BOTTOM = (1 &lt;&lt; 2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00049">49</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a2ac4ccd5c0207f72e82b03102aac5986"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ac4ccd5c0207f72e82b03102aac5986">&#9670;&nbsp;</a></span>BIT_CEILING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int BIT_CEILING = (1 &lt;&lt; 6)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00053">53</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a31fb5cd2b9170e44a228e2e2b2554589"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31fb5cd2b9170e44a228e2e2b2554589">&#9670;&nbsp;</a></span>BIT_EDGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int BIT_EDGE = (1 &lt;&lt; 7)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00054">54</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a2a47d92184cebfc849b898866a0f1136"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a47d92184cebfc849b898866a0f1136">&#9670;&nbsp;</a></span>BIT_LEFT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int BIT_LEFT = (1 &lt;&lt; 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00048">48</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="acbc66332fe923693dee80a6cbfef0590"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbc66332fe923693dee80a6cbfef0590">&#9670;&nbsp;</a></span>BIT_NONE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int BIT_NONE = 0b00000000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00055">55</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a7555faeff9764e3cc71c04dfab3ef1a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7555faeff9764e3cc71c04dfab3ef1a2">&#9670;&nbsp;</a></span>BIT_RIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int BIT_RIGHT = (1 &lt;&lt; 0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00047">47</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a3bead453dbaf873a5e212f61b2b367cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bead453dbaf873a5e212f61b2b367cc">&#9670;&nbsp;</a></span>BIT_RIGHTSIDE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int BIT_RIGHTSIDE = (1 &lt;&lt; 4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00051">51</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="afe6f2baebbf577121c49d46e4c043b9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe6f2baebbf577121c49d46e4c043b9e">&#9670;&nbsp;</a></span>BIT_TOP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int BIT_TOP = (1 &lt;&lt; 3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="DataSet_8hpp_source.html">DataSet.hpp</a> の <a class="el" href="DataSet_8hpp_source.html#l00050">50</a> 行目に定義があります。</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aDataSet_8hpp_html_a836c27e2d64d0efa4a526150bdf6f3e5afc4acfd87c9c7965d3c7437519dabcac"><div class="ttname"><a href="DataSet_8hpp.html#a836c27e2d64d0efa4a526150bdf6f3e5afc4acfd87c9c7965d3c7437519dabcac">Send</a></div><div class="ttdeci">@ Send</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00200">DataSet.hpp:200</a></div></div>
+<div class="ttc" id="aDataSet_8hpp_html_adb1fad3b6a121acd6db0b9eda7fd5111abd3e8bedb2ce4ade9c345f01c14b4767"><div class="ttname"><a href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111abd3e8bedb2ce4ade9c345f01c14b4767">RightTop</a></div><div class="ttdeci">@ RightTop</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00030">DataSet.hpp:30</a></div></div>
+<div class="ttc" id="aDataSet_8hpp_html_adb1fad3b6a121acd6db0b9eda7fd5111a458931b2927cee9a56c790e42443420d"><div class="ttname"><a href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a458931b2927cee9a56c790e42443420d">RightBottom</a></div><div class="ttdeci">@ RightBottom</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00029">DataSet.hpp:29</a></div></div>
+<div class="ttc" id="aDataSet_8hpp_html_a836c27e2d64d0efa4a526150bdf6f3e5a891fbec6fb0d74aea9e064d13b59c9e0"><div class="ttname"><a href="DataSet_8hpp.html#a836c27e2d64d0efa4a526150bdf6f3e5a891fbec6fb0d74aea9e064d13b59c9e0">Empty</a></div><div class="ttdeci">@ Empty</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00202">DataSet.hpp:202</a></div></div>
+<div class="ttc" id="aDataSet_8hpp_html_adb1fad3b6a121acd6db0b9eda7fd5111a05cdd4fa6b505ee008f4e865acfecccb"><div class="ttname"><a href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a05cdd4fa6b505ee008f4e865acfecccb">Bottom</a></div><div class="ttdeci">@ Bottom</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00026">DataSet.hpp:26</a></div></div>
+<div class="ttc" id="aDataSet_8hpp_html_adb1fad3b6a121acd6db0b9eda7fd5111a5d59bca9398fa4454b493dbabfcd3cdd"><div class="ttname"><a href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a5d59bca9398fa4454b493dbabfcd3cdd">LeftBottom</a></div><div class="ttdeci">@ LeftBottom</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00031">DataSet.hpp:31</a></div></div>
+<div class="ttc" id="aDataSet_8hpp_html_adb1fad3b6a121acd6db0b9eda7fd5111ad48f7af8c070184f3774c8e85854eb66"><div class="ttname"><a href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111ad48f7af8c070184f3774c8e85854eb66">Right</a></div><div class="ttdeci">@ Right</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00024">DataSet.hpp:24</a></div></div>
+<div class="ttc" id="aclassC_html_ad806ec554132edd18f84dba875299913"><div class="ttname"><a href="classC.html#ad806ec554132edd18f84dba875299913">C::x</a></div><div class="ttdeci">double x</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00213">DataSet.hpp:213</a></div></div>
+<div class="ttc" id="aclassC_html_afacdb9896d2186d346cc9efc3d778de8"><div class="ttname"><a href="classC.html#afacdb9896d2186d346cc9efc3d778de8">C::abs</a></div><div class="ttdeci">double abs(void) const</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00382">DataSet.hpp:382</a></div></div>
+<div class="ttc" id="aDataSet_8hpp_html_adb1fad3b6a121acd6db0b9eda7fd5111a9d4d8b0b72fc2659da772d761a3c5ecb"><div class="ttname"><a href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a9d4d8b0b72fc2659da772d761a3c5ecb">Left</a></div><div class="ttdeci">@ Left</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00025">DataSet.hpp:25</a></div></div>
+<div class="ttc" id="aclassC_html_af3f721dade0ba53be8a2e6f57333fd6c"><div class="ttname"><a href="classC.html#af3f721dade0ba53be8a2e6f57333fd6c">C::y</a></div><div class="ttdeci">double y</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00213">DataSet.hpp:213</a></div></div>
+<div class="ttc" id="aclassC_html"><div class="ttname"><a href="classC.html">C</a></div><div class="ttdoc">x,y,z方向に値を持つ</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00211">DataSet.hpp:211</a></div></div>
+<div class="ttc" id="aDataSet_8hpp_html_adb1fad3b6a121acd6db0b9eda7fd5111a47321105d20c4efd6c573a6d829e1ad9"><div class="ttname"><a href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a47321105d20c4efd6c573a6d829e1ad9">Top</a></div><div class="ttdeci">@ Top</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00027">DataSet.hpp:27</a></div></div>
+<div class="ttc" id="aclassC_html_a726ab34c19365df870cafb22a302bb6f"><div class="ttname"><a href="classC.html#a726ab34c19365df870cafb22a302bb6f">C::z</a></div><div class="ttdeci">double z</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00213">DataSet.hpp:213</a></div></div>
+<div class="ttc" id="aDataSet_8hpp_html_a836c27e2d64d0efa4a526150bdf6f3e5a70a0d8cc25f82b780e11763b3ecc6568"><div class="ttname"><a href="DataSet_8hpp.html#a836c27e2d64d0efa4a526150bdf6f3e5a70a0d8cc25f82b780e11763b3ecc6568">Recv</a></div><div class="ttdeci">@ Recv</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00201">DataSet.hpp:201</a></div></div>
+<div class="ttc" id="aDataSet_8hpp_html_adb1fad3b6a121acd6db0b9eda7fd5111aaa79b7c40b072fdcab65bfa11d732389"><div class="ttname"><a href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111aaa79b7c40b072fdcab65bfa11d732389">Center</a></div><div class="ttdeci">@ Center</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00023">DataSet.hpp:23</a></div></div>
+<div class="ttc" id="aDataSet_8hpp_html_adb1fad3b6a121acd6db0b9eda7fd5111a0abc1dd13d4d2628e9c814911ff99c1d"><div class="ttname"><a href="DataSet_8hpp.html#adb1fad3b6a121acd6db0b9eda7fd5111a0abc1dd13d4d2628e9c814911ff99c1d">LeftTop</a></div><div class="ttdeci">@ LeftTop</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00032">DataSet.hpp:32</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_561701c8e79d5dfd48e3536aae5218c5.html">hpp</a></li><li class="navelem"><a class="el" href="dir_2c3495c27dbc91dbb5af4001dd89692a.html">Base</a></li><li class="navelem"><a class="el" href="DataSet_8hpp.html">DataSet.hpp</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

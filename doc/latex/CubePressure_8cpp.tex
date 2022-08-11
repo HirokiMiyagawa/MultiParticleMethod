@@ -1,0 +1,367 @@
+\hypertarget{CubePressure_8cpp}{}\doxysection{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/cpp/\+Cube\+Pressure.cpp ファイル}
+\label{CubePressure_8cpp}\index{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/MultiParticleMethod/src/cpp/CubePressure.cpp@{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/MultiParticleMethod/src/cpp/CubePressure.cpp}}
+
+
+立方体に対して圧力をかけた場合の解析を行う場合に使用する  
+
+
+{\ttfamily \#include \char`\"{}Library\+\_\+header.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Color.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Cube\+Pressure.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}csv.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Multi\+Particle.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Initial\+Conditions.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Virtual\+Particle\+Calc.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Thickness\+Calc.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Force\+Calc.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Get\+New\+Coordinate.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Base\+Calc.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Console.\+hpp\char`\"{}}\newline
+Cube\+Pressure.\+cpp の依存先関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{CubePressure_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{型定義}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \mbox{\hyperlink{CubePressure_8cpp_a76e2836e241b3572082da1229bc53021}{M\+A\+I\+N\+\_\+\+E\+R\+R\+O\+R\+\_\+\+F\+U\+NC}}) ()
+\end{DoxyCompactItemize}
+\doxysubsection*{関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{CubePressure_8cpp_a2950c0a5abdda61ef9ede28dbb5c636f}{my\+Name\+Is}} ()
+\begin{DoxyCompactList}\small\item\em report \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{CubePressure_8cpp_ae54f2790e74717abf0c2bb5e33425623}{arg\+Error}} ()
+\item 
+void \mbox{\hyperlink{CubePressure_8cpp_a300ecc2c01a20c36e0ffdf631d8800d7}{unknown\+Error}} ()
+\item 
+void \mbox{\hyperlink{CubePressure_8cpp_a2f8504040f11e6e49acb95020f477ed5}{csv\+Error}} ()
+\item 
+void \mbox{\hyperlink{CubePressure_8cpp_a25a0ad5f52f8786c64e81482f13b5c06}{calc\+Func}} (int const \&, int const \&, int const \&)
+\begin{DoxyCompactList}\small\item\em 引数がない or 引数が2つ の実行の場合に呼び出される \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{CubePressure_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\doxysubsection*{変数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{SimpleTensile_8cpp_a76e2836e241b3572082da1229bc53021}{M\+A\+I\+N\+\_\+\+E\+R\+R\+O\+R\+\_\+\+F\+U\+NC}} \mbox{\hyperlink{CubePressure_8cpp_a33240a2de4e6166c193502e55556c33a}{main\+\_\+error\+\_\+func}} \mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{SimpleTensile_8cpp_a2950c0a5abdda61ef9ede28dbb5c636f}{my\+Name\+Is}}, \mbox{\hyperlink{SimpleTensile_8cpp_ae54f2790e74717abf0c2bb5e33425623}{arg\+Error}}, \mbox{\hyperlink{SimpleTensile_8cpp_a300ecc2c01a20c36e0ffdf631d8800d7}{unknown\+Error}}, \mbox{\hyperlink{SimpleTensile_8cpp_a2f8504040f11e6e49acb95020f477ed5}{csv\+Error}}\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+立方体に対して圧力をかけた場合の解析を行う場合に使用する 
+
+///////////////////////////////////////////////////////////////////////////////
+
+\begin{DoxyParagraph}{}
+/////////////////////////////////////////////////////////////////////////////// 
+\end{DoxyParagraph}
+
+
+\doxysubsection{型定義詳解}
+\mbox{\Hypertarget{CubePressure_8cpp_a76e2836e241b3572082da1229bc53021}\label{CubePressure_8cpp_a76e2836e241b3572082da1229bc53021}} 
+\index{CubePressure.cpp@{CubePressure.cpp}!MAIN\_ERROR\_FUNC@{MAIN\_ERROR\_FUNC}}
+\index{MAIN\_ERROR\_FUNC@{MAIN\_ERROR\_FUNC}!CubePressure.cpp@{CubePressure.cpp}}
+\doxysubsubsection{\texorpdfstring{MAIN\_ERROR\_FUNC}{MAIN\_ERROR\_FUNC}}
+{\footnotesize\ttfamily typedef void($\ast$ M\+A\+I\+N\+\_\+\+E\+R\+R\+O\+R\+\_\+\+F\+U\+NC) ()}
+
+
+
+ Cube\+Pressure.\+cpp の 41 行目に定義があります。
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{CubePressure_8cpp_ae54f2790e74717abf0c2bb5e33425623}\label{CubePressure_8cpp_ae54f2790e74717abf0c2bb5e33425623}} 
+\index{CubePressure.cpp@{CubePressure.cpp}!argError@{argError}}
+\index{argError@{argError}!CubePressure.cpp@{CubePressure.cpp}}
+\doxysubsubsection{\texorpdfstring{argError()}{argError()}}
+{\footnotesize\ttfamily void arg\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Cube\+Pressure.\+cpp の 177 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{178 \{}
+\DoxyCodeLine{179     cout << \textcolor{stringliteral}{"Execution argument error."}}
+\DoxyCodeLine{180          << endl;}
+\DoxyCodeLine{181 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{CubePressure_8cpp_a25a0ad5f52f8786c64e81482f13b5c06}\label{CubePressure_8cpp_a25a0ad5f52f8786c64e81482f13b5c06}} 
+\index{CubePressure.cpp@{CubePressure.cpp}!calcFunc@{calcFunc}}
+\index{calcFunc@{calcFunc}!CubePressure.cpp@{CubePressure.cpp}}
+\doxysubsubsection{\texorpdfstring{calcFunc()}{calcFunc()}}
+{\footnotesize\ttfamily void calc\+Func (\begin{DoxyParamCaption}\item[{int const \&}]{i,  }\item[{int const \&}]{j,  }\item[{int const \&}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+引数がない or 引数が2つ の実行の場合に呼び出される 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em int} & i：i-\/\+Position \\
+\hline
+\mbox{\texttt{ in}}  & {\em int} & j：j-\/\+Position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{}
+
+\end{DoxyParagraph}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+Multi\+Particleクラスを引数(i, j)で作成 Multi\+Particleメソッドのsimulatemothodを実行 
+
+ Cube\+Pressure.\+cpp の 195 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{196 \{}
+\DoxyCodeLine{197     \mbox{\hyperlink{classMultiParticle}{MultiParticle}} mp(i, j, k);}
+\DoxyCodeLine{198     \textcolor{comment}{/*}}
+\DoxyCodeLine{199 \textcolor{comment}{    MPI\_Comm\_rank( MPI\_COMM\_WORLD, \&st.rank );}}
+\DoxyCodeLine{200 \textcolor{comment}{    MPI\_Comm\_size( MPI\_COMM\_WORLD, \&st.proc );}}
+\DoxyCodeLine{201 \textcolor{comment}{}}
+\DoxyCodeLine{202 \textcolor{comment}{    if( st.rank == 0 )\{}}
+\DoxyCodeLine{203 \textcolor{comment}{        ( *main\_error\_func[ 0 ] )();}}
+\DoxyCodeLine{204 \textcolor{comment}{        cout    << "procs: "}}
+\DoxyCodeLine{205 \textcolor{comment}{                << st.proc}}
+\DoxyCodeLine{206 \textcolor{comment}{                << " i:"}}
+\DoxyCodeLine{207 \textcolor{comment}{                << st.param-\/>m\_iNum}}
+\DoxyCodeLine{208 \textcolor{comment}{                << " j:"}}
+\DoxyCodeLine{209 \textcolor{comment}{                << st.param-\/>m\_jNum}}
+\DoxyCodeLine{210 \textcolor{comment}{                << endl;}}
+\DoxyCodeLine{211 \textcolor{comment}{    \}}}
+\DoxyCodeLine{212 \textcolor{comment}{*/}}
+\DoxyCodeLine{213     mp.simulateMethod();}
+\DoxyCodeLine{214 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{CubePressure_8cpp_a25a0ad5f52f8786c64e81482f13b5c06_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{CubePressure_8cpp_a25a0ad5f52f8786c64e81482f13b5c06_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{CubePressure_8cpp_a2f8504040f11e6e49acb95020f477ed5}\label{CubePressure_8cpp_a2f8504040f11e6e49acb95020f477ed5}} 
+\index{CubePressure.cpp@{CubePressure.cpp}!csvError@{csvError}}
+\index{csvError@{csvError}!CubePressure.cpp@{CubePressure.cpp}}
+\doxysubsubsection{\texorpdfstring{csvError()}{csvError()}}
+{\footnotesize\ttfamily void csv\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Cube\+Pressure.\+cpp の 189 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{190 \{}
+\DoxyCodeLine{191     cout << \textcolor{stringliteral}{"read csv file failed."}}
+\DoxyCodeLine{192          << endl;}
+\DoxyCodeLine{193 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{CubePressure_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{CubePressure_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{CubePressure.cpp@{CubePressure.cpp}!main@{main}}
+\index{main@{main}!CubePressure.cpp@{CubePressure.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+ Cube\+Pressure.\+cpp の 54 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{55 \{}
+\DoxyCodeLine{56     \textcolor{keywordflow}{try}}
+\DoxyCodeLine{57     \{}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59         \textcolor{keywordflow}{if} (argc == 1)}
+\DoxyCodeLine{60         \{}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{63             \textcolor{comment}{//}}
+\DoxyCodeLine{64             \textcolor{comment}{// default calc function call}}
+\DoxyCodeLine{65             \textcolor{comment}{//}}
+\DoxyCodeLine{66             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{67             \mbox{\hyperlink{classParams}{Params}} p;}
+\DoxyCodeLine{68             \mbox{\hyperlink{CubePressure_8cpp_a25a0ad5f52f8786c64e81482f13b5c06}{calcFunc}}(p.\mbox{\hyperlink{classParams_a568540cab95643d13c7402d18f61a4f2}{m\_iNum}}, p.\mbox{\hyperlink{classParams_a4e8c2110b9c80adffa96f1ca1691bab8}{m\_jNum}}, p.\mbox{\hyperlink{classParams_a5b2c3e10a82bab6ea50e8b712ead5fc1}{m\_kNum}});}
+\DoxyCodeLine{69         \}}
+\DoxyCodeLine{70         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (argc == 2)}
+\DoxyCodeLine{71         \{}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{74             \textcolor{comment}{//}}
+\DoxyCodeLine{75             \textcolor{comment}{// params file read.}}
+\DoxyCodeLine{76             \textcolor{comment}{//}}
+\DoxyCodeLine{77             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{78             \mbox{\hyperlink{classParams}{Params}} myparam;}
+\DoxyCodeLine{79             \textcolor{keyword}{const} \textcolor{keywordtype}{string} csv\_file = argv[1];}
+\DoxyCodeLine{80             vector<vector<string>> data;}
+\DoxyCodeLine{81             \mbox{\hyperlink{classCsv}{Csv}} objCsv(csv\_file);}
+\DoxyCodeLine{82             \textcolor{keywordflow}{if} (!objCsv.getCsv(data))}
+\DoxyCodeLine{83             \{}
+\DoxyCodeLine{84                 \textcolor{keywordflow}{throw} 3;}
+\DoxyCodeLine{85             \}}
+\DoxyCodeLine{86             objCsv.myparamRead(myparam, data);}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{89             \textcolor{comment}{//}}
+\DoxyCodeLine{90             \textcolor{comment}{// new params file setting enter.}}
+\DoxyCodeLine{91             \textcolor{comment}{//}}
+\DoxyCodeLine{92             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{93             \mbox{\hyperlink{classMultiParticle}{MultiParticle}} mp(myparam);}
+\DoxyCodeLine{94             mp.simulateMethod();}
+\DoxyCodeLine{95         \}}
+\DoxyCodeLine{96         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (argc == 3)}
+\DoxyCodeLine{97         \{}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{100             \textcolor{comment}{//}}
+\DoxyCodeLine{101             \textcolor{comment}{// 4 Time Measurement}}
+\DoxyCodeLine{102             \textcolor{comment}{//}}
+\DoxyCodeLine{103             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{104             \textcolor{keywordflow}{if} ((2 <= atoi(argv[1])) \&\& (2 <= atoi(argv[2])))}
+\DoxyCodeLine{105             \{}
+\DoxyCodeLine{106                 \mbox{\hyperlink{CubePressure_8cpp_a25a0ad5f52f8786c64e81482f13b5c06}{calcFunc}}(atoi(argv[1]), atoi(argv[2]), 1);}
+\DoxyCodeLine{107             \}}
+\DoxyCodeLine{108             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{109             \{}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111                 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{112                 \textcolor{comment}{//}}
+\DoxyCodeLine{113                 \textcolor{comment}{// error called.}}
+\DoxyCodeLine{114                 \textcolor{comment}{//}}
+\DoxyCodeLine{115                 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{116                 \textcolor{keywordflow}{throw} 1;}
+\DoxyCodeLine{117             \}}
+\DoxyCodeLine{118         \}}
+\DoxyCodeLine{119         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (argc == 4)}
+\DoxyCodeLine{120         \{}
+\DoxyCodeLine{121             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{122             \textcolor{comment}{//}}
+\DoxyCodeLine{123             \textcolor{comment}{// 4 Time Measurement}}
+\DoxyCodeLine{124             \textcolor{comment}{//}}
+\DoxyCodeLine{125             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{126             \textcolor{keywordflow}{if} ((2 <= atoi(argv[1])) \&\& (2 <= atoi(argv[2])) \&\& (2 <= atoi(argv[3])))}
+\DoxyCodeLine{127             \{}
+\DoxyCodeLine{128                 \mbox{\hyperlink{CubePressure_8cpp_a25a0ad5f52f8786c64e81482f13b5c06}{calcFunc}}(atoi(argv[1]), atoi(argv[2]), atoi(argv[3]));}
+\DoxyCodeLine{129             \}}
+\DoxyCodeLine{130             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{131             \{}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133                 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{134                 \textcolor{comment}{//}}
+\DoxyCodeLine{135                 \textcolor{comment}{// error called.}}
+\DoxyCodeLine{136                 \textcolor{comment}{//}}
+\DoxyCodeLine{137                 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{138                 \textcolor{keywordflow}{throw} 1;}
+\DoxyCodeLine{139             \}}
+\DoxyCodeLine{140         \}}
+\DoxyCodeLine{141         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{142         \{}
+\DoxyCodeLine{143             \textcolor{keywordflow}{throw} 1;}
+\DoxyCodeLine{144         \}}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146         \textcolor{keywordflow}{return} EXIT\_SUCCESS;}
+\DoxyCodeLine{147     \}}
+\DoxyCodeLine{148     \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} \textcolor{keywordtype}{int} error\_code)}
+\DoxyCodeLine{149     \{}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151         \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{152         \textcolor{comment}{//}}
+\DoxyCodeLine{153         \textcolor{comment}{// Exception called.}}
+\DoxyCodeLine{154         \textcolor{comment}{//}}
+\DoxyCodeLine{155         \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{156         (*\mbox{\hyperlink{CubePressure_8cpp_a33240a2de4e6166c193502e55556c33a}{main\_error\_func}}[0])();}
+\DoxyCodeLine{157         (*\mbox{\hyperlink{CubePressure_8cpp_a33240a2de4e6166c193502e55556c33a}{main\_error\_func}}[error\_code])();}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159         \textcolor{keywordflow}{return} EXIT\_FAILURE;}
+\DoxyCodeLine{160     \}}
+\DoxyCodeLine{161 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{CubePressure_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{CubePressure_8cpp_a2950c0a5abdda61ef9ede28dbb5c636f}\label{CubePressure_8cpp_a2950c0a5abdda61ef9ede28dbb5c636f}} 
+\index{CubePressure.cpp@{CubePressure.cpp}!myNameIs@{myNameIs}}
+\index{myNameIs@{myNameIs}!CubePressure.cpp@{CubePressure.cpp}}
+\doxysubsubsection{\texorpdfstring{myNameIs()}{myNameIs()}}
+{\footnotesize\ttfamily void my\+Name\+Is (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+report 
+
+\DoxyHorRuler{0}
+ 
+
+ Cube\+Pressure.\+cpp の 165 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{166 \{}
+\DoxyCodeLine{167     cout << \textcolor{stringliteral}{" "}}
+\DoxyCodeLine{168          << \textcolor{stringliteral}{"[      "}}
+\DoxyCodeLine{169          << \mbox{\hyperlink{Color_8hpp_a1916dd06096f930ac5ab057f88bac4d5}{FONT\_RED}}}
+\DoxyCodeLine{170          << \textcolor{stringliteral}{"main"}}
+\DoxyCodeLine{171          << \mbox{\hyperlink{Color_8hpp_af4b14f6e3c09a101c8fda79a7fc1f35d}{ALL\_DEFAULT}}}
+\DoxyCodeLine{172          << \textcolor{stringliteral}{"       ]"}}
+\DoxyCodeLine{173          << \textcolor{stringliteral}{" "};}
+\DoxyCodeLine{174 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{CubePressure_8cpp_a300ecc2c01a20c36e0ffdf631d8800d7}\label{CubePressure_8cpp_a300ecc2c01a20c36e0ffdf631d8800d7}} 
+\index{CubePressure.cpp@{CubePressure.cpp}!unknownError@{unknownError}}
+\index{unknownError@{unknownError}!CubePressure.cpp@{CubePressure.cpp}}
+\doxysubsubsection{\texorpdfstring{unknownError()}{unknownError()}}
+{\footnotesize\ttfamily void unknown\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Cube\+Pressure.\+cpp の 183 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{184 \{}
+\DoxyCodeLine{185     cout << \textcolor{stringliteral}{"Unknown error."}}
+\DoxyCodeLine{186          << endl;}
+\DoxyCodeLine{187 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{変数詳解}
+\mbox{\Hypertarget{CubePressure_8cpp_a33240a2de4e6166c193502e55556c33a}\label{CubePressure_8cpp_a33240a2de4e6166c193502e55556c33a}} 
+\index{CubePressure.cpp@{CubePressure.cpp}!main\_error\_func@{main\_error\_func}}
+\index{main\_error\_func@{main\_error\_func}!CubePressure.cpp@{CubePressure.cpp}}
+\doxysubsubsection{\texorpdfstring{main\_error\_func}{main\_error\_func}}
+{\footnotesize\ttfamily \mbox{\hyperlink{SimpleTensile_8cpp_a76e2836e241b3572082da1229bc53021}{M\+A\+I\+N\+\_\+\+E\+R\+R\+O\+R\+\_\+\+F\+U\+NC}} main\+\_\+error\+\_\+func\mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{SimpleTensile_8cpp_a2950c0a5abdda61ef9ede28dbb5c636f}{my\+Name\+Is}}, \mbox{\hyperlink{SimpleTensile_8cpp_ae54f2790e74717abf0c2bb5e33425623}{arg\+Error}}, \mbox{\hyperlink{SimpleTensile_8cpp_a300ecc2c01a20c36e0ffdf631d8800d7}{unknown\+Error}}, \mbox{\hyperlink{SimpleTensile_8cpp_a2f8504040f11e6e49acb95020f477ed5}{csv\+Error}}\}}
+
+
+
+ Cube\+Pressure.\+cpp の 51 行目に定義があります。
+

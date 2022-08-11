@@ -1,0 +1,74 @@
+\doxysection{3dscatter.\+py}
+\label{data_2results_22021-12-12__SimpleTensile_2plot__data_23dscatter_8py_source}\index{/home/raptel/workspace/research/MultiParticleMethod/data/results/2021-\/12-\/12\_SimpleTensile/plot\_data/3dscatter.py@{/home/raptel/workspace/research/MultiParticleMethod/data/results/2021-\/12-\/12\_SimpleTensile/plot\_data/3dscatter.py}}
+\mbox{\hyperlink{data_2results_22021-12-12__SimpleTensile_2plot__data_23dscatter_8py}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
+\DoxyCodeLine{00002 \textcolor{keyword}{from} mpl\_toolkits.mplot3d \textcolor{keyword}{import} Axes3D}
+\DoxyCodeLine{00003 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{00005 }
+\DoxyCodeLine{00006 ds\_name = [ \textcolor{stringliteral}{'x'}, \textcolor{stringliteral}{'y'}, \textcolor{stringliteral}{'z'} ]}
+\DoxyCodeLine{00007 d = pd.read\_csv(\textcolor{stringliteral}{"{}./sail\_deformation.csv"{}}, sep=\textcolor{stringliteral}{','}, header=\textcolor{keywordtype}{None}, names=ds\_name)}
+\DoxyCodeLine{00008 \textcolor{comment}{\# 相対パスでは.が現在のパスを明示的に示す方法。 ..で、一つ上の階層を示すなどが使える。}}
+\DoxyCodeLine{00009 \textcolor{comment}{\# print(d)    }}
+\DoxyCodeLine{00010 \textcolor{comment}{\# データをarray型に}}
+\DoxyCodeLine{00011 x = np.array(d[\textcolor{stringliteral}{"{}x"{}}])}
+\DoxyCodeLine{00012 y = np.array(d[\textcolor{stringliteral}{"{}y"{}}])}
+\DoxyCodeLine{00013 z = np.array(d[\textcolor{stringliteral}{"{}z"{}}])}
+\DoxyCodeLine{00014 }
+\DoxyCodeLine{00015 \textcolor{comment}{\# グラフ作成}}
+\DoxyCodeLine{00016 fig = plt.figure()}
+\DoxyCodeLine{00017 ax = fig.add\_subplot(111, projection=\textcolor{stringliteral}{'3d'})}
+\DoxyCodeLine{00018 }
+\DoxyCodeLine{00019 \textcolor{comment}{\# style}}
+\DoxyCodeLine{00020 plt.style.use(\textcolor{stringliteral}{'ggplot'})}
+\DoxyCodeLine{00021 \textcolor{comment}{\# plt.rcParams['font.family'] = 'Meiryo'}}
+\DoxyCodeLine{00022 config = \{}
+\DoxyCodeLine{00023     \textcolor{stringliteral}{"{}lines.linestyle"{}}:\textcolor{stringliteral}{"{}dotted"{}},}
+\DoxyCodeLine{00024     \textcolor{stringliteral}{"{}lines.linewidth"{}}:10,}
+\DoxyCodeLine{00025     \textcolor{stringliteral}{"{}xtick.labelbottom"{}}:\textcolor{keyword}{False},}
+\DoxyCodeLine{00026     \textcolor{stringliteral}{"{}xtick.labeltop"{}}:\textcolor{keyword}{True},}
+\DoxyCodeLine{00027     \textcolor{stringliteral}{"{}ytick.labelleft"{}}:\textcolor{keyword}{False},}
+\DoxyCodeLine{00028     \textcolor{stringliteral}{"{}ytick.labelright"{}}:\textcolor{keyword}{True}}
+\DoxyCodeLine{00029 \}}
+\DoxyCodeLine{00030 plt.rcParams.update(config)}
+\DoxyCodeLine{00031 }
+\DoxyCodeLine{00032 \textcolor{comment}{\# 軸ラベルを設定}}
+\DoxyCodeLine{00033 ax.set\_xlabel(\textcolor{stringliteral}{"{}x"{}}, size=14, color=\textcolor{stringliteral}{"{}r"{}})}
+\DoxyCodeLine{00034 ax.set\_ylabel(\textcolor{stringliteral}{"{}y"{}}, size=14, color=\textcolor{stringliteral}{"{}r"{}})}
+\DoxyCodeLine{00035 ax.set\_zlabel(\textcolor{stringliteral}{"{}z"{}}, size=14, color=\textcolor{stringliteral}{"{}r"{}})}
+\DoxyCodeLine{00036 \textcolor{comment}{\# 軸目盛を設定}}
+\DoxyCodeLine{00037 \textcolor{comment}{\# ax.set\_yticks([-\/0.2, 0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2])}}
+\DoxyCodeLine{00038 \textcolor{comment}{\# ax.set\_xticks([-\/0.2, 0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2])}}
+\DoxyCodeLine{00039 }
+\DoxyCodeLine{00040 }
+\DoxyCodeLine{00041 \textcolor{comment}{\# 曲線を描画}}
+\DoxyCodeLine{00042 ax.scatter(x, y, z, s=40, c=\textcolor{stringliteral}{"{}blue"{}}, label=\textcolor{stringliteral}{'plot'})}
+\DoxyCodeLine{00043 plt.savefig(\textcolor{stringliteral}{''})}
+\DoxyCodeLine{00044 plt.show()}
+\DoxyCodeLine{00045 }
+\DoxyCodeLine{00046 \textcolor{comment}{\# import numpy as np}}
+\DoxyCodeLine{00047 \textcolor{comment}{\# import scipy.interpolate as interp}}
+\DoxyCodeLine{00048 \textcolor{comment}{\# import pandas as pd}}
+\DoxyCodeLine{00049 \textcolor{comment}{\# import matplotlib.pyplot as plt}}
+\DoxyCodeLine{00050 \textcolor{comment}{\# from mpl\_toolkits.mplot3d import Axes3D}}
+\DoxyCodeLine{00051 }
+\DoxyCodeLine{00052 \textcolor{comment}{\# \# read the input data (ignore the first row)}}
+\DoxyCodeLine{00053 \textcolor{comment}{\# data = pd.read\_csv('3d\_scatter\_plot\_data.csv', dtype='double').values[:, 0:3]}}
+\DoxyCodeLine{00054 }
+\DoxyCodeLine{00055 \textcolor{comment}{\# \# construct meshgrid}}
+\DoxyCodeLine{00056 \textcolor{comment}{\# gridsize = 21}}
+\DoxyCodeLine{00057 \textcolor{comment}{\# mn, mx = data.min(axis=0), data.max(axis=0)}}
+\DoxyCodeLine{00058 \textcolor{comment}{\# xm = np.arange(mn[0], mx[0], (mx[0]-\/mn[0])/(gridsize-\/1))}}
+\DoxyCodeLine{00059 \textcolor{comment}{\# ym = np.arange(mn[1], mx[1], (mx[1]-\/mn[1])/(gridsize-\/1))}}
+\DoxyCodeLine{00060 \textcolor{comment}{\# x, y = np.meshgrid(xm, ym)}}
+\DoxyCodeLine{00061 }
+\DoxyCodeLine{00062 \textcolor{comment}{\# \# interpolate the data}}
+\DoxyCodeLine{00063 \textcolor{comment}{\# z = interp.griddata(data[:, 0:2], data[:, 2], (x, y), method='cubic')}}
+\DoxyCodeLine{00064 \textcolor{comment}{\# z[np.isnan(z)] = np.nanmean(z)}}
+\DoxyCodeLine{00065 }
+\DoxyCodeLine{00066 \textcolor{comment}{\# ax = plt.gca(projection='3d')}}
+\DoxyCodeLine{00067 \textcolor{comment}{\# ax.plot\_surface(x, y, z, cmap='autumn', linewidth=0)}}
+\DoxyCodeLine{00068 \textcolor{comment}{\# plt.savefig('hoge.png')}}
+
+\end{DoxyCode}

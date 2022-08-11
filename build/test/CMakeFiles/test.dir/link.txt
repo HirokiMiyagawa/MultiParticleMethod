@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wall -Wextra -Ofast -flto -lm -fopenmp -g3 -O0 -pg CMakeFiles/test.dir/test.cpp.o -o ../../bin/test  ../lib/libgtest_maind.a ../lib/libgtestd.a -lpthread 

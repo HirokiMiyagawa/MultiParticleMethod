@@ -1,0 +1,571 @@
+\hypertarget{DataSet_8hpp}{}\doxysection{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/hpp/\+Base/\+Data\+Set.hpp ファイル}
+\label{DataSet_8hpp}\index{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/MultiParticleMethod/src/hpp/Base/DataSet.hpp@{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/MultiParticleMethod/src/hpp/Base/DataSet.hpp}}
+{\ttfamily \#include \char`\"{}Input\+Param.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Data\+Set.\+hpp の依存先関係図\+:
+% FIG 0
+被依存関係図\+:
+% FIG 1
+\doxysubsection*{クラス}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structMoveXYZ}{Move\+X\+YZ}}
+\item 
+struct \mbox{\hyperlink{structBoundaryCondition}{Boundary\+Condition}}
+\item 
+class \mbox{\hyperlink{classC}{C}}
+\begin{DoxyCompactList}\small\item\em x,y,z方向に値を持つ \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structQuarter}{Quarter}}
+\begin{DoxyCompactList}\small\item\em i,j方向にプラスマイナスの構造体 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structPreDirection}{Pre\+Direction}}
+\begin{DoxyCompactList}\small\item\em i,j方向にプラスマイナスの構造体 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structDirection}{Direction}}
+\begin{DoxyCompactList}\small\item\em iとjのプラマイ方向を2つずつ格納する \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structVector}{Vector}}
+\begin{DoxyCompactList}\small\item\em ベクトルと長さを格納する \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structArea}{Area}}
+\begin{DoxyCompactList}\small\item\em i, jのx,y,z方向成分 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structTmp}{Tmp}}
+\begin{DoxyCompactList}\small\item\em 一時的に使用する構造体 \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structOuterMostParameter}{Outer\+Most\+Parameter}}
+\begin{DoxyCompactList}\small\item\em stock outer most parameter. we use it when Non Cylinder Boundary \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structVirtualParticle}{Virtual\+Particle}}
+\begin{DoxyCompactList}\small\item\em 仮想粒子関係の計算結果を格納する構造体 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{列挙型}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111}{Positions}} \{ \newline
+\mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111aaa79b7c40b072fdcab65bfa11d732389}{Center}} = 0b00000000, 
+\mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111ad48f7af8c070184f3774c8e85854eb66}{Right}} = 0b00000001, 
+\mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a9d4d8b0b72fc2659da772d761a3c5ecb}{Left}} = 0b00000010, 
+\mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a05cdd4fa6b505ee008f4e865acfecccb}{Bottom}} = 0b00000100, 
+\newline
+\mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a47321105d20c4efd6c573a6d829e1ad9}{Top}} = 0b00001000, 
+\mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a458931b2927cee9a56c790e42443420d}{Right\+Bottom}} = 0b00000101, 
+\mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111abd3e8bedb2ce4ade9c345f01c14b4767}{Right\+Top}} = 0b00001001, 
+\mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a5d59bca9398fa4454b493dbabfcd3cdd}{Left\+Bottom}} = 0b00000110, 
+\newline
+\mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a0abc1dd13d4d2628e9c814911ff99c1d}{Left\+Top}} = 0b00001010
+ \}
+\item 
+enum \mbox{\hyperlink{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5}{Communication}} \{ \mbox{\hyperlink{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5afc4acfd87c9c7965d3c7437519dabcac}{Send}} = 0x01, 
+\mbox{\hyperlink{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5a70a0d8cc25f82b780e11763b3ecc6568}{Recv}} = 0x02, 
+\mbox{\hyperlink{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5a891fbec6fb0d74aea9e064d13b59c9e0}{Empty}} = 0x03
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{DataSet_8hpp_a225dfcb31b145ff5d0649bd794b269db}{operator+}} (const \mbox{\hyperlink{classC}{C}} \&v)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{DataSet_8hpp_a0d133e3841b1222219eb5c8807779d60}{operator-\/}} (const \mbox{\hyperlink{classC}{C}} \&v)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{DataSet_8hpp_ad0bb420828f0fe13865719f31c02dd0b}{operator+}} (const \mbox{\hyperlink{classC}{C}} \&a, const \mbox{\hyperlink{classC}{C}} \&b)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{DataSet_8hpp_aa0254dcf9f1309be8c2f9e815362e0d2}{operator-\/}} (const \mbox{\hyperlink{classC}{C}} \&a, const \mbox{\hyperlink{classC}{C}} \&b)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{DataSet_8hpp_a678a49378fd9c5b2b9028c995b65c811}{operator$\ast$}} (const double \&d, const \mbox{\hyperlink{classC}{C}} \&v)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{DataSet_8hpp_a883dd26638106f37e2979340d52a4235}{operator$\ast$}} (const \mbox{\hyperlink{classC}{C}} \&v, const double \&d)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{DataSet_8hpp_a2ddfcccc5a19092f514eef7268a81c07}{operator$\ast$}} (const \mbox{\hyperlink{classC}{C}} \&a, const \mbox{\hyperlink{classC}{C}} \&b)
+\item 
+double \mbox{\hyperlink{DataSet_8hpp_a4a7647ce25adf631693f34c16ffe3b7e}{operator\%}} (const \mbox{\hyperlink{classC}{C}} \&a, const \mbox{\hyperlink{classC}{C}} \&b)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{DataSet_8hpp_ad41bd42a3733d68b9a769f80b7bec1ce}{operator$\ast$}} (const \mbox{\hyperlink{classC}{C}} \&v, const int \&i)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{DataSet_8hpp_aa8c9aafdab3e03684e688cc780f3cff3}{operator/}} (const \mbox{\hyperlink{classC}{C}} \&v, const double \&d)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{DataSet_8hpp_a0a702ad28cb6147c7996e631ee57e63f}{operator/}} (const \mbox{\hyperlink{classC}{C}} \&v, const int \&i)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{DataSet_8hpp_a1872ce1e5b20d9bcebd620cb8e01f69a}{cross}} (const \mbox{\hyperlink{classC}{C}} \&a, const \mbox{\hyperlink{classC}{C}} \&b)
+\item 
+double \mbox{\hyperlink{DataSet_8hpp_ae72b247e3e7af8c0a4db5911c07c49c8}{dot}} (const \mbox{\hyperlink{classC}{C}} \&a, const \mbox{\hyperlink{classC}{C}} \&b)
+\item 
+double \mbox{\hyperlink{DataSet_8hpp_a48c0e9af3de44d063a435d6e53401134}{abs}} (const \mbox{\hyperlink{classC}{C}} \&v)
+\item 
+void \mbox{\hyperlink{DataSet_8hpp_ae40511871d8ac1d4ec9df67382f0ae8e}{print}} (const \mbox{\hyperlink{classC}{C}} \&v)
+\end{DoxyCompactItemize}
+\doxysubsection*{変数}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned int \mbox{\hyperlink{DataSet_8hpp_a7555faeff9764e3cc71c04dfab3ef1a2}{B\+I\+T\+\_\+\+R\+I\+G\+HT}} = (1 $<$$<$ 0)
+\item 
+const unsigned int \mbox{\hyperlink{DataSet_8hpp_a2a47d92184cebfc849b898866a0f1136}{B\+I\+T\+\_\+\+L\+E\+FT}} = (1 $<$$<$ 1)
+\item 
+const unsigned int \mbox{\hyperlink{DataSet_8hpp_aa9c7cfa7bd60073f735eec8b9baa9152}{B\+I\+T\+\_\+\+B\+O\+T\+T\+OM}} = (1 $<$$<$ 2)
+\item 
+const unsigned int \mbox{\hyperlink{DataSet_8hpp_afe6f2baebbf577121c49d46e4c043b9e}{B\+I\+T\+\_\+\+T\+OP}} = (1 $<$$<$ 3)
+\item 
+const unsigned int \mbox{\hyperlink{DataSet_8hpp_a3bead453dbaf873a5e212f61b2b367cc}{B\+I\+T\+\_\+\+R\+I\+G\+H\+T\+S\+I\+DE}} = (1 $<$$<$ 4)
+\item 
+const unsigned int \mbox{\hyperlink{DataSet_8hpp_a24b569e3f971ff33ab8ed81691b37a64}{B\+I\+T\+\_\+\+B\+A\+CK}} = (1 $<$$<$ 5)
+\item 
+const unsigned int \mbox{\hyperlink{DataSet_8hpp_a2ac4ccd5c0207f72e82b03102aac5986}{B\+I\+T\+\_\+\+C\+E\+I\+L\+I\+NG}} = (1 $<$$<$ 6)
+\item 
+const unsigned int \mbox{\hyperlink{DataSet_8hpp_a31fb5cd2b9170e44a228e2e2b2554589}{B\+I\+T\+\_\+\+E\+D\+GE}} = (1 $<$$<$ 7)
+\item 
+const unsigned int \mbox{\hyperlink{DataSet_8hpp_acbc66332fe923693dee80a6cbfef0590}{B\+I\+T\+\_\+\+N\+O\+NE}} = 0b00000000
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+///////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////// 
+
+\doxysubsection{列挙型詳解}
+\mbox{\Hypertarget{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5}\label{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5}} 
+\index{DataSet.hpp@{DataSet.hpp}!Communication@{Communication}}
+\index{Communication@{Communication}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{Communication}{Communication}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5}{Communication}}}
+
+\begin{DoxyEnumFields}{列挙値}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Send@{Send}!DataSet.hpp@{DataSet.hpp}}\index{DataSet.hpp@{DataSet.hpp}!Send@{Send}}}\mbox{\Hypertarget{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5afc4acfd87c9c7965d3c7437519dabcac}\label{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5afc4acfd87c9c7965d3c7437519dabcac}} 
+Send&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Recv@{Recv}!DataSet.hpp@{DataSet.hpp}}\index{DataSet.hpp@{DataSet.hpp}!Recv@{Recv}}}\mbox{\Hypertarget{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5a70a0d8cc25f82b780e11763b3ecc6568}\label{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5a70a0d8cc25f82b780e11763b3ecc6568}} 
+Recv&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Empty@{Empty}!DataSet.hpp@{DataSet.hpp}}\index{DataSet.hpp@{DataSet.hpp}!Empty@{Empty}}}\mbox{\Hypertarget{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5a891fbec6fb0d74aea9e064d13b59c9e0}\label{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5a891fbec6fb0d74aea9e064d13b59c9e0}} 
+Empty&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+ Data\+Set.\+hpp の 200 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{200                    \{ \mbox{\hyperlink{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5afc4acfd87c9c7965d3c7437519dabcac}{Send}}  = 0x01,}
+\DoxyCodeLine{201                      \mbox{\hyperlink{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5a70a0d8cc25f82b780e11763b3ecc6568}{Recv}}  = 0x02,}
+\DoxyCodeLine{202                      \mbox{\hyperlink{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5a891fbec6fb0d74aea9e064d13b59c9e0}{Empty}} = 0x03 \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111}\label{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111}} 
+\index{DataSet.hpp@{DataSet.hpp}!Positions@{Positions}}
+\index{Positions@{Positions}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{Positions}{Positions}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111}{Positions}}}
+
+\begin{DoxyEnumFields}{列挙値}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Center@{Center}!DataSet.hpp@{DataSet.hpp}}\index{DataSet.hpp@{DataSet.hpp}!Center@{Center}}}\mbox{\Hypertarget{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111aaa79b7c40b072fdcab65bfa11d732389}\label{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111aaa79b7c40b072fdcab65bfa11d732389}} 
+Center&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Right@{Right}!DataSet.hpp@{DataSet.hpp}}\index{DataSet.hpp@{DataSet.hpp}!Right@{Right}}}\mbox{\Hypertarget{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111ad48f7af8c070184f3774c8e85854eb66}\label{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111ad48f7af8c070184f3774c8e85854eb66}} 
+Right&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Left@{Left}!DataSet.hpp@{DataSet.hpp}}\index{DataSet.hpp@{DataSet.hpp}!Left@{Left}}}\mbox{\Hypertarget{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a9d4d8b0b72fc2659da772d761a3c5ecb}\label{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a9d4d8b0b72fc2659da772d761a3c5ecb}} 
+Left&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Bottom@{Bottom}!DataSet.hpp@{DataSet.hpp}}\index{DataSet.hpp@{DataSet.hpp}!Bottom@{Bottom}}}\mbox{\Hypertarget{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a05cdd4fa6b505ee008f4e865acfecccb}\label{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a05cdd4fa6b505ee008f4e865acfecccb}} 
+Bottom&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Top@{Top}!DataSet.hpp@{DataSet.hpp}}\index{DataSet.hpp@{DataSet.hpp}!Top@{Top}}}\mbox{\Hypertarget{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a47321105d20c4efd6c573a6d829e1ad9}\label{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a47321105d20c4efd6c573a6d829e1ad9}} 
+Top&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RightBottom@{RightBottom}!DataSet.hpp@{DataSet.hpp}}\index{DataSet.hpp@{DataSet.hpp}!RightBottom@{RightBottom}}}\mbox{\Hypertarget{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a458931b2927cee9a56c790e42443420d}\label{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a458931b2927cee9a56c790e42443420d}} 
+Right\+Bottom&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RightTop@{RightTop}!DataSet.hpp@{DataSet.hpp}}\index{DataSet.hpp@{DataSet.hpp}!RightTop@{RightTop}}}\mbox{\Hypertarget{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111abd3e8bedb2ce4ade9c345f01c14b4767}\label{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111abd3e8bedb2ce4ade9c345f01c14b4767}} 
+Right\+Top&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LeftBottom@{LeftBottom}!DataSet.hpp@{DataSet.hpp}}\index{DataSet.hpp@{DataSet.hpp}!LeftBottom@{LeftBottom}}}\mbox{\Hypertarget{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a5d59bca9398fa4454b493dbabfcd3cdd}\label{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a5d59bca9398fa4454b493dbabfcd3cdd}} 
+Left\+Bottom&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LeftTop@{LeftTop}!DataSet.hpp@{DataSet.hpp}}\index{DataSet.hpp@{DataSet.hpp}!LeftTop@{LeftTop}}}\mbox{\Hypertarget{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a0abc1dd13d4d2628e9c814911ff99c1d}\label{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a0abc1dd13d4d2628e9c814911ff99c1d}} 
+Left\+Top&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+ Data\+Set.\+hpp の 22 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{22                \{}
+\DoxyCodeLine{23     \mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111aaa79b7c40b072fdcab65bfa11d732389}{Center}} = 0b00000000,}
+\DoxyCodeLine{24     \mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111ad48f7af8c070184f3774c8e85854eb66}{Right}}  = 0b00000001,}
+\DoxyCodeLine{25     \mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a9d4d8b0b72fc2659da772d761a3c5ecb}{Left}}   = 0b00000010,}
+\DoxyCodeLine{26     \mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a05cdd4fa6b505ee008f4e865acfecccb}{Bottom}} = 0b00000100,}
+\DoxyCodeLine{27     \mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a47321105d20c4efd6c573a6d829e1ad9}{Top}}    = 0b00001000,}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a458931b2927cee9a56c790e42443420d}{RightBottom}} = 0b00000101,}
+\DoxyCodeLine{30     \mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111abd3e8bedb2ce4ade9c345f01c14b4767}{RightTop}}    = 0b00001001,}
+\DoxyCodeLine{31     \mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a5d59bca9398fa4454b493dbabfcd3cdd}{LeftBottom}}  = 0b00000110,}
+\DoxyCodeLine{32     \mbox{\hyperlink{DataSet_8hpp_adb1fad3b6a121acd6db0b9eda7fd5111a0abc1dd13d4d2628e9c814911ff99c1d}{LeftTop}}     = 0b00001010,}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{comment}{// Center = 0x00,}}
+\DoxyCodeLine{35     \textcolor{comment}{// Left   = 0x01,}}
+\DoxyCodeLine{36     \textcolor{comment}{// Right  = 0x02,}}
+\DoxyCodeLine{37     \textcolor{comment}{// Bottom = 0x03,}}
+\DoxyCodeLine{38     \textcolor{comment}{// Top    = 0x04,}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{comment}{// LeftBottom  = 0x05,}}
+\DoxyCodeLine{41     \textcolor{comment}{// LeftTop     = 0x06,}}
+\DoxyCodeLine{42     \textcolor{comment}{// RightBottom = 0x07,}}
+\DoxyCodeLine{43     \textcolor{comment}{// RightTop    = 0x08,}}
+\DoxyCodeLine{44 \};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{DataSet_8hpp_a48c0e9af3de44d063a435d6e53401134}\label{DataSet_8hpp_a48c0e9af3de44d063a435d6e53401134}} 
+\index{DataSet.hpp@{DataSet.hpp}!abs@{abs}}
+\index{abs@{abs}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{abs()}{abs()}}
+{\footnotesize\ttfamily double abs (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v }\end{DoxyParamCaption})}
+
+
+
+ Data\+Set.\+hpp の 402 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{402 \{ \textcolor{keywordflow}{return} v.\mbox{\hyperlink{classC_afacdb9896d2186d346cc9efc3d778de8}{abs}}(); \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 2
+被呼び出し関係図\+:
+% FIG 3
+\mbox{\Hypertarget{DataSet_8hpp_a1872ce1e5b20d9bcebd620cb8e01f69a}\label{DataSet_8hpp_a1872ce1e5b20d9bcebd620cb8e01f69a}} 
+\index{DataSet.hpp@{DataSet.hpp}!cross@{cross}}
+\index{cross@{cross}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{cross()}{cross()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} cross (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{a,  }\item[{const \mbox{\hyperlink{classC}{C}} \&}]{b }\end{DoxyParamCaption})}
+
+
+
+ Data\+Set.\+hpp の 400 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{400 \{ \textcolor{keywordflow}{return} (a * b); \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 4
+\mbox{\Hypertarget{DataSet_8hpp_ae72b247e3e7af8c0a4db5911c07c49c8}\label{DataSet_8hpp_ae72b247e3e7af8c0a4db5911c07c49c8}} 
+\index{DataSet.hpp@{DataSet.hpp}!dot@{dot}}
+\index{dot@{dot}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{dot()}{dot()}}
+{\footnotesize\ttfamily double dot (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{a,  }\item[{const \mbox{\hyperlink{classC}{C}} \&}]{b }\end{DoxyParamCaption})}
+
+
+
+ Data\+Set.\+hpp の 401 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{401 \{ \textcolor{keywordflow}{return} (a \% b); \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{DataSet_8hpp_a4a7647ce25adf631693f34c16ffe3b7e}\label{DataSet_8hpp_a4a7647ce25adf631693f34c16ffe3b7e}} 
+\index{DataSet.hpp@{DataSet.hpp}!operator\%@{operator\%}}
+\index{operator\%@{operator\%}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{operator\%()}{operator\%()}}
+{\footnotesize\ttfamily double operator\% (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{a,  }\item[{const \mbox{\hyperlink{classC}{C}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 331 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{331                                                 \{}
+\DoxyCodeLine{332     \textcolor{keywordflow}{return} (a.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} * b.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} + a.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} * b.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} + a.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} * b.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}});}
+\DoxyCodeLine{333 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{DataSet_8hpp_a2ddfcccc5a19092f514eef7268a81c07}\label{DataSet_8hpp_a2ddfcccc5a19092f514eef7268a81c07}} 
+\index{DataSet.hpp@{DataSet.hpp}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{a,  }\item[{const \mbox{\hyperlink{classC}{C}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 326 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{326                                            \{}
+\DoxyCodeLine{327     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC}{C}}(a.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} * b.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} -\/ a.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} * b.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}, a.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} * b.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} -\/ a.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} * b.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}},}
+\DoxyCodeLine{328              a.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} * b.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} -\/ a.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} * b.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}});}
+\DoxyCodeLine{329 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{DataSet_8hpp_a883dd26638106f37e2979340d52a4235}\label{DataSet_8hpp_a883dd26638106f37e2979340d52a4235}} 
+\index{DataSet.hpp@{DataSet.hpp}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v,  }\item[{const double \&}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 322 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{322                                                 \{}
+\DoxyCodeLine{323     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC}{C}}(d * v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}, d * v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}, d * v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}});}
+\DoxyCodeLine{324 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{DataSet_8hpp_ad41bd42a3733d68b9a769f80b7bec1ce}\label{DataSet_8hpp_ad41bd42a3733d68b9a769f80b7bec1ce}} 
+\index{DataSet.hpp@{DataSet.hpp}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v,  }\item[{const int \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 335 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{335                                              \{}
+\DoxyCodeLine{336     \textcolor{keywordtype}{double} d = (double)i;}
+\DoxyCodeLine{337     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC}{C}}(d * v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}, d * v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}, d * v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}});}
+\DoxyCodeLine{338 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{DataSet_8hpp_a678a49378fd9c5b2b9028c995b65c811}\label{DataSet_8hpp_a678a49378fd9c5b2b9028c995b65c811}} 
+\index{DataSet.hpp@{DataSet.hpp}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator$\ast$ (\begin{DoxyParamCaption}\item[{const double \&}]{d,  }\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 318 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{318                                                 \{}
+\DoxyCodeLine{319     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC}{C}}(d * v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}, d * v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}, d * v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}});}
+\DoxyCodeLine{320 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{DataSet_8hpp_ad0bb420828f0fe13865719f31c02dd0b}\label{DataSet_8hpp_ad0bb420828f0fe13865719f31c02dd0b}} 
+\index{DataSet.hpp@{DataSet.hpp}!operator+@{operator+}}
+\index{operator+@{operator+}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{a,  }\item[{const \mbox{\hyperlink{classC}{C}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 311 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{311                                            \{}
+\DoxyCodeLine{312     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC}{C}}(a.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} + b.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}, a.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} + b.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}, a.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} + b.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}});}
+\DoxyCodeLine{313 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{DataSet_8hpp_a225dfcb31b145ff5d0649bd794b269db}\label{DataSet_8hpp_a225dfcb31b145ff5d0649bd794b269db}} 
+\index{DataSet.hpp@{DataSet.hpp}!operator+@{operator+}}
+\index{operator+@{operator+}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 309 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{309 \{ \textcolor{keywordflow}{return} v; \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{DataSet_8hpp_aa0254dcf9f1309be8c2f9e815362e0d2}\label{DataSet_8hpp_aa0254dcf9f1309be8c2f9e815362e0d2}} 
+\index{DataSet.hpp@{DataSet.hpp}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{a,  }\item[{const \mbox{\hyperlink{classC}{C}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 314 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{314                                            \{}
+\DoxyCodeLine{315     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC}{C}}(a.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} -\/ b.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}, a.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} -\/ b.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}, a.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} -\/ b.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}});}
+\DoxyCodeLine{316 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{DataSet_8hpp_a0d133e3841b1222219eb5c8807779d60}\label{DataSet_8hpp_a0d133e3841b1222219eb5c8807779d60}} 
+\index{DataSet.hpp@{DataSet.hpp}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 310 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{310 \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classC}{C}}(-\/v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}, -\/v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}, -\/v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}}); \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{DataSet_8hpp_aa8c9aafdab3e03684e688cc780f3cff3}\label{DataSet_8hpp_aa8c9aafdab3e03684e688cc780f3cff3}} 
+\index{DataSet.hpp@{DataSet.hpp}!operator/@{operator/}}
+\index{operator/@{operator/}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{operator/()}{operator/()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v,  }\item[{const double \&}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 340 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{340                                                 \{}
+\DoxyCodeLine{341     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC}{C}}(v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} / d, v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} / d, v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} / d);}
+\DoxyCodeLine{342 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{DataSet_8hpp_a0a702ad28cb6147c7996e631ee57e63f}\label{DataSet_8hpp_a0a702ad28cb6147c7996e631ee57e63f}} 
+\index{DataSet.hpp@{DataSet.hpp}!operator/@{operator/}}
+\index{operator/@{operator/}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{operator/()}{operator/()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v,  }\item[{const int \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 343 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{343                                              \{}
+\DoxyCodeLine{344     \textcolor{keywordtype}{double} d = (double)i;}
+\DoxyCodeLine{345     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC}{C}}(v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} / d, v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} / d, v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} / d);}
+\DoxyCodeLine{346 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{DataSet_8hpp_ae40511871d8ac1d4ec9df67382f0ae8e}\label{DataSet_8hpp_ae40511871d8ac1d4ec9df67382f0ae8e}} 
+\index{DataSet.hpp@{DataSet.hpp}!print@{print}}
+\index{print@{print}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void print (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v }\end{DoxyParamCaption})}
+
+
+
+ Data\+Set.\+hpp の 403 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{403 \{ cout << v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} << \textcolor{charliteral}{','} << v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} << \textcolor{charliteral}{','} << v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} << endl; \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{変数詳解}
+\mbox{\Hypertarget{DataSet_8hpp_a24b569e3f971ff33ab8ed81691b37a64}\label{DataSet_8hpp_a24b569e3f971ff33ab8ed81691b37a64}} 
+\index{DataSet.hpp@{DataSet.hpp}!BIT\_BACK@{BIT\_BACK}}
+\index{BIT\_BACK@{BIT\_BACK}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{BIT\_BACK}{BIT\_BACK}}
+{\footnotesize\ttfamily const unsigned int B\+I\+T\+\_\+\+B\+A\+CK = (1 $<$$<$ 5)}
+
+
+
+ Data\+Set.\+hpp の 52 行目に定義があります。
+
+\mbox{\Hypertarget{DataSet_8hpp_aa9c7cfa7bd60073f735eec8b9baa9152}\label{DataSet_8hpp_aa9c7cfa7bd60073f735eec8b9baa9152}} 
+\index{DataSet.hpp@{DataSet.hpp}!BIT\_BOTTOM@{BIT\_BOTTOM}}
+\index{BIT\_BOTTOM@{BIT\_BOTTOM}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{BIT\_BOTTOM}{BIT\_BOTTOM}}
+{\footnotesize\ttfamily const unsigned int B\+I\+T\+\_\+\+B\+O\+T\+T\+OM = (1 $<$$<$ 2)}
+
+
+
+ Data\+Set.\+hpp の 49 行目に定義があります。
+
+\mbox{\Hypertarget{DataSet_8hpp_a2ac4ccd5c0207f72e82b03102aac5986}\label{DataSet_8hpp_a2ac4ccd5c0207f72e82b03102aac5986}} 
+\index{DataSet.hpp@{DataSet.hpp}!BIT\_CEILING@{BIT\_CEILING}}
+\index{BIT\_CEILING@{BIT\_CEILING}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{BIT\_CEILING}{BIT\_CEILING}}
+{\footnotesize\ttfamily const unsigned int B\+I\+T\+\_\+\+C\+E\+I\+L\+I\+NG = (1 $<$$<$ 6)}
+
+
+
+ Data\+Set.\+hpp の 53 行目に定義があります。
+
+\mbox{\Hypertarget{DataSet_8hpp_a31fb5cd2b9170e44a228e2e2b2554589}\label{DataSet_8hpp_a31fb5cd2b9170e44a228e2e2b2554589}} 
+\index{DataSet.hpp@{DataSet.hpp}!BIT\_EDGE@{BIT\_EDGE}}
+\index{BIT\_EDGE@{BIT\_EDGE}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{BIT\_EDGE}{BIT\_EDGE}}
+{\footnotesize\ttfamily const unsigned int B\+I\+T\+\_\+\+E\+D\+GE = (1 $<$$<$ 7)}
+
+
+
+ Data\+Set.\+hpp の 54 行目に定義があります。
+
+\mbox{\Hypertarget{DataSet_8hpp_a2a47d92184cebfc849b898866a0f1136}\label{DataSet_8hpp_a2a47d92184cebfc849b898866a0f1136}} 
+\index{DataSet.hpp@{DataSet.hpp}!BIT\_LEFT@{BIT\_LEFT}}
+\index{BIT\_LEFT@{BIT\_LEFT}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{BIT\_LEFT}{BIT\_LEFT}}
+{\footnotesize\ttfamily const unsigned int B\+I\+T\+\_\+\+L\+E\+FT = (1 $<$$<$ 1)}
+
+
+
+ Data\+Set.\+hpp の 48 行目に定義があります。
+
+\mbox{\Hypertarget{DataSet_8hpp_acbc66332fe923693dee80a6cbfef0590}\label{DataSet_8hpp_acbc66332fe923693dee80a6cbfef0590}} 
+\index{DataSet.hpp@{DataSet.hpp}!BIT\_NONE@{BIT\_NONE}}
+\index{BIT\_NONE@{BIT\_NONE}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{BIT\_NONE}{BIT\_NONE}}
+{\footnotesize\ttfamily const unsigned int B\+I\+T\+\_\+\+N\+O\+NE = 0b00000000}
+
+
+
+ Data\+Set.\+hpp の 55 行目に定義があります。
+
+\mbox{\Hypertarget{DataSet_8hpp_a7555faeff9764e3cc71c04dfab3ef1a2}\label{DataSet_8hpp_a7555faeff9764e3cc71c04dfab3ef1a2}} 
+\index{DataSet.hpp@{DataSet.hpp}!BIT\_RIGHT@{BIT\_RIGHT}}
+\index{BIT\_RIGHT@{BIT\_RIGHT}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{BIT\_RIGHT}{BIT\_RIGHT}}
+{\footnotesize\ttfamily const unsigned int B\+I\+T\+\_\+\+R\+I\+G\+HT = (1 $<$$<$ 0)}
+
+
+
+ Data\+Set.\+hpp の 47 行目に定義があります。
+
+\mbox{\Hypertarget{DataSet_8hpp_a3bead453dbaf873a5e212f61b2b367cc}\label{DataSet_8hpp_a3bead453dbaf873a5e212f61b2b367cc}} 
+\index{DataSet.hpp@{DataSet.hpp}!BIT\_RIGHTSIDE@{BIT\_RIGHTSIDE}}
+\index{BIT\_RIGHTSIDE@{BIT\_RIGHTSIDE}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{BIT\_RIGHTSIDE}{BIT\_RIGHTSIDE}}
+{\footnotesize\ttfamily const unsigned int B\+I\+T\+\_\+\+R\+I\+G\+H\+T\+S\+I\+DE = (1 $<$$<$ 4)}
+
+
+
+ Data\+Set.\+hpp の 51 行目に定義があります。
+
+\mbox{\Hypertarget{DataSet_8hpp_afe6f2baebbf577121c49d46e4c043b9e}\label{DataSet_8hpp_afe6f2baebbf577121c49d46e4c043b9e}} 
+\index{DataSet.hpp@{DataSet.hpp}!BIT\_TOP@{BIT\_TOP}}
+\index{BIT\_TOP@{BIT\_TOP}!DataSet.hpp@{DataSet.hpp}}
+\doxysubsubsection{\texorpdfstring{BIT\_TOP}{BIT\_TOP}}
+{\footnotesize\ttfamily const unsigned int B\+I\+T\+\_\+\+T\+OP = (1 $<$$<$ 3)}
+
+
+
+ Data\+Set.\+hpp の 50 行目に定義があります。
+

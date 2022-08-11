@@ -1,0 +1,5 @@
+if(EXISTS "/home/raptel/workspace/research/MultiParticleMethod/build/MyLibTest[1]_tests.cmake")
+  include("/home/raptel/workspace/research/MultiParticleMethod/build/MyLibTest[1]_tests.cmake")
+else()
+  add_test(MyLibTest_NOT_BUILT MyLibTest_NOT_BUILT)
+endif()

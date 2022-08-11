@@ -1,0 +1,362 @@
+\hypertarget{structBoundaryCondition}{}\doxysection{Boundary\+Condition 構造体}
+\label{structBoundaryCondition}\index{BoundaryCondition@{BoundaryCondition}}
+
+
+{\ttfamily \#include $<$Data\+Set.\+hpp$>$}
+
+
+
+Boundary\+Condition 連携図
+% FIG 0
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\bool \mbox{\hyperlink{structBoundaryCondition_a471e125dec28ec4d89a3408bc10ce833}{contain}} (const std\+::string \&s, const T \&v)
+\item 
+void \mbox{\hyperlink{structBoundaryCondition_ae3f277b8029f3fb15b8f0151f291d308}{judge\+\_\+xyz\+\_\+fix}} (\mbox{\hyperlink{structMoveXYZ}{Move\+X\+YZ}} \&xyz, const string \&judge\+\_\+strring)
+\item 
+string \mbox{\hyperlink{structBoundaryCondition_a57869b54aa90c13611dd34a97984e80f}{get\+\_\+boundary\+\_\+move}} (const \mbox{\hyperlink{structMoveXYZ}{Move\+X\+YZ}} \&xyz)
+\item 
+void \mbox{\hyperlink{structBoundaryCondition_a9c7bcdf5b16fc6546759321cc9e1b292}{set\+\_\+param}} (const string \&filename)
+\end{DoxyCompactItemize}
+\doxysubsection*{公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{structBoundaryCondition_a3d5bbe76cdc1b25badc23bbd80c0bc4b}{right\+\_\+share\+\_\+fix}}
+\item 
+bool \mbox{\hyperlink{structBoundaryCondition_ae6c565d13f6eb223532c55f173369b31}{right\+\_\+bend\+\_\+fix}}
+\item 
+bool \mbox{\hyperlink{structBoundaryCondition_a55890c25d5856befdf6bbc727f149e53}{right\+\_\+free}}
+\item 
+bool \mbox{\hyperlink{structBoundaryCondition_adcc4757b484db1cbbd3d47adce75244a}{left\+\_\+share\+\_\+fix}}
+\item 
+bool \mbox{\hyperlink{structBoundaryCondition_aef52fb129b48c230d24a434f9ce6d55d}{left\+\_\+bend\+\_\+fix}}
+\item 
+bool \mbox{\hyperlink{structBoundaryCondition_a7faba103932ce077bc7046cfcbe38208}{left\+\_\+free}}
+\item 
+bool \mbox{\hyperlink{structBoundaryCondition_aa4274809fa1356caed49a46cbdede915}{top\+\_\+share\+\_\+fix}}
+\item 
+bool \mbox{\hyperlink{structBoundaryCondition_a8b0c41a56a6be360740decbcfa0c4a4d}{top\+\_\+bend\+\_\+fix}}
+\item 
+bool \mbox{\hyperlink{structBoundaryCondition_aa3bc089c6b92bcb607bc49a4962b0c92}{top\+\_\+free}}
+\item 
+bool \mbox{\hyperlink{structBoundaryCondition_a01a5d42cc0bb57f479df20f9fe09e6bb}{bottom\+\_\+share\+\_\+fix}}
+\item 
+bool \mbox{\hyperlink{structBoundaryCondition_adbfb078e48c35aab95bc7bc1fad1ee82}{bottom\+\_\+bend\+\_\+fix}}
+\item 
+bool \mbox{\hyperlink{structBoundaryCondition_a67f807d6029ea4719518faefd656bef6}{bottom\+\_\+free}}
+\item 
+\mbox{\hyperlink{structMoveXYZ}{Move\+X\+YZ}} \mbox{\hyperlink{structBoundaryCondition_af14c64419f65c6cbf24cf2762f0b9394}{right\+\_\+move}}
+\item 
+\mbox{\hyperlink{structMoveXYZ}{Move\+X\+YZ}} \mbox{\hyperlink{structBoundaryCondition_a14d7d6ddec83f7c47a1137691e6de5ae}{left\+\_\+move}}
+\item 
+\mbox{\hyperlink{structMoveXYZ}{Move\+X\+YZ}} \mbox{\hyperlink{structBoundaryCondition_a58d286116c9c8a8e50aec7f692658e8c}{top\+\_\+move}}
+\item 
+\mbox{\hyperlink{structMoveXYZ}{Move\+X\+YZ}} \mbox{\hyperlink{structBoundaryCondition_ab04e27254c970428fd7dcdfb1b44948e}{bottom\+\_\+move}}
+\item 
+bool \mbox{\hyperlink{structBoundaryCondition_aef7a2f26da9ec0f1911d26643bba76aa}{cylinder\+\_\+boundary}}
+\item 
+bool \mbox{\hyperlink{structBoundaryCondition_a552ca88c9441db05c7579b479fdc5dac}{boundary\+\_\+more\+\_\+detail}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ Data\+Set.\+hpp の 123 行目に定義があります。
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{structBoundaryCondition_a471e125dec28ec4d89a3408bc10ce833}\label{structBoundaryCondition_a471e125dec28ec4d89a3408bc10ce833}} 
+\index{BoundaryCondition@{BoundaryCondition}!contain@{contain}}
+\index{contain@{contain}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{contain()}{contain()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool Boundary\+Condition\+::contain (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{const T \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 156 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{156                                                  \{}
+\DoxyCodeLine{157         \textcolor{keywordflow}{return} s.find(v) != std::string::npos;}
+\DoxyCodeLine{158     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{structBoundaryCondition_a57869b54aa90c13611dd34a97984e80f}\label{structBoundaryCondition_a57869b54aa90c13611dd34a97984e80f}} 
+\index{BoundaryCondition@{BoundaryCondition}!get\_boundary\_move@{get\_boundary\_move}}
+\index{get\_boundary\_move@{get\_boundary\_move}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{get\_boundary\_move()}{get\_boundary\_move()}}
+{\footnotesize\ttfamily string Boundary\+Condition\+::get\+\_\+boundary\+\_\+move (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structMoveXYZ}{Move\+X\+YZ}} \&}]{xyz }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 164 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{164                                                  \{}
+\DoxyCodeLine{165         \textcolor{keywordtype}{string} Ret;}
+\DoxyCodeLine{166         \textcolor{keywordflow}{if} (xyz.\mbox{\hyperlink{structMoveXYZ_a815090ffb033961d118649494c820c29}{x}}) \{}
+\DoxyCodeLine{167             Ret += \textcolor{stringliteral}{"x"};}
+\DoxyCodeLine{168         \}}
+\DoxyCodeLine{169         \textcolor{keywordflow}{if} (xyz.\mbox{\hyperlink{structMoveXYZ_a0c8d293dcb14a684c29696663ad94dd1}{y}}) \{}
+\DoxyCodeLine{170             Ret += \textcolor{stringliteral}{"y"};}
+\DoxyCodeLine{171         \}}
+\DoxyCodeLine{172         \textcolor{keywordflow}{if} (xyz.\mbox{\hyperlink{structMoveXYZ_a4347dd9c6ce6d36f02022a0d2bc00164}{z}}) \{}
+\DoxyCodeLine{173             Ret += \textcolor{stringliteral}{"z"};}
+\DoxyCodeLine{174         \}}
+\DoxyCodeLine{175         \textcolor{keywordflow}{return} Ret;}
+\DoxyCodeLine{176     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{structBoundaryCondition_ae3f277b8029f3fb15b8f0151f291d308}\label{structBoundaryCondition_ae3f277b8029f3fb15b8f0151f291d308}} 
+\index{BoundaryCondition@{BoundaryCondition}!judge\_xyz\_fix@{judge\_xyz\_fix}}
+\index{judge\_xyz\_fix@{judge\_xyz\_fix}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{judge\_xyz\_fix()}{judge\_xyz\_fix()}}
+{\footnotesize\ttfamily void Boundary\+Condition\+::judge\+\_\+xyz\+\_\+fix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMoveXYZ}{Move\+X\+YZ}} \&}]{xyz,  }\item[{const string \&}]{judge\+\_\+strring }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 159 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{159                                                                   \{}
+\DoxyCodeLine{160         xyz.\mbox{\hyperlink{structMoveXYZ_a815090ffb033961d118649494c820c29}{x}} = contain<string>(judge\_strring, \textcolor{stringliteral}{"x"});}
+\DoxyCodeLine{161         xyz.\mbox{\hyperlink{structMoveXYZ_a0c8d293dcb14a684c29696663ad94dd1}{y}} = contain<string>(judge\_strring, \textcolor{stringliteral}{"y"});}
+\DoxyCodeLine{162         xyz.\mbox{\hyperlink{structMoveXYZ_a4347dd9c6ce6d36f02022a0d2bc00164}{z}} = contain<string>(judge\_strring, \textcolor{stringliteral}{"z"});}
+\DoxyCodeLine{163     \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 1
+\mbox{\Hypertarget{structBoundaryCondition_a9c7bcdf5b16fc6546759321cc9e1b292}\label{structBoundaryCondition_a9c7bcdf5b16fc6546759321cc9e1b292}} 
+\index{BoundaryCondition@{BoundaryCondition}!set\_param@{set\_param}}
+\index{set\_param@{set\_param}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{set\_param()}{set\_param()}}
+{\footnotesize\ttfamily void Boundary\+Condition\+::set\+\_\+param (\begin{DoxyParamCaption}\item[{const string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 178 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{178                                            \{}
+\DoxyCodeLine{179         \mbox{\hyperlink{classparam_1_1parameter}{param::parameter}} read(filename);}
+\DoxyCodeLine{180         \mbox{\hyperlink{structBoundaryCondition_aef7a2f26da9ec0f1911d26643bba76aa}{cylinder\_boundary}}    = read.get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"cylinder\_boundary"}, \textcolor{keyword}{false});}
+\DoxyCodeLine{181         \mbox{\hyperlink{structBoundaryCondition_a552ca88c9441db05c7579b479fdc5dac}{boundary\_more\_detail}} = read.get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"boundary\_more\_detail"}, \textcolor{keyword}{false});}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183         \mbox{\hyperlink{structBoundaryCondition_ae6c565d13f6eb223532c55f173369b31}{right\_bend\_fix}}  = read.get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"RightBend"});}
+\DoxyCodeLine{184         \mbox{\hyperlink{structBoundaryCondition_aef52fb129b48c230d24a434f9ce6d55d}{left\_bend\_fix}}   = read.get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"LeftBend"});}
+\DoxyCodeLine{185         \mbox{\hyperlink{structBoundaryCondition_adbfb078e48c35aab95bc7bc1fad1ee82}{bottom\_bend\_fix}} = read.get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"BottomBend"});}
+\DoxyCodeLine{186         \mbox{\hyperlink{structBoundaryCondition_a8b0c41a56a6be360740decbcfa0c4a4d}{top\_bend\_fix}}    = read.get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"TopBend"});}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188         \mbox{\hyperlink{structBoundaryCondition_a3d5bbe76cdc1b25badc23bbd80c0bc4b}{right\_share\_fix}}  = read.get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"RightShare"});}
+\DoxyCodeLine{189         \mbox{\hyperlink{structBoundaryCondition_adcc4757b484db1cbbd3d47adce75244a}{left\_share\_fix}}   = read.get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"LeftShare"});}
+\DoxyCodeLine{190         \mbox{\hyperlink{structBoundaryCondition_a01a5d42cc0bb57f479df20f9fe09e6bb}{bottom\_share\_fix}} = read.get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"BottomShare"});}
+\DoxyCodeLine{191         \mbox{\hyperlink{structBoundaryCondition_aa4274809fa1356caed49a46cbdede915}{top\_share\_fix}}    = read.get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"TopShare"});}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{193         \mbox{\hyperlink{structBoundaryCondition_ae3f277b8029f3fb15b8f0151f291d308}{judge\_xyz\_fix}}(\mbox{\hyperlink{structBoundaryCondition_af14c64419f65c6cbf24cf2762f0b9394}{right\_move}}, (read.get<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"RightMove"})));}
+\DoxyCodeLine{194         \mbox{\hyperlink{structBoundaryCondition_ae3f277b8029f3fb15b8f0151f291d308}{judge\_xyz\_fix}}(\mbox{\hyperlink{structBoundaryCondition_a14d7d6ddec83f7c47a1137691e6de5ae}{left\_move}}, (read.get<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"LeftMove"})));}
+\DoxyCodeLine{195         \mbox{\hyperlink{structBoundaryCondition_ae3f277b8029f3fb15b8f0151f291d308}{judge\_xyz\_fix}}(\mbox{\hyperlink{structBoundaryCondition_a58d286116c9c8a8e50aec7f692658e8c}{top\_move}}, (read.get<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"TopMove"})));}
+\DoxyCodeLine{196         \mbox{\hyperlink{structBoundaryCondition_ae3f277b8029f3fb15b8f0151f291d308}{judge\_xyz\_fix}}(\mbox{\hyperlink{structBoundaryCondition_ab04e27254c970428fd7dcdfb1b44948e}{bottom\_move}}, (read.get<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"BottomMove"})));}
+\DoxyCodeLine{197     \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 2
+被呼び出し関係図\+:
+% FIG 3
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{structBoundaryCondition_adbfb078e48c35aab95bc7bc1fad1ee82}\label{structBoundaryCondition_adbfb078e48c35aab95bc7bc1fad1ee82}} 
+\index{BoundaryCondition@{BoundaryCondition}!bottom\_bend\_fix@{bottom\_bend\_fix}}
+\index{bottom\_bend\_fix@{bottom\_bend\_fix}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{bottom\_bend\_fix}{bottom\_bend\_fix}}
+{\footnotesize\ttfamily bool Boundary\+Condition\+::bottom\+\_\+bend\+\_\+fix}
+
+
+
+ Data\+Set.\+hpp の 143 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_a67f807d6029ea4719518faefd656bef6}\label{structBoundaryCondition_a67f807d6029ea4719518faefd656bef6}} 
+\index{BoundaryCondition@{BoundaryCondition}!bottom\_free@{bottom\_free}}
+\index{bottom\_free@{bottom\_free}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{bottom\_free}{bottom\_free}}
+{\footnotesize\ttfamily bool Boundary\+Condition\+::bottom\+\_\+free}
+
+
+
+ Data\+Set.\+hpp の 144 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_ab04e27254c970428fd7dcdfb1b44948e}\label{structBoundaryCondition_ab04e27254c970428fd7dcdfb1b44948e}} 
+\index{BoundaryCondition@{BoundaryCondition}!bottom\_move@{bottom\_move}}
+\index{bottom\_move@{bottom\_move}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{bottom\_move}{bottom\_move}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structMoveXYZ}{Move\+X\+YZ}} Boundary\+Condition\+::bottom\+\_\+move}
+
+
+
+ Data\+Set.\+hpp の 151 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_a01a5d42cc0bb57f479df20f9fe09e6bb}\label{structBoundaryCondition_a01a5d42cc0bb57f479df20f9fe09e6bb}} 
+\index{BoundaryCondition@{BoundaryCondition}!bottom\_share\_fix@{bottom\_share\_fix}}
+\index{bottom\_share\_fix@{bottom\_share\_fix}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{bottom\_share\_fix}{bottom\_share\_fix}}
+{\footnotesize\ttfamily bool Boundary\+Condition\+::bottom\+\_\+share\+\_\+fix}
+
+
+
+ Data\+Set.\+hpp の 142 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_a552ca88c9441db05c7579b479fdc5dac}\label{structBoundaryCondition_a552ca88c9441db05c7579b479fdc5dac}} 
+\index{BoundaryCondition@{BoundaryCondition}!boundary\_more\_detail@{boundary\_more\_detail}}
+\index{boundary\_more\_detail@{boundary\_more\_detail}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{boundary\_more\_detail}{boundary\_more\_detail}}
+{\footnotesize\ttfamily bool Boundary\+Condition\+::boundary\+\_\+more\+\_\+detail}
+
+
+
+ Data\+Set.\+hpp の 153 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_aef7a2f26da9ec0f1911d26643bba76aa}\label{structBoundaryCondition_aef7a2f26da9ec0f1911d26643bba76aa}} 
+\index{BoundaryCondition@{BoundaryCondition}!cylinder\_boundary@{cylinder\_boundary}}
+\index{cylinder\_boundary@{cylinder\_boundary}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{cylinder\_boundary}{cylinder\_boundary}}
+{\footnotesize\ttfamily bool Boundary\+Condition\+::cylinder\+\_\+boundary}
+
+
+
+ Data\+Set.\+hpp の 152 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_aef52fb129b48c230d24a434f9ce6d55d}\label{structBoundaryCondition_aef52fb129b48c230d24a434f9ce6d55d}} 
+\index{BoundaryCondition@{BoundaryCondition}!left\_bend\_fix@{left\_bend\_fix}}
+\index{left\_bend\_fix@{left\_bend\_fix}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{left\_bend\_fix}{left\_bend\_fix}}
+{\footnotesize\ttfamily bool Boundary\+Condition\+::left\+\_\+bend\+\_\+fix}
+
+
+
+ Data\+Set.\+hpp の 131 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_a7faba103932ce077bc7046cfcbe38208}\label{structBoundaryCondition_a7faba103932ce077bc7046cfcbe38208}} 
+\index{BoundaryCondition@{BoundaryCondition}!left\_free@{left\_free}}
+\index{left\_free@{left\_free}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{left\_free}{left\_free}}
+{\footnotesize\ttfamily bool Boundary\+Condition\+::left\+\_\+free}
+
+
+
+ Data\+Set.\+hpp の 132 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_a14d7d6ddec83f7c47a1137691e6de5ae}\label{structBoundaryCondition_a14d7d6ddec83f7c47a1137691e6de5ae}} 
+\index{BoundaryCondition@{BoundaryCondition}!left\_move@{left\_move}}
+\index{left\_move@{left\_move}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{left\_move}{left\_move}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structMoveXYZ}{Move\+X\+YZ}} Boundary\+Condition\+::left\+\_\+move}
+
+
+
+ Data\+Set.\+hpp の 149 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_adcc4757b484db1cbbd3d47adce75244a}\label{structBoundaryCondition_adcc4757b484db1cbbd3d47adce75244a}} 
+\index{BoundaryCondition@{BoundaryCondition}!left\_share\_fix@{left\_share\_fix}}
+\index{left\_share\_fix@{left\_share\_fix}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{left\_share\_fix}{left\_share\_fix}}
+{\footnotesize\ttfamily bool Boundary\+Condition\+::left\+\_\+share\+\_\+fix}
+
+
+
+ Data\+Set.\+hpp の 130 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_ae6c565d13f6eb223532c55f173369b31}\label{structBoundaryCondition_ae6c565d13f6eb223532c55f173369b31}} 
+\index{BoundaryCondition@{BoundaryCondition}!right\_bend\_fix@{right\_bend\_fix}}
+\index{right\_bend\_fix@{right\_bend\_fix}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{right\_bend\_fix}{right\_bend\_fix}}
+{\footnotesize\ttfamily bool Boundary\+Condition\+::right\+\_\+bend\+\_\+fix}
+
+
+
+ Data\+Set.\+hpp の 125 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_a55890c25d5856befdf6bbc727f149e53}\label{structBoundaryCondition_a55890c25d5856befdf6bbc727f149e53}} 
+\index{BoundaryCondition@{BoundaryCondition}!right\_free@{right\_free}}
+\index{right\_free@{right\_free}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{right\_free}{right\_free}}
+{\footnotesize\ttfamily bool Boundary\+Condition\+::right\+\_\+free}
+
+
+
+ Data\+Set.\+hpp の 126 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_af14c64419f65c6cbf24cf2762f0b9394}\label{structBoundaryCondition_af14c64419f65c6cbf24cf2762f0b9394}} 
+\index{BoundaryCondition@{BoundaryCondition}!right\_move@{right\_move}}
+\index{right\_move@{right\_move}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{right\_move}{right\_move}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structMoveXYZ}{Move\+X\+YZ}} Boundary\+Condition\+::right\+\_\+move}
+
+
+
+ Data\+Set.\+hpp の 148 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_a3d5bbe76cdc1b25badc23bbd80c0bc4b}\label{structBoundaryCondition_a3d5bbe76cdc1b25badc23bbd80c0bc4b}} 
+\index{BoundaryCondition@{BoundaryCondition}!right\_share\_fix@{right\_share\_fix}}
+\index{right\_share\_fix@{right\_share\_fix}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{right\_share\_fix}{right\_share\_fix}}
+{\footnotesize\ttfamily bool Boundary\+Condition\+::right\+\_\+share\+\_\+fix}
+
+
+
+ Data\+Set.\+hpp の 124 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_a8b0c41a56a6be360740decbcfa0c4a4d}\label{structBoundaryCondition_a8b0c41a56a6be360740decbcfa0c4a4d}} 
+\index{BoundaryCondition@{BoundaryCondition}!top\_bend\_fix@{top\_bend\_fix}}
+\index{top\_bend\_fix@{top\_bend\_fix}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{top\_bend\_fix}{top\_bend\_fix}}
+{\footnotesize\ttfamily bool Boundary\+Condition\+::top\+\_\+bend\+\_\+fix}
+
+
+
+ Data\+Set.\+hpp の 137 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_aa3bc089c6b92bcb607bc49a4962b0c92}\label{structBoundaryCondition_aa3bc089c6b92bcb607bc49a4962b0c92}} 
+\index{BoundaryCondition@{BoundaryCondition}!top\_free@{top\_free}}
+\index{top\_free@{top\_free}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{top\_free}{top\_free}}
+{\footnotesize\ttfamily bool Boundary\+Condition\+::top\+\_\+free}
+
+
+
+ Data\+Set.\+hpp の 138 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_a58d286116c9c8a8e50aec7f692658e8c}\label{structBoundaryCondition_a58d286116c9c8a8e50aec7f692658e8c}} 
+\index{BoundaryCondition@{BoundaryCondition}!top\_move@{top\_move}}
+\index{top\_move@{top\_move}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{top\_move}{top\_move}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structMoveXYZ}{Move\+X\+YZ}} Boundary\+Condition\+::top\+\_\+move}
+
+
+
+ Data\+Set.\+hpp の 150 行目に定義があります。
+
+\mbox{\Hypertarget{structBoundaryCondition_aa4274809fa1356caed49a46cbdede915}\label{structBoundaryCondition_aa4274809fa1356caed49a46cbdede915}} 
+\index{BoundaryCondition@{BoundaryCondition}!top\_share\_fix@{top\_share\_fix}}
+\index{top\_share\_fix@{top\_share\_fix}!BoundaryCondition@{BoundaryCondition}}
+\doxysubsubsection{\texorpdfstring{top\_share\_fix}{top\_share\_fix}}
+{\footnotesize\ttfamily bool Boundary\+Condition\+::top\+\_\+share\+\_\+fix}
+
+
+
+ Data\+Set.\+hpp の 136 行目に定義があります。
+
+
+
+この構造体詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/hpp/\+Base/\mbox{\hyperlink{DataSet_8hpp}{Data\+Set.\+hpp}}\end{DoxyCompactItemize}

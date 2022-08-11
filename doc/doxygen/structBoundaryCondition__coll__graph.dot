@@ -1,0 +1,9 @@
+digraph "BoundaryCondition"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{BoundaryCondition\n|+ right_share_fix\l+ right_bend_fix\l+ right_free\l+ left_share_fix\l+ left_bend_fix\l+ left_free\l+ top_share_fix\l+ top_bend_fix\l+ top_free\l+ bottom_share_fix\l+ bottom_bend_fix\l+ bottom_free\l+ cylinder_boundary\l+ boundary_more_detail\l|+ contain()\l+ judge_xyz_fix()\l+ get_boundary_move()\l+ set_param()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +bottom_move\n+top_move\n+left_move\n+right_move" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node2 [label="{MoveXYZ\n|+ x\l+ y\l+ z\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structMoveXYZ.html",tooltip=" "];
+}

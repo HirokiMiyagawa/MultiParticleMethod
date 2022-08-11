@@ -1,0 +1,322 @@
+This program for analysis thin film. Analysis method is Multi Particle Method.
+
+first. if you can\textquotesingle{}t access L\+I\+NK, this Link is private note. You do search for the title of the link. and it note don\textquotesingle{}t write specific on this research/program.
+
+
+\begin{DoxyCode}{0}
+\end{DoxyCode}
+\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md1}{}\doxysection{Usage}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md1}
+
+\begin{DoxyEnumerate}
+\item set input.\+csv
+\begin{DoxyEnumerate}
+\item {\ttfamily \# lines are comments.}
+\item key is File name. please divide \char`\"{}$\ast$$\ast$,$\ast$$\ast$\char`\"{}. \`{}\`{}\`{}csvsample.csv \#\+Key, Simple\+Tensile, Simple\+Share, ... \#\+Shape m\+\_\+i\+Num, 21, 21, 21, ... m\+\_\+j\+Num, 21, 21, 21, ... \`{}\`{}\`{} $>$ Note\+: you can choose csv Editor. Excel, V\+S\+Code, etc... $>$ Comments is not effect any. $>$ blank is OK. but need to type \char`\"{},\char`\"{}.
+\end{DoxyEnumerate}
+\item compile with \sout{makefile} \mbox{[}\mbox{[}C\+Make\mbox{]}\mbox{]}. (It is also possible to compile with Makefile) \`{}\`{}\`{}shell \$ \# on project root directory \$ ./main.sh \`{}\`{}\`{} \begin{quote}
+Note\+: If you don\textquotesingle{}t want to automate the compilation, check the script \end{quote}
+
+\item run program \`{}\`{}\`{}shell \$ ./bin/\mbox{[}Condition\+File\+Name\mbox{]} \`{}\`{}\`{}
+\begin{DoxyEnumerate}
+\item otherwise run main.\+sh. it run under all preset situations. \`{}\`{}\`{}shell \$ s ./preset.sh \`{}\`{}\`{}
+\end{DoxyEnumerate}
+\item 
+\end{DoxyEnumerate}\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md2}{}\doxysubsubsection{ソースコードpdf出力}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md2}
+pdfの出力には，enscriptそ使用する．（日本語は文字化けします。）
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make ps}
+\DoxyCodeLine{make pdf}
+\end{DoxyCode}
+\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md3}{}\doxysubsubsection{作成ファイルの削除}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md3}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make clean}
+\end{DoxyCode}
+\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md4}{}\doxysubsection{Visualization (processing after analysis)}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md4}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./src/copy2results}
+\DoxyCodeLine{./src/delete\_csvfile.sh}
+\end{DoxyCode}
+\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md5}{}\doxysubsection{良く使用するコマンド}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md5}
+git の直前コミットとワークツリーで差分を取る 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git diff HEAD\string^ -\/-\/name-\/only | grep -\/v "doxygen"}
+\end{DoxyCode}
+\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md6}{}\doxysection{Explain This Program}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md6}
+\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md7}{}\doxysubsection{process of file}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md7}
+{\ttfamily cpp → Virtual\+Particle\+Calc → Thickness\+Calc → Force\+Calc → Get\+New\+Coordinate} の順番で計算がおこわなれる。\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md8}{}\doxysection{出力}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md8}
+実行時間は{\ttfamily ./data/time/time1.csv}に格納\mbox{[}ms\mbox{]}
+
+{\ttfamily 10653554}\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md9}{}\doxysection{プロット}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md9}
+コマンドラインで
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./plt/Cylinder}
+\end{DoxyCode}
+\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md10}{}\doxysection{Folder Tree (ファイル構造)}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md10}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.}
+\DoxyCodeLine{├── bin}
+\DoxyCodeLine{├── data}
+\DoxyCodeLine{│   ├── csv}
+\DoxyCodeLine{│   ├── input\_files}
+\DoxyCodeLine{│   ├── params}
+\DoxyCodeLine{│   ├── pdf}
+\DoxyCodeLine{│   ├── position}
+\DoxyCodeLine{│   └── time}
+\DoxyCodeLine{├── Doxygen}
+\DoxyCodeLine{│   ├── html}
+\DoxyCodeLine{│   │   └── search}
+\DoxyCodeLine{│   └── latex}
+\DoxyCodeLine{├── src}
+\DoxyCodeLine{│   ├── cpp}
+\DoxyCodeLine{│   └── hpp}
+\DoxyCodeLine{│       ├── Base}
+\DoxyCodeLine{│       ├── DefinitionOfSituation}
+\DoxyCodeLine{│       ├── Global}
+\DoxyCodeLine{│       ├── MultiParticle}
+\DoxyCodeLine{│       ├── MyLibrary}
+\DoxyCodeLine{│       └── Readcsv}
+\DoxyCodeLine{└── visualize}
+\DoxyCodeLine{    ├── Excel}
+\DoxyCodeLine{    ├── fig}
+\DoxyCodeLine{    ├── plot\_data}
+\DoxyCodeLine{    └── plot\_src}
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item root
+\begin{DoxyItemize}
+\item plot\+Gnuplot
+\begin{DoxyItemize}
+\item gnuplotを用いて解析結果を出力する
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item archive
+\begin{DoxyItemize}
+\item データの保存先
+\end{DoxyItemize}
+\item bin
+\begin{DoxyItemize}
+\item コンパイル関係
+\end{DoxyItemize}
+\item data
+\begin{DoxyItemize}
+\item 結果や条件などの数字データやソースコードの\+P\+D\+Fファイルを格納する
+\item よく触る
+\end{DoxyItemize}
+\item Doxygen
+\begin{DoxyItemize}
+\item $>$ C++のプログラムコードから自動でドキュメントを生成してくれるソフト
+\item その出力\+H\+T\+M\+Lファイルを格納する
+\end{DoxyItemize}
+\item src
+\begin{DoxyItemize}
+\item 実装したプログラム
+\end{DoxyItemize}
+\item visualize
+\begin{DoxyItemize}
+\item Excel
+\begin{DoxyItemize}
+\item Excelを用いた可視化
+\item 「extract\+\_\+◯◯.\+sh」の出力「next\+Value.\+dat」「pre\+Value.\+dat」を利用して\+Excel上に表記する
+\end{DoxyItemize}
+\item fig
+\begin{DoxyItemize}
+\item プロット結果
+\end{DoxyItemize}
+\item plot\+\_\+data
+\begin{DoxyItemize}
+\item プロットするデータファイル
+\end{DoxyItemize}
+\item plot\+\_\+src
+\begin{DoxyItemize}
+\item gnuplotを用いた可視化
+\end{DoxyItemize}
+\item extract-\/data.\+sh
+\item plot用のデータをcsvファイルから抽出する
+\item {\ttfamily ./data/csv/}直下の解析結果のうち最初と最後の粒子の配置を抽出し、datファイルにする。
+\item 区切り文字は「」（半角スペース）
+\item 仕様が変更されている可能性あり
+\begin{DoxyItemize}
+\item 第1引数：ファイル名の指定
+\begin{DoxyItemize}
+\item sail or cylinder
+\end{DoxyItemize}
+\item 第2引数：検索する
+\item 第3引数：変形後のファイル名に付いている数字の指定
+\begin{DoxyItemize}
+\item デフォルトでは最大値（=解析終了値）
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md11}{}\doxysubsubsection{extract-\/3files.\+sh}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md11}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily ./data/position} の{\ttfamily c\+\_\+x.\+dat}, {\ttfamily c\+\_\+y.\+dat}, {\ttfamily c\+\_\+z.\+dat}から任意の\+Timeの行を{\ttfamily old\+\_\+xyz.\+dat}にコピペする。（x,y,zの順番で3列）
+\item {\ttfamily extract-\/3files.\+sh}を実行する
+\item {\ttfamily \$plot\+\_\+dir}に{\ttfamily x y z}座標をスペース区切りで格納されたdatファイルを出力する
+\end{DoxyEnumerate}\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md12}{}\doxysubsection{src}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md12}
+実際のプログラム\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md13}{}\doxysubsection{tmp}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md13}
+実験結果などの一時的な待機場\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md14}{}\doxysection{src}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md14}
+\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md15}{}\doxysubsection{荷重係数 \$k\$}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md15}
+この値を決めることで\$\+Eh\+\_\+0\$によらず、たわみ量が決定される\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md16}{}\doxysection{Analysis Conditions}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md16}
+\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md17}{}\doxysubsection{Simple\+Tensile}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md17}
+\$\$F=k\+Eh\+\_\+0\$\$
+
+\$\$\textbackslash{}varepsilon\+\_\+x = k\$\$
+
+\$\$\textbackslash{}varepsilon\+\_\+y = -\/\textbackslash{}nu k\$\$\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md18}{}\doxysubsection{Simple\+Share}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md18}
+\$\$F=k\+Eh\+\_\+0\$\$
+
+\$\$\textbackslash{}gamma = 2(1+\textbackslash{}nu) k\$\$\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md19}{}\doxysubsection{Simple\+Bend}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md19}
+\$\$F=k\+Eh\+\_\+0\$\$
+
+\$\$\textbackslash{}frac\{\textbackslash{}delta\}\{L\+\_\+\{ref\}\} = 4k(\textbackslash{}frac\{L\+\_\+\{ref\}\}\{h\+\_\+0\})$^\wedge$2\$\$\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md20}{}\doxysubsection{Physical value}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md20}
+Steel
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Label }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ value }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Unit  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Label }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ value }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Unit  }\\\cline{1-3}
+\endhead
+E &\$2\textbackslash{}times10$^\wedge$\{11\}\$ &\$\mbox{[}N/m$^\wedge$2\mbox{]}\$  \\\cline{1-3}
+\$\textbackslash{}nu\$ &\$0.\+3\$ &\$\mbox{[}-\/\mbox{]}\$  \\\cline{1-3}
+\$\textbackslash{}rho\$ &\$7860\$ &\$\mbox{[}kg/m$^\wedge$3\mbox{]}\$  \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md21}{}\doxysection{Animation}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md21}
+\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md22}{}\doxysubsection{animation作成プログラム}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md22}
+c++とgnuplotによるアニメーションの作成を行った．graph.shによって読み込ませるデータを作成し，描画していく，\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md23}{}\doxysubsubsection{main.\+cpp}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md23}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <cstdio>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{ }
+\DoxyCodeLine{\textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{ }
+\DoxyCodeLine{\textcolor{keywordtype}{bool} checkFileExistence( \textcolor{keyword}{const} \textcolor{keywordtype}{string}\& str ) \{}
+\DoxyCodeLine{    ifstream ifs( str.c\_str() );}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} ifs.is\_open();}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{ }
+\DoxyCodeLine{ }
+\DoxyCodeLine{\textcolor{keywordtype}{int} \mbox{\hyperlink{CubePressure_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}()\{}
+\DoxyCodeLine{    FILE *gp = popen(\textcolor{stringliteral}{"gnuplot"}, \textcolor{stringliteral}{"w"});}
+\DoxyCodeLine{    assert(gp);}
+\DoxyCodeLine{ }
+\DoxyCodeLine{    fprintf(gp, \textcolor{stringliteral}{"set terminal gif animate optimize delay 10 size 1200,900\(\backslash\)n"});}
+\DoxyCodeLine{    fprintf(gp, \textcolor{stringliteral}{"set zeroaxis lt -\/1 lw 2\(\backslash\)n"});}
+\DoxyCodeLine{    fprintf(gp, \textcolor{stringliteral}{"unset xlabel\(\backslash\)n"});}
+\DoxyCodeLine{    fprintf(gp, \textcolor{stringliteral}{"unset ylabel\(\backslash\)n"});}
+\DoxyCodeLine{    fprintf(gp, \textcolor{stringliteral}{"unset title\(\backslash\)n"});}
+\DoxyCodeLine{    fprintf(gp, \textcolor{stringliteral}{"unset key\(\backslash\)n"});}
+\DoxyCodeLine{    fprintf(gp, \textcolor{stringliteral}{"set output 'tmp.gif'\(\backslash\)n"});}
+\DoxyCodeLine{ }
+\DoxyCodeLine{    fprintf(gp, \textcolor{stringliteral}{"set nokey\(\backslash\)n"});}
+\DoxyCodeLine{    fprintf(gp, \textcolor{stringliteral}{"set grid\(\backslash\)n"});}
+\DoxyCodeLine{    fprintf(gp, \textcolor{stringliteral}{"set size ratio -\/1\(\backslash\)n"});}
+\DoxyCodeLine{    fprintf(gp, \textcolor{stringliteral}{"set xr [0:1.25]\(\backslash\)n"});}
+\DoxyCodeLine{    fprintf(gp, \textcolor{stringliteral}{"set yr [0:0.7]\(\backslash\)n"});}
+\DoxyCodeLine{ }
+\DoxyCodeLine{    \textcolor{keywordtype}{string} file1 = \textcolor{stringliteral}{"data.dat"};}
+\DoxyCodeLine{    \textcolor{keywordtype}{string} file2 = \textcolor{stringliteral}{"reverse.dat"};}
+\DoxyCodeLine{    ifstream *ifs1;}
+\DoxyCodeLine{    ifstream *ifs2;}
+\DoxyCodeLine{    \textcolor{keywordtype}{char} buf[50];}
+\DoxyCodeLine{ }
+\DoxyCodeLine{    \textcolor{keywordflow}{for}( \textcolor{keywordtype}{int} j=1; j < 550; j++ )\{}
+\DoxyCodeLine{        system(\textcolor{stringliteral}{"rm ./data.dat"});}
+\DoxyCodeLine{        system(\textcolor{stringliteral}{"rm ./reverse.dat"});}
+\DoxyCodeLine{        sprintf(buf,\textcolor{stringliteral}{"sh graph.sh \%d"}, j);}
+\DoxyCodeLine{        cout << buf << endl;}
+\DoxyCodeLine{        cout << flush;}
+\DoxyCodeLine{        system(buf);}
+\DoxyCodeLine{ }
+\DoxyCodeLine{        ifs1 = \textcolor{keyword}{new} ifstream(file1, ios::in);}
+\DoxyCodeLine{        \textcolor{keywordflow}{while} ( !*ifs1 ) \{}
+\DoxyCodeLine{            usleep(500000);}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{        ifs1-\/>close();}
+\DoxyCodeLine{        \textcolor{keyword}{delete} ifs1;}
+\DoxyCodeLine{ }
+\DoxyCodeLine{        ifs2 = \textcolor{keyword}{new} ifstream(file2, ios::in);}
+\DoxyCodeLine{        \textcolor{keywordflow}{while} ( !*ifs2 ) \{}
+\DoxyCodeLine{            usleep(500000);}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{        ifs2-\/>close();}
+\DoxyCodeLine{        \textcolor{keyword}{delete} ifs2;}
+\DoxyCodeLine{ }
+\DoxyCodeLine{        \textcolor{keywordflow}{while}( fprintf(gp, \textcolor{stringliteral}{"plot 'reverse.dat' using 1:2 with points pt 65 ps 1 lc rgb '\#000000' lw 2 lt 1\(\backslash\)n"}) < 0)\{}
+\DoxyCodeLine{            usleep(500000);}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{ }
+\DoxyCodeLine{        \textcolor{keywordflow}{while}( fflush(gp) != 0 ) \{}
+\DoxyCodeLine{            usleep(500000);}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{ }
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    pclose(gp);}
+\DoxyCodeLine{ }
+\DoxyCodeLine{    \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md24}{}\doxysection{Basic Data}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md24}
+\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md25}{}\doxysubsection{開発環境}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md25}
+開発環境は以下の環境で行った， 動作確認行い済み．\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md26}{}\doxysubsubsection{Hardware}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md26}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }\\\cline{1-2}
+\endhead
+C\+PU &Intel(\+R) Core(\+T\+M) i5-\/9600K C\+PU @ 3.\+70(4.\+60)G\+Hz  \\\cline{1-2}
+core &6 core 6thread  \\\cline{1-2}
+Mother Board &A\+S\+Rock Z390 Extreme4  \\\cline{1-2}
+Memory &16GB  \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md27}{}\doxysubsubsection{Software}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md27}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }\\\cline{1-2}
+\endhead
+OS &Windows 10 21H1  \\\cline{1-2}
+OS (W\+S\+L2) &Ubuntu 18.\+04 L\+TS  \\\cline{1-2}
+kernel &4.\+4.\+0-\/17763-\/Microsoft  \\\cline{1-2}
+Programing Language &C++  \\\cline{1-2}
+Compiler &G\+NU compiler  \\\cline{1-2}
+\end{longtabu}
+
+
+Either W\+SL version 1 or 2 is fine. W\+S\+L1\+: faster W\+L\+S2\+: Active development.\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md28}{}\doxysubsection{作成者}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md28}
+スペースダイナミクス研究室 修士2年　大倉　輝久\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md29}{}\doxysubsection{作成日時}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md29}
+令和4年度卒業研究プログラム 最終更新日2022年2月
+
+\href{https://github.com/okura-teruhsia/ThreeDemention_MultiParticle.git}{\texttt{ Git\+Hub Pages}}\hypertarget{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md30}{}\doxysection{References}\label{md__home_hhhhhhhhhhhhhhhhhh_kyutech_research_MultiParticleMethod_README_autotoc_md30}

@@ -1,0 +1,4 @@
+<map id="VirtualParticle" name="VirtualParticle">
+<area shape="rect" id="node1" title="仮想粒子関係の計算結果を格納する構造体" alt="" coords="5,248,119,325"/>
+<area shape="rect" id="node2" href="$structC.html" title="x,y,z方向に値を持つ" alt="" coords="39,5,85,112"/>
+</map>

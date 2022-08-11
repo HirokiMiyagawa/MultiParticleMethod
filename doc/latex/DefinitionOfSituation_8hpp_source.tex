@@ -1,0 +1,133 @@
+\hypertarget{DefinitionOfSituation_8hpp_source}{}\doxysection{Definition\+Of\+Situation.\+hpp}
+\label{DefinitionOfSituation_8hpp_source}\index{/home/raptel/workspace/research/MultiParticleMethod/src/hpp/DefinitionOfSituation/DefinitionOfSituation.hpp@{/home/raptel/workspace/research/MultiParticleMethod/src/hpp/DefinitionOfSituation/DefinitionOfSituation.hpp}}
+\mbox{\hyperlink{DefinitionOfSituation_8hpp}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00001}00001 \textcolor{comment}{// \#define \_\_DEBUG\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00002}00002 \textcolor{comment}{// Particle shape}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00003}00003 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00004}00004 \textcolor{comment}{// \#define \_\_EQUALLY\_DEVIDED\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00005}00005 \textcolor{comment}{//\#define \_\_UNEQUALLY\_DEVIDED\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00006}00006 \textcolor{comment}{// \#define \_\_SHAPE\_CYLINDER\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00007}00007 \textcolor{comment}{// \#define \_\_SHAPE\_CUBE\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00009}00009 \textcolor{comment}{// Share situation setting}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00010}00010 \textcolor{comment}{// 対象面ではせん断力は存在しない}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00011}00011 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00012}00012 \textcolor{comment}{// \#define SHARE\_BOTTOM\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00013}00013 \textcolor{comment}{//\#define SHARE\_BOTTOM\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00014}00014 \textcolor{comment}{// \#define SHARE\_TOP\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00015}00015 \textcolor{comment}{//\#define SHARE\_TOP\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00016}00016 \textcolor{comment}{//\#define SHARE\_LEFT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00017}00017 \textcolor{comment}{// \#define SHARE\_LEFT\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00018}00018 \textcolor{comment}{//\#define SHARE\_RIGHT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00019}00019 \textcolor{comment}{// \#define SHARE\_RIGHT\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00020}00020 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00022}00022 \textcolor{comment}{// Bend situation setting}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00023}00023 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00024}00024 \textcolor{comment}{// \#define BEND\_BOTTOM\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00025}00025 \textcolor{comment}{//\#define BEND\_BOTTOM\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00026}00026 \textcolor{comment}{// \#define BEND\_TOP\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00027}00027 \textcolor{comment}{//\#define BEND\_TOP\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00028}00028 \textcolor{comment}{//\#define BEND\_LEFT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00029}00029 \textcolor{comment}{// \#define BEND\_LEFT\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00030}00030 \textcolor{comment}{// \#define BEND\_RIGHT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00031}00031 \textcolor{comment}{//\#define BEND\_RIGHT\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00032}00032 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00034}00034 \textcolor{comment}{// "{}External Force"{} situation setting}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00035}00035 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00036}00036 \textcolor{comment}{// \#define \_\_SIMPLE\_TENSILE\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00037}00037 \textcolor{comment}{// \#define \_\_SIMPLE\_SHARE\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00038}00038 \textcolor{comment}{// \#define \_\_SIMPLE\_BEND\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00039}00039 \textcolor{comment}{// \#define \_\_SIMPLE\_PRESSURE\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00040}00040 \textcolor{comment}{// \#define \_\_CYLINDER\_PRESSURE\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00041}00041 \textcolor{comment}{// \#define \_\_CUBE\_PRESSURE\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00042}00042 \textcolor{comment}{// \#define \_\_DIAGONAL\_TENSILE\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00043}00043 \textcolor{comment}{// \#define \_\_SIMPLE\_COMPRESSION\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00044}00044 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00046}00046 \textcolor{comment}{//擾乱ありかなしか (set disturbance)}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00047}00047 \textcolor{comment}{// \#define \_\_CONDITION\_DISTURBANCE\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00048}00048 \textcolor{comment}{// // -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Tensile Set -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00049}00049 \textcolor{comment}{// \#define \_\_SIMPLE\_TENSILE\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00050}00050 \textcolor{comment}{// \#define SHARE\_BOTTOM\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00051}00051 \textcolor{comment}{// \#define SHARE\_TOP\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00052}00052 \textcolor{comment}{// \#define SHARE\_LEFT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00053}00053 \textcolor{comment}{// \#define SHARE\_RIGHT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00055}00055 \textcolor{comment}{// \#define BEND\_BOTTOM\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00056}00056 \textcolor{comment}{// \#define BEND\_TOP\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00057}00057 \textcolor{comment}{// \#define BEND\_LEFT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00058}00058 \textcolor{comment}{// \#define BEND\_RIGHT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00060}00060 \textcolor{comment}{// \#define FREE\_TOP\_EDGE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00061}00061 \textcolor{comment}{// \#define FREE\_BOTTOM\_EDGE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00063}00063 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Share Set -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00064}00064 \textcolor{comment}{// \#define \_\_SIMPLE\_SHARE\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00065}00065 \textcolor{comment}{// \#define \_\_EQUALLY\_DEVIDED\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00066}00066 \textcolor{comment}{// \#define SHARE\_BOTTOM\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00067}00067 \textcolor{comment}{// \#define SHARE\_TOP\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00068}00068 \textcolor{comment}{// \#define SHARE\_LEFT\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00069}00069 \textcolor{comment}{// \#define SHARE\_RIGHT\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00071}00071 \textcolor{comment}{// \#define BEND\_BOTTOM\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00072}00072 \textcolor{comment}{// \#define BEND\_TOP\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00073}00073 \textcolor{comment}{// \#define BEND\_LEFT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00074}00074 \textcolor{comment}{// \#define BEND\_RIGHT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00076}00076 \textcolor{comment}{// \#define FREE\_TOP\_EDGE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00077}00077 \textcolor{comment}{// \#define FREE\_BOTTOM\_EDGE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00079}00079 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Bend Set -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00080}00080 \textcolor{comment}{// \#define \_\_SIMPLE\_BEND\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00081}00081 \textcolor{comment}{// \#define SHARE\_BOTTOM\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00082}00082 \textcolor{comment}{// \#define SHARE\_TOP\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00083}00083 \textcolor{comment}{// \#define SHARE\_LEFT\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00084}00084 \textcolor{comment}{// \#define SHARE\_RIGHT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00086}00086 \textcolor{comment}{// \#define BEND\_BOTTOM\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00087}00087 \textcolor{comment}{// \#define BEND\_TOP\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00088}00088 \textcolor{comment}{// \#define BEND\_LEFT\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00089}00089 \textcolor{comment}{// \#define BEND\_RIGHT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00091}00091 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Pressure Set -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00092}00092 \textcolor{comment}{// \#define \_\_SIMPLE\_PRESSURE\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00093}00093 \textcolor{comment}{// \#define \_\_EQUALLY\_DEVIDED\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00094}00094 \textcolor{comment}{// \#define SHARE\_BOTTOM\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00095}00095 \textcolor{comment}{// \#define SHARE\_TOP\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00096}00096 \textcolor{comment}{// \#define SHARE\_LEFT\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00097}00097 \textcolor{comment}{// \#define SHARE\_RIGHT\_FIXED}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00099}00099 \textcolor{comment}{// \#define BEND\_BOTTOM\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00100}00100 \textcolor{comment}{// \#define BEND\_TOP\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00101}00101 \textcolor{comment}{// \#define BEND\_LEFT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00102}00102 \textcolor{comment}{// \#define BEND\_RIGHT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00104}00104 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Diagonal Set -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00105}00105 \textcolor{comment}{// \#define \_\_DIAGONAL\_TENSILE\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00106}00106 \textcolor{comment}{// \#define \_\_EQUALLY\_DEVIDED\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00107}00107 \textcolor{comment}{// \#define SHARE\_BOTTOM\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00108}00108 \textcolor{comment}{// \#define SHARE\_TOP\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00109}00109 \textcolor{comment}{// \#define SHARE\_LEFT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00110}00110 \textcolor{comment}{// \#define SHARE\_RIGHT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00111}00111 \textcolor{comment}{// \#define BEND\_BOTTOM\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00112}00112 \textcolor{comment}{// \#define BEND\_TOP\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00113}00113 \textcolor{comment}{// \#define BEND\_LEFT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00114}00114 \textcolor{comment}{// \#define BEND\_RIGHT\_ROTATE}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00116}00116 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Cylinder Pressure Set -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00117}\mbox{\hyperlink{DefinitionOfSituation_8hpp_ae102aa45171d1d7d18f6dfceb62862b4}{00117}} \textcolor{preprocessor}{\#define \_\_SHAPE\_CYLINDER\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00118}\mbox{\hyperlink{DefinitionOfSituation_8hpp_aa65038bf84f3144c43a81be6bbc23aa5}{00118}} \textcolor{preprocessor}{\#define \_\_CYLINDER\_PRESSURE\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00120}00120 \textcolor{comment}{//  option}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00121}00121 \textcolor{comment}{// \#define \_\_BOUNDARY\_DETAILS\_\_ // 境界近くの刻みを小さくする}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00122}00122 \textcolor{comment}{// \#define \_\_CYLINDER\_NON\_BOUNDARY\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00123}00123 \textcolor{comment}{// \#define \_\_BOUNDARY\_DETAILS\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00124}00124 }
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00125}00125 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Cube Set -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00126}00126 \textcolor{comment}{// \#define \_\_SHAPE\_CUBE\_\_}}
+\DoxyCodeLine{\Hypertarget{DefinitionOfSituation_8hpp_source_l00127}00127 \textcolor{comment}{// \#define \_\_CUBE\_PRESSURE\_\_}}
+
+\end{DoxyCode}

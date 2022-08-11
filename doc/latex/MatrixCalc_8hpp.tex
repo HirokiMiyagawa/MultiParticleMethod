@@ -1,0 +1,104 @@
+\hypertarget{MatrixCalc_8hpp}{}\doxysection{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/hpp/\+My\+Library/\+Matrix\+Calc.hpp ファイル}
+\label{MatrixCalc_8hpp}\index{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/MultiParticleMethod/src/hpp/MyLibrary/MatrixCalc.hpp@{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/MultiParticleMethod/src/hpp/MyLibrary/MatrixCalc.hpp}}
+
+
+行列に関わる基本的な計算を行う。  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+Matrix\+Calc.\+hpp の依存先関係図\+:
+% FIG 0
+被依存関係図\+:
+% FIG 1
+\doxysubsection*{クラス}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classMatrixCalc}{Matrix\+Calc}}
+\begin{DoxyCompactList}\small\item\em 行列を扱うクラス \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classRotationMatrixCalc}{Rotation\+Matrix\+Calc}}
+\item 
+class \mbox{\hyperlink{classSphericalCoordinate}{Spherical\+Coordinate}}
+\end{DoxyCompactItemize}
+\doxysubsection*{列挙型}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483af}{Sort\+Mode}} \{ \newline
+\mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afa057f6808bbd8190011980a2fabc74d20}{D\+O\+\_\+\+N\+O\+T\+\_\+\+S\+O\+RT}}, 
+\mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afadb62b28d843a4dd5657bcc71c1f868a8}{S\+O\+R\+T\+\_\+\+D\+E\+C\+R\+E\+A\+S\+I\+N\+G\+\_\+\+A\+R\+R\+AY}}, 
+\mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afab7684562b3e58b36b96aebcb59c684a3}{S\+O\+R\+T\+\_\+\+I\+N\+C\+R\+E\+A\+S\+I\+N\+G\+\_\+\+A\+R\+R\+AY}}, 
+\mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afaad2cd3865ad4336e1a3937a4c2a34a03}{S\+O\+R\+T\+\_\+\+D\+E\+C\+R\+E\+A\+S\+I\+N\+G\+\_\+\+A\+B\+S\+\_\+\+A\+R\+R\+AY}}, 
+\newline
+\mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afae877bb07e87c941aee24c88701059b19}{S\+O\+R\+T\+\_\+\+I\+N\+C\+R\+E\+A\+S\+I\+N\+G\+\_\+\+A\+B\+S\+\_\+\+A\+R\+R\+AY}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+行列に関わる基本的な計算を行う。 
+
+///////////////////////////////////////////////////////////////////////////////
+
+\begin{DoxyParagraph}{}
+
+\end{DoxyParagraph}
+\begin{DoxyDate}{日付}
+Create 2021-\/07-\/04~\newline
+ 
+
+last update 2021-\/07-\/04 
+\end{DoxyDate}
+\begin{DoxyAuthor}{著者}
+raptel /////////////////////////////////////////////////////////////////////////////// 
+\end{DoxyAuthor}
+
+
+\doxysubsection{列挙型詳解}
+\mbox{\Hypertarget{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483af}\label{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483af}} 
+\index{MatrixCalc.hpp@{MatrixCalc.hpp}!SortMode@{SortMode}}
+\index{SortMode@{SortMode}!MatrixCalc.hpp@{MatrixCalc.hpp}}
+\doxysubsubsection{\texorpdfstring{SortMode}{SortMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483af}{Sort\+Mode}}}
+
+\begin{DoxyEnumFields}{列挙値}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DO\_NOT\_SORT@{DO\_NOT\_SORT}!MatrixCalc.hpp@{MatrixCalc.hpp}}\index{MatrixCalc.hpp@{MatrixCalc.hpp}!DO\_NOT\_SORT@{DO\_NOT\_SORT}}}\mbox{\Hypertarget{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afa057f6808bbd8190011980a2fabc74d20}\label{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afa057f6808bbd8190011980a2fabc74d20}} 
+D\+O\+\_\+\+N\+O\+T\+\_\+\+S\+O\+RT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SORT\_DECREASING\_ARRAY@{SORT\_DECREASING\_ARRAY}!MatrixCalc.hpp@{MatrixCalc.hpp}}\index{MatrixCalc.hpp@{MatrixCalc.hpp}!SORT\_DECREASING\_ARRAY@{SORT\_DECREASING\_ARRAY}}}\mbox{\Hypertarget{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afadb62b28d843a4dd5657bcc71c1f868a8}\label{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afadb62b28d843a4dd5657bcc71c1f868a8}} 
+S\+O\+R\+T\+\_\+\+D\+E\+C\+R\+E\+A\+S\+I\+N\+G\+\_\+\+A\+R\+R\+AY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SORT\_INCREASING\_ARRAY@{SORT\_INCREASING\_ARRAY}!MatrixCalc.hpp@{MatrixCalc.hpp}}\index{MatrixCalc.hpp@{MatrixCalc.hpp}!SORT\_INCREASING\_ARRAY@{SORT\_INCREASING\_ARRAY}}}\mbox{\Hypertarget{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afab7684562b3e58b36b96aebcb59c684a3}\label{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afab7684562b3e58b36b96aebcb59c684a3}} 
+S\+O\+R\+T\+\_\+\+I\+N\+C\+R\+E\+A\+S\+I\+N\+G\+\_\+\+A\+R\+R\+AY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SORT\_DECREASING\_ABS\_ARRAY@{SORT\_DECREASING\_ABS\_ARRAY}!MatrixCalc.hpp@{MatrixCalc.hpp}}\index{MatrixCalc.hpp@{MatrixCalc.hpp}!SORT\_DECREASING\_ABS\_ARRAY@{SORT\_DECREASING\_ABS\_ARRAY}}}\mbox{\Hypertarget{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afaad2cd3865ad4336e1a3937a4c2a34a03}\label{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afaad2cd3865ad4336e1a3937a4c2a34a03}} 
+S\+O\+R\+T\+\_\+\+D\+E\+C\+R\+E\+A\+S\+I\+N\+G\+\_\+\+A\+B\+S\+\_\+\+A\+R\+R\+AY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SORT\_INCREASING\_ABS\_ARRAY@{SORT\_INCREASING\_ABS\_ARRAY}!MatrixCalc.hpp@{MatrixCalc.hpp}}\index{MatrixCalc.hpp@{MatrixCalc.hpp}!SORT\_INCREASING\_ABS\_ARRAY@{SORT\_INCREASING\_ABS\_ARRAY}}}\mbox{\Hypertarget{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afae877bb07e87c941aee24c88701059b19}\label{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afae877bb07e87c941aee24c88701059b19}} 
+S\+O\+R\+T\+\_\+\+I\+N\+C\+R\+E\+A\+S\+I\+N\+G\+\_\+\+A\+B\+S\+\_\+\+A\+R\+R\+AY&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+ Matrix\+Calc.\+hpp の 56 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{56              \{}
+\DoxyCodeLine{57     \mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afa057f6808bbd8190011980a2fabc74d20}{DO\_NOT\_SORT}},}
+\DoxyCodeLine{58     \mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afadb62b28d843a4dd5657bcc71c1f868a8}{SORT\_DECREASING\_ARRAY}},}
+\DoxyCodeLine{59     \mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afab7684562b3e58b36b96aebcb59c684a3}{SORT\_INCREASING\_ARRAY}},}
+\DoxyCodeLine{60     \mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afaad2cd3865ad4336e1a3937a4c2a34a03}{SORT\_DECREASING\_ABS\_ARRAY}},}
+\DoxyCodeLine{61     \mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afae877bb07e87c941aee24c88701059b19}{SORT\_INCREASING\_ABS\_ARRAY}}}
+\DoxyCodeLine{62 \} \mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483af}{SortMode}};}
+
+\end{DoxyCode}

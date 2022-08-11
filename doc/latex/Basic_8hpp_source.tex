@@ -1,0 +1,241 @@
+\hypertarget{Basic_8hpp_source}{}\doxysection{Basic.\+hpp}
+\label{Basic_8hpp_source}\index{/home/raptel/workspace/research/MultiParticleMethod/src/hpp/MyLibrary/Basic.hpp@{/home/raptel/workspace/research/MultiParticleMethod/src/hpp/MyLibrary/Basic.hpp}}
+\mbox{\hyperlink{Basic_8hpp}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#ifndef Basic\_hpp}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00014}00014 \textcolor{preprocessor}{\#define Basic\_hpp}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00016}00016 \textcolor{comment}{/* include header files */}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00018}00018 \textcolor{comment}{/* end include header files*/}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00020}00020 \textcolor{comment}{/* include standard files */}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00021}00021 \textcolor{preprocessor}{\#include <iostream>}  \textcolor{comment}{// for debug writing}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00022}00022 \textcolor{preprocessor}{\#include <string>}    \textcolor{comment}{// useful for reading and writing}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00023}00023 \textcolor{preprocessor}{\#include <vector>}    \textcolor{comment}{// 動的配列}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00024}00024 \textcolor{preprocessor}{\#include <algorithm>} \textcolor{comment}{// vectorの最大値を取得する}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00025}00025 \textcolor{preprocessor}{\#include <cmath>}     \textcolor{comment}{// fabs}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00026}00026 \textcolor{preprocessor}{\#include <iomanip>}   \textcolor{comment}{// std::setprecisionを使用するため}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00028}00028 \textcolor{preprocessor}{\#include <fstream>} \textcolor{comment}{// ifstream, ofstream}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00029}00029 \textcolor{preprocessor}{\#include <sstream>} \textcolor{comment}{// istringstream（stod）}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00031}00031 \textcolor{comment}{/* end include standard files */}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00033}00033 \textcolor{comment}{/* usingnamespace declaration(名前空間の宣言) */}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00034}00034 \textcolor{comment}{// using std::cout;}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00035}00035 \textcolor{comment}{// using std::endl;}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00036}00036 \textcolor{comment}{// using std::flush;}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00037}00037 \textcolor{comment}{// using std::string;}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00038}00038 \textcolor{keyword}{using} std::vector;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00039}00039 \textcolor{comment}{/* end usingnamespace declaration*/}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00041}00041 \textcolor{comment}{/* declaration MACRO */}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00043}00043 \textcolor{comment}{/* end declaration MACRO */}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00045}00045 \textcolor{comment}{/* prototype declaration */}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00047}00047 \textcolor{keyword}{class }\mbox{\hyperlink{classBasic}{Basic}}; \textcolor{comment}{// クラスの前方宣言}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00049}00049 \textcolor{comment}{/* end prototype declaration*/}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00051}00051 \textcolor{comment}{/* declaration enumlation */}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00053}00053 \textcolor{comment}{/* declaration namespace */}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00054}\mbox{\hyperlink{namespacemath}{00054}} \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacemath}{math}}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00055}00055 \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00058}\mbox{\hyperlink{namespacemath_a3fb90e97cdbdb39b00fb9f29107f5e46}{00058}}     \textcolor{keyword}{inline} \textcolor{keywordtype}{double} \mbox{\hyperlink{namespacemath_a3fb90e97cdbdb39b00fb9f29107f5e46}{pi}}()}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00059}00059     \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00060}00060         \textcolor{comment}{// return 3.1415926535897932384626433832795;}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00061}00061         \textcolor{keywordflow}{return} std::acos(-\/1);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00062}00062     \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00065}\mbox{\hyperlink{namespacemath_a489f1ea9d876f182e9bf893091fad820}{00065}}     \textcolor{keyword}{inline} \textcolor{keywordtype}{double} \mbox{\hyperlink{namespacemath_a489f1ea9d876f182e9bf893091fad820}{sacos}}(\textcolor{keywordtype}{double} x)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00066}00066     \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00067}00067         \textcolor{keywordflow}{if} (x < -\/1.0)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00068}00068         \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00069}00069             x = -\/1.0;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00070}00070         \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00071}00071         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (1.0 < x)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00072}00072         \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00073}00073             x = 1.0;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00074}00074         \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00075}00075         \textcolor{keywordflow}{return} std::acos(x);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00076}00076     \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00077}00077     \textcolor{keywordtype}{double} \mbox{\hyperlink{namespacemath_af3d38f453e4e6ff9e22ba37fe0dc36a3}{degree\_to\_radian}}(\textcolor{keywordtype}{double} \textcolor{keyword}{const} \&);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00078}00078     \textcolor{keywordtype}{double} \mbox{\hyperlink{namespacemath_a47b42e10e4633e4996df2ce02e8ba6ca}{radian\_to\_degree}}(\textcolor{keywordtype}{double} \textcolor{keyword}{const} \&);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00079}00079 \} \textcolor{comment}{// namespace math}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00081}00081 \textcolor{comment}{/* end declaration namespace */}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00087}\mbox{\hyperlink{classBasic}{00087}} \textcolor{keyword}{class }\mbox{\hyperlink{classBasic}{Basic}}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00088}00088 \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00089}00089 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00090}00090     std::string \mbox{\hyperlink{classBasic_aa72bb0396875d70dbb1f76a0f66f78e0}{formatNumber}}(\textcolor{keywordtype}{int} num);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00091}00091     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classBasic_a459f4a15356ceb1bafd1d2ddc819f378}{GetContents}}(\textcolor{keyword}{const} std::string \&filepath, std::vector<std::vector<double>> \&matrix, std::vector<double> \&queue); \textcolor{comment}{//  csvファイルから連立一次方程式を読み込む}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00092}00092     \textcolor{keywordtype}{void} \mbox{\hyperlink{classBasic_a2d97de6119bf446840d4da38781a218e}{create\_utf8\_stream}}(\textcolor{keyword}{const} std::string \&path);                                                                    \textcolor{comment}{// ファイルの先頭にUTF-\/8のバイナリデータ（BOM）を書き込む}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00093}00093     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classBasic_ad7d927ed17068624da4a7ea1867805fb}{GetCoordinates}}(\textcolor{keyword}{const} std::string \&filepath, std::vector<std::vector<double>> \&dataset);                         \textcolor{comment}{//  csvファイルからn個の (x,y)の2次元座標を取得する}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00094}00094 \};}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00102}\mbox{\hyperlink{classBasic_aa72bb0396875d70dbb1f76a0f66f78e0}{00102}} std::string \mbox{\hyperlink{classBasic_aa72bb0396875d70dbb1f76a0f66f78e0}{Basic::formatNumber}}(\textcolor{keywordtype}{int} num)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00103}00103 \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00104}00104     std::vector<int> sepnum;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00105}00105     \textcolor{keywordtype}{int} number = abs(num);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00106}00106     \textcolor{keywordtype}{int} sgn = num >= 0 ? 1 : -\/1;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00107}00107     \textcolor{keywordflow}{while} (number / 1000)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00108}00108     \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00109}00109         sepnum.push\_back(number \% 1000);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00110}00110         number /= 1000;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00111}00111     \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00112}00112     std::stringstream ss;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00113}00113     ss << number * sgn;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00114}00114     \textcolor{keywordflow}{for} (std::vector<int>::reverse\_iterator i = sepnum.rbegin();}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00115}00115          i < sepnum.rend(); i++)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00116}00116     \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00117}00117         ss << \textcolor{stringliteral}{"{},"{}} << std::setfill(\textcolor{charliteral}{'0'}) << std::setw(3) << *i;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00118}00118     \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00119}00119     \textcolor{keywordflow}{return} std::string(ss.str());}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00120}00120 \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00127}\mbox{\hyperlink{namespacemath_af3d38f453e4e6ff9e22ba37fe0dc36a3}{00127}} \textcolor{keywordtype}{double} \mbox{\hyperlink{namespacemath_af3d38f453e4e6ff9e22ba37fe0dc36a3}{math::degree\_to\_radian}}(\textcolor{keywordtype}{double} \textcolor{keyword}{const} \&degree)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00128}00128 \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00129}00129     \textcolor{keywordflow}{return} degree * \mbox{\hyperlink{namespacemath_a3fb90e97cdbdb39b00fb9f29107f5e46}{math::pi}}() / 180.0;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00130}00130 \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00131}00131 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00137}\mbox{\hyperlink{namespacemath_a47b42e10e4633e4996df2ce02e8ba6ca}{00137}} \textcolor{keywordtype}{double} \mbox{\hyperlink{namespacemath_a47b42e10e4633e4996df2ce02e8ba6ca}{math::radian\_to\_degree}}(\textcolor{keywordtype}{double} \textcolor{keyword}{const} \&radian)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00138}00138 \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00139}00139     \textcolor{keywordflow}{return} radian * 180 / \mbox{\hyperlink{namespacemath_a3fb90e97cdbdb39b00fb9f29107f5e46}{math::pi}}();}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00140}00140 \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00151}\mbox{\hyperlink{classBasic_a459f4a15356ceb1bafd1d2ddc819f378}{00151}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classBasic_a459f4a15356ceb1bafd1d2ddc819f378}{Basic::GetContents}}(\textcolor{keyword}{const} std::string \&filepath, std::vector<std::vector<double>> \&matrix, std::vector<double> \&queue)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00152}00152 \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00153}00153     \textcolor{keyword}{const} \textcolor{keywordtype}{char} delimiter = \textcolor{charliteral}{','};                  \textcolor{comment}{// 区切り文字}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00154}00154     std::vector<std::vector<std::string>> table; \textcolor{comment}{// 一時的に入力データを格納する}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00155}00155 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00156}00156     \textcolor{comment}{// ファイルを開く}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00157}00157     std::fstream filestream(filepath);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00158}00158     \textcolor{keywordflow}{if} (!filestream.is\_open())}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00159}00159     \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00160}00160         \textcolor{comment}{// ファイルが開けなかった場合は終了する}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00161}00161         std::cout << \textcolor{stringliteral}{"{}Can't input csv data"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00162}00162         std::cout << \textcolor{stringliteral}{"{}path: "{}} << filepath << std::endl;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00163}00163         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00164}00164     \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00166}00166     \textcolor{comment}{// ファイルを読み込む}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00167}00167     \textcolor{keywordflow}{while} (!filestream.eof())}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00168}00168     \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00169}00169         \textcolor{comment}{// １行読み込む}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00170}00170         std::string buffer;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00171}00171         filestream >> buffer;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00172}00172 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00173}00173         \textcolor{comment}{// ファイルから読み込んだ１行の文字列を区切り文字で分けてリストに追加する}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00174}00174         std::vector<std::string> record;         \textcolor{comment}{// １行分の文字列のリスト}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00175}00175         std::istringstream streambuffer(buffer); \textcolor{comment}{// 文字列ストリーム}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00176}00176         std::string token;                       \textcolor{comment}{// １セル分の文字列}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00177}00177         \textcolor{keywordflow}{while} (getline(streambuffer, token, delimiter))}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00178}00178         \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00179}00179             \textcolor{comment}{// １セル分の文字列をリストに追加する}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00180}00180             record.push\_back(token);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00181}00181         \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00182}00182 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00183}00183         \textcolor{comment}{// １行分の文字列を出力引数のリストに追加する}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00184}00184         table.push\_back(record);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00185}00185     \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00186}00186 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00187}00187     table.pop\_back(); \textcolor{comment}{// 最後の行を削除する （csvファイルをExcelで作成すると空の行ができるので）}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00188}00188 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00189}00189     matrix.resize(table.size());}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00190}00190     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} row = 0; row < table.size(); row++)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00191}00191     \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00192}00192         matrix[row].resize(table[row].size());}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00193}00193     \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00194}00194 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00195}00195     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} row = 0; row < table.size(); row++)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00196}00196     \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00197}00197         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} colunm = 0; colunm < table[row].size() -\/ 2; colunm++)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00198}00198         \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00199}00199             matrix[row][colunm] = std::stod(table[row][colunm]);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00200}00200         \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00201}00201         queue.push\_back(std::stod(table[row][table[row].size() -\/ 1]));}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00202}00202         \textcolor{comment}{// std::cout << std::endl;}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00203}00203     \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00204}00204 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00205}00205     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00206}00206 \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00207}00207 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00222}\mbox{\hyperlink{classBasic_ad7d927ed17068624da4a7ea1867805fb}{00222}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classBasic_ad7d927ed17068624da4a7ea1867805fb}{Basic::GetCoordinates}}(\textcolor{keyword}{const} std::string \&filepath, std::vector<std::vector<double>> \&dataset)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00223}00223 \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00224}00224     \textcolor{keyword}{const} \textcolor{keywordtype}{char} delimiter = \textcolor{charliteral}{','};                  \textcolor{comment}{// 区切り文字}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00225}00225     std::vector<std::vector<std::string>> table; \textcolor{comment}{// 一時的に入力データを格納する}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00226}00226 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00227}00227     \textcolor{comment}{// ファイルを開く}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00228}00228     std::fstream filestream(filepath);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00229}00229     \textcolor{keywordflow}{if} (!filestream.is\_open())}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00230}00230     \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00231}00231         \textcolor{comment}{// ファイルが開けなかった場合は終了する}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00232}00232         std::cout << \textcolor{stringliteral}{"{}Can't input csv data"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00233}00233         std::cout << \textcolor{stringliteral}{"{}path: "{}} << filepath << std::endl;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00234}00234         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00235}00235     \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00236}00236 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00237}00237     \textcolor{comment}{// ファイルを読み込む}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00238}00238     \textcolor{keywordflow}{while} (!filestream.eof())}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00239}00239     \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00240}00240         \textcolor{comment}{// １行読み込む}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00241}00241         std::string buffer;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00242}00242         filestream >> buffer;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00243}00243 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00244}00244         \textcolor{comment}{// ファイルから読み込んだ１行の文字列を区切り文字で分けてリストに追加する}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00245}00245         std::vector<std::string> record;         \textcolor{comment}{// １行分の文字列のリスト}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00246}00246         std::istringstream streambuffer(buffer); \textcolor{comment}{// 文字列ストリーム}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00247}00247         std::string token;                       \textcolor{comment}{// １セル分の文字列}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00248}00248         \textcolor{keywordflow}{while} (getline(streambuffer, token, delimiter))}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00249}00249         \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00250}00250             \textcolor{comment}{// １セル分の文字列をリストに追加する}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00251}00251             record.push\_back(token);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00252}00252         \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00253}00253 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00254}00254         \textcolor{comment}{// １行分の文字列を出力引数のリストに追加する}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00255}00255         table.push\_back(record);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00256}00256     \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00257}00257 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00258}00258     table.pop\_back(); \textcolor{comment}{// 最後の行を削除する （csvファイルをExcelで作成すると空の行ができるので）}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00259}00259 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00260}00260     dataset.resize(table.size());}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00261}00261     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} row = 0; row < table.size(); row++)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00262}00262     \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00263}00263         dataset[row].resize(table[row].size());}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00264}00264     \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00265}00265 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00266}00266     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} row = 0; row < table.size(); row++)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00267}00267     \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00268}00268         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} colunm = 0; colunm < table[row].size(); colunm++)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00269}00269         \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00270}00270             dataset[row][colunm] = std::stod(table[row][colunm]);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00271}00271         \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00272}00272     \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00273}00273 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00274}00274     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00275}00275 \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00276}00276 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00282}\mbox{\hyperlink{classBasic_a2d97de6119bf446840d4da38781a218e}{00282}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classBasic_a2d97de6119bf446840d4da38781a218e}{Basic::create\_utf8\_stream}}(\textcolor{keyword}{const} std::string \&path)}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00283}00283 \{}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00284}00284     \textcolor{comment}{// std::cout << "{}write BOM (UTF-\/8)"{} << std::endl;}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00285}00285     std::stringstream exportfile;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00286}00286     std::ofstream ofs;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00287}00287     exportfile << path;}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00288}00288     ofs.open(exportfile.str(), std::ios::ate | std::ios\_base::in | std::ios\_base::trunc);}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00289}00289     ofs.seekp(std::ios::beg); \textcolor{comment}{// 先頭に移動}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00290}00290     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} bom[] = \{0xEF, 0xBB, 0xBF\};}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00291}00291     ofs.write((\textcolor{keywordtype}{char} *)bom, \textcolor{keyword}{sizeof}(bom));}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00292}00292 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00293}00293     ofs.close();}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00294}00294 \}}
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00295}00295 }
+\DoxyCodeLine{\Hypertarget{Basic_8hpp_source_l00296}00296 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// ヘッダーファイルの終了}}
+
+\end{DoxyCode}

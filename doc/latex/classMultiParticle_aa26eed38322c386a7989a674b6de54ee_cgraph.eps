@@ -1,0 +1,1511 @@
+%!PS-Adobe-3.0
+%%Creator: graphviz version 2.50.0 (20211204.2007)
+%%Title: MultiParticle::setInitialConditionsSetParamShapeCylinder
+%%Pages: (atend)
+%%BoundingBox: (atend)
+%%EndComments
+save
+%%BeginProlog
+/DotDict 200 dict def
+DotDict begin
+
+/setupLatin1 {
+mark
+/EncodingVector 256 array def
+ EncodingVector 0
+
+ISOLatin1Encoding 0 255 getinterval putinterval
+EncodingVector 45 /hyphen put
+
+% Set up ISO Latin 1 character encoding
+/starnetISO {
+        dup dup findfont dup length dict begin
+        { 1 index /FID ne { def }{ pop pop } ifelse
+        } forall
+        /Encoding EncodingVector def
+        currentdict end definefont
+} def
+/Times-Roman starnetISO def
+/Times-Italic starnetISO def
+/Times-Bold starnetISO def
+/Times-BoldItalic starnetISO def
+/Helvetica starnetISO def
+/Helvetica-Oblique starnetISO def
+/Helvetica-Bold starnetISO def
+/Helvetica-BoldOblique starnetISO def
+/Courier starnetISO def
+/Courier-Oblique starnetISO def
+/Courier-Bold starnetISO def
+/Courier-BoldOblique starnetISO def
+cleartomark
+} bind def
+
+%%BeginResource: procset graphviz 0 0
+/coord-font-family /Times-Roman def
+/default-font-family /Times-Roman def
+/coordfont coord-font-family findfont 8 scalefont def
+
+/InvScaleFactor 1.0 def
+/set_scale {
+       dup 1 exch div /InvScaleFactor exch def
+       scale
+} bind def
+
+% styles
+/solid { [] 0 setdash } bind def
+/dashed { [9 InvScaleFactor mul dup ] 0 setdash } bind def
+/dotted { [1 InvScaleFactor mul 6 InvScaleFactor mul] 0 setdash } bind def
+/invis {/fill {newpath} def /stroke {newpath} def /show {pop newpath} def} bind def
+/bold { 2 setlinewidth } bind def
+/filled { } bind def
+/unfilled { } bind def
+/rounded { } bind def
+/diagonals { } bind def
+/tapered { } bind def
+
+% hooks for setting color 
+/nodecolor { sethsbcolor } bind def
+/edgecolor { sethsbcolor } bind def
+/graphcolor { sethsbcolor } bind def
+/nopcolor {pop pop pop} bind def
+
+/beginpage {	% i j npages
+	/npages exch def
+	/j exch def
+	/i exch def
+	/str 10 string def
+	npages 1 gt {
+		gsave
+			coordfont setfont
+			0 0 moveto
+			(\() show i str cvs show (,) show j str cvs show (\)) show
+		grestore
+	} if
+} bind def
+
+/set_font {
+	findfont exch
+	scalefont setfont
+} def
+
+% draw text fitted to its expected width
+/alignedtext {			% width text
+	/text exch def
+	/width exch def
+	gsave
+		width 0 gt {
+			[] 0 setdash
+			text stringwidth pop width exch sub text length div 0 text ashow
+		} if
+	grestore
+} def
+
+/boxprim {				% xcorner ycorner xsize ysize
+		4 2 roll
+		moveto
+		2 copy
+		exch 0 rlineto
+		0 exch rlineto
+		pop neg 0 rlineto
+		closepath
+} bind def
+
+/ellipse_path {
+	/ry exch def
+	/rx exch def
+	/y exch def
+	/x exch def
+	matrix currentmatrix
+	newpath
+	x y translate
+	rx ry scale
+	0 0 1 0 360 arc
+	setmatrix
+} bind def
+
+/endpage { showpage } bind def
+/showpage { } def
+
+/layercolorseq
+	[	% layer color sequence - darkest to lightest
+		[0 0 0]
+		[.2 .8 .8]
+		[.4 .8 .8]
+		[.6 .8 .8]
+		[.8 .8 .8]
+	]
+def
+
+/layerlen layercolorseq length def
+
+/setlayer {/maxlayer exch def /curlayer exch def
+	layercolorseq curlayer 1 sub layerlen mod get
+	aload pop sethsbcolor
+	/nodecolor {nopcolor} def
+	/edgecolor {nopcolor} def
+	/graphcolor {nopcolor} def
+} bind def
+
+/onlayer { curlayer ne {invis} if } def
+
+/onlayers {
+	/myupper exch def
+	/mylower exch def
+	curlayer mylower lt
+	curlayer myupper gt
+	or
+	{invis} if
+} def
+
+/curlayer 0 def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+14 default-font-family set_font
+% /arrowlength 10 def
+% /arrowwidth 5 def
+
+% make sure pdfmark is harmless for PS-interpreters other than Distiller
+/pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse
+% make '<<' and '>>' safe on PS Level 1 devices
+/languagelevel where {pop languagelevel}{1} ifelse
+2 lt {
+    userdict (<<) cvn ([) cvn load put
+    userdict (>>) cvn ([) cvn load put
+} if
+
+%%EndSetup
+setupLatin1
+%%Page: 1 1
+%%PageBoundingBox: 36 36 841 686
+%%PageOrientation: Portrait
+0 0 1 beginpage
+gsave
+36 36 805 650 boxprim clip newpath
+1 1 set_scale 0 rotate 40 40 translate
+% Node1
+gsave
+0 0 0.74902 nodecolor
+newpath 0 441.0813 moveto
+0 471.0813 lineto
+185 471.0813 lineto
+185 441.0813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 0 441.0813 moveto
+0 471.0813 lineto
+185 471.0813 lineto
+185 441.0813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+8 459.0813 moveto 109 (MultiParticle::setInitial) alignedtext
+0 0 0 nodecolor
+10 /Helvetica set_font
+8 448.0813 moveto 169 (ConditionsSetParamShapeCylinder) alignedtext
+grestore
+% Node2
+gsave
+[ /Rect [ 242 218.0813 372 238.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#a173d54a7d555cc1fa844a0b9f77f74c6) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 242 218.5813 moveto
+242 237.5813 lineto
+372 237.5813 lineto
+372 218.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 242 218.5813 moveto
+242 237.5813 lineto
+372 237.5813 lineto
+372 218.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+250 225.5813 moveto 114 (MultiParticle::ForceCalc) alignedtext
+grestore
+% Node1->Node2
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 107.7727 440.7676 moveto
+145.8889 399.8711 249.8854 288.289 289.9588 245.2927 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 292.6178 247.5731 moveto
+296.8755 237.8714 lineto
+287.4971 242.8004 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 292.6178 247.5731 moveto
+296.8755 237.8714 lineto
+287.4971 242.8004 lineto
+closepath stroke
+grestore
+% Node19
+gsave
+[ /Rect [ 231 541.0813 383 561.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#a1f0d4f430637b0d6c54783ef39209720) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 231 541.5813 moveto
+231 560.5813 lineto
+383 560.5813 lineto
+383 541.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 231 541.5813 moveto
+231 560.5813 lineto
+383 560.5813 lineto
+383 541.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+239 548.5813 moveto 136 (MultiParticle::ThicknessCalc) alignedtext
+grestore
+% Node1->Node19
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 127.1713 471.1344 moveto
+167.8446 489.3177 235.699 519.6527 275.0922 537.2637 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 273.9026 540.5657 moveto
+284.4603 541.4518 lineto
+276.7596 534.1752 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 273.9026 540.5657 moveto
+284.4603 541.4518 lineto
+276.7596 534.1752 lineto
+closepath stroke
+grestore
+% Node22
+gsave
+[ /Rect [ 221 446.0813 393 466.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#ab6a5b227d3d1d42513c7ea88d6254897) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 221 446.5813 moveto
+221 465.5813 lineto
+393 465.5813 lineto
+393 446.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 221 446.5813 moveto
+221 465.5813 lineto
+393 465.5813 lineto
+393 446.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+229 453.5813 moveto 156 (MultiParticle::VirtualParticleCalc) alignedtext
+grestore
+% Node1->Node22
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 185.161 456.0813 moveto
+193.5462 456.0813 202.0551 456.0813 210.4732 456.0813 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 210.6821 459.5814 moveto
+220.682 456.0813 lineto
+210.682 452.5814 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 210.6821 459.5814 moveto
+220.682 456.0813 lineto
+210.682 452.5814 lineto
+closepath stroke
+grestore
+% Node3
+gsave
+[ /Rect [ 446.5 66.0813 577.5 86.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#a1bb331b0c4656bb440072cbc55432e9d) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 446.5 66.5813 moveto
+446.5 85.5813 lineto
+577.5 85.5813 lineto
+577.5 66.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 446.5 66.5813 moveto
+446.5 85.5813 lineto
+577.5 85.5813 lineto
+577.5 66.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+454.5 73.5813 moveto 115 (MultiParticle::angleCalc) alignedtext
+grestore
+% Node2->Node3
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 313.6953 218.5638 moveto
+328.9786 193.9036 373.5216 127.5981 429 95.0813 curveto
+432.863 92.8172 436.9759 90.8229 441.2237 89.0662 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 442.5135 92.3211 moveto
+450.6934 85.5876 lineto
+440.0999 85.7504 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 442.5135 92.3211 moveto
+450.6934 85.5876 lineto
+440.0999 85.7504 lineto
+closepath stroke
+grestore
+% Node4
+gsave
+[ /Rect [ 631.5 66.0813 796.5 86.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#a8de89b30f389edef9fb92c9c5d574431) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 631.5 66.5813 moveto
+631.5 85.5813 lineto
+796.5 85.5813 lineto
+796.5 66.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 631.5 66.5813 moveto
+631.5 85.5813 lineto
+796.5 85.5813 lineto
+796.5 66.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+639.5 73.5813 moveto 149 (MultiParticle::innerProductCalc) alignedtext
+grestore
+% Node2->Node4
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 310.0812 218.1715 moveto
+318.0436 183.0984 350.1804 64.525 429 19.0813 curveto
+515.5389 -30.8129 638.7673 31.0386 689.647 61.2625 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 687.9159 64.3061 moveto
+698.2803 66.5039 lineto
+691.5486 58.3224 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 687.9159 64.3061 moveto
+698.2803 66.5039 lineto
+691.5486 58.3224 lineto
+closepath stroke
+grestore
+% Node7
+gsave
+[ /Rect [ 443.5 104.0813 580.5 124.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#a6abb4929f11bab7a918abfd387210934) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 443.5 104.5813 moveto
+443.5 123.5813 lineto
+580.5 123.5813 lineto
+580.5 104.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 443.5 104.5813 moveto
+443.5 123.5813 lineto
+580.5 123.5813 lineto
+580.5 104.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+451.5 111.5813 moveto 121 (MultiParticle::angleCalc2) alignedtext
+grestore
+% Node2->Node7
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 317.3355 218.302 moveto
+336.4091 198.9225 382.0286 155.5772 429 133.0813 curveto
+434.0248 130.6749 439.3716 128.5637 444.833 126.7134 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 446.2185 129.9488 moveto
+454.7427 123.6569 lineto
+444.1554 123.2598 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 446.2185 129.9488 moveto
+454.7427 123.6569 lineto
+444.1554 123.2598 lineto
+closepath stroke
+grestore
+% Node9
+gsave
+[ /Rect [ 429 370.0813 595 390.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#ab0488bd258be898ea72116834ed42590) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 429 370.5813 moveto
+429 389.5813 lineto
+595 389.5813 lineto
+595 370.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 429 370.5813 moveto
+429 389.5813 lineto
+595 389.5813 lineto
+595 370.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+437 377.5813 moveto 150 (MultiParticle::disterbance_Calc) alignedtext
+grestore
+% Node2->Node9
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 313.6953 237.5989 moveto
+328.9786 262.2591 373.5216 328.5646 429 361.0813 curveto
+432.863 363.3455 436.9759 365.3398 441.2237 367.0965 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 440.0999 370.4123 moveto
+450.6934 370.5751 lineto
+442.5135 363.8416 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 440.0999 370.4123 moveto
+450.6934 370.5751 lineto
+442.5135 363.8416 lineto
+closepath stroke
+grestore
+% Node11
+gsave
+[ /Rect [ 439.5 28.0813 584.5 48.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#a755db62cec00c563c1f96e682626ff95) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 439.5 28.5813 moveto
+439.5 47.5813 lineto
+584.5 47.5813 lineto
+584.5 28.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 439.5 28.5813 moveto
+439.5 47.5813 lineto
+584.5 47.5813 lineto
+584.5 28.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+447.5 35.5813 moveto 129 (MultiParticle::epsilongCalc) alignedtext
+grestore
+% Node2->Node11
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 311.822 218.4724 moveto
+324.0164 189.1264 364.9916 100.0627 429 57.0813 curveto
+432.0936 55.004 435.3846 53.152 438.8028 51.501 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 440.2438 54.6919 moveto
+448.1002 47.5837 lineto
+437.5258 48.2411 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 440.2438 54.6919 moveto
+448.1002 47.5837 lineto
+437.5258 48.2411 lineto
+closepath stroke
+grestore
+% Node12
+gsave
+[ /Rect [ 452.5 332.0813 571.5 352.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#af9b95cc9b9dccd99fb67abd920ce471e) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 452.5 332.5813 moveto
+452.5 351.5813 lineto
+571.5 351.5813 lineto
+571.5 332.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 452.5 332.5813 moveto
+452.5 351.5813 lineto
+571.5 351.5813 lineto
+571.5 332.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+460.5 339.5813 moveto 103 (MultiParticle::etaCalc) alignedtext
+grestore
+% Node2->Node12
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 317.3355 237.8607 moveto
+336.4091 257.2402 382.0286 300.5855 429 323.0813 curveto
+434.0248 325.4878 439.3716 327.5989 444.833 329.4493 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 444.1554 332.9029 moveto
+454.7427 332.5057 lineto
+446.2185 326.2138 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 444.1554 332.9029 moveto
+454.7427 332.5057 lineto
+446.2185 326.2138 lineto
+closepath stroke
+grestore
+% Node13
+gsave
+[ /Rect [ 455 294.0813 569 314.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#a0e777b273192dd9342220de728b5f8ef) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 455 294.5813 moveto
+455 313.5813 lineto
+569 313.5813 lineto
+569 294.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 455 294.5813 moveto
+455 313.5813 lineto
+569 313.5813 lineto
+569 294.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+463 301.5813 moveto 98 (MultiParticle::FsCalc) alignedtext
+grestore
+% Node2->Node13
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 325.1448 237.5889 moveto
+348.1619 250.0159 390.6083 271.7609 429 285.0813 curveto
+436.3775 287.6411 444.248 289.96 452.0842 292.0272 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 451.4003 295.4641 moveto
+461.9521 294.5101 lineto
+453.1084 288.6757 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 451.4003 295.4641 moveto
+461.9521 294.5101 lineto
+453.1084 288.6757 lineto
+closepath stroke
+grestore
+% Node14
+gsave
+[ /Rect [ 455.5 256.0813 568.5 276.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#a02ec5990d9bfa78272c17e04a202f7f5) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 455.5 256.5813 moveto
+455.5 275.5813 lineto
+568.5 275.5813 lineto
+568.5 256.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 455.5 256.5813 moveto
+455.5 275.5813 lineto
+568.5 275.5813 lineto
+568.5 256.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+463.5 263.5813 moveto 97 (MultiParticle::FtCalc) alignedtext
+grestore
+% Node2->Node14
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 358.9634 237.6213 moveto
+386.5941 242.7935 420.9328 249.2215 449.9811 254.6591 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 449.5423 258.1377 moveto
+460.0156 256.5375 lineto
+450.8303 251.2572 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 449.5423 258.1377 moveto
+460.0156 256.5375 lineto
+450.8303 251.2572 lineto
+closepath stroke
+grestore
+% Node15
+gsave
+[ /Rect [ 441.5 218.0813 582.5 238.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#a55b60a9942b4b6d301ecfe61b27a6b31) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 441.5 218.5813 moveto
+441.5 237.5813 lineto
+582.5 237.5813 lineto
+582.5 218.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 441.5 218.5813 moveto
+441.5 237.5813 lineto
+582.5 237.5813 lineto
+582.5 218.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+449.5 225.5813 moveto 125 (MultiParticle::gammaCalc) alignedtext
+grestore
+% Node2->Node15
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 372.2305 228.0813 moveto
+390.9255 228.0813 411.5794 228.0813 431.1133 228.0813 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 431.21 231.5814 moveto
+441.2099 228.0813 lineto
+431.2099 224.5814 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 431.21 231.5814 moveto
+441.2099 228.0813 lineto
+431.2099 224.5814 lineto
+closepath stroke
+grestore
+% Node16
+gsave
+[ /Rect [ 458.5 484.0813 565.5 504.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#ac68fcf2e2e776ed3c273bfd20f602347) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 458.5 484.5813 moveto
+458.5 503.5813 lineto
+565.5 503.5813 lineto
+565.5 484.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 458.5 484.5813 moveto
+458.5 503.5813 lineto
+565.5 503.5813 lineto
+565.5 484.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+466.5 491.5813 moveto 91 (MultiParticle::lCalc) alignedtext
+grestore
+% Node2->Node16
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 311.4356 237.685 moveto
+326.4382 279.1167 387.3166 441.9567 429 475.0813 curveto
+434.8205 479.7067 441.566 483.2441 448.6391 485.9432 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 447.8389 489.3633 moveto
+458.4311 489.1276 lineto
+450.0038 482.7065 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 447.8389 489.3633 moveto
+458.4311 489.1276 lineto
+450.0038 482.7065 lineto
+closepath stroke
+grestore
+% Node17
+gsave
+[ /Rect [ 456 180.0813 568 200.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#a374cfccbb13bdd5a137c8b10988ac667) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 456 180.5813 moveto
+456 199.5813 lineto
+568 199.5813 lineto
+568 180.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 456 180.5813 moveto
+456 199.5813 lineto
+568 199.5813 lineto
+568 180.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+464 187.5813 moveto 96 (MultiParticle::MCalc) alignedtext
+grestore
+% Node2->Node17
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 358.9634 218.5414 moveto
+386.5941 213.3692 420.9328 206.9412 449.9811 201.5036 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 450.8303 204.9055 moveto
+460.0156 199.6252 lineto
+449.5423 198.025 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 450.8303 204.9055 moveto
+460.0156 199.6252 lineto
+449.5423 198.025 lineto
+closepath stroke
+grestore
+% Node18
+gsave
+[ /Rect [ 441 142.0813 583 162.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#ad4881f78ea0b3bb6355fdc620ccb10b8) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 441 142.5813 moveto
+441 161.5813 lineto
+583 161.5813 lineto
+583 142.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 441 142.5813 moveto
+441 161.5813 lineto
+583 161.5813 lineto
+583 142.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+449 149.5813 moveto 126 (MultiParticle::normCalcV2) alignedtext
+grestore
+% Node2->Node18
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 325.1448 218.5738 moveto
+348.1619 206.1468 390.6083 184.4018 429 171.0813 curveto
+436.3775 168.5216 444.248 166.2027 452.0842 164.1355 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 453.1084 167.487 moveto
+461.9521 161.6525 lineto
+451.4003 160.6986 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 453.1084 167.487 moveto
+461.9521 161.6525 lineto
+451.4003 160.6986 lineto
+closepath stroke
+grestore
+% Node3->Node4
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 577.6581 76.0813 moveto
+591.5673 76.0813 606.5233 76.0813 621.2398 76.0813 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 621.3741 79.5814 moveto
+631.374 76.0813 lineto
+621.374 72.5814 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 621.3741 79.5814 moveto
+631.374 76.0813 lineto
+621.374 72.5814 lineto
+closepath stroke
+grestore
+% Node5
+gsave
+[ /Rect [ 649.5 392.0813 778.5 412.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#a170c3f0696ecc6d8304da90e9403be3a) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 649.5 392.5813 moveto
+649.5 411.5813 lineto
+778.5 411.5813 lineto
+778.5 392.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 649.5 392.5813 moveto
+649.5 411.5813 lineto
+778.5 411.5813 lineto
+778.5 392.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+657.5 399.5813 moveto 113 (MultiParticle::normCalc) alignedtext
+grestore
+% Node3->Node5
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 577.73 82.8305 moveto
+584.2396 85.7868 590.2039 89.7644 595 95.0813 curveto
+681.1068 190.5383 545.4455 286.129 631 382.0813 curveto
+633.7732 385.1916 636.9422 387.8577 640.3847 390.1398 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 638.9779 393.3587 moveto
+649.4359 395.0562 lineto
+642.3191 387.2075 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 638.9779 393.3587 moveto
+649.4359 395.0562 lineto
+642.3191 387.2075 lineto
+closepath stroke
+grestore
+% Node6
+gsave
+[ /Rect [ 676 104.0813 752 124.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($namespacemath.html#a489f1ea9d876f182e9bf893091fad820) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 676 104.5813 moveto
+676 123.5813 lineto
+752 123.5813 lineto
+752 104.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 676 104.5813 moveto
+676 123.5813 lineto
+752 123.5813 lineto
+752 104.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+684 111.5813 moveto 60 (math::sacos) alignedtext
+grestore
+% Node3->Node6
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 563.2103 85.6213 moveto
+594.6059 91.5865 634.7921 99.2218 665.635 105.082 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 665.2328 108.5681 moveto
+675.7104 106.9963 lineto
+666.5395 101.6911 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 665.2328 108.5681 moveto
+675.7104 106.9963 lineto
+666.5395 101.6911 lineto
+closepath stroke
+grestore
+% Node7->Node4
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 563.2103 104.5414 moveto
+590.4326 99.3692 624.2639 92.9412 652.8829 87.5036 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 653.5981 90.9304 moveto
+662.7691 85.6252 lineto
+652.2915 84.0534 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 653.5981 90.9304 moveto
+662.7691 85.6252 lineto
+652.2915 84.0534 lineto
+closepath stroke
+grestore
+% Node7->Node5
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 580.7839 122.4418 moveto
+586.086 125.185 590.9453 128.6704 595 133.0813 curveto
+670.6729 215.4022 555.8035 299.3251 631 382.0813 curveto
+633.7484 385.1061 636.8713 387.7092 640.2544 389.9465 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 638.6793 393.0741 moveto
+649.1348 394.7866 lineto
+642.0293 386.9277 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 638.6793 393.0741 moveto
+649.1348 394.7866 lineto
+642.0293 386.9277 lineto
+closepath stroke
+grestore
+% Node7->Node6
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 580.7109 114.0813 moveto
+608.6986 114.0813 640.4665 114.0813 665.8555 114.0813 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 665.9598 117.5814 moveto
+675.9598 114.0813 lineto
+665.9598 110.5814 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 665.9598 117.5814 moveto
+675.9598 114.0813 lineto
+665.9598 110.5814 lineto
+closepath stroke
+grestore
+% Node8
+gsave
+[ /Rect [ 631 544.0813 797 564.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#a91bb84e5ac5b718950e0cee264f07454) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 631 544.5813 moveto
+631 563.5813 lineto
+797 563.5813 lineto
+797 544.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 631 544.5813 moveto
+631 563.5813 lineto
+797 563.5813 lineto
+797 544.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+639 551.5813 moveto 150 (MultiParticle::crossProductCalc) alignedtext
+grestore
+% Node7->Node8
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 580.8741 122.3597 moveto
+586.1576 125.1198 590.9879 128.6316 595 133.0813 curveto
+638.1908 180.9828 609.5866 360.2417 631 421.0813 curveto
+646.8814 466.2033 679.7926 512.2705 698.7361 536.5701 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 696.0679 538.8383 moveto
+705.0259 544.4956 lineto
+701.551 534.4868 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 696.0679 538.8383 moveto
+705.0259 544.4956 lineto
+701.551 534.4868 lineto
+closepath stroke
+grestore
+% Node9->Node5
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 595.2135 389.1248 moveto
+609.7785 390.727 624.8638 392.3864 639.179 393.961 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 639.1255 397.4762 moveto
+649.4482 395.0907 lineto
+639.8909 390.5181 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 639.1255 397.4762 moveto
+649.4482 395.0907 lineto
+639.8909 390.5181 lineto
+closepath stroke
+grestore
+% Node10
+gsave
+[ /Rect [ 665 342.5813 763 373.5813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#aa1e9f72bf3c38770c8526e88c1c6fda0) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 665 343.0813 moveto
+665 373.0813 lineto
+763 373.0813 lineto
+763 343.0813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 665 343.0813 moveto
+665 373.0813 lineto
+763 373.0813 lineto
+763 343.0813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+673 361.0813 moveto 82 (MultiParticle::get) alignedtext
+0 0 0 nodecolor
+10 /Helvetica set_font
+692.5 350.0813 moveto 43 (_random) alignedtext
+grestore
+% Node9->Node10
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 595.2135 371.0379 moveto
+615.2127 368.838 636.1925 366.5302 654.8133 364.4819 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 655.3369 367.9455 moveto
+664.8942 363.373 lineto
+654.5715 360.9875 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 655.3369 367.9455 moveto
+664.8942 363.373 lineto
+654.5715 360.9875 lineto
+closepath stroke
+grestore
+% Node16->Node5
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 565.8519 484.516 moveto
+575.72 481.9823 585.8124 478.8671 595 475.0813 curveto
+631.5725 460.0116 669.7757 434.2404 692.4712 417.6959 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 694.6944 420.4048 moveto
+700.6493 411.6418 lineto
+690.5295 414.7786 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 694.6944 420.4048 moveto
+700.6493 411.6418 lineto
+690.5295 414.7786 lineto
+closepath stroke
+grestore
+% Node19->Node5
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 383.1466 546.3585 moveto
+455.3259 540.8913 558.6198 530.3526 595 513.0813 curveto
+640.6832 491.3935 680.4039 445.4151 700.0024 419.9654 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 702.8597 421.9892 moveto
+706.0722 411.8931 lineto
+697.2649 417.7822 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 702.8597 421.9892 moveto
+706.0722 411.8931 lineto
+697.2649 417.7822 lineto
+closepath stroke
+grestore
+% Node19->Node8
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 318.6349 560.756 moveto
+338.5236 578.1166 383.4694 613.9685 429 627.0813 curveto
+499.8961 647.4995 524.0348 647.258 595 627.0813 curveto
+633.8659 616.0311 672.4588 588.1222 694.4511 570.1906 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 696.8624 572.7369 moveto
+702.2934 563.6399 lineto
+692.3748 567.3645 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 696.8624 572.7369 moveto
+702.2934 563.6399 lineto
+692.3748 567.3645 lineto
+closepath stroke
+grestore
+% Node19->Node16
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 341.9776 541.5408 moveto
+376.3764 531.8821 429.7112 516.9063 467.2509 506.3656 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 468.23 509.7261 moveto
+476.9115 503.653 lineto
+466.3377 502.9867 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 468.23 509.7261 moveto
+476.9115 503.653 lineto
+466.3377 502.9867 lineto
+closepath stroke
+grestore
+% Node20
+gsave
+[ /Rect [ 452 598.0813 572 618.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#a5d0e933dc3c08e5a8daf54441c5459cd) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 452 598.5813 moveto
+452 617.5813 lineto
+572 617.5813 lineto
+572 598.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 452 598.5813 moveto
+452 617.5813 lineto
+572 617.5813 lineto
+572 598.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+460 605.5813 moveto 104 (MultiParticle::console) alignedtext
+grestore
+% Node19->Node20
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 336.1792 560.6045 moveto
+360.5877 568.6912 396.9213 580.3415 429 589.0813 curveto
+438.0082 591.5356 447.6274 593.9483 456.9917 596.1873 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 456.4763 599.6614 moveto
+467.0119 598.5424 lineto
+458.078 592.8471 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 456.4763 599.6614 moveto
+467.0119 598.5424 lineto
+458.078 592.8471 lineto
+closepath stroke
+grestore
+% Node21
+gsave
+[ /Rect [ 457 560.0813 567 580.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#a184089881fffeae35ef07336df7928f9) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 457 560.5813 moveto
+457 579.5813 lineto
+567 579.5813 lineto
+567 560.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 457 560.5813 moveto
+457 579.5813 lineto
+567 579.5813 lineto
+567 560.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+465 567.5813 moveto 94 (MultiParticle::hCalc) alignedtext
+grestore
+% Node19->Node21
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 383.013 558.1023 moveto
+403.9794 560.0646 426.5672 562.1788 446.8443 564.0766 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 446.6222 567.571 moveto
+456.9049 565.0183 lineto
+447.2746 560.6015 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 446.6222 567.571 moveto
+456.9049 565.0183 lineto
+447.2746 560.6015 lineto
+closepath stroke
+grestore
+% Node22->Node16
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 358.9634 465.6213 moveto
+386.5941 470.7935 420.9328 477.2215 449.9811 482.6591 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 449.5423 486.1377 moveto
+460.0156 484.5375 lineto
+450.8303 479.2572 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 449.5423 486.1377 moveto
+460.0156 484.5375 lineto
+450.8303 479.2572 lineto
+closepath stroke
+grestore
+% Node23
+gsave
+[ /Rect [ 441 446.0813 583 466.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#adaac0172867fc4e4b3d2980dccd916d7) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 441 446.5813 moveto
+441 465.5813 lineto
+583 465.5813 lineto
+583 446.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 441 446.5813 moveto
+441 465.5813 lineto
+583 465.5813 lineto
+583 446.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+449 453.5813 moveto 126 (MultiParticle::epsilonlCulc) alignedtext
+grestore
+% Node22->Node23
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 393.2079 456.0813 moveto
+405.584 456.0813 418.2918 456.0813 430.5694 456.0813 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 430.7647 459.5814 moveto
+440.7647 456.0813 lineto
+430.7646 452.5814 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 430.7647 459.5814 moveto
+440.7647 456.0813 lineto
+430.7646 452.5814 lineto
+closepath stroke
+grestore
+% Node24
+gsave
+[ /Rect [ 457 408.0813 567 428.0813 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classMultiParticle.html#a0efda2a4c8c43bf10771996493a0184d) >>
+  /Subtype /Link
+/ANN pdfmark
+0 0 1 nodecolor
+newpath 457 408.5813 moveto
+457 427.5813 lineto
+567 427.5813 lineto
+567 408.5813 lineto
+closepath fill
+1 setlinewidth
+filled
+0 0 0 nodecolor
+newpath 457 408.5813 moveto
+457 427.5813 lineto
+567 427.5813 lineto
+567 408.5813 lineto
+closepath stroke
+0 0 0 nodecolor
+10 /Helvetica set_font
+465 415.5813 moveto 94 (MultiParticle::gCalc) alignedtext
+grestore
+% Node22->Node24
+gsave
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 358.9634 446.5414 moveto
+386.5941 441.3692 420.9328 434.9412 449.9811 429.5036 curveto
+stroke
+0.66667 0.77647 0.43922 edgecolor
+newpath 450.8303 432.9055 moveto
+460.0156 427.6252 lineto
+449.5423 426.025 lineto
+closepath fill
+1 setlinewidth
+solid
+0.66667 0.77647 0.43922 edgecolor
+newpath 450.8303 432.9055 moveto
+460.0156 427.6252 lineto
+449.5423 426.025 lineto
+closepath stroke
+grestore
+endpage
+showpage
+grestore
+%%PageTrailer
+%%EndPage: 1
+%%Trailer
+%%Pages: 1
+%%BoundingBox: 36 36 841 686
+end
+restore
+%%EOF

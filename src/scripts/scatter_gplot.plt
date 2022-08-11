@@ -7,6 +7,7 @@
 # ARGV[6] initial / deformation
 # ARGV[7] zscalar
 
+
 if ( ARGV[7] < 0 ){
     sprintf("$s", "Z scale ≦ 0. Please enter 0 < Z scale")
     exit

@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Multi Particle Method: README</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Multi Particle Method
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('md_README.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">README </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>This program for analysis thin film. Analysis method is Multi Particle Method.</p>
+<p>first. if you can't access LINK, this Link is private note. You do search for the title of the link. and it note don't write specific on this research/program.</p>
+<div class="fragment"></div><!-- fragment --><h1><a class="anchor" id="autotoc_md1"></a>
+Usage</h1>
+<ol type="1">
+<li>set input.csv<ol type="a">
+<li><code># lines are comments.</code></li>
+<li>key is File name. please divide "**,**". ```csvsample.csv #Key, SimpleTensile, SimpleShare, ... #Shape m_iNum, 21, 21, 21, ... m_jNum, 21, 21, 21, ... ``` &gt; Note: you can choose csv Editor. Excel, VSCode, etc... &gt; Comments is not effect any. &gt; blank is OK. but need to type ",".</li>
+</ol>
+</li>
+<li>compile with <strike>makefile</strike> [[CMake]]. (It is also possible to compile with Makefile) ```shell $ # on project root directory $ ./main.sh ``` <blockquote class="doxtable">
+<p>Note: If you don't want to automate the compilation, check the script </p>
+</blockquote>
+</li>
+<li>run program ```shell $ ./bin/[ConditionFileName] ```<ol type="a">
+<li>otherwise run main.sh. it run under all preset situations. ```shell $ s ./preset.sh ```</li>
+</ol>
+</li>
+<li></li>
+</ol>
+<h3><a class="anchor" id="autotoc_md2"></a>
+ソースコードpdf出力</h3>
+<p>pdfの出力には，enscriptそ使用する．（日本語は文字化けします。）</p>
+<div class="fragment"><div class="line">make ps</div>
+<div class="line">make pdf</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md3"></a>
+作成ファイルの削除</h3>
+<div class="fragment"><div class="line">make clean</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
+Visualization (processing after analysis)</h2>
+<div class="fragment"><div class="line">./src/copy2results</div>
+<div class="line">./src/delete_csvfile.sh</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+良く使用するコマンド</h2>
+<p>git の直前コミットとワークツリーで差分を取る </p><div class="fragment"><div class="line">git diff HEAD^ --name-only | grep -v &quot;doxygen&quot;</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
+Explain This Program</h1>
+<h2><a class="anchor" id="autotoc_md7"></a>
+process of file</h2>
+<p><code>cpp → VirtualParticleCalc → ThicknessCalc → ForceCalc → GetNewCoordinate</code> の順番で計算がおこわなれる。</p>
+<h1><a class="anchor" id="autotoc_md8"></a>
+出力</h1>
+<p>実行時間は<code>./data/time/time1.csv</code>に格納[ms]</p>
+<p><code>10653554</code></p>
+<h1><a class="anchor" id="autotoc_md9"></a>
+プロット</h1>
+<p>コマンドラインで</p>
+<div class="fragment"><div class="line">./plt/Cylinder</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
+Folder Tree (ファイル構造)</h1>
+<div class="fragment"><div class="line">.</div>
+<div class="line">├── bin</div>
+<div class="line">├── data</div>
+<div class="line">│   ├── csv</div>
+<div class="line">│   ├── input_files</div>
+<div class="line">│   ├── params</div>
+<div class="line">│   ├── pdf</div>
+<div class="line">│   ├── position</div>
+<div class="line">│   └── time</div>
+<div class="line">├── Doxygen</div>
+<div class="line">│   ├── html</div>
+<div class="line">│   │   └── search</div>
+<div class="line">│   └── latex</div>
+<div class="line">├── src</div>
+<div class="line">│   ├── cpp</div>
+<div class="line">│   └── hpp</div>
+<div class="line">│       ├── Base</div>
+<div class="line">│       ├── DefinitionOfSituation</div>
+<div class="line">│       ├── Global</div>
+<div class="line">│       ├── MultiParticle</div>
+<div class="line">│       ├── MyLibrary</div>
+<div class="line">│       └── Readcsv</div>
+<div class="line">└── visualize</div>
+<div class="line">    ├── Excel</div>
+<div class="line">    ├── fig</div>
+<div class="line">    ├── plot_data</div>
+<div class="line">    └── plot_src</div>
+</div><!-- fragment --><ul>
+<li>root<ul>
+<li>plotGnuplot<ul>
+<li>gnuplotを用いて解析結果を出力する</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>archive<ul>
+<li>データの保存先</li>
+</ul>
+</li>
+<li>bin<ul>
+<li>コンパイル関係</li>
+</ul>
+</li>
+<li>data<ul>
+<li>結果や条件などの数字データやソースコードのPDFファイルを格納する</li>
+<li>よく触る</li>
+</ul>
+</li>
+<li>Doxygen<ul>
+<li>&gt; C++のプログラムコードから自動でドキュメントを生成してくれるソフト</li>
+<li>その出力HTMLファイルを格納する</li>
+</ul>
+</li>
+<li>src<ul>
+<li>実装したプログラム</li>
+</ul>
+</li>
+<li>visualize<ul>
+<li>Excel<ul>
+<li>Excelを用いた可視化</li>
+<li>「extract_◯◯.sh」の出力「nextValue.dat」「preValue.dat」を利用してExcel上に表記する</li>
+</ul>
+</li>
+<li>fig<ul>
+<li>プロット結果</li>
+</ul>
+</li>
+<li>plot_data<ul>
+<li>プロットするデータファイル</li>
+</ul>
+</li>
+<li>plot_src<ul>
+<li>gnuplotを用いた可視化</li>
+</ul>
+</li>
+<li>extract-data.sh</li>
+<li>plot用のデータをcsvファイルから抽出する</li>
+<li><code>./data/csv/</code>直下の解析結果のうち最初と最後の粒子の配置を抽出し、datファイルにする。</li>
+<li>区切り文字は「」（半角スペース）</li>
+<li>仕様が変更されている可能性あり<ul>
+<li>第1引数：ファイル名の指定<ul>
+<li>sail or cylinder</li>
+</ul>
+</li>
+<li>第2引数：検索する</li>
+<li>第3引数：変形後のファイル名に付いている数字の指定<ul>
+<li>デフォルトでは最大値（=解析終了値）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md11"></a>
+extract-3files.sh</h3>
+<ol type="1">
+<li><code>./data/position</code> の<code>c_x.dat</code>, <code>c_y.dat</code>, <code>c_z.dat</code>から任意のTimeの行を<code>old_xyz.dat</code>にコピペする。（x,y,zの順番で3列）</li>
+<li><code>extract-3files.sh</code>を実行する</li>
+<li><code>$plot_dir</code>に<code>x y z</code>座標をスペース区切りで格納されたdatファイルを出力する</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md12"></a>
+src</h2>
+<p>実際のプログラム</p>
+<h2><a class="anchor" id="autotoc_md13"></a>
+tmp</h2>
+<p>実験結果などの一時的な待機場</p>
+<h1><a class="anchor" id="autotoc_md14"></a>
+src</h1>
+<h2><a class="anchor" id="autotoc_md15"></a>
+荷重係数 $k$</h2>
+<p>この値を決めることで$Eh_0$によらず、たわみ量が決定される</p>
+<h1><a class="anchor" id="autotoc_md16"></a>
+Analysis Conditions</h1>
+<h2><a class="anchor" id="autotoc_md17"></a>
+SimpleTensile</h2>
+<p>$$F=kEh_0$$</p>
+<p>$$\varepsilon_x = k$$</p>
+<p>$$\varepsilon_y = -\nu k$$</p>
+<h2><a class="anchor" id="autotoc_md18"></a>
+SimpleShare</h2>
+<p>$$F=kEh_0$$</p>
+<p>$$\gamma = 2(1+\nu) k$$</p>
+<h2><a class="anchor" id="autotoc_md19"></a>
+SimpleBend</h2>
+<p>$$F=kEh_0$$</p>
+<p>$$\frac{\delta}{L_{ref}} = 4k(\frac{L_{ref}}{h_0})^2$$</p>
+<h2><a class="anchor" id="autotoc_md20"></a>
+Physical value</h2>
+<p>Steel</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Label </th><th class="markdownTableHeadNone">value </th><th class="markdownTableHeadNone">Unit  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">E </td><td class="markdownTableBodyNone">$2\times10^{11}$ </td><td class="markdownTableBodyNone">$[N/m^2]$  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">$\nu$ </td><td class="markdownTableBodyNone">$0.3$ </td><td class="markdownTableBodyNone">$[-]$  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">$\rho$ </td><td class="markdownTableBodyNone">$7860$ </td><td class="markdownTableBodyNone">$[kg/m^3]$  </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md21"></a>
+Animation</h1>
+<h2><a class="anchor" id="autotoc_md22"></a>
+animation作成プログラム</h2>
+<p>c++とgnuplotによるアニメーションの作成を行った．graph.shによって読み込ませるデータを作成し，描画していく，</p>
+<h3><a class="anchor" id="autotoc_md23"></a>
+main.cpp</h3>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cstdio&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using namespace </span>std;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> checkFileExistence( <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; str ) {</div>
+<div class="line">    ifstream ifs( str.c_str() );</div>
+<div class="line">    <span class="keywordflow">return</span> ifs.is_open();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> <a class="code" href="CubePressure_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(){</div>
+<div class="line">    FILE *gp = popen(<span class="stringliteral">&quot;gnuplot&quot;</span>, <span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line">    assert(gp);</div>
+<div class="line"> </div>
+<div class="line">    fprintf(gp, <span class="stringliteral">&quot;set terminal gif animate optimize delay 10 size 1200,900\n&quot;</span>);</div>
+<div class="line">    fprintf(gp, <span class="stringliteral">&quot;set zeroaxis lt -1 lw 2\n&quot;</span>);</div>
+<div class="line">    fprintf(gp, <span class="stringliteral">&quot;unset xlabel\n&quot;</span>);</div>
+<div class="line">    fprintf(gp, <span class="stringliteral">&quot;unset ylabel\n&quot;</span>);</div>
+<div class="line">    fprintf(gp, <span class="stringliteral">&quot;unset title\n&quot;</span>);</div>
+<div class="line">    fprintf(gp, <span class="stringliteral">&quot;unset key\n&quot;</span>);</div>
+<div class="line">    fprintf(gp, <span class="stringliteral">&quot;set output &#39;tmp.gif&#39;\n&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    fprintf(gp, <span class="stringliteral">&quot;set nokey\n&quot;</span>);</div>
+<div class="line">    fprintf(gp, <span class="stringliteral">&quot;set grid\n&quot;</span>);</div>
+<div class="line">    fprintf(gp, <span class="stringliteral">&quot;set size ratio -1\n&quot;</span>);</div>
+<div class="line">    fprintf(gp, <span class="stringliteral">&quot;set xr [0:1.25]\n&quot;</span>);</div>
+<div class="line">    fprintf(gp, <span class="stringliteral">&quot;set yr [0:0.7]\n&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">string</span> file1 = <span class="stringliteral">&quot;data.dat&quot;</span>;</div>
+<div class="line">    <span class="keywordtype">string</span> file2 = <span class="stringliteral">&quot;reverse.dat&quot;</span>;</div>
+<div class="line">    ifstream *ifs1;</div>
+<div class="line">    ifstream *ifs2;</div>
+<div class="line">    <span class="keywordtype">char</span> buf[50];</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> j=1; j &lt; 550; j++ ){</div>
+<div class="line">        system(<span class="stringliteral">&quot;rm ./data.dat&quot;</span>);</div>
+<div class="line">        system(<span class="stringliteral">&quot;rm ./reverse.dat&quot;</span>);</div>
+<div class="line">        sprintf(buf,<span class="stringliteral">&quot;sh graph.sh %d&quot;</span>, j);</div>
+<div class="line">        cout &lt;&lt; buf &lt;&lt; endl;</div>
+<div class="line">        cout &lt;&lt; flush;</div>
+<div class="line">        system(buf);</div>
+<div class="line"> </div>
+<div class="line">        ifs1 = <span class="keyword">new</span> ifstream(file1, ios::in);</div>
+<div class="line">        <span class="keywordflow">while</span> ( !*ifs1 ) {</div>
+<div class="line">            usleep(500000);</div>
+<div class="line">        }</div>
+<div class="line">        ifs1-&gt;close();</div>
+<div class="line">        <span class="keyword">delete</span> ifs1;</div>
+<div class="line"> </div>
+<div class="line">        ifs2 = <span class="keyword">new</span> ifstream(file2, ios::in);</div>
+<div class="line">        <span class="keywordflow">while</span> ( !*ifs2 ) {</div>
+<div class="line">            usleep(500000);</div>
+<div class="line">        }</div>
+<div class="line">        ifs2-&gt;close();</div>
+<div class="line">        <span class="keyword">delete</span> ifs2;</div>
+<div class="line"> </div>
+<div class="line">        <span class="keywordflow">while</span>( fprintf(gp, <span class="stringliteral">&quot;plot &#39;reverse.dat&#39; using 1:2 with points pt 65 ps 1 lc rgb &#39;#000000&#39; lw 2 lt 1\n&quot;</span>) &lt; 0){</div>
+<div class="line">            usleep(500000);</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line">        <span class="keywordflow">while</span>( fflush(gp) != 0 ) {</div>
+<div class="line">            usleep(500000);</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line">    }</div>
+<div class="line">    pclose(gp);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md24"></a>
+Basic Data</h1>
+<h2><a class="anchor" id="autotoc_md25"></a>
+開発環境</h2>
+<p>開発環境は以下の環境で行った， 動作確認行い済み．</p>
+<h3><a class="anchor" id="autotoc_md26"></a>
+Hardware</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">CPU </td><td class="markdownTableBodyNone">Intel(R) Core(TM) i5-9600K CPU @ 3.70(4.60)GHz  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">core </td><td class="markdownTableBodyNone">6 core 6thread  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Mother Board </td><td class="markdownTableBodyNone">ASRock Z390 Extreme4  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Memory </td><td class="markdownTableBodyNone">16GB  </td></tr>
+</table>
+<h3><a class="anchor" id="autotoc_md27"></a>
+Software</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone"></th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">OS </td><td class="markdownTableBodyNone">Windows 10 21H1  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">OS (WSL2) </td><td class="markdownTableBodyNone">Ubuntu 18.04 LTS  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">kernel </td><td class="markdownTableBodyNone">4.4.0-17763-Microsoft  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Programing Language </td><td class="markdownTableBodyNone">C++  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Compiler </td><td class="markdownTableBodyNone">GNU compiler  </td></tr>
+</table>
+<p>Either WSL version 1 or 2 is fine. WSL1: faster WLS2: Active development.</p>
+<h2><a class="anchor" id="autotoc_md28"></a>
+作成者</h2>
+<p>スペースダイナミクス研究室 修士2年　大倉　輝久</p>
+<h2><a class="anchor" id="autotoc_md29"></a>
+作成日時</h2>
+<p>令和4年度卒業研究プログラム 最終更新日2022年2月</p>
+<p><a href="https://github.com/okura-teruhsia/ThreeDemention_MultiParticle.git">GitHub Pages</a></p>
+<h1><a class="anchor" id="autotoc_md30"></a>
+References</h1>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div class="ttc" id="aCubePressure_8cpp_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="CubePressure_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdef"><b>Definition:</b> <a href="CubePressure_8cpp_source.html#l00054">CubePressure.cpp:54</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

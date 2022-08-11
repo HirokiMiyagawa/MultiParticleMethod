@@ -1,0 +1,106 @@
+\hypertarget{classExportToCsv}{}\doxysection{Export\+To\+Csv クラス}
+\label{classExportToCsv}\index{ExportToCsv@{ExportToCsv}}
+
+
+{\ttfamily \#include $<$Export\+To\+Csv.\+hpp$>$}
+
+
+
+Export\+To\+Csv 連携図
+% FIG 0
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classExportToCsv_af589e30d32ff93edae2178589673d356}{Convert\+Flag\+To\+Position\+Text}} (int const \&, std\+::string const \&)
+\item 
+\mbox{\hyperlink{classExportToCsv_a804bcb71bf88280d3065d7b6fca1cacc}{Export\+To\+Csv}} ()
+\item 
+\mbox{\hyperlink{classExportToCsv_a691c979afc2e286520ac02098db4e6f1}{$\sim$\+Export\+To\+Csv}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ Export\+To\+Csv.\+hpp の 29 行目に定義があります。
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classExportToCsv_a804bcb71bf88280d3065d7b6fca1cacc}\label{classExportToCsv_a804bcb71bf88280d3065d7b6fca1cacc}} 
+\index{ExportToCsv@{ExportToCsv}!ExportToCsv@{ExportToCsv}}
+\index{ExportToCsv@{ExportToCsv}!ExportToCsv@{ExportToCsv}}
+\doxysubsubsection{\texorpdfstring{ExportToCsv()}{ExportToCsv()}}
+{\footnotesize\ttfamily Export\+To\+Csv\+::\+Export\+To\+Csv (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classExportToCsv_a691c979afc2e286520ac02098db4e6f1}\label{classExportToCsv_a691c979afc2e286520ac02098db4e6f1}} 
+\index{ExportToCsv@{ExportToCsv}!````~ExportToCsv@{$\sim$ExportToCsv}}
+\index{````~ExportToCsv@{$\sim$ExportToCsv}!ExportToCsv@{ExportToCsv}}
+\doxysubsubsection{\texorpdfstring{$\sim$ExportToCsv()}{~ExportToCsv()}}
+{\footnotesize\ttfamily Export\+To\+Csv\+::$\sim$\+Export\+To\+Csv (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classExportToCsv_af589e30d32ff93edae2178589673d356}\label{classExportToCsv_af589e30d32ff93edae2178589673d356}} 
+\index{ExportToCsv@{ExportToCsv}!ConvertFlagToPositionText@{ConvertFlagToPositionText}}
+\index{ConvertFlagToPositionText@{ConvertFlagToPositionText}!ExportToCsv@{ExportToCsv}}
+\doxysubsubsection{\texorpdfstring{ConvertFlagToPositionText()}{ConvertFlagToPositionText()}}
+{\footnotesize\ttfamily std\+::string Export\+To\+Csv\+::\+Convert\+Flag\+To\+Position\+Text (\begin{DoxyParamCaption}\item[{int const \&}]{position\+\_\+flag,  }\item[{std\+::string const \&}]{shape }\end{DoxyParamCaption})}
+
+
+
+ Export\+To\+Csv.\+hpp の 36 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{37                                                                            \{}
+\DoxyCodeLine{38     std::map<int, string> reFlag;}
+\DoxyCodeLine{39     \textcolor{keywordflow}{if} (shape == \textcolor{stringliteral}{"cuboid"}) \{}
+\DoxyCodeLine{40         reFlag = \{\{0b00000000, \textcolor{stringliteral}{"None"}\},}
+\DoxyCodeLine{41                   \{0b00010000, \textcolor{stringliteral}{"RightSideCenter"}\},}
+\DoxyCodeLine{42                   \{0b00010001, \textcolor{stringliteral}{"RightSideRight"}\},}
+\DoxyCodeLine{43                   \{0b00010010, \textcolor{stringliteral}{"RightSideLeft"}\},}
+\DoxyCodeLine{44                   \{0b00010100, \textcolor{stringliteral}{"RightSideBottom"}\},}
+\DoxyCodeLine{45                   \{0b00011000, \textcolor{stringliteral}{"RightSideTop"}\},}
+\DoxyCodeLine{46                   \{0b00010101, \textcolor{stringliteral}{"RightSideRightBottom"}\},}
+\DoxyCodeLine{47                   \{0b00011001, \textcolor{stringliteral}{"RightSideRightTop"}\},}
+\DoxyCodeLine{48                   \{0b00010110, \textcolor{stringliteral}{"RightSideLeftBottom"}\},}
+\DoxyCodeLine{49                   \{0b00011010, \textcolor{stringliteral}{"RightSideLeftTop"}\},}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51                   \{0b00100000, \textcolor{stringliteral}{"BackCenter"}\},}
+\DoxyCodeLine{52                   \{0b00100001, \textcolor{stringliteral}{"BackRight"}\},}
+\DoxyCodeLine{53                   \{0b00100010, \textcolor{stringliteral}{"BackLeft"}\},}
+\DoxyCodeLine{54                   \{0b00100100, \textcolor{stringliteral}{"BackBottom"}\},}
+\DoxyCodeLine{55                   \{0b00101000, \textcolor{stringliteral}{"BackTop"}\},}
+\DoxyCodeLine{56                   \{0b00100101, \textcolor{stringliteral}{"BackRightBottom"}\},}
+\DoxyCodeLine{57                   \{0b00101001, \textcolor{stringliteral}{"BackRightTop"}\},}
+\DoxyCodeLine{58                   \{0b00100110, \textcolor{stringliteral}{"BackLeftBottom"}\},}
+\DoxyCodeLine{59                   \{0b00101010, \textcolor{stringliteral}{"BackLeftTop"}\},}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61                   \{0b01000000, \textcolor{stringliteral}{"CeilingCenter"}\},}
+\DoxyCodeLine{62                   \{0b01000001, \textcolor{stringliteral}{"CeilingRight"}\},}
+\DoxyCodeLine{63                   \{0b01000010, \textcolor{stringliteral}{"CeilingLeft"}\},}
+\DoxyCodeLine{64                   \{0b01000100, \textcolor{stringliteral}{"CeilingBottom"}\},}
+\DoxyCodeLine{65                   \{0b01001000, \textcolor{stringliteral}{"CeilingTop"}\},}
+\DoxyCodeLine{66                   \{0b01000101, \textcolor{stringliteral}{"CeilingRightBottom"}\},}
+\DoxyCodeLine{67                   \{0b01001001, \textcolor{stringliteral}{"CeilingRightTop"}\},}
+\DoxyCodeLine{68                   \{0b01000110, \textcolor{stringliteral}{"CeilingLeftBottom"}\},}
+\DoxyCodeLine{69                   \{0b01001010, \textcolor{stringliteral}{"CeilingLeftTop"}\}\};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71         \textcolor{keywordflow}{return} reFlag[position\_flag];}
+\DoxyCodeLine{72     \}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     reFlag = \{\{0x00, \textcolor{stringliteral}{"Center"}\},  \{0x01, \textcolor{stringliteral}{"Left"}\},        \{0x02, \textcolor{stringliteral}{"Right"}\},}
+\DoxyCodeLine{75               \{0x03, \textcolor{stringliteral}{"Bottom"}\},  \{0x04, \textcolor{stringliteral}{"Top"}\},         \{0x05, \textcolor{stringliteral}{"LeftBottom"}\},}
+\DoxyCodeLine{76               \{0x06, \textcolor{stringliteral}{"LeftTop"}\}, \{0x07, \textcolor{stringliteral}{"RightBottom"}\}, \{0x08, \textcolor{stringliteral}{"RightTop"}\}\};}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78     \textcolor{keywordflow}{return} reFlag[position\_flag];}
+\DoxyCodeLine{79 \}}
+
+\end{DoxyCode}
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/hpp/\+Data\+Exchange\+External\+Party/\mbox{\hyperlink{ExportToCsv_8hpp}{Export\+To\+Csv.\+hpp}}\end{DoxyCompactItemize}

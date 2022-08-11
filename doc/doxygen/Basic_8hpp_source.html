@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Multi Particle Method: /home/hhhhhhhhhhhhhhhhhh/kyutech/research/MultiParticleMethod/src/hpp/MyLibrary/Basic.hpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Multi Particle Method
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('Basic_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Basic.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="Basic_8hpp.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef Basic_hpp</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define Basic_hpp</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/* include header files */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/* end include header files*/</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/* include standard files */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span>  <span class="comment">// vectorの最大値を取得する</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span>      <span class="comment">// fabs</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span>    <span class="comment">// ifstream, ofstream</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span>    <span class="comment">// std::setprecisionを使用するため</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span>   <span class="comment">// for debug writing</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span>    <span class="comment">// istringstream（stod）</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span>     <span class="comment">// useful for reading and writing</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span>     <span class="comment">// 動的配列</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/* end include standard files */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/* usingnamespace declaration(名前空間の宣言) */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">// using std::cout;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">// using std::endl;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// using std::flush;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">// using std::string;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">using</span> std::vector;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/* end usingnamespace declaration*/</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/* declaration MACRO */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/* end declaration MACRO */</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/* prototype declaration */</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">class </span><a class="code" href="classBasic.html">Basic</a>;  <span class="comment">// クラスの前方宣言</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/* end prototype declaration*/</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/* declaration enumlation */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/* declaration namespace */</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="namespacemath.html">   53</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemath.html">math</a> {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="namespacemath.html#adeae9e6c6f768a920a1fde06087749f3">   56</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code" href="namespacemath.html#adeae9e6c6f768a920a1fde06087749f3">pi</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// return 3.1415926535897932384626433832795;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> std::acos(-1);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="namespacemath.html#a489f1ea9d876f182e9bf893091fad820">   62</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code" href="namespacemath.html#a489f1ea9d876f182e9bf893091fad820">sacos</a>(<span class="keywordtype">double</span> x) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span> (x &lt; -1.0) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        x = -1.0;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (1.0 &lt; x) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        x = 1.0;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> std::acos(x);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">double</span> <a class="code" href="namespacemath.html#af3d38f453e4e6ff9e22ba37fe0dc36a3">degree_to_radian</a>(<span class="keywordtype">double</span> <span class="keyword">const</span>&amp;);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">double</span> <a class="code" href="namespacemath.html#a47b42e10e4633e4996df2ce02e8ba6ca">radian_to_degree</a>(<span class="keywordtype">double</span> <span class="keyword">const</span>&amp;);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}  <span class="comment">// namespace math</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/* end declaration namespace */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classBasic.html">   80</a></span>&#160;<span class="keyword">class </span><a class="code" href="classBasic.html">Basic</a> {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::string <a class="code" href="classBasic.html#aa72bb0396875d70dbb1f76a0f66f78e0">formatNumber</a>(<span class="keywordtype">int</span> num);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classBasic.html#a2d28b196f80fb9c508e925d2c476c416">GetContents</a>(<span class="keyword">const</span> std::string&amp; filepath,</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                     std::vector&lt;std::vector&lt;double&gt;&gt;&amp; matrix,</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                     std::vector&lt;double&gt;&amp;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                         queue);  <span class="comment">//  csvファイルから連立一次方程式を読み込む</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBasic.html#a2d97de6119bf446840d4da38781a218e">create_utf8_stream</a>(</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keyword">const</span> std::string&amp;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            path);  <span class="comment">// ファイルの先頭にUTF-8のバイナリデータ（BOM）を書き込む</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classBasic.html#aa6641f7a75c2279e1f8e08932d155ba7">GetCoordinates</a>(</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keyword">const</span> std::string&amp; filepath,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        std::vector&lt;std::vector&lt;double&gt;&gt;&amp;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            dataset);  <span class="comment">//  csvファイルからn個の (x,y)の2次元座標を取得する</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;};</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="classBasic.html#aa72bb0396875d70dbb1f76a0f66f78e0">  102</a></span>&#160;std::string <a class="code" href="classBasic.html#aa72bb0396875d70dbb1f76a0f66f78e0">Basic::formatNumber</a>(<span class="keywordtype">int</span> num) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    std::vector&lt;int&gt; sepnum;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">int</span> number = <a class="code" href="DataSet_8hpp.html#a48c0e9af3de44d063a435d6e53401134">abs</a>(num);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">int</span> sgn    = num &gt;= 0 ? 1 : -1;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">while</span> (number / 1000) {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        sepnum.push_back(number % 1000);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        number /= 1000;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    std::stringstream ss;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    ss &lt;&lt; number * sgn;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">for</span> (std::vector&lt;int&gt;::reverse_iterator i = sepnum.rbegin();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;         i &lt; sepnum.rend(); i++) {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        ss &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; std::setfill(<span class="charliteral">&#39;0&#39;</span>) &lt;&lt; std::setw(3) &lt;&lt; *i;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> std::string(ss.str());</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="namespacemath.html#af3d38f453e4e6ff9e22ba37fe0dc36a3">  124</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="namespacemath.html#af3d38f453e4e6ff9e22ba37fe0dc36a3">math::degree_to_radian</a>(<span class="keywordtype">double</span> <span class="keyword">const</span>&amp; degree) {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">return</span> degree * <a class="code" href="namespacemath.html#adeae9e6c6f768a920a1fde06087749f3">math::pi</a>() / 180.0;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="namespacemath.html#a47b42e10e4633e4996df2ce02e8ba6ca">  133</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="namespacemath.html#a47b42e10e4633e4996df2ce02e8ba6ca">math::radian_to_degree</a>(<span class="keywordtype">double</span> <span class="keyword">const</span>&amp; radian) {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">return</span> radian * 180 / <a class="code" href="namespacemath.html#adeae9e6c6f768a920a1fde06087749f3">math::pi</a>();</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="classBasic.html#a2d28b196f80fb9c508e925d2c476c416">  146</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classBasic.html#a2d28b196f80fb9c508e925d2c476c416">Basic::GetContents</a>(<span class="keyword">const</span> std::string&amp; filepath,</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                        std::vector&lt;std::vector&lt;double&gt;&gt;&amp; matrix,</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                        std::vector&lt;double&gt;&amp; queue) {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> delimiter = <span class="charliteral">&#39;,&#39;</span>;  <span class="comment">// 区切り文字</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    std::vector&lt;std::vector&lt;std::string&gt;&gt;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        table;  <span class="comment">// 一時的に入力データを格納する</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="comment">// ファイルを開く</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    std::fstream filestream(filepath);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">if</span> (!filestream.is_open()) {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="comment">// ファイルが開けなかった場合は終了する</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Can&#39;t input csv data&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;path: &quot;</span> &lt;&lt; filepath &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="comment">// ファイルを読み込む</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">while</span> (!filestream.eof()) {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="comment">// １行読み込む</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        std::string buffer;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        filestream &gt;&gt; buffer;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="comment">// ファイルから読み込んだ１行の文字列を区切り文字で分けてリストに追加する</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        std::vector&lt;std::string&gt; record;          <span class="comment">// １行分の文字列のリスト</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        std::istringstream streambuffer(buffer);  <span class="comment">// 文字列ストリーム</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        std::string token;                        <span class="comment">// １セル分の文字列</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">while</span> (getline(streambuffer, token, delimiter)) {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="comment">// １セル分の文字列をリストに追加する</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            record.push_back(token);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="comment">// １行分の文字列を出力引数のリストに追加する</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        table.push_back(record);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    table.pop_back();  <span class="comment">// 最後の行を削除する</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                       <span class="comment">// （csvファイルをExcelで作成すると空の行ができるので）</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    matrix.resize(table.size());</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> row = 0; row &lt; table.size(); row++) {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        matrix[row].resize(table[row].size());</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> row = 0; row &lt; table.size(); row++) {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> colunm = 0; colunm &lt; table[row].size() - 2;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;             colunm++) {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            matrix[row][colunm] = std::stod(table[row][colunm]);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        queue.push_back(std::stod(table[row][table[row].size() - 1]));</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="comment">// std::cout &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;}</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="classBasic.html#aa6641f7a75c2279e1f8e08932d155ba7">  216</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classBasic.html#aa6641f7a75c2279e1f8e08932d155ba7">Basic::GetCoordinates</a>(<span class="keyword">const</span> std::string&amp; filepath,</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                           std::vector&lt;std::vector&lt;double&gt;&gt;&amp; dataset) {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> delimiter = <span class="charliteral">&#39;,&#39;</span>;  <span class="comment">// 区切り文字</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    std::vector&lt;std::vector&lt;std::string&gt;&gt;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        table;  <span class="comment">// 一時的に入力データを格納する</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="comment">// ファイルを開く</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    std::fstream filestream(filepath);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordflow">if</span> (!filestream.is_open()) {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="comment">// ファイルが開けなかった場合は終了する</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Can&#39;t input csv data&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;path: &quot;</span> &lt;&lt; filepath &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="comment">// ファイルを読み込む</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">while</span> (!filestream.eof()) {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="comment">// １行読み込む</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        std::string buffer;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        filestream &gt;&gt; buffer;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <span class="comment">// ファイルから読み込んだ１行の文字列を区切り文字で分けてリストに追加する</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        std::vector&lt;std::string&gt; record;          <span class="comment">// １行分の文字列のリスト</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        std::istringstream streambuffer(buffer);  <span class="comment">// 文字列ストリーム</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        std::string token;                        <span class="comment">// １セル分の文字列</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keywordflow">while</span> (getline(streambuffer, token, delimiter)) {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            <span class="comment">// １セル分の文字列をリストに追加する</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            record.push_back(token);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="comment">// １行分の文字列を出力引数のリストに追加する</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        table.push_back(record);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    }</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    table.pop_back();  <span class="comment">// 最後の行を削除する</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                       <span class="comment">// （csvファイルをExcelで作成すると空の行ができるので）</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    dataset.resize(table.size());</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> row = 0; row &lt; table.size(); row++) {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        dataset[row].resize(table[row].size());</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> row = 0; row &lt; table.size(); row++) {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> colunm = 0; colunm &lt; table[row].size(); colunm++) {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            dataset[row][colunm] = std::stod(table[row][colunm]);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;}</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="classBasic.html#a2d97de6119bf446840d4da38781a218e">  272</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classBasic.html#a2d97de6119bf446840d4da38781a218e">Basic::create_utf8_stream</a>(<span class="keyword">const</span> std::string&amp; path) {</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="comment">// std::cout &lt;&lt; &quot;write BOM (UTF-8)&quot; &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    std::stringstream exportfile;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    std::ofstream ofs;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    exportfile &lt;&lt; path;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    ofs.open(exportfile.str(),</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;             std::ios::ate | std::ios_base::in | std::ios_base::trunc);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    ofs.seekp(std::ios::beg);  <span class="comment">// 先頭に移動</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> bom[] = {0xEF, 0xBB, 0xBF};</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    ofs.write((<span class="keywordtype">char</span>*)bom, <span class="keyword">sizeof</span>(bom));</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    ofs.close();</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;}</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="preprocessor">#endif  // ヘッダーファイルの終了</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclassBasic_html_aa6641f7a75c2279e1f8e08932d155ba7"><div class="ttname"><a href="classBasic.html#aa6641f7a75c2279e1f8e08932d155ba7">Basic::GetCoordinates</a></div><div class="ttdeci">bool GetCoordinates(const std::string &amp;filepath, std::vector&lt; std::vector&lt; double &gt;&gt; &amp;dataset)</div><div class="ttdoc">csvファイルから&quot;,&quot;区切りでデータをtable に格納する</div><div class="ttdef"><b>Definition:</b> <a href="Basic_8hpp_source.html#l00216">Basic.hpp:216</a></div></div>
+<div class="ttc" id="anamespacemath_html_a47b42e10e4633e4996df2ce02e8ba6ca"><div class="ttname"><a href="namespacemath.html#a47b42e10e4633e4996df2ce02e8ba6ca">math::radian_to_degree</a></div><div class="ttdeci">double radian_to_degree(double const &amp;)</div><div class="ttdoc">ラジアンを角度に変換する</div><div class="ttdef"><b>Definition:</b> <a href="Basic_8hpp_source.html#l00133">Basic.hpp:133</a></div></div>
+<div class="ttc" id="aclassBasic_html_aa72bb0396875d70dbb1f76a0f66f78e0"><div class="ttname"><a href="classBasic.html#aa72bb0396875d70dbb1f76a0f66f78e0">Basic::formatNumber</a></div><div class="ttdeci">std::string formatNumber(int num)</div><div class="ttdoc">3桁ごとに数字に&quot;,&quot;を加える</div><div class="ttdef"><b>Definition:</b> <a href="Basic_8hpp_source.html#l00102">Basic.hpp:102</a></div></div>
+<div class="ttc" id="anamespacemath_html_a489f1ea9d876f182e9bf893091fad820"><div class="ttname"><a href="namespacemath.html#a489f1ea9d876f182e9bf893091fad820">math::sacos</a></div><div class="ttdeci">double sacos(double x)</div><div class="ttdoc">安全なarc cos. 戻り値がnanにならない</div><div class="ttdef"><b>Definition:</b> <a href="Basic_8hpp_source.html#l00062">Basic.hpp:62</a></div></div>
+<div class="ttc" id="aclassBasic_html_a2d97de6119bf446840d4da38781a218e"><div class="ttname"><a href="classBasic.html#a2d97de6119bf446840d4da38781a218e">Basic::create_utf8_stream</a></div><div class="ttdeci">void create_utf8_stream(const std::string &amp;path)</div><div class="ttdoc">ファイルの先頭にUTF-8のバイナリデータ（BOM）を書き込む</div><div class="ttdef"><b>Definition:</b> <a href="Basic_8hpp_source.html#l00272">Basic.hpp:272</a></div></div>
+<div class="ttc" id="anamespacemath_html_adeae9e6c6f768a920a1fde06087749f3"><div class="ttname"><a href="namespacemath.html#adeae9e6c6f768a920a1fde06087749f3">math::pi</a></div><div class="ttdeci">double pi(void)</div><div class="ttdoc">円周率 π</div><div class="ttdef"><b>Definition:</b> <a href="Basic_8hpp_source.html#l00056">Basic.hpp:56</a></div></div>
+<div class="ttc" id="aclassBasic_html"><div class="ttname"><a href="classBasic.html">Basic</a></div><div class="ttdoc">基本的な数字を扱うクラス</div><div class="ttdef"><b>Definition:</b> <a href="Basic_8hpp_source.html#l00080">Basic.hpp:80</a></div></div>
+<div class="ttc" id="aDataSet_8hpp_html_a48c0e9af3de44d063a435d6e53401134"><div class="ttname"><a href="DataSet_8hpp.html#a48c0e9af3de44d063a435d6e53401134">abs</a></div><div class="ttdeci">double abs(const C &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00402">DataSet.hpp:402</a></div></div>
+<div class="ttc" id="anamespacemath_html"><div class="ttname"><a href="namespacemath.html">math</a></div><div class="ttdef"><b>Definition:</b> <a href="Basic_8hpp_source.html#l00053">Basic.hpp:53</a></div></div>
+<div class="ttc" id="anamespacemath_html_af3d38f453e4e6ff9e22ba37fe0dc36a3"><div class="ttname"><a href="namespacemath.html#af3d38f453e4e6ff9e22ba37fe0dc36a3">math::degree_to_radian</a></div><div class="ttdeci">double degree_to_radian(double const &amp;)</div><div class="ttdoc">角度をラジアンに変換する</div><div class="ttdef"><b>Definition:</b> <a href="Basic_8hpp_source.html#l00124">Basic.hpp:124</a></div></div>
+<div class="ttc" id="aclassBasic_html_a2d28b196f80fb9c508e925d2c476c416"><div class="ttname"><a href="classBasic.html#a2d28b196f80fb9c508e925d2c476c416">Basic::GetContents</a></div><div class="ttdeci">bool GetContents(const std::string &amp;filepath, std::vector&lt; std::vector&lt; double &gt;&gt; &amp;matrix, std::vector&lt; double &gt; &amp;queue)</div><div class="ttdoc">csvファイルから&quot;,&quot;区切りでデータをtable に格納する</div><div class="ttdef"><b>Definition:</b> <a href="Basic_8hpp_source.html#l00146">Basic.hpp:146</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_561701c8e79d5dfd48e3536aae5218c5.html">hpp</a></li><li class="navelem"><a class="el" href="dir_517d5ff5edace05c51a9df57ddf9d4ed.html">MyLibrary</a></li><li class="navelem"><a class="el" href="Basic_8hpp.html">Basic.hpp</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

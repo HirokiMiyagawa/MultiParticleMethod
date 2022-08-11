@@ -1,0 +1,551 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Multi Particle Method: src/cpp/SimpleTensile.cpp ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Multi Particle Method
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('SimpleTensile_8cpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#typedef-members">型定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">SimpleTensile.cpp ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>単純引張  
+<a href="#details">[詳解]</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="Library__header_8hpp_source.html">Library_header.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Color_8hpp_source.html">Color.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="SimpleTensile_8hpp_source.html">SimpleTensile.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="csv_8hpp_source.html">csv.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="MultiParticle_8hpp_source.html">MultiParticle.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="InitialConditions_8hpp_source.html">InitialConditions.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="VirtualParticleCalc_8hpp_source.html">VirtualParticleCalc.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ThicknessCalc_8hpp_source.html">ThicknessCalc.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ForceCalc_8hpp_source.html">ForceCalc.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="GetNewCoordinate_8hpp_source.html">GetNewCoordinate.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="BaseCalc_8hpp_source.html">BaseCalc.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Console_8hpp_source.html">Console.hpp</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+SimpleTensile.cpp の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="SimpleTensile_8cpp__incl.png" border="0" usemap="#src_2cpp_2SimpleTensile_8cpp" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div>
+<p><a href="SimpleTensile_8cpp_source.html">[ソースコード]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+型定義</h2></td></tr>
+<tr class="memitem:a76e2836e241b3572082da1229bc53021"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SimpleTensile_8cpp.html#a76e2836e241b3572082da1229bc53021">MAIN_ERROR_FUNC</a>) ()</td></tr>
+<tr class="separator:a76e2836e241b3572082da1229bc53021"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:a2950c0a5abdda61ef9ede28dbb5c636f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SimpleTensile_8cpp.html#a2950c0a5abdda61ef9ede28dbb5c636f">myNameIs</a> ()</td></tr>
+<tr class="separator:a2950c0a5abdda61ef9ede28dbb5c636f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae54f2790e74717abf0c2bb5e33425623"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SimpleTensile_8cpp.html#ae54f2790e74717abf0c2bb5e33425623">argError</a> ()</td></tr>
+<tr class="separator:ae54f2790e74717abf0c2bb5e33425623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a300ecc2c01a20c36e0ffdf631d8800d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SimpleTensile_8cpp.html#a300ecc2c01a20c36e0ffdf631d8800d7">unknownError</a> ()</td></tr>
+<tr class="separator:a300ecc2c01a20c36e0ffdf631d8800d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f8504040f11e6e49acb95020f477ed5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SimpleTensile_8cpp.html#a2f8504040f11e6e49acb95020f477ed5">csvError</a> ()</td></tr>
+<tr class="separator:a2f8504040f11e6e49acb95020f477ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25a0ad5f52f8786c64e81482f13b5c06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SimpleTensile_8cpp.html#a25a0ad5f52f8786c64e81482f13b5c06">calcFunc</a> (int const &amp;, int const &amp;, int const &amp;)</td></tr>
+<tr class="separator:a25a0ad5f52f8786c64e81482f13b5c06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SimpleTensile_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a33240a2de4e6166c193502e55556c33a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="SimpleTensile_8cpp.html#a76e2836e241b3572082da1229bc53021">MAIN_ERROR_FUNC</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SimpleTensile_8cpp.html#a33240a2de4e6166c193502e55556c33a">main_error_func</a> [] = {<a class="el" href="SimpleTensile_8cpp.html#a2950c0a5abdda61ef9ede28dbb5c636f">myNameIs</a>, <a class="el" href="SimpleTensile_8cpp.html#ae54f2790e74717abf0c2bb5e33425623">argError</a>, <a class="el" href="SimpleTensile_8cpp.html#a300ecc2c01a20c36e0ffdf631d8800d7">unknownError</a>, <a class="el" href="SimpleTensile_8cpp.html#a2f8504040f11e6e49acb95020f477ed5">csvError</a>}</td></tr>
+<tr class="separator:a33240a2de4e6166c193502e55556c33a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>単純引張 </p>
+<p>///////////////////////////////////////////////////////////////////////////////</p>
+<p>/////////////////////////////////////////////////////////////////////////////// </p>
+
+<p class="definition"> <a class="el" href="SimpleTensile_8cpp_source.html">SimpleTensile.cpp</a> に定義があります。</p>
+</div><h2 class="groupheader">型定義詳解</h2>
+<a id="a76e2836e241b3572082da1229bc53021"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76e2836e241b3572082da1229bc53021">&#9670;&nbsp;</a></span>MAIN_ERROR_FUNC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* MAIN_ERROR_FUNC) ()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SimpleTensile_8cpp_source.html">SimpleTensile.cpp</a> の <a class="el" href="SimpleTensile_8cpp_source.html#l00039">39</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ae54f2790e74717abf0c2bb5e33425623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae54f2790e74717abf0c2bb5e33425623">&#9670;&nbsp;</a></span>argError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void argError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SimpleTensile_8cpp_source.html">SimpleTensile.cpp</a> の <a class="el" href="SimpleTensile_8cpp_source.html#l00175">175</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;{</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Execution argument error.&quot;</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;         &lt;&lt; endl;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a25a0ad5f52f8786c64e81482f13b5c06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25a0ad5f52f8786c64e81482f13b5c06">&#9670;&nbsp;</a></span>calcFunc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void calcFunc </td>
+          <td>(</td>
+          <td class="paramtype">int const &amp;&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int const &amp;&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int const &amp;&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SimpleTensile_8cpp_source.html">SimpleTensile.cpp</a> の <a class="el" href="SimpleTensile_8cpp_source.html#l00193">193</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;{</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <a class="code" href="classMultiParticle.html">MultiParticle</a> mp(i, j, k);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">    MPI_Comm_rank( MPI_COMM_WORLD, &amp;st.rank );</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">    MPI_Comm_size( MPI_COMM_WORLD, &amp;st.proc );</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">    if( st.rank == 0 ){</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">        ( *main_error_func[ 0 ] )();</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">        cout    &lt;&lt; &quot;procs: &quot;</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">                &lt;&lt; st.proc</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">                &lt;&lt; &quot; i:&quot;</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">                &lt;&lt; st.param-&gt;m_iNum</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment">                &lt;&lt; &quot; j:&quot;</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">                &lt;&lt; st.param-&gt;m_jNum</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">                &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    mp.simulateMethod();</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}</div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="SimpleTensile_8cpp_a25a0ad5f52f8786c64e81482f13b5c06_cgraph.png" border="0" usemap="#SimpleTensile_8cpp_a25a0ad5f52f8786c64e81482f13b5c06_cgraph" alt=""/></div>
+<!-- MAP 1 -->
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="SimpleTensile_8cpp_a25a0ad5f52f8786c64e81482f13b5c06_icgraph.png" border="0" usemap="#SimpleTensile_8cpp_a25a0ad5f52f8786c64e81482f13b5c06_icgraph" alt=""/></div>
+<!-- MAP 2 -->
+</div>
+
+</div>
+</div>
+<a id="a2f8504040f11e6e49acb95020f477ed5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f8504040f11e6e49acb95020f477ed5">&#9670;&nbsp;</a></span>csvError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void csvError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SimpleTensile_8cpp_source.html">SimpleTensile.cpp</a> の <a class="el" href="SimpleTensile_8cpp_source.html#l00187">187</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;{</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;read csv file failed.&quot;</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;         &lt;&lt; endl;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SimpleTensile_8cpp_source.html">SimpleTensile.cpp</a> の <a class="el" href="SimpleTensile_8cpp_source.html#l00052">52</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span> (argc == 1)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="comment">//---------------------------</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="comment">//</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="comment">// default calc function call</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="comment">//</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="comment">//--------------------------</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <a class="code" href="classParams.html">Params</a> p;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <a class="code" href="SimpleTensile_8cpp.html#a25a0ad5f52f8786c64e81482f13b5c06">calcFunc</a>(p.<a class="code" href="classParams.html#a568540cab95643d13c7402d18f61a4f2">m_iNum</a>, p.<a class="code" href="classParams.html#a4e8c2110b9c80adffa96f1ca1691bab8">m_jNum</a>, p.<a class="code" href="classParams.html#a5b2c3e10a82bab6ea50e8b712ead5fc1">m_kNum</a>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argc == 2)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="comment">//--------------------------------------</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="comment">//</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="comment">// params file read.</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="comment">//</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="comment">//--------------------------------------</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <a class="code" href="classParams.html">Params</a> myparam;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">string</span> csv_file = argv[1];</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            vector&lt;vector&lt;string&gt;&gt; data;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <a class="code" href="classCsv.html">Csv</a> objCsv(csv_file);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">if</span> (!objCsv.getCsv(data))</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordflow">throw</span> 3;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            objCsv.myparamRead(myparam, data);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="comment">//------------------------------</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="comment">//</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="comment">// new params file setting enter.</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="comment">//</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="comment">//------------------------------</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <a class="code" href="classMultiParticle.html">MultiParticle</a> mp(myparam);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            mp.simulateMethod();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argc == 3)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="comment">//------------------------------</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="comment">//</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="comment">// 4 Time Measurement</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="comment">//</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="comment">//------------------------------</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">if</span> ((2 &lt;= atoi(argv[1])) &amp;&amp; (2 &lt;= atoi(argv[2])))</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                <a class="code" href="SimpleTensile_8cpp.html#a25a0ad5f52f8786c64e81482f13b5c06">calcFunc</a>(atoi(argv[1]), atoi(argv[2]), 1);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="comment">//------------------------------</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="comment">//</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="comment">// error called.</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="comment">//</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                <span class="comment">//------------------------------</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <span class="keywordflow">throw</span> 1;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argc == 4)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="comment">//------------------------------</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="comment">//</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="comment">// 4 Time Measurement</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="comment">//</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="comment">//------------------------------</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">if</span> ((2 &lt;= atoi(argv[1])) &amp;&amp; (2 &lt;= atoi(argv[2])) &amp;&amp; (2 &lt;= atoi(argv[3])))</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <a class="code" href="SimpleTensile_8cpp.html#a25a0ad5f52f8786c64e81482f13b5c06">calcFunc</a>(atoi(argv[1]), atoi(argv[2]), atoi(argv[3]));</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="comment">//------------------------------</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <span class="comment">//</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                <span class="comment">// error called.</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                <span class="comment">//</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                <span class="comment">//------------------------------</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                <span class="keywordflow">throw</span> 1;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">throw</span> 1;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">catch</span> (<span class="keyword">const</span> <span class="keywordtype">int</span> error_code)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="comment">//------------------------------</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="comment">//</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="comment">// Exception called.</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="comment">//</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="comment">//------------------------------</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        (*<a class="code" href="SimpleTensile_8cpp.html#a33240a2de4e6166c193502e55556c33a">main_error_func</a>[0])();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        (*<a class="code" href="SimpleTensile_8cpp.html#a33240a2de4e6166c193502e55556c33a">main_error_func</a>[error_code])();</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}</div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="SimpleTensile_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph.png" border="0" usemap="#SimpleTensile_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph" alt=""/></div>
+<!-- MAP 3 -->
+</div>
+
+</div>
+</div>
+<a id="a2950c0a5abdda61ef9ede28dbb5c636f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2950c0a5abdda61ef9ede28dbb5c636f">&#9670;&nbsp;</a></span>myNameIs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void myNameIs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SimpleTensile_8cpp_source.html">SimpleTensile.cpp</a> の <a class="el" href="SimpleTensile_8cpp_source.html#l00163">163</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;{</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot; &quot;</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;         &lt;&lt; <span class="stringliteral">&quot;[      &quot;</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;         &lt;&lt; <a class="code" href="Color_8hpp.html#a1916dd06096f930ac5ab057f88bac4d5">FONT_RED</a></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;         &lt;&lt; <span class="stringliteral">&quot;main&quot;</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;         &lt;&lt; <a class="code" href="Color_8hpp.html#af4b14f6e3c09a101c8fda79a7fc1f35d">ALL_DEFAULT</a></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;         &lt;&lt; <span class="stringliteral">&quot;       ]&quot;</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;         &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a300ecc2c01a20c36e0ffdf631d8800d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a300ecc2c01a20c36e0ffdf631d8800d7">&#9670;&nbsp;</a></span>unknownError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void unknownError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SimpleTensile_8cpp_source.html">SimpleTensile.cpp</a> の <a class="el" href="SimpleTensile_8cpp_source.html#l00181">181</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;{</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Unknown error.&quot;</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;         &lt;&lt; endl;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a id="a33240a2de4e6166c193502e55556c33a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33240a2de4e6166c193502e55556c33a">&#9670;&nbsp;</a></span>main_error_func</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="SimpleTensile_8cpp.html#a76e2836e241b3572082da1229bc53021">MAIN_ERROR_FUNC</a> main_error_func[] = {<a class="el" href="SimpleTensile_8cpp.html#a2950c0a5abdda61ef9ede28dbb5c636f">myNameIs</a>, <a class="el" href="SimpleTensile_8cpp.html#ae54f2790e74717abf0c2bb5e33425623">argError</a>, <a class="el" href="SimpleTensile_8cpp.html#a300ecc2c01a20c36e0ffdf631d8800d7">unknownError</a>, <a class="el" href="SimpleTensile_8cpp.html#a2f8504040f11e6e49acb95020f477ed5">csvError</a>}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="SimpleTensile_8cpp_source.html">SimpleTensile.cpp</a> の <a class="el" href="SimpleTensile_8cpp_source.html#l00049">49</a> 行目に定義があります。</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclassParams_html_a568540cab95643d13c7402d18f61a4f2"><div class="ttname"><a href="classParams.html#a568540cab95643d13c7402d18f61a4f2">Params::m_iNum</a></div><div class="ttdeci">int m_iNum</div><div class="ttdoc">i方向の粒子数</div><div class="ttdef"><b>Definition:</b> <a href="Params_8hpp_source.html#l00095">Params.hpp:95</a></div></div>
+<div class="ttc" id="aColor_8hpp_html_af4b14f6e3c09a101c8fda79a7fc1f35d"><div class="ttname"><a href="Color_8hpp.html#af4b14f6e3c09a101c8fda79a7fc1f35d">ALL_DEFAULT</a></div><div class="ttdeci">#define ALL_DEFAULT</div><div class="ttdef"><b>Definition:</b> <a href="Color_8hpp_source.html#l00032">Color.hpp:32</a></div></div>
+<div class="ttc" id="aSimpleTensile_8cpp_html_a25a0ad5f52f8786c64e81482f13b5c06"><div class="ttname"><a href="SimpleTensile_8cpp.html#a25a0ad5f52f8786c64e81482f13b5c06">calcFunc</a></div><div class="ttdeci">void calcFunc(int const &amp;, int const &amp;, int const &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="SimpleTensile_8cpp_source.html#l00193">SimpleTensile.cpp:193</a></div></div>
+<div class="ttc" id="aclassParams_html_a4e8c2110b9c80adffa96f1ca1691bab8"><div class="ttname"><a href="classParams.html#a4e8c2110b9c80adffa96f1ca1691bab8">Params::m_jNum</a></div><div class="ttdeci">int m_jNum</div><div class="ttdoc">j方向の粒子数</div><div class="ttdef"><b>Definition:</b> <a href="Params_8hpp_source.html#l00097">Params.hpp:97</a></div></div>
+<div class="ttc" id="aclassCsv_html"><div class="ttname"><a href="classCsv.html">Csv</a></div><div class="ttdoc">csvファイルから、パラメーターを読み込んでシミュレーションを行う場合</div><div class="ttdef"><b>Definition:</b> <a href="csv_8hpp_source.html#l00022">csv.hpp:22</a></div></div>
+<div class="ttc" id="aclassMultiParticle_html"><div class="ttname"><a href="classMultiParticle.html">MultiParticle</a></div><div class="ttdoc">よくわからんな</div><div class="ttdef"><b>Definition:</b> <a href="MultiParticle_8hpp_source.html#l00038">MultiParticle.hpp:38</a></div></div>
+<div class="ttc" id="aColor_8hpp_html_a1916dd06096f930ac5ab057f88bac4d5"><div class="ttname"><a href="Color_8hpp.html#a1916dd06096f930ac5ab057f88bac4d5">FONT_RED</a></div><div class="ttdeci">#define FONT_RED</div><div class="ttdef"><b>Definition:</b> <a href="Color_8hpp_source.html#l00020">Color.hpp:20</a></div></div>
+<div class="ttc" id="aclassParams_html"><div class="ttname"><a href="classParams.html">Params</a></div><div class="ttdef"><b>Definition:</b> <a href="Params_8hpp_source.html#l00089">Params.hpp:89</a></div></div>
+<div class="ttc" id="aSimpleTensile_8cpp_html_a33240a2de4e6166c193502e55556c33a"><div class="ttname"><a href="SimpleTensile_8cpp.html#a33240a2de4e6166c193502e55556c33a">main_error_func</a></div><div class="ttdeci">MAIN_ERROR_FUNC main_error_func[]</div><div class="ttdef"><b>Definition:</b> <a href="SimpleTensile_8cpp_source.html#l00049">SimpleTensile.cpp:49</a></div></div>
+<div class="ttc" id="aclassParams_html_a5b2c3e10a82bab6ea50e8b712ead5fc1"><div class="ttname"><a href="classParams.html#a5b2c3e10a82bab6ea50e8b712ead5fc1">Params::m_kNum</a></div><div class="ttdeci">int m_kNum</div><div class="ttdoc">k方向の粒子数</div><div class="ttdef"><b>Definition:</b> <a href="Params_8hpp_source.html#l00099">Params.hpp:99</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dfdbda394c3f7a3aa55229f33a559c41.html">cpp</a></li><li class="navelem"><a class="el" href="SimpleTensile_8cpp.html">SimpleTensile.cpp</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

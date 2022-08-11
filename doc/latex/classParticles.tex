@@ -1,0 +1,1779 @@
+\hypertarget{classParticles}{}\doxysection{Particles クラス}
+\label{classParticles}\index{Particles@{Particles}}
+
+
+粒子の持つ力や距離などのパラメ―タ  
+
+
+
+
+{\ttfamily \#include $<$Calc\+Data\+Allocation.\+hpp$>$}
+
+
+
+Particles 連携図
+% FIG 0
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classParticles_a0ed6ae582ef2c3274e9290619d409ea0}{Particles}} (int i\+Num, int j\+Num, int k\+Num)
+\item 
+\mbox{\hyperlink{classParticles_a06dde9ff5c48d92d9ae273ad9501daa3}{$\sim$\+Particles}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ vector$<$ vector$<$ int $>$ $>$ $>$ \mbox{\hyperlink{classParticles_ac5203a8b24eb67712c24750ceec97995}{flag}}
+\begin{DoxyCompactList}\small\item\em Particle\textquotesingle{}s Flag \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ int $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a2ccdbf22a5c9174d5be12bc2493f95a5}{surround\+\_\+particle\+\_\+exsit}}
+\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5}{Communication}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a81033b7bea657bacf9cf3c0a78dd8fa4}{commflag}}
+\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a1377b5ad84922491f09e9df394284aa4}{c}}
+\begin{DoxyCompactList}\small\item\em Particle Coordinates (x,y,z) 粒子の座標を格納する (Particle Coordinates) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a353c994760728a3dd6eb4efbf2a4ebc4}{new\+\_\+c}}
+\begin{DoxyCompactList}\small\item\em New Particle Coordinates (出力するための粒子の座標を格納する) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a24d839c09fc733040bb42b00e846579e}{vc\+\_\+\+Bottom}}
+\begin{DoxyCompactList}\small\item\em Coordinate of Virtuale particle at the bottom \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a9273dd7c369bad02e0562d5388597141}{vc\+\_\+\+Top}}
+\begin{DoxyCompactList}\small\item\em Coordinate of Virtuale particle at the top \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a022c09eb71a6de67c54d2538cc56e94e}{vc\+\_\+\+Right}}
+\begin{DoxyCompactList}\small\item\em Coordinate of Virtuale particle at the right \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a514d7ea8eba97fd7ff10048f201b26e4}{vc\+\_\+\+Left}}
+\begin{DoxyCompactList}\small\item\em Coordinate of Virtuale particle at the left \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_abb0bd9e79cca586cdaecfffef9527ae1}{vc\+\_\+tmp}}
+\begin{DoxyCompactList}\small\item\em Coordinate of Virtuale particle at tmp \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structVirtualParticle}{Virtual\+Particle}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a529dff7c4590266b114035435fcbb426}{vp}}
+\begin{DoxyCompactList}\small\item\em Virtual Particle Parameters (仮想粒子関係の値を格納する関数) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a8c094317ea0c561dd562ea0713483610}{mi}}
+\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_ad4707eae65e641a64d5fa9fb673c7850}{mj}}
+\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a7c9b9414dd1db7771f17c24232499650}{mi0}}
+\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_af4a59b95b099db07dc385b2e7e04bb69}{mj0}}
+\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a26b833f319bd527ba03742d82347c643}{v}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structVector}{Vector}} per particle. 速度を格納する \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_acfe4892af7f831c485f217c09579efcd}{new\+\_\+v}}
+\begin{DoxyCompactList}\small\item\em New \mbox{\hyperlink{structVector}{Vector}} per particle. 速度を格納する \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_ae774ffc4667416403470d44df363a31b}{g}}
+\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_aeec9eaa7596ec8a56b85a9d62d98885c}{g0}}
+\begin{DoxyCompactList}\small\item\em Initial Gravity point. 初期重心を格納する \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structVector}{Vector}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a2b43b854e2f0d731cf6ffc58cb7bb4fb}{li}}
+\begin{DoxyCompactList}\small\item\em Lnegth in i-\/direction. i方向の長さ \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structVector}{Vector}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a92d507b33db3d775510b8fd53c777645}{lj}}
+\begin{DoxyCompactList}\small\item\em Length in j-\/direction/ j方向の長さ \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a65ba878040fee67a4b2320bb027c39f7}{li0}}
+\begin{DoxyCompactList}\small\item\em Initial Length in i-\/direction. 無負荷時のi方向の長さ \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_ace63e82b0c03513160175613f85b8946}{lj0}}
+\begin{DoxyCompactList}\small\item\em Initial Length in j-\/direction. 無負荷時のj方向の長さ \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a3b4f4481bb0db67c377dc8ee719f6744}{hi}}
+\begin{DoxyCompactList}\small\item\em Thickness in i-\/direction. i方向の膜厚 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_aa19ca0d37365c3d04dc8d7f4b2891bac}{hj}}
+\begin{DoxyCompactList}\small\item\em Thickness in j-\/direction. j方向の膜厚 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a687135810d6e149aedf0eaf02800012f}{h\+\_\+ave}}
+\begin{DoxyCompactList}\small\item\em Average thickness. \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a981f96a73a1eecb4606e1cdce63034d8}{h\+\_\+ave3}}
+\begin{DoxyCompactList}\small\item\em Average thickness. \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structArea}{Area}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a688f92b4f2dc10c8f6d62edc80c1c529}{S}}
+\begin{DoxyCompactList}\small\item\em Influence area. 影響面積 S(i,j) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structArea}{Area}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a84dde25fb3eb719a7ff266d4ba30dcd9}{Si}}
+\begin{DoxyCompactList}\small\item\em 影響面積 S(i+1/2,j) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structArea}{Area}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a70e3078b2c99c00122b8e12739a99e8e}{Sj}}
+\begin{DoxyCompactList}\small\item\em 影響面積 S(i,j+1/2) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a32261052104cac29561fffe9b68be6cc}{S0}}
+\begin{DoxyCompactList}\small\item\em 無負荷時の影響面積 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a0ffad42c6d2339c202ec8e97fe36be43}{Si0}}
+\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_aabecf25eeb69c3f615ddbcd04e55e2e6}{Sj0}}
+\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_aef95cfbdefce6ae15e2d74f207de8d59}{Fti}}
+\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_afcad122d0f4c29af13da12d9481688a4}{Ftj}}
+\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a01472136090863ccd31bd5e53ac8d219}{f}}
+\begin{DoxyCompactList}\small\item\em 構造体\+C、x,y,z方向の力を格納する \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structQuarter}{Quarter}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a21b2b164195c3a3f366b54ba0b6796ab}{beta}}
+\begin{DoxyCompactList}\small\item\em せん断角度 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structQuarter}{Quarter}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_ad122c6f8801655990cb2bd5d9217588b}{beta0}}
+\begin{DoxyCompactList}\small\item\em 無負荷時のせん断角度 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structQuarter}{Quarter}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a88adfe59af09bd20e5c5338c6f169797}{gamma}}
+\begin{DoxyCompactList}\small\item\em せん断ひずみ \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structQuarter}{Quarter}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_aef997402fb077893a841f01a4e22c72b}{Fsi}}
+\begin{DoxyCompactList}\small\item\em i方向のせん断力 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structQuarter}{Quarter}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_adee189cecb6a17b8aac1525697c46d76}{Fsj}}
+\begin{DoxyCompactList}\small\item\em j方向のせん断力 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a5266808ffeb3457b081db73fde702440}{epsilonli}}
+\begin{DoxyCompactList}\small\item\em 垂直ひずみ \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_abcc75546f2683677e64dcb3c547caf0b}{epsilonlj}}
+\begin{DoxyCompactList}\small\item\em 垂直ひずみ \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a21b6c3eb7be1f1e1ba6fe18fa04d19a0}{epsilongi}}
+\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_ac049480821fc175d116e94c0a41f1832}{epsilongj}}
+\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_af5fe7fc555037848d985bc9b2b736e5d}{Ii}}
+\begin{DoxyCompactList}\small\item\em 断面2次モーメント \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_aae90775d6978af76b5632dd39ab32b05}{Ij}}
+\begin{DoxyCompactList}\small\item\em 断面2次モーメント \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_ab0aa32ced59ada8d587d70243307449a}{alphai}}
+\begin{DoxyCompactList}\small\item\em 曲げ角度 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_afb4db2cf34f0dafa02f9efde63259d7e}{alphaj}}
+\begin{DoxyCompactList}\small\item\em 曲げ角度 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a62280e44e6cb6a153f7885a6a4d0d6fd}{etai}}
+\begin{DoxyCompactList}\small\item\em 曲率 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_aba89291eeaa16985241e5d9893cecacb}{etaj}}
+\begin{DoxyCompactList}\small\item\em 曲率 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_ad20a6cc6f43fcc2cc43987f539f07a31}{etai0}}
+\begin{DoxyCompactList}\small\item\em 無負荷時の曲率 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a849990165b94718da65401bb6860dc7f}{etaj0}}
+\begin{DoxyCompactList}\small\item\em 無負荷時の曲率 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_abdf7eedf5bb4d44c991f54cd41b58bef}{diff\+\_\+etai}}
+\begin{DoxyCompactList}\small\item\em 曲率の変位 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_aa33de9e5d62de00fd12e523113e84719}{diff\+\_\+etaj}}
+\begin{DoxyCompactList}\small\item\em 曲率の変位 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_ae5d1b3e78c13e299352a6025b7705b44}{Mi}}
+\begin{DoxyCompactList}\small\item\em Bending moment in i-\/direction (i方向の曲げモーメント) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a9c4cdcd127caedd0eb39f3e59af5ea56}{Mj}}
+\begin{DoxyCompactList}\small\item\em Bending moment in j-\/direction j方向の曲げモーメント \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structPreDirection}{Pre\+Direction}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a3e3c430d6aee6f98fbbf43bd32e20aae}{Fb}}
+\begin{DoxyCompactList}\small\item\em Force by bending \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_ac29b6a59a0b6cfcb2747e2cfa3713bf5}{pressure}}
+\begin{DoxyCompactList}\small\item\em Pressure \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a98ceb15b0eb9270de568d54b6e5850b4}{Fa}}
+\begin{DoxyCompactList}\small\item\em Force by air (Pressure) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_aa9af4320d9a192c293a9e273af52a444}{Fnormal}}
+\begin{DoxyCompactList}\small\item\em Force by sun Normal \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_ae216702da2ed6b8cc678544d91cf65a4}{Ftrans}}
+\begin{DoxyCompactList}\small\item\em Force by sun transverse \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_ae830889d23d3a3df0869b6989a9c1164}{Ftrans\+\_\+i}}
+\begin{DoxyCompactList}\small\item\em Force by sun transverse in i \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a6c81c1ced0e9c8abfac9b9c67021cad1}{Ftrans\+\_\+j}}
+\begin{DoxyCompactList}\small\item\em Force by sun transverse in j \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a19cfb06efca247ab32c1dbeb615c059b}{angle\+\_\+surface\+\_\+sun}}
+\begin{DoxyCompactList}\small\item\em Angle between the normal vector of surface ant the sun light in frame sunlight and transverse \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_afdde10b9544c38a40d62c60dd91f11e8}{angle\+\_\+surface\+\_\+sun\+\_\+i}}
+\begin{DoxyCompactList}\small\item\em Angle between the normal vector of surface ant the sun light in i \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a57ad1092992a9399624d02fd3139a5c9}{angle\+\_\+surface\+\_\+sun\+\_\+j}}
+\begin{DoxyCompactList}\small\item\em Angle between the normal vector of surface ant the sun light in j \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a1926761b0a83028de33d32d147ff8684}{disturbance}}
+\begin{DoxyCompactList}\small\item\em Disturbance 擾乱 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a480dd10471160a874bf0c908cae51cb7}{Fd}}
+\begin{DoxyCompactList}\small\item\em Force by dostirbance (Pressure) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structDirection}{Direction}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a9c5d8e9eaba57df526b84a19dea55d5e}{F}}
+\begin{DoxyCompactList}\small\item\em Get\+New\+Coordinate.\+hppで計算する値を入力する。\+Ft, Fs, Fbの合力 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structVector}{Vector}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_af461d5b45d81b3cac3a73eeeca96a785}{r}}
+\begin{DoxyCompactList}\small\item\em radius \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structVector}{Vector}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a03a19015d2b7d7674f30cade88c70b7e}{pre\+\_\+r}}
+\begin{DoxyCompactList}\small\item\em pre radius \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a411f615fb44d298b15da6cbac4952162}{r\+\_\+rot}}
+\begin{DoxyCompactList}\small\item\em radius oon rotation system \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a0102d6220c855a94b7a8adbf703274c7}{v\+\_\+rot}}
+\begin{DoxyCompactList}\small\item\em vector on rotation system \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a36e1a2d44327b34bd10be0d196961d84}{phi}}
+\begin{DoxyCompactList}\small\item\em 角度 \mbox{[}rad\mbox{]} (spherical coordinate system) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a14d902474cf52db5f494a84cf0d89554}{theta}}
+\begin{DoxyCompactList}\small\item\em 角度 \mbox{[}rad\mbox{]} (spherical coordinate system) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a6420f71d1292146178d6c5e1b3a5b034}{psi}}
+\begin{DoxyCompactList}\small\item\em 角度 \mbox{[}rad\mbox{]} (spherical coordinate system)(i=max,j=harf phi=0. i=harf,j=max phi=90 deg.) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a3f21a8f60a4ffdda5305a3960e690a1f}{omega}}
+\begin{DoxyCompactList}\small\item\em 回転角速度 \mbox{[}rad/s\mbox{]} omega \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a2f897289120e4a3f44eaf2911115eba4}{a\+\_\+euler}}
+\begin{DoxyCompactList}\small\item\em 回転角加速度 \mbox{[}rad/s$^\wedge$2\mbox{]} angular acceleration \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a84841df484a804b4e82140565c7fd46f}{omega\+\_\+phi}}
+\begin{DoxyCompactList}\small\item\em 回転角速度 \mbox{[}rad/s\mbox{]} omega\+\_\+phi \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a71cdda6910d826b692f0c4e6d364b4b9}{omega\+\_\+phi\+\_\+vec}}
+\begin{DoxyCompactList}\small\item\em 回転角速度 \mbox{[}rad/s\mbox{]} omega\+\_\+phi \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a6cd4c37491cb2248505ed7b5bc4bad63}{omega\+\_\+theta}}
+\begin{DoxyCompactList}\small\item\em 回転角速度 \mbox{[}rad/s\mbox{]} omega\+\_\+theta \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a5e9e33d806cccf5657697f2ee0700279}{omega\+\_\+psi}}
+\begin{DoxyCompactList}\small\item\em 回転角速度 \mbox{[}rad/s\mbox{]} omega\+\_\+psi Z-\/axix angle \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_ad3cb2366713e5f13567f6d13101f59be}{F\+\_\+\+Euler}}
+\begin{DoxyCompactList}\small\item\em 回転方向の慣性力 (Euler Force) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a07bb34bf96914ea0965ab610f42b5588}{F\+\_\+\+Cen}}
+\begin{DoxyCompactList}\small\item\em 遠心力 (Centrifugal Force) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_aed0517ebe3967d95f3d6034887e1e8bc}{F\+\_\+\+Cor}}
+\begin{DoxyCompactList}\small\item\em コリオリ力 (Coriolis Force) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_ae44e3f43530261fcb08194f192efada2}{F\+\_\+roll}}
+\begin{DoxyCompactList}\small\item\em 系の回転による力 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a21e6147175219b9a985049e1b06e9c7d}{external\+\_\+force}}
+\begin{DoxyCompactList}\small\item\em Get\+New\+Coordinate.\+hppで計算する値を入力する。\+External\+Force \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{classC}{C}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a0a89d0bdd5baabcc5601ee73a024750a}{external\+\_\+force\+\_\+by\+\_\+pressure}}
+\begin{DoxyCompactList}\small\item\em Get\+New\+Coordinate.\+hppで計算する値を入力する。\+External\+Force by Pressure \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ \mbox{\hyperlink{structOuterMostParameter}{Outer\+Most\+Parameter}} $>$ $>$ $>$ \mbox{\hyperlink{classParticles_a3d841b440ecd89ac7d49f8b2553754af}{omp}}
+\begin{DoxyCompactList}\small\item\em Outer most parameters (最外殻粒子のパラメーター) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structTmp}{Tmp}} \mbox{\hyperlink{classParticles_afa87f084488a65522143f49d1a46576b}{tmp}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+粒子の持つ力や距離などのパラメ―タ 
+
+\begin{DoxyDate}{日付}
+
+\end{DoxyDate}
+
+
+ Calc\+Data\+Allocation.\+hpp の 19 行目に定義があります。
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classParticles_a0ed6ae582ef2c3274e9290619d409ea0}\label{classParticles_a0ed6ae582ef2c3274e9290619d409ea0}} 
+\index{Particles@{Particles}!Particles@{Particles}}
+\index{Particles@{Particles}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Particles()}{Particles()}}
+{\footnotesize\ttfamily Particles\+::\+Particles (\begin{DoxyParamCaption}\item[{int}]{i\+Num,  }\item[{int}]{j\+Num,  }\item[{int}]{k\+Num }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 211 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{211                                             \{}
+\DoxyCodeLine{212         \mbox{\hyperlink{classParticles_ac5203a8b24eb67712c24750ceec97995}{flag}}.resize(iNum);}
+\DoxyCodeLine{213         \mbox{\hyperlink{classParticles_a2ccdbf22a5c9174d5be12bc2493f95a5}{surround\_particle\_exsit}}.resize(iNum);}
+\DoxyCodeLine{214         \mbox{\hyperlink{classParticles_a81033b7bea657bacf9cf3c0a78dd8fa4}{commflag}}.resize(iNum);}
+\DoxyCodeLine{215         \textcolor{comment}{// C型のkNum個の配列のポインタを格納}}
+\DoxyCodeLine{216         \mbox{\hyperlink{classParticles_a1377b5ad84922491f09e9df394284aa4}{c}}.resize(iNum);}
+\DoxyCodeLine{217         \mbox{\hyperlink{classParticles_af461d5b45d81b3cac3a73eeeca96a785}{r}}.resize(iNum);}
+\DoxyCodeLine{218         \mbox{\hyperlink{classParticles_a03a19015d2b7d7674f30cade88c70b7e}{pre\_r}}.resize(iNum);}
+\DoxyCodeLine{219         \mbox{\hyperlink{classParticles_a353c994760728a3dd6eb4efbf2a4ebc4}{new\_c}}.resize(iNum);}
+\DoxyCodeLine{220         \mbox{\hyperlink{classParticles_a514d7ea8eba97fd7ff10048f201b26e4}{vc\_Left}}.resize(iNum);}
+\DoxyCodeLine{221         \mbox{\hyperlink{classParticles_a022c09eb71a6de67c54d2538cc56e94e}{vc\_Right}}.resize(iNum);}
+\DoxyCodeLine{222         \mbox{\hyperlink{classParticles_a9273dd7c369bad02e0562d5388597141}{vc\_Top}}.resize(iNum);}
+\DoxyCodeLine{223         \mbox{\hyperlink{classParticles_a24d839c09fc733040bb42b00e846579e}{vc\_Bottom}}.resize(iNum);}
+\DoxyCodeLine{224         \mbox{\hyperlink{classParticles_abb0bd9e79cca586cdaecfffef9527ae1}{vc\_tmp}}.resize(iNum);}
+\DoxyCodeLine{225         \mbox{\hyperlink{classParticles_a529dff7c4590266b114035435fcbb426}{vp}}.resize(iNum);}
+\DoxyCodeLine{226         \mbox{\hyperlink{classParticles_a8c094317ea0c561dd562ea0713483610}{mi}}.resize(iNum);}
+\DoxyCodeLine{227         \mbox{\hyperlink{classParticles_ad4707eae65e641a64d5fa9fb673c7850}{mj}}.resize(iNum);}
+\DoxyCodeLine{228         \mbox{\hyperlink{classParticles_a7c9b9414dd1db7771f17c24232499650}{mi0}}.resize(iNum);}
+\DoxyCodeLine{229         \mbox{\hyperlink{classParticles_af4a59b95b099db07dc385b2e7e04bb69}{mj0}}.resize(iNum);}
+\DoxyCodeLine{230         \mbox{\hyperlink{classParticles_a26b833f319bd527ba03742d82347c643}{v}}.resize(iNum);}
+\DoxyCodeLine{231         \mbox{\hyperlink{classParticles_acfe4892af7f831c485f217c09579efcd}{new\_v}}.resize(iNum);}
+\DoxyCodeLine{232         \mbox{\hyperlink{classParticles_ae774ffc4667416403470d44df363a31b}{g}}.resize(iNum);}
+\DoxyCodeLine{233         \mbox{\hyperlink{classParticles_aeec9eaa7596ec8a56b85a9d62d98885c}{g0}}.resize(iNum);}
+\DoxyCodeLine{234         \mbox{\hyperlink{classParticles_a2b43b854e2f0d731cf6ffc58cb7bb4fb}{li}}.resize(iNum);}
+\DoxyCodeLine{235         \mbox{\hyperlink{classParticles_a92d507b33db3d775510b8fd53c777645}{lj}}.resize(iNum);}
+\DoxyCodeLine{236         \mbox{\hyperlink{classParticles_a65ba878040fee67a4b2320bb027c39f7}{li0}}.resize(iNum);}
+\DoxyCodeLine{237         \mbox{\hyperlink{classParticles_ace63e82b0c03513160175613f85b8946}{lj0}}.resize(iNum);}
+\DoxyCodeLine{238         \mbox{\hyperlink{classParticles_a3b4f4481bb0db67c377dc8ee719f6744}{hi}}.resize(iNum);}
+\DoxyCodeLine{239         \mbox{\hyperlink{classParticles_aa19ca0d37365c3d04dc8d7f4b2891bac}{hj}}.resize(iNum);}
+\DoxyCodeLine{240         \mbox{\hyperlink{classParticles_a687135810d6e149aedf0eaf02800012f}{h\_ave}}.resize(iNum);}
+\DoxyCodeLine{241         \mbox{\hyperlink{classParticles_a981f96a73a1eecb4606e1cdce63034d8}{h\_ave3}}.resize(iNum);}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243         \mbox{\hyperlink{classParticles_a688f92b4f2dc10c8f6d62edc80c1c529}{S}}.resize(iNum);}
+\DoxyCodeLine{244         \mbox{\hyperlink{classParticles_a84dde25fb3eb719a7ff266d4ba30dcd9}{Si}}.resize(iNum);}
+\DoxyCodeLine{245         \mbox{\hyperlink{classParticles_a70e3078b2c99c00122b8e12739a99e8e}{Sj}}.resize(iNum);}
+\DoxyCodeLine{246         \mbox{\hyperlink{classParticles_a32261052104cac29561fffe9b68be6cc}{S0}}.resize(iNum);}
+\DoxyCodeLine{247         \mbox{\hyperlink{classParticles_a0ffad42c6d2339c202ec8e97fe36be43}{Si0}}.resize(iNum);}
+\DoxyCodeLine{248         \mbox{\hyperlink{classParticles_aabecf25eeb69c3f615ddbcd04e55e2e6}{Sj0}}.resize(iNum);}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{250         \mbox{\hyperlink{classParticles_aef95cfbdefce6ae15e2d74f207de8d59}{Fti}}.resize(iNum);}
+\DoxyCodeLine{251         \mbox{\hyperlink{classParticles_afcad122d0f4c29af13da12d9481688a4}{Ftj}}.resize(iNum);}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253         \mbox{\hyperlink{classParticles_a01472136090863ccd31bd5e53ac8d219}{f}}.resize(iNum);}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{255         \mbox{\hyperlink{classParticles_a21b2b164195c3a3f366b54ba0b6796ab}{beta}}.resize(iNum);}
+\DoxyCodeLine{256         \mbox{\hyperlink{classParticles_ad122c6f8801655990cb2bd5d9217588b}{beta0}}.resize(iNum);}
+\DoxyCodeLine{257         \mbox{\hyperlink{classParticles_a88adfe59af09bd20e5c5338c6f169797}{gamma}}.resize(iNum);}
+\DoxyCodeLine{258         \mbox{\hyperlink{classParticles_aef997402fb077893a841f01a4e22c72b}{Fsi}}.resize(iNum);}
+\DoxyCodeLine{259         \mbox{\hyperlink{classParticles_adee189cecb6a17b8aac1525697c46d76}{Fsj}}.resize(iNum);}
+\DoxyCodeLine{260         \mbox{\hyperlink{classParticles_a5266808ffeb3457b081db73fde702440}{epsilonli}}.resize(iNum);}
+\DoxyCodeLine{261         \mbox{\hyperlink{classParticles_abcc75546f2683677e64dcb3c547caf0b}{epsilonlj}}.resize(iNum);}
+\DoxyCodeLine{262         \mbox{\hyperlink{classParticles_a21b6c3eb7be1f1e1ba6fe18fa04d19a0}{epsilongi}}.resize(iNum);}
+\DoxyCodeLine{263         \mbox{\hyperlink{classParticles_ac049480821fc175d116e94c0a41f1832}{epsilongj}}.resize(iNum);}
+\DoxyCodeLine{264         \mbox{\hyperlink{classParticles_af5fe7fc555037848d985bc9b2b736e5d}{Ii}}.resize(iNum);}
+\DoxyCodeLine{265         \mbox{\hyperlink{classParticles_aae90775d6978af76b5632dd39ab32b05}{Ij}}.resize(iNum);}
+\DoxyCodeLine{266         \mbox{\hyperlink{classParticles_ab0aa32ced59ada8d587d70243307449a}{alphai}}.resize(iNum);}
+\DoxyCodeLine{267         \mbox{\hyperlink{classParticles_afb4db2cf34f0dafa02f9efde63259d7e}{alphaj}}.resize(iNum);}
+\DoxyCodeLine{268 }
+\DoxyCodeLine{269         \mbox{\hyperlink{classParticles_a62280e44e6cb6a153f7885a6a4d0d6fd}{etai}}.resize(iNum);}
+\DoxyCodeLine{270         \mbox{\hyperlink{classParticles_aba89291eeaa16985241e5d9893cecacb}{etaj}}.resize(iNum);}
+\DoxyCodeLine{271         \mbox{\hyperlink{classParticles_ad20a6cc6f43fcc2cc43987f539f07a31}{etai0}}.resize(iNum);}
+\DoxyCodeLine{272         \mbox{\hyperlink{classParticles_a849990165b94718da65401bb6860dc7f}{etaj0}}.resize(iNum);}
+\DoxyCodeLine{273         \mbox{\hyperlink{classParticles_abdf7eedf5bb4d44c991f54cd41b58bef}{diff\_etai}}.resize(iNum);}
+\DoxyCodeLine{274         \mbox{\hyperlink{classParticles_aa33de9e5d62de00fd12e523113e84719}{diff\_etaj}}.resize(iNum);}
+\DoxyCodeLine{275 }
+\DoxyCodeLine{276         \mbox{\hyperlink{classParticles_ae5d1b3e78c13e299352a6025b7705b44}{Mi}}.resize(iNum);}
+\DoxyCodeLine{277         \mbox{\hyperlink{classParticles_a9c4cdcd127caedd0eb39f3e59af5ea56}{Mj}}.resize(iNum);}
+\DoxyCodeLine{278 }
+\DoxyCodeLine{279         \mbox{\hyperlink{classParticles_a3e3c430d6aee6f98fbbf43bd32e20aae}{Fb}}.resize(iNum);}
+\DoxyCodeLine{280         \mbox{\hyperlink{classParticles_ac29b6a59a0b6cfcb2747e2cfa3713bf5}{pressure}}.resize(iNum);}
+\DoxyCodeLine{281         \mbox{\hyperlink{classParticles_a98ceb15b0eb9270de568d54b6e5850b4}{Fa}}.resize(iNum);}
+\DoxyCodeLine{282         \mbox{\hyperlink{classParticles_aa9af4320d9a192c293a9e273af52a444}{Fnormal}}.resize(iNum);}
+\DoxyCodeLine{283         \mbox{\hyperlink{classParticles_ae216702da2ed6b8cc678544d91cf65a4}{Ftrans}}.resize(iNum);}
+\DoxyCodeLine{284         \mbox{\hyperlink{classParticles_ae830889d23d3a3df0869b6989a9c1164}{Ftrans\_i}}.resize(iNum);}
+\DoxyCodeLine{285         \mbox{\hyperlink{classParticles_a6c81c1ced0e9c8abfac9b9c67021cad1}{Ftrans\_j}}.resize(iNum);}
+\DoxyCodeLine{286         \mbox{\hyperlink{classParticles_a1926761b0a83028de33d32d147ff8684}{disturbance}}.resize(iNum);}
+\DoxyCodeLine{287         \mbox{\hyperlink{classParticles_a480dd10471160a874bf0c908cae51cb7}{Fd}}.resize(iNum);}
+\DoxyCodeLine{288         \mbox{\hyperlink{classParticles_a411f615fb44d298b15da6cbac4952162}{r\_rot}}.resize(iNum);}
+\DoxyCodeLine{289         \mbox{\hyperlink{classParticles_a0102d6220c855a94b7a8adbf703274c7}{v\_rot}}.resize(iNum);}
+\DoxyCodeLine{290         \mbox{\hyperlink{classParticles_a36e1a2d44327b34bd10be0d196961d84}{phi}}.resize(iNum);}
+\DoxyCodeLine{291         \mbox{\hyperlink{classParticles_a6420f71d1292146178d6c5e1b3a5b034}{psi}}.resize(iNum);}
+\DoxyCodeLine{292         \mbox{\hyperlink{classParticles_a14d902474cf52db5f494a84cf0d89554}{theta}}.resize(iNum);}
+\DoxyCodeLine{293         \mbox{\hyperlink{classParticles_a3f21a8f60a4ffdda5305a3960e690a1f}{omega}}.resize(iNum);}
+\DoxyCodeLine{294         \mbox{\hyperlink{classParticles_a2f897289120e4a3f44eaf2911115eba4}{a\_euler}}.resize(iNum);}
+\DoxyCodeLine{295         \mbox{\hyperlink{classParticles_a84841df484a804b4e82140565c7fd46f}{omega\_phi}}.resize(iNum);}
+\DoxyCodeLine{296         \mbox{\hyperlink{classParticles_a5e9e33d806cccf5657697f2ee0700279}{omega\_psi}}.resize(iNum);}
+\DoxyCodeLine{297         \mbox{\hyperlink{classParticles_a71cdda6910d826b692f0c4e6d364b4b9}{omega\_phi\_vec}}.resize(iNum);}
+\DoxyCodeLine{298         \mbox{\hyperlink{classParticles_a6cd4c37491cb2248505ed7b5bc4bad63}{omega\_theta}}.resize(iNum);}
+\DoxyCodeLine{299         \mbox{\hyperlink{classParticles_a9c5d8e9eaba57df526b84a19dea55d5e}{F}}.resize(iNum);}
+\DoxyCodeLine{300         \mbox{\hyperlink{classParticles_ad3cb2366713e5f13567f6d13101f59be}{F\_Euler}}.resize(iNum);}
+\DoxyCodeLine{301         \mbox{\hyperlink{classParticles_a07bb34bf96914ea0965ab610f42b5588}{F\_Cen}}.resize(iNum);}
+\DoxyCodeLine{302         \mbox{\hyperlink{classParticles_aed0517ebe3967d95f3d6034887e1e8bc}{F\_Cor}}.resize(iNum);}
+\DoxyCodeLine{303         \mbox{\hyperlink{classParticles_ae44e3f43530261fcb08194f192efada2}{F\_roll}}.resize(iNum);}
+\DoxyCodeLine{304         \mbox{\hyperlink{classParticles_a19cfb06efca247ab32c1dbeb615c059b}{angle\_surface\_sun}}.resize(iNum);}
+\DoxyCodeLine{305         \mbox{\hyperlink{classParticles_afdde10b9544c38a40d62c60dd91f11e8}{angle\_surface\_sun\_i}}.resize(iNum);}
+\DoxyCodeLine{306         \mbox{\hyperlink{classParticles_a57ad1092992a9399624d02fd3139a5c9}{angle\_surface\_sun\_j}}.resize(iNum);}
+\DoxyCodeLine{307         \mbox{\hyperlink{classParticles_a21e6147175219b9a985049e1b06e9c7d}{external\_force}}.resize(iNum);}
+\DoxyCodeLine{308         \mbox{\hyperlink{classParticles_a0a89d0bdd5baabcc5601ee73a024750a}{external\_force\_by\_pressure}}.resize(iNum);}
+\DoxyCodeLine{309         \mbox{\hyperlink{classParticles_a3d841b440ecd89ac7d49f8b2553754af}{omp}}.resize(iNum);}
+\DoxyCodeLine{310 }
+\DoxyCodeLine{311         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < iNum; i++) \{}
+\DoxyCodeLine{312             \mbox{\hyperlink{classParticles_ac5203a8b24eb67712c24750ceec97995}{flag}}[i].resize(jNum);}
+\DoxyCodeLine{313             \mbox{\hyperlink{classParticles_a2ccdbf22a5c9174d5be12bc2493f95a5}{surround\_particle\_exsit}}[i].resize(jNum);}
+\DoxyCodeLine{314             \mbox{\hyperlink{classParticles_a81033b7bea657bacf9cf3c0a78dd8fa4}{commflag}}[i].resize(jNum);}
+\DoxyCodeLine{315             \textcolor{comment}{// C型のkNum個の配列のポインタを格納}}
+\DoxyCodeLine{316             \mbox{\hyperlink{classParticles_a1377b5ad84922491f09e9df394284aa4}{c}}[i].resize(jNum);}
+\DoxyCodeLine{317             \mbox{\hyperlink{classParticles_af461d5b45d81b3cac3a73eeeca96a785}{r}}[i].resize(jNum);}
+\DoxyCodeLine{318             \mbox{\hyperlink{classParticles_a03a19015d2b7d7674f30cade88c70b7e}{pre\_r}}[i].resize(jNum);}
+\DoxyCodeLine{319             \mbox{\hyperlink{classParticles_a353c994760728a3dd6eb4efbf2a4ebc4}{new\_c}}[i].resize(jNum);}
+\DoxyCodeLine{320             \mbox{\hyperlink{classParticles_a514d7ea8eba97fd7ff10048f201b26e4}{vc\_Left}}[i].resize(jNum);}
+\DoxyCodeLine{321             \mbox{\hyperlink{classParticles_a022c09eb71a6de67c54d2538cc56e94e}{vc\_Right}}[i].resize(jNum);}
+\DoxyCodeLine{322             \mbox{\hyperlink{classParticles_a9273dd7c369bad02e0562d5388597141}{vc\_Top}}[i].resize(jNum);}
+\DoxyCodeLine{323             \mbox{\hyperlink{classParticles_a24d839c09fc733040bb42b00e846579e}{vc\_Bottom}}[i].resize(jNum);}
+\DoxyCodeLine{324             \mbox{\hyperlink{classParticles_abb0bd9e79cca586cdaecfffef9527ae1}{vc\_tmp}}[i].resize(jNum);}
+\DoxyCodeLine{325             \mbox{\hyperlink{classParticles_a529dff7c4590266b114035435fcbb426}{vp}}[i].resize(jNum);}
+\DoxyCodeLine{326             \mbox{\hyperlink{classParticles_a8c094317ea0c561dd562ea0713483610}{mi}}[i].resize(jNum);}
+\DoxyCodeLine{327             \mbox{\hyperlink{classParticles_ad4707eae65e641a64d5fa9fb673c7850}{mj}}[i].resize(jNum);}
+\DoxyCodeLine{328             \mbox{\hyperlink{classParticles_a7c9b9414dd1db7771f17c24232499650}{mi0}}[i].resize(jNum);}
+\DoxyCodeLine{329             \mbox{\hyperlink{classParticles_af4a59b95b099db07dc385b2e7e04bb69}{mj0}}[i].resize(jNum);}
+\DoxyCodeLine{330             \mbox{\hyperlink{classParticles_a26b833f319bd527ba03742d82347c643}{v}}[i].resize(jNum);}
+\DoxyCodeLine{331             \mbox{\hyperlink{classParticles_acfe4892af7f831c485f217c09579efcd}{new\_v}}[i].resize(jNum);}
+\DoxyCodeLine{332             \mbox{\hyperlink{classParticles_ae774ffc4667416403470d44df363a31b}{g}}[i].resize(jNum);}
+\DoxyCodeLine{333             \mbox{\hyperlink{classParticles_aeec9eaa7596ec8a56b85a9d62d98885c}{g0}}[i].resize(jNum);}
+\DoxyCodeLine{334             \mbox{\hyperlink{classParticles_a2b43b854e2f0d731cf6ffc58cb7bb4fb}{li}}[i].resize(jNum);}
+\DoxyCodeLine{335             \mbox{\hyperlink{classParticles_a92d507b33db3d775510b8fd53c777645}{lj}}[i].resize(jNum);}
+\DoxyCodeLine{336             \mbox{\hyperlink{classParticles_a65ba878040fee67a4b2320bb027c39f7}{li0}}[i].resize(jNum);}
+\DoxyCodeLine{337             \mbox{\hyperlink{classParticles_ace63e82b0c03513160175613f85b8946}{lj0}}[i].resize(jNum);}
+\DoxyCodeLine{338             \mbox{\hyperlink{classParticles_a3b4f4481bb0db67c377dc8ee719f6744}{hi}}[i].resize(jNum);}
+\DoxyCodeLine{339             \mbox{\hyperlink{classParticles_aa19ca0d37365c3d04dc8d7f4b2891bac}{hj}}[i].resize(jNum);}
+\DoxyCodeLine{340             \mbox{\hyperlink{classParticles_a687135810d6e149aedf0eaf02800012f}{h\_ave}}[i].resize(jNum);}
+\DoxyCodeLine{341             \mbox{\hyperlink{classParticles_a981f96a73a1eecb4606e1cdce63034d8}{h\_ave3}}[i].resize(jNum);}
+\DoxyCodeLine{342 }
+\DoxyCodeLine{343             \mbox{\hyperlink{classParticles_a688f92b4f2dc10c8f6d62edc80c1c529}{S}}[i].resize(jNum);}
+\DoxyCodeLine{344             \mbox{\hyperlink{classParticles_a84dde25fb3eb719a7ff266d4ba30dcd9}{Si}}[i].resize(jNum);}
+\DoxyCodeLine{345             \mbox{\hyperlink{classParticles_a70e3078b2c99c00122b8e12739a99e8e}{Sj}}[i].resize(jNum);}
+\DoxyCodeLine{346             \mbox{\hyperlink{classParticles_a32261052104cac29561fffe9b68be6cc}{S0}}[i].resize(jNum);}
+\DoxyCodeLine{347             \mbox{\hyperlink{classParticles_a0ffad42c6d2339c202ec8e97fe36be43}{Si0}}[i].resize(jNum);}
+\DoxyCodeLine{348             \mbox{\hyperlink{classParticles_aabecf25eeb69c3f615ddbcd04e55e2e6}{Sj0}}[i].resize(jNum);}
+\DoxyCodeLine{349 }
+\DoxyCodeLine{350             \mbox{\hyperlink{classParticles_aef95cfbdefce6ae15e2d74f207de8d59}{Fti}}[i].resize(jNum);}
+\DoxyCodeLine{351             \mbox{\hyperlink{classParticles_afcad122d0f4c29af13da12d9481688a4}{Ftj}}[i].resize(jNum);}
+\DoxyCodeLine{352 }
+\DoxyCodeLine{353             \mbox{\hyperlink{classParticles_a01472136090863ccd31bd5e53ac8d219}{f}}[i].resize(jNum);}
+\DoxyCodeLine{354 }
+\DoxyCodeLine{355             \mbox{\hyperlink{classParticles_a21b2b164195c3a3f366b54ba0b6796ab}{beta}}[i].resize(jNum);}
+\DoxyCodeLine{356             \mbox{\hyperlink{classParticles_ad122c6f8801655990cb2bd5d9217588b}{beta0}}[i].resize(jNum);}
+\DoxyCodeLine{357             \mbox{\hyperlink{classParticles_a88adfe59af09bd20e5c5338c6f169797}{gamma}}[i].resize(jNum);}
+\DoxyCodeLine{358             \mbox{\hyperlink{classParticles_aef997402fb077893a841f01a4e22c72b}{Fsi}}[i].resize(jNum);}
+\DoxyCodeLine{359             \mbox{\hyperlink{classParticles_adee189cecb6a17b8aac1525697c46d76}{Fsj}}[i].resize(jNum);}
+\DoxyCodeLine{360             \mbox{\hyperlink{classParticles_a5266808ffeb3457b081db73fde702440}{epsilonli}}[i].resize(jNum);}
+\DoxyCodeLine{361             \mbox{\hyperlink{classParticles_abcc75546f2683677e64dcb3c547caf0b}{epsilonlj}}[i].resize(jNum);}
+\DoxyCodeLine{362             \mbox{\hyperlink{classParticles_a21b6c3eb7be1f1e1ba6fe18fa04d19a0}{epsilongi}}[i].resize(jNum);}
+\DoxyCodeLine{363             \mbox{\hyperlink{classParticles_ac049480821fc175d116e94c0a41f1832}{epsilongj}}[i].resize(jNum);}
+\DoxyCodeLine{364             \mbox{\hyperlink{classParticles_af5fe7fc555037848d985bc9b2b736e5d}{Ii}}[i].resize(jNum);}
+\DoxyCodeLine{365             \mbox{\hyperlink{classParticles_aae90775d6978af76b5632dd39ab32b05}{Ij}}[i].resize(jNum);}
+\DoxyCodeLine{366             \mbox{\hyperlink{classParticles_ab0aa32ced59ada8d587d70243307449a}{alphai}}[i].resize(jNum);}
+\DoxyCodeLine{367             \mbox{\hyperlink{classParticles_afb4db2cf34f0dafa02f9efde63259d7e}{alphaj}}[i].resize(jNum);}
+\DoxyCodeLine{368 }
+\DoxyCodeLine{369             \mbox{\hyperlink{classParticles_a62280e44e6cb6a153f7885a6a4d0d6fd}{etai}}[i].resize(jNum);}
+\DoxyCodeLine{370             \mbox{\hyperlink{classParticles_aba89291eeaa16985241e5d9893cecacb}{etaj}}[i].resize(jNum);}
+\DoxyCodeLine{371             \mbox{\hyperlink{classParticles_ad20a6cc6f43fcc2cc43987f539f07a31}{etai0}}[i].resize(jNum);}
+\DoxyCodeLine{372             \mbox{\hyperlink{classParticles_a849990165b94718da65401bb6860dc7f}{etaj0}}[i].resize(jNum);}
+\DoxyCodeLine{373             \mbox{\hyperlink{classParticles_abdf7eedf5bb4d44c991f54cd41b58bef}{diff\_etai}}[i].resize(jNum);}
+\DoxyCodeLine{374             \mbox{\hyperlink{classParticles_aa33de9e5d62de00fd12e523113e84719}{diff\_etaj}}[i].resize(jNum);}
+\DoxyCodeLine{375 }
+\DoxyCodeLine{376             \mbox{\hyperlink{classParticles_ae5d1b3e78c13e299352a6025b7705b44}{Mi}}[i].resize(jNum);}
+\DoxyCodeLine{377             \mbox{\hyperlink{classParticles_a9c4cdcd127caedd0eb39f3e59af5ea56}{Mj}}[i].resize(jNum);}
+\DoxyCodeLine{378 }
+\DoxyCodeLine{379             \mbox{\hyperlink{classParticles_a3e3c430d6aee6f98fbbf43bd32e20aae}{Fb}}[i].resize(jNum);}
+\DoxyCodeLine{380             \mbox{\hyperlink{classParticles_ac29b6a59a0b6cfcb2747e2cfa3713bf5}{pressure}}[i].resize(jNum);}
+\DoxyCodeLine{381             \mbox{\hyperlink{classParticles_a98ceb15b0eb9270de568d54b6e5850b4}{Fa}}[i].resize(jNum);}
+\DoxyCodeLine{382             \mbox{\hyperlink{classParticles_aa9af4320d9a192c293a9e273af52a444}{Fnormal}}[i].resize(jNum);}
+\DoxyCodeLine{383             \mbox{\hyperlink{classParticles_ae216702da2ed6b8cc678544d91cf65a4}{Ftrans}}[i].resize(jNum);}
+\DoxyCodeLine{384             \mbox{\hyperlink{classParticles_ae830889d23d3a3df0869b6989a9c1164}{Ftrans\_i}}[i].resize(jNum);}
+\DoxyCodeLine{385             \mbox{\hyperlink{classParticles_a6c81c1ced0e9c8abfac9b9c67021cad1}{Ftrans\_j}}[i].resize(jNum);}
+\DoxyCodeLine{386             \mbox{\hyperlink{classParticles_a1926761b0a83028de33d32d147ff8684}{disturbance}}[i].resize(jNum);}
+\DoxyCodeLine{387             \mbox{\hyperlink{classParticles_a480dd10471160a874bf0c908cae51cb7}{Fd}}[i].resize(jNum);}
+\DoxyCodeLine{388             \mbox{\hyperlink{classParticles_a411f615fb44d298b15da6cbac4952162}{r\_rot}}[i].resize(jNum);}
+\DoxyCodeLine{389             \mbox{\hyperlink{classParticles_a0102d6220c855a94b7a8adbf703274c7}{v\_rot}}[i].resize(jNum);}
+\DoxyCodeLine{390             \mbox{\hyperlink{classParticles_a36e1a2d44327b34bd10be0d196961d84}{phi}}[i].resize(jNum);}
+\DoxyCodeLine{391             \mbox{\hyperlink{classParticles_a6420f71d1292146178d6c5e1b3a5b034}{psi}}[i].resize(jNum);}
+\DoxyCodeLine{392             \mbox{\hyperlink{classParticles_a14d902474cf52db5f494a84cf0d89554}{theta}}[i].resize(jNum);}
+\DoxyCodeLine{393             \mbox{\hyperlink{classParticles_a3f21a8f60a4ffdda5305a3960e690a1f}{omega}}[i].resize(jNum);}
+\DoxyCodeLine{394             \mbox{\hyperlink{classParticles_a2f897289120e4a3f44eaf2911115eba4}{a\_euler}}[i].resize(jNum);}
+\DoxyCodeLine{395             \mbox{\hyperlink{classParticles_a84841df484a804b4e82140565c7fd46f}{omega\_phi}}[i].resize(jNum);}
+\DoxyCodeLine{396             \mbox{\hyperlink{classParticles_a5e9e33d806cccf5657697f2ee0700279}{omega\_psi}}[i].resize(jNum);}
+\DoxyCodeLine{397             \mbox{\hyperlink{classParticles_a71cdda6910d826b692f0c4e6d364b4b9}{omega\_phi\_vec}}[i].resize(jNum);}
+\DoxyCodeLine{398             \mbox{\hyperlink{classParticles_a6cd4c37491cb2248505ed7b5bc4bad63}{omega\_theta}}[i].resize(jNum);}
+\DoxyCodeLine{399             \mbox{\hyperlink{classParticles_a9c5d8e9eaba57df526b84a19dea55d5e}{F}}[i].resize(jNum);}
+\DoxyCodeLine{400             \mbox{\hyperlink{classParticles_ad3cb2366713e5f13567f6d13101f59be}{F\_Euler}}[i].resize(jNum);}
+\DoxyCodeLine{401             \mbox{\hyperlink{classParticles_a07bb34bf96914ea0965ab610f42b5588}{F\_Cen}}[i].resize(jNum);}
+\DoxyCodeLine{402             \mbox{\hyperlink{classParticles_aed0517ebe3967d95f3d6034887e1e8bc}{F\_Cor}}[i].resize(jNum);}
+\DoxyCodeLine{403             \mbox{\hyperlink{classParticles_ae44e3f43530261fcb08194f192efada2}{F\_roll}}[i].resize(jNum);}
+\DoxyCodeLine{404             \mbox{\hyperlink{classParticles_a19cfb06efca247ab32c1dbeb615c059b}{angle\_surface\_sun}}[i].resize(jNum);}
+\DoxyCodeLine{405             \mbox{\hyperlink{classParticles_afdde10b9544c38a40d62c60dd91f11e8}{angle\_surface\_sun\_i}}[i].resize(jNum);}
+\DoxyCodeLine{406             \mbox{\hyperlink{classParticles_a57ad1092992a9399624d02fd3139a5c9}{angle\_surface\_sun\_j}}[i].resize(jNum);}
+\DoxyCodeLine{407             \mbox{\hyperlink{classParticles_a21e6147175219b9a985049e1b06e9c7d}{external\_force}}[i].resize(jNum);}
+\DoxyCodeLine{408             \mbox{\hyperlink{classParticles_a0a89d0bdd5baabcc5601ee73a024750a}{external\_force\_by\_pressure}}[i].resize(jNum);}
+\DoxyCodeLine{409             \mbox{\hyperlink{classParticles_a3d841b440ecd89ac7d49f8b2553754af}{omp}}[i].resize(jNum);}
+\DoxyCodeLine{410 }
+\DoxyCodeLine{411             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < jNum; j++) \{}
+\DoxyCodeLine{412                 \mbox{\hyperlink{classParticles_ac5203a8b24eb67712c24750ceec97995}{flag}}[i][j].resize(kNum);}
+\DoxyCodeLine{413                 \mbox{\hyperlink{classParticles_a2ccdbf22a5c9174d5be12bc2493f95a5}{surround\_particle\_exsit}}[i][j].resize(kNum);}
+\DoxyCodeLine{414                 \mbox{\hyperlink{classParticles_a81033b7bea657bacf9cf3c0a78dd8fa4}{commflag}}[i][j].resize(kNum);}
+\DoxyCodeLine{415                 \textcolor{comment}{// C型のkNum個の配列のポインタを格納}}
+\DoxyCodeLine{416                 \mbox{\hyperlink{classParticles_a1377b5ad84922491f09e9df394284aa4}{c}}[i][j].resize(kNum);}
+\DoxyCodeLine{417                 \mbox{\hyperlink{classParticles_af461d5b45d81b3cac3a73eeeca96a785}{r}}[i][j].resize(kNum);}
+\DoxyCodeLine{418                 \mbox{\hyperlink{classParticles_a03a19015d2b7d7674f30cade88c70b7e}{pre\_r}}[i][j].resize(kNum);}
+\DoxyCodeLine{419                 \mbox{\hyperlink{classParticles_a353c994760728a3dd6eb4efbf2a4ebc4}{new\_c}}[i][j].resize(kNum);}
+\DoxyCodeLine{420                 \mbox{\hyperlink{classParticles_a514d7ea8eba97fd7ff10048f201b26e4}{vc\_Left}}[i][j].resize(kNum);}
+\DoxyCodeLine{421                 \mbox{\hyperlink{classParticles_a022c09eb71a6de67c54d2538cc56e94e}{vc\_Right}}[i][j].resize(kNum);}
+\DoxyCodeLine{422                 \mbox{\hyperlink{classParticles_a9273dd7c369bad02e0562d5388597141}{vc\_Top}}[i][j].resize(kNum);}
+\DoxyCodeLine{423                 \mbox{\hyperlink{classParticles_a24d839c09fc733040bb42b00e846579e}{vc\_Bottom}}[i][j].resize(kNum);}
+\DoxyCodeLine{424                 \mbox{\hyperlink{classParticles_abb0bd9e79cca586cdaecfffef9527ae1}{vc\_tmp}}[i][j].resize(kNum);}
+\DoxyCodeLine{425                 \mbox{\hyperlink{classParticles_a529dff7c4590266b114035435fcbb426}{vp}}[i][j].resize(kNum);}
+\DoxyCodeLine{426                 \mbox{\hyperlink{classParticles_a8c094317ea0c561dd562ea0713483610}{mi}}[i][j].resize(kNum);}
+\DoxyCodeLine{427                 \mbox{\hyperlink{classParticles_ad4707eae65e641a64d5fa9fb673c7850}{mj}}[i][j].resize(kNum);}
+\DoxyCodeLine{428                 \mbox{\hyperlink{classParticles_a7c9b9414dd1db7771f17c24232499650}{mi0}}[i][j].resize(kNum);}
+\DoxyCodeLine{429                 \mbox{\hyperlink{classParticles_af4a59b95b099db07dc385b2e7e04bb69}{mj0}}[i][j].resize(kNum);}
+\DoxyCodeLine{430                 \mbox{\hyperlink{classParticles_a26b833f319bd527ba03742d82347c643}{v}}[i][j].resize(kNum);}
+\DoxyCodeLine{431                 \mbox{\hyperlink{classParticles_acfe4892af7f831c485f217c09579efcd}{new\_v}}[i][j].resize(kNum);}
+\DoxyCodeLine{432                 \mbox{\hyperlink{classParticles_ae774ffc4667416403470d44df363a31b}{g}}[i][j].resize(kNum);}
+\DoxyCodeLine{433                 \mbox{\hyperlink{classParticles_aeec9eaa7596ec8a56b85a9d62d98885c}{g0}}[i][j].resize(kNum);}
+\DoxyCodeLine{434                 \mbox{\hyperlink{classParticles_a2b43b854e2f0d731cf6ffc58cb7bb4fb}{li}}[i][j].resize(kNum);}
+\DoxyCodeLine{435                 \mbox{\hyperlink{classParticles_a92d507b33db3d775510b8fd53c777645}{lj}}[i][j].resize(kNum);}
+\DoxyCodeLine{436                 \mbox{\hyperlink{classParticles_a65ba878040fee67a4b2320bb027c39f7}{li0}}[i][j].resize(kNum);}
+\DoxyCodeLine{437                 \mbox{\hyperlink{classParticles_ace63e82b0c03513160175613f85b8946}{lj0}}[i][j].resize(kNum);}
+\DoxyCodeLine{438                 \mbox{\hyperlink{classParticles_a3b4f4481bb0db67c377dc8ee719f6744}{hi}}[i][j].resize(kNum);}
+\DoxyCodeLine{439                 \mbox{\hyperlink{classParticles_aa19ca0d37365c3d04dc8d7f4b2891bac}{hj}}[i][j].resize(kNum);}
+\DoxyCodeLine{440                 \mbox{\hyperlink{classParticles_a687135810d6e149aedf0eaf02800012f}{h\_ave}}[i][j].resize(kNum);}
+\DoxyCodeLine{441                 \mbox{\hyperlink{classParticles_a981f96a73a1eecb4606e1cdce63034d8}{h\_ave3}}[i][j].resize(kNum);}
+\DoxyCodeLine{442 }
+\DoxyCodeLine{443                 \mbox{\hyperlink{classParticles_a688f92b4f2dc10c8f6d62edc80c1c529}{S}}[i][j].resize(kNum);}
+\DoxyCodeLine{444                 \mbox{\hyperlink{classParticles_a84dde25fb3eb719a7ff266d4ba30dcd9}{Si}}[i][j].resize(kNum);}
+\DoxyCodeLine{445                 \mbox{\hyperlink{classParticles_a70e3078b2c99c00122b8e12739a99e8e}{Sj}}[i][j].resize(kNum);}
+\DoxyCodeLine{446                 \mbox{\hyperlink{classParticles_a32261052104cac29561fffe9b68be6cc}{S0}}[i][j].resize(kNum);}
+\DoxyCodeLine{447                 \mbox{\hyperlink{classParticles_a0ffad42c6d2339c202ec8e97fe36be43}{Si0}}[i][j].resize(kNum);}
+\DoxyCodeLine{448                 \mbox{\hyperlink{classParticles_aabecf25eeb69c3f615ddbcd04e55e2e6}{Sj0}}[i][j].resize(kNum);}
+\DoxyCodeLine{449 }
+\DoxyCodeLine{450                 \mbox{\hyperlink{classParticles_aef95cfbdefce6ae15e2d74f207de8d59}{Fti}}[i][j].resize(kNum);}
+\DoxyCodeLine{451                 \mbox{\hyperlink{classParticles_afcad122d0f4c29af13da12d9481688a4}{Ftj}}[i][j].resize(kNum);}
+\DoxyCodeLine{452 }
+\DoxyCodeLine{453                 \mbox{\hyperlink{classParticles_a01472136090863ccd31bd5e53ac8d219}{f}}[i][j].resize(kNum);}
+\DoxyCodeLine{454 }
+\DoxyCodeLine{455                 \mbox{\hyperlink{classParticles_a21b2b164195c3a3f366b54ba0b6796ab}{beta}}[i][j].resize(kNum);}
+\DoxyCodeLine{456                 \mbox{\hyperlink{classParticles_ad122c6f8801655990cb2bd5d9217588b}{beta0}}[i][j].resize(kNum);}
+\DoxyCodeLine{457                 \mbox{\hyperlink{classParticles_a88adfe59af09bd20e5c5338c6f169797}{gamma}}[i][j].resize(kNum);}
+\DoxyCodeLine{458                 \mbox{\hyperlink{classParticles_aef997402fb077893a841f01a4e22c72b}{Fsi}}[i][j].resize(kNum);}
+\DoxyCodeLine{459                 \mbox{\hyperlink{classParticles_adee189cecb6a17b8aac1525697c46d76}{Fsj}}[i][j].resize(kNum);}
+\DoxyCodeLine{460                 \mbox{\hyperlink{classParticles_a5266808ffeb3457b081db73fde702440}{epsilonli}}[i][j].resize(kNum);}
+\DoxyCodeLine{461                 \mbox{\hyperlink{classParticles_abcc75546f2683677e64dcb3c547caf0b}{epsilonlj}}[i][j].resize(kNum);}
+\DoxyCodeLine{462                 \mbox{\hyperlink{classParticles_a21b6c3eb7be1f1e1ba6fe18fa04d19a0}{epsilongi}}[i][j].resize(kNum);}
+\DoxyCodeLine{463                 \mbox{\hyperlink{classParticles_ac049480821fc175d116e94c0a41f1832}{epsilongj}}[i][j].resize(kNum);}
+\DoxyCodeLine{464                 \mbox{\hyperlink{classParticles_af5fe7fc555037848d985bc9b2b736e5d}{Ii}}[i][j].resize(kNum);}
+\DoxyCodeLine{465                 \mbox{\hyperlink{classParticles_aae90775d6978af76b5632dd39ab32b05}{Ij}}[i][j].resize(kNum);}
+\DoxyCodeLine{466                 \mbox{\hyperlink{classParticles_ab0aa32ced59ada8d587d70243307449a}{alphai}}[i][j].resize(kNum);}
+\DoxyCodeLine{467                 \mbox{\hyperlink{classParticles_afb4db2cf34f0dafa02f9efde63259d7e}{alphaj}}[i][j].resize(kNum);}
+\DoxyCodeLine{468 }
+\DoxyCodeLine{469                 \mbox{\hyperlink{classParticles_a62280e44e6cb6a153f7885a6a4d0d6fd}{etai}}[i][j].resize(kNum);}
+\DoxyCodeLine{470                 \mbox{\hyperlink{classParticles_aba89291eeaa16985241e5d9893cecacb}{etaj}}[i][j].resize(kNum);}
+\DoxyCodeLine{471                 \mbox{\hyperlink{classParticles_ad20a6cc6f43fcc2cc43987f539f07a31}{etai0}}[i][j].resize(kNum);}
+\DoxyCodeLine{472                 \mbox{\hyperlink{classParticles_a849990165b94718da65401bb6860dc7f}{etaj0}}[i][j].resize(kNum);}
+\DoxyCodeLine{473                 \mbox{\hyperlink{classParticles_abdf7eedf5bb4d44c991f54cd41b58bef}{diff\_etai}}[i][j].resize(kNum);}
+\DoxyCodeLine{474                 \mbox{\hyperlink{classParticles_aa33de9e5d62de00fd12e523113e84719}{diff\_etaj}}[i][j].resize(kNum);}
+\DoxyCodeLine{475 }
+\DoxyCodeLine{476                 \mbox{\hyperlink{classParticles_ae5d1b3e78c13e299352a6025b7705b44}{Mi}}[i][j].resize(kNum);}
+\DoxyCodeLine{477                 \mbox{\hyperlink{classParticles_a9c4cdcd127caedd0eb39f3e59af5ea56}{Mj}}[i][j].resize(kNum);}
+\DoxyCodeLine{478 }
+\DoxyCodeLine{479                 \mbox{\hyperlink{classParticles_a3e3c430d6aee6f98fbbf43bd32e20aae}{Fb}}[i][j].resize(kNum);}
+\DoxyCodeLine{480                 \mbox{\hyperlink{classParticles_ac29b6a59a0b6cfcb2747e2cfa3713bf5}{pressure}}[i][j].resize(kNum);}
+\DoxyCodeLine{481                 \mbox{\hyperlink{classParticles_a98ceb15b0eb9270de568d54b6e5850b4}{Fa}}[i][j].resize(kNum);}
+\DoxyCodeLine{482                 \mbox{\hyperlink{classParticles_aa9af4320d9a192c293a9e273af52a444}{Fnormal}}[i][j].resize(kNum);}
+\DoxyCodeLine{483                 \mbox{\hyperlink{classParticles_ae216702da2ed6b8cc678544d91cf65a4}{Ftrans}}[i][j].resize(kNum);}
+\DoxyCodeLine{484                 \mbox{\hyperlink{classParticles_ae830889d23d3a3df0869b6989a9c1164}{Ftrans\_i}}[i][j].resize(kNum);}
+\DoxyCodeLine{485                 \mbox{\hyperlink{classParticles_a6c81c1ced0e9c8abfac9b9c67021cad1}{Ftrans\_j}}[i][j].resize(kNum);}
+\DoxyCodeLine{486                 \mbox{\hyperlink{classParticles_a1926761b0a83028de33d32d147ff8684}{disturbance}}[i][j].resize(kNum);}
+\DoxyCodeLine{487                 \mbox{\hyperlink{classParticles_a480dd10471160a874bf0c908cae51cb7}{Fd}}[i][j].resize(kNum);}
+\DoxyCodeLine{488                 \mbox{\hyperlink{classParticles_a411f615fb44d298b15da6cbac4952162}{r\_rot}}[i][j].resize(kNum);}
+\DoxyCodeLine{489                 \mbox{\hyperlink{classParticles_a0102d6220c855a94b7a8adbf703274c7}{v\_rot}}[i][j].resize(kNum);}
+\DoxyCodeLine{490                 \mbox{\hyperlink{classParticles_a36e1a2d44327b34bd10be0d196961d84}{phi}}[i][j].resize(kNum);}
+\DoxyCodeLine{491                 \mbox{\hyperlink{classParticles_a6420f71d1292146178d6c5e1b3a5b034}{psi}}[i][j].resize(kNum);}
+\DoxyCodeLine{492                 \mbox{\hyperlink{classParticles_a14d902474cf52db5f494a84cf0d89554}{theta}}[i][j].resize(kNum);}
+\DoxyCodeLine{493                 \mbox{\hyperlink{classParticles_a3f21a8f60a4ffdda5305a3960e690a1f}{omega}}[i][j].resize(kNum);}
+\DoxyCodeLine{494                 \mbox{\hyperlink{classParticles_a2f897289120e4a3f44eaf2911115eba4}{a\_euler}}[i][j].resize(kNum);}
+\DoxyCodeLine{495                 \mbox{\hyperlink{classParticles_a84841df484a804b4e82140565c7fd46f}{omega\_phi}}[i][j].resize(kNum);}
+\DoxyCodeLine{496                 \mbox{\hyperlink{classParticles_a5e9e33d806cccf5657697f2ee0700279}{omega\_psi}}[i][j].resize(kNum);}
+\DoxyCodeLine{497                 \mbox{\hyperlink{classParticles_a71cdda6910d826b692f0c4e6d364b4b9}{omega\_phi\_vec}}[i][j].resize(kNum);}
+\DoxyCodeLine{498                 \mbox{\hyperlink{classParticles_a6cd4c37491cb2248505ed7b5bc4bad63}{omega\_theta}}[i][j].resize(kNum);}
+\DoxyCodeLine{499                 \mbox{\hyperlink{classParticles_a9c5d8e9eaba57df526b84a19dea55d5e}{F}}[i][j].resize(kNum);}
+\DoxyCodeLine{500                 \mbox{\hyperlink{classParticles_ad3cb2366713e5f13567f6d13101f59be}{F\_Euler}}[i][j].resize(kNum);}
+\DoxyCodeLine{501                 \mbox{\hyperlink{classParticles_a07bb34bf96914ea0965ab610f42b5588}{F\_Cen}}[i][j].resize(kNum);}
+\DoxyCodeLine{502                 \mbox{\hyperlink{classParticles_aed0517ebe3967d95f3d6034887e1e8bc}{F\_Cor}}[i][j].resize(kNum);}
+\DoxyCodeLine{503                 \mbox{\hyperlink{classParticles_ae44e3f43530261fcb08194f192efada2}{F\_roll}}[i][j].resize(kNum);}
+\DoxyCodeLine{504                 \mbox{\hyperlink{classParticles_a19cfb06efca247ab32c1dbeb615c059b}{angle\_surface\_sun}}[i][j].resize(kNum);}
+\DoxyCodeLine{505                 \mbox{\hyperlink{classParticles_afdde10b9544c38a40d62c60dd91f11e8}{angle\_surface\_sun\_i}}[i][j].resize(kNum);}
+\DoxyCodeLine{506                 \mbox{\hyperlink{classParticles_a57ad1092992a9399624d02fd3139a5c9}{angle\_surface\_sun\_j}}[i][j].resize(kNum);}
+\DoxyCodeLine{507                 \mbox{\hyperlink{classParticles_a21e6147175219b9a985049e1b06e9c7d}{external\_force}}[i][j].resize(kNum);}
+\DoxyCodeLine{508                 \mbox{\hyperlink{classParticles_a0a89d0bdd5baabcc5601ee73a024750a}{external\_force\_by\_pressure}}[i][j].resize(kNum);}
+\DoxyCodeLine{509                 \mbox{\hyperlink{classParticles_a3d841b440ecd89ac7d49f8b2553754af}{omp}}[i][j].resize(kNum);}
+\DoxyCodeLine{510             \}}
+\DoxyCodeLine{511         \}}
+\DoxyCodeLine{512     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classParticles_a06dde9ff5c48d92d9ae273ad9501daa3}\label{classParticles_a06dde9ff5c48d92d9ae273ad9501daa3}} 
+\index{Particles@{Particles}!````~Particles@{$\sim$Particles}}
+\index{````~Particles@{$\sim$Particles}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{$\sim$Particles()}{~Particles()}}
+{\footnotesize\ttfamily Particles\+::$\sim$\+Particles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 514 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{514 \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{classParticles_a2f897289120e4a3f44eaf2911115eba4}\label{classParticles_a2f897289120e4a3f44eaf2911115eba4}} 
+\index{Particles@{Particles}!a\_euler@{a\_euler}}
+\index{a\_euler@{a\_euler}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{a\_euler}{a\_euler}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::a\+\_\+euler}
+
+
+
+回転角加速度 \mbox{[}rad/s$^\wedge$2\mbox{]} angular acceleration 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 183 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_ab0aa32ced59ada8d587d70243307449a}\label{classParticles_ab0aa32ced59ada8d587d70243307449a}} 
+\index{Particles@{Particles}!alphai@{alphai}}
+\index{alphai@{alphai}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{alphai}{alphai}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::alphai}
+
+
+
+曲げ角度 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 118 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_afb4db2cf34f0dafa02f9efde63259d7e}\label{classParticles_afb4db2cf34f0dafa02f9efde63259d7e}} 
+\index{Particles@{Particles}!alphaj@{alphaj}}
+\index{alphaj@{alphaj}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{alphaj}{alphaj}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::alphaj}
+
+
+
+曲げ角度 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 120 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a19cfb06efca247ab32c1dbeb615c059b}\label{classParticles_a19cfb06efca247ab32c1dbeb615c059b}} 
+\index{Particles@{Particles}!angle\_surface\_sun@{angle\_surface\_sun}}
+\index{angle\_surface\_sun@{angle\_surface\_sun}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{angle\_surface\_sun}{angle\_surface\_sun}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::angle\+\_\+surface\+\_\+sun}
+
+
+
+Angle between the normal vector of surface ant the sun light in frame sunlight and transverse 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 155 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_afdde10b9544c38a40d62c60dd91f11e8}\label{classParticles_afdde10b9544c38a40d62c60dd91f11e8}} 
+\index{Particles@{Particles}!angle\_surface\_sun\_i@{angle\_surface\_sun\_i}}
+\index{angle\_surface\_sun\_i@{angle\_surface\_sun\_i}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{angle\_surface\_sun\_i}{angle\_surface\_sun\_i}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::angle\+\_\+surface\+\_\+sun\+\_\+i}
+
+
+
+Angle between the normal vector of surface ant the sun light in i 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 157 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a57ad1092992a9399624d02fd3139a5c9}\label{classParticles_a57ad1092992a9399624d02fd3139a5c9}} 
+\index{Particles@{Particles}!angle\_surface\_sun\_j@{angle\_surface\_sun\_j}}
+\index{angle\_surface\_sun\_j@{angle\_surface\_sun\_j}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{angle\_surface\_sun\_j}{angle\_surface\_sun\_j}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::angle\+\_\+surface\+\_\+sun\+\_\+j}
+
+
+
+Angle between the normal vector of surface ant the sun light in j 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 159 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a21b2b164195c3a3f366b54ba0b6796ab}\label{classParticles_a21b2b164195c3a3f366b54ba0b6796ab}} 
+\index{Particles@{Particles}!beta@{beta}}
+\index{beta@{beta}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{beta}{beta}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structQuarter}{Quarter}}$>$ $>$ $>$ Particles\+::beta}
+
+
+
+せん断角度 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 95 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_ad122c6f8801655990cb2bd5d9217588b}\label{classParticles_ad122c6f8801655990cb2bd5d9217588b}} 
+\index{Particles@{Particles}!beta0@{beta0}}
+\index{beta0@{beta0}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{beta0}{beta0}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structQuarter}{Quarter}}$>$ $>$ $>$ Particles\+::beta0}
+
+
+
+無負荷時のせん断角度 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 97 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a1377b5ad84922491f09e9df394284aa4}\label{classParticles_a1377b5ad84922491f09e9df394284aa4}} 
+\index{Particles@{Particles}!c@{c}}
+\index{c@{c}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{c}{c}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::c}
+
+
+
+Particle Coordinates (x,y,z) 粒子の座標を格納する (Particle Coordinates) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 26 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a81033b7bea657bacf9cf3c0a78dd8fa4}\label{classParticles_a81033b7bea657bacf9cf3c0a78dd8fa4}} 
+\index{Particles@{Particles}!commflag@{commflag}}
+\index{commflag@{commflag}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{commflag}{commflag}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{DataSet_8hpp_a836c27e2d64d0efa4a526150bdf6f3e5}{Communication}}$>$ $>$ $>$ Particles\+::commflag}
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 24 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_abdf7eedf5bb4d44c991f54cd41b58bef}\label{classParticles_abdf7eedf5bb4d44c991f54cd41b58bef}} 
+\index{Particles@{Particles}!diff\_etai@{diff\_etai}}
+\index{diff\_etai@{diff\_etai}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{diff\_etai}{diff\_etai}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::diff\+\_\+etai}
+
+
+
+曲率の変位 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 131 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_aa33de9e5d62de00fd12e523113e84719}\label{classParticles_aa33de9e5d62de00fd12e523113e84719}} 
+\index{Particles@{Particles}!diff\_etaj@{diff\_etaj}}
+\index{diff\_etaj@{diff\_etaj}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{diff\_etaj}{diff\_etaj}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::diff\+\_\+etaj}
+
+
+
+曲率の変位 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 133 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a1926761b0a83028de33d32d147ff8684}\label{classParticles_a1926761b0a83028de33d32d147ff8684}} 
+\index{Particles@{Particles}!disturbance@{disturbance}}
+\index{disturbance@{disturbance}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{disturbance}{disturbance}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::disturbance}
+
+
+
+Disturbance 擾乱 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 161 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a21b6c3eb7be1f1e1ba6fe18fa04d19a0}\label{classParticles_a21b6c3eb7be1f1e1ba6fe18fa04d19a0}} 
+\index{Particles@{Particles}!epsilongi@{epsilongi}}
+\index{epsilongi@{epsilongi}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{epsilongi}{epsilongi}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::epsilongi}
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 110 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_ac049480821fc175d116e94c0a41f1832}\label{classParticles_ac049480821fc175d116e94c0a41f1832}} 
+\index{Particles@{Particles}!epsilongj@{epsilongj}}
+\index{epsilongj@{epsilongj}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{epsilongj}{epsilongj}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::epsilongj}
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 111 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a5266808ffeb3457b081db73fde702440}\label{classParticles_a5266808ffeb3457b081db73fde702440}} 
+\index{Particles@{Particles}!epsilonli@{epsilonli}}
+\index{epsilonli@{epsilonli}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{epsilonli}{epsilonli}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::epsilonli}
+
+
+
+垂直ひずみ 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 106 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_abcc75546f2683677e64dcb3c547caf0b}\label{classParticles_abcc75546f2683677e64dcb3c547caf0b}} 
+\index{Particles@{Particles}!epsilonlj@{epsilonlj}}
+\index{epsilonlj@{epsilonlj}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{epsilonlj}{epsilonlj}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::epsilonlj}
+
+
+
+垂直ひずみ 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 108 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a62280e44e6cb6a153f7885a6a4d0d6fd}\label{classParticles_a62280e44e6cb6a153f7885a6a4d0d6fd}} 
+\index{Particles@{Particles}!etai@{etai}}
+\index{etai@{etai}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{etai}{etai}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::etai}
+
+
+
+曲率 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 123 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_ad20a6cc6f43fcc2cc43987f539f07a31}\label{classParticles_ad20a6cc6f43fcc2cc43987f539f07a31}} 
+\index{Particles@{Particles}!etai0@{etai0}}
+\index{etai0@{etai0}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{etai0}{etai0}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::etai0}
+
+
+
+無負荷時の曲率 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 127 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_aba89291eeaa16985241e5d9893cecacb}\label{classParticles_aba89291eeaa16985241e5d9893cecacb}} 
+\index{Particles@{Particles}!etaj@{etaj}}
+\index{etaj@{etaj}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{etaj}{etaj}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::etaj}
+
+
+
+曲率 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 125 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a849990165b94718da65401bb6860dc7f}\label{classParticles_a849990165b94718da65401bb6860dc7f}} 
+\index{Particles@{Particles}!etaj0@{etaj0}}
+\index{etaj0@{etaj0}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{etaj0}{etaj0}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::etaj0}
+
+
+
+無負荷時の曲率 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 129 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a21e6147175219b9a985049e1b06e9c7d}\label{classParticles_a21e6147175219b9a985049e1b06e9c7d}} 
+\index{Particles@{Particles}!external\_force@{external\_force}}
+\index{external\_force@{external\_force}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{external\_force}{external\_force}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::external\+\_\+force}
+
+
+
+Get\+New\+Coordinate.\+hppで計算する値を入力する。\+External\+Force 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 201 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a0a89d0bdd5baabcc5601ee73a024750a}\label{classParticles_a0a89d0bdd5baabcc5601ee73a024750a}} 
+\index{Particles@{Particles}!external\_force\_by\_pressure@{external\_force\_by\_pressure}}
+\index{external\_force\_by\_pressure@{external\_force\_by\_pressure}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{external\_force\_by\_pressure}{external\_force\_by\_pressure}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::external\+\_\+force\+\_\+by\+\_\+pressure}
+
+
+
+Get\+New\+Coordinate.\+hppで計算する値を入力する。\+External\+Force by Pressure 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 203 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a01472136090863ccd31bd5e53ac8d219}\label{classParticles_a01472136090863ccd31bd5e53ac8d219}} 
+\index{Particles@{Particles}!f@{f}}
+\index{f@{f}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{f}{f}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::f}
+
+
+
+構造体\+C、x,y,z方向の力を格納する 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 92 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a9c5d8e9eaba57df526b84a19dea55d5e}\label{classParticles_a9c5d8e9eaba57df526b84a19dea55d5e}} 
+\index{Particles@{Particles}!F@{F}}
+\index{F@{F}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{F}{F}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structDirection}{Direction}}$>$ $>$ $>$ Particles\+::F}
+
+
+
+Get\+New\+Coordinate.\+hppで計算する値を入力する。\+Ft, Fs, Fbの合力 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 165 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a07bb34bf96914ea0965ab610f42b5588}\label{classParticles_a07bb34bf96914ea0965ab610f42b5588}} 
+\index{Particles@{Particles}!F\_Cen@{F\_Cen}}
+\index{F\_Cen@{F\_Cen}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{F\_Cen}{F\_Cen}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::\+F\+\_\+\+Cen}
+
+
+
+遠心力 (Centrifugal Force) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 195 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_aed0517ebe3967d95f3d6034887e1e8bc}\label{classParticles_aed0517ebe3967d95f3d6034887e1e8bc}} 
+\index{Particles@{Particles}!F\_Cor@{F\_Cor}}
+\index{F\_Cor@{F\_Cor}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{F\_Cor}{F\_Cor}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::\+F\+\_\+\+Cor}
+
+
+
+コリオリ力 (Coriolis Force) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 197 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_ad3cb2366713e5f13567f6d13101f59be}\label{classParticles_ad3cb2366713e5f13567f6d13101f59be}} 
+\index{Particles@{Particles}!F\_Euler@{F\_Euler}}
+\index{F\_Euler@{F\_Euler}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{F\_Euler}{F\_Euler}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::\+F\+\_\+\+Euler}
+
+
+
+回転方向の慣性力 (Euler Force) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 193 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_ae44e3f43530261fcb08194f192efada2}\label{classParticles_ae44e3f43530261fcb08194f192efada2}} 
+\index{Particles@{Particles}!F\_roll@{F\_roll}}
+\index{F\_roll@{F\_roll}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{F\_roll}{F\_roll}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::\+F\+\_\+roll}
+
+
+
+系の回転による力 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 199 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a98ceb15b0eb9270de568d54b6e5850b4}\label{classParticles_a98ceb15b0eb9270de568d54b6e5850b4}} 
+\index{Particles@{Particles}!Fa@{Fa}}
+\index{Fa@{Fa}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Fa}{Fa}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::\+Fa}
+
+
+
+Force by air (Pressure) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 145 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a3e3c430d6aee6f98fbbf43bd32e20aae}\label{classParticles_a3e3c430d6aee6f98fbbf43bd32e20aae}} 
+\index{Particles@{Particles}!Fb@{Fb}}
+\index{Fb@{Fb}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Fb}{Fb}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structPreDirection}{Pre\+Direction}}$>$ $>$ $>$ Particles\+::\+Fb}
+
+
+
+Force by bending 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 141 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a480dd10471160a874bf0c908cae51cb7}\label{classParticles_a480dd10471160a874bf0c908cae51cb7}} 
+\index{Particles@{Particles}!Fd@{Fd}}
+\index{Fd@{Fd}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Fd}{Fd}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::\+Fd}
+
+
+
+Force by dostirbance (Pressure) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 163 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_ac5203a8b24eb67712c24750ceec97995}\label{classParticles_ac5203a8b24eb67712c24750ceec97995}} 
+\index{Particles@{Particles}!flag@{flag}}
+\index{flag@{flag}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{flag}{flag}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$int$>$ $>$ $>$ Particles\+::flag}
+
+
+
+Particle\textquotesingle{}s Flag 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 22 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_aa9af4320d9a192c293a9e273af52a444}\label{classParticles_aa9af4320d9a192c293a9e273af52a444}} 
+\index{Particles@{Particles}!Fnormal@{Fnormal}}
+\index{Fnormal@{Fnormal}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Fnormal}{Fnormal}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::\+Fnormal}
+
+
+
+Force by sun Normal 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 147 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_aef997402fb077893a841f01a4e22c72b}\label{classParticles_aef997402fb077893a841f01a4e22c72b}} 
+\index{Particles@{Particles}!Fsi@{Fsi}}
+\index{Fsi@{Fsi}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Fsi}{Fsi}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structQuarter}{Quarter}}$>$ $>$ $>$ Particles\+::\+Fsi}
+
+
+
+i方向のせん断力 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 101 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_adee189cecb6a17b8aac1525697c46d76}\label{classParticles_adee189cecb6a17b8aac1525697c46d76}} 
+\index{Particles@{Particles}!Fsj@{Fsj}}
+\index{Fsj@{Fsj}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Fsj}{Fsj}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structQuarter}{Quarter}}$>$ $>$ $>$ Particles\+::\+Fsj}
+
+
+
+j方向のせん断力 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 103 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_aef95cfbdefce6ae15e2d74f207de8d59}\label{classParticles_aef95cfbdefce6ae15e2d74f207de8d59}} 
+\index{Particles@{Particles}!Fti@{Fti}}
+\index{Fti@{Fti}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Fti}{Fti}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::\+Fti}
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 88 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_afcad122d0f4c29af13da12d9481688a4}\label{classParticles_afcad122d0f4c29af13da12d9481688a4}} 
+\index{Particles@{Particles}!Ftj@{Ftj}}
+\index{Ftj@{Ftj}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Ftj}{Ftj}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::\+Ftj}
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 89 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_ae216702da2ed6b8cc678544d91cf65a4}\label{classParticles_ae216702da2ed6b8cc678544d91cf65a4}} 
+\index{Particles@{Particles}!Ftrans@{Ftrans}}
+\index{Ftrans@{Ftrans}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Ftrans}{Ftrans}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::\+Ftrans}
+
+
+
+Force by sun transverse 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 149 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_ae830889d23d3a3df0869b6989a9c1164}\label{classParticles_ae830889d23d3a3df0869b6989a9c1164}} 
+\index{Particles@{Particles}!Ftrans\_i@{Ftrans\_i}}
+\index{Ftrans\_i@{Ftrans\_i}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Ftrans\_i}{Ftrans\_i}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::\+Ftrans\+\_\+i}
+
+
+
+Force by sun transverse in i 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 151 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a6c81c1ced0e9c8abfac9b9c67021cad1}\label{classParticles_a6c81c1ced0e9c8abfac9b9c67021cad1}} 
+\index{Particles@{Particles}!Ftrans\_j@{Ftrans\_j}}
+\index{Ftrans\_j@{Ftrans\_j}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Ftrans\_j}{Ftrans\_j}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::\+Ftrans\+\_\+j}
+
+
+
+Force by sun transverse in j 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 153 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_ae774ffc4667416403470d44df363a31b}\label{classParticles_ae774ffc4667416403470d44df363a31b}} 
+\index{Particles@{Particles}!g@{g}}
+\index{g@{g}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{g}{g}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::g}
+
+Gravity point between 4 particle. 重心を格納する。計算方法はi+ j+方向の4粒子のxyz座標の平均 
+
+ Calc\+Data\+Allocation.\+hpp の 57 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_aeec9eaa7596ec8a56b85a9d62d98885c}\label{classParticles_aeec9eaa7596ec8a56b85a9d62d98885c}} 
+\index{Particles@{Particles}!g0@{g0}}
+\index{g0@{g0}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{g0}{g0}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::g0}
+
+
+
+Initial Gravity point. 初期重心を格納する 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 59 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a88adfe59af09bd20e5c5338c6f169797}\label{classParticles_a88adfe59af09bd20e5c5338c6f169797}} 
+\index{Particles@{Particles}!gamma@{gamma}}
+\index{gamma@{gamma}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{gamma}{gamma}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structQuarter}{Quarter}}$>$ $>$ $>$ Particles\+::gamma}
+
+
+
+せん断ひずみ 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 99 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a687135810d6e149aedf0eaf02800012f}\label{classParticles_a687135810d6e149aedf0eaf02800012f}} 
+\index{Particles@{Particles}!h\_ave@{h\_ave}}
+\index{h\_ave@{h\_ave}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{h\_ave}{h\_ave}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::h\+\_\+ave}
+
+
+
+Average thickness. 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 73 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a981f96a73a1eecb4606e1cdce63034d8}\label{classParticles_a981f96a73a1eecb4606e1cdce63034d8}} 
+\index{Particles@{Particles}!h\_ave3@{h\_ave3}}
+\index{h\_ave3@{h\_ave3}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{h\_ave3}{h\_ave3}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::h\+\_\+ave3}
+
+
+
+Average thickness. 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 75 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a3b4f4481bb0db67c377dc8ee719f6744}\label{classParticles_a3b4f4481bb0db67c377dc8ee719f6744}} 
+\index{Particles@{Particles}!hi@{hi}}
+\index{hi@{hi}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{hi}{hi}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::hi}
+
+
+
+Thickness in i-\/direction. i方向の膜厚 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 69 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_aa19ca0d37365c3d04dc8d7f4b2891bac}\label{classParticles_aa19ca0d37365c3d04dc8d7f4b2891bac}} 
+\index{Particles@{Particles}!hj@{hj}}
+\index{hj@{hj}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{hj}{hj}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::hj}
+
+
+
+Thickness in j-\/direction. j方向の膜厚 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 71 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_af5fe7fc555037848d985bc9b2b736e5d}\label{classParticles_af5fe7fc555037848d985bc9b2b736e5d}} 
+\index{Particles@{Particles}!Ii@{Ii}}
+\index{Ii@{Ii}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Ii}{Ii}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::\+Ii}
+
+
+
+断面2次モーメント 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 114 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_aae90775d6978af76b5632dd39ab32b05}\label{classParticles_aae90775d6978af76b5632dd39ab32b05}} 
+\index{Particles@{Particles}!Ij@{Ij}}
+\index{Ij@{Ij}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Ij}{Ij}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::\+Ij}
+
+
+
+断面2次モーメント 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 116 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a2b43b854e2f0d731cf6ffc58cb7bb4fb}\label{classParticles_a2b43b854e2f0d731cf6ffc58cb7bb4fb}} 
+\index{Particles@{Particles}!li@{li}}
+\index{li@{li}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{li}{li}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structVector}{Vector}}$>$ $>$ $>$ Particles\+::li}
+
+
+
+Lnegth in i-\/direction. i方向の長さ 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 61 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a65ba878040fee67a4b2320bb027c39f7}\label{classParticles_a65ba878040fee67a4b2320bb027c39f7}} 
+\index{Particles@{Particles}!li0@{li0}}
+\index{li0@{li0}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{li0}{li0}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::li0}
+
+
+
+Initial Length in i-\/direction. 無負荷時のi方向の長さ 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 65 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a92d507b33db3d775510b8fd53c777645}\label{classParticles_a92d507b33db3d775510b8fd53c777645}} 
+\index{Particles@{Particles}!lj@{lj}}
+\index{lj@{lj}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{lj}{lj}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structVector}{Vector}}$>$ $>$ $>$ Particles\+::lj}
+
+
+
+Length in j-\/direction/ j方向の長さ 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 63 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_ace63e82b0c03513160175613f85b8946}\label{classParticles_ace63e82b0c03513160175613f85b8946}} 
+\index{Particles@{Particles}!lj0@{lj0}}
+\index{lj0@{lj0}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{lj0}{lj0}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::lj0}
+
+
+
+Initial Length in j-\/direction. 無負荷時のj方向の長さ 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 67 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a8c094317ea0c561dd562ea0713483610}\label{classParticles_a8c094317ea0c561dd562ea0713483610}} 
+\index{Particles@{Particles}!mi@{mi}}
+\index{mi@{mi}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{mi}{mi}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::mi}
+
+Midpoint particle(i,j) and (i+1,j). 粒子(i,j)と粒子(i+1,j)sの中間点。\+Ij(i,j)とljgを求めるのに使用する。mi\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}とmi\mbox{[}i-\/1\mbox{]}\mbox{[}j\mbox{]}の和で粒子(i,j)の前後の長さli(i,j)を求めれる。 
+
+ Calc\+Data\+Allocation.\+hpp の 45 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_ae5d1b3e78c13e299352a6025b7705b44}\label{classParticles_ae5d1b3e78c13e299352a6025b7705b44}} 
+\index{Particles@{Particles}!Mi@{Mi}}
+\index{Mi@{Mi}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Mi}{Mi}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::\+Mi}
+
+
+
+Bending moment in i-\/direction (i方向の曲げモーメント) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 136 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a7c9b9414dd1db7771f17c24232499650}\label{classParticles_a7c9b9414dd1db7771f17c24232499650}} 
+\index{Particles@{Particles}!mi0@{mi0}}
+\index{mi0@{mi0}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{mi0}{mi0}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::mi0}
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 49 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_ad4707eae65e641a64d5fa9fb673c7850}\label{classParticles_ad4707eae65e641a64d5fa9fb673c7850}} 
+\index{Particles@{Particles}!mj@{mj}}
+\index{mj@{mj}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{mj}{mj}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::mj}
+
+Midpoint particle(i,j) and (i,j+1). 粒子(i,j)と粒子(i,j+1)の中間点。\+Ii(i,j)とligを求めるのに使用する。これで、粒子(i,j)の前後の長さを求めれる。 
+
+ Calc\+Data\+Allocation.\+hpp の 48 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a9c4cdcd127caedd0eb39f3e59af5ea56}\label{classParticles_a9c4cdcd127caedd0eb39f3e59af5ea56}} 
+\index{Particles@{Particles}!Mj@{Mj}}
+\index{Mj@{Mj}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Mj}{Mj}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::\+Mj}
+
+
+
+Bending moment in j-\/direction j方向の曲げモーメント 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 138 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_af4a59b95b099db07dc385b2e7e04bb69}\label{classParticles_af4a59b95b099db07dc385b2e7e04bb69}} 
+\index{Particles@{Particles}!mj0@{mj0}}
+\index{mj0@{mj0}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{mj0}{mj0}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::mj0}
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 50 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a353c994760728a3dd6eb4efbf2a4ebc4}\label{classParticles_a353c994760728a3dd6eb4efbf2a4ebc4}} 
+\index{Particles@{Particles}!new\_c@{new\_c}}
+\index{new\_c@{new\_c}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{new\_c}{new\_c}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::new\+\_\+c}
+
+
+
+New Particle Coordinates (出力するための粒子の座標を格納する) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 28 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_acfe4892af7f831c485f217c09579efcd}\label{classParticles_acfe4892af7f831c485f217c09579efcd}} 
+\index{Particles@{Particles}!new\_v@{new\_v}}
+\index{new\_v@{new\_v}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{new\_v}{new\_v}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::new\+\_\+v}
+
+
+
+New \mbox{\hyperlink{structVector}{Vector}} per particle. 速度を格納する 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 54 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a3f21a8f60a4ffdda5305a3960e690a1f}\label{classParticles_a3f21a8f60a4ffdda5305a3960e690a1f}} 
+\index{Particles@{Particles}!omega@{omega}}
+\index{omega@{omega}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{omega}{omega}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::omega}
+
+
+
+回転角速度 \mbox{[}rad/s\mbox{]} omega 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 181 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a84841df484a804b4e82140565c7fd46f}\label{classParticles_a84841df484a804b4e82140565c7fd46f}} 
+\index{Particles@{Particles}!omega\_phi@{omega\_phi}}
+\index{omega\_phi@{omega\_phi}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{omega\_phi}{omega\_phi}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::omega\+\_\+phi}
+
+
+
+回転角速度 \mbox{[}rad/s\mbox{]} omega\+\_\+phi 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 185 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a71cdda6910d826b692f0c4e6d364b4b9}\label{classParticles_a71cdda6910d826b692f0c4e6d364b4b9}} 
+\index{Particles@{Particles}!omega\_phi\_vec@{omega\_phi\_vec}}
+\index{omega\_phi\_vec@{omega\_phi\_vec}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{omega\_phi\_vec}{omega\_phi\_vec}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::omega\+\_\+phi\+\_\+vec}
+
+
+
+回転角速度 \mbox{[}rad/s\mbox{]} omega\+\_\+phi 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 187 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a5e9e33d806cccf5657697f2ee0700279}\label{classParticles_a5e9e33d806cccf5657697f2ee0700279}} 
+\index{Particles@{Particles}!omega\_psi@{omega\_psi}}
+\index{omega\_psi@{omega\_psi}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{omega\_psi}{omega\_psi}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::omega\+\_\+psi}
+
+
+
+回転角速度 \mbox{[}rad/s\mbox{]} omega\+\_\+psi Z-\/axix angle 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 191 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a6cd4c37491cb2248505ed7b5bc4bad63}\label{classParticles_a6cd4c37491cb2248505ed7b5bc4bad63}} 
+\index{Particles@{Particles}!omega\_theta@{omega\_theta}}
+\index{omega\_theta@{omega\_theta}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{omega\_theta}{omega\_theta}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::omega\+\_\+theta}
+
+
+
+回転角速度 \mbox{[}rad/s\mbox{]} omega\+\_\+theta 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 189 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a3d841b440ecd89ac7d49f8b2553754af}\label{classParticles_a3d841b440ecd89ac7d49f8b2553754af}} 
+\index{Particles@{Particles}!omp@{omp}}
+\index{omp@{omp}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{omp}{omp}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structOuterMostParameter}{Outer\+Most\+Parameter}}$>$ $>$ $>$ Particles\+::omp}
+
+
+
+Outer most parameters (最外殻粒子のパラメーター) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 206 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a36e1a2d44327b34bd10be0d196961d84}\label{classParticles_a36e1a2d44327b34bd10be0d196961d84}} 
+\index{Particles@{Particles}!phi@{phi}}
+\index{phi@{phi}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{phi}{phi}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::phi}
+
+
+
+角度 \mbox{[}rad\mbox{]} (spherical coordinate system) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 175 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a03a19015d2b7d7674f30cade88c70b7e}\label{classParticles_a03a19015d2b7d7674f30cade88c70b7e}} 
+\index{Particles@{Particles}!pre\_r@{pre\_r}}
+\index{pre\_r@{pre\_r}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{pre\_r}{pre\_r}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structVector}{Vector}}$>$ $>$ $>$ Particles\+::pre\+\_\+r}
+
+
+
+pre radius 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 169 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_ac29b6a59a0b6cfcb2747e2cfa3713bf5}\label{classParticles_ac29b6a59a0b6cfcb2747e2cfa3713bf5}} 
+\index{Particles@{Particles}!pressure@{pressure}}
+\index{pressure@{pressure}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{pressure}{pressure}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::pressure}
+
+
+
+Pressure 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 143 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a6420f71d1292146178d6c5e1b3a5b034}\label{classParticles_a6420f71d1292146178d6c5e1b3a5b034}} 
+\index{Particles@{Particles}!psi@{psi}}
+\index{psi@{psi}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{psi}{psi}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::psi}
+
+
+
+角度 \mbox{[}rad\mbox{]} (spherical coordinate system)(i=max,j=harf phi=0. i=harf,j=max phi=90 deg.) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 179 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_af461d5b45d81b3cac3a73eeeca96a785}\label{classParticles_af461d5b45d81b3cac3a73eeeca96a785}} 
+\index{Particles@{Particles}!r@{r}}
+\index{r@{r}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{r}{r}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structVector}{Vector}}$>$ $>$ $>$ Particles\+::r}
+
+
+
+radius 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 167 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a411f615fb44d298b15da6cbac4952162}\label{classParticles_a411f615fb44d298b15da6cbac4952162}} 
+\index{Particles@{Particles}!r\_rot@{r\_rot}}
+\index{r\_rot@{r\_rot}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{r\_rot}{r\_rot}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::r\+\_\+rot}
+
+
+
+radius oon rotation system 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 171 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a688f92b4f2dc10c8f6d62edc80c1c529}\label{classParticles_a688f92b4f2dc10c8f6d62edc80c1c529}} 
+\index{Particles@{Particles}!S@{S}}
+\index{S@{S}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{S}{S}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structArea}{Area}}$>$ $>$ $>$ Particles\+::S}
+
+
+
+Influence area. 影響面積 S(i,j) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 78 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a32261052104cac29561fffe9b68be6cc}\label{classParticles_a32261052104cac29561fffe9b68be6cc}} 
+\index{Particles@{Particles}!S0@{S0}}
+\index{S0@{S0}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{S0}{S0}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::\+S0}
+
+
+
+無負荷時の影響面積 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 84 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a84dde25fb3eb719a7ff266d4ba30dcd9}\label{classParticles_a84dde25fb3eb719a7ff266d4ba30dcd9}} 
+\index{Particles@{Particles}!Si@{Si}}
+\index{Si@{Si}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Si}{Si}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structArea}{Area}}$>$ $>$ $>$ Particles\+::\+Si}
+
+
+
+影響面積 S(i+1/2,j) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 80 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a0ffad42c6d2339c202ec8e97fe36be43}\label{classParticles_a0ffad42c6d2339c202ec8e97fe36be43}} 
+\index{Particles@{Particles}!Si0@{Si0}}
+\index{Si0@{Si0}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Si0}{Si0}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::\+Si0}
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 85 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a70e3078b2c99c00122b8e12739a99e8e}\label{classParticles_a70e3078b2c99c00122b8e12739a99e8e}} 
+\index{Particles@{Particles}!Sj@{Sj}}
+\index{Sj@{Sj}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Sj}{Sj}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structArea}{Area}}$>$ $>$ $>$ Particles\+::\+Sj}
+
+
+
+影響面積 S(i,j+1/2) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 82 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_aabecf25eeb69c3f615ddbcd04e55e2e6}\label{classParticles_aabecf25eeb69c3f615ddbcd04e55e2e6}} 
+\index{Particles@{Particles}!Sj0@{Sj0}}
+\index{Sj0@{Sj0}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{Sj0}{Sj0}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::\+Sj0}
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 86 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a2ccdbf22a5c9174d5be12bc2493f95a5}\label{classParticles_a2ccdbf22a5c9174d5be12bc2493f95a5}} 
+\index{Particles@{Particles}!surround\_particle\_exsit@{surround\_particle\_exsit}}
+\index{surround\_particle\_exsit@{surround\_particle\_exsit}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{surround\_particle\_exsit}{surround\_particle\_exsit}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$int$>$ $>$ $>$ Particles\+::surround\+\_\+particle\+\_\+exsit}
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 23 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a14d902474cf52db5f494a84cf0d89554}\label{classParticles_a14d902474cf52db5f494a84cf0d89554}} 
+\index{Particles@{Particles}!theta@{theta}}
+\index{theta@{theta}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{theta}{theta}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Particles\+::theta}
+
+
+
+角度 \mbox{[}rad\mbox{]} (spherical coordinate system) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 177 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_afa87f084488a65522143f49d1a46576b}\label{classParticles_afa87f084488a65522143f49d1a46576b}} 
+\index{Particles@{Particles}!tmp@{tmp}}
+\index{tmp@{tmp}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{tmp}{tmp}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structTmp}{Tmp}} Particles\+::tmp}
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 208 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a26b833f319bd527ba03742d82347c643}\label{classParticles_a26b833f319bd527ba03742d82347c643}} 
+\index{Particles@{Particles}!v@{v}}
+\index{v@{v}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{v}{v}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::v}
+
+
+
+\mbox{\hyperlink{structVector}{Vector}} per particle. 速度を格納する 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 52 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a0102d6220c855a94b7a8adbf703274c7}\label{classParticles_a0102d6220c855a94b7a8adbf703274c7}} 
+\index{Particles@{Particles}!v\_rot@{v\_rot}}
+\index{v\_rot@{v\_rot}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{v\_rot}{v\_rot}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::v\+\_\+rot}
+
+
+
+vector on rotation system 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 173 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a24d839c09fc733040bb42b00e846579e}\label{classParticles_a24d839c09fc733040bb42b00e846579e}} 
+\index{Particles@{Particles}!vc\_Bottom@{vc\_Bottom}}
+\index{vc\_Bottom@{vc\_Bottom}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{vc\_Bottom}{vc\_Bottom}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::vc\+\_\+\+Bottom}
+
+
+
+Coordinate of Virtuale particle at the bottom 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 30 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a514d7ea8eba97fd7ff10048f201b26e4}\label{classParticles_a514d7ea8eba97fd7ff10048f201b26e4}} 
+\index{Particles@{Particles}!vc\_Left@{vc\_Left}}
+\index{vc\_Left@{vc\_Left}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{vc\_Left}{vc\_Left}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::vc\+\_\+\+Left}
+
+
+
+Coordinate of Virtuale particle at the left 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 36 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a022c09eb71a6de67c54d2538cc56e94e}\label{classParticles_a022c09eb71a6de67c54d2538cc56e94e}} 
+\index{Particles@{Particles}!vc\_Right@{vc\_Right}}
+\index{vc\_Right@{vc\_Right}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{vc\_Right}{vc\_Right}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::vc\+\_\+\+Right}
+
+
+
+Coordinate of Virtuale particle at the right 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 34 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_abb0bd9e79cca586cdaecfffef9527ae1}\label{classParticles_abb0bd9e79cca586cdaecfffef9527ae1}} 
+\index{Particles@{Particles}!vc\_tmp@{vc\_tmp}}
+\index{vc\_tmp@{vc\_tmp}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{vc\_tmp}{vc\_tmp}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::vc\+\_\+tmp}
+
+
+
+Coordinate of Virtuale particle at tmp 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 39 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a9273dd7c369bad02e0562d5388597141}\label{classParticles_a9273dd7c369bad02e0562d5388597141}} 
+\index{Particles@{Particles}!vc\_Top@{vc\_Top}}
+\index{vc\_Top@{vc\_Top}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{vc\_Top}{vc\_Top}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{classC}{C}}$>$ $>$ $>$ Particles\+::vc\+\_\+\+Top}
+
+
+
+Coordinate of Virtuale particle at the top 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 32 行目に定義があります。
+
+\mbox{\Hypertarget{classParticles_a529dff7c4590266b114035435fcbb426}\label{classParticles_a529dff7c4590266b114035435fcbb426}} 
+\index{Particles@{Particles}!vp@{vp}}
+\index{vp@{vp}!Particles@{Particles}}
+\doxysubsubsection{\texorpdfstring{vp}{vp}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$\mbox{\hyperlink{structVirtualParticle}{Virtual\+Particle}}$>$ $>$ $>$ Particles\+::vp}
+
+
+
+Virtual Particle Parameters (仮想粒子関係の値を格納する関数) 
+
+
+
+ Calc\+Data\+Allocation.\+hpp の 41 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/hpp/\+Base/\mbox{\hyperlink{CalcDataAllocation_8hpp}{Calc\+Data\+Allocation.\+hpp}}\end{DoxyCompactItemize}

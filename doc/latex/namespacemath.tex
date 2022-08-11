@@ -1,0 +1,130 @@
+\hypertarget{namespacemath}{}\doxysection{math 名前空間}
+\label{namespacemath}\index{math@{math}}
+\doxysubsection*{関数}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{namespacemath_adeae9e6c6f768a920a1fde06087749f3}{pi}} (void)
+\begin{DoxyCompactList}\small\item\em 円周率 π \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacemath_a489f1ea9d876f182e9bf893091fad820}{sacos}} (double x)
+\begin{DoxyCompactList}\small\item\em 安全なarc cos. 戻り値がnanにならない \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacemath_af3d38f453e4e6ff9e22ba37fe0dc36a3}{degree\+\_\+to\+\_\+radian}} (double const \&)
+\begin{DoxyCompactList}\small\item\em 角度をラジアンに変換する \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacemath_a47b42e10e4633e4996df2ce02e8ba6ca}{radian\+\_\+to\+\_\+degree}} (double const \&)
+\begin{DoxyCompactList}\small\item\em ラジアンを角度に変換する \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{namespacemath_af3d38f453e4e6ff9e22ba37fe0dc36a3}\label{namespacemath_af3d38f453e4e6ff9e22ba37fe0dc36a3}} 
+\index{math@{math}!degree\_to\_radian@{degree\_to\_radian}}
+\index{degree\_to\_radian@{degree\_to\_radian}!math@{math}}
+\doxysubsubsection{\texorpdfstring{degree\_to\_radian()}{degree\_to\_radian()}}
+{\footnotesize\ttfamily double math\+::degree\+\_\+to\+\_\+radian (\begin{DoxyParamCaption}\item[{double const \&}]{degree }\end{DoxyParamCaption})}
+
+
+
+角度をラジアンに変換する 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em double} & degree：角度 \mbox{[}deg.\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+double ：ラジアン \mbox{[}rad\mbox{]} 
+\end{DoxyReturn}
+
+
+ Basic.\+hpp の 124 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{124                                                   \{}
+\DoxyCodeLine{125     \textcolor{keywordflow}{return} degree * \mbox{\hyperlink{namespacemath_adeae9e6c6f768a920a1fde06087749f3}{math::pi}}() / 180.0;}
+\DoxyCodeLine{126 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 0
+\mbox{\Hypertarget{namespacemath_adeae9e6c6f768a920a1fde06087749f3}\label{namespacemath_adeae9e6c6f768a920a1fde06087749f3}} 
+\index{math@{math}!pi@{pi}}
+\index{pi@{pi}!math@{math}}
+\doxysubsubsection{\texorpdfstring{pi()}{pi()}}
+{\footnotesize\ttfamily double math\+::pi (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+円周率 π 
+
+
+
+ Basic.\+hpp の 56 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{56                        \{}
+\DoxyCodeLine{57     \textcolor{comment}{// return 3.1415926535897932384626433832795;}}
+\DoxyCodeLine{58     \textcolor{keywordflow}{return} std::acos(-\/1);}
+\DoxyCodeLine{59 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 1
+\mbox{\Hypertarget{namespacemath_a47b42e10e4633e4996df2ce02e8ba6ca}\label{namespacemath_a47b42e10e4633e4996df2ce02e8ba6ca}} 
+\index{math@{math}!radian\_to\_degree@{radian\_to\_degree}}
+\index{radian\_to\_degree@{radian\_to\_degree}!math@{math}}
+\doxysubsubsection{\texorpdfstring{radian\_to\_degree()}{radian\_to\_degree()}}
+{\footnotesize\ttfamily double math\+::radian\+\_\+to\+\_\+degree (\begin{DoxyParamCaption}\item[{double const \&}]{radian }\end{DoxyParamCaption})}
+
+
+
+ラジアンを角度に変換する 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em double} & radian：ラジアン \mbox{[}rad\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+double ：角度 \mbox{[}deg.\mbox{]} 
+\end{DoxyReturn}
+
+
+ Basic.\+hpp の 133 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{133                                                   \{}
+\DoxyCodeLine{134     \textcolor{keywordflow}{return} radian * 180 / \mbox{\hyperlink{namespacemath_adeae9e6c6f768a920a1fde06087749f3}{math::pi}}();}
+\DoxyCodeLine{135 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 2
+\mbox{\Hypertarget{namespacemath_a489f1ea9d876f182e9bf893091fad820}\label{namespacemath_a489f1ea9d876f182e9bf893091fad820}} 
+\index{math@{math}!sacos@{sacos}}
+\index{sacos@{sacos}!math@{math}}
+\doxysubsubsection{\texorpdfstring{sacos()}{sacos()}}
+{\footnotesize\ttfamily double math\+::sacos (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+安全なarc cos. 戻り値がnanにならない 
+
+
+
+ Basic.\+hpp の 62 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{62                               \{}
+\DoxyCodeLine{63     \textcolor{keywordflow}{if} (x < -\/1.0) \{}
+\DoxyCodeLine{64         x = -\/1.0;}
+\DoxyCodeLine{65     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (1.0 < x) \{}
+\DoxyCodeLine{66         x = 1.0;}
+\DoxyCodeLine{67     \}}
+\DoxyCodeLine{68     \textcolor{keywordflow}{return} std::acos(x);}
+\DoxyCodeLine{69 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 3

@@ -1,0 +1,4 @@
+<map id="MultiParticle::OutputCoordinates" name="MultiParticle::OutputCoordinates">
+<area shape="rect" id="node1" title="引数の時間が1列目になるようなdatファイルとして出力する" alt="" coords="5,13,237,39"/>
+<area shape="rect" id="node2" href="$classBasic.html#a2d97de6119bf446840d4da38781a218e" title="ファイルの先頭にUTF&#45;8のバイナリデータ（BOM）を書き込む" alt="" coords="285,5,424,47"/>
+</map>

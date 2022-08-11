@@ -20,6 +20,8 @@ stf=${1:-0} # search target file number
 # OUTPUT=${2:-"cylinder"}
 OUTPUT=${2:-"sail"}
 sta=${3:-2} # seerch target array
+echo "sta=$sta"
+
 
 # カンマ区切り
 FS=","
@@ -50,6 +52,8 @@ of6="preValue.dat"
 find . -type f -name "*.csv" | xargs sed -i "s/\r//"
 
 # if [ ! $1 -eq 0 ]; then
+# when you are running ./gnuplot.sh, if you don't specify arguments, the first one(if ~~) is choosen, not second one(else ~~).
+# search a file of that ○○ is largest number for parameter_○○.csv
 if [ -z $1 ] || [ $1 -eq 0 ]; then
     in2=$(find . -type f \( -name "*.csv" -and -name "${in2}*" \) | sort -n -k 2,2 -t "_" | tail -n 2 | head -n 1 | awk -F"/" '{print $2}')
 else

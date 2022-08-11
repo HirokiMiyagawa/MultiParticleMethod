@@ -1,0 +1,7 @@
+digraph "MatrixCalc"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{MatrixCalc\n||+ innerProductCalc()\l+ plusMatrix()\l+ minMatrix()\l+ matrixProduct()\l+ matrixProduct()\l+ matrixProduct()\l+ matrixProductCalc()\l+ matrixProductCalc()\l+ transpose_matrix()\l+ printMatrix()\lほか 6 件…\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="行列を扱うクラス"];
+}

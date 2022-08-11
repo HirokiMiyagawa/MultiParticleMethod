@@ -1,0 +1,197 @@
+\hypertarget{classSphericalCoordinate}{}\doxysection{Spherical\+Coordinate クラス}
+\label{classSphericalCoordinate}\index{SphericalCoordinate@{SphericalCoordinate}}
+
+
+{\ttfamily \#include $<$Matrix\+Calc.\+hpp$>$}
+
+
+
+Spherical\+Coordinate 連携図
+% FIG 0
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSphericalCoordinate_a911c4a3dc460f8939e1fe2ceafdc0cd4}{Spherical\+Coordinate}} (void)
+\item 
+\mbox{\hyperlink{classSphericalCoordinate_ab6c4356e7b87278148301f5b736af1a8}{Spherical\+Coordinate}} (const double \&, const double \&, const double \&)
+\item 
+void \mbox{\hyperlink{classSphericalCoordinate_a8819ce01bf9edcfc69282ee69d5e0f14}{set}} (const double \&, const double \&, const double \&)
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{classSphericalCoordinate_a1ccfd50a9856eab054c8e81f61c20ed5}{transform}} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMatrixCalc}{Matrix\+Calc}} \mbox{\hyperlink{classSphericalCoordinate_ac23a26e7d770be0254d42b16ed2f6d31}{mc}}
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classSphericalCoordinate_ab4a2450b1649f74b9e262f38cb687396}{radius}}
+\item 
+double \mbox{\hyperlink{classSphericalCoordinate_a2d4ebc168df9faf7892322662d9dd699}{angle\+\_\+1}}
+\item 
+double \mbox{\hyperlink{classSphericalCoordinate_a7dbdb77768fc7e24d3ee46e2c57927bd}{angle\+\_\+2}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{classSphericalCoordinate_abf4dd15d9860621622f5d61f6ce631d8}{xyz}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{classSphericalCoordinate_a08997197ccc898481817190252d63243}{spherical\+\_\+coordinates}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ Matrix\+Calc.\+hpp の 617 行目に定義があります。
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classSphericalCoordinate_a911c4a3dc460f8939e1fe2ceafdc0cd4}\label{classSphericalCoordinate_a911c4a3dc460f8939e1fe2ceafdc0cd4}} 
+\index{SphericalCoordinate@{SphericalCoordinate}!SphericalCoordinate@{SphericalCoordinate}}
+\index{SphericalCoordinate@{SphericalCoordinate}!SphericalCoordinate@{SphericalCoordinate}}
+\doxysubsubsection{\texorpdfstring{SphericalCoordinate()}{SphericalCoordinate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Spherical\+Coordinate\+::\+Spherical\+Coordinate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+ Matrix\+Calc.\+hpp の 635 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{635 \{ \mbox{\hyperlink{classSphericalCoordinate_a911c4a3dc460f8939e1fe2ceafdc0cd4}{SphericalCoordinate}}(0, 0, 0); \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSphericalCoordinate_ab6c4356e7b87278148301f5b736af1a8}\label{classSphericalCoordinate_ab6c4356e7b87278148301f5b736af1a8}} 
+\index{SphericalCoordinate@{SphericalCoordinate}!SphericalCoordinate@{SphericalCoordinate}}
+\index{SphericalCoordinate@{SphericalCoordinate}!SphericalCoordinate@{SphericalCoordinate}}
+\doxysubsubsection{\texorpdfstring{SphericalCoordinate()}{SphericalCoordinate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Spherical\+Coordinate\+::\+Spherical\+Coordinate (\begin{DoxyParamCaption}\item[{const double \&}]{r,  }\item[{const double \&}]{a\+\_\+1,  }\item[{const double \&}]{a\+\_\+2 }\end{DoxyParamCaption})}
+
+
+
+ Matrix\+Calc.\+hpp の 636 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{636                                                                                               \{}
+\DoxyCodeLine{637     \mbox{\hyperlink{classSphericalCoordinate_a8819ce01bf9edcfc69282ee69d5e0f14}{set}}(r, a\_1, a\_2);}
+\DoxyCodeLine{638 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 1
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classSphericalCoordinate_a8819ce01bf9edcfc69282ee69d5e0f14}\label{classSphericalCoordinate_a8819ce01bf9edcfc69282ee69d5e0f14}} 
+\index{SphericalCoordinate@{SphericalCoordinate}!set@{set}}
+\index{set@{set}!SphericalCoordinate@{SphericalCoordinate}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void Spherical\+Coordinate\+::set (\begin{DoxyParamCaption}\item[{const double \&}]{r,  }\item[{const double \&}]{a\+\_\+1,  }\item[{const double \&}]{a\+\_\+2 }\end{DoxyParamCaption})}
+
+
+
+ Matrix\+Calc.\+hpp の 640 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{640                                                                                    \{}
+\DoxyCodeLine{641     \mbox{\hyperlink{classSphericalCoordinate_abf4dd15d9860621622f5d61f6ce631d8}{xyz}}.resize(3);}
+\DoxyCodeLine{642     \mbox{\hyperlink{classSphericalCoordinate_ab4a2450b1649f74b9e262f38cb687396}{radius}}  = r;}
+\DoxyCodeLine{643     \mbox{\hyperlink{classSphericalCoordinate_a2d4ebc168df9faf7892322662d9dd699}{angle\_1}} = a\_1;}
+\DoxyCodeLine{644     \mbox{\hyperlink{classSphericalCoordinate_a7dbdb77768fc7e24d3ee46e2c57927bd}{angle\_2}} = a\_2;}
+\DoxyCodeLine{645 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 2
+\mbox{\Hypertarget{classSphericalCoordinate_a1ccfd50a9856eab054c8e81f61c20ed5}\label{classSphericalCoordinate_a1ccfd50a9856eab054c8e81f61c20ed5}} 
+\index{SphericalCoordinate@{SphericalCoordinate}!transform@{transform}}
+\index{transform@{transform}!SphericalCoordinate@{SphericalCoordinate}}
+\doxysubsubsection{\texorpdfstring{transform()}{transform()}}
+{\footnotesize\ttfamily vector$<$ double $>$ Spherical\+Coordinate\+::transform (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+ Matrix\+Calc.\+hpp の 647 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{647                                                   \{}
+\DoxyCodeLine{648     \mbox{\hyperlink{classSphericalCoordinate_abf4dd15d9860621622f5d61f6ce631d8}{xyz}}.resize(3);}
+\DoxyCodeLine{649     \mbox{\hyperlink{classSphericalCoordinate_abf4dd15d9860621622f5d61f6ce631d8}{xyz}}[0] = \mbox{\hyperlink{classSphericalCoordinate_ab4a2450b1649f74b9e262f38cb687396}{radius}} * sin(\mbox{\hyperlink{classSphericalCoordinate_a2d4ebc168df9faf7892322662d9dd699}{angle\_1}}) * cos(\mbox{\hyperlink{classSphericalCoordinate_a7dbdb77768fc7e24d3ee46e2c57927bd}{angle\_2}});}
+\DoxyCodeLine{650     \mbox{\hyperlink{classSphericalCoordinate_abf4dd15d9860621622f5d61f6ce631d8}{xyz}}[1] = \mbox{\hyperlink{classSphericalCoordinate_ab4a2450b1649f74b9e262f38cb687396}{radius}} * sin(\mbox{\hyperlink{classSphericalCoordinate_a2d4ebc168df9faf7892322662d9dd699}{angle\_1}}) * sin(\mbox{\hyperlink{classSphericalCoordinate_a7dbdb77768fc7e24d3ee46e2c57927bd}{angle\_2}});}
+\DoxyCodeLine{651     \mbox{\hyperlink{classSphericalCoordinate_abf4dd15d9860621622f5d61f6ce631d8}{xyz}}[2] = \mbox{\hyperlink{classSphericalCoordinate_ab4a2450b1649f74b9e262f38cb687396}{radius}} * cos(\mbox{\hyperlink{classSphericalCoordinate_a2d4ebc168df9faf7892322662d9dd699}{angle\_1}});}
+\DoxyCodeLine{652     \textcolor{keywordflow}{return} \mbox{\hyperlink{classSphericalCoordinate_abf4dd15d9860621622f5d61f6ce631d8}{xyz}};}
+\DoxyCodeLine{653 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{classSphericalCoordinate_a2d4ebc168df9faf7892322662d9dd699}\label{classSphericalCoordinate_a2d4ebc168df9faf7892322662d9dd699}} 
+\index{SphericalCoordinate@{SphericalCoordinate}!angle\_1@{angle\_1}}
+\index{angle\_1@{angle\_1}!SphericalCoordinate@{SphericalCoordinate}}
+\doxysubsubsection{\texorpdfstring{angle\_1}{angle\_1}}
+{\footnotesize\ttfamily double Spherical\+Coordinate\+::angle\+\_\+1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Matrix\+Calc.\+hpp の 619 行目に定義があります。
+
+\mbox{\Hypertarget{classSphericalCoordinate_a7dbdb77768fc7e24d3ee46e2c57927bd}\label{classSphericalCoordinate_a7dbdb77768fc7e24d3ee46e2c57927bd}} 
+\index{SphericalCoordinate@{SphericalCoordinate}!angle\_2@{angle\_2}}
+\index{angle\_2@{angle\_2}!SphericalCoordinate@{SphericalCoordinate}}
+\doxysubsubsection{\texorpdfstring{angle\_2}{angle\_2}}
+{\footnotesize\ttfamily double Spherical\+Coordinate\+::angle\+\_\+2\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Matrix\+Calc.\+hpp の 620 行目に定義があります。
+
+\mbox{\Hypertarget{classSphericalCoordinate_ac23a26e7d770be0254d42b16ed2f6d31}\label{classSphericalCoordinate_ac23a26e7d770be0254d42b16ed2f6d31}} 
+\index{SphericalCoordinate@{SphericalCoordinate}!mc@{mc}}
+\index{mc@{mc}!SphericalCoordinate@{SphericalCoordinate}}
+\doxysubsubsection{\texorpdfstring{mc}{mc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMatrixCalc}{Matrix\+Calc}} Spherical\+Coordinate\+::mc}
+
+
+
+ Matrix\+Calc.\+hpp の 629 行目に定義があります。
+
+\mbox{\Hypertarget{classSphericalCoordinate_ab4a2450b1649f74b9e262f38cb687396}\label{classSphericalCoordinate_ab4a2450b1649f74b9e262f38cb687396}} 
+\index{SphericalCoordinate@{SphericalCoordinate}!radius@{radius}}
+\index{radius@{radius}!SphericalCoordinate@{SphericalCoordinate}}
+\doxysubsubsection{\texorpdfstring{radius}{radius}}
+{\footnotesize\ttfamily double Spherical\+Coordinate\+::radius\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Matrix\+Calc.\+hpp の 618 行目に定義があります。
+
+\mbox{\Hypertarget{classSphericalCoordinate_a08997197ccc898481817190252d63243}\label{classSphericalCoordinate_a08997197ccc898481817190252d63243}} 
+\index{SphericalCoordinate@{SphericalCoordinate}!spherical\_coordinates@{spherical\_coordinates}}
+\index{spherical\_coordinates@{spherical\_coordinates}!SphericalCoordinate@{SphericalCoordinate}}
+\doxysubsubsection{\texorpdfstring{spherical\_coordinates}{spherical\_coordinates}}
+{\footnotesize\ttfamily vector$<$double$>$ Spherical\+Coordinate\+::spherical\+\_\+coordinates\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Matrix\+Calc.\+hpp の 622 行目に定義があります。
+
+\mbox{\Hypertarget{classSphericalCoordinate_abf4dd15d9860621622f5d61f6ce631d8}\label{classSphericalCoordinate_abf4dd15d9860621622f5d61f6ce631d8}} 
+\index{SphericalCoordinate@{SphericalCoordinate}!xyz@{xyz}}
+\index{xyz@{xyz}!SphericalCoordinate@{SphericalCoordinate}}
+\doxysubsubsection{\texorpdfstring{xyz}{xyz}}
+{\footnotesize\ttfamily vector$<$double$>$ Spherical\+Coordinate\+::xyz\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Matrix\+Calc.\+hpp の 621 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/hpp/\+My\+Library/\mbox{\hyperlink{MatrixCalc_8hpp}{Matrix\+Calc.\+hpp}}\end{DoxyCompactItemize}

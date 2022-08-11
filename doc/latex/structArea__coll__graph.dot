@@ -1,0 +1,12 @@
+digraph "Area"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Area\n||}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="i, jのx,y,z方向成分"];
+  Node2 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +cp" ,arrowhead="odiamond"];
+  Node2 [label="{Vector\n|+ norm\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structVector.html",tooltip="ベクトルと長さを格納する"];
+  Node3 -> Node2 [color="grey25",fontsize="10",style="solid",label=" +vector" ,arrowhead="odiamond"];
+  Node3 [label="{C\n|+ x\l+ y\l+ z\l|+ C()\l+ C()\l+ C()\l+ operator=()\l+ operator=()\l+ operator+=()\l+ operator-=()\l+ operator*=()\l+ operator/=()\l+ set()\lほか 11 件…\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classC.html",tooltip="x,y,z方向に値を持つ"];
+  Node3 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +i\n+j" ,arrowhead="odiamond"];
+}

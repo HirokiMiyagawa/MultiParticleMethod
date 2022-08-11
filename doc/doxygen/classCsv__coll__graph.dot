@@ -1,0 +1,9 @@
+digraph "Csv"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Csv\n||+ Csv()\l+ getCsv()\l+ myparamRead()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="csvファイルから、パラメーターを読み込んでシミュレーションを行う場合"];
+  Node2 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +csv_file" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node2 [label="{string\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}

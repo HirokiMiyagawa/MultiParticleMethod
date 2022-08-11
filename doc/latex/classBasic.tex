@@ -1,0 +1,300 @@
+\hypertarget{classBasic}{}\doxysection{Basic クラス}
+\label{classBasic}\index{Basic@{Basic}}
+
+
+基本的な数字を扱うクラス  
+
+
+
+
+{\ttfamily \#include $<$Basic.\+hpp$>$}
+
+
+
+Basic 連携図\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classBasic__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classBasic_aa72bb0396875d70dbb1f76a0f66f78e0}{format\+Number}} (int num)
+\begin{DoxyCompactList}\small\item\em 3桁ごとに数字に\char`\"{},\char`\"{}を加える \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBasic_a2d28b196f80fb9c508e925d2c476c416}{Get\+Contents}} (const std\+::string \&filepath, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&matrix, std\+::vector$<$ double $>$ \&queue)
+\begin{DoxyCompactList}\small\item\em csvファイルから\char`\"{},\char`\"{}区切りでデータをtable に格納する \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBasic_a2d97de6119bf446840d4da38781a218e}{create\+\_\+utf8\+\_\+stream}} (const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em ファイルの先頭に\+U\+T\+F-\/8のバイナリデータ（\+B\+O\+M）を書き込む \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBasic_aa6641f7a75c2279e1f8e08932d155ba7}{Get\+Coordinates}} (const std\+::string \&filepath, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&dataset)
+\begin{DoxyCompactList}\small\item\em csvファイルから\char`\"{},\char`\"{}区切りでデータをtable に格納する \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+基本的な数字を扱うクラス 
+
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Basic.\+hpp の 80 行目に定義があります。
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classBasic_a2d97de6119bf446840d4da38781a218e}\label{classBasic_a2d97de6119bf446840d4da38781a218e}} 
+\index{Basic@{Basic}!create\_utf8\_stream@{create\_utf8\_stream}}
+\index{create\_utf8\_stream@{create\_utf8\_stream}!Basic@{Basic}}
+\doxysubsubsection{\texorpdfstring{create\_utf8\_stream()}{create\_utf8\_stream()}}
+{\footnotesize\ttfamily void Basic\+::create\+\_\+utf8\+\_\+stream (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+
+
+ファイルの先頭に\+U\+T\+F-\/8のバイナリデータ（\+B\+O\+M）を書き込む 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em path} & 読み込む対象のファイル名（パス） \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Basic.\+hpp の 272 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{272                                                     \{}
+\DoxyCodeLine{273     \textcolor{comment}{// std::cout << "write BOM (UTF-\/8)" << std::endl;}}
+\DoxyCodeLine{274     std::stringstream exportfile;}
+\DoxyCodeLine{275     std::ofstream ofs;}
+\DoxyCodeLine{276     exportfile << path;}
+\DoxyCodeLine{277     ofs.open(exportfile.str(),}
+\DoxyCodeLine{278              std::ios::ate | std::ios\_base::in | std::ios\_base::trunc);}
+\DoxyCodeLine{279     ofs.seekp(std::ios::beg);  \textcolor{comment}{// 先頭に移動}}
+\DoxyCodeLine{280     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} bom[] = \{0xEF, 0xBB, 0xBF\};}
+\DoxyCodeLine{281     ofs.write((\textcolor{keywordtype}{char}*)bom, \textcolor{keyword}{sizeof}(bom));}
+\DoxyCodeLine{282 }
+\DoxyCodeLine{283     ofs.close();}
+\DoxyCodeLine{284 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 0
+\mbox{\Hypertarget{classBasic_aa72bb0396875d70dbb1f76a0f66f78e0}\label{classBasic_aa72bb0396875d70dbb1f76a0f66f78e0}} 
+\index{Basic@{Basic}!formatNumber@{formatNumber}}
+\index{formatNumber@{formatNumber}!Basic@{Basic}}
+\doxysubsubsection{\texorpdfstring{formatNumber()}{formatNumber()}}
+{\footnotesize\ttfamily std\+::string Basic\+::format\+Number (\begin{DoxyParamCaption}\item[{int}]{num }\end{DoxyParamCaption})}
+
+
+
+3桁ごとに数字に\char`\"{},\char`\"{}を加える 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em int} & num \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+string 数字の3桁ごとに\char`\"{},\char`\"{}を加えた文字列を返す 
+\end{DoxyReturn}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Basic.\+hpp の 102 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{102                                      \{}
+\DoxyCodeLine{103     std::vector<int> sepnum;}
+\DoxyCodeLine{104     \textcolor{keywordtype}{int} number = \mbox{\hyperlink{DataSet_8hpp_a48c0e9af3de44d063a435d6e53401134}{abs}}(num);}
+\DoxyCodeLine{105     \textcolor{keywordtype}{int} sgn    = num >= 0 ? 1 : -\/1;}
+\DoxyCodeLine{106     \textcolor{keywordflow}{while} (number / 1000) \{}
+\DoxyCodeLine{107         sepnum.push\_back(number \% 1000);}
+\DoxyCodeLine{108         number /= 1000;}
+\DoxyCodeLine{109     \}}
+\DoxyCodeLine{110     std::stringstream ss;}
+\DoxyCodeLine{111     ss << number * sgn;}
+\DoxyCodeLine{112     \textcolor{keywordflow}{for} (std::vector<int>::reverse\_iterator i = sepnum.rbegin();}
+\DoxyCodeLine{113          i < sepnum.rend(); i++) \{}
+\DoxyCodeLine{114         ss << \textcolor{stringliteral}{","} << std::setfill(\textcolor{charliteral}{'0'}) << std::setw(3) << *i;}
+\DoxyCodeLine{115     \}}
+\DoxyCodeLine{116     \textcolor{keywordflow}{return} std::string(ss.str());}
+\DoxyCodeLine{117 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 1
+\mbox{\Hypertarget{classBasic_a2d28b196f80fb9c508e925d2c476c416}\label{classBasic_a2d28b196f80fb9c508e925d2c476c416}} 
+\index{Basic@{Basic}!GetContents@{GetContents}}
+\index{GetContents@{GetContents}!Basic@{Basic}}
+\doxysubsubsection{\texorpdfstring{GetContents()}{GetContents()}}
+{\footnotesize\ttfamily bool Basic\+::\+Get\+Contents (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{matrix,  }\item[{std\+::vector$<$ double $>$ \&}]{queue }\end{DoxyParamCaption})}
+
+
+
+csvファイルから\char`\"{},\char`\"{}区切りでデータをtable に格納する 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em filepath} & 読み込む対象のファイル名 \\
+\hline
+\mbox{\texttt{ out}}  & {\em matrix} & 読み込んだ行列\+Aを格納する (double) \\
+\hline
+\mbox{\texttt{ out}}  & {\em queue} & 読み込んだ行列bを格納する (double) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{覚え書き}
+Ax = b を読み込むことを想定している 要らない最後の改行は不要 csvファイルの形式は A(正方行列) と b（nx1）が1列別れて区切られているもの 
+\end{DoxyNote}
+
+
+ Basic.\+hpp の 146 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{148                                                   \{}
+\DoxyCodeLine{149     \textcolor{keyword}{const} \textcolor{keywordtype}{char} delimiter = \textcolor{charliteral}{','};  \textcolor{comment}{// 区切り文字}}
+\DoxyCodeLine{150     std::vector<std::vector<std::string>>}
+\DoxyCodeLine{151         table;  \textcolor{comment}{// 一時的に入力データを格納する}}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153     \textcolor{comment}{// ファイルを開く}}
+\DoxyCodeLine{154     std::fstream filestream(filepath);}
+\DoxyCodeLine{155     \textcolor{keywordflow}{if} (!filestream.is\_open()) \{}
+\DoxyCodeLine{156         \textcolor{comment}{// ファイルが開けなかった場合は終了する}}
+\DoxyCodeLine{157         std::cout << \textcolor{stringliteral}{"Can't input csv data"} << std::endl;}
+\DoxyCodeLine{158         std::cout << \textcolor{stringliteral}{"path: "} << filepath << std::endl;}
+\DoxyCodeLine{159         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{160     \}}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162     \textcolor{comment}{// ファイルを読み込む}}
+\DoxyCodeLine{163     \textcolor{keywordflow}{while} (!filestream.eof()) \{}
+\DoxyCodeLine{164         \textcolor{comment}{// １行読み込む}}
+\DoxyCodeLine{165         std::string buffer;}
+\DoxyCodeLine{166         filestream >> buffer;}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168         \textcolor{comment}{// ファイルから読み込んだ１行の文字列を区切り文字で分けてリストに追加する}}
+\DoxyCodeLine{169         std::vector<std::string> record;          \textcolor{comment}{// １行分の文字列のリスト}}
+\DoxyCodeLine{170         std::istringstream streambuffer(buffer);  \textcolor{comment}{// 文字列ストリーム}}
+\DoxyCodeLine{171         std::string token;                        \textcolor{comment}{// １セル分の文字列}}
+\DoxyCodeLine{172         \textcolor{keywordflow}{while} (getline(streambuffer, token, delimiter)) \{}
+\DoxyCodeLine{173             \textcolor{comment}{// １セル分の文字列をリストに追加する}}
+\DoxyCodeLine{174             record.push\_back(token);}
+\DoxyCodeLine{175         \}}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177         \textcolor{comment}{// １行分の文字列を出力引数のリストに追加する}}
+\DoxyCodeLine{178         table.push\_back(record);}
+\DoxyCodeLine{179     \}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181     table.pop\_back();  \textcolor{comment}{// 最後の行を削除する}}
+\DoxyCodeLine{182                        \textcolor{comment}{// （csvファイルをExcelで作成すると空の行ができるので）}}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184     matrix.resize(table.size());}
+\DoxyCodeLine{185     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} row = 0; row < table.size(); row++) \{}
+\DoxyCodeLine{186         matrix[row].resize(table[row].size());}
+\DoxyCodeLine{187     \}}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} row = 0; row < table.size(); row++) \{}
+\DoxyCodeLine{190         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} colunm = 0; colunm < table[row].size() -\/ 2;}
+\DoxyCodeLine{191              colunm++) \{}
+\DoxyCodeLine{192             matrix[row][colunm] = std::stod(table[row][colunm]);}
+\DoxyCodeLine{193         \}}
+\DoxyCodeLine{194         queue.push\_back(std::stod(table[row][table[row].size() -\/ 1]));}
+\DoxyCodeLine{195         \textcolor{comment}{// std::cout << std::endl;}}
+\DoxyCodeLine{196     \}}
+\DoxyCodeLine{197 }
+\DoxyCodeLine{198     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{199 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classBasic_aa6641f7a75c2279e1f8e08932d155ba7}\label{classBasic_aa6641f7a75c2279e1f8e08932d155ba7}} 
+\index{Basic@{Basic}!GetCoordinates@{GetCoordinates}}
+\index{GetCoordinates@{GetCoordinates}!Basic@{Basic}}
+\doxysubsubsection{\texorpdfstring{GetCoordinates()}{GetCoordinates()}}
+{\footnotesize\ttfamily bool Basic\+::\+Get\+Coordinates (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{dataset }\end{DoxyParamCaption})}
+
+
+
+csvファイルから\char`\"{},\char`\"{}区切りでデータをtable に格納する 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em filepath} & 読み込む対象のファイルパス \\
+\hline
+\mbox{\texttt{ out}}  & {\em dataset} & 読み込んだ(x,y)座標を格納する (std\+::vector$<$std\+::vector$<$$<$double$>$)\\
+\hline
+\end{DoxyParams}
+x行y列の余分な行・列のないcsvファイルからデータを取得する \begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+csvファイルからn個の (x,y)の2次元座標を取得する (x,y)のデータを nx2の行列として読み込む 要らない最後の改行は無視する
+
+nxnの行列でも格納可能 
+
+ Basic.\+hpp の 216 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{217                                                                   \{}
+\DoxyCodeLine{218     \textcolor{keyword}{const} \textcolor{keywordtype}{char} delimiter = \textcolor{charliteral}{','};  \textcolor{comment}{// 区切り文字}}
+\DoxyCodeLine{219     std::vector<std::vector<std::string>>}
+\DoxyCodeLine{220         table;  \textcolor{comment}{// 一時的に入力データを格納する}}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{222     \textcolor{comment}{// ファイルを開く}}
+\DoxyCodeLine{223     std::fstream filestream(filepath);}
+\DoxyCodeLine{224     \textcolor{keywordflow}{if} (!filestream.is\_open()) \{}
+\DoxyCodeLine{225         \textcolor{comment}{// ファイルが開けなかった場合は終了する}}
+\DoxyCodeLine{226         std::cout << \textcolor{stringliteral}{"Can't input csv data"} << std::endl;}
+\DoxyCodeLine{227         std::cout << \textcolor{stringliteral}{"path: "} << filepath << std::endl;}
+\DoxyCodeLine{228         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{229     \}}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231     \textcolor{comment}{// ファイルを読み込む}}
+\DoxyCodeLine{232     \textcolor{keywordflow}{while} (!filestream.eof()) \{}
+\DoxyCodeLine{233         \textcolor{comment}{// １行読み込む}}
+\DoxyCodeLine{234         std::string buffer;}
+\DoxyCodeLine{235         filestream >> buffer;}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{237         \textcolor{comment}{// ファイルから読み込んだ１行の文字列を区切り文字で分けてリストに追加する}}
+\DoxyCodeLine{238         std::vector<std::string> record;          \textcolor{comment}{// １行分の文字列のリスト}}
+\DoxyCodeLine{239         std::istringstream streambuffer(buffer);  \textcolor{comment}{// 文字列ストリーム}}
+\DoxyCodeLine{240         std::string token;                        \textcolor{comment}{// １セル分の文字列}}
+\DoxyCodeLine{241         \textcolor{keywordflow}{while} (getline(streambuffer, token, delimiter)) \{}
+\DoxyCodeLine{242             \textcolor{comment}{// １セル分の文字列をリストに追加する}}
+\DoxyCodeLine{243             record.push\_back(token);}
+\DoxyCodeLine{244         \}}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{246         \textcolor{comment}{// １行分の文字列を出力引数のリストに追加する}}
+\DoxyCodeLine{247         table.push\_back(record);}
+\DoxyCodeLine{248     \}}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{250     table.pop\_back();  \textcolor{comment}{// 最後の行を削除する}}
+\DoxyCodeLine{251                        \textcolor{comment}{// （csvファイルをExcelで作成すると空の行ができるので）}}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253     dataset.resize(table.size());}
+\DoxyCodeLine{254     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} row = 0; row < table.size(); row++) \{}
+\DoxyCodeLine{255         dataset[row].resize(table[row].size());}
+\DoxyCodeLine{256     \}}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{258     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} row = 0; row < table.size(); row++) \{}
+\DoxyCodeLine{259         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} colunm = 0; colunm < table[row].size(); colunm++) \{}
+\DoxyCodeLine{260             dataset[row][colunm] = std::stod(table[row][colunm]);}
+\DoxyCodeLine{261         \}}
+\DoxyCodeLine{262     \}}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{264     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{265 \}}
+
+\end{DoxyCode}
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/hpp/\+My\+Library/\mbox{\hyperlink{Basic_8hpp}{Basic.\+hpp}}\end{DoxyCompactItemize}

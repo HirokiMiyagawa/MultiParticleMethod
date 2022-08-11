@@ -1,0 +1,803 @@
+\hypertarget{classC}{}\doxysection{C クラス}
+\label{classC}\index{C@{C}}
+
+
+x,y,z方向に値を持つ  
+
+
+
+
+{\ttfamily \#include $<$Data\+Set.\+hpp$>$}
+
+
+
+C 連携図
+% FIG 0
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classC_a26ecaf772c6688b6c03fb14784b276ba}{C}} (void)
+\item 
+\mbox{\hyperlink{classC_a08787c03d6b6f76a28e2d88d66f4304c}{C}} (const int \&, const int \&, const int \&)
+\item 
+\mbox{\hyperlink{classC_af341354c3e2bd13fd3fe3802eb88e7fb}{C}} (const double \&, const double \&, const double \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \& \mbox{\hyperlink{classC_a5e066b2eb2190948b3fa4dbb694ffec8}{operator=}} (const \mbox{\hyperlink{classC}{C}} \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \& \mbox{\hyperlink{classC_a4c5d9c30f431b1566b23e3583c1f3352}{operator=}} (const int \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \& \mbox{\hyperlink{classC_a078c191887ce6c358b5f6282fb51deab}{operator+=}} (const \mbox{\hyperlink{classC}{C}} \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \& \mbox{\hyperlink{classC_a79736ca949c6314f867cab5564be8de6}{operator-\/=}} (const \mbox{\hyperlink{classC}{C}} \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \& \mbox{\hyperlink{classC_afa2305eda9df11f7717302b04212e381}{operator$\ast$=}} (const double \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \& \mbox{\hyperlink{classC_a28ab9ca1a6b31b8b0ebbb22a80474762}{operator/=}} (const int \&)
+\item 
+void \mbox{\hyperlink{classC_ab06a12407c809da7ce929528e36a63f1}{set}} (const double \&, const double \&, const double \&)
+\item 
+void \mbox{\hyperlink{classC_a23c889aa9342a08ab1b76fa0c1c785d2}{set}} (const int \&, const int \&, const int \&)
+\item 
+void \mbox{\hyperlink{classC_aebe59acd5e7179fb5b9a9c469567ead1}{set}} (const vector$<$ double $>$ \&)
+\item 
+void \mbox{\hyperlink{classC_a01282fa2c333d247065f45c42a717bbe}{set}} (void)
+\item 
+void \mbox{\hyperlink{classC_a7fbdd772730c2fce7844e5afab51509f}{reset}} (void)
+\item 
+void \mbox{\hyperlink{classC_affe74fa759204c5cda828944460b0543}{print}} (void)
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{classC_a00e90167a7efc3fe1e1153c18567ec38}{out\+\_\+array}} (void)
+\item 
+double \mbox{\hyperlink{classC_acfcd0b9f7c4f350d4e3b7bbc1cbecdef}{abs2}} (void) const
+\item 
+double \mbox{\hyperlink{classC_afacdb9896d2186d346cc9efc3d778de8}{abs}} (void) const
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classC_adf383192b02781eb5a0996f3e138d967}{unit}} (void) const
+\item 
+double \mbox{\hyperlink{classC_a3ad49e6d0334a984ba2accb8318a1a09}{gamma}} (void) const
+\item 
+double \mbox{\hyperlink{classC_a5fbee905e7dcc8d007df5be8ca9f70ce}{ugamma}} (void) const
+\end{DoxyCompactItemize}
+\doxysubsection*{公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}
+\item 
+double \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}
+\item 
+double \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}}
+\end{DoxyCompactItemize}
+\doxysubsection*{フレンド}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classC_abadecdac9cdbf55d417647647dd4c63d}{operator+}} (const \mbox{\hyperlink{classC}{C}} \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classC_a38b3c36ef14ec0758cb0639a53d317bd}{operator-\/}} (const \mbox{\hyperlink{classC}{C}} \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classC_a8e8a0ac7dcb4f94e9c16a540a400c082}{operator+}} (const \mbox{\hyperlink{classC}{C}} \&, const \mbox{\hyperlink{classC}{C}} \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classC_a0da91bf1b25077b1e6853b7a355dc13c}{operator-\/}} (const \mbox{\hyperlink{classC}{C}} \&, const \mbox{\hyperlink{classC}{C}} \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classC_af0b2820c00bbcce5e898db0032655bb8}{operator$\ast$}} (const \mbox{\hyperlink{classC}{C}} \&, const \mbox{\hyperlink{classC}{C}} \&)
+\item 
+double \mbox{\hyperlink{classC_aa6286a5020d5d85d16d24af33af26c64}{operator\%}} (const \mbox{\hyperlink{classC}{C}} \&, const \mbox{\hyperlink{classC}{C}} \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classC_a16720d1f9c7fb32aba730d7a60639a8e}{operator$\ast$}} (const double \&, const \mbox{\hyperlink{classC}{C}} \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classC_a7bfdad12ceb6504544006b6b2dbea797}{operator$\ast$}} (const \mbox{\hyperlink{classC}{C}} \&, const double \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classC_a96ecdafc6d2f7a746189df383e5fd8da}{operator$\ast$}} (const \mbox{\hyperlink{classC}{C}} \&, const int \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classC_af4df40677f6ff88f5e33926d8abd4125}{operator/}} (const \mbox{\hyperlink{classC}{C}} \&, const double \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classC_a0c24dfef5b3c76043211285e8cefaa73}{operator/}} (const \mbox{\hyperlink{classC}{C}} \&, const int \&)
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classC_aade9452464114192ddc5be0afe530f08}{cross}} (const \mbox{\hyperlink{classC}{C}} \&, const \mbox{\hyperlink{classC}{C}} \&)
+\item 
+double \mbox{\hyperlink{classC_a5c5bf3926d8dc31b2f2e5c00edf5a157}{dot}} (const \mbox{\hyperlink{classC}{C}} \&, const \mbox{\hyperlink{classC}{C}} \&)
+\item 
+double \mbox{\hyperlink{classC_ac6cee52141cf8fa4dab7f463e28ec830}{abs}} (const \mbox{\hyperlink{classC}{C}} \&)
+\item 
+void \mbox{\hyperlink{classC_abf92098500e0dbbf5319eda14c2fb8f4}{print}} (const \mbox{\hyperlink{classC}{C}} \&)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+x,y,z方向に値を持つ 
+
+ Data\+Set.\+hpp の 211 行目に定義があります。
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classC_a26ecaf772c6688b6c03fb14784b276ba}\label{classC_a26ecaf772c6688b6c03fb14784b276ba}} 
+\index{C@{C}!C@{C}}
+\index{C@{C}!C@{C}}
+\doxysubsubsection{\texorpdfstring{C()}{C()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily C\+::C (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+ Data\+Set.\+hpp の 263 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{263 : \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}(0.0), \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}(0.0), \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}}(0.0) \{\}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 1
+\mbox{\Hypertarget{classC_a08787c03d6b6f76a28e2d88d66f4304c}\label{classC_a08787c03d6b6f76a28e2d88d66f4304c}} 
+\index{C@{C}!C@{C}}
+\index{C@{C}!C@{C}}
+\doxysubsubsection{\texorpdfstring{C()}{C()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily C\+::C (\begin{DoxyParamCaption}\item[{const int \&}]{\+\_\+x,  }\item[{const int \&}]{\+\_\+y,  }\item[{const int \&}]{\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+ Data\+Set.\+hpp の 264 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{265     : \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}(\textcolor{keywordtype}{double}(\_x)), \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}(\textcolor{keywordtype}{double}(\_y)), \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}}(\textcolor{keywordtype}{double}(\_z)) \{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_af341354c3e2bd13fd3fe3802eb88e7fb}\label{classC_af341354c3e2bd13fd3fe3802eb88e7fb}} 
+\index{C@{C}!C@{C}}
+\index{C@{C}!C@{C}}
+\doxysubsubsection{\texorpdfstring{C()}{C()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily C\+::C (\begin{DoxyParamCaption}\item[{const double \&}]{\+\_\+x,  }\item[{const double \&}]{\+\_\+y,  }\item[{const double \&}]{\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+ Data\+Set.\+hpp の 266 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{267     : \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}(\_x), \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}(\_y), \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}}(\_z) \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classC_afacdb9896d2186d346cc9efc3d778de8}\label{classC_afacdb9896d2186d346cc9efc3d778de8}} 
+\index{C@{C}!abs@{abs}}
+\index{abs@{abs}!C@{C}}
+\doxysubsubsection{\texorpdfstring{abs()}{abs()}}
+{\footnotesize\ttfamily double C\+::abs (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 382 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{382 \{ \textcolor{keywordflow}{return} sqrt(\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} * \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} + \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} * \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} + \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} * \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}}); \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 2
+\mbox{\Hypertarget{classC_acfcd0b9f7c4f350d4e3b7bbc1cbecdef}\label{classC_acfcd0b9f7c4f350d4e3b7bbc1cbecdef}} 
+\index{C@{C}!abs2@{abs2}}
+\index{abs2@{abs2}!C@{C}}
+\doxysubsubsection{\texorpdfstring{abs2()}{abs2()}}
+{\footnotesize\ttfamily double C\+::abs2 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 381 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{381 \{ \textcolor{keywordflow}{return} (\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} * \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} + \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} * \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} + \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} * \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}}); \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_a3ad49e6d0334a984ba2accb8318a1a09}\label{classC_a3ad49e6d0334a984ba2accb8318a1a09}} 
+\index{C@{C}!gamma@{gamma}}
+\index{gamma@{gamma}!C@{C}}
+\doxysubsubsection{\texorpdfstring{gamma()}{gamma()}}
+{\footnotesize\ttfamily double C\+::gamma (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 393 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{393                                  \{}
+\DoxyCodeLine{394     \textcolor{keywordflow}{return} 1.0 / sqrt(1.0 -\/ \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} * \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} + \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} * \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} + \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} * \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}});}
+\DoxyCodeLine{395 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_afa2305eda9df11f7717302b04212e381}\label{classC_afa2305eda9df11f7717302b04212e381}} 
+\index{C@{C}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$=()}{operator*=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} \& C\+::operator$\ast$= (\begin{DoxyParamCaption}\item[{const double \&}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 296 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{296                                        \{}
+\DoxyCodeLine{297     \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} *= d;}
+\DoxyCodeLine{298     \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} *= d;}
+\DoxyCodeLine{299     \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} *= d;}
+\DoxyCodeLine{300     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{301 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_a078c191887ce6c358b5f6282fb51deab}\label{classC_a078c191887ce6c358b5f6282fb51deab}} 
+\index{C@{C}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} \& C\+::operator+= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 270 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{270                                   \{}
+\DoxyCodeLine{271     \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} += v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}};}
+\DoxyCodeLine{272     \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} += v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}};}
+\DoxyCodeLine{273     \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} += v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}};}
+\DoxyCodeLine{274     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{275 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_a79736ca949c6314f867cab5564be8de6}\label{classC_a79736ca949c6314f867cab5564be8de6}} 
+\index{C@{C}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} \& C\+::operator-\/= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 276 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{276                                   \{}
+\DoxyCodeLine{277     \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} -\/= v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}};}
+\DoxyCodeLine{278     \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} -\/= v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}};}
+\DoxyCodeLine{279     \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} -\/= v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}};}
+\DoxyCodeLine{280     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{281 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_a28ab9ca1a6b31b8b0ebbb22a80474762}\label{classC_a28ab9ca1a6b31b8b0ebbb22a80474762}} 
+\index{C@{C}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator/=()}{operator/=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} \& C\+::operator/= (\begin{DoxyParamCaption}\item[{const int \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 302 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{302                                     \{}
+\DoxyCodeLine{303     \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} /= i;}
+\DoxyCodeLine{304     \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} /= i;}
+\DoxyCodeLine{305     \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} /= i;}
+\DoxyCodeLine{306     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{307 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_a5e066b2eb2190948b3fa4dbb694ffec8}\label{classC_a5e066b2eb2190948b3fa4dbb694ffec8}} 
+\index{C@{C}!operator=@{operator=}}
+\index{operator=@{operator=}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} \& C\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 284 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{284                                  \{}
+\DoxyCodeLine{285     \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} = v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}};}
+\DoxyCodeLine{286     \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} = v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}};}
+\DoxyCodeLine{287     \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} = v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}};}
+\DoxyCodeLine{288     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{289 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_a4c5d9c30f431b1566b23e3583c1f3352}\label{classC_a4c5d9c30f431b1566b23e3583c1f3352}} 
+\index{C@{C}!operator=@{operator=}}
+\index{operator=@{operator=}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} \& C\+::operator= (\begin{DoxyParamCaption}\item[{const int \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 290 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{290                                    \{}
+\DoxyCodeLine{291     \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} = v;}
+\DoxyCodeLine{292     \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} = v;}
+\DoxyCodeLine{293     \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} = v;}
+\DoxyCodeLine{294     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{295 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_a00e90167a7efc3fe1e1153c18567ec38}\label{classC_a00e90167a7efc3fe1e1153c18567ec38}} 
+\index{C@{C}!out\_array@{out\_array}}
+\index{out\_array@{out\_array}!C@{C}}
+\doxysubsubsection{\texorpdfstring{out\_array()}{out\_array()}}
+{\footnotesize\ttfamily vector$<$ double $>$ C\+::out\+\_\+array (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+ Data\+Set.\+hpp の 373 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{373                                 \{}
+\DoxyCodeLine{374     vector<double> Ret = \{}
+\DoxyCodeLine{375         \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}},}
+\DoxyCodeLine{376         \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}},}
+\DoxyCodeLine{377         \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}},}
+\DoxyCodeLine{378     \};}
+\DoxyCodeLine{379     \textcolor{keywordflow}{return} Ret;}
+\DoxyCodeLine{380 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_affe74fa759204c5cda828944460b0543}\label{classC_affe74fa759204c5cda828944460b0543}} 
+\index{C@{C}!print@{print}}
+\index{print@{print}!C@{C}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void C\+::print (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+ Data\+Set.\+hpp の 372 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{372 \{ cout << \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} << \textcolor{charliteral}{','} << \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} << \textcolor{charliteral}{','} << \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} << endl; \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 3
+\mbox{\Hypertarget{classC_a7fbdd772730c2fce7844e5afab51509f}\label{classC_a7fbdd772730c2fce7844e5afab51509f}} 
+\index{C@{C}!reset@{reset}}
+\index{reset@{reset}!C@{C}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void C\+::reset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+ Data\+Set.\+hpp の 367 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{367                   \{}
+\DoxyCodeLine{368     \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} = 0.0;}
+\DoxyCodeLine{369     \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} = 0.0;}
+\DoxyCodeLine{370     \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} = 0.0;}
+\DoxyCodeLine{371 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 4
+\mbox{\Hypertarget{classC_ab06a12407c809da7ce929528e36a63f1}\label{classC_ab06a12407c809da7ce929528e36a63f1}} 
+\index{C@{C}!set@{set}}
+\index{set@{set}!C@{C}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily void C\+::set (\begin{DoxyParamCaption}\item[{const double \&}]{\+\_\+x,  }\item[{const double \&}]{\+\_\+y,  }\item[{const double \&}]{\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+ Data\+Set.\+hpp の 349 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{349                                                                 \{}
+\DoxyCodeLine{350     \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} = \_x;}
+\DoxyCodeLine{351     \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} = \_y;}
+\DoxyCodeLine{352     \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} = \_z;}
+\DoxyCodeLine{353 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 5
+\mbox{\Hypertarget{classC_a23c889aa9342a08ab1b76fa0c1c785d2}\label{classC_a23c889aa9342a08ab1b76fa0c1c785d2}} 
+\index{C@{C}!set@{set}}
+\index{set@{set}!C@{C}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void C\+::set (\begin{DoxyParamCaption}\item[{const int \&}]{\+\_\+x,  }\item[{const int \&}]{\+\_\+y,  }\item[{const int \&}]{\+\_\+z }\end{DoxyParamCaption})}
+
+
+
+ Data\+Set.\+hpp の 354 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{354                                                        \{}
+\DoxyCodeLine{355     \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} = (double)\_x;}
+\DoxyCodeLine{356     \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} = (double)\_y;}
+\DoxyCodeLine{357     \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} = (double)\_z;}
+\DoxyCodeLine{358 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_aebe59acd5e7179fb5b9a9c469567ead1}\label{classC_aebe59acd5e7179fb5b9a9c469567ead1}} 
+\index{C@{C}!set@{set}}
+\index{set@{set}!C@{C}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void C\+::set (\begin{DoxyParamCaption}\item[{const vector$<$ double $>$ \&}]{xyz }\end{DoxyParamCaption})}
+
+
+
+ Data\+Set.\+hpp の 359 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{359                                      \{}
+\DoxyCodeLine{360     \mbox{\hyperlink{classC_a01282fa2c333d247065f45c42a717bbe}{set}}(xyz[0], xyz[1], xyz[2]);}
+\DoxyCodeLine{361 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 6
+\mbox{\Hypertarget{classC_a01282fa2c333d247065f45c42a717bbe}\label{classC_a01282fa2c333d247065f45c42a717bbe}} 
+\index{C@{C}!set@{set}}
+\index{set@{set}!C@{C}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void C\+::set (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+ Data\+Set.\+hpp の 362 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{362                 \{}
+\DoxyCodeLine{363     \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} = 0.0;}
+\DoxyCodeLine{364     \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} = 0.0;}
+\DoxyCodeLine{365     \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} = 0.0;}
+\DoxyCodeLine{366 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 7
+\mbox{\Hypertarget{classC_a5fbee905e7dcc8d007df5be8ca9f70ce}\label{classC_a5fbee905e7dcc8d007df5be8ca9f70ce}} 
+\index{C@{C}!ugamma@{ugamma}}
+\index{ugamma@{ugamma}!C@{C}}
+\doxysubsubsection{\texorpdfstring{ugamma()}{ugamma()}}
+{\footnotesize\ttfamily double C\+::ugamma (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 396 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{396                                   \{}
+\DoxyCodeLine{397     \textcolor{keywordflow}{return} sqrt(1.0 + \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} * \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} + \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} * \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} + \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} * \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}});}
+\DoxyCodeLine{398 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_adf383192b02781eb5a0996f3e138d967}\label{classC_adf383192b02781eb5a0996f3e138d967}} 
+\index{C@{C}!unit@{unit}}
+\index{unit@{unit}!C@{C}}
+\doxysubsubsection{\texorpdfstring{unit()}{unit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} C\+::unit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Data\+Set.\+hpp の 383 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{383                            \{}
+\DoxyCodeLine{384     \textcolor{keywordtype}{double} norm = sqrt(\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} * \mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} + \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} * \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} + \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} * \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}});}
+\DoxyCodeLine{385     \textcolor{keywordflow}{if} (norm == 0) \{}
+\DoxyCodeLine{386         \textcolor{keywordflow}{return} \mbox{\hyperlink{classC_a26ecaf772c6688b6c03fb14784b276ba}{C}}(0, 0, 0);}
+\DoxyCodeLine{387     \}}
+\DoxyCodeLine{388     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC_a26ecaf772c6688b6c03fb14784b276ba}{C}}(\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} / norm, \mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} / norm, \mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} / norm);}
+\DoxyCodeLine{389     \textcolor{comment}{// C Ret(x, y, z);}}
+\DoxyCodeLine{390     \textcolor{comment}{// Ret /= norm;}}
+\DoxyCodeLine{391     \textcolor{comment}{// return Ret;}}
+\DoxyCodeLine{392 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 8
+被呼び出し関係図\+:
+% FIG 9
+
+
+\doxysubsection{フレンドと関連関数の詳解}
+\mbox{\Hypertarget{classC_ac6cee52141cf8fa4dab7f463e28ec830}\label{classC_ac6cee52141cf8fa4dab7f463e28ec830}} 
+\index{C@{C}!abs@{abs}}
+\index{abs@{abs}!C@{C}}
+\doxysubsubsection{\texorpdfstring{abs}{abs}}
+{\footnotesize\ttfamily double abs (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+ Data\+Set.\+hpp の 402 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{402 \{ \textcolor{keywordflow}{return} v.\mbox{\hyperlink{classC_afacdb9896d2186d346cc9efc3d778de8}{abs}}(); \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_aade9452464114192ddc5be0afe530f08}\label{classC_aade9452464114192ddc5be0afe530f08}} 
+\index{C@{C}!cross@{cross}}
+\index{cross@{cross}!C@{C}}
+\doxysubsubsection{\texorpdfstring{cross}{cross}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} cross (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{a,  }\item[{const \mbox{\hyperlink{classC}{C}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+ Data\+Set.\+hpp の 400 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{400 \{ \textcolor{keywordflow}{return} (a * b); \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_a5c5bf3926d8dc31b2f2e5c00edf5a157}\label{classC_a5c5bf3926d8dc31b2f2e5c00edf5a157}} 
+\index{C@{C}!dot@{dot}}
+\index{dot@{dot}!C@{C}}
+\doxysubsubsection{\texorpdfstring{dot}{dot}}
+{\footnotesize\ttfamily double dot (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{a,  }\item[{const \mbox{\hyperlink{classC}{C}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+ Data\+Set.\+hpp の 401 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{401 \{ \textcolor{keywordflow}{return} (a \% b); \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_aa6286a5020d5d85d16d24af33af26c64}\label{classC_aa6286a5020d5d85d16d24af33af26c64}} 
+\index{C@{C}!operator\%@{operator\%}}
+\index{operator\%@{operator\%}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator\%}{operator\%}}
+{\footnotesize\ttfamily double operator\% (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{a,  }\item[{const \mbox{\hyperlink{classC}{C}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+ Data\+Set.\+hpp の 331 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{331                                                 \{}
+\DoxyCodeLine{332     \textcolor{keywordflow}{return} (a.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} * b.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} + a.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} * b.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} + a.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} * b.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}});}
+\DoxyCodeLine{333 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_af0b2820c00bbcce5e898db0032655bb8}\label{classC_af0b2820c00bbcce5e898db0032655bb8}} 
+\index{C@{C}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$}{operator*}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{a,  }\item[{const \mbox{\hyperlink{classC}{C}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+ Data\+Set.\+hpp の 326 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{326                                            \{}
+\DoxyCodeLine{327     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC_a26ecaf772c6688b6c03fb14784b276ba}{C}}(a.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} * b.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} -\/ a.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} * b.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}, a.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} * b.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} -\/ a.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} * b.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}},}
+\DoxyCodeLine{328              a.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} * b.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} -\/ a.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} * b.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}});}
+\DoxyCodeLine{329 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_a7bfdad12ceb6504544006b6b2dbea797}\label{classC_a7bfdad12ceb6504544006b6b2dbea797}} 
+\index{C@{C}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$}{operator*}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v,  }\item[{const double \&}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+ Data\+Set.\+hpp の 322 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{322                                                 \{}
+\DoxyCodeLine{323     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC_a26ecaf772c6688b6c03fb14784b276ba}{C}}(d * v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}, d * v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}, d * v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}});}
+\DoxyCodeLine{324 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_a96ecdafc6d2f7a746189df383e5fd8da}\label{classC_a96ecdafc6d2f7a746189df383e5fd8da}} 
+\index{C@{C}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$}{operator*}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v,  }\item[{const int \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+ Data\+Set.\+hpp の 335 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{335                                              \{}
+\DoxyCodeLine{336     \textcolor{keywordtype}{double} d = (double)i;}
+\DoxyCodeLine{337     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC_a26ecaf772c6688b6c03fb14784b276ba}{C}}(d * v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}, d * v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}, d * v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}});}
+\DoxyCodeLine{338 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_a16720d1f9c7fb32aba730d7a60639a8e}\label{classC_a16720d1f9c7fb32aba730d7a60639a8e}} 
+\index{C@{C}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$}{operator*}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator$\ast$ (\begin{DoxyParamCaption}\item[{const double \&}]{d,  }\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+ Data\+Set.\+hpp の 318 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{318                                                 \{}
+\DoxyCodeLine{319     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC_a26ecaf772c6688b6c03fb14784b276ba}{C}}(d * v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}, d * v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}, d * v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}});}
+\DoxyCodeLine{320 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_abadecdac9cdbf55d417647647dd4c63d}\label{classC_abadecdac9cdbf55d417647647dd4c63d}} 
+\index{C@{C}!operator+@{operator+}}
+\index{operator+@{operator+}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator+}{operator+}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+ Data\+Set.\+hpp の 309 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{309 \{ \textcolor{keywordflow}{return} v; \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_a8e8a0ac7dcb4f94e9c16a540a400c082}\label{classC_a8e8a0ac7dcb4f94e9c16a540a400c082}} 
+\index{C@{C}!operator+@{operator+}}
+\index{operator+@{operator+}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator+}{operator+}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{a,  }\item[{const \mbox{\hyperlink{classC}{C}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+ Data\+Set.\+hpp の 311 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{311                                            \{}
+\DoxyCodeLine{312     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC_a26ecaf772c6688b6c03fb14784b276ba}{C}}(a.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} + b.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}, a.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} + b.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}, a.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} + b.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}});}
+\DoxyCodeLine{313 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_a38b3c36ef14ec0758cb0639a53d317bd}\label{classC_a38b3c36ef14ec0758cb0639a53d317bd}} 
+\index{C@{C}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator-\/}{operator-}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+ Data\+Set.\+hpp の 310 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{310 \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classC_a26ecaf772c6688b6c03fb14784b276ba}{C}}(-\/v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}, -\/v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}, -\/v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}}); \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_a0da91bf1b25077b1e6853b7a355dc13c}\label{classC_a0da91bf1b25077b1e6853b7a355dc13c}} 
+\index{C@{C}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator-\/}{operator-}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{a,  }\item[{const \mbox{\hyperlink{classC}{C}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+ Data\+Set.\+hpp の 314 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{314                                            \{}
+\DoxyCodeLine{315     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC_a26ecaf772c6688b6c03fb14784b276ba}{C}}(a.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} -\/ b.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}}, a.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} -\/ b.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}}, a.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} -\/ b.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}});}
+\DoxyCodeLine{316 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_af4df40677f6ff88f5e33926d8abd4125}\label{classC_af4df40677f6ff88f5e33926d8abd4125}} 
+\index{C@{C}!operator/@{operator/}}
+\index{operator/@{operator/}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator/}{operator/}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v,  }\item[{const double \&}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+ Data\+Set.\+hpp の 340 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{340                                                 \{}
+\DoxyCodeLine{341     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC_a26ecaf772c6688b6c03fb14784b276ba}{C}}(v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} / d, v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} / d, v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} / d);}
+\DoxyCodeLine{342 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_a0c24dfef5b3c76043211285e8cefaa73}\label{classC_a0c24dfef5b3c76043211285e8cefaa73}} 
+\index{C@{C}!operator/@{operator/}}
+\index{operator/@{operator/}!C@{C}}
+\doxysubsubsection{\texorpdfstring{operator/}{operator/}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} operator/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v,  }\item[{const int \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+ Data\+Set.\+hpp の 343 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{343                                              \{}
+\DoxyCodeLine{344     \textcolor{keywordtype}{double} d = (double)i;}
+\DoxyCodeLine{345     \textcolor{keywordflow}{return} \mbox{\hyperlink{classC_a26ecaf772c6688b6c03fb14784b276ba}{C}}(v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} / d, v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} / d, v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} / d);}
+\DoxyCodeLine{346 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classC_abf92098500e0dbbf5319eda14c2fb8f4}\label{classC_abf92098500e0dbbf5319eda14c2fb8f4}} 
+\index{C@{C}!print@{print}}
+\index{print@{print}!C@{C}}
+\doxysubsubsection{\texorpdfstring{print}{print}}
+{\footnotesize\ttfamily void print (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classC}{C}} \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+ Data\+Set.\+hpp の 403 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{403 \{ cout << v.\mbox{\hyperlink{classC_ad806ec554132edd18f84dba875299913}{x}} << \textcolor{charliteral}{','} << v.\mbox{\hyperlink{classC_af3f721dade0ba53be8a2e6f57333fd6c}{y}} << \textcolor{charliteral}{','} << v.\mbox{\hyperlink{classC_a726ab34c19365df870cafb22a302bb6f}{z}} << endl; \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{classC_ad806ec554132edd18f84dba875299913}\label{classC_ad806ec554132edd18f84dba875299913}} 
+\index{C@{C}!x@{x}}
+\index{x@{x}!C@{C}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily double C\+::x}
+
+
+
+ Data\+Set.\+hpp の 213 行目に定義があります。
+
+\mbox{\Hypertarget{classC_af3f721dade0ba53be8a2e6f57333fd6c}\label{classC_af3f721dade0ba53be8a2e6f57333fd6c}} 
+\index{C@{C}!y@{y}}
+\index{y@{y}!C@{C}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily double C\+::y}
+
+
+
+ Data\+Set.\+hpp の 213 行目に定義があります。
+
+\mbox{\Hypertarget{classC_a726ab34c19365df870cafb22a302bb6f}\label{classC_a726ab34c19365df870cafb22a302bb6f}} 
+\index{C@{C}!z@{z}}
+\index{z@{z}!C@{C}}
+\doxysubsubsection{\texorpdfstring{z}{z}}
+{\footnotesize\ttfamily double C\+::z}
+
+
+
+ Data\+Set.\+hpp の 213 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/hpp/\+Base/\mbox{\hyperlink{DataSet_8hpp}{Data\+Set.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,36 @@
+digraph "Particles"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Particles\n|+ c\l+ vc_Bottom\l+ vc_tmp\l+ mi\l+ mj\l+ mi0\l+ mj0\l+ v\l+ new_v\l+ g\lほか 41 件…\l|+ Particles()\l+ ~Particles()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="粒子の持つ力や距離などのパラメ―タ"];
+  Node2 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +omega_psi\n+theta\n+Ftj\n+Si0\n+omega_theta\n+phi\n+Fa\n+Mi\n+epsilonli\n+Mj\n..." ,arrowhead="odiamond"];
+  Node2 [label="{vector\< vector\< vector\l\< double \> \> \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node3 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +commflag" ,arrowhead="odiamond"];
+  Node3 [label="{vector\< vector\< vector\l\< Communication \> \> \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node4 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +tmp" ,arrowhead="odiamond"];
+  Node4 [label="{Tmp\n||}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structTmp.html",tooltip="一時的に使用する構造体"];
+  Node5 -> Node4 [color="grey25",fontsize="10",style="solid",label=" +vec\n+vec2\n+vec3" ,arrowhead="odiamond"];
+  Node5 [label="{Vector\n|+ norm\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structVector.html",tooltip="ベクトルと長さを格納する"];
+  Node6 -> Node5 [color="grey25",fontsize="10",style="solid",label=" +vector" ,arrowhead="odiamond"];
+  Node6 [label="{C\n|+ x\l+ y\l+ z\l|+ C()\l+ C()\l+ C()\l+ operator=()\l+ operator=()\l+ operator+=()\l+ operator-=()\l+ operator*=()\l+ operator/=()\l+ set()\lほか 11 件…\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classC.html",tooltip="x,y,z方向に値を持つ"];
+  Node6 -> Node4 [color="grey25",fontsize="10",style="solid",label=" +vc_coordinates" ,arrowhead="odiamond"];
+  Node7 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +r\n+li\n+pre_r\n+lj" ,arrowhead="odiamond"];
+  Node7 [label="{vector\< vector\< vector\l\< Vector \> \> \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node8 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +vc_Right\n+F_roll\n+disturbance\n+pressure\n+vc_Top\n+F_Cor\n+vc_Left\n+omega\n+external\l_force\n+new_c\n..." ,arrowhead="odiamond"];
+  Node8 [label="{vector\< vector\< vector\l\< C \> \> \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node9 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +F" ,arrowhead="odiamond"];
+  Node9 [label="{vector\< vector\< vector\l\< Direction \> \> \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node10 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +S\n+Si\n+Sj" ,arrowhead="odiamond"];
+  Node10 [label="{vector\< vector\< vector\l\< Area \> \> \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node11 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +flag\n+surround_particle\l_exsit" ,arrowhead="odiamond"];
+  Node11 [label="{vector\< vector\< vector\l\< int \> \> \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node12 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +Fb" ,arrowhead="odiamond"];
+  Node12 [label="{vector\< vector\< vector\l\< PreDirection \> \> \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node13 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +vp" ,arrowhead="odiamond"];
+  Node13 [label="{vector\< vector\< vector\l\< VirtualParticle \> \> \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node14 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +Fsi\n+Fsj\n+beta0\n+gamma\n+beta" ,arrowhead="odiamond"];
+  Node14 [label="{vector\< vector\< vector\l\< Quarter \> \> \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node15 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +omp" ,arrowhead="odiamond"];
+  Node15 [label="{vector\< vector\< vector\l\< OuterMostParameter \> \> \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}

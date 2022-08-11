@@ -1,0 +1,51 @@
+\hypertarget{test_8cpp}{}\doxysection{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/test/test.cpp ファイル}
+\label{test_8cpp}\index{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/MultiParticleMethod/test/test.cpp@{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/MultiParticleMethod/test/test.cpp}}
+
+
+main関数があるファイル、エラー処理しか行わない  
+
+
+{\ttfamily \#include \char`\"{}gtest/gtest.\+h\char`\"{}}\newline
+test.\+cpp の依存先関係図\+:
+% FIG 0
+\doxysubsection*{関数}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{test_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+main関数があるファイル、エラー処理しか行わない 
+
+///////////////////////////////////////////////////////////////////////////////
+
+コマンドライン引数次第でエラーが出たり処理が変わったりするらしい。普段はint 1が入るのみかな？
+
+/////////////////////////////////////////////////////////////////////////////// 
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{test_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{test_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{test.cpp@{test.cpp}!main@{main}}
+\index{main@{main}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+ test.\+cpp の 100 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{100                                 \{}
+\DoxyCodeLine{101     \textcolor{comment}{// C coordinate;}}
+\DoxyCodeLine{102     \textcolor{comment}{// coordinate.x = 2;}}
+\DoxyCodeLine{103     \textcolor{comment}{// coordinate.y = 3;}}
+\DoxyCodeLine{104     \textcolor{comment}{// coordinate.z = 4;}}
+\DoxyCodeLine{105     \textcolor{comment}{// coordinate.Scalar(2);}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107     ::testing::InitGoogleTest(\&argc, argv);}
+\DoxyCodeLine{108     \textcolor{keywordflow}{return} RUN\_ALL\_TESTS();}
+\DoxyCodeLine{109 \}}
+
+\end{DoxyCode}

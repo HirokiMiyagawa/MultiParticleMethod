@@ -1,0 +1,237 @@
+\hypertarget{classCsv}{}\doxysection{Csv クラス}
+\label{classCsv}\index{Csv@{Csv}}
+
+
+csvファイルから、パラメーターを読み込んでシミュレーションを行う場合  
+
+
+
+
+{\ttfamily \#include $<$csv.\+hpp$>$}
+
+
+
+Csv 連携図
+% FIG 0
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCsv_a52d42b6907ada422a32fab1c53644bfc}{Csv}} (string)
+\item 
+bool \mbox{\hyperlink{classCsv_a0228e424fd549aa237189850d06b4c12}{get\+Csv}} (vector$<$ vector$<$ string $>$$>$ \&, const char delim=\textquotesingle{},\textquotesingle{})
+\item 
+void \mbox{\hyperlink{classCsv_a4ffe024a28a4389887846901742f3196}{myparam\+Read}} (\mbox{\hyperlink{classParams}{Params}} \&, vector$<$ vector$<$ string $>$$>$ \&data)
+\begin{DoxyCompactList}\small\item\em 各行数ごとに値を格納する \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classCsv_a6edaf6f4050ee174721b93b2c182dc8b}{csv\+\_\+file}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+csvファイルから、パラメーターを読み込んでシミュレーションを行う場合 
+
+/////////////////////////////////////////////////////////////////////////////
+
+引数付きコンストラクタ \begin{DoxyNote}{覚え書き}
+main関数からしか呼び出されない 読み込むcsvファイルの2列目の最終行に\textquotesingle{}F\+A\+L\+SE\textquotesingle{}と入力すること ///////////////////////////////////////////////////////////////////////////// 
+\end{DoxyNote}
+
+
+ csv.\+hpp の 22 行目に定義があります。
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classCsv_a52d42b6907ada422a32fab1c53644bfc}\label{classCsv_a52d42b6907ada422a32fab1c53644bfc}} 
+\index{Csv@{Csv}!Csv@{Csv}}
+\index{Csv@{Csv}!Csv@{Csv}}
+\doxysubsubsection{\texorpdfstring{Csv()}{Csv()}}
+{\footnotesize\ttfamily Csv\+::\+Csv (\begin{DoxyParamCaption}\item[{string}]{csv\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+ csv.\+hpp の 32 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{32 \{ this-\/>\mbox{\hyperlink{classCsv_a6edaf6f4050ee174721b93b2c182dc8b}{csv\_file}} = \mbox{\hyperlink{classCsv_a6edaf6f4050ee174721b93b2c182dc8b}{csv\_file}}; \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classCsv_a0228e424fd549aa237189850d06b4c12}\label{classCsv_a0228e424fd549aa237189850d06b4c12}} 
+\index{Csv@{Csv}!getCsv@{getCsv}}
+\index{getCsv@{getCsv}!Csv@{Csv}}
+\doxysubsubsection{\texorpdfstring{getCsv()}{getCsv()}}
+{\footnotesize\ttfamily bool Csv\+::get\+Csv (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ string $>$$>$ \&}]{data,  }\item[{const char}]{delim = {\ttfamily \textquotesingle{},\textquotesingle{}} }\end{DoxyParamCaption})}
+
+
+
+ csv.\+hpp の 34 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{34                                                                \{}
+\DoxyCodeLine{35     ifstream ifs(\mbox{\hyperlink{classCsv_a6edaf6f4050ee174721b93b2c182dc8b}{csv\_file}});}
+\DoxyCodeLine{36     \textcolor{keywordflow}{if} (!ifs.is\_open()) \{}
+\DoxyCodeLine{37         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{38     \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{keywordtype}{string} buf;}
+\DoxyCodeLine{41     \textcolor{keywordflow}{while} (getline(ifs, buf)) \{}
+\DoxyCodeLine{42         vector<string> rec;}
+\DoxyCodeLine{43         istringstream iss(buf);}
+\DoxyCodeLine{44         \textcolor{keywordtype}{string} field;}
+\DoxyCodeLine{45         \textcolor{keywordflow}{while} (getline(iss, field, delim)) \{}
+\DoxyCodeLine{46             rec.push\_back(field);}
+\DoxyCodeLine{47         \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49         \textcolor{keywordflow}{if} (rec.size() != 0) \{}
+\DoxyCodeLine{50             data.push\_back(rec);}
+\DoxyCodeLine{51         \}}
+\DoxyCodeLine{52     \}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{55 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 1
+\mbox{\Hypertarget{classCsv_a4ffe024a28a4389887846901742f3196}\label{classCsv_a4ffe024a28a4389887846901742f3196}} 
+\index{Csv@{Csv}!myparamRead@{myparamRead}}
+\index{myparamRead@{myparamRead}!Csv@{Csv}}
+\doxysubsubsection{\texorpdfstring{myparamRead()}{myparamRead()}}
+{\footnotesize\ttfamily void Csv\+::myparam\+Read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classParams}{Params}} \&}]{myparamread,  }\item[{vector$<$ vector$<$ string $>$$>$ \&}]{data }\end{DoxyParamCaption})}
+
+
+
+各行数ごとに値を格納する 
+
+\begin{DoxyNote}{覚え書き}
+以下に各行数での読み込む値を示す 0：i\+Num 1：j\+Num 2：m\+\_\+sheet\+\_\+skip 3：\+Lref 4：\+Vref 5：\+Pref 6：m\+\_\+tmax 7：m\+\_\+kx 8：m\+\_\+ky 9：m\+\_\+kz 10：m\+\_\+dt 11：m\+\_\+E 12：h0 13：m\+\_\+rh\+\_\+0 14：m\+\_\+mu 15：\+Cv 
+\end{DoxyNote}
+
+
+ csv.\+hpp の 77 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{77                                                                        \{}
+\DoxyCodeLine{78     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} row = 0; row < data.size(); row++) \{}
+\DoxyCodeLine{79         vector<string> rec = data[row];}
+\DoxyCodeLine{80         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} col = 0; col < rec.size(); col++) \{}
+\DoxyCodeLine{81             \textcolor{keywordflow}{if} (col < rec.size() -\/ 1) \{}
+\DoxyCodeLine{82                 cout << rec[col];}
+\DoxyCodeLine{83                 cout << \textcolor{stringliteral}{"="};}
+\DoxyCodeLine{84             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{85                 \textcolor{keywordflow}{switch} (row) \{}
+\DoxyCodeLine{86                     \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{87                         myparamread.\mbox{\hyperlink{classParams_a568540cab95643d13c7402d18f61a4f2}{m\_iNum}} = atoi(rec[col].c\_str());}
+\DoxyCodeLine{88                         cout << myparamread.\mbox{\hyperlink{classParams_a568540cab95643d13c7402d18f61a4f2}{m\_iNum}};}
+\DoxyCodeLine{89                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91                     \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{92                         myparamread.\mbox{\hyperlink{classParams_a4e8c2110b9c80adffa96f1ca1691bab8}{m\_jNum}} = atoi(rec[col].c\_str());}
+\DoxyCodeLine{93                         cout << myparamread.\mbox{\hyperlink{classParams_a4e8c2110b9c80adffa96f1ca1691bab8}{m\_jNum}};}
+\DoxyCodeLine{94                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96                     \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{97                         myparamread.\mbox{\hyperlink{classParams_ac32feaa485f6285cc2ec6ec7323eca9a}{m\_sheet\_skip}} = atof(rec[col].c\_str());}
+\DoxyCodeLine{98                         cout << myparamread.\mbox{\hyperlink{classParams_ac32feaa485f6285cc2ec6ec7323eca9a}{m\_sheet\_skip}};}
+\DoxyCodeLine{99                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101                     \textcolor{keywordflow}{case} 3:}
+\DoxyCodeLine{102                         myparamread.\mbox{\hyperlink{classParams_a1235fa0020820e249b24afeee4bf6eb3}{Lref}} = atof(rec[col].c\_str());}
+\DoxyCodeLine{103                         cout << myparamread.\mbox{\hyperlink{classParams_a1235fa0020820e249b24afeee4bf6eb3}{Lref}};}
+\DoxyCodeLine{104                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106                     \textcolor{keywordflow}{case} 4:}
+\DoxyCodeLine{107                         myparamread.\mbox{\hyperlink{classParams_a222efb1c437294cfc9c6f612d67657e8}{Vref}} = atof(rec[col].c\_str());}
+\DoxyCodeLine{108                         cout << myparamread.\mbox{\hyperlink{classParams_a222efb1c437294cfc9c6f612d67657e8}{Vref}};}
+\DoxyCodeLine{109                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111                     \textcolor{keywordflow}{case} 5:}
+\DoxyCodeLine{112                         myparamread.\mbox{\hyperlink{classParams_aa3806d6c13870e83c6a0ac0608eb346d}{Pref}} = atof(rec[col].c\_str());}
+\DoxyCodeLine{113                         cout << myparamread.\mbox{\hyperlink{classParams_aa3806d6c13870e83c6a0ac0608eb346d}{Pref}};}
+\DoxyCodeLine{114                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116                     \textcolor{keywordflow}{case} 6:}
+\DoxyCodeLine{117                         myparamread.\mbox{\hyperlink{classParams_af632629af171f40d94d322f7c4dce07c}{m\_tmax}} = atof(rec[col].c\_str());}
+\DoxyCodeLine{118                         cout << myparamread.\mbox{\hyperlink{classParams_af632629af171f40d94d322f7c4dce07c}{m\_tmax}};}
+\DoxyCodeLine{119                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121                     \textcolor{keywordflow}{case} 7:}
+\DoxyCodeLine{122                         myparamread.\mbox{\hyperlink{classParams_ab53034f0440ed2523654beae5a73e86a}{m\_kx}} = atof(rec[col].c\_str());}
+\DoxyCodeLine{123                         cout << myparamread.\mbox{\hyperlink{classParams_ab53034f0440ed2523654beae5a73e86a}{m\_kx}};}
+\DoxyCodeLine{124                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126                     \textcolor{keywordflow}{case} 8:}
+\DoxyCodeLine{127                         myparamread.\mbox{\hyperlink{classParams_a1e65b7832c25bd5b77d7873fb61998de}{m\_ky}} = atof(rec[col].c\_str());}
+\DoxyCodeLine{128                         cout << myparamread.\mbox{\hyperlink{classParams_a1e65b7832c25bd5b77d7873fb61998de}{m\_ky}};}
+\DoxyCodeLine{129                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131                     \textcolor{keywordflow}{case} 9:}
+\DoxyCodeLine{132                         myparamread.\mbox{\hyperlink{classParams_a5da3d6c4cde37b6633f61205e824b59a}{m\_kz}} = atof(rec[col].c\_str());}
+\DoxyCodeLine{133                         cout << myparamread.\mbox{\hyperlink{classParams_a5da3d6c4cde37b6633f61205e824b59a}{m\_kz}};}
+\DoxyCodeLine{134                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136                     \textcolor{keywordflow}{case} 10:}
+\DoxyCodeLine{137                         myparamread.\mbox{\hyperlink{classParams_ad42da0a5b284db3857a70ebe41b4c061}{m\_dt}} = atof(rec[col].c\_str());}
+\DoxyCodeLine{138                         cout << myparamread.\mbox{\hyperlink{classParams_ad42da0a5b284db3857a70ebe41b4c061}{m\_dt}};}
+\DoxyCodeLine{139                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141                     \textcolor{keywordflow}{case} 11:}
+\DoxyCodeLine{142                         myparamread.\mbox{\hyperlink{classParams_aebea50cc051ec85b8a99aa758ec33c24}{m\_E}} = atof(rec[col].c\_str());}
+\DoxyCodeLine{143                         cout << myparamread.\mbox{\hyperlink{classParams_aebea50cc051ec85b8a99aa758ec33c24}{m\_E}};}
+\DoxyCodeLine{144                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146                     \textcolor{keywordflow}{case} 12:}
+\DoxyCodeLine{147                         myparamread.\mbox{\hyperlink{classParams_ac55ec71b45f169db85e9722d59d30cd8}{h0}} = atof(rec[col].c\_str());}
+\DoxyCodeLine{148                         cout << myparamread.\mbox{\hyperlink{classParams_ac55ec71b45f169db85e9722d59d30cd8}{h0}};}
+\DoxyCodeLine{149                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151                     \textcolor{keywordflow}{case} 13:}
+\DoxyCodeLine{152                         myparamread.\mbox{\hyperlink{classParams_a09ab4211d33bbee9637ffb3a9497951a}{m\_rho}} = atof(rec[col].c\_str());}
+\DoxyCodeLine{153                         cout << myparamread.\mbox{\hyperlink{classParams_a09ab4211d33bbee9637ffb3a9497951a}{m\_rho}};}
+\DoxyCodeLine{154                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156                     \textcolor{keywordflow}{case} 14:}
+\DoxyCodeLine{157                         myparamread.\mbox{\hyperlink{classParams_a88458df4b86d46005edeadd3869c970c}{m\_nu}} = atof(rec[col].c\_str());}
+\DoxyCodeLine{158                         cout << myparamread.\mbox{\hyperlink{classParams_a88458df4b86d46005edeadd3869c970c}{m\_nu}};}
+\DoxyCodeLine{159                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161                     \textcolor{keywordflow}{case} 15:}
+\DoxyCodeLine{162                         myparamread.\mbox{\hyperlink{classParams_a387df11f8600502471687b41991d5361}{Cv}} = atof(rec[col].c\_str());}
+\DoxyCodeLine{163                         cout << myparamread.\mbox{\hyperlink{classParams_a387df11f8600502471687b41991d5361}{Cv}};}
+\DoxyCodeLine{164                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{165                 \}}
+\DoxyCodeLine{166             \}}
+\DoxyCodeLine{167         \}}
+\DoxyCodeLine{168         cout << endl;}
+\DoxyCodeLine{169     \}}
+\DoxyCodeLine{170 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 2
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{classCsv_a6edaf6f4050ee174721b93b2c182dc8b}\label{classCsv_a6edaf6f4050ee174721b93b2c182dc8b}} 
+\index{Csv@{Csv}!csv\_file@{csv\_file}}
+\index{csv\_file@{csv\_file}!Csv@{Csv}}
+\doxysubsubsection{\texorpdfstring{csv\_file}{csv\_file}}
+{\footnotesize\ttfamily string Csv\+::csv\+\_\+file}
+
+
+
+ csv.\+hpp の 24 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/hpp/\+Readcsv/\mbox{\hyperlink{csv_8hpp}{csv.\+hpp}}\end{DoxyCompactItemize}

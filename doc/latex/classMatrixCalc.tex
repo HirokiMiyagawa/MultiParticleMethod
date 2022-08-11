@@ -1,0 +1,766 @@
+\hypertarget{classMatrixCalc}{}\doxysection{Matrix\+Calc クラス}
+\label{classMatrixCalc}\index{MatrixCalc@{MatrixCalc}}
+
+
+行列を扱うクラス  
+
+
+
+
+{\ttfamily \#include $<$Matrix\+Calc.\+hpp$>$}
+
+
+
+Matrix\+Calc 連携図
+% FIG 0
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classMatrixCalc_a4ec2f3c924721a544c78ee8d256997d7}{inner\+Product\+Calc}} (vector$<$ double $>$ const \&matrixA, vector$<$ double $>$ const \&matrixB)
+\begin{DoxyCompactList}\small\item\em 内積を計算する \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMatrixCalc_ac2a39ae0ae49d0fc64e7da7dccbad5a4}{plus\+Matrix}} (vector$<$ double $>$ const \&mA, vector$<$ double $>$ const \&mB, vector$<$ double $>$ \&plusres)
+\begin{DoxyCompactList}\small\item\em 行列の足し算 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMatrixCalc_a671a9c975331689061a27807439ae419}{min\+Matrix}} (vector$<$ double $>$ const \&mA, vector$<$ double $>$ const \&mB, vector$<$ double $>$ \&minres)
+\begin{DoxyCompactList}\small\item\em 行列の引き算 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMatrixCalc_aa46ab9ff3340255321fa2899c8ea53d5}{matrix\+Product}} (vector$<$ double $>$ const \&matrixA, vector$<$ double $>$ const \&matrixB)
+\begin{DoxyCompactList}\small\item\em 1xn と nx1 行列の積 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMatrixCalc_ae92d947c4bcfae506a1e096f4ddedc42}{matrix\+Product}} (vector$<$ vector$<$ double $>$$>$ const \&matrixA, vector$<$ double $>$ const \&matrixB, vector$<$ double $>$ \&out\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em nxn と nx1 行列の積 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMatrixCalc_a225c22c35131b70eaae76fd4b5393a72}{matrix\+Product}} (vector$<$ vector$<$ double $>$$>$ const \&matrixA, vector$<$ vector$<$ double $>$$>$ const \&matrixB, vector$<$ vector$<$ double $>$$>$ \&out\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em nxm と mxn 行列の積 \end{DoxyCompactList}\item 
+vector$<$ double $>$ \mbox{\hyperlink{classMatrixCalc_a4c4d9dee8f4147628c39d857e5da5541}{matrix\+Product\+Calc}} (const vector$<$ vector$<$ double $>$$>$ \&matrixA, const vector$<$ double $>$ \&matrixB)
+\begin{DoxyCompactList}\small\item\em nxn と nx1 行列の積 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ double $>$ $>$ \mbox{\hyperlink{classMatrixCalc_adfc1d70618c379d0a6b9c09a763807ff}{matrix\+Product\+Calc}} (const vector$<$ vector$<$ double $>$$>$ \&matrixA, const vector$<$ vector$<$ double $>$$>$ \&matrixB)
+\begin{DoxyCompactList}\small\item\em nxn と nxn 行列の積 \end{DoxyCompactList}\item 
+vector$<$ vector$<$ double $>$ $>$ \mbox{\hyperlink{classMatrixCalc_a8d1713830568a036eeafa78f0e742882}{transpose\+\_\+matrix}} (const vector$<$ vector$<$ double $>$$>$ \&)
+\item 
+void \mbox{\hyperlink{classMatrixCalc_add55453aaa1d8c06707ea392d9b7ca8b}{print\+Matrix}} (vector$<$ double $>$ const \&v)
+\begin{DoxyCompactList}\small\item\em 行列を表示する \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMatrixCalc_accd335a7e23172a9f4b962527fcc7910}{print\+Matrix}} (vector$<$ vector$<$ double $>$$>$ const \&v)
+\begin{DoxyCompactList}\small\item\em 行列を表示する（オーバーロード） \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMatrixCalc_a45dcc15c072c2afdc8296c99f2a1f291}{matrix\+Scalar\+Product}} (double const \&scalar, vector$<$ double $>$ const \&in\+\_\+matrix, vector$<$ double $>$ \&out\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em 行列の全要素をx倍する \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMatrixCalc_a3df3521937c279d1b4a2f9ba6b6cf44c}{matrix\+Scalar\+Div}} (double const \&scalar, vector$<$ double $>$ const \&in\+\_\+matrix, vector$<$ double $>$ \&out\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em 行列の全要素を1/x倍し、係数をくくりだす。 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMatrixCalc_a707c346da8aea150d6ddaf0bb418be86}{max\+Matrix}} (vector$<$ vector$<$ double $>$$>$ const \&in\+\_\+matrix, double \&max\+\_\+value, int \&maxi, int \&maxj)
+\begin{DoxyCompactList}\small\item\em 行列の全要素の最大値を返す。 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMatrixCalc_aabc83596dd6dbccc4cd624656dc706fd}{max\+Matrix\+\_\+n}} (vector$<$ vector$<$ double $>$$>$ const \&in\+\_\+matrix, double \&max\+\_\+value, int \&maxi, int \&maxj)
+\begin{DoxyCompactList}\small\item\em 行列の非対角要素での絶対値の最大値を返す。 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMatrixCalc_a58808cb482b378562b153aa9a93b3235}{Sort\+Rows}} (vector$<$ double $>$ \&arr, vector$<$ vector$<$ double $>$$>$ \&vec, \mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483af}{Sort\+Mode}} const \&sort\+\_\+mode)
+\begin{DoxyCompactList}\small\item\em 配列の値でソートする \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+行列を扱うクラス 
+
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 74 行目に定義があります。
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classMatrixCalc_a4ec2f3c924721a544c78ee8d256997d7}\label{classMatrixCalc_a4ec2f3c924721a544c78ee8d256997d7}} 
+\index{MatrixCalc@{MatrixCalc}!innerProductCalc@{innerProductCalc}}
+\index{innerProductCalc@{innerProductCalc}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{innerProductCalc()}{innerProductCalc()}}
+{\footnotesize\ttfamily double Matrix\+Calc\+::inner\+Product\+Calc (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ const \&}]{matrixA,  }\item[{vector$<$ double $>$ const \&}]{matrixB }\end{DoxyParamCaption})}
+
+
+
+内積を計算する 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em vector$<$double$>$} & matrixA \\
+\hline
+\mbox{\texttt{ in}}  & {\em vector$<$double$>$} & matrixB \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+double 内積 
+\end{DoxyReturn}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 121 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{121                                                                                                 \{}
+\DoxyCodeLine{122     \textcolor{keywordtype}{double} outnum = 0;}
+\DoxyCodeLine{123     \textcolor{keywordtype}{int} size      = matrixA.size();  \textcolor{comment}{// matrixAの要素数を格納する}}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{126         outnum += matrixA[i] * matrixB[i];}
+\DoxyCodeLine{127     \}}
+\DoxyCodeLine{128     \textcolor{keywordflow}{return} outnum;}
+\DoxyCodeLine{129 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMatrixCalc_aa46ab9ff3340255321fa2899c8ea53d5}\label{classMatrixCalc_aa46ab9ff3340255321fa2899c8ea53d5}} 
+\index{MatrixCalc@{MatrixCalc}!matrixProduct@{matrixProduct}}
+\index{matrixProduct@{matrixProduct}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{matrixProduct()}{matrixProduct()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily double Matrix\+Calc\+::matrix\+Product (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ const \&}]{matrixA,  }\item[{vector$<$ double $>$ const \&}]{matrixB }\end{DoxyParamCaption})}
+
+
+
+1xn と nx1 行列の積 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em matrixA} & 1xn行列 \\
+\hline
+\mbox{\texttt{ in}}  & {\em matrixB} & nx1行列 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+double 
+\end{DoxyReturn}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 168 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{168                                                                                              \{}
+\DoxyCodeLine{169     \textcolor{keywordtype}{int} size   = matrixA.size();  \textcolor{comment}{// in\_matrixの要素数を格納する}}
+\DoxyCodeLine{170     \textcolor{keywordtype}{double} out = 0;}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{173         out += matrixA[i] * matrixB[i];}
+\DoxyCodeLine{174     \}}
+\DoxyCodeLine{175     \textcolor{keywordflow}{return} out;}
+\DoxyCodeLine{176 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMatrixCalc_ae92d947c4bcfae506a1e096f4ddedc42}\label{classMatrixCalc_ae92d947c4bcfae506a1e096f4ddedc42}} 
+\index{MatrixCalc@{MatrixCalc}!matrixProduct@{matrixProduct}}
+\index{matrixProduct@{matrixProduct}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{matrixProduct()}{matrixProduct()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Matrix\+Calc\+::matrix\+Product (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ double $>$$>$ const \&}]{matrixA,  }\item[{vector$<$ double $>$ const \&}]{matrixB,  }\item[{vector$<$ double $>$ \&}]{out\+\_\+matrix }\end{DoxyParamCaption})}
+
+
+
+nxn と nx1 行列の積 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em matrixA} & nxn行列 \\
+\hline
+\mbox{\texttt{ in}}  & {\em matrixB} & nx1行列 \\
+\hline
+\mbox{\texttt{ out}}  & {\em out\+\_\+matrix} & nx1行列 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 185 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{185                                                                                                                                \{}
+\DoxyCodeLine{186     \textcolor{keywordtype}{int} size = matrixA.size();  \textcolor{comment}{// matrixAの要素数を格納する}}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{189         out\_matrix[i] = 0;  \textcolor{comment}{// 初期化}}
+\DoxyCodeLine{190         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < size; j++) \{}
+\DoxyCodeLine{191             out\_matrix[i] += matrixA[i][j] * matrixB[j];}
+\DoxyCodeLine{192         \}}
+\DoxyCodeLine{193     \}}
+\DoxyCodeLine{194 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMatrixCalc_a225c22c35131b70eaae76fd4b5393a72}\label{classMatrixCalc_a225c22c35131b70eaae76fd4b5393a72}} 
+\index{MatrixCalc@{MatrixCalc}!matrixProduct@{matrixProduct}}
+\index{matrixProduct@{matrixProduct}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{matrixProduct()}{matrixProduct()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Matrix\+Calc\+::matrix\+Product (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ double $>$$>$ const \&}]{matrixA,  }\item[{vector$<$ vector$<$ double $>$$>$ const \&}]{matrixB,  }\item[{vector$<$ vector$<$ double $>$$>$ \&}]{out\+\_\+matrix }\end{DoxyParamCaption})}
+
+
+
+nxm と mxn 行列の積 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em matrixA} & nxn行列 \\
+\hline
+\mbox{\texttt{ in}}  & {\em matrixB} & nx1行列 \\
+\hline
+\mbox{\texttt{ out}}  & {\em out\+\_\+matrix} & nx1行列 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 203 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{203                                                                                                                                                \{}
+\DoxyCodeLine{204     \textcolor{keywordtype}{int} size = matrixA.size();  \textcolor{comment}{// matrixAの要素数を格納する}}
+\DoxyCodeLine{205 }
+\DoxyCodeLine{206     \textcolor{keywordtype}{int} n\_rows = matrixA.size();}
+\DoxyCodeLine{207     \textcolor{keywordtype}{int} n\_cols = matrixA[0].size();}
+\DoxyCodeLine{208 }
+\DoxyCodeLine{209     out\_matrix.assign(n\_rows, vector<double>(n\_cols, 0));}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{212         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < size; j++) \{}
+\DoxyCodeLine{213             out\_matrix[i][j] = matrixA[i][j] * matrixB[j][i];}
+\DoxyCodeLine{214         \}}
+\DoxyCodeLine{215     \}}
+\DoxyCodeLine{216 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMatrixCalc_a4c4d9dee8f4147628c39d857e5da5541}\label{classMatrixCalc_a4c4d9dee8f4147628c39d857e5da5541}} 
+\index{MatrixCalc@{MatrixCalc}!matrixProductCalc@{matrixProductCalc}}
+\index{matrixProductCalc@{matrixProductCalc}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{matrixProductCalc()}{matrixProductCalc()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily vector$<$ double $>$ Matrix\+Calc\+::matrix\+Product\+Calc (\begin{DoxyParamCaption}\item[{const vector$<$ vector$<$ double $>$$>$ \&}]{matrixA,  }\item[{const vector$<$ double $>$ \&}]{matrixB }\end{DoxyParamCaption})}
+
+
+
+nxn と nx1 行列の積 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em matrixA} & nxn行列 \\
+\hline
+\mbox{\texttt{ in}}  & {\em matrixB} & nx1行列 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+out\+\_\+matrix nx1行列 
+\end{DoxyReturn}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 225 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{225                                                                                                                  \{}
+\DoxyCodeLine{226     \textcolor{keywordtype}{int} size = matrixA.size();  \textcolor{comment}{// matrixAの要素数を格納する}}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228     vector<double> out\_matrix(size, 0);}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{231         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < size; j++) \{}
+\DoxyCodeLine{232             out\_matrix[i] += matrixA[i][j] * matrixB[j];}
+\DoxyCodeLine{233         \}}
+\DoxyCodeLine{234     \}}
+\DoxyCodeLine{235     \textcolor{keywordflow}{return} out\_matrix;}
+\DoxyCodeLine{236 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 1
+\mbox{\Hypertarget{classMatrixCalc_adfc1d70618c379d0a6b9c09a763807ff}\label{classMatrixCalc_adfc1d70618c379d0a6b9c09a763807ff}} 
+\index{MatrixCalc@{MatrixCalc}!matrixProductCalc@{matrixProductCalc}}
+\index{matrixProductCalc@{matrixProductCalc}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{matrixProductCalc()}{matrixProductCalc()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily vector$<$ vector$<$ double $>$ $>$ Matrix\+Calc\+::matrix\+Product\+Calc (\begin{DoxyParamCaption}\item[{const vector$<$ vector$<$ double $>$$>$ \&}]{matrixA,  }\item[{const vector$<$ vector$<$ double $>$$>$ \&}]{matrixB }\end{DoxyParamCaption})}
+
+
+
+nxn と nxn 行列の積 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em matrixA} & nxn行列 \\
+\hline
+\mbox{\texttt{ in}}  & {\em matrixB} & nxn行列 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+out\+\_\+matrix nxn行列 
+\end{DoxyReturn}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 244 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{244                                                                                                                                  \{}
+\DoxyCodeLine{245     \textcolor{keywordtype}{int} n\_rows\_A    = matrixA.size();}
+\DoxyCodeLine{246     \textcolor{keywordtype}{int} n\_columns\_A = matrixA[0].size();}
+\DoxyCodeLine{247     \textcolor{keywordtype}{int} n\_rows\_B    = matrixB.size();}
+\DoxyCodeLine{248     \textcolor{keywordtype}{int} n\_columns\_B = matrixB[0].size();}
+\DoxyCodeLine{249     \textcolor{comment}{// out\_matrix.assign(n\_rows, vector<double>(n\_cols, 0));}}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{251     \textcolor{keywordflow}{if} (n\_columns\_A != n\_rows\_B) \{}
+\DoxyCodeLine{252         cout << \textcolor{stringliteral}{"No match row and column on matrixProductCalc"} << endl;}
+\DoxyCodeLine{253         abort();}
+\DoxyCodeLine{254     \}}
+\DoxyCodeLine{255 }
+\DoxyCodeLine{256     vector<vector<double>> out\_matrix(n\_rows\_A, vector<double>(n\_columns\_B, 0));}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{258     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < n\_rows\_A; i++) \{}
+\DoxyCodeLine{259         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < n\_columns\_B; j++) \{}
+\DoxyCodeLine{260             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 0; k < n\_columns\_A; k++) \{}
+\DoxyCodeLine{261                 out\_matrix[i][j] += matrixA[i][k] * matrixB[k][j];}
+\DoxyCodeLine{262             \}}
+\DoxyCodeLine{263         \}}
+\DoxyCodeLine{264     \}}
+\DoxyCodeLine{265     \textcolor{keywordflow}{return} out\_matrix;}
+\DoxyCodeLine{266 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMatrixCalc_a3df3521937c279d1b4a2f9ba6b6cf44c}\label{classMatrixCalc_a3df3521937c279d1b4a2f9ba6b6cf44c}} 
+\index{MatrixCalc@{MatrixCalc}!matrixScalarDiv@{matrixScalarDiv}}
+\index{matrixScalarDiv@{matrixScalarDiv}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{matrixScalarDiv()}{matrixScalarDiv()}}
+{\footnotesize\ttfamily void Matrix\+Calc\+::matrix\+Scalar\+Div (\begin{DoxyParamCaption}\item[{double const \&}]{scalar,  }\item[{vector$<$ double $>$ const \&}]{in\+\_\+matrix,  }\item[{vector$<$ double $>$ \&}]{out\+\_\+matrix }\end{DoxyParamCaption})}
+
+
+
+行列の全要素を1/x倍し、係数をくくりだす。 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em scalar} & スカラー倍率。掃き出す \\
+\hline
+\mbox{\texttt{ in}}  & {\em in\+\_\+matrix} & 1/x倍する行列 \\
+\hline
+\mbox{\texttt{ out}}  & {\em out\+\_\+matrix} & 係数を出した後の行列 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 339 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{339                                                                                                                   \{}
+\DoxyCodeLine{340     \textcolor{keywordtype}{int} size = in\_matrix.size();  \textcolor{comment}{// in\_matrixの要素数を格納する}}
+\DoxyCodeLine{341 }
+\DoxyCodeLine{342     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{343         out\_matrix[i] = in\_matrix[i] / scalar;}
+\DoxyCodeLine{344     \}}
+\DoxyCodeLine{345 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMatrixCalc_a45dcc15c072c2afdc8296c99f2a1f291}\label{classMatrixCalc_a45dcc15c072c2afdc8296c99f2a1f291}} 
+\index{MatrixCalc@{MatrixCalc}!matrixScalarProduct@{matrixScalarProduct}}
+\index{matrixScalarProduct@{matrixScalarProduct}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{matrixScalarProduct()}{matrixScalarProduct()}}
+{\footnotesize\ttfamily void Matrix\+Calc\+::matrix\+Scalar\+Product (\begin{DoxyParamCaption}\item[{double const \&}]{scalar,  }\item[{vector$<$ double $>$ const \&}]{in\+\_\+matrix,  }\item[{vector$<$ double $>$ \&}]{out\+\_\+matrix }\end{DoxyParamCaption})}
+
+
+
+行列の全要素をx倍する 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em scalar} & スカラー係数。倍率。行列の係数 \\
+\hline
+\mbox{\texttt{ in}}  & {\em in\+\_\+matrix} & x倍する行列 \\
+\hline
+\mbox{\texttt{ out}}  & {\em out\+\_\+matrix} & 係数をかけた後の行列 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 324 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{324                                                                                                                       \{}
+\DoxyCodeLine{325     \textcolor{keywordtype}{int} size = in\_matrix.size();  \textcolor{comment}{// in\_matrixの要素数を格納する}}
+\DoxyCodeLine{326 }
+\DoxyCodeLine{327     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{328         out\_matrix[i] = scalar * in\_matrix[i];}
+\DoxyCodeLine{329     \}}
+\DoxyCodeLine{330 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMatrixCalc_a707c346da8aea150d6ddaf0bb418be86}\label{classMatrixCalc_a707c346da8aea150d6ddaf0bb418be86}} 
+\index{MatrixCalc@{MatrixCalc}!maxMatrix@{maxMatrix}}
+\index{maxMatrix@{maxMatrix}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{maxMatrix()}{maxMatrix()}}
+{\footnotesize\ttfamily double Matrix\+Calc\+::max\+Matrix (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ double $>$$>$ const \&}]{in\+\_\+matrix,  }\item[{double \&}]{max\+\_\+value,  }\item[{int \&}]{maxi,  }\item[{int \&}]{maxj }\end{DoxyParamCaption})}
+
+
+
+行列の全要素の最大値を返す。 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em in\+\_\+matrix} & 検索する行列 \\
+\hline
+\mbox{\texttt{ out}}  & {\em max\+\_\+value} & 最大値 \\
+\hline
+\mbox{\texttt{ out}}  & {\em maxi} & 最大値のイテレータ (i) \\
+\hline
+\mbox{\texttt{ out}}  & {\em maxj} & 最大値のイテレータ (j) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+double 最大値 
+\end{DoxyReturn}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 356 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{356                                                                                                              \{}
+\DoxyCodeLine{357     \textcolor{keywordtype}{int} size  = in\_matrix.size();  \textcolor{comment}{// in\_matrixの要素数を格納する}}
+\DoxyCodeLine{358     \textcolor{keywordtype}{double} a  = 0;                 \textcolor{comment}{// maxの値を一時的に保管する。}}
+\DoxyCodeLine{359     max\_value = 0;}
+\DoxyCodeLine{360     maxi      = 0;}
+\DoxyCodeLine{361     maxj      = 0;}
+\DoxyCodeLine{362 }
+\DoxyCodeLine{363     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size -\/ 1; i++) \{}
+\DoxyCodeLine{364         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = i; j < size; j++) \{}
+\DoxyCodeLine{365             a = std::max(fabs(max\_value), fabs(in\_matrix[i][j]));}
+\DoxyCodeLine{366             \textcolor{keywordflow}{if} (fabs(max\_value) < a) \{}
+\DoxyCodeLine{367                 max\_value = in\_matrix[i][j];}
+\DoxyCodeLine{368                 maxi      = i;}
+\DoxyCodeLine{369                 maxj      = j;}
+\DoxyCodeLine{370             \}}
+\DoxyCodeLine{371         \}}
+\DoxyCodeLine{372     \}}
+\DoxyCodeLine{373     \textcolor{keywordflow}{return} max\_value;}
+\DoxyCodeLine{374 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMatrixCalc_aabc83596dd6dbccc4cd624656dc706fd}\label{classMatrixCalc_aabc83596dd6dbccc4cd624656dc706fd}} 
+\index{MatrixCalc@{MatrixCalc}!maxMatrix\_n@{maxMatrix\_n}}
+\index{maxMatrix\_n@{maxMatrix\_n}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{maxMatrix\_n()}{maxMatrix\_n()}}
+{\footnotesize\ttfamily double Matrix\+Calc\+::max\+Matrix\+\_\+n (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ double $>$$>$ const \&}]{in\+\_\+matrix,  }\item[{double \&}]{max\+\_\+value,  }\item[{int \&}]{maxi,  }\item[{int \&}]{maxj }\end{DoxyParamCaption})}
+
+
+
+行列の非対角要素での絶対値の最大値を返す。 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em in\+\_\+matrix} & 検索する行列 \\
+\hline
+\mbox{\texttt{ out}}  & {\em max\+\_\+value} & 最大値 \\
+\hline
+\mbox{\texttt{ out}}  & {\em maxi} & 最大値のイテレータ (i) \\
+\hline
+\mbox{\texttt{ out}}  & {\em maxj} & 最大値のイテレータ (j) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+double 最大値 
+\end{DoxyReturn}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 385 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{385                                                                                                                \{}
+\DoxyCodeLine{386     \textcolor{keywordtype}{int} size = in\_matrix.size();  \textcolor{comment}{// in\_matrixの要素数を格納する}}
+\DoxyCodeLine{387     \textcolor{keywordtype}{double} a = 0;                 \textcolor{comment}{// maxの値を一時的に保管する。}}
+\DoxyCodeLine{388 }
+\DoxyCodeLine{389     \textcolor{comment}{// 初期化}}
+\DoxyCodeLine{390     max\_value = 0;}
+\DoxyCodeLine{391     maxi      = 0;}
+\DoxyCodeLine{392     maxj      = 0;}
+\DoxyCodeLine{393 }
+\DoxyCodeLine{394     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size -\/ 1; i++) \{}
+\DoxyCodeLine{395         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = i; j < size; j++) \{}
+\DoxyCodeLine{396             \textcolor{keywordflow}{if} (i != j) \{}
+\DoxyCodeLine{397                 a = std::max(fabs(max\_value), fabs(in\_matrix[i][j]));}
+\DoxyCodeLine{398                 \textcolor{keywordflow}{if} (fabs(max\_value) < a) \{}
+\DoxyCodeLine{399                     max\_value = in\_matrix[i][j];}
+\DoxyCodeLine{400                     maxi      = i;}
+\DoxyCodeLine{401                     maxj      = j;}
+\DoxyCodeLine{402                 \}}
+\DoxyCodeLine{403             \}}
+\DoxyCodeLine{404         \}}
+\DoxyCodeLine{405     \}}
+\DoxyCodeLine{406     \textcolor{keywordflow}{return} max\_value;}
+\DoxyCodeLine{407 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMatrixCalc_a671a9c975331689061a27807439ae419}\label{classMatrixCalc_a671a9c975331689061a27807439ae419}} 
+\index{MatrixCalc@{MatrixCalc}!minMatrix@{minMatrix}}
+\index{minMatrix@{minMatrix}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{minMatrix()}{minMatrix()}}
+{\footnotesize\ttfamily void Matrix\+Calc\+::min\+Matrix (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ const \&}]{mA,  }\item[{vector$<$ double $>$ const \&}]{mB,  }\item[{vector$<$ double $>$ \&}]{minres }\end{DoxyParamCaption})}
+
+
+
+行列の引き算 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em mA} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em mB} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em minres} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 153 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{153                                                                                                      \{}
+\DoxyCodeLine{154     \textcolor{keywordtype}{int} size = mA.size();  \textcolor{comment}{// vectorAの要素数を格納する}}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{157         minres[i] = mA[i] -\/ mB[i];}
+\DoxyCodeLine{158     \}}
+\DoxyCodeLine{159 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMatrixCalc_ac2a39ae0ae49d0fc64e7da7dccbad5a4}\label{classMatrixCalc_ac2a39ae0ae49d0fc64e7da7dccbad5a4}} 
+\index{MatrixCalc@{MatrixCalc}!plusMatrix@{plusMatrix}}
+\index{plusMatrix@{plusMatrix}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{plusMatrix()}{plusMatrix()}}
+{\footnotesize\ttfamily void Matrix\+Calc\+::plus\+Matrix (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ const \&}]{mA,  }\item[{vector$<$ double $>$ const \&}]{mB,  }\item[{vector$<$ double $>$ \&}]{plusres }\end{DoxyParamCaption})}
+
+
+
+行列の足し算 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em mA} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em mB} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em plusres} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 138 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{138                                                                                                        \{}
+\DoxyCodeLine{139     \textcolor{keywordtype}{int} size = mA.size();  \textcolor{comment}{// vectorAの要素数を格納する}}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{142         plusres[i] = mA[i] + mB[i];}
+\DoxyCodeLine{143     \}}
+\DoxyCodeLine{144 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMatrixCalc_add55453aaa1d8c06707ea392d9b7ca8b}\label{classMatrixCalc_add55453aaa1d8c06707ea392d9b7ca8b}} 
+\index{MatrixCalc@{MatrixCalc}!printMatrix@{printMatrix}}
+\index{printMatrix@{printMatrix}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{printMatrix()}{printMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Matrix\+Calc\+::print\+Matrix (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ const \&}]{v }\end{DoxyParamCaption})}
+
+
+
+行列を表示する 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em v} & 表示する行列 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 286 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{286                                                     \{}
+\DoxyCodeLine{287     \textcolor{comment}{// cout << "Print Matrix" << endl;}}
+\DoxyCodeLine{288     \textcolor{keywordtype}{int} size = v.size();  \textcolor{comment}{// vの要素数を格納する}}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{290     cout << \textcolor{stringliteral}{"-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"} << endl;}
+\DoxyCodeLine{291     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
+\DoxyCodeLine{292         cout << v[i] << \textcolor{stringliteral}{","};}
+\DoxyCodeLine{293     \}}
+\DoxyCodeLine{294     cout << endl;}
+\DoxyCodeLine{295     cout << \textcolor{stringliteral}{"-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"} << endl;}
+\DoxyCodeLine{296 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMatrixCalc_accd335a7e23172a9f4b962527fcc7910}\label{classMatrixCalc_accd335a7e23172a9f4b962527fcc7910}} 
+\index{MatrixCalc@{MatrixCalc}!printMatrix@{printMatrix}}
+\index{printMatrix@{printMatrix}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{printMatrix()}{printMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Matrix\+Calc\+::print\+Matrix (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ double $>$$>$ const \&}]{v }\end{DoxyParamCaption})}
+
+
+
+行列を表示する（オーバーロード） 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em v} & 表示する行列 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 302 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{302                                                             \{}
+\DoxyCodeLine{303     \textcolor{comment}{// cout << "Print Matrix" << endl;}}
+\DoxyCodeLine{304     \textcolor{keywordtype}{int} row    = v.size();     \textcolor{comment}{// vの行の要素数を格納する}}
+\DoxyCodeLine{305     \textcolor{keywordtype}{int} colunm = v[0].size();  \textcolor{comment}{// vの列の要素数を格納する}}
+\DoxyCodeLine{306     cout << \textcolor{stringliteral}{"-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"} << endl;}
+\DoxyCodeLine{307 }
+\DoxyCodeLine{308     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < row; i++) \{}
+\DoxyCodeLine{309         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < colunm; j++) \{}
+\DoxyCodeLine{310             cout << v[i][j] << \textcolor{stringliteral}{","};}
+\DoxyCodeLine{311         \}}
+\DoxyCodeLine{312         cout << endl;}
+\DoxyCodeLine{313     \}}
+\DoxyCodeLine{314     cout << \textcolor{stringliteral}{"-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"} << endl;}
+\DoxyCodeLine{315 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMatrixCalc_a58808cb482b378562b153aa9a93b3235}\label{classMatrixCalc_a58808cb482b378562b153aa9a93b3235}} 
+\index{MatrixCalc@{MatrixCalc}!SortRows@{SortRows}}
+\index{SortRows@{SortRows}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{SortRows()}{SortRows()}}
+{\footnotesize\ttfamily void Matrix\+Calc\+::\+Sort\+Rows (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ \&}]{arr,  }\item[{vector$<$ vector$<$ double $>$$>$ \&}]{vec,  }\item[{\mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483af}{Sort\+Mode}} const \&}]{sort\+\_\+mode }\end{DoxyParamCaption})}
+
+
+
+配列の値でソートする 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em arr} & ソートする配列（2次元配列の特徴量を格納。この値を参考にソートする） \\
+\hline
+\mbox{\texttt{ in}}  & {\em vec} & ソートする2次元配列 \\
+\hline
+\mbox{\texttt{ in}}  & {\em sort\+\_\+mode} & ソートモード（昇・降順と絶対値バージョン） \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+double 最大値 
+\end{DoxyReturn}
+\begin{DoxyNote}{覚え書き}
+Sort the rows of a matrix \char`\"{}vec\char`\"{} by the numbers contained in \char`\"{}eval\char`\"{} 
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 418 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{418                                                                                                      \{}
+\DoxyCodeLine{419     \textcolor{keywordtype}{int} n = arr.size();}
+\DoxyCodeLine{420     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < n -\/ 1; i++) \{}
+\DoxyCodeLine{421         \textcolor{keywordtype}{int} i\_max = i;}
+\DoxyCodeLine{422         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = i + 1; j < n; j++) \{}
+\DoxyCodeLine{423             \textcolor{comment}{// find the "maximum" element in the array starting at position i+1}}
+\DoxyCodeLine{424             \textcolor{keywordflow}{switch} (sort\_mode) \{}
+\DoxyCodeLine{425                 \textcolor{keywordflow}{case} \mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afadb62b28d843a4dd5657bcc71c1f868a8}{SORT\_DECREASING\_ARRAY}}:}
+\DoxyCodeLine{426                     \textcolor{keywordflow}{if} (arr[j] > arr[i\_max])}
+\DoxyCodeLine{427                         i\_max = j;}
+\DoxyCodeLine{428                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{429                 \textcolor{keywordflow}{case} \mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afab7684562b3e58b36b96aebcb59c684a3}{SORT\_INCREASING\_ARRAY}}:}
+\DoxyCodeLine{430                     \textcolor{keywordflow}{if} (arr[j] < arr[i\_max])}
+\DoxyCodeLine{431                         i\_max = j;}
+\DoxyCodeLine{432                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{433                 \textcolor{keywordflow}{case} \mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afaad2cd3865ad4336e1a3937a4c2a34a03}{SORT\_DECREASING\_ABS\_ARRAY}}:}
+\DoxyCodeLine{434                     \textcolor{keywordflow}{if} (\mbox{\hyperlink{DataSet_8hpp_a48c0e9af3de44d063a435d6e53401134}{std::abs}}(arr[j]) > \mbox{\hyperlink{DataSet_8hpp_a48c0e9af3de44d063a435d6e53401134}{std::abs}}(arr[i\_max]))}
+\DoxyCodeLine{435                         i\_max = j;}
+\DoxyCodeLine{436                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{437                 \textcolor{keywordflow}{case} \mbox{\hyperlink{MatrixCalc_8hpp_a031b34ab1dee47da0d616042a95483afae877bb07e87c941aee24c88701059b19}{SORT\_INCREASING\_ABS\_ARRAY}}:}
+\DoxyCodeLine{438                     \textcolor{keywordflow}{if} (\mbox{\hyperlink{DataSet_8hpp_a48c0e9af3de44d063a435d6e53401134}{std::abs}}(arr[j]) < \mbox{\hyperlink{DataSet_8hpp_a48c0e9af3de44d063a435d6e53401134}{std::abs}}(arr[i\_max]))}
+\DoxyCodeLine{439                         i\_max = j;}
+\DoxyCodeLine{440                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{441                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{442                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{443             \}}
+\DoxyCodeLine{444         \}}
+\DoxyCodeLine{445         std::swap(arr[i], arr[i\_max]);  \textcolor{comment}{// sort "arr"}}
+\DoxyCodeLine{446         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = 0; k < n; k++)}
+\DoxyCodeLine{447             std::swap(vec[i][k], vec[i\_max][k]);  \textcolor{comment}{// sort "vec"}}
+\DoxyCodeLine{448     \}}
+\DoxyCodeLine{449 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 2
+\mbox{\Hypertarget{classMatrixCalc_a8d1713830568a036eeafa78f0e742882}\label{classMatrixCalc_a8d1713830568a036eeafa78f0e742882}} 
+\index{MatrixCalc@{MatrixCalc}!transpose\_matrix@{transpose\_matrix}}
+\index{transpose\_matrix@{transpose\_matrix}!MatrixCalc@{MatrixCalc}}
+\doxysubsubsection{\texorpdfstring{transpose\_matrix()}{transpose\_matrix()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ double $>$ $>$ Matrix\+Calc\+::transpose\+\_\+matrix (\begin{DoxyParamCaption}\item[{const vector$<$ vector$<$ double $>$$>$ \&}]{matrixA }\end{DoxyParamCaption})}
+
+
+
+ Matrix\+Calc.\+hpp の 268 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{268                                                                                          \{}
+\DoxyCodeLine{269     \textcolor{keywordtype}{int} n\_rows    = matrixA.size();}
+\DoxyCodeLine{270     \textcolor{keywordtype}{int} n\_columns = matrixA[0].size();}
+\DoxyCodeLine{271     vector<vector<double>> Ret(n\_columns, vector<double>(n\_rows));}
+\DoxyCodeLine{272 }
+\DoxyCodeLine{273     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < n\_columns; i++) \{}
+\DoxyCodeLine{274         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < n\_rows; j++) \{}
+\DoxyCodeLine{275             Ret[i][j] = matrixA[j][i];}
+\DoxyCodeLine{276         \}}
+\DoxyCodeLine{277     \}}
+\DoxyCodeLine{278 }
+\DoxyCodeLine{279     \textcolor{keywordflow}{return} Ret;}
+\DoxyCodeLine{280 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 3
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/hpp/\+My\+Library/\mbox{\hyperlink{MatrixCalc_8hpp}{Matrix\+Calc.\+hpp}}\end{DoxyCompactItemize}

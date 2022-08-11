@@ -1,0 +1,323 @@
+\hypertarget{main_8cpp}{}\doxysection{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/cpp/main.cpp ファイル}
+\label{main_8cpp}\index{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/MultiParticleMethod/src/cpp/main.cpp@{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/MultiParticleMethod/src/cpp/main.cpp}}
+
+
+main関数があるファイル、エラー処理しか行わない  
+
+
+{\ttfamily \#include \char`\"{}Library\+\_\+header.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Color.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Definition\+Of\+Situation.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}csv.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Multi\+Particle.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Initial\+Conditions.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Base\+Calc.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Virtual\+Particle\+Calc.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Thickness\+Calc.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Force\+Calc.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Get\+New\+Coordinate.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Console.\+hpp\char`\"{}}\newline
+main.\+cpp の依存先関係図\+:
+% FIG 0
+\doxysubsection*{型定義}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \mbox{\hyperlink{main_8cpp_a76e2836e241b3572082da1229bc53021}{M\+A\+I\+N\+\_\+\+E\+R\+R\+O\+R\+\_\+\+F\+U\+NC}}) ()
+\end{DoxyCompactItemize}
+\doxysubsection*{関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_a2950c0a5abdda61ef9ede28dbb5c636f}{my\+Name\+Is}} ()
+\begin{DoxyCompactList}\small\item\em report \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_ae54f2790e74717abf0c2bb5e33425623}{arg\+Error}} ()
+\item 
+void \mbox{\hyperlink{main_8cpp_a300ecc2c01a20c36e0ffdf631d8800d7}{unknown\+Error}} ()
+\item 
+void \mbox{\hyperlink{main_8cpp_a2f8504040f11e6e49acb95020f477ed5}{csv\+Error}} ()
+\item 
+void \mbox{\hyperlink{main_8cpp_a60437786578c4b20bba44753812be146}{calc\+Func}} (int const  \&i, int const  \&j, int const  \&k)
+\begin{DoxyCompactList}\small\item\em 引数がない or 引数が2つ の実行の場合に呼び出される \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\doxysubsection*{変数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{SimpleTensile_8cpp_a76e2836e241b3572082da1229bc53021}{M\+A\+I\+N\+\_\+\+E\+R\+R\+O\+R\+\_\+\+F\+U\+NC}} \mbox{\hyperlink{main_8cpp_a33240a2de4e6166c193502e55556c33a}{main\+\_\+error\+\_\+func}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+main関数があるファイル、エラー処理しか行わない 
+
+///////////////////////////////////////////////////////////////////////////////
+
+コマンドライン引数次第でエラーが出たり処理が変わったりするらしい。普段はint 1が入るのみかな？
+
+/////////////////////////////////////////////////////////////////////////////// 
+
+\doxysubsection{型定義詳解}
+\mbox{\Hypertarget{main_8cpp_a76e2836e241b3572082da1229bc53021}\label{main_8cpp_a76e2836e241b3572082da1229bc53021}} 
+\index{main.cpp@{main.cpp}!MAIN\_ERROR\_FUNC@{MAIN\_ERROR\_FUNC}}
+\index{MAIN\_ERROR\_FUNC@{MAIN\_ERROR\_FUNC}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{MAIN\_ERROR\_FUNC}{MAIN\_ERROR\_FUNC}}
+{\footnotesize\ttfamily typedef void($\ast$ M\+A\+I\+N\+\_\+\+E\+R\+R\+O\+R\+\_\+\+F\+U\+NC) ()}
+
+
+
+ main.\+cpp の 44 行目に定義があります。
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{main_8cpp_ae54f2790e74717abf0c2bb5e33425623}\label{main_8cpp_ae54f2790e74717abf0c2bb5e33425623}} 
+\index{main.cpp@{main.cpp}!argError@{argError}}
+\index{argError@{argError}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{argError()}{argError()}}
+{\footnotesize\ttfamily void arg\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ main.\+cpp の 166 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{166 \{ cout << \textcolor{stringliteral}{"Execution argument error."} << endl; \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8cpp_a60437786578c4b20bba44753812be146}\label{main_8cpp_a60437786578c4b20bba44753812be146}} 
+\index{main.cpp@{main.cpp}!calcFunc@{calcFunc}}
+\index{calcFunc@{calcFunc}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{calcFunc()}{calcFunc()}}
+{\footnotesize\ttfamily void calc\+Func (\begin{DoxyParamCaption}\item[{int const \&}]{i,  }\item[{int const \&}]{j,  }\item[{int const \&}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+引数がない or 引数が2つ の実行の場合に呼び出される 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em int} & i：i-\/\+Position \\
+\hline
+\mbox{\texttt{ in}}  & {\em int} & j：j-\/\+Position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{}
+
+\end{DoxyParagraph}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+Multi\+Particleクラスを引数(i, j)で作成 Multi\+Particleメソッドのsimulatemothodを実行 
+
+ main.\+cpp の 182 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{182                                                                \{}
+\DoxyCodeLine{183     \mbox{\hyperlink{classMultiParticle}{MultiParticle}} mp(i, j, k);}
+\DoxyCodeLine{184     \textcolor{comment}{/*}}
+\DoxyCodeLine{185 \textcolor{comment}{    MPI\_Comm\_rank( MPI\_COMM\_WORLD, \&st.rank );}}
+\DoxyCodeLine{186 \textcolor{comment}{    MPI\_Comm\_size( MPI\_COMM\_WORLD, \&st.proc );}}
+\DoxyCodeLine{187 \textcolor{comment}{}}
+\DoxyCodeLine{188 \textcolor{comment}{    if( st.rank == 0 )\{}}
+\DoxyCodeLine{189 \textcolor{comment}{            ( *main\_error\_func[ 0 ] )();}}
+\DoxyCodeLine{190 \textcolor{comment}{            cout    << "procs: "}}
+\DoxyCodeLine{191 \textcolor{comment}{                            << st.proc}}
+\DoxyCodeLine{192 \textcolor{comment}{                            << " i:"}}
+\DoxyCodeLine{193 \textcolor{comment}{                            << st.param-\/>m\_iNum}}
+\DoxyCodeLine{194 \textcolor{comment}{                            << " j:"}}
+\DoxyCodeLine{195 \textcolor{comment}{                            << st.param-\/>m\_jNum}}
+\DoxyCodeLine{196 \textcolor{comment}{                            << endl;}}
+\DoxyCodeLine{197 \textcolor{comment}{    \}}}
+\DoxyCodeLine{198 \textcolor{comment}{  */}}
+\DoxyCodeLine{199     mp.simulateMethod();}
+\DoxyCodeLine{200 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 1
+被呼び出し関係図\+:
+% FIG 2
+\mbox{\Hypertarget{main_8cpp_a2f8504040f11e6e49acb95020f477ed5}\label{main_8cpp_a2f8504040f11e6e49acb95020f477ed5}} 
+\index{main.cpp@{main.cpp}!csvError@{csvError}}
+\index{csvError@{csvError}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{csvError()}{csvError()}}
+{\footnotesize\ttfamily void csv\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ main.\+cpp の 170 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{170 \{ cout << \textcolor{stringliteral}{"read csv file failed."} << endl; \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em int} & argc コマンドライン引数の数 \\
+\hline
+\mbox{\texttt{ in}}  & {\em char} & $\ast$$\ast$argv コマンドライン引数のポインタのポインタ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+E\+X\+I\+T\+\_\+\+S\+U\+C\+C\+E\+SS 標準ライブラリにある。 int型で0を返す 
+
+E\+X\+I\+T\+\_\+\+F\+A\+I\+L\+U\+RE 標準ライブラリにある。 int型で0以外の整数を返す
+\end{DoxyReturn}
+argc = 1 のとき、21$\ast$21のシミュレーション (mainのみの実行) argc = 2 のとき、argv\mbox{[}1\mbox{]}のファイル名のcsvファイルから読み込んでシミュレーション。読み込むデータに粒子の座標はなし (main csvファイルの名前) argc = 3 のとき、argv\mbox{[}1\mbox{]}と\mbox{[}2\mbox{]}の文字列を数字に変換し、どちらも2以上大きいならばcalc\+Funcの引数としてcalc\+Funcを動かす。要するに、粒子数を指定したシミュレーション (main 3 3) 
+
+ main.\+cpp の 73 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{73                                 \{}
+\DoxyCodeLine{74     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{75         \textcolor{keywordflow}{if} (argc == 1) \{}
+\DoxyCodeLine{76             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{77             \textcolor{comment}{//}}
+\DoxyCodeLine{78             \textcolor{comment}{// default calc function call}}
+\DoxyCodeLine{79             \textcolor{comment}{//}}
+\DoxyCodeLine{80             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{81             \mbox{\hyperlink{classParams}{Params}} p;}
+\DoxyCodeLine{82             \mbox{\hyperlink{main_8cpp_a60437786578c4b20bba44753812be146}{calcFunc}}(p.\mbox{\hyperlink{classParams_a568540cab95643d13c7402d18f61a4f2}{m\_iNum}}, p.\mbox{\hyperlink{classParams_a4e8c2110b9c80adffa96f1ca1691bab8}{m\_jNum}}, p.\mbox{\hyperlink{classParams_a5b2c3e10a82bab6ea50e8b712ead5fc1}{m\_kNum}});}
+\DoxyCodeLine{83         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (argc == 2) \{}
+\DoxyCodeLine{84             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{85             \textcolor{comment}{//}}
+\DoxyCodeLine{86             \textcolor{comment}{// params file read.}}
+\DoxyCodeLine{87             \textcolor{comment}{//}}
+\DoxyCodeLine{88             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{89             \mbox{\hyperlink{classParams}{Params}} myparam;}
+\DoxyCodeLine{90             \textcolor{keyword}{const} \textcolor{keywordtype}{string} csv\_file = argv[1];}
+\DoxyCodeLine{91             vector<vector<string>> data;}
+\DoxyCodeLine{92             \mbox{\hyperlink{classCsv}{Csv}} objCsv(csv\_file);}
+\DoxyCodeLine{93             \textcolor{keywordflow}{if} (!objCsv.getCsv(data)) \{}
+\DoxyCodeLine{94                 \textcolor{keywordflow}{throw} 3;}
+\DoxyCodeLine{95             \}}
+\DoxyCodeLine{96             objCsv.myparamRead(myparam, data);}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{99             \textcolor{comment}{//}}
+\DoxyCodeLine{100             \textcolor{comment}{// new params file setting enter.}}
+\DoxyCodeLine{101             \textcolor{comment}{//}}
+\DoxyCodeLine{102             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{103             \mbox{\hyperlink{classMultiParticle}{MultiParticle}} mp(myparam);}
+\DoxyCodeLine{104             mp.simulateMethod();}
+\DoxyCodeLine{105         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (argc == 3) \{}
+\DoxyCodeLine{106             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{107             \textcolor{comment}{//}}
+\DoxyCodeLine{108             \textcolor{comment}{// 4 Time Measurement}}
+\DoxyCodeLine{109             \textcolor{comment}{//}}
+\DoxyCodeLine{110             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{111             \textcolor{keywordflow}{if} ((2 <= atoi(argv[1])) \&\& (2 <= atoi(argv[2]))) \{}
+\DoxyCodeLine{112                 \mbox{\hyperlink{main_8cpp_a60437786578c4b20bba44753812be146}{calcFunc}}(atoi(argv[1]), atoi(argv[2]), 1);}
+\DoxyCodeLine{113             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{114                 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{115                 \textcolor{comment}{//}}
+\DoxyCodeLine{116                 \textcolor{comment}{// error called.}}
+\DoxyCodeLine{117                 \textcolor{comment}{//}}
+\DoxyCodeLine{118                 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{119                 \textcolor{keywordflow}{throw} 1;}
+\DoxyCodeLine{120             \}}
+\DoxyCodeLine{121         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (argc == 4) \{}
+\DoxyCodeLine{122             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{123             \textcolor{comment}{//}}
+\DoxyCodeLine{124             \textcolor{comment}{// 4 Time Measurement}}
+\DoxyCodeLine{125             \textcolor{comment}{//}}
+\DoxyCodeLine{126             \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{127             \textcolor{keywordflow}{if} ((2 <= atoi(argv[1])) \&\& (2 <= atoi(argv[2])) \&\&}
+\DoxyCodeLine{128                 (2 <= atoi(argv[3]))) \{}
+\DoxyCodeLine{129                 \mbox{\hyperlink{main_8cpp_a60437786578c4b20bba44753812be146}{calcFunc}}(atoi(argv[1]), atoi(argv[2]), atoi(argv[3]));}
+\DoxyCodeLine{130             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{131                 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{132                 \textcolor{comment}{//}}
+\DoxyCodeLine{133                 \textcolor{comment}{// error called.}}
+\DoxyCodeLine{134                 \textcolor{comment}{//}}
+\DoxyCodeLine{135                 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{136                 \textcolor{keywordflow}{throw} 1;}
+\DoxyCodeLine{137             \}}
+\DoxyCodeLine{138         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{139             \textcolor{keywordflow}{throw} 1;}
+\DoxyCodeLine{140         \}}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142         \textcolor{keywordflow}{return} EXIT\_SUCCESS;}
+\DoxyCodeLine{143     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} \textcolor{keywordtype}{int} error\_code) \{}
+\DoxyCodeLine{144         \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{145         \textcolor{comment}{//}}
+\DoxyCodeLine{146         \textcolor{comment}{// Exception called.}}
+\DoxyCodeLine{147         \textcolor{comment}{//}}
+\DoxyCodeLine{148         \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{149         (*\mbox{\hyperlink{main_8cpp_a33240a2de4e6166c193502e55556c33a}{main\_error\_func}}[0])();}
+\DoxyCodeLine{150         (*\mbox{\hyperlink{main_8cpp_a33240a2de4e6166c193502e55556c33a}{main\_error\_func}}[error\_code])();}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152         \textcolor{keywordflow}{return} EXIT\_FAILURE;}
+\DoxyCodeLine{153     \}}
+\DoxyCodeLine{154 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 3
+\mbox{\Hypertarget{main_8cpp_a2950c0a5abdda61ef9ede28dbb5c636f}\label{main_8cpp_a2950c0a5abdda61ef9ede28dbb5c636f}} 
+\index{main.cpp@{main.cpp}!myNameIs@{myNameIs}}
+\index{myNameIs@{myNameIs}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{myNameIs()}{myNameIs()}}
+{\footnotesize\ttfamily void my\+Name\+Is (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+report 
+
+\DoxyHorRuler{0}
+ 
+
+ main.\+cpp の 159 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{159                        \{}
+\DoxyCodeLine{160     cout << \textcolor{stringliteral}{" "}}
+\DoxyCodeLine{161          << \textcolor{stringliteral}{"[      "} << \mbox{\hyperlink{Color_8hpp_a1916dd06096f930ac5ab057f88bac4d5}{FONT\_RED}} << \textcolor{stringliteral}{"main"} << \mbox{\hyperlink{Color_8hpp_af4b14f6e3c09a101c8fda79a7fc1f35d}{ALL\_DEFAULT}} << \textcolor{stringliteral}{"       ]"}}
+\DoxyCodeLine{162          << \textcolor{stringliteral}{" "};}
+\DoxyCodeLine{163 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8cpp_a300ecc2c01a20c36e0ffdf631d8800d7}\label{main_8cpp_a300ecc2c01a20c36e0ffdf631d8800d7}} 
+\index{main.cpp@{main.cpp}!unknownError@{unknownError}}
+\index{unknownError@{unknownError}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{unknownError()}{unknownError()}}
+{\footnotesize\ttfamily void unknown\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ main.\+cpp の 168 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{168 \{ cout << \textcolor{stringliteral}{"Unknown error."} << endl; \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{変数詳解}
+\mbox{\Hypertarget{main_8cpp_a33240a2de4e6166c193502e55556c33a}\label{main_8cpp_a33240a2de4e6166c193502e55556c33a}} 
+\index{main.cpp@{main.cpp}!main\_error\_func@{main\_error\_func}}
+\index{main\_error\_func@{main\_error\_func}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main\_error\_func}{main\_error\_func}}
+{\footnotesize\ttfamily \mbox{\hyperlink{SimpleTensile_8cpp_a76e2836e241b3572082da1229bc53021}{M\+A\+I\+N\+\_\+\+E\+R\+R\+O\+R\+\_\+\+F\+U\+NC}} main\+\_\+error\+\_\+func\mbox{[}$\,$\mbox{]}}
+
+{\bfseries 初期値\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{\mbox{\hyperlink{main_8cpp_a2950c0a5abdda61ef9ede28dbb5c636f}{myNameIs}}, \mbox{\hyperlink{main_8cpp_ae54f2790e74717abf0c2bb5e33425623}{argError}}, \mbox{\hyperlink{main_8cpp_a300ecc2c01a20c36e0ffdf631d8800d7}{unknownError}},}
+\DoxyCodeLine{                                     \mbox{\hyperlink{main_8cpp_a2f8504040f11e6e49acb95020f477ed5}{csvError}}\}}
+
+\end{DoxyCode}
+
+
+ main.\+cpp の 54 行目に定義があります。
+

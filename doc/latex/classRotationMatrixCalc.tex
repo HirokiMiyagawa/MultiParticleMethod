@@ -1,0 +1,565 @@
+\hypertarget{classRotationMatrixCalc}{}\doxysection{Rotation\+Matrix\+Calc クラス}
+\label{classRotationMatrixCalc}\index{RotationMatrixCalc@{RotationMatrixCalc}}
+
+
+{\ttfamily \#include $<$Matrix\+Calc.\+hpp$>$}
+
+
+
+Rotation\+Matrix\+Calc 連携図
+% FIG 0
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRotationMatrixCalc_abe49241725482055c3e7b689887d875b}{Rotation\+Matrix\+Calc}} (void)
+\item 
+\mbox{\hyperlink{classRotationMatrixCalc_a68c0efa4eac235b8923b83278f34200c}{Rotation\+Matrix\+Calc}} (const double \&, const double \&, const double \&)
+\item 
+\mbox{\hyperlink{classRotationMatrixCalc_a241ee2b01ae53263f6fe944875749c7b}{Rotation\+Matrix\+Calc}} (const string \&, const double \&, const double \&, const double \&)
+\item 
+void \mbox{\hyperlink{classRotationMatrixCalc_a90ac282ec258629d4a750bcef0491404}{set\+\_\+rotation\+\_\+axis}} (const string \&)
+\item 
+void \mbox{\hyperlink{classRotationMatrixCalc_acbc693480da20329aa210cf10bc2627c}{set}} (const double \&, const double \&, const double \&)
+\item 
+void \mbox{\hyperlink{classRotationMatrixCalc_ae1d010736d68a9cc299500d0b95727eb}{set}} (const string \&, const double \&, const double \&, const double \&)
+\item 
+void \mbox{\hyperlink{classRotationMatrixCalc_a7f102d83d41f8176e956a2a456ec99ae}{set\+\_\+angle}} (void)
+\item 
+void \mbox{\hyperlink{classRotationMatrixCalc_a1924d0ba779094328103df2f5f4e6a58}{set\+\_\+angle}} (const double \&, const double \&, const double \&)
+\item 
+void \mbox{\hyperlink{classRotationMatrixCalc_a9b67b1c0d75c9185f98e076cde4da495}{set\+\_\+rotation\+\_\+matrix}} (void)
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{classRotationMatrixCalc_a008002fb592ee1b145aee9d45ba9d9e5}{rotate}} (const vector$<$ double $>$ \&)
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{classRotationMatrixCalc_a40c1feb28f50192114182cf93b5f6d28}{vec\+\_\+rotate}} (const vector$<$ double $>$ \&)
+\item 
+bool \mbox{\hyperlink{classRotationMatrixCalc_a08d64560d8dd74a19cf58f06afc1aef7}{iequals}} (const string \&a, const string \&b)
+\end{DoxyCompactItemize}
+\doxysubsection*{公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMatrixCalc}{Matrix\+Calc}} \mbox{\hyperlink{classRotationMatrixCalc_ad33df02986d0936a4743b0c4fe3d47a7}{mc}}
+\item 
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classRotationMatrixCalc_a26697aa91d0851a0441674a9dc105bde}{rotation\+\_\+matrix}}
+\item 
+vector$<$ vector$<$ double $>$ $>$ \mbox{\hyperlink{classRotationMatrixCalc_ad33775bfa36b911bde8c9b1962c110ac}{rotation\+\_\+matrix\+\_\+conv}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{classRotationMatrixCalc_a2f2a56e9d6efbe9aa7300181bac0f1a6}{angles}}
+\item 
+string \mbox{\hyperlink{classRotationMatrixCalc_ac362c8f7ac1140235afffd1858950e0c}{rotation\+\_\+axis\+\_\+order}}
+\begin{DoxyCompactList}\small\item\em 3 charactor (zyz) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ vector$<$ double $>$ $>$ \mbox{\hyperlink{classRotationMatrixCalc_ab648c3db825dec0a1cf2f624254bbbc4}{set\+\_\+x}} (const double \&)
+\item 
+vector$<$ vector$<$ double $>$ $>$ \mbox{\hyperlink{classRotationMatrixCalc_aa8a6e8d4d1b867a593ee8ac594ac5a73}{set\+\_\+y}} (const double \&)
+\item 
+vector$<$ vector$<$ double $>$ $>$ \mbox{\hyperlink{classRotationMatrixCalc_ac2d84f375cb9c0bd34eecd9cd49dab27}{set\+\_\+z}} (const double \&)
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classRotationMatrixCalc_a7241580aa37cc3427e06068f008a7543}{angle\+\_\+1}}
+\item 
+double \mbox{\hyperlink{classRotationMatrixCalc_a9a3fa45fd42c9a133459c4afda77a156}{angle\+\_\+2}}
+\item 
+double \mbox{\hyperlink{classRotationMatrixCalc_a1293f61d74b31e5678974840f853355b}{angle\+\_\+3}}
+\item 
+string \mbox{\hyperlink{classRotationMatrixCalc_a733969684c16e3fddf9ce1adfad6c7ac}{rotation\+\_\+axis\+\_\+order\+\_\+1}}
+\item 
+string \mbox{\hyperlink{classRotationMatrixCalc_a32ade175fb67af987f57e2c7a24b4c4a}{rotation\+\_\+axis\+\_\+order\+\_\+2}}
+\item 
+string \mbox{\hyperlink{classRotationMatrixCalc_a71832bc2cb26165d2c5f56cb00ed01fc}{rotation\+\_\+axis\+\_\+order\+\_\+3}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ Matrix\+Calc.\+hpp の 451 行目に定義があります。
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classRotationMatrixCalc_abe49241725482055c3e7b689887d875b}\label{classRotationMatrixCalc_abe49241725482055c3e7b689887d875b}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!RotationMatrixCalc@{RotationMatrixCalc}}
+\index{RotationMatrixCalc@{RotationMatrixCalc}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{RotationMatrixCalc()}{RotationMatrixCalc()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Rotation\+Matrix\+Calc\+::\+Rotation\+Matrix\+Calc (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+ Matrix\+Calc.\+hpp の 499 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{499                                            \{}
+\DoxyCodeLine{500     \mbox{\hyperlink{classRotationMatrixCalc_abe49241725482055c3e7b689887d875b}{RotationMatrixCalc}}(0, 0, 0);}
+\DoxyCodeLine{501 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 1
+\mbox{\Hypertarget{classRotationMatrixCalc_a68c0efa4eac235b8923b83278f34200c}\label{classRotationMatrixCalc_a68c0efa4eac235b8923b83278f34200c}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!RotationMatrixCalc@{RotationMatrixCalc}}
+\index{RotationMatrixCalc@{RotationMatrixCalc}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{RotationMatrixCalc()}{RotationMatrixCalc()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Rotation\+Matrix\+Calc\+::\+Rotation\+Matrix\+Calc (\begin{DoxyParamCaption}\item[{const double \&}]{a\+\_\+1,  }\item[{const double \&}]{a\+\_\+2,  }\item[{const double \&}]{a\+\_\+3 }\end{DoxyParamCaption})}
+
+
+
+ Matrix\+Calc.\+hpp の 502 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{502                                                                                               \{}
+\DoxyCodeLine{503     \mbox{\hyperlink{classRotationMatrixCalc_abe49241725482055c3e7b689887d875b}{RotationMatrixCalc}}(\textcolor{stringliteral}{"zyz"}, a\_1, a\_2, a\_3);}
+\DoxyCodeLine{504 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 2
+\mbox{\Hypertarget{classRotationMatrixCalc_a241ee2b01ae53263f6fe944875749c7b}\label{classRotationMatrixCalc_a241ee2b01ae53263f6fe944875749c7b}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!RotationMatrixCalc@{RotationMatrixCalc}}
+\index{RotationMatrixCalc@{RotationMatrixCalc}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{RotationMatrixCalc()}{RotationMatrixCalc()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Rotation\+Matrix\+Calc\+::\+Rotation\+Matrix\+Calc (\begin{DoxyParamCaption}\item[{const string \&}]{rao,  }\item[{const double \&}]{a\+\_\+1,  }\item[{const double \&}]{a\+\_\+2,  }\item[{const double \&}]{a\+\_\+3 }\end{DoxyParamCaption})}
+
+
+
+ Matrix\+Calc.\+hpp の 505 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{505                                                                                                                  \{}
+\DoxyCodeLine{506     \mbox{\hyperlink{classRotationMatrixCalc_a26697aa91d0851a0441674a9dc105bde}{rotation\_matrix}}.resize(3);}
+\DoxyCodeLine{507     \mbox{\hyperlink{classRotationMatrixCalc_acbc693480da20329aa210cf10bc2627c}{set}}(rao, a\_1, a\_2, a\_3);}
+\DoxyCodeLine{508 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 3
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classRotationMatrixCalc_a08d64560d8dd74a19cf58f06afc1aef7}\label{classRotationMatrixCalc_a08d64560d8dd74a19cf58f06afc1aef7}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!iequals@{iequals}}
+\index{iequals@{iequals}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{iequals()}{iequals()}}
+{\footnotesize\ttfamily bool Rotation\+Matrix\+Calc\+::iequals (\begin{DoxyParamCaption}\item[{const string \&}]{a,  }\item[{const string \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Matrix\+Calc.\+hpp の 491 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{491                                                    \{}
+\DoxyCodeLine{492         \textcolor{keywordflow}{return} std::equal(}
+\DoxyCodeLine{493             a.begin(), a.end(), b.begin(), b.end(),}
+\DoxyCodeLine{494             [](\textcolor{keywordtype}{char} a, \textcolor{keywordtype}{char} b) \{ return tolower(a) == tolower(b); \});}
+\DoxyCodeLine{495     \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 4
+\mbox{\Hypertarget{classRotationMatrixCalc_a008002fb592ee1b145aee9d45ba9d9e5}\label{classRotationMatrixCalc_a008002fb592ee1b145aee9d45ba9d9e5}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!rotate@{rotate}}
+\index{rotate@{rotate}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily vector$<$ double $>$ Rotation\+Matrix\+Calc\+::rotate (\begin{DoxyParamCaption}\item[{const vector$<$ double $>$ \&}]{matrix }\end{DoxyParamCaption})}
+
+
+
+ Matrix\+Calc.\+hpp の 596 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{596                                                                       \{}
+\DoxyCodeLine{597     vector<double> Ret = \mbox{\hyperlink{classRotationMatrixCalc_ad33df02986d0936a4743b0c4fe3d47a7}{mc}}.\mbox{\hyperlink{classMatrixCalc_a4c4d9dee8f4147628c39d857e5da5541}{matrixProductCalc}}(\mbox{\hyperlink{classRotationMatrixCalc_ad33775bfa36b911bde8c9b1962c110ac}{rotation\_matrix\_conv}}, matrix);}
+\DoxyCodeLine{598     \textcolor{keywordflow}{return} Ret;}
+\DoxyCodeLine{599 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 5
+\mbox{\Hypertarget{classRotationMatrixCalc_acbc693480da20329aa210cf10bc2627c}\label{classRotationMatrixCalc_acbc693480da20329aa210cf10bc2627c}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!set@{set}}
+\index{set@{set}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Rotation\+Matrix\+Calc\+::set (\begin{DoxyParamCaption}\item[{const double \&}]{a\+\_\+1,  }\item[{const double \&}]{a\+\_\+2,  }\item[{const double \&}]{a\+\_\+3 }\end{DoxyParamCaption})}
+
+
+
+ Matrix\+Calc.\+hpp の 556 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{556                                                                                     \{}
+\DoxyCodeLine{557     \mbox{\hyperlink{classRotationMatrixCalc_a7f102d83d41f8176e956a2a456ec99ae}{set\_angle}}(a\_1, a\_2, a\_3);}
+\DoxyCodeLine{558     \textcolor{comment}{// cout << angles[0] << "," << angles[1] << "," << angles[2] << endl;}}
+\DoxyCodeLine{559     \mbox{\hyperlink{classRotationMatrixCalc_a26697aa91d0851a0441674a9dc105bde}{rotation\_matrix}}.resize(3);}
+\DoxyCodeLine{560 }
+\DoxyCodeLine{561     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 3; i++) \{}
+\DoxyCodeLine{562         \textcolor{comment}{// cout << "i:" << i <<endl;}}
+\DoxyCodeLine{563         \textcolor{comment}{// cout << "rao:" << rotation\_axis\_order.substr(i, 1) << endl;}}
+\DoxyCodeLine{564         \textcolor{keywordflow}{if} (\mbox{\hyperlink{classRotationMatrixCalc_a08d64560d8dd74a19cf58f06afc1aef7}{iequals}}(\mbox{\hyperlink{classRotationMatrixCalc_ac362c8f7ac1140235afffd1858950e0c}{rotation\_axis\_order}}.substr(i, 1), \textcolor{stringliteral}{"x"})) \{}
+\DoxyCodeLine{565             \mbox{\hyperlink{classRotationMatrixCalc_a26697aa91d0851a0441674a9dc105bde}{rotation\_matrix}}[i] = \mbox{\hyperlink{classRotationMatrixCalc_ab648c3db825dec0a1cf2f624254bbbc4}{set\_x}}(\mbox{\hyperlink{classRotationMatrixCalc_a2f2a56e9d6efbe9aa7300181bac0f1a6}{angles}}[i]);}
+\DoxyCodeLine{566         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{classRotationMatrixCalc_a08d64560d8dd74a19cf58f06afc1aef7}{iequals}}(\mbox{\hyperlink{classRotationMatrixCalc_ac362c8f7ac1140235afffd1858950e0c}{rotation\_axis\_order}}.substr(i, 1), \textcolor{stringliteral}{"y"})) \{}
+\DoxyCodeLine{567             \mbox{\hyperlink{classRotationMatrixCalc_a26697aa91d0851a0441674a9dc105bde}{rotation\_matrix}}[i] = \mbox{\hyperlink{classRotationMatrixCalc_aa8a6e8d4d1b867a593ee8ac594ac5a73}{set\_y}}(\mbox{\hyperlink{classRotationMatrixCalc_a2f2a56e9d6efbe9aa7300181bac0f1a6}{angles}}[i]);}
+\DoxyCodeLine{568         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{classRotationMatrixCalc_a08d64560d8dd74a19cf58f06afc1aef7}{iequals}}(\mbox{\hyperlink{classRotationMatrixCalc_ac362c8f7ac1140235afffd1858950e0c}{rotation\_axis\_order}}.substr(i, 1), \textcolor{stringliteral}{"z"})) \{}
+\DoxyCodeLine{569             \mbox{\hyperlink{classRotationMatrixCalc_a26697aa91d0851a0441674a9dc105bde}{rotation\_matrix}}[i] = \mbox{\hyperlink{classRotationMatrixCalc_ac2d84f375cb9c0bd34eecd9cd49dab27}{set\_z}}(\mbox{\hyperlink{classRotationMatrixCalc_a2f2a56e9d6efbe9aa7300181bac0f1a6}{angles}}[i]);}
+\DoxyCodeLine{570         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{571             cout << \textcolor{stringliteral}{"rotation\_axis\_order is not found"} << endl;}
+\DoxyCodeLine{572             abort();}
+\DoxyCodeLine{573         \}}
+\DoxyCodeLine{574         \textcolor{comment}{// mc.printMatrix(rotation\_matrix[i]);}}
+\DoxyCodeLine{575     \}}
+\DoxyCodeLine{576     \mbox{\hyperlink{classRotationMatrixCalc_a9b67b1c0d75c9185f98e076cde4da495}{set\_rotation\_matrix}}();}
+\DoxyCodeLine{577     \textcolor{comment}{// rotation\_matrix[0] = set\_x(a\_x);}}
+\DoxyCodeLine{578     \textcolor{comment}{// rotation\_matrix[1] = set\_y(a\_y);}}
+\DoxyCodeLine{579     \textcolor{comment}{// rotation\_matrix[2] = set\_z(a\_z);}}
+\DoxyCodeLine{580 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 6
+被呼び出し関係図\+:
+% FIG 7
+\mbox{\Hypertarget{classRotationMatrixCalc_ae1d010736d68a9cc299500d0b95727eb}\label{classRotationMatrixCalc_ae1d010736d68a9cc299500d0b95727eb}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!set@{set}}
+\index{set@{set}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Rotation\+Matrix\+Calc\+::set (\begin{DoxyParamCaption}\item[{const string \&}]{rao,  }\item[{const double \&}]{a\+\_\+1,  }\item[{const double \&}]{a\+\_\+2,  }\item[{const double \&}]{a\+\_\+3 }\end{DoxyParamCaption})}
+
+
+
+ Matrix\+Calc.\+hpp の 581 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{581                                                                                                        \{}
+\DoxyCodeLine{582     \mbox{\hyperlink{classRotationMatrixCalc_a90ac282ec258629d4a750bcef0491404}{set\_rotation\_axis}}(rao);}
+\DoxyCodeLine{583     \mbox{\hyperlink{classRotationMatrixCalc_acbc693480da20329aa210cf10bc2627c}{set}}(a\_1, a\_2, a\_3);}
+\DoxyCodeLine{584 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 8
+\mbox{\Hypertarget{classRotationMatrixCalc_a1924d0ba779094328103df2f5f4e6a58}\label{classRotationMatrixCalc_a1924d0ba779094328103df2f5f4e6a58}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!set\_angle@{set\_angle}}
+\index{set\_angle@{set\_angle}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{set\_angle()}{set\_angle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Rotation\+Matrix\+Calc\+::set\+\_\+angle (\begin{DoxyParamCaption}\item[{const double \&}]{a\+\_\+1,  }\item[{const double \&}]{a\+\_\+2,  }\item[{const double \&}]{a\+\_\+3 }\end{DoxyParamCaption})}
+
+
+
+ Matrix\+Calc.\+hpp の 521 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{521                                                                                           \{}
+\DoxyCodeLine{522     \mbox{\hyperlink{classRotationMatrixCalc_a7241580aa37cc3427e06068f008a7543}{angle\_1}} = a\_1;}
+\DoxyCodeLine{523     \mbox{\hyperlink{classRotationMatrixCalc_a9a3fa45fd42c9a133459c4afda77a156}{angle\_2}} = a\_2;}
+\DoxyCodeLine{524     \mbox{\hyperlink{classRotationMatrixCalc_a1293f61d74b31e5678974840f853355b}{angle\_3}} = a\_3;}
+\DoxyCodeLine{525     \mbox{\hyperlink{classRotationMatrixCalc_a2f2a56e9d6efbe9aa7300181bac0f1a6}{angles}}  = \{}
+\DoxyCodeLine{526         \mbox{\hyperlink{classRotationMatrixCalc_a7241580aa37cc3427e06068f008a7543}{angle\_1}},}
+\DoxyCodeLine{527         \mbox{\hyperlink{classRotationMatrixCalc_a9a3fa45fd42c9a133459c4afda77a156}{angle\_2}},}
+\DoxyCodeLine{528         \mbox{\hyperlink{classRotationMatrixCalc_a1293f61d74b31e5678974840f853355b}{angle\_3}},}
+\DoxyCodeLine{529     \};}
+\DoxyCodeLine{530 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRotationMatrixCalc_a7f102d83d41f8176e956a2a456ec99ae}\label{classRotationMatrixCalc_a7f102d83d41f8176e956a2a456ec99ae}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!set\_angle@{set\_angle}}
+\index{set\_angle@{set\_angle}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{set\_angle()}{set\_angle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Rotation\+Matrix\+Calc\+::set\+\_\+angle (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+ Matrix\+Calc.\+hpp の 518 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{518                                        \{}
+\DoxyCodeLine{519     \mbox{\hyperlink{classRotationMatrixCalc_a7f102d83d41f8176e956a2a456ec99ae}{set\_angle}}(\mbox{\hyperlink{classRotationMatrixCalc_a7241580aa37cc3427e06068f008a7543}{angle\_1}}, \mbox{\hyperlink{classRotationMatrixCalc_a9a3fa45fd42c9a133459c4afda77a156}{angle\_2}}, \mbox{\hyperlink{classRotationMatrixCalc_a1293f61d74b31e5678974840f853355b}{angle\_3}});}
+\DoxyCodeLine{520 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 9
+\mbox{\Hypertarget{classRotationMatrixCalc_a90ac282ec258629d4a750bcef0491404}\label{classRotationMatrixCalc_a90ac282ec258629d4a750bcef0491404}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!set\_rotation\_axis@{set\_rotation\_axis}}
+\index{set\_rotation\_axis@{set\_rotation\_axis}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{set\_rotation\_axis()}{set\_rotation\_axis()}}
+{\footnotesize\ttfamily void Rotation\+Matrix\+Calc\+::set\+\_\+rotation\+\_\+axis (\begin{DoxyParamCaption}\item[{const string \&}]{rao }\end{DoxyParamCaption})}
+
+
+
+ Matrix\+Calc.\+hpp の 511 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{511                                                             \{}
+\DoxyCodeLine{512     \mbox{\hyperlink{classRotationMatrixCalc_ac362c8f7ac1140235afffd1858950e0c}{rotation\_axis\_order}}   = rao;}
+\DoxyCodeLine{513     \mbox{\hyperlink{classRotationMatrixCalc_a733969684c16e3fddf9ce1adfad6c7ac}{rotation\_axis\_order\_1}} = rao.substr(0, 1);}
+\DoxyCodeLine{514     \mbox{\hyperlink{classRotationMatrixCalc_a32ade175fb67af987f57e2c7a24b4c4a}{rotation\_axis\_order\_2}} = rao.substr(1, 1);}
+\DoxyCodeLine{515     \mbox{\hyperlink{classRotationMatrixCalc_a71832bc2cb26165d2c5f56cb00ed01fc}{rotation\_axis\_order\_3}} = rao.substr(2, 1);}
+\DoxyCodeLine{516 \};}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 10
+\mbox{\Hypertarget{classRotationMatrixCalc_a9b67b1c0d75c9185f98e076cde4da495}\label{classRotationMatrixCalc_a9b67b1c0d75c9185f98e076cde4da495}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!set\_rotation\_matrix@{set\_rotation\_matrix}}
+\index{set\_rotation\_matrix@{set\_rotation\_matrix}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{set\_rotation\_matrix()}{set\_rotation\_matrix()}}
+{\footnotesize\ttfamily void Rotation\+Matrix\+Calc\+::set\+\_\+rotation\+\_\+matrix (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\begin{DoxyNote}{覚え書き}
+R = R3(a\+\_\+3)R2(a\+\_\+2)R1(a\+\_\+1) R3(a\+\_\+1)R(a\+\_\+2 a\+\_\+1) 
+\end{DoxyNote}
+
+
+ Matrix\+Calc.\+hpp の 591 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{591                                                  \{}
+\DoxyCodeLine{592     \mbox{\hyperlink{classRotationMatrixCalc_ad33775bfa36b911bde8c9b1962c110ac}{rotation\_matrix\_conv}} = \mbox{\hyperlink{classRotationMatrixCalc_ad33df02986d0936a4743b0c4fe3d47a7}{mc}}.\mbox{\hyperlink{classMatrixCalc_a4c4d9dee8f4147628c39d857e5da5541}{matrixProductCalc}}(\mbox{\hyperlink{classRotationMatrixCalc_a26697aa91d0851a0441674a9dc105bde}{rotation\_matrix}}[2], \mbox{\hyperlink{classRotationMatrixCalc_ad33df02986d0936a4743b0c4fe3d47a7}{mc}}.\mbox{\hyperlink{classMatrixCalc_a4c4d9dee8f4147628c39d857e5da5541}{matrixProductCalc}}(\mbox{\hyperlink{classRotationMatrixCalc_a26697aa91d0851a0441674a9dc105bde}{rotation\_matrix}}[1], \mbox{\hyperlink{classRotationMatrixCalc_a26697aa91d0851a0441674a9dc105bde}{rotation\_matrix}}[0]));}
+\DoxyCodeLine{593     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{594 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 11
+被呼び出し関係図\+:
+% FIG 12
+\mbox{\Hypertarget{classRotationMatrixCalc_ab648c3db825dec0a1cf2f624254bbbc4}\label{classRotationMatrixCalc_ab648c3db825dec0a1cf2f624254bbbc4}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!set\_x@{set\_x}}
+\index{set\_x@{set\_x}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{set\_x()}{set\_x()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ double $>$ $>$ Rotation\+Matrix\+Calc\+::set\+\_\+x (\begin{DoxyParamCaption}\item[{const double \&}]{angle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Matrix\+Calc.\+hpp の 532 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{532                                                                     \{}
+\DoxyCodeLine{533     vector<vector<double>> Ret = \{}
+\DoxyCodeLine{534         \{1, 0, 0\},}
+\DoxyCodeLine{535         \{0, cos(angle), -\/sin(angle)\},}
+\DoxyCodeLine{536         \{0, sin(angle), cos(angle)\},}
+\DoxyCodeLine{537     \};}
+\DoxyCodeLine{538     \textcolor{keywordflow}{return} Ret;}
+\DoxyCodeLine{539 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 13
+\mbox{\Hypertarget{classRotationMatrixCalc_aa8a6e8d4d1b867a593ee8ac594ac5a73}\label{classRotationMatrixCalc_aa8a6e8d4d1b867a593ee8ac594ac5a73}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!set\_y@{set\_y}}
+\index{set\_y@{set\_y}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{set\_y()}{set\_y()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ double $>$ $>$ Rotation\+Matrix\+Calc\+::set\+\_\+y (\begin{DoxyParamCaption}\item[{const double \&}]{angle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Matrix\+Calc.\+hpp の 540 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{540                                                                     \{}
+\DoxyCodeLine{541     vector<vector<double>> Ret = \{}
+\DoxyCodeLine{542         \{cos(angle), 0, sin(angle)\},}
+\DoxyCodeLine{543         \{0, 1, 0\},}
+\DoxyCodeLine{544         \{-\/sin(angle), 0, cos(angle)\},}
+\DoxyCodeLine{545     \};}
+\DoxyCodeLine{546     \textcolor{keywordflow}{return} Ret;}
+\DoxyCodeLine{547 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 14
+\mbox{\Hypertarget{classRotationMatrixCalc_ac2d84f375cb9c0bd34eecd9cd49dab27}\label{classRotationMatrixCalc_ac2d84f375cb9c0bd34eecd9cd49dab27}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!set\_z@{set\_z}}
+\index{set\_z@{set\_z}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{set\_z()}{set\_z()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ double $>$ $>$ Rotation\+Matrix\+Calc\+::set\+\_\+z (\begin{DoxyParamCaption}\item[{const double \&}]{angle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Matrix\+Calc.\+hpp の 548 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{548                                                                     \{}
+\DoxyCodeLine{549     vector<vector<double>> Ret = \{}
+\DoxyCodeLine{550         \{cos(angle), -\/sin(angle), 0\},}
+\DoxyCodeLine{551         \{sin(angle), cos(angle), 0\},}
+\DoxyCodeLine{552         \{0, 0, 1\},}
+\DoxyCodeLine{553     \};}
+\DoxyCodeLine{554     \textcolor{keywordflow}{return} Ret;}
+\DoxyCodeLine{555 \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 15
+\mbox{\Hypertarget{classRotationMatrixCalc_a40c1feb28f50192114182cf93b5f6d28}\label{classRotationMatrixCalc_a40c1feb28f50192114182cf93b5f6d28}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!vec\_rotate@{vec\_rotate}}
+\index{vec\_rotate@{vec\_rotate}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{vec\_rotate()}{vec\_rotate()}}
+{\footnotesize\ttfamily vector$<$ double $>$ Rotation\+Matrix\+Calc\+::vec\+\_\+rotate (\begin{DoxyParamCaption}\item[{const vector$<$ double $>$ \&}]{matrix }\end{DoxyParamCaption})}
+
+
+
+ Matrix\+Calc.\+hpp の 600 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{600                                                                           \{}
+\DoxyCodeLine{601     vector<double> Ret = \mbox{\hyperlink{classRotationMatrixCalc_ad33df02986d0936a4743b0c4fe3d47a7}{mc}}.\mbox{\hyperlink{classMatrixCalc_a4c4d9dee8f4147628c39d857e5da5541}{matrixProductCalc}}(\mbox{\hyperlink{classRotationMatrixCalc_ad33df02986d0936a4743b0c4fe3d47a7}{mc}}.\mbox{\hyperlink{classMatrixCalc_a8d1713830568a036eeafa78f0e742882}{transpose\_matrix}}(\mbox{\hyperlink{classRotationMatrixCalc_ad33775bfa36b911bde8c9b1962c110ac}{rotation\_matrix\_conv}}), matrix);}
+\DoxyCodeLine{602     \textcolor{comment}{// cout << "R1:" << endl;}}
+\DoxyCodeLine{603     \textcolor{comment}{// mc.printMatrix(rotation\_matrix[0]);}}
+\DoxyCodeLine{604     \textcolor{comment}{// mc.printMatrix(rotation\_matrix[1]);}}
+\DoxyCodeLine{605     \textcolor{comment}{// mc.printMatrix(rotation\_matrix[2]);}}
+\DoxyCodeLine{606 }
+\DoxyCodeLine{607     \textcolor{comment}{// cout << "R21:" << endl;}}
+\DoxyCodeLine{608     \textcolor{comment}{// mc.printMatrix(mc.matrixProductCalc(rotation\_matrix[1], rotation\_matrix[0]));}}
+\DoxyCodeLine{609 }
+\DoxyCodeLine{610     \textcolor{comment}{// cout << "R:" << endl;}}
+\DoxyCodeLine{611     \textcolor{comment}{// mc.printMatrix(rotation\_matrix\_conv);}}
+\DoxyCodeLine{612     \textcolor{comment}{// cout << "\(\backslash\)n R\string^T:" << endl;}}
+\DoxyCodeLine{613     \textcolor{comment}{// mc.printMatrix(mc.transpose\_matrix(rotation\_matrix\_conv));}}
+\DoxyCodeLine{614     \textcolor{keywordflow}{return} Ret;}
+\DoxyCodeLine{615 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 16
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{classRotationMatrixCalc_a7241580aa37cc3427e06068f008a7543}\label{classRotationMatrixCalc_a7241580aa37cc3427e06068f008a7543}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!angle\_1@{angle\_1}}
+\index{angle\_1@{angle\_1}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{angle\_1}{angle\_1}}
+{\footnotesize\ttfamily double Rotation\+Matrix\+Calc\+::angle\+\_\+1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Matrix\+Calc.\+hpp の 463 行目に定義があります。
+
+\mbox{\Hypertarget{classRotationMatrixCalc_a9a3fa45fd42c9a133459c4afda77a156}\label{classRotationMatrixCalc_a9a3fa45fd42c9a133459c4afda77a156}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!angle\_2@{angle\_2}}
+\index{angle\_2@{angle\_2}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{angle\_2}{angle\_2}}
+{\footnotesize\ttfamily double Rotation\+Matrix\+Calc\+::angle\+\_\+2\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Matrix\+Calc.\+hpp の 464 行目に定義があります。
+
+\mbox{\Hypertarget{classRotationMatrixCalc_a1293f61d74b31e5678974840f853355b}\label{classRotationMatrixCalc_a1293f61d74b31e5678974840f853355b}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!angle\_3@{angle\_3}}
+\index{angle\_3@{angle\_3}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{angle\_3}{angle\_3}}
+{\footnotesize\ttfamily double Rotation\+Matrix\+Calc\+::angle\+\_\+3\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Matrix\+Calc.\+hpp の 465 行目に定義があります。
+
+\mbox{\Hypertarget{classRotationMatrixCalc_a2f2a56e9d6efbe9aa7300181bac0f1a6}\label{classRotationMatrixCalc_a2f2a56e9d6efbe9aa7300181bac0f1a6}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!angles@{angles}}
+\index{angles@{angles}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{angles}{angles}}
+{\footnotesize\ttfamily vector$<$double$>$ Rotation\+Matrix\+Calc\+::angles}
+
+
+
+ Matrix\+Calc.\+hpp の 475 行目に定義があります。
+
+\mbox{\Hypertarget{classRotationMatrixCalc_ad33df02986d0936a4743b0c4fe3d47a7}\label{classRotationMatrixCalc_ad33df02986d0936a4743b0c4fe3d47a7}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!mc@{mc}}
+\index{mc@{mc}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{mc}{mc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMatrixCalc}{Matrix\+Calc}} Rotation\+Matrix\+Calc\+::mc}
+
+
+
+ Matrix\+Calc.\+hpp の 471 行目に定義があります。
+
+\mbox{\Hypertarget{classRotationMatrixCalc_ac362c8f7ac1140235afffd1858950e0c}\label{classRotationMatrixCalc_ac362c8f7ac1140235afffd1858950e0c}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!rotation\_axis\_order@{rotation\_axis\_order}}
+\index{rotation\_axis\_order@{rotation\_axis\_order}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{rotation\_axis\_order}{rotation\_axis\_order}}
+{\footnotesize\ttfamily string Rotation\+Matrix\+Calc\+::rotation\+\_\+axis\+\_\+order}
+
+
+
+3 charactor (zyz) 
+
+
+
+ Matrix\+Calc.\+hpp の 477 行目に定義があります。
+
+\mbox{\Hypertarget{classRotationMatrixCalc_a733969684c16e3fddf9ce1adfad6c7ac}\label{classRotationMatrixCalc_a733969684c16e3fddf9ce1adfad6c7ac}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!rotation\_axis\_order\_1@{rotation\_axis\_order\_1}}
+\index{rotation\_axis\_order\_1@{rotation\_axis\_order\_1}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{rotation\_axis\_order\_1}{rotation\_axis\_order\_1}}
+{\footnotesize\ttfamily string Rotation\+Matrix\+Calc\+::rotation\+\_\+axis\+\_\+order\+\_\+1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Matrix\+Calc.\+hpp の 466 行目に定義があります。
+
+\mbox{\Hypertarget{classRotationMatrixCalc_a32ade175fb67af987f57e2c7a24b4c4a}\label{classRotationMatrixCalc_a32ade175fb67af987f57e2c7a24b4c4a}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!rotation\_axis\_order\_2@{rotation\_axis\_order\_2}}
+\index{rotation\_axis\_order\_2@{rotation\_axis\_order\_2}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{rotation\_axis\_order\_2}{rotation\_axis\_order\_2}}
+{\footnotesize\ttfamily string Rotation\+Matrix\+Calc\+::rotation\+\_\+axis\+\_\+order\+\_\+2\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Matrix\+Calc.\+hpp の 467 行目に定義があります。
+
+\mbox{\Hypertarget{classRotationMatrixCalc_a71832bc2cb26165d2c5f56cb00ed01fc}\label{classRotationMatrixCalc_a71832bc2cb26165d2c5f56cb00ed01fc}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!rotation\_axis\_order\_3@{rotation\_axis\_order\_3}}
+\index{rotation\_axis\_order\_3@{rotation\_axis\_order\_3}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{rotation\_axis\_order\_3}{rotation\_axis\_order\_3}}
+{\footnotesize\ttfamily string Rotation\+Matrix\+Calc\+::rotation\+\_\+axis\+\_\+order\+\_\+3\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Matrix\+Calc.\+hpp の 468 行目に定義があります。
+
+\mbox{\Hypertarget{classRotationMatrixCalc_a26697aa91d0851a0441674a9dc105bde}\label{classRotationMatrixCalc_a26697aa91d0851a0441674a9dc105bde}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!rotation\_matrix@{rotation\_matrix}}
+\index{rotation\_matrix@{rotation\_matrix}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{rotation\_matrix}{rotation\_matrix}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Rotation\+Matrix\+Calc\+::rotation\+\_\+matrix}
+
+
+
+ Matrix\+Calc.\+hpp の 472 行目に定義があります。
+
+\mbox{\Hypertarget{classRotationMatrixCalc_ad33775bfa36b911bde8c9b1962c110ac}\label{classRotationMatrixCalc_ad33775bfa36b911bde8c9b1962c110ac}} 
+\index{RotationMatrixCalc@{RotationMatrixCalc}!rotation\_matrix\_conv@{rotation\_matrix\_conv}}
+\index{rotation\_matrix\_conv@{rotation\_matrix\_conv}!RotationMatrixCalc@{RotationMatrixCalc}}
+\doxysubsubsection{\texorpdfstring{rotation\_matrix\_conv}{rotation\_matrix\_conv}}
+{\footnotesize\ttfamily vector$<$vector$<$double$>$ $>$ Rotation\+Matrix\+Calc\+::rotation\+\_\+matrix\+\_\+conv}
+
+
+
+ Matrix\+Calc.\+hpp の 473 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/hpp/\+My\+Library/\mbox{\hyperlink{MatrixCalc_8hpp}{Matrix\+Calc.\+hpp}}\end{DoxyCompactItemize}

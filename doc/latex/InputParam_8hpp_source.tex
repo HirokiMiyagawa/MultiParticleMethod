@@ -1,0 +1,233 @@
+\hypertarget{InputParam_8hpp_source}{}\doxysection{Input\+Param.\+hpp}
+\label{InputParam_8hpp_source}\index{/home/raptel/workspace/research/MultiParticleMethod/src/hpp/MyLibrary/InputParam.hpp@{/home/raptel/workspace/research/MultiParticleMethod/src/hpp/MyLibrary/InputParam.hpp}}
+\mbox{\hyperlink{InputParam_8hpp}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00011}00011 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00012}00012 \textcolor{comment}{MIT License}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00013}00013 \textcolor{comment}{Copyright (c) 2019 -\/ present H. Watanabe}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00014}00014 \textcolor{comment}{The latest version is available at}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00015}00015 \textcolor{comment}{https://github.com/kaityo256/params}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00016}00016 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00017}00017 \textcolor{comment}{Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00018}00018 \textcolor{comment}{of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00019}00019 \textcolor{comment}{in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00020}00020 \textcolor{comment}{to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00021}00021 \textcolor{comment}{copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00022}00022 \textcolor{comment}{furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00023}00023 \textcolor{comment}{The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00024}00024 \textcolor{comment}{copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00025}00025 \textcolor{comment}{THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00026}00026 \textcolor{comment}{IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00027}00027 \textcolor{comment}{FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00028}00028 \textcolor{comment}{AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00029}00029 \textcolor{comment}{LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00030}00030 \textcolor{comment}{OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00031}00031 \textcolor{comment}{SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00032}00032 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00034}00034 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00036}00036 \textcolor{comment}{/* include header files */}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00038}00038 \textcolor{comment}{/* end include header files*/}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00040}00040 \textcolor{comment}{/* include standard files */}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00041}00041 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00042}00042 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00043}00043 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00044}00044 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00046}00046 \textcolor{comment}{/* end include standard files */}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00048}00048 \textcolor{comment}{/* usingnamespace declaration(名前空間の宣言) */}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00050}00050 \textcolor{comment}{/* end usingnamespace declaration*/}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00052}00052 \textcolor{comment}{/* declaration MACRO */}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00054}00054 \textcolor{comment}{/* end declaration MACRO */}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00056}00056 \textcolor{comment}{/* prototype declaration */}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00058}00058 \textcolor{comment}{/* end prototype declaration*/}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00060}00060 \textcolor{comment}{/* declaration enumlation */}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00062}00062 \textcolor{comment}{/* declaration namespace */}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00064}00064 \textcolor{comment}{/* end declaration namespace */}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00066}\mbox{\hyperlink{namespaceparam}{00066}} \textcolor{keyword}{namespace }\mbox{\hyperlink{namespaceparam}{param}}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00067}00067 \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00069}\mbox{\hyperlink{namespaceparam_aa34187ef472a6162b27d884e1a042dff}{00069}}     \textcolor{keyword}{typedef} std::map<std::string, std::string> \mbox{\hyperlink{namespaceparam_aa34187ef472a6162b27d884e1a042dff}{ptype}};}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00070}\mbox{\hyperlink{classparam_1_1parameter}{00070}}     \textcolor{keyword}{class }\mbox{\hyperlink{classparam_1_1parameter}{parameter}}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00071}00071     \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00072}00072     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00073}\mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{00073}}         \mbox{\hyperlink{namespaceparam_aa34187ef472a6162b27d884e1a042dff}{ptype}} \mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}};}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00074}\mbox{\hyperlink{classparam_1_1parameter_aece4d986ab1cb9a56415f2948727e20b}{00074}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classparam_1_1parameter_aece4d986ab1cb9a56415f2948727e20b}{valid}};}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00076}\mbox{\hyperlink{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa}{00076}}         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa}{contains}}(std::string \&key)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00077}00077 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00078}00078             \textcolor{keywordflow}{return} \mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}.find(key) != \mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}.end();}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00079}00079         \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00081}00081     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00082}\mbox{\hyperlink{classparam_1_1parameter_a811db3e107026b441ee970e2da581dab}{00082}}         \mbox{\hyperlink{classparam_1_1parameter_a811db3e107026b441ee970e2da581dab}{parameter}}(\textcolor{keyword}{const} std::string filename)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00083}00083             : \mbox{\hyperlink{classparam_1_1parameter_aece4d986ab1cb9a56415f2948727e20b}{valid}}(true)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00084}00084         \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00085}00085             \mbox{\hyperlink{classparam_1_1parameter_a2264f026909350dd4ad9f411550df419}{loadfromfile}}(filename);}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00086}00086         \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00088}\mbox{\hyperlink{classparam_1_1parameter_ab01357f66b666341a2db9e382535f4b3}{00088}}         \textcolor{keyword}{explicit} \textcolor{keyword}{operator} bool()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00089}00089 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00090}00090             \textcolor{keywordflow}{return} \mbox{\hyperlink{classparam_1_1parameter_aece4d986ab1cb9a56415f2948727e20b}{valid}};}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00091}00091         \};}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00093}\mbox{\hyperlink{classparam_1_1parameter_a2264f026909350dd4ad9f411550df419}{00093}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classparam_1_1parameter_a2264f026909350dd4ad9f411550df419}{loadfromfile}}(\textcolor{keyword}{const} std::string filename)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00094}00094         \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00095}00095             std::ifstream is(filename);}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00096}00096             \textcolor{keywordflow}{if} (is.fail())}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00097}00097             \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00098}00098                 std::cerr << \textcolor{stringliteral}{"{}Could not open file "{}} << filename << std::endl;}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00099}00099                 \mbox{\hyperlink{classparam_1_1parameter_aece4d986ab1cb9a56415f2948727e20b}{valid}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00100}00100             \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00101}00101             \mbox{\hyperlink{classparam_1_1parameter_a359d6f1e25ab2274f3eb986d4c39cb51}{readfromstream}}(is);}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00102}00102         \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00103}\mbox{\hyperlink{classparam_1_1parameter_a359d6f1e25ab2274f3eb986d4c39cb51}{00103}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classparam_1_1parameter_a359d6f1e25ab2274f3eb986d4c39cb51}{readfromstream}}(std::istream \&is)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00104}00104         \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00105}00105             std::string line;}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00106}00106             \textcolor{keywordflow}{while} (getline(is, line))}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00107}00107             \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00108}00108                 \textcolor{keywordflow}{if} (*(line.end() -\/ 1) == 0x0d)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00109}00109                     line.pop\_back();}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00110}00110                 \textcolor{keywordflow}{if} (line.length() > 0 \&\& line[0] == \textcolor{charliteral}{'\#'})}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00111}00111                 \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00112}00112                     \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00113}00113                 \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00114}00114                 \textcolor{keywordtype}{size\_t} index = line.find(\textcolor{stringliteral}{"{}="{}});}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00115}00115                 \textcolor{keywordflow}{if} (std::string::npos != index)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00116}00116                 \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00117}00117                     std::string key = line.substr(0, index);}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00118}00118                     std::string value = line.substr(index + 1, line.length());}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00119}00119                     \mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}.insert(ptype::value\_type(key, value));}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00120}00120                 \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00121}00121             \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00122}00122         \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00123}\mbox{\hyperlink{classparam_1_1parameter_a52e070eeaadc130628006f231b0c4dba}{00123}}         \textcolor{keywordtype}{void} \mbox{\hyperlink{classparam_1_1parameter_a52e070eeaadc130628006f231b0c4dba}{check\_key}}(std::string \&key)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00124}00124 \textcolor{keyword}{        }\{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00125}00125             \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa}{contains}}(key))}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00126}00126             \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00127}00127                 std::cerr << \textcolor{stringliteral}{"{}No such key: "{}} << key << std::endl;}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00128}00128                 std::abort();}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00129}00129             \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00130}00130         \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00131}00131 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00132}00132         \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00133}\mbox{\hyperlink{classparam_1_1parameter_a6dc9159a9e793a34002eadcbe29af9f8}{00133}}         T \mbox{\hyperlink{classparam_1_1parameter_a6dc9159a9e793a34002eadcbe29af9f8}{get}}(std::string)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00134}00134         \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00135}00135         \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00137}00137         \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00138}\mbox{\hyperlink{classparam_1_1parameter_a9bcf6bceeac054d7c0810d60e7edcbf8}{00138}}         T \mbox{\hyperlink{classparam_1_1parameter_a9bcf6bceeac054d7c0810d60e7edcbf8}{get}}(std::string, T value)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00139}00139         \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00140}00140             \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00141}00141         \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00142}00142     \};}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00144}00144     \textcolor{keyword}{template} <>}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00145}\mbox{\hyperlink{classparam_1_1parameter_a55e534dacdb092249eda507b380c740f}{00145}}     \textcolor{keywordtype}{bool} parameter::get<bool>(std::string key, \textcolor{keywordtype}{bool} value)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00146}00146     \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00147}00147         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa}{contains}}(key))}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00148}00148         \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00149}00149             \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00150}00150         \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00151}00151         \textcolor{keywordflow}{if} (\textcolor{stringliteral}{"{}yes"{}} == \mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}[key] || \textcolor{stringliteral}{"{}Yes"{}} == \mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}[key])}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00152}00152         \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00153}00153             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00154}00154         \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00155}00155         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00156}00156         \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00157}00157             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00158}00158         \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00159}00159     \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00160}00160 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00161}00161     \textcolor{keyword}{template} <>}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00162}\mbox{\hyperlink{classparam_1_1parameter_aead00bf807ef7ad45d2b6922dc747a1c}{00162}}     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classparam_1_1parameter_a6dc9159a9e793a34002eadcbe29af9f8}{parameter::get}}(std::string key)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00163}00163     \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00164}00164         \mbox{\hyperlink{classparam_1_1parameter_a52e070eeaadc130628006f231b0c4dba}{check\_key}}(key);}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00165}00165         \textcolor{keywordflow}{return} get<bool>(key, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00166}00166     \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00168}00168     \textcolor{keyword}{template} <>}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00169}\mbox{\hyperlink{classparam_1_1parameter_a4a8d1b841995fe9f48f388c6b7a580ec}{00169}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{classparam_1_1parameter_a6dc9159a9e793a34002eadcbe29af9f8}{parameter::get}}(std::string key, \textcolor{keywordtype}{int} value)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00170}00170     \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00171}00171         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa}{contains}}(key))}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00172}00172         \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00173}00173             \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00174}00174         \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00175}00175         \textcolor{keywordflow}{return} std::stoi(\mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}[key]);}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00176}00176     \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00177}00177 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00178}00178     \textcolor{keyword}{template} <>}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00179}00179     \textcolor{keywordtype}{int} \mbox{\hyperlink{classparam_1_1parameter_a6dc9159a9e793a34002eadcbe29af9f8}{parameter::get}}(std::string key)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00180}00180     \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00181}00181         \mbox{\hyperlink{classparam_1_1parameter_a52e070eeaadc130628006f231b0c4dba}{check\_key}}(key);}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00182}00182         \textcolor{keywordflow}{return} get<int>(key, 0);}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00183}00183     \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00185}00185     \textcolor{keyword}{template} <>}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00186}\mbox{\hyperlink{classparam_1_1parameter_ab9d3c4795707d93abcdf2a1ac208c9c1}{00186}}     \textcolor{keywordtype}{double} \mbox{\hyperlink{classparam_1_1parameter_a6dc9159a9e793a34002eadcbe29af9f8}{parameter::get}}(std::string key, \textcolor{keywordtype}{double} value)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00187}00187     \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00188}00188         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa}{contains}}(key))}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00189}00189         \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00190}00190             \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00191}00191         \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00192}00192         \textcolor{keywordflow}{return} std::stod(\mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}[key]);}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00193}00193     \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00194}00194 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00195}00195     \textcolor{keyword}{template} <>}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00196}00196     \textcolor{keywordtype}{double} \mbox{\hyperlink{classparam_1_1parameter_a6dc9159a9e793a34002eadcbe29af9f8}{parameter::get}}(std::string key)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00197}00197     \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00198}00198         \mbox{\hyperlink{classparam_1_1parameter_a52e070eeaadc130628006f231b0c4dba}{check\_key}}(key);}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00199}00199         \textcolor{keywordflow}{return} get<double>(key, 0.0);}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00200}00200     \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00201}00201 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00202}00202     \textcolor{keyword}{template} <>}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00203}\mbox{\hyperlink{classparam_1_1parameter_a79d607d762d5689e909feedc2d6c8faa}{00203}}     std::string \mbox{\hyperlink{classparam_1_1parameter_a6dc9159a9e793a34002eadcbe29af9f8}{parameter::get}}(std::string key, std::string value)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00204}00204     \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00205}00205         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa}{contains}}(key))}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00206}00206         \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00207}00207             \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00208}00208         \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00209}00209         \textcolor{keywordflow}{return} \mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}[key];}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00210}00210     \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00211}00211 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00212}00212     \textcolor{keyword}{template} <>}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00213}00213     std::string \mbox{\hyperlink{classparam_1_1parameter_a6dc9159a9e793a34002eadcbe29af9f8}{parameter::get}}(std::string key)}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00214}00214     \{}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00215}00215         \mbox{\hyperlink{classparam_1_1parameter_a52e070eeaadc130628006f231b0c4dba}{check\_key}}(key);}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00216}00216         \textcolor{keywordflow}{return} get<std::string>(key, \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00217}00217     \}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00218}00218 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00219}00219     \textcolor{comment}{// template <>}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00220}00220     \textcolor{comment}{// char *parameter::get(std::string key, char *value)}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00221}00221     \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00222}00222     \textcolor{comment}{//     if (!contains(key))}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00223}00223     \textcolor{comment}{//     \{}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00224}00224     \textcolor{comment}{//         return value;}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00225}00225     \textcolor{comment}{//     \}}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00226}00226     \textcolor{comment}{//     return params[key].c\_str();}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00227}00227     \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00228}00228 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00229}00229     \textcolor{comment}{// template <>}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00230}00230     \textcolor{comment}{// char *parameter::get(std::string key)}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00231}00231     \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00232}00232     \textcolor{comment}{//     check\_key(key);}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00233}00233     \textcolor{comment}{//     return get<char *>(key, "{} "{});}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00234}00234     \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00235}00235 }
+\DoxyCodeLine{\Hypertarget{InputParam_8hpp_source_l00236}00236 \} \textcolor{comment}{// namespace param}}
+
+\end{DoxyCode}

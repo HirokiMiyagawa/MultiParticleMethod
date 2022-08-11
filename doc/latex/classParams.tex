@@ -1,0 +1,1949 @@
+\hypertarget{classParams}{}\doxysection{Params クラス}
+\label{classParams}\index{Params@{Params}}
+
+
+{\ttfamily \#include $<$Params.\+hpp$>$}
+
+
+
+Params 連携図
+% FIG 0
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classParams_a1c0d445a3ea36e3b4d8696c55217fdd2}{Params}} ()
+\item 
+\mbox{\hyperlink{classParams_a718541a736b5b4b829652af720dfb242}{$\sim$\+Params}} ()
+\item 
+void \mbox{\hyperlink{classParams_a1e83b039d2ee8dd4df4fe2e5ae7e6474}{set\+\_\+pressure\+\_\+initial}} (void)
+\item 
+void \mbox{\hyperlink{classParams_a6045b8e296d2f70b3eaefb62bfc6807d}{pre\+Calc}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\+\_\+filename}}
+\item 
+int \mbox{\hyperlink{classParams_a568540cab95643d13c7402d18f61a4f2}{m\+\_\+i\+Num}}
+\begin{DoxyCompactList}\small\item\em i方向の粒子数 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classParams_a4e8c2110b9c80adffa96f1ca1691bab8}{m\+\_\+j\+Num}}
+\begin{DoxyCompactList}\small\item\em j方向の粒子数 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classParams_a5b2c3e10a82bab6ea50e8b712ead5fc1}{m\+\_\+k\+Num}}
+\begin{DoxyCompactList}\small\item\em k方向の粒子数 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classParams_ac32feaa485f6285cc2ec6ec7323eca9a}{m\+\_\+sheet\+\_\+skip}}
+\begin{DoxyCompactList}\small\item\em csvに出力するまでの繰り返し数。\+N回の計算ごとに出力する \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a1235fa0020820e249b24afeee4bf6eb3}{Lref}}
+\begin{DoxyCompactList}\small\item\em 基準長さ 100 \mbox{[}mm\mbox{]} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a222efb1c437294cfc9c6f612d67657e8}{Vref}}
+\begin{DoxyCompactList}\small\item\em 基準速度 100 \mbox{[}mm\mbox{]} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_aa3806d6c13870e83c6a0ac0608eb346d}{Pref}}
+\begin{DoxyCompactList}\small\item\em 基準圧力 35.\+5 $\ast$ 10$^\wedge$-\/8 \mbox{[}N/mm$^\wedge$2\mbox{]} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a07e1c493c710c527233ff6916f16e3ed}{Pc}}
+\begin{DoxyCompactList}\small\item\em Pressure on particle \mbox{[}N/mm$^\wedge$2\mbox{]} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a8baf394267edc440aebb57dd1c4cc97e}{m\+\_\+\+Pc}}
+\item 
+double \mbox{\hyperlink{classParams_a46104190e3393385ad931d0b91b3ce9f}{Psun}}
+\begin{DoxyCompactList}\small\item\em Pressure by sun light \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classParams_a83dc96289cb4e1415257584c26a718c0}{Psun\+\_\+angle\+\_\+axis}}
+\begin{DoxyCompactList}\small\item\em Pressure by sun light angle axis (default\+: zyz) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a3de8273639500599b81c1d1731437923}{Psun\+\_\+angle\+\_\+phi}}
+\begin{DoxyCompactList}\small\item\em Pressure by sun light angle 1 (input degree. save radian) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_ac829980a43ef78ac6e0278ec3b618e8c}{Psun\+\_\+angle\+\_\+theta}}
+\begin{DoxyCompactList}\small\item\em Pressure by sun light angle 2 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_ad99e17b707432e80fad25f16ec52d6b4}{Psun\+\_\+angle\+\_\+psi}}
+\begin{DoxyCompactList}\small\item\em Pressure by sun light angle 3 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a8280f0f4e0866a6c0bbad3dbd594fc80}{Psun\+\_\+angle\+\_\+s\+\_\+theta}}
+\begin{DoxyCompactList}\small\item\em Pressure by sun light angle z for Spherical Coordinate \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a71435f17aa99ceeb532ed7260b63ab84}{Psun\+\_\+angle\+\_\+s\+\_\+phi}}
+\begin{DoxyCompactList}\small\item\em Pressure by sun light angle plate for Spherical Coordinate \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a0c9de4f462b76a9d963fbe23865c150b}{reflectance}}
+\begin{DoxyCompactList}\small\item\em Reflectance \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a329aff01650d59aa20eb6a0f840308c7}{specularity}}
+\begin{DoxyCompactList}\small\item\em Specularity \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a7a8be9e15c07942ebd7ca583180b15c9}{Length\+\_\+x}}
+\item 
+double \mbox{\hyperlink{classParams_afac2539a1399eefca5700b6e44514c0c}{Length\+\_\+y}}
+\item 
+double \mbox{\hyperlink{classParams_aebea50cc051ec85b8a99aa758ec33c24}{m\+\_\+E}}
+\begin{DoxyCompactList}\small\item\em ヤング率 \mbox{[}N/mm$^\wedge$2 M\+Pa\mbox{]} / 野里さんのE = 35.\+5 M\+Paを使用している \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a1d14c6ce2290e47454b86f71a299ef41}{m\+\_\+\+Lref\+\_\+x}}
+\begin{DoxyCompactList}\small\item\em 無次元化した基準長さ (膜の縦と横の長さ) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a2286142a10acbef56269db9fd520d938}{m\+\_\+\+Lref\+\_\+y}}
+\item 
+double \mbox{\hyperlink{classParams_adb70d87052fd4be0fb2eb7bd18e0bbd6}{m\+\_\+h0}}
+\begin{DoxyCompactList}\small\item\em 無次元化した膜厚、膜厚比 \mbox{[}-\/\mbox{]} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a8fff32f4954fb769862a8fe3621a6ef6}{m\+\_\+hc0}}
+\begin{DoxyCompactList}\small\item\em 無次元化した膜厚(隅)、膜厚比 \mbox{[}-\/\mbox{]} h\+\_\+corner (only cube) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_ac55ec71b45f169db85e9722d59d30cd8}{h0}}
+\begin{DoxyCompactList}\small\item\em 初期膜厚 \mbox{[}mm\mbox{]} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a09ab4211d33bbee9637ffb3a9497951a}{m\+\_\+rho}}
+\begin{DoxyCompactList}\small\item\em 密度 \mbox{[}kg/mm$^\wedge$3\mbox{]} (C\+\_\+\+E\+Iが無次元量になるような値) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a47adfd38fe2e92fe9a871561f1b30351}{water\+\_\+rho}}
+\begin{DoxyCompactList}\small\item\em 水の密度 \mbox{[}kg/mm$^\wedge$3\mbox{]} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_ac37748b7bf15f7c873839dd48397c31c}{specific\+\_\+gravity}}
+\begin{DoxyCompactList}\small\item\em 比重 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a88458df4b86d46005edeadd3869c970c}{m\+\_\+nu}}
+\begin{DoxyCompactList}\small\item\em poason ratio (ポアソン比) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a39cdad6032b0dc1899d4578ffe64d375}{m\+\_\+\+Cv}}
+\begin{DoxyCompactList}\small\item\em Cv $\ast$ m\+\_\+kが代入されている。 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a387df11f8600502471687b41991d5361}{Cv}}
+\begin{DoxyCompactList}\small\item\em 数値粘性係数。論文によると0.01-\/10.\+0程度の正の定数。 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_af632629af171f40d94d322f7c4dce07c}{m\+\_\+tmax}}
+\begin{DoxyCompactList}\small\item\em 終了時間 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classParams_aa9a470c1403ef2db33533b0321f1b5a3}{div\+\_\+file}}
+\begin{DoxyCompactList}\small\item\em ファイルを分ける頻度 \mbox{[}回\mbox{]} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a2fe78b57d45650ccc851158d68b1d689}{m\+\_\+k}}
+\begin{DoxyCompactList}\small\item\em 荷重係数のノルム \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_ab53034f0440ed2523654beae5a73e86a}{m\+\_\+kx}}
+\item 
+double \mbox{\hyperlink{classParams_a1e65b7832c25bd5b77d7873fb61998de}{m\+\_\+ky}}
+\begin{DoxyCompactList}\small\item\em 荷重係数 Y \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a5da3d6c4cde37b6633f61205e824b59a}{m\+\_\+kz}}
+\begin{DoxyCompactList}\small\item\em 荷重係数 Z \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a840561ac1ecb7fb7c2a96f8e9ff2520f}{fe}}
+\begin{DoxyCompactList}\small\item\em external force \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a1e5232d78b2ea0b5cd6ade2411928be8}{m\+\_\+fx}}
+\begin{DoxyCompactList}\small\item\em 無次元化した外力 (x方向の分布荷重) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_ae536ea07e227d7c69eb10d661330d51c}{m\+\_\+fy}}
+\begin{DoxyCompactList}\small\item\em y方向の力？ \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a6b8c1cc11e7252db98ae33afd9b7a846}{m\+\_\+fz}}
+\begin{DoxyCompactList}\small\item\em z方向の力？ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structBoundaryCondition}{Boundary\+Condition}} \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}
+\item 
+std\+::string \mbox{\hyperlink{classParams_ad301ae4765f22eeb84599f4a9654e88b}{analysis\+\_\+shape}}
+\item 
+bool \mbox{\hyperlink{classParams_a3d6723bbc90688c9fe6fc8581876f0d2}{add\+\_\+disturbance}}
+\item 
+std\+::string \mbox{\hyperlink{classParams_a6452bd08cc88773de5c5a2d14a231aa1}{grid\+\_\+pattern}}
+\item 
+bool \mbox{\hyperlink{classParams_ad04d82fd97bd1322d9140e296fcfd8b1}{force\+\_\+release}}
+\item 
+bool \mbox{\hyperlink{classParams_ac4615b5380e84c7d7e129982e77a501b}{oblique\+\_\+rigid}}
+\item 
+bool \mbox{\hyperlink{classParams_a20d58793fe4adc69f1f87b2d0ae37743}{roll\+\_\+inertia\+\_\+system}}
+\item 
+string \mbox{\hyperlink{classParams_acae5b3aea7263932077b1abfe4b7d61d}{oblique\+\_\+move}}
+\item 
+double \mbox{\hyperlink{classParams_a16b8001b5615eb87fde1cf39720fbee3}{initial\+\_\+phi\+\_\+d}}
+\item 
+double \mbox{\hyperlink{classParams_a434dd129e39e25749d324176851c12df}{initial\+\_\+theta\+\_\+d}}
+\item 
+double \mbox{\hyperlink{classParams_ad1512c38977350eeb45cfa48a910f1de}{initial\+\_\+psi\+\_\+d}}
+\item 
+double \mbox{\hyperlink{classParams_a4250b2b5efad692f38afb4193c1f88f3}{initial\+\_\+phi\+\_\+dd}}
+\item 
+double \mbox{\hyperlink{classParams_a611600324592e13594efbc93f829e4eb}{initial\+\_\+theta\+\_\+dd}}
+\item 
+double \mbox{\hyperlink{classParams_aa4626cdf9164b9becb42de160cf86c09}{initial\+\_\+psi\+\_\+dd}}
+\item 
+double \mbox{\hyperlink{classParams_ae287f1cde4803e0ae1254a516724d1c7}{phi}}
+\item 
+double \mbox{\hyperlink{classParams_a743b6794d720e03568218359e1f621cf}{theta}}
+\item 
+double \mbox{\hyperlink{classParams_ab255259ef67713b7427ef19d71ae2b38}{psi}}
+\item 
+double \mbox{\hyperlink{classParams_a0deca83cb6015185f420287740b1d059}{phi\+\_\+d}}
+\item 
+double \mbox{\hyperlink{classParams_ab65b6420e294986fbdc1fc1263de892b}{theta\+\_\+d}}
+\item 
+double \mbox{\hyperlink{classParams_a066dde516eb32a9169cfbcdf90af1b04}{psi\+\_\+d}}
+\item 
+double \mbox{\hyperlink{classParams_accf469c740f6d615ede93ea33745b623}{pre\+\_\+phi\+\_\+d}}
+\item 
+double \mbox{\hyperlink{classParams_a13470b4275c9eaadffa8e4068ca2db27}{pre\+\_\+theta\+\_\+d}}
+\item 
+double \mbox{\hyperlink{classParams_a9616265ee3e02517d200c109e52fd20b}{pre\+\_\+psi\+\_\+d}}
+\item 
+double \mbox{\hyperlink{classParams_a63cdca3a0ee64645c9efbc217eb0c035}{phi\+\_\+dd}}
+\item 
+double \mbox{\hyperlink{classParams_a7c7ab8d849b63239b28b13f71cc73861}{theta\+\_\+dd}}
+\item 
+double \mbox{\hyperlink{classParams_a5cb67695333db108d6a76412425d85f9}{psi\+\_\+dd}}
+\item 
+double \mbox{\hyperlink{classParams_acf9b65b02d1d0478d5faffac4f707bdf}{m\+\_\+phi\+\_\+d}}
+\item 
+double \mbox{\hyperlink{classParams_ad871847107ad18b1d6cf442de7933c9b}{m\+\_\+theta\+\_\+d}}
+\item 
+double \mbox{\hyperlink{classParams_ab5dd0f9c26594a4cd855d8032d356e89}{m\+\_\+psi\+\_\+d}}
+\item 
+double \mbox{\hyperlink{classParams_a966c5f301aa9902b61dfec13f3ff1362}{m\+\_\+phi\+\_\+dd}}
+\item 
+double \mbox{\hyperlink{classParams_a330eb240c4ee1442900458eefdefcb75}{m\+\_\+theta\+\_\+dd}}
+\item 
+double \mbox{\hyperlink{classParams_ae26f3cb2caa396180fdbd002f30f148e}{m\+\_\+psi\+\_\+dd}}
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classParams_a17d9a13628d0b79fa589ab18576b20df}{omega\+\_\+system}}
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classParams_a2f841c18cc42f57c85c40a34faf7d38e}{a\+\_\+euler\+\_\+system}}
+\item 
+double \mbox{\hyperlink{classParams_abb15c7768239e9adc3fee9e51027c033}{disturbance\+\_\+range}}
+\begin{DoxyCompactList}\small\item\em 擾乱の範囲 \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classParams_a4e733b2fc822576ff96ffe9805090118}{disturbance\+\_\+mode}}
+\item 
+double \mbox{\hyperlink{classParams_a7fccbec2a3cf024348899c0ad4104492}{m\+\_\+fe}}
+\begin{DoxyCompactList}\small\item\em 対角線方向の無次元化した集中荷重 \mbox{[}N\mbox{]} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_ad42da0a5b284db3857a70ebe41b4c061}{m\+\_\+dt}}
+\begin{DoxyCompactList}\small\item\em 刻み時間？ \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_af99118fc6b57f98544f685bafbf4de7e}{div\+\_\+num}}
+\begin{DoxyCompactList}\small\item\em 細かく区切る回数。 境界面付近のn個の粒子をm倍の精度にする \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a44544e0121395e26b0f1800104605dff}{minuteness}}
+\begin{DoxyCompactList}\small\item\em 境界面付近でほしい精度（他の場所の何倍の精度（間隔の短さ）が欲しいのか） \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_af1011429d508bcfbaaffa8ba165e9342}{edge\+\_\+reinforce}}
+\begin{DoxyCompactList}\small\item\em 角の補強変数 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_af2541672edd665742ff56e7005254ab9}{thicken\+\_\+coefficient}}
+\begin{DoxyCompactList}\small\item\em 角の膜厚 \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classParams_a0840ad1aefd1c15c53afebd832d4df96}{m\+\_\+params\+File}}
+\item 
+bool \mbox{\hyperlink{classParams_ac31cb9dc97dfb3b3552b7d03cdccc00d}{m\+\_\+file\+Exist\+Flag}}
+\item 
+double \mbox{\hyperlink{classParams_acf72853179e4a9dbccc461caa53b3f01}{C\+\_\+\+EI}}
+\begin{DoxyCompactList}\small\item\em 弾性力と慣性力の比を表す無次元パラメータ \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a791e3fcee7f5d82a2c0ac1eca67e5014}{C\+\_\+\+AE}}
+\begin{DoxyCompactList}\small\item\em 空気力と弾性力の比を表す無次元パラメータ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRotationMatrixCalc}{Rotation\+Matrix\+Calc}} \mbox{\hyperlink{classParams_a3d5415e4277daa765262a5081d09ad8c}{rotation\+\_\+matrix}}
+\begin{DoxyCompactList}\small\item\em Matrix for Pressure \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classParams_af2bd8619f6916b96f581eaa43e565b4a}{pressure\+\_\+for\+\_\+all}}
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classParams_a70eb84f3cae76877f675ba56c6a12845}{pressure\+\_\+initial}}
+\item 
+vector$<$ double $>$ \mbox{\hyperlink{classParams_a9037154f798466e7228c72819e363240}{pressure\+\_\+matrix\+\_\+unit}}
+\item 
+\mbox{\hyperlink{classSphericalCoordinate}{Spherical\+Coordinate}} \mbox{\hyperlink{classParams_ae565801842b6c92ff855ef38e77225ad}{spherical\+\_\+coordinate}}
+\item 
+double \mbox{\hyperlink{classParams_adaccdb7db72fa17e8bc74e73191cf2a9}{m\+\_\+pre\+Calc1}}
+\begin{DoxyCompactList}\small\item\em 1/(1-\/(ν$^\wedge$2)) 弾性力 Ftの計算で使用する \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_ad27502fb26f713d63c3ca314d4f9a843}{m\+\_\+pre\+Calc2}}
+\begin{DoxyCompactList}\small\item\em 1/(4$\ast$(1+ν)) せん断力 Fsの計算で使用する \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_ace61d98ae18007d3be8dd11f7fe821d4}{m\+\_\+pre\+Calc3}}
+\begin{DoxyCompactList}\small\item\em ν/(1-\/ν) 膜厚 hの計算で使用する \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a0e01680b5331adaf2cebbdc032fcab31}{m\+\_\+pre\+Calc4}}
+\begin{DoxyCompactList}\small\item\em 1/(12$\ast$(1-\/(ν$^\wedge$2))) モーメント Mの計算で使用する \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_a73348b7fdf6f4632642e6c9418ef3111}{pre\+\_\+eta\+\_\+n}}
+\begin{DoxyCompactList}\small\item\em (1+rs) r\+:reflectance, s\+:Specularity \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classParams_ac576cd0064fd11c45e7cde11df334460}{pre\+\_\+eta\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em (1-\/rs) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classParams_ae843fca08782c56943b1d24e606d20ff}{center\+\_\+i}}
+\item 
+int \mbox{\hyperlink{classParams_a33decb229eaeae98c75fc78f32b8f1d3}{center\+\_\+j}}
+\item 
+int \mbox{\hyperlink{classParams_ab005225deabfdfcce1450dd5318a14d9}{center\+\_\+k}}
+\item 
+int \mbox{\hyperlink{classParams_ac8faef4d506865591013bbd91d3a6c2f}{itr\+\_\+harf\+\_\+x}}
+\item 
+int \mbox{\hyperlink{classParams_a0fa67bdd508e694b8bb948e7860d8c71}{itr\+\_\+harf\+\_\+y}}
+\item 
+int \mbox{\hyperlink{classParams_a5321a075d1f01e9c53814a50db930319}{itr\+\_\+harf\+\_\+z}}
+\item 
+int \mbox{\hyperlink{classParams_ae0c183b70ee54509aae5f357328d26ff}{itr\+\_\+max\+\_\+x}}
+\item 
+int \mbox{\hyperlink{classParams_a23a5bc527a74ce35a053ed2a9cf3bc17}{itr\+\_\+max\+\_\+y}}
+\item 
+int \mbox{\hyperlink{classParams_a2bafcc8074876467c7f605f1cc7d12b6}{itr\+\_\+max\+\_\+z}}
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classParams_a782d4353ba21342c61d8fbf3f77fff38}{test}}
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classParams_a6d8395b05db0d115b23b3df9880c03b2}{test2}}
+\item 
+\mbox{\hyperlink{classC}{C}} \mbox{\hyperlink{classParams_a8e7941200b9779cd688a91b677e2c1b1}{test3}}
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classparam_1_1parameter}{param\+::parameter}} $\ast$ \mbox{\hyperlink{classParams_aa896af26007b8ba98b76fa5a41774512}{param}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ Params.\+hpp の 89 行目に定義があります。
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classParams_a1c0d445a3ea36e3b4d8696c55217fdd2}\label{classParams_a1c0d445a3ea36e3b4d8696c55217fdd2}} 
+\index{Params@{Params}!Params@{Params}}
+\index{Params@{Params}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{Params()}{Params()}}
+{\footnotesize\ttfamily Params\+::\+Params (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Params.\+hpp の 284 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{284              \{}
+\DoxyCodeLine{285         \textcolor{comment}{// test.set(1, 2, 3);}}
+\DoxyCodeLine{286         \textcolor{comment}{// test2.set(4, 5, 6);}}
+\DoxyCodeLine{287         \textcolor{comment}{// test.print();}}
+\DoxyCodeLine{288         \textcolor{comment}{// test2.print();}}
+\DoxyCodeLine{289         \textcolor{comment}{// test += test2;}}
+\DoxyCodeLine{290         \textcolor{comment}{// test.print();}}
+\DoxyCodeLine{291         \textcolor{comment}{// test3 = test * 3;}}
+\DoxyCodeLine{292         \textcolor{comment}{// test3.print();}}
+\DoxyCodeLine{293         \textcolor{comment}{// test3 = test3 / 3;}}
+\DoxyCodeLine{294         \textcolor{comment}{// test3.print();}}
+\DoxyCodeLine{295         \textcolor{comment}{// test3 = test + test2;}}
+\DoxyCodeLine{296         \textcolor{comment}{// test3.print();}}
+\DoxyCodeLine{297 }
+\DoxyCodeLine{298         std::cout << \textcolor{stringliteral}{"\(\backslash\)033[31m"};}
+\DoxyCodeLine{299         \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_a73ced6aad7dc6e4ecddbab1bf0612a23}{SimpleTensile}}) \{}
+\DoxyCodeLine{300             \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}} = \textcolor{stringliteral}{"./data/input\_file/SimpleTensile.cfg"};}
+\DoxyCodeLine{301             \mbox{\hyperlink{namespaceparam}{param}}         = \textcolor{keyword}{new} \mbox{\hyperlink{classparam_1_1parameter}{param::parameter}}(\mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}});}
+\DoxyCodeLine{302             \textcolor{comment}{// if (param-\/>get<bool>("release")) \{}}
+\DoxyCodeLine{303             \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_ad21ea0af8284e536b1b9c00b8930144d}{NaturalFrequency}}) \{}
+\DoxyCodeLine{304                 \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}} = \textcolor{stringliteral}{"./data/input\_file/NaturalFrequency.cfg"};}
+\DoxyCodeLine{305                 std::cout << \textcolor{stringliteral}{"Input NaturalFrequency.cfg"} << endl;}
+\DoxyCodeLine{306             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_a6de6d3ab59cb87ddb1e4c916b17f0b5f}{Oblique}}) \{}
+\DoxyCodeLine{307                 \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}} = \textcolor{stringliteral}{"./data/input\_file/SimpleTensileOblique.cfg"};}
+\DoxyCodeLine{308                 std::cout << \textcolor{stringliteral}{"Input SimpleTensileOblique.cfg"} << endl;}
+\DoxyCodeLine{309             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{310                 std::cout << \textcolor{stringliteral}{"Input Tensile"} << endl;}
+\DoxyCodeLine{311             \}}
+\DoxyCodeLine{312         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_aa9bb4a62a32bfd270d541c82008e091b}{SimpleShare}}) \{}
+\DoxyCodeLine{313             \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}} = \textcolor{stringliteral}{"./data/input\_file/SimpleShare.cfg"};}
+\DoxyCodeLine{314             \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_ad6de80aa6cd74976864acb1f9b2b2c95}{SupportShare}}) \{}
+\DoxyCodeLine{315                 \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}} = \textcolor{stringliteral}{"./data/input\_file/SupportShare.cfg"};}
+\DoxyCodeLine{316                 std::cout << \textcolor{stringliteral}{"Input SupportShare.cfg"} << endl;}
+\DoxyCodeLine{317             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{318                 std::cout << \textcolor{stringliteral}{"Input Share"} << endl;}
+\DoxyCodeLine{319             \}}
+\DoxyCodeLine{320         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_a0f8bbbd9b32fc63c2c562448951b551b}{SimpleBend}}) \{}
+\DoxyCodeLine{321             \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}} = \textcolor{stringliteral}{"./data/input\_file/SimpleBend.cfg"};}
+\DoxyCodeLine{322             std::cout << \textcolor{stringliteral}{"Input Bend"} << endl;}
+\DoxyCodeLine{323         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_a2d907f8987864fbc9f3946b647321ea2}{SimplePressure}}) \{}
+\DoxyCodeLine{324             \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}} = \textcolor{stringliteral}{"./data/input\_file/SimplePressure.cfg"};}
+\DoxyCodeLine{325             std::cout << \textcolor{stringliteral}{"Input Pressure"} << endl;}
+\DoxyCodeLine{326         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_ac93de0dbff308fcfffc20aa397dd8989}{SimpleCompression}}) \{}
+\DoxyCodeLine{327             \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}} = \textcolor{stringliteral}{"./data/input\_file/SimpleCompression.cfg"};}
+\DoxyCodeLine{328             std::cout << \textcolor{stringliteral}{"Input Compression"} << endl;}
+\DoxyCodeLine{329         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_a77b57831d7f7c766c8cc279411696f37}{CylinderPressure}}) \{}
+\DoxyCodeLine{330             \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}} = \textcolor{stringliteral}{"./data/input\_file/CylinderPressure.cfg"};}
+\DoxyCodeLine{331             std::cout << \textcolor{stringliteral}{"Input Cylinder"} << endl;}
+\DoxyCodeLine{332         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_ab02f991f8392350d5051ce54af26f40c}{DiagonalTensile}}) \{}
+\DoxyCodeLine{333             \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}} = \textcolor{stringliteral}{"./data/input\_file/DiagonalTensile.cfg"};}
+\DoxyCodeLine{334             std::cout << \textcolor{stringliteral}{"Input Diagonal"} << endl;}
+\DoxyCodeLine{335         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_aae10144684a59178da47d9d95af182bc}{PlateRevolution}}) \{}
+\DoxyCodeLine{336             \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}} = \textcolor{stringliteral}{"./data/input\_file/PlateRevolution.cfg"};}
+\DoxyCodeLine{337             std::cout << \textcolor{stringliteral}{"Input Revolution"} << endl;}
+\DoxyCodeLine{338         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_aab9d3963d520ee201298f63044414831}{CubePressure}}) \{}
+\DoxyCodeLine{339             \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}} = \textcolor{stringliteral}{"./data/input\_file/CubePressure.cfg"};}
+\DoxyCodeLine{340             std::cout << \textcolor{stringliteral}{"Input Cube"} << endl;}
+\DoxyCodeLine{341         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_a63edb8b196a7b5c24e1a64f3a4890362}{SolarSail}}) \{}
+\DoxyCodeLine{342             \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}} = \textcolor{stringliteral}{"./data/input\_file/SolarSail.cfg"};}
+\DoxyCodeLine{343             std::cout << \textcolor{stringliteral}{"Input SolarSail"} << endl;}
+\DoxyCodeLine{344         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{345             \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}} = \textcolor{stringliteral}{"./data/input\_file/default.cfg"};}
+\DoxyCodeLine{346             std::cout << \textcolor{stringliteral}{"Not define force situation."} << std::endl;}
+\DoxyCodeLine{347         \}}
+\DoxyCodeLine{348         std::cout << \textcolor{stringliteral}{"\(\backslash\)033[m"} << std::flush;}
+\DoxyCodeLine{349 }
+\DoxyCodeLine{350         \mbox{\hyperlink{namespaceparam}{param}} = \textcolor{keyword}{new} \mbox{\hyperlink{classparam_1_1parameter}{param::parameter}}(\mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}});}
+\DoxyCodeLine{351         \textcolor{comment}{// この構文が利用可能かわからない。 newが失敗とき!paramになるのか？}}
+\DoxyCodeLine{352         \textcolor{comment}{// (!*param)に書き換えるべきかも}}
+\DoxyCodeLine{353         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{namespaceparam}{param}}) \{}
+\DoxyCodeLine{354             std::cerr << \textcolor{stringliteral}{"Could not find file "} << \mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}} << std::endl;}
+\DoxyCodeLine{355             std::cout << \textcolor{stringliteral}{"on Params.hpp"} << endl;}
+\DoxyCodeLine{356             std::abort();}
+\DoxyCodeLine{357         \}}
+\DoxyCodeLine{358         \textcolor{comment}{// 粒子数}}
+\DoxyCodeLine{359         \mbox{\hyperlink{classParams_a568540cab95643d13c7402d18f61a4f2}{m\_iNum}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"m\_iNum"});}
+\DoxyCodeLine{360         \mbox{\hyperlink{classParams_a4e8c2110b9c80adffa96f1ca1691bab8}{m\_jNum}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"m\_jNum"});}
+\DoxyCodeLine{361         \mbox{\hyperlink{classParams_a5b2c3e10a82bab6ea50e8b712ead5fc1}{m\_kNum}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"m\_kNum"});}
+\DoxyCodeLine{362         \textcolor{comment}{// 出力など}}
+\DoxyCodeLine{363         \mbox{\hyperlink{classParams_ac32feaa485f6285cc2ec6ec7323eca9a}{m\_sheet\_skip}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"m\_sheet\_skip"});}
+\DoxyCodeLine{364         \mbox{\hyperlink{classParams_aa9a470c1403ef2db33533b0321f1b5a3}{div\_file}}     = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"div\_file"});}
+\DoxyCodeLine{365         \mbox{\hyperlink{classParams_af632629af171f40d94d322f7c4dce07c}{m\_tmax}}       = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"m\_tmax"});}
+\DoxyCodeLine{366         \mbox{\hyperlink{classParams_ad42da0a5b284db3857a70ebe41b4c061}{m\_dt}}         = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"m\_dt"});}
+\DoxyCodeLine{367         \textcolor{comment}{// 物性値}}
+\DoxyCodeLine{368         \mbox{\hyperlink{classParams_a1235fa0020820e249b24afeee4bf6eb3}{Lref}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"Lref"});}
+\DoxyCodeLine{369         \mbox{\hyperlink{classParams_a222efb1c437294cfc9c6f612d67657e8}{Vref}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"Vref"});}
+\DoxyCodeLine{370         \mbox{\hyperlink{classParams_aa3806d6c13870e83c6a0ac0608eb346d}{Pref}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"Pref"});}
+\DoxyCodeLine{371         \mbox{\hyperlink{classParams_a46104190e3393385ad931d0b91b3ce9f}{Psun}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"Psun"}, 0);}
+\DoxyCodeLine{372         \mbox{\hyperlink{classParams_a07e1c493c710c527233ff6916f16e3ed}{Pc}}   = \mbox{\hyperlink{classParams_aa3806d6c13870e83c6a0ac0608eb346d}{Pref}};}
+\DoxyCodeLine{373         \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_a63edb8b196a7b5c24e1a64f3a4890362}{SolarSail}}) \{}
+\DoxyCodeLine{374             \mbox{\hyperlink{classParams_a07e1c493c710c527233ff6916f16e3ed}{Pc}} = \mbox{\hyperlink{classParams_a46104190e3393385ad931d0b91b3ce9f}{Psun}};}
+\DoxyCodeLine{375         \}}
+\DoxyCodeLine{376         \mbox{\hyperlink{classParams_a83dc96289cb4e1415257584c26a718c0}{Psun\_angle\_axis}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"Psun\_angle\_axis"}, \textcolor{stringliteral}{"zyz"});}
+\DoxyCodeLine{377         \mbox{\hyperlink{classParams_a3de8273639500599b81c1d1731437923}{Psun\_angle\_phi}}  = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"Psun\_angle\_phi"}, 0);}
+\DoxyCodeLine{378         \mbox{\hyperlink{classParams_a3de8273639500599b81c1d1731437923}{Psun\_angle\_phi}} *= \mbox{\hyperlink{namespacemath_adeae9e6c6f768a920a1fde06087749f3}{math::pi}}() / 180;}
+\DoxyCodeLine{379         \mbox{\hyperlink{classParams_ac829980a43ef78ac6e0278ec3b618e8c}{Psun\_angle\_theta}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"Psun\_angle\_theta"}, 0);}
+\DoxyCodeLine{380         \mbox{\hyperlink{classParams_ac829980a43ef78ac6e0278ec3b618e8c}{Psun\_angle\_theta}} *= \mbox{\hyperlink{namespacemath_adeae9e6c6f768a920a1fde06087749f3}{math::pi}}() / 180;}
+\DoxyCodeLine{381         \mbox{\hyperlink{classParams_ad99e17b707432e80fad25f16ec52d6b4}{Psun\_angle\_psi}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"Psun\_angle\_psi"}, 0);}
+\DoxyCodeLine{382         \mbox{\hyperlink{classParams_ad99e17b707432e80fad25f16ec52d6b4}{Psun\_angle\_psi}} *= \mbox{\hyperlink{namespacemath_adeae9e6c6f768a920a1fde06087749f3}{math::pi}}() / 180;}
+\DoxyCodeLine{383         \mbox{\hyperlink{classParams_a8280f0f4e0866a6c0bbad3dbd594fc80}{Psun\_angle\_s\_theta}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"Psun\_angle\_s\_theta"}, 0);}
+\DoxyCodeLine{384         \mbox{\hyperlink{classParams_a8280f0f4e0866a6c0bbad3dbd594fc80}{Psun\_angle\_s\_theta}} *= \mbox{\hyperlink{namespacemath_adeae9e6c6f768a920a1fde06087749f3}{math::pi}}() / 180;}
+\DoxyCodeLine{385         \mbox{\hyperlink{classParams_a71435f17aa99ceeb532ed7260b63ab84}{Psun\_angle\_s\_phi}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"Psun\_angle\_s\_phi"}, 0);}
+\DoxyCodeLine{386         \mbox{\hyperlink{classParams_a71435f17aa99ceeb532ed7260b63ab84}{Psun\_angle\_s\_phi}} *= \mbox{\hyperlink{namespacemath_adeae9e6c6f768a920a1fde06087749f3}{math::pi}}() / 180;}
+\DoxyCodeLine{387         \mbox{\hyperlink{classParams_a0c9de4f462b76a9d963fbe23865c150b}{reflectance}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"Reflectance"}, 0);}
+\DoxyCodeLine{388         \mbox{\hyperlink{classParams_a329aff01650d59aa20eb6a0f840308c7}{specularity}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"Specularity"}, 0);}
+\DoxyCodeLine{389         \mbox{\hyperlink{classParams_ac55ec71b45f169db85e9722d59d30cd8}{h0}}          = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"h0"});}
+\DoxyCodeLine{390         \mbox{\hyperlink{classParams_a7a8be9e15c07942ebd7ca583180b15c9}{Length\_x}}    = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"Length\_x"});}
+\DoxyCodeLine{391         \mbox{\hyperlink{classParams_afac2539a1399eefca5700b6e44514c0c}{Length\_y}}    = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"Length\_y"});}
+\DoxyCodeLine{392         \mbox{\hyperlink{classParams_aebea50cc051ec85b8a99aa758ec33c24}{m\_E}}         = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"m\_E"});}
+\DoxyCodeLine{393         \mbox{\hyperlink{classParams_a387df11f8600502471687b41991d5361}{Cv}}          = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"Cv"});}
+\DoxyCodeLine{394         \mbox{\hyperlink{classParams_a88458df4b86d46005edeadd3869c970c}{m\_nu}}        = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"m\_nu"});}
+\DoxyCodeLine{395         \mbox{\hyperlink{classParams_a09ab4211d33bbee9637ffb3a9497951a}{m\_rho}}       = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"m\_rho"});}
+\DoxyCodeLine{396         \textcolor{comment}{// 外力}}
+\DoxyCodeLine{397         \mbox{\hyperlink{classParams_ab53034f0440ed2523654beae5a73e86a}{m\_kx}}              = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"m\_kx"});}
+\DoxyCodeLine{398         \mbox{\hyperlink{classParams_a1e65b7832c25bd5b77d7873fb61998de}{m\_ky}}              = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"m\_ky"});}
+\DoxyCodeLine{399         \mbox{\hyperlink{classParams_a5da3d6c4cde37b6633f61205e824b59a}{m\_kz}}              = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"m\_kz"});}
+\DoxyCodeLine{400         \mbox{\hyperlink{classParams_ad301ae4765f22eeb84599f4a9654e88b}{analysis\_shape}}    = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<std::string>(\textcolor{stringliteral}{"analysis\_shape"});}
+\DoxyCodeLine{401         \mbox{\hyperlink{classParams_a6452bd08cc88773de5c5a2d14a231aa1}{grid\_pattern}}      = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<std::string>(\textcolor{stringliteral}{"grid\_pattern"});}
+\DoxyCodeLine{402         \mbox{\hyperlink{classParams_a3d6723bbc90688c9fe6fc8581876f0d2}{add\_disturbance}}   = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"add\_disturbance"});}
+\DoxyCodeLine{403         \mbox{\hyperlink{classParams_abb15c7768239e9adc3fee9e51027c033}{disturbance\_range}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"disturbance\_range"});}
+\DoxyCodeLine{404         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_a9c7bcdf5b16fc6546759321cc9e1b292}{set\_param}}(\mbox{\hyperlink{classParams_afa97cc2559ce7934e53ca1d685a901e8}{read\_filename}});}
+\DoxyCodeLine{405         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_aef7a2f26da9ec0f1911d26643bba76aa}{cylinder\_boundary}} =}
+\DoxyCodeLine{406             \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"cylinder\_boundary"}, \textcolor{keyword}{false});}
+\DoxyCodeLine{407         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_a552ca88c9441db05c7579b479fdc5dac}{boundary\_more\_detail}} =}
+\DoxyCodeLine{408             \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"boundary\_more\_detail"}, \textcolor{keyword}{false});}
+\DoxyCodeLine{409 }
+\DoxyCodeLine{410         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_a3d5bbe76cdc1b25badc23bbd80c0bc4b}{right\_share\_fix}}  = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"RightShare"});}
+\DoxyCodeLine{411         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_adcc4757b484db1cbbd3d47adce75244a}{left\_share\_fix}}   = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"LeftShare"});}
+\DoxyCodeLine{412         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_a01a5d42cc0bb57f479df20f9fe09e6bb}{bottom\_share\_fix}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"BottomShare"});}
+\DoxyCodeLine{413         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_aa4274809fa1356caed49a46cbdede915}{top\_share\_fix}}    = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"TopShare"});}
+\DoxyCodeLine{414 }
+\DoxyCodeLine{415         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_ae6c565d13f6eb223532c55f173369b31}{right\_bend\_fix}}  = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"RightBend"});}
+\DoxyCodeLine{416         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_aef52fb129b48c230d24a434f9ce6d55d}{left\_bend\_fix}}   = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"LeftBend"});}
+\DoxyCodeLine{417         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_adbfb078e48c35aab95bc7bc1fad1ee82}{bottom\_bend\_fix}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"BottomBend"});}
+\DoxyCodeLine{418         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_a8b0c41a56a6be360740decbcfa0c4a4d}{top\_bend\_fix}}    = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"TopBend"});}
+\DoxyCodeLine{419 }
+\DoxyCodeLine{420         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_a55890c25d5856befdf6bbc727f149e53}{right\_free}}  = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"RightFree"});}
+\DoxyCodeLine{421         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_a7faba103932ce077bc7046cfcbe38208}{left\_free}}   = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"LeftFree"});}
+\DoxyCodeLine{422         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_a67f807d6029ea4719518faefd656bef6}{bottom\_free}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"BottomFree"});}
+\DoxyCodeLine{423         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_aa3bc089c6b92bcb607bc49a4962b0c92}{top\_free}}    = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"TopFree"});}
+\DoxyCodeLine{424 }
+\DoxyCodeLine{425         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_ae3f277b8029f3fb15b8f0151f291d308}{judge\_xyz\_fix}}(\mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_af14c64419f65c6cbf24cf2762f0b9394}{right\_move}},}
+\DoxyCodeLine{426                                (\mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"RightMove"})));}
+\DoxyCodeLine{427         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_ae3f277b8029f3fb15b8f0151f291d308}{judge\_xyz\_fix}}(\mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_a14d7d6ddec83f7c47a1137691e6de5ae}{left\_move}},}
+\DoxyCodeLine{428                                (\mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"LeftMove"})));}
+\DoxyCodeLine{429         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_ae3f277b8029f3fb15b8f0151f291d308}{judge\_xyz\_fix}}(\mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_a58d286116c9c8a8e50aec7f692658e8c}{top\_move}},}
+\DoxyCodeLine{430                                (\mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"TopMove"})));}
+\DoxyCodeLine{431         \mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_ae3f277b8029f3fb15b8f0151f291d308}{judge\_xyz\_fix}}(\mbox{\hyperlink{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}{boundary}}.\mbox{\hyperlink{structBoundaryCondition_ab04e27254c970428fd7dcdfb1b44948e}{bottom\_move}},}
+\DoxyCodeLine{432                                (\mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"BottomMove"})));}
+\DoxyCodeLine{433         \mbox{\hyperlink{classParams_ad04d82fd97bd1322d9140e296fcfd8b1}{force\_release}}       = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"release"});}
+\DoxyCodeLine{434         \mbox{\hyperlink{classParams_a20d58793fe4adc69f1f87b2d0ae37743}{roll\_inertia\_system}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"RollInertiaSystem"}, \textcolor{keyword}{false});}
+\DoxyCodeLine{435         \mbox{\hyperlink{classParams_ae287f1cde4803e0ae1254a516724d1c7}{phi}}                 = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"initial\_phi"}, 0);}
+\DoxyCodeLine{436         \mbox{\hyperlink{classParams_a743b6794d720e03568218359e1f621cf}{theta}}               = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"initial\_theta"}, 0);}
+\DoxyCodeLine{437         \mbox{\hyperlink{classParams_ab255259ef67713b7427ef19d71ae2b38}{psi}}                 = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"initial\_psi"}, 0);}
+\DoxyCodeLine{438         \mbox{\hyperlink{classParams_a16b8001b5615eb87fde1cf39720fbee3}{initial\_phi\_d}}       = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"omega\_phi"}, 0);}
+\DoxyCodeLine{439         \mbox{\hyperlink{classParams_a434dd129e39e25749d324176851c12df}{initial\_theta\_d}}     = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"omega\_theta"}, 0);}
+\DoxyCodeLine{440         \mbox{\hyperlink{classParams_ad1512c38977350eeb45cfa48a910f1de}{initial\_psi\_d}}       = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"omega\_psi"}, 0);}
+\DoxyCodeLine{441         \mbox{\hyperlink{classParams_a4250b2b5efad692f38afb4193c1f88f3}{initial\_phi\_dd}}      = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"angular\_acceleration\_phi"}, 0);}
+\DoxyCodeLine{442         \mbox{\hyperlink{classParams_a611600324592e13594efbc93f829e4eb}{initial\_theta\_dd}}    = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"angular\_acceleration\_theta"}, 0);}
+\DoxyCodeLine{443         \mbox{\hyperlink{classParams_aa4626cdf9164b9becb42de160cf86c09}{initial\_psi\_dd}}      = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"angular\_acceleration\_psi"}, 0);}
+\DoxyCodeLine{444         \mbox{\hyperlink{classParams_a0deca83cb6015185f420287740b1d059}{phi\_d}}               = \mbox{\hyperlink{classParams_a16b8001b5615eb87fde1cf39720fbee3}{initial\_phi\_d}};}
+\DoxyCodeLine{445         \mbox{\hyperlink{classParams_ab65b6420e294986fbdc1fc1263de892b}{theta\_d}}             = \mbox{\hyperlink{classParams_a434dd129e39e25749d324176851c12df}{initial\_theta\_d}};}
+\DoxyCodeLine{446         \mbox{\hyperlink{classParams_a066dde516eb32a9169cfbcdf90af1b04}{psi\_d}}               = \mbox{\hyperlink{classParams_ad1512c38977350eeb45cfa48a910f1de}{initial\_psi\_d}};}
+\DoxyCodeLine{447         \mbox{\hyperlink{classParams_a63cdca3a0ee64645c9efbc217eb0c035}{phi\_dd}}              = \mbox{\hyperlink{classParams_a4250b2b5efad692f38afb4193c1f88f3}{initial\_phi\_dd}};}
+\DoxyCodeLine{448         \mbox{\hyperlink{classParams_a7c7ab8d849b63239b28b13f71cc73861}{theta\_dd}}            = \mbox{\hyperlink{classParams_a611600324592e13594efbc93f829e4eb}{initial\_theta\_dd}};}
+\DoxyCodeLine{449         \mbox{\hyperlink{classParams_a5cb67695333db108d6a76412425d85f9}{psi\_dd}}              = \mbox{\hyperlink{classParams_aa4626cdf9164b9becb42de160cf86c09}{initial\_psi\_dd}};}
+\DoxyCodeLine{450 }
+\DoxyCodeLine{451         \mbox{\hyperlink{classParams_af2bd8619f6916b96f581eaa43e565b4a}{pressure\_for\_all}}.\mbox{\hyperlink{classC_ab06a12407c809da7ce929528e36a63f1}{set}}(0, 0, -\/1);}
+\DoxyCodeLine{452 }
+\DoxyCodeLine{453         \mbox{\hyperlink{classParams_ac4615b5380e84c7d7e129982e77a501b}{oblique\_rigid}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"ObliqueRigid"}, \textcolor{keyword}{false});}
+\DoxyCodeLine{454         \textcolor{keywordflow}{if} (\mbox{\hyperlink{classParams_ac4615b5380e84c7d7e129982e77a501b}{oblique\_rigid}}) \{}
+\DoxyCodeLine{455             \mbox{\hyperlink{classParams_acae5b3aea7263932077b1abfe4b7d61d}{oblique\_move}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"ObliqueMove"});}
+\DoxyCodeLine{456         \}}
+\DoxyCodeLine{457         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classParams_a3d6723bbc90688c9fe6fc8581876f0d2}{add\_disturbance}}) \{}
+\DoxyCodeLine{458             \mbox{\hyperlink{classParams_abb15c7768239e9adc3fee9e51027c033}{disturbance\_range}} = 0;}
+\DoxyCodeLine{459         \}}
+\DoxyCodeLine{460 }
+\DoxyCodeLine{461         \textcolor{comment}{// 条件毎}}
+\DoxyCodeLine{462         \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_ab02f991f8392350d5051ce54af26f40c}{DiagonalTensile}}) \{}
+\DoxyCodeLine{463             \mbox{\hyperlink{classParams_a7fccbec2a3cf024348899c0ad4104492}{m\_fe}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"m\_fe"});}
+\DoxyCodeLine{464             \mbox{\hyperlink{classParams_ab53034f0440ed2523654beae5a73e86a}{m\_kx}} = sqrt(\mbox{\hyperlink{classParams_a7fccbec2a3cf024348899c0ad4104492}{m\_fe}});}
+\DoxyCodeLine{465             \mbox{\hyperlink{classParams_a1e65b7832c25bd5b77d7873fb61998de}{m\_ky}} = sqrt(\mbox{\hyperlink{classParams_a7fccbec2a3cf024348899c0ad4104492}{m\_fe}});}
+\DoxyCodeLine{466         \}}
+\DoxyCodeLine{467         \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_aae10144684a59178da47d9d95af182bc}{PlateRevolution}}) \{}
+\DoxyCodeLine{468             \mbox{\hyperlink{classParams_a7fccbec2a3cf024348899c0ad4104492}{m\_fe}} = \mbox{\hyperlink{namespaceparam}{param}}-\/>get<\textcolor{keywordtype}{double}>(\textcolor{stringliteral}{"m\_fe"});}
+\DoxyCodeLine{469             \mbox{\hyperlink{classParams_ab53034f0440ed2523654beae5a73e86a}{m\_kx}} = 0;}
+\DoxyCodeLine{470             \mbox{\hyperlink{classParams_a1e65b7832c25bd5b77d7873fb61998de}{m\_ky}} = 0;}
+\DoxyCodeLine{471         \}}
+\DoxyCodeLine{472         \textcolor{keywordflow}{if} (\mbox{\hyperlink{classParams_a1235fa0020820e249b24afeee4bf6eb3}{Lref}} != \mbox{\hyperlink{classParams_a7a8be9e15c07942ebd7ca583180b15c9}{Length\_x}}) \{}
+\DoxyCodeLine{473             std::cout << \textcolor{stringliteral}{"\(\backslash\)033[31m"};}
+\DoxyCodeLine{474             cout << \textcolor{stringliteral}{"Attension!! Difference Lref and Length\_x "} << endl;}
+\DoxyCodeLine{475             std::cout << \textcolor{stringliteral}{"\(\backslash\)033[m"} << std::flush;}
+\DoxyCodeLine{476         \}}
+\DoxyCodeLine{477 }
+\DoxyCodeLine{478         \textcolor{keyword}{delete} \mbox{\hyperlink{classParams_aa896af26007b8ba98b76fa5a41774512}{param}};}
+\DoxyCodeLine{479         \mbox{\hyperlink{classParams_a4e733b2fc822576ff96ffe9805090118}{disturbance\_mode}} = \textcolor{stringliteral}{"direct"};}
+\DoxyCodeLine{480 }
+\DoxyCodeLine{481         \mbox{\hyperlink{classParams_a0840ad1aefd1c15c53afebd832d4df96}{m\_paramsFile}}    = \textcolor{stringliteral}{"./data/Params.csv"};}
+\DoxyCodeLine{482         \mbox{\hyperlink{classParams_ac31cb9dc97dfb3b3552b7d03cdccc00d}{m\_fileExistFlag}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{483     \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 1
+\mbox{\Hypertarget{classParams_a718541a736b5b4b829652af720dfb242}\label{classParams_a718541a736b5b4b829652af720dfb242}} 
+\index{Params@{Params}!````~Params@{$\sim$Params}}
+\index{````~Params@{$\sim$Params}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{$\sim$Params()}{~Params()}}
+{\footnotesize\ttfamily Params\+::$\sim$\+Params (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Params.\+hpp の 485 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{485 \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classParams_a6045b8e296d2f70b3eaefb62bfc6807d}\label{classParams_a6045b8e296d2f70b3eaefb62bfc6807d}} 
+\index{Params@{Params}!preCalc@{preCalc}}
+\index{preCalc@{preCalc}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{preCalc()}{preCalc()}}
+{\footnotesize\ttfamily void Params\+::pre\+Calc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Params.\+hpp の 488 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{488                    \{}
+\DoxyCodeLine{489         \mbox{\hyperlink{classParams_a1d14c6ce2290e47454b86f71a299ef41}{m\_Lref\_x}} = \mbox{\hyperlink{classParams_a7a8be9e15c07942ebd7ca583180b15c9}{Length\_x}} / \mbox{\hyperlink{classParams_a1235fa0020820e249b24afeee4bf6eb3}{Lref}};}
+\DoxyCodeLine{490         \mbox{\hyperlink{classParams_a2286142a10acbef56269db9fd520d938}{m\_Lref\_y}} = \mbox{\hyperlink{classParams_afac2539a1399eefca5700b6e44514c0c}{Length\_y}} / \mbox{\hyperlink{classParams_a1235fa0020820e249b24afeee4bf6eb3}{Lref}};}
+\DoxyCodeLine{491         \mbox{\hyperlink{classParams_adb70d87052fd4be0fb2eb7bd18e0bbd6}{m\_h0}}     = \mbox{\hyperlink{classParams_ac55ec71b45f169db85e9722d59d30cd8}{h0}} / \mbox{\hyperlink{classParams_a1235fa0020820e249b24afeee4bf6eb3}{Lref}};}
+\DoxyCodeLine{492         \mbox{\hyperlink{classParams_a8fff32f4954fb769862a8fe3621a6ef6}{m\_hc0}}    = \mbox{\hyperlink{classParams_adb70d87052fd4be0fb2eb7bd18e0bbd6}{m\_h0}} * 2;}
+\DoxyCodeLine{493         \mbox{\hyperlink{classParams_a8baf394267edc440aebb57dd1c4cc97e}{m\_Pc}}     = \mbox{\hyperlink{classParams_a07e1c493c710c527233ff6916f16e3ed}{Pc}} / \mbox{\hyperlink{classParams_aa3806d6c13870e83c6a0ac0608eb346d}{Pref}};}
+\DoxyCodeLine{494         \mbox{\hyperlink{classParams_a1e5232d78b2ea0b5cd6ade2411928be8}{m\_fx}}     = \mbox{\hyperlink{classParams_ab53034f0440ed2523654beae5a73e86a}{m\_kx}} * \mbox{\hyperlink{classParams_a1d14c6ce2290e47454b86f71a299ef41}{m\_Lref\_x}};}
+\DoxyCodeLine{495         \mbox{\hyperlink{classParams_ae536ea07e227d7c69eb10d661330d51c}{m\_fy}}     = \mbox{\hyperlink{classParams_a1e65b7832c25bd5b77d7873fb61998de}{m\_ky}} * \mbox{\hyperlink{classParams_a1d14c6ce2290e47454b86f71a299ef41}{m\_Lref\_x}};}
+\DoxyCodeLine{496         \mbox{\hyperlink{classParams_a6b8c1cc11e7252db98ae33afd9b7a846}{m\_fz}}     = \mbox{\hyperlink{classParams_a5da3d6c4cde37b6633f61205e824b59a}{m\_kz}} * \mbox{\hyperlink{classParams_a1d14c6ce2290e47454b86f71a299ef41}{m\_Lref\_x}};}
+\DoxyCodeLine{497         \textcolor{comment}{// XXX: Why add Pref?}}
+\DoxyCodeLine{498         \textcolor{comment}{// m\_k = sqrt(m\_kx * m\_kx + m\_ky * m\_ky + m\_kz * m\_kz) + Pref;}}
+\DoxyCodeLine{499         \mbox{\hyperlink{classParams_a2fe78b57d45650ccc851158d68b1d689}{m\_k}} = sqrt(\mbox{\hyperlink{classParams_ab53034f0440ed2523654beae5a73e86a}{m\_kx}} * \mbox{\hyperlink{classParams_ab53034f0440ed2523654beae5a73e86a}{m\_kx}} + \mbox{\hyperlink{classParams_a1e65b7832c25bd5b77d7873fb61998de}{m\_ky}} * \mbox{\hyperlink{classParams_a1e65b7832c25bd5b77d7873fb61998de}{m\_ky}} + \mbox{\hyperlink{classParams_a5da3d6c4cde37b6633f61205e824b59a}{m\_kz}} * \mbox{\hyperlink{classParams_a5da3d6c4cde37b6633f61205e824b59a}{m\_kz}});}
+\DoxyCodeLine{500 }
+\DoxyCodeLine{501         \textcolor{comment}{// C\_EI = m\_E / (m\_rho * Vref * Vref * m\_k);}}
+\DoxyCodeLine{502         \mbox{\hyperlink{classParams_acf72853179e4a9dbccc461caa53b3f01}{C\_EI}} = \mbox{\hyperlink{classParams_aebea50cc051ec85b8a99aa758ec33c24}{m\_E}} / (\mbox{\hyperlink{classParams_a09ab4211d33bbee9637ffb3a9497951a}{m\_rho}} * \mbox{\hyperlink{classParams_a222efb1c437294cfc9c6f612d67657e8}{Vref}} * \mbox{\hyperlink{classParams_a222efb1c437294cfc9c6f612d67657e8}{Vref}});}
+\DoxyCodeLine{503         \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_a2d907f8987864fbc9f3946b647321ea2}{SimplePressure}}) \{}
+\DoxyCodeLine{504             \mbox{\hyperlink{classParams_a791e3fcee7f5d82a2c0ac1eca67e5014}{C\_AE}} = (\mbox{\hyperlink{classParams_a07e1c493c710c527233ff6916f16e3ed}{Pc}} * \mbox{\hyperlink{classParams_a1235fa0020820e249b24afeee4bf6eb3}{Lref}}) / (\mbox{\hyperlink{classParams_aebea50cc051ec85b8a99aa758ec33c24}{m\_E}} * \mbox{\hyperlink{classParams_ac55ec71b45f169db85e9722d59d30cd8}{h0}});}
+\DoxyCodeLine{505         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{506             \mbox{\hyperlink{classParams_a791e3fcee7f5d82a2c0ac1eca67e5014}{C\_AE}} = (\mbox{\hyperlink{classParams_aa3806d6c13870e83c6a0ac0608eb346d}{Pref}} * \mbox{\hyperlink{classParams_a1235fa0020820e249b24afeee4bf6eb3}{Lref}}) / (\mbox{\hyperlink{classParams_aebea50cc051ec85b8a99aa758ec33c24}{m\_E}} * \mbox{\hyperlink{classParams_ac55ec71b45f169db85e9722d59d30cd8}{h0}});}
+\DoxyCodeLine{507         \}}
+\DoxyCodeLine{508         \textcolor{keywordflow}{if} (\mbox{\hyperlink{Params_8hpp_a73ced6aad7dc6e4ecddbab1bf0612a23}{SimpleTensile}}) \{}
+\DoxyCodeLine{509             \mbox{\hyperlink{classParams_a39cdad6032b0dc1899d4578ffe64d375}{m\_Cv}} = \mbox{\hyperlink{classParams_a387df11f8600502471687b41991d5361}{Cv}};}
+\DoxyCodeLine{510             \textcolor{comment}{// m\_Cv = Cv * m\_k;}}
+\DoxyCodeLine{511         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{512             \mbox{\hyperlink{classParams_a39cdad6032b0dc1899d4578ffe64d375}{m\_Cv}} = \mbox{\hyperlink{classParams_a387df11f8600502471687b41991d5361}{Cv}};}
+\DoxyCodeLine{513         \}}
+\DoxyCodeLine{514 }
+\DoxyCodeLine{515         \mbox{\hyperlink{classParams_adaccdb7db72fa17e8bc74e73191cf2a9}{m\_preCalc1}} = 1 / (1 -\/ (\mbox{\hyperlink{classParams_a88458df4b86d46005edeadd3869c970c}{m\_nu}} * \mbox{\hyperlink{classParams_a88458df4b86d46005edeadd3869c970c}{m\_nu}}));}
+\DoxyCodeLine{516         \mbox{\hyperlink{classParams_ad27502fb26f713d63c3ca314d4f9a843}{m\_preCalc2}} = 1 / (4 * (1 + \mbox{\hyperlink{classParams_a88458df4b86d46005edeadd3869c970c}{m\_nu}}));}
+\DoxyCodeLine{517         \mbox{\hyperlink{classParams_ace61d98ae18007d3be8dd11f7fe821d4}{m\_preCalc3}} = \mbox{\hyperlink{classParams_a88458df4b86d46005edeadd3869c970c}{m\_nu}} / (1 -\/ \mbox{\hyperlink{classParams_a88458df4b86d46005edeadd3869c970c}{m\_nu}});}
+\DoxyCodeLine{518 }
+\DoxyCodeLine{519         \textcolor{comment}{// m\_preCalc4       = h0 * h0 * m\_preCalc1 / ( 12 * Lref * Lref );}}
+\DoxyCodeLine{520         \mbox{\hyperlink{classParams_a0e01680b5331adaf2cebbdc032fcab31}{m\_preCalc4}} = \mbox{\hyperlink{classParams_adaccdb7db72fa17e8bc74e73191cf2a9}{m\_preCalc1}} / 12;}
+\DoxyCodeLine{521         \mbox{\hyperlink{classParams_a73348b7fdf6f4632642e6c9418ef3111}{pre\_eta\_n}}  = (1 + \mbox{\hyperlink{classParams_a0c9de4f462b76a9d963fbe23865c150b}{reflectance}} * \mbox{\hyperlink{classParams_a329aff01650d59aa20eb6a0f840308c7}{specularity}});}
+\DoxyCodeLine{522         \mbox{\hyperlink{classParams_ac576cd0064fd11c45e7cde11df334460}{pre\_eta\_t}}  = (1 -\/ \mbox{\hyperlink{classParams_a0c9de4f462b76a9d963fbe23865c150b}{reflectance}} * \mbox{\hyperlink{classParams_a329aff01650d59aa20eb6a0f840308c7}{specularity}});}
+\DoxyCodeLine{523 }
+\DoxyCodeLine{524         \textcolor{comment}{// Psun}}
+\DoxyCodeLine{525         \mbox{\hyperlink{classParams_a1e83b039d2ee8dd4df4fe2e5ae7e6474}{set\_pressure\_initial}}();}
+\DoxyCodeLine{526         \mbox{\hyperlink{classParams_a70eb84f3cae76877f675ba56c6a12845}{pressure\_initial}}.\mbox{\hyperlink{classC_affe74fa759204c5cda828944460b0543}{print}}();}
+\DoxyCodeLine{527 }
+\DoxyCodeLine{528         \textcolor{comment}{// rotation ineria system}}
+\DoxyCodeLine{529         \mbox{\hyperlink{classParams_acf9b65b02d1d0478d5faffac4f707bdf}{m\_phi\_d}}    = \mbox{\hyperlink{classParams_a0deca83cb6015185f420287740b1d059}{phi\_d}} * \mbox{\hyperlink{classParams_ad42da0a5b284db3857a70ebe41b4c061}{m\_dt}};}
+\DoxyCodeLine{530         \mbox{\hyperlink{classParams_ad871847107ad18b1d6cf442de7933c9b}{m\_theta\_d}}  = \mbox{\hyperlink{classParams_ab65b6420e294986fbdc1fc1263de892b}{theta\_d}} * \mbox{\hyperlink{classParams_ad42da0a5b284db3857a70ebe41b4c061}{m\_dt}};}
+\DoxyCodeLine{531         \mbox{\hyperlink{classParams_ab5dd0f9c26594a4cd855d8032d356e89}{m\_psi\_d}}    = \mbox{\hyperlink{classParams_a066dde516eb32a9169cfbcdf90af1b04}{psi\_d}} * \mbox{\hyperlink{classParams_ad42da0a5b284db3857a70ebe41b4c061}{m\_dt}};}
+\DoxyCodeLine{532         \mbox{\hyperlink{classParams_a966c5f301aa9902b61dfec13f3ff1362}{m\_phi\_dd}}   = \mbox{\hyperlink{classParams_a63cdca3a0ee64645c9efbc217eb0c035}{phi\_dd}} * \mbox{\hyperlink{classParams_ad42da0a5b284db3857a70ebe41b4c061}{m\_dt}};}
+\DoxyCodeLine{533         \mbox{\hyperlink{classParams_a330eb240c4ee1442900458eefdefcb75}{m\_theta\_dd}} = \mbox{\hyperlink{classParams_a7c7ab8d849b63239b28b13f71cc73861}{theta\_dd}} * \mbox{\hyperlink{classParams_ad42da0a5b284db3857a70ebe41b4c061}{m\_dt}};}
+\DoxyCodeLine{534         \mbox{\hyperlink{classParams_ae26f3cb2caa396180fdbd002f30f148e}{m\_psi\_dd}}   = \mbox{\hyperlink{classParams_a5cb67695333db108d6a76412425d85f9}{psi\_dd}} * \mbox{\hyperlink{classParams_ad42da0a5b284db3857a70ebe41b4c061}{m\_dt}};}
+\DoxyCodeLine{535     \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 2
+\mbox{\Hypertarget{classParams_a1e83b039d2ee8dd4df4fe2e5ae7e6474}\label{classParams_a1e83b039d2ee8dd4df4fe2e5ae7e6474}} 
+\index{Params@{Params}!set\_pressure\_initial@{set\_pressure\_initial}}
+\index{set\_pressure\_initial@{set\_pressure\_initial}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{set\_pressure\_initial()}{set\_pressure\_initial()}}
+{\footnotesize\ttfamily void Params\+::set\+\_\+pressure\+\_\+initial (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+ Params.\+hpp の 538 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{538                                       \{}
+\DoxyCodeLine{539     \textcolor{comment}{// spherical\_coordinate.set(-\/1.0, Psun\_angle\_s\_theta, Psun\_angle\_s\_phi);}}
+\DoxyCodeLine{540     \mbox{\hyperlink{classParams_ae565801842b6c92ff855ef38e77225ad}{spherical\_coordinate}}.\mbox{\hyperlink{classSphericalCoordinate_a8819ce01bf9edcfc69282ee69d5e0f14}{set}}(-\/\mbox{\hyperlink{classParams_a8baf394267edc440aebb57dd1c4cc97e}{m\_Pc}}, \mbox{\hyperlink{classParams_a8280f0f4e0866a6c0bbad3dbd594fc80}{Psun\_angle\_s\_theta}}, \mbox{\hyperlink{classParams_a71435f17aa99ceeb532ed7260b63ab84}{Psun\_angle\_s\_phi}});}
+\DoxyCodeLine{541     \textcolor{comment}{// spherical\_coordinate.set(-\/m\_Pc, Psun\_angle\_s\_theta, Psun\_angle\_s\_phi + psi);}}
+\DoxyCodeLine{542 }
+\DoxyCodeLine{543     vector<double> spherical\_xyz = \mbox{\hyperlink{classParams_ae565801842b6c92ff855ef38e77225ad}{spherical\_coordinate}}.\mbox{\hyperlink{classSphericalCoordinate_a1ccfd50a9856eab054c8e81f61c20ed5}{transform}}();}
+\DoxyCodeLine{544     \mbox{\hyperlink{classParams_a70eb84f3cae76877f675ba56c6a12845}{pressure\_initial}}.\mbox{\hyperlink{classC_ab06a12407c809da7ce929528e36a63f1}{set}}(spherical\_xyz);}
+\DoxyCodeLine{545     \textcolor{comment}{// pressure\_initial.print();}}
+\DoxyCodeLine{546     \textcolor{comment}{// pressure\_initial *= m\_Pc;}}
+\DoxyCodeLine{547 }
+\DoxyCodeLine{548     \textcolor{comment}{// if (roll\_inertia\_system) \{}}
+\DoxyCodeLine{549     \textcolor{comment}{//     rotation\_matrix.set(Psun\_angle\_axis, Psun\_angle\_phi, Psun\_angle\_theta,}}
+\DoxyCodeLine{550     \textcolor{comment}{//                         Psun\_angle\_psi);}}
+\DoxyCodeLine{551     \textcolor{comment}{// \} else \{}}
+\DoxyCodeLine{552     \textcolor{comment}{//     rotation\_matrix.set(Psun\_angle\_axis, Psun\_angle\_phi, Psun\_angle\_theta,}}
+\DoxyCodeLine{553     \textcolor{comment}{//                         Psun\_angle\_psi);}}
+\DoxyCodeLine{554     \textcolor{comment}{// \}}}
+\DoxyCodeLine{555 }
+\DoxyCodeLine{556     \textcolor{comment}{// pressure\_matrix\_unit           = pressure\_for\_all.out\_array();}}
+\DoxyCodeLine{557     \textcolor{comment}{// vector<double> pressure\_matrix =}}
+\DoxyCodeLine{558     \textcolor{comment}{// rotation\_matrix.vec\_rotate(pressure\_matrix\_unit);}}
+\DoxyCodeLine{559     \textcolor{comment}{// pressure\_initial.set(pressure\_matrix);}}
+\DoxyCodeLine{560     \textcolor{comment}{// pressure\_initial *= m\_Pc;}}
+\DoxyCodeLine{561 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{classParams_a2f841c18cc42f57c85c40a34faf7d38e}\label{classParams_a2f841c18cc42f57c85c40a34faf7d38e}} 
+\index{Params@{Params}!a\_euler\_system@{a\_euler\_system}}
+\index{a\_euler\_system@{a\_euler\_system}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{a\_euler\_system}{a\_euler\_system}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} Params\+::a\+\_\+euler\+\_\+system}
+
+
+
+ Params.\+hpp の 220 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a3d6723bbc90688c9fe6fc8581876f0d2}\label{classParams_a3d6723bbc90688c9fe6fc8581876f0d2}} 
+\index{Params@{Params}!add\_disturbance@{add\_disturbance}}
+\index{add\_disturbance@{add\_disturbance}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{add\_disturbance}{add\_disturbance}}
+{\footnotesize\ttfamily bool Params\+::add\+\_\+disturbance}
+
+
+
+ Params.\+hpp の 184 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ad301ae4765f22eeb84599f4a9654e88b}\label{classParams_ad301ae4765f22eeb84599f4a9654e88b}} 
+\index{Params@{Params}!analysis\_shape@{analysis\_shape}}
+\index{analysis\_shape@{analysis\_shape}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{analysis\_shape}{analysis\_shape}}
+{\footnotesize\ttfamily std\+::string Params\+::analysis\+\_\+shape}
+
+
+
+ Params.\+hpp の 183 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}\label{classParams_a91b16ab980e42e212fdc89fbfb1cf1f2}} 
+\index{Params@{Params}!boundary@{boundary}}
+\index{boundary@{boundary}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{boundary}{boundary}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structBoundaryCondition}{Boundary\+Condition}} Params\+::boundary}
+
+
+
+ Params.\+hpp の 181 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a791e3fcee7f5d82a2c0ac1eca67e5014}\label{classParams_a791e3fcee7f5d82a2c0ac1eca67e5014}} 
+\index{Params@{Params}!C\_AE@{C\_AE}}
+\index{C\_AE@{C\_AE}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{C\_AE}{C\_AE}}
+{\footnotesize\ttfamily double Params\+::\+C\+\_\+\+AE}
+
+
+
+空気力と弾性力の比を表す無次元パラメータ 
+
+
+
+ Params.\+hpp の 247 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_acf72853179e4a9dbccc461caa53b3f01}\label{classParams_acf72853179e4a9dbccc461caa53b3f01}} 
+\index{Params@{Params}!C\_EI@{C\_EI}}
+\index{C\_EI@{C\_EI}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{C\_EI}{C\_EI}}
+{\footnotesize\ttfamily double Params\+::\+C\+\_\+\+EI}
+
+
+
+弾性力と慣性力の比を表す無次元パラメータ 
+
+
+
+ Params.\+hpp の 245 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ae843fca08782c56943b1d24e606d20ff}\label{classParams_ae843fca08782c56943b1d24e606d20ff}} 
+\index{Params@{Params}!center\_i@{center\_i}}
+\index{center\_i@{center\_i}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{center\_i}{center\_i}}
+{\footnotesize\ttfamily int Params\+::center\+\_\+i}
+
+
+
+ Params.\+hpp の 271 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a33decb229eaeae98c75fc78f32b8f1d3}\label{classParams_a33decb229eaeae98c75fc78f32b8f1d3}} 
+\index{Params@{Params}!center\_j@{center\_j}}
+\index{center\_j@{center\_j}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{center\_j}{center\_j}}
+{\footnotesize\ttfamily int Params\+::center\+\_\+j}
+
+
+
+ Params.\+hpp の 272 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ab005225deabfdfcce1450dd5318a14d9}\label{classParams_ab005225deabfdfcce1450dd5318a14d9}} 
+\index{Params@{Params}!center\_k@{center\_k}}
+\index{center\_k@{center\_k}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{center\_k}{center\_k}}
+{\footnotesize\ttfamily int Params\+::center\+\_\+k}
+
+
+
+ Params.\+hpp の 273 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a387df11f8600502471687b41991d5361}\label{classParams_a387df11f8600502471687b41991d5361}} 
+\index{Params@{Params}!Cv@{Cv}}
+\index{Cv@{Cv}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{Cv}{Cv}}
+{\footnotesize\ttfamily double Params\+::\+Cv}
+
+
+
+数値粘性係数。論文によると0.01-\/10.\+0程度の正の定数。 
+
+
+
+ Params.\+hpp の 157 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a4e733b2fc822576ff96ffe9805090118}\label{classParams_a4e733b2fc822576ff96ffe9805090118}} 
+\index{Params@{Params}!disturbance\_mode@{disturbance\_mode}}
+\index{disturbance\_mode@{disturbance\_mode}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{disturbance\_mode}{disturbance\_mode}}
+{\footnotesize\ttfamily string Params\+::disturbance\+\_\+mode}
+
+
+
+ Params.\+hpp の 224 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_abb15c7768239e9adc3fee9e51027c033}\label{classParams_abb15c7768239e9adc3fee9e51027c033}} 
+\index{Params@{Params}!disturbance\_range@{disturbance\_range}}
+\index{disturbance\_range@{disturbance\_range}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{disturbance\_range}{disturbance\_range}}
+{\footnotesize\ttfamily double Params\+::disturbance\+\_\+range}
+
+
+
+擾乱の範囲 
+
+
+
+ Params.\+hpp の 223 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_aa9a470c1403ef2db33533b0321f1b5a3}\label{classParams_aa9a470c1403ef2db33533b0321f1b5a3}} 
+\index{Params@{Params}!div\_file@{div\_file}}
+\index{div\_file@{div\_file}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{div\_file}{div\_file}}
+{\footnotesize\ttfamily int Params\+::div\+\_\+file}
+
+
+
+ファイルを分ける頻度 \mbox{[}回\mbox{]} 
+
+
+
+ Params.\+hpp の 162 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_af99118fc6b57f98544f685bafbf4de7e}\label{classParams_af99118fc6b57f98544f685bafbf4de7e}} 
+\index{Params@{Params}!div\_num@{div\_num}}
+\index{div\_num@{div\_num}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{div\_num}{div\_num}}
+{\footnotesize\ttfamily double Params\+::div\+\_\+num}
+
+
+
+細かく区切る回数。 境界面付近のn個の粒子をm倍の精度にする 
+
+
+
+ Params.\+hpp の 231 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_af1011429d508bcfbaaffa8ba165e9342}\label{classParams_af1011429d508bcfbaaffa8ba165e9342}} 
+\index{Params@{Params}!edge\_reinforce@{edge\_reinforce}}
+\index{edge\_reinforce@{edge\_reinforce}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{edge\_reinforce}{edge\_reinforce}}
+{\footnotesize\ttfamily double Params\+::edge\+\_\+reinforce}
+
+
+
+角の補強変数 
+
+
+
+ Params.\+hpp の 237 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a840561ac1ecb7fb7c2a96f8e9ff2520f}\label{classParams_a840561ac1ecb7fb7c2a96f8e9ff2520f}} 
+\index{Params@{Params}!fe@{fe}}
+\index{fe@{fe}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{fe}{fe}}
+{\footnotesize\ttfamily double Params\+::fe}
+
+
+
+external force 
+
+
+
+ Params.\+hpp の 173 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ad04d82fd97bd1322d9140e296fcfd8b1}\label{classParams_ad04d82fd97bd1322d9140e296fcfd8b1}} 
+\index{Params@{Params}!force\_release@{force\_release}}
+\index{force\_release@{force\_release}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{force\_release}{force\_release}}
+{\footnotesize\ttfamily bool Params\+::force\+\_\+release}
+
+
+
+ Params.\+hpp の 186 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a6452bd08cc88773de5c5a2d14a231aa1}\label{classParams_a6452bd08cc88773de5c5a2d14a231aa1}} 
+\index{Params@{Params}!grid\_pattern@{grid\_pattern}}
+\index{grid\_pattern@{grid\_pattern}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{grid\_pattern}{grid\_pattern}}
+{\footnotesize\ttfamily std\+::string Params\+::grid\+\_\+pattern}
+
+
+
+ Params.\+hpp の 185 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ac55ec71b45f169db85e9722d59d30cd8}\label{classParams_ac55ec71b45f169db85e9722d59d30cd8}} 
+\index{Params@{Params}!h0@{h0}}
+\index{h0@{h0}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{h0}{h0}}
+{\footnotesize\ttfamily double Params\+::h0}
+
+
+
+初期膜厚 \mbox{[}mm\mbox{]} 
+
+
+
+ Params.\+hpp の 145 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a16b8001b5615eb87fde1cf39720fbee3}\label{classParams_a16b8001b5615eb87fde1cf39720fbee3}} 
+\index{Params@{Params}!initial\_phi\_d@{initial\_phi\_d}}
+\index{initial\_phi\_d@{initial\_phi\_d}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{initial\_phi\_d}{initial\_phi\_d}}
+{\footnotesize\ttfamily double Params\+::initial\+\_\+phi\+\_\+d}
+
+
+
+ Params.\+hpp の 192 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a4250b2b5efad692f38afb4193c1f88f3}\label{classParams_a4250b2b5efad692f38afb4193c1f88f3}} 
+\index{Params@{Params}!initial\_phi\_dd@{initial\_phi\_dd}}
+\index{initial\_phi\_dd@{initial\_phi\_dd}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{initial\_phi\_dd}{initial\_phi\_dd}}
+{\footnotesize\ttfamily double Params\+::initial\+\_\+phi\+\_\+dd}
+
+
+
+ Params.\+hpp の 195 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ad1512c38977350eeb45cfa48a910f1de}\label{classParams_ad1512c38977350eeb45cfa48a910f1de}} 
+\index{Params@{Params}!initial\_psi\_d@{initial\_psi\_d}}
+\index{initial\_psi\_d@{initial\_psi\_d}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{initial\_psi\_d}{initial\_psi\_d}}
+{\footnotesize\ttfamily double Params\+::initial\+\_\+psi\+\_\+d}
+
+
+
+ Params.\+hpp の 194 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_aa4626cdf9164b9becb42de160cf86c09}\label{classParams_aa4626cdf9164b9becb42de160cf86c09}} 
+\index{Params@{Params}!initial\_psi\_dd@{initial\_psi\_dd}}
+\index{initial\_psi\_dd@{initial\_psi\_dd}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{initial\_psi\_dd}{initial\_psi\_dd}}
+{\footnotesize\ttfamily double Params\+::initial\+\_\+psi\+\_\+dd}
+
+
+
+ Params.\+hpp の 197 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a434dd129e39e25749d324176851c12df}\label{classParams_a434dd129e39e25749d324176851c12df}} 
+\index{Params@{Params}!initial\_theta\_d@{initial\_theta\_d}}
+\index{initial\_theta\_d@{initial\_theta\_d}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{initial\_theta\_d}{initial\_theta\_d}}
+{\footnotesize\ttfamily double Params\+::initial\+\_\+theta\+\_\+d}
+
+
+
+ Params.\+hpp の 193 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a611600324592e13594efbc93f829e4eb}\label{classParams_a611600324592e13594efbc93f829e4eb}} 
+\index{Params@{Params}!initial\_theta\_dd@{initial\_theta\_dd}}
+\index{initial\_theta\_dd@{initial\_theta\_dd}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{initial\_theta\_dd}{initial\_theta\_dd}}
+{\footnotesize\ttfamily double Params\+::initial\+\_\+theta\+\_\+dd}
+
+
+
+ Params.\+hpp の 196 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ac8faef4d506865591013bbd91d3a6c2f}\label{classParams_ac8faef4d506865591013bbd91d3a6c2f}} 
+\index{Params@{Params}!itr\_harf\_x@{itr\_harf\_x}}
+\index{itr\_harf\_x@{itr\_harf\_x}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{itr\_harf\_x}{itr\_harf\_x}}
+{\footnotesize\ttfamily int Params\+::itr\+\_\+harf\+\_\+x}
+
+
+
+ Params.\+hpp の 274 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a0fa67bdd508e694b8bb948e7860d8c71}\label{classParams_a0fa67bdd508e694b8bb948e7860d8c71}} 
+\index{Params@{Params}!itr\_harf\_y@{itr\_harf\_y}}
+\index{itr\_harf\_y@{itr\_harf\_y}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{itr\_harf\_y}{itr\_harf\_y}}
+{\footnotesize\ttfamily int Params\+::itr\+\_\+harf\+\_\+y}
+
+
+
+ Params.\+hpp の 275 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a5321a075d1f01e9c53814a50db930319}\label{classParams_a5321a075d1f01e9c53814a50db930319}} 
+\index{Params@{Params}!itr\_harf\_z@{itr\_harf\_z}}
+\index{itr\_harf\_z@{itr\_harf\_z}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{itr\_harf\_z}{itr\_harf\_z}}
+{\footnotesize\ttfamily int Params\+::itr\+\_\+harf\+\_\+z}
+
+
+
+ Params.\+hpp の 276 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ae0c183b70ee54509aae5f357328d26ff}\label{classParams_ae0c183b70ee54509aae5f357328d26ff}} 
+\index{Params@{Params}!itr\_max\_x@{itr\_max\_x}}
+\index{itr\_max\_x@{itr\_max\_x}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{itr\_max\_x}{itr\_max\_x}}
+{\footnotesize\ttfamily int Params\+::itr\+\_\+max\+\_\+x}
+
+
+
+ Params.\+hpp の 277 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a23a5bc527a74ce35a053ed2a9cf3bc17}\label{classParams_a23a5bc527a74ce35a053ed2a9cf3bc17}} 
+\index{Params@{Params}!itr\_max\_y@{itr\_max\_y}}
+\index{itr\_max\_y@{itr\_max\_y}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{itr\_max\_y}{itr\_max\_y}}
+{\footnotesize\ttfamily int Params\+::itr\+\_\+max\+\_\+y}
+
+
+
+ Params.\+hpp の 278 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a2bafcc8074876467c7f605f1cc7d12b6}\label{classParams_a2bafcc8074876467c7f605f1cc7d12b6}} 
+\index{Params@{Params}!itr\_max\_z@{itr\_max\_z}}
+\index{itr\_max\_z@{itr\_max\_z}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{itr\_max\_z}{itr\_max\_z}}
+{\footnotesize\ttfamily int Params\+::itr\+\_\+max\+\_\+z}
+
+
+
+ Params.\+hpp の 279 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a7a8be9e15c07942ebd7ca583180b15c9}\label{classParams_a7a8be9e15c07942ebd7ca583180b15c9}} 
+\index{Params@{Params}!Length\_x@{Length\_x}}
+\index{Length\_x@{Length\_x}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{Length\_x}{Length\_x}}
+{\footnotesize\ttfamily double Params\+::\+Length\+\_\+x}
+
+
+
+ Params.\+hpp の 133 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_afac2539a1399eefca5700b6e44514c0c}\label{classParams_afac2539a1399eefca5700b6e44514c0c}} 
+\index{Params@{Params}!Length\_y@{Length\_y}}
+\index{Length\_y@{Length\_y}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{Length\_y}{Length\_y}}
+{\footnotesize\ttfamily double Params\+::\+Length\+\_\+y}
+
+
+
+ Params.\+hpp の 134 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a1235fa0020820e249b24afeee4bf6eb3}\label{classParams_a1235fa0020820e249b24afeee4bf6eb3}} 
+\index{Params@{Params}!Lref@{Lref}}
+\index{Lref@{Lref}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{Lref}{Lref}}
+{\footnotesize\ttfamily double Params\+::\+Lref}
+
+
+
+基準長さ 100 \mbox{[}mm\mbox{]} 
+
+
+
+ Params.\+hpp の 104 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a39cdad6032b0dc1899d4578ffe64d375}\label{classParams_a39cdad6032b0dc1899d4578ffe64d375}} 
+\index{Params@{Params}!m\_Cv@{m\_Cv}}
+\index{m\_Cv@{m\_Cv}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_Cv}{m\_Cv}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+\+Cv}
+
+
+
+Cv $\ast$ m\+\_\+kが代入されている。 
+
+
+
+ Params.\+hpp の 155 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ad42da0a5b284db3857a70ebe41b4c061}\label{classParams_ad42da0a5b284db3857a70ebe41b4c061}} 
+\index{Params@{Params}!m\_dt@{m\_dt}}
+\index{m\_dt@{m\_dt}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_dt}{m\_dt}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+dt}
+
+
+
+刻み時間？ 
+
+
+
+ Params.\+hpp の 228 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_aebea50cc051ec85b8a99aa758ec33c24}\label{classParams_aebea50cc051ec85b8a99aa758ec33c24}} 
+\index{Params@{Params}!m\_E@{m\_E}}
+\index{m\_E@{m\_E}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_E}{m\_E}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+E}
+
+
+
+ヤング率 \mbox{[}N/mm$^\wedge$2 M\+Pa\mbox{]} / 野里さんのE = 35.\+5 M\+Paを使用している 
+
+
+
+ Params.\+hpp の 136 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a7fccbec2a3cf024348899c0ad4104492}\label{classParams_a7fccbec2a3cf024348899c0ad4104492}} 
+\index{Params@{Params}!m\_fe@{m\_fe}}
+\index{m\_fe@{m\_fe}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_fe}{m\_fe}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+fe}
+
+
+
+対角線方向の無次元化した集中荷重 \mbox{[}N\mbox{]} 
+
+
+
+ Params.\+hpp の 226 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ac31cb9dc97dfb3b3552b7d03cdccc00d}\label{classParams_ac31cb9dc97dfb3b3552b7d03cdccc00d}} 
+\index{Params@{Params}!m\_fileExistFlag@{m\_fileExistFlag}}
+\index{m\_fileExistFlag@{m\_fileExistFlag}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_fileExistFlag}{m\_fileExistFlag}}
+{\footnotesize\ttfamily bool Params\+::m\+\_\+file\+Exist\+Flag}
+
+
+
+ Params.\+hpp の 242 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a1e5232d78b2ea0b5cd6ade2411928be8}\label{classParams_a1e5232d78b2ea0b5cd6ade2411928be8}} 
+\index{Params@{Params}!m\_fx@{m\_fx}}
+\index{m\_fx@{m\_fx}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_fx}{m\_fx}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+fx}
+
+
+
+無次元化した外力 (x方向の分布荷重) 
+
+
+
+ Params.\+hpp の 175 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ae536ea07e227d7c69eb10d661330d51c}\label{classParams_ae536ea07e227d7c69eb10d661330d51c}} 
+\index{Params@{Params}!m\_fy@{m\_fy}}
+\index{m\_fy@{m\_fy}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_fy}{m\_fy}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+fy}
+
+
+
+y方向の力？ 
+
+
+
+ Params.\+hpp の 177 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a6b8c1cc11e7252db98ae33afd9b7a846}\label{classParams_a6b8c1cc11e7252db98ae33afd9b7a846}} 
+\index{Params@{Params}!m\_fz@{m\_fz}}
+\index{m\_fz@{m\_fz}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_fz}{m\_fz}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+fz}
+
+
+
+z方向の力？ 
+
+
+
+ Params.\+hpp の 179 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_adb70d87052fd4be0fb2eb7bd18e0bbd6}\label{classParams_adb70d87052fd4be0fb2eb7bd18e0bbd6}} 
+\index{Params@{Params}!m\_h0@{m\_h0}}
+\index{m\_h0@{m\_h0}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_h0}{m\_h0}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+h0}
+
+
+
+無次元化した膜厚、膜厚比 \mbox{[}-\/\mbox{]} 
+
+
+
+ Params.\+hpp の 141 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a8fff32f4954fb769862a8fe3621a6ef6}\label{classParams_a8fff32f4954fb769862a8fe3621a6ef6}} 
+\index{Params@{Params}!m\_hc0@{m\_hc0}}
+\index{m\_hc0@{m\_hc0}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_hc0}{m\_hc0}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+hc0}
+
+
+
+無次元化した膜厚(隅)、膜厚比 \mbox{[}-\/\mbox{]} h\+\_\+corner (only cube) 
+
+
+
+ Params.\+hpp の 143 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a568540cab95643d13c7402d18f61a4f2}\label{classParams_a568540cab95643d13c7402d18f61a4f2}} 
+\index{Params@{Params}!m\_iNum@{m\_iNum}}
+\index{m\_iNum@{m\_iNum}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_iNum}{m\_iNum}}
+{\footnotesize\ttfamily int Params\+::m\+\_\+i\+Num}
+
+
+
+i方向の粒子数 
+
+
+
+ Params.\+hpp の 95 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a4e8c2110b9c80adffa96f1ca1691bab8}\label{classParams_a4e8c2110b9c80adffa96f1ca1691bab8}} 
+\index{Params@{Params}!m\_jNum@{m\_jNum}}
+\index{m\_jNum@{m\_jNum}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_jNum}{m\_jNum}}
+{\footnotesize\ttfamily int Params\+::m\+\_\+j\+Num}
+
+
+
+j方向の粒子数 
+
+
+
+ Params.\+hpp の 97 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a2fe78b57d45650ccc851158d68b1d689}\label{classParams_a2fe78b57d45650ccc851158d68b1d689}} 
+\index{Params@{Params}!m\_k@{m\_k}}
+\index{m\_k@{m\_k}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_k}{m\_k}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+k}
+
+
+
+荷重係数のノルム 
+
+
+
+ Params.\+hpp の 164 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a5b2c3e10a82bab6ea50e8b712ead5fc1}\label{classParams_a5b2c3e10a82bab6ea50e8b712ead5fc1}} 
+\index{Params@{Params}!m\_kNum@{m\_kNum}}
+\index{m\_kNum@{m\_kNum}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_kNum}{m\_kNum}}
+{\footnotesize\ttfamily int Params\+::m\+\_\+k\+Num}
+
+
+
+k方向の粒子数 
+
+
+
+ Params.\+hpp の 99 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ab53034f0440ed2523654beae5a73e86a}\label{classParams_ab53034f0440ed2523654beae5a73e86a}} 
+\index{Params@{Params}!m\_kx@{m\_kx}}
+\index{m\_kx@{m\_kx}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_kx}{m\_kx}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+kx}
+
+膜厚・ヤング率に依らず、同様なひずみとなるように外力を設定するための荷重係数 X 
+
+ Params.\+hpp の 167 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a1e65b7832c25bd5b77d7873fb61998de}\label{classParams_a1e65b7832c25bd5b77d7873fb61998de}} 
+\index{Params@{Params}!m\_ky@{m\_ky}}
+\index{m\_ky@{m\_ky}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_ky}{m\_ky}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+ky}
+
+
+
+荷重係数 Y 
+
+
+
+ Params.\+hpp の 169 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a5da3d6c4cde37b6633f61205e824b59a}\label{classParams_a5da3d6c4cde37b6633f61205e824b59a}} 
+\index{Params@{Params}!m\_kz@{m\_kz}}
+\index{m\_kz@{m\_kz}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_kz}{m\_kz}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+kz}
+
+
+
+荷重係数 Z 
+
+
+
+ Params.\+hpp の 171 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a1d14c6ce2290e47454b86f71a299ef41}\label{classParams_a1d14c6ce2290e47454b86f71a299ef41}} 
+\index{Params@{Params}!m\_Lref\_x@{m\_Lref\_x}}
+\index{m\_Lref\_x@{m\_Lref\_x}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_Lref\_x}{m\_Lref\_x}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+\+Lref\+\_\+x}
+
+
+
+無次元化した基準長さ (膜の縦と横の長さ) 
+
+
+
+ Params.\+hpp の 138 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a2286142a10acbef56269db9fd520d938}\label{classParams_a2286142a10acbef56269db9fd520d938}} 
+\index{Params@{Params}!m\_Lref\_y@{m\_Lref\_y}}
+\index{m\_Lref\_y@{m\_Lref\_y}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_Lref\_y}{m\_Lref\_y}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+\+Lref\+\_\+y}
+
+
+
+ Params.\+hpp の 139 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a88458df4b86d46005edeadd3869c970c}\label{classParams_a88458df4b86d46005edeadd3869c970c}} 
+\index{Params@{Params}!m\_nu@{m\_nu}}
+\index{m\_nu@{m\_nu}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_nu}{m\_nu}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+nu}
+
+
+
+poason ratio (ポアソン比) 
+
+
+
+ Params.\+hpp の 153 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a0840ad1aefd1c15c53afebd832d4df96}\label{classParams_a0840ad1aefd1c15c53afebd832d4df96}} 
+\index{Params@{Params}!m\_paramsFile@{m\_paramsFile}}
+\index{m\_paramsFile@{m\_paramsFile}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_paramsFile}{m\_paramsFile}}
+{\footnotesize\ttfamily string Params\+::m\+\_\+params\+File}
+
+
+
+ Params.\+hpp の 241 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a8baf394267edc440aebb57dd1c4cc97e}\label{classParams_a8baf394267edc440aebb57dd1c4cc97e}} 
+\index{Params@{Params}!m\_Pc@{m\_Pc}}
+\index{m\_Pc@{m\_Pc}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_Pc}{m\_Pc}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+\+Pc}
+
+
+
+ Params.\+hpp の 111 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_acf9b65b02d1d0478d5faffac4f707bdf}\label{classParams_acf9b65b02d1d0478d5faffac4f707bdf}} 
+\index{Params@{Params}!m\_phi\_d@{m\_phi\_d}}
+\index{m\_phi\_d@{m\_phi\_d}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_phi\_d}{m\_phi\_d}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+phi\+\_\+d}
+
+
+
+ Params.\+hpp の 212 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a966c5f301aa9902b61dfec13f3ff1362}\label{classParams_a966c5f301aa9902b61dfec13f3ff1362}} 
+\index{Params@{Params}!m\_phi\_dd@{m\_phi\_dd}}
+\index{m\_phi\_dd@{m\_phi\_dd}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_phi\_dd}{m\_phi\_dd}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+phi\+\_\+dd}
+
+
+
+ Params.\+hpp の 215 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_adaccdb7db72fa17e8bc74e73191cf2a9}\label{classParams_adaccdb7db72fa17e8bc74e73191cf2a9}} 
+\index{Params@{Params}!m\_preCalc1@{m\_preCalc1}}
+\index{m\_preCalc1@{m\_preCalc1}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_preCalc1}{m\_preCalc1}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+pre\+Calc1}
+
+
+
+1/(1-\/(ν$^\wedge$2)) 弾性力 Ftの計算で使用する 
+
+
+
+ Params.\+hpp の 258 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ad27502fb26f713d63c3ca314d4f9a843}\label{classParams_ad27502fb26f713d63c3ca314d4f9a843}} 
+\index{Params@{Params}!m\_preCalc2@{m\_preCalc2}}
+\index{m\_preCalc2@{m\_preCalc2}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_preCalc2}{m\_preCalc2}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+pre\+Calc2}
+
+
+
+1/(4$\ast$(1+ν)) せん断力 Fsの計算で使用する 
+
+
+
+ Params.\+hpp の 260 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ace61d98ae18007d3be8dd11f7fe821d4}\label{classParams_ace61d98ae18007d3be8dd11f7fe821d4}} 
+\index{Params@{Params}!m\_preCalc3@{m\_preCalc3}}
+\index{m\_preCalc3@{m\_preCalc3}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_preCalc3}{m\_preCalc3}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+pre\+Calc3}
+
+
+
+ν/(1-\/ν) 膜厚 hの計算で使用する 
+
+
+
+ Params.\+hpp の 262 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a0e01680b5331adaf2cebbdc032fcab31}\label{classParams_a0e01680b5331adaf2cebbdc032fcab31}} 
+\index{Params@{Params}!m\_preCalc4@{m\_preCalc4}}
+\index{m\_preCalc4@{m\_preCalc4}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_preCalc4}{m\_preCalc4}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+pre\+Calc4}
+
+
+
+1/(12$\ast$(1-\/(ν$^\wedge$2))) モーメント Mの計算で使用する 
+
+
+
+ Params.\+hpp の 264 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ab5dd0f9c26594a4cd855d8032d356e89}\label{classParams_ab5dd0f9c26594a4cd855d8032d356e89}} 
+\index{Params@{Params}!m\_psi\_d@{m\_psi\_d}}
+\index{m\_psi\_d@{m\_psi\_d}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_psi\_d}{m\_psi\_d}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+psi\+\_\+d}
+
+
+
+ Params.\+hpp の 214 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ae26f3cb2caa396180fdbd002f30f148e}\label{classParams_ae26f3cb2caa396180fdbd002f30f148e}} 
+\index{Params@{Params}!m\_psi\_dd@{m\_psi\_dd}}
+\index{m\_psi\_dd@{m\_psi\_dd}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_psi\_dd}{m\_psi\_dd}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+psi\+\_\+dd}
+
+
+
+ Params.\+hpp の 217 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a09ab4211d33bbee9637ffb3a9497951a}\label{classParams_a09ab4211d33bbee9637ffb3a9497951a}} 
+\index{Params@{Params}!m\_rho@{m\_rho}}
+\index{m\_rho@{m\_rho}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_rho}{m\_rho}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+rho}
+
+
+
+密度 \mbox{[}kg/mm$^\wedge$3\mbox{]} (C\+\_\+\+E\+Iが無次元量になるような値) 
+
+
+
+ Params.\+hpp の 147 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ac32feaa485f6285cc2ec6ec7323eca9a}\label{classParams_ac32feaa485f6285cc2ec6ec7323eca9a}} 
+\index{Params@{Params}!m\_sheet\_skip@{m\_sheet\_skip}}
+\index{m\_sheet\_skip@{m\_sheet\_skip}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_sheet\_skip}{m\_sheet\_skip}}
+{\footnotesize\ttfamily int Params\+::m\+\_\+sheet\+\_\+skip}
+
+
+
+csvに出力するまでの繰り返し数。\+N回の計算ごとに出力する 
+
+
+
+ Params.\+hpp の 101 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ad871847107ad18b1d6cf442de7933c9b}\label{classParams_ad871847107ad18b1d6cf442de7933c9b}} 
+\index{Params@{Params}!m\_theta\_d@{m\_theta\_d}}
+\index{m\_theta\_d@{m\_theta\_d}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_theta\_d}{m\_theta\_d}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+theta\+\_\+d}
+
+
+
+ Params.\+hpp の 213 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a330eb240c4ee1442900458eefdefcb75}\label{classParams_a330eb240c4ee1442900458eefdefcb75}} 
+\index{Params@{Params}!m\_theta\_dd@{m\_theta\_dd}}
+\index{m\_theta\_dd@{m\_theta\_dd}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_theta\_dd}{m\_theta\_dd}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+theta\+\_\+dd}
+
+
+
+ Params.\+hpp の 216 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_af632629af171f40d94d322f7c4dce07c}\label{classParams_af632629af171f40d94d322f7c4dce07c}} 
+\index{Params@{Params}!m\_tmax@{m\_tmax}}
+\index{m\_tmax@{m\_tmax}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{m\_tmax}{m\_tmax}}
+{\footnotesize\ttfamily double Params\+::m\+\_\+tmax}
+
+
+
+終了時間 
+
+
+
+ Params.\+hpp の 160 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a44544e0121395e26b0f1800104605dff}\label{classParams_a44544e0121395e26b0f1800104605dff}} 
+\index{Params@{Params}!minuteness@{minuteness}}
+\index{minuteness@{minuteness}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{minuteness}{minuteness}}
+{\footnotesize\ttfamily double Params\+::minuteness}
+
+
+
+境界面付近でほしい精度（他の場所の何倍の精度（間隔の短さ）が欲しいのか） 
+
+
+
+ Params.\+hpp の 234 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_acae5b3aea7263932077b1abfe4b7d61d}\label{classParams_acae5b3aea7263932077b1abfe4b7d61d}} 
+\index{Params@{Params}!oblique\_move@{oblique\_move}}
+\index{oblique\_move@{oblique\_move}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{oblique\_move}{oblique\_move}}
+{\footnotesize\ttfamily string Params\+::oblique\+\_\+move}
+
+
+
+ Params.\+hpp の 191 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ac4615b5380e84c7d7e129982e77a501b}\label{classParams_ac4615b5380e84c7d7e129982e77a501b}} 
+\index{Params@{Params}!oblique\_rigid@{oblique\_rigid}}
+\index{oblique\_rigid@{oblique\_rigid}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{oblique\_rigid}{oblique\_rigid}}
+{\footnotesize\ttfamily bool Params\+::oblique\+\_\+rigid}
+
+
+
+ Params.\+hpp の 187 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a17d9a13628d0b79fa589ab18576b20df}\label{classParams_a17d9a13628d0b79fa589ab18576b20df}} 
+\index{Params@{Params}!omega\_system@{omega\_system}}
+\index{omega\_system@{omega\_system}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{omega\_system}{omega\_system}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} Params\+::omega\+\_\+system}
+
+
+
+ Params.\+hpp の 219 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_aa896af26007b8ba98b76fa5a41774512}\label{classParams_aa896af26007b8ba98b76fa5a41774512}} 
+\index{Params@{Params}!param@{param}}
+\index{param@{param}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{param}{param}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classparam_1_1parameter}{param\+::parameter}}$\ast$ Params\+::param\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Params.\+hpp の 90 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a07e1c493c710c527233ff6916f16e3ed}\label{classParams_a07e1c493c710c527233ff6916f16e3ed}} 
+\index{Params@{Params}!Pc@{Pc}}
+\index{Pc@{Pc}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{Pc}{Pc}}
+{\footnotesize\ttfamily double Params\+::\+Pc}
+
+
+
+Pressure on particle \mbox{[}N/mm$^\wedge$2\mbox{]} 
+
+
+
+ Params.\+hpp の 110 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ae287f1cde4803e0ae1254a516724d1c7}\label{classParams_ae287f1cde4803e0ae1254a516724d1c7}} 
+\index{Params@{Params}!phi@{phi}}
+\index{phi@{phi}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{phi}{phi}}
+{\footnotesize\ttfamily double Params\+::phi}
+
+
+
+ Params.\+hpp の 199 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a0deca83cb6015185f420287740b1d059}\label{classParams_a0deca83cb6015185f420287740b1d059}} 
+\index{Params@{Params}!phi\_d@{phi\_d}}
+\index{phi\_d@{phi\_d}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{phi\_d}{phi\_d}}
+{\footnotesize\ttfamily double Params\+::phi\+\_\+d}
+
+
+
+ Params.\+hpp の 202 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a63cdca3a0ee64645c9efbc217eb0c035}\label{classParams_a63cdca3a0ee64645c9efbc217eb0c035}} 
+\index{Params@{Params}!phi\_dd@{phi\_dd}}
+\index{phi\_dd@{phi\_dd}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{phi\_dd}{phi\_dd}}
+{\footnotesize\ttfamily double Params\+::phi\+\_\+dd}
+
+
+
+ Params.\+hpp の 208 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a73348b7fdf6f4632642e6c9418ef3111}\label{classParams_a73348b7fdf6f4632642e6c9418ef3111}} 
+\index{Params@{Params}!pre\_eta\_n@{pre\_eta\_n}}
+\index{pre\_eta\_n@{pre\_eta\_n}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{pre\_eta\_n}{pre\_eta\_n}}
+{\footnotesize\ttfamily double Params\+::pre\+\_\+eta\+\_\+n}
+
+
+
+(1+rs) r\+:reflectance, s\+:Specularity 
+
+
+
+ Params.\+hpp の 267 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ac576cd0064fd11c45e7cde11df334460}\label{classParams_ac576cd0064fd11c45e7cde11df334460}} 
+\index{Params@{Params}!pre\_eta\_t@{pre\_eta\_t}}
+\index{pre\_eta\_t@{pre\_eta\_t}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{pre\_eta\_t}{pre\_eta\_t}}
+{\footnotesize\ttfamily double Params\+::pre\+\_\+eta\+\_\+t}
+
+
+
+(1-\/rs) 
+
+
+
+ Params.\+hpp の 269 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_accf469c740f6d615ede93ea33745b623}\label{classParams_accf469c740f6d615ede93ea33745b623}} 
+\index{Params@{Params}!pre\_phi\_d@{pre\_phi\_d}}
+\index{pre\_phi\_d@{pre\_phi\_d}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{pre\_phi\_d}{pre\_phi\_d}}
+{\footnotesize\ttfamily double Params\+::pre\+\_\+phi\+\_\+d}
+
+
+
+ Params.\+hpp の 205 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a9616265ee3e02517d200c109e52fd20b}\label{classParams_a9616265ee3e02517d200c109e52fd20b}} 
+\index{Params@{Params}!pre\_psi\_d@{pre\_psi\_d}}
+\index{pre\_psi\_d@{pre\_psi\_d}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{pre\_psi\_d}{pre\_psi\_d}}
+{\footnotesize\ttfamily double Params\+::pre\+\_\+psi\+\_\+d}
+
+
+
+ Params.\+hpp の 207 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a13470b4275c9eaadffa8e4068ca2db27}\label{classParams_a13470b4275c9eaadffa8e4068ca2db27}} 
+\index{Params@{Params}!pre\_theta\_d@{pre\_theta\_d}}
+\index{pre\_theta\_d@{pre\_theta\_d}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{pre\_theta\_d}{pre\_theta\_d}}
+{\footnotesize\ttfamily double Params\+::pre\+\_\+theta\+\_\+d}
+
+
+
+ Params.\+hpp の 206 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_aa3806d6c13870e83c6a0ac0608eb346d}\label{classParams_aa3806d6c13870e83c6a0ac0608eb346d}} 
+\index{Params@{Params}!Pref@{Pref}}
+\index{Pref@{Pref}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{Pref}{Pref}}
+{\footnotesize\ttfamily double Params\+::\+Pref}
+
+
+
+基準圧力 35.\+5 $\ast$ 10$^\wedge$-\/8 \mbox{[}N/mm$^\wedge$2\mbox{]} 
+
+
+
+ Params.\+hpp の 108 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_af2bd8619f6916b96f581eaa43e565b4a}\label{classParams_af2bd8619f6916b96f581eaa43e565b4a}} 
+\index{Params@{Params}!pressure\_for\_all@{pressure\_for\_all}}
+\index{pressure\_for\_all@{pressure\_for\_all}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{pressure\_for\_all}{pressure\_for\_all}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} Params\+::pressure\+\_\+for\+\_\+all}
+
+
+
+ Params.\+hpp の 251 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a70eb84f3cae76877f675ba56c6a12845}\label{classParams_a70eb84f3cae76877f675ba56c6a12845}} 
+\index{Params@{Params}!pressure\_initial@{pressure\_initial}}
+\index{pressure\_initial@{pressure\_initial}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{pressure\_initial}{pressure\_initial}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} Params\+::pressure\+\_\+initial}
+
+
+
+ Params.\+hpp の 252 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a9037154f798466e7228c72819e363240}\label{classParams_a9037154f798466e7228c72819e363240}} 
+\index{Params@{Params}!pressure\_matrix\_unit@{pressure\_matrix\_unit}}
+\index{pressure\_matrix\_unit@{pressure\_matrix\_unit}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{pressure\_matrix\_unit}{pressure\_matrix\_unit}}
+{\footnotesize\ttfamily vector$<$double$>$ Params\+::pressure\+\_\+matrix\+\_\+unit}
+
+
+
+ Params.\+hpp の 253 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ab255259ef67713b7427ef19d71ae2b38}\label{classParams_ab255259ef67713b7427ef19d71ae2b38}} 
+\index{Params@{Params}!psi@{psi}}
+\index{psi@{psi}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{psi}{psi}}
+{\footnotesize\ttfamily double Params\+::psi}
+
+
+
+ Params.\+hpp の 201 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a066dde516eb32a9169cfbcdf90af1b04}\label{classParams_a066dde516eb32a9169cfbcdf90af1b04}} 
+\index{Params@{Params}!psi\_d@{psi\_d}}
+\index{psi\_d@{psi\_d}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{psi\_d}{psi\_d}}
+{\footnotesize\ttfamily double Params\+::psi\+\_\+d}
+
+
+
+ Params.\+hpp の 204 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a5cb67695333db108d6a76412425d85f9}\label{classParams_a5cb67695333db108d6a76412425d85f9}} 
+\index{Params@{Params}!psi\_dd@{psi\_dd}}
+\index{psi\_dd@{psi\_dd}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{psi\_dd}{psi\_dd}}
+{\footnotesize\ttfamily double Params\+::psi\+\_\+dd}
+
+
+
+ Params.\+hpp の 210 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a46104190e3393385ad931d0b91b3ce9f}\label{classParams_a46104190e3393385ad931d0b91b3ce9f}} 
+\index{Params@{Params}!Psun@{Psun}}
+\index{Psun@{Psun}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{Psun}{Psun}}
+{\footnotesize\ttfamily double Params\+::\+Psun}
+
+
+
+Pressure by sun light 
+
+
+
+ Params.\+hpp の 113 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a83dc96289cb4e1415257584c26a718c0}\label{classParams_a83dc96289cb4e1415257584c26a718c0}} 
+\index{Params@{Params}!Psun\_angle\_axis@{Psun\_angle\_axis}}
+\index{Psun\_angle\_axis@{Psun\_angle\_axis}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{Psun\_angle\_axis}{Psun\_angle\_axis}}
+{\footnotesize\ttfamily string Params\+::\+Psun\+\_\+angle\+\_\+axis}
+
+
+
+Pressure by sun light angle axis (default\+: zyz) 
+
+
+
+ Params.\+hpp の 115 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a3de8273639500599b81c1d1731437923}\label{classParams_a3de8273639500599b81c1d1731437923}} 
+\index{Params@{Params}!Psun\_angle\_phi@{Psun\_angle\_phi}}
+\index{Psun\_angle\_phi@{Psun\_angle\_phi}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{Psun\_angle\_phi}{Psun\_angle\_phi}}
+{\footnotesize\ttfamily double Params\+::\+Psun\+\_\+angle\+\_\+phi}
+
+
+
+Pressure by sun light angle 1 (input degree. save radian) 
+
+
+
+ Params.\+hpp の 117 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ad99e17b707432e80fad25f16ec52d6b4}\label{classParams_ad99e17b707432e80fad25f16ec52d6b4}} 
+\index{Params@{Params}!Psun\_angle\_psi@{Psun\_angle\_psi}}
+\index{Psun\_angle\_psi@{Psun\_angle\_psi}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{Psun\_angle\_psi}{Psun\_angle\_psi}}
+{\footnotesize\ttfamily double Params\+::\+Psun\+\_\+angle\+\_\+psi}
+
+
+
+Pressure by sun light angle 3 
+
+
+
+ Params.\+hpp の 121 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a71435f17aa99ceeb532ed7260b63ab84}\label{classParams_a71435f17aa99ceeb532ed7260b63ab84}} 
+\index{Params@{Params}!Psun\_angle\_s\_phi@{Psun\_angle\_s\_phi}}
+\index{Psun\_angle\_s\_phi@{Psun\_angle\_s\_phi}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{Psun\_angle\_s\_phi}{Psun\_angle\_s\_phi}}
+{\footnotesize\ttfamily double Params\+::\+Psun\+\_\+angle\+\_\+s\+\_\+phi}
+
+
+
+Pressure by sun light angle plate for Spherical Coordinate 
+
+
+
+ Params.\+hpp の 126 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a8280f0f4e0866a6c0bbad3dbd594fc80}\label{classParams_a8280f0f4e0866a6c0bbad3dbd594fc80}} 
+\index{Params@{Params}!Psun\_angle\_s\_theta@{Psun\_angle\_s\_theta}}
+\index{Psun\_angle\_s\_theta@{Psun\_angle\_s\_theta}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{Psun\_angle\_s\_theta}{Psun\_angle\_s\_theta}}
+{\footnotesize\ttfamily double Params\+::\+Psun\+\_\+angle\+\_\+s\+\_\+theta}
+
+
+
+Pressure by sun light angle z for Spherical Coordinate 
+
+
+
+ Params.\+hpp の 124 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ac829980a43ef78ac6e0278ec3b618e8c}\label{classParams_ac829980a43ef78ac6e0278ec3b618e8c}} 
+\index{Params@{Params}!Psun\_angle\_theta@{Psun\_angle\_theta}}
+\index{Psun\_angle\_theta@{Psun\_angle\_theta}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{Psun\_angle\_theta}{Psun\_angle\_theta}}
+{\footnotesize\ttfamily double Params\+::\+Psun\+\_\+angle\+\_\+theta}
+
+
+
+Pressure by sun light angle 2 
+
+
+
+ Params.\+hpp の 119 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_afa97cc2559ce7934e53ca1d685a901e8}\label{classParams_afa97cc2559ce7934e53ca1d685a901e8}} 
+\index{Params@{Params}!read\_filename@{read\_filename}}
+\index{read\_filename@{read\_filename}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{read\_filename}{read\_filename}}
+{\footnotesize\ttfamily std\+::string Params\+::read\+\_\+filename}
+
+
+
+ Params.\+hpp の 93 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a0c9de4f462b76a9d963fbe23865c150b}\label{classParams_a0c9de4f462b76a9d963fbe23865c150b}} 
+\index{Params@{Params}!reflectance@{reflectance}}
+\index{reflectance@{reflectance}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{reflectance}{reflectance}}
+{\footnotesize\ttfamily double Params\+::reflectance}
+
+
+
+Reflectance 
+
+
+
+ Params.\+hpp の 129 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a20d58793fe4adc69f1f87b2d0ae37743}\label{classParams_a20d58793fe4adc69f1f87b2d0ae37743}} 
+\index{Params@{Params}!roll\_inertia\_system@{roll\_inertia\_system}}
+\index{roll\_inertia\_system@{roll\_inertia\_system}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{roll\_inertia\_system}{roll\_inertia\_system}}
+{\footnotesize\ttfamily bool Params\+::roll\+\_\+inertia\+\_\+system}
+
+
+
+ Params.\+hpp の 190 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a3d5415e4277daa765262a5081d09ad8c}\label{classParams_a3d5415e4277daa765262a5081d09ad8c}} 
+\index{Params@{Params}!rotation\_matrix@{rotation\_matrix}}
+\index{rotation\_matrix@{rotation\_matrix}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{rotation\_matrix}{rotation\_matrix}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRotationMatrixCalc}{Rotation\+Matrix\+Calc}} Params\+::rotation\+\_\+matrix}
+
+
+
+Matrix for Pressure 
+
+
+
+ Params.\+hpp の 250 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ac37748b7bf15f7c873839dd48397c31c}\label{classParams_ac37748b7bf15f7c873839dd48397c31c}} 
+\index{Params@{Params}!specific\_gravity@{specific\_gravity}}
+\index{specific\_gravity@{specific\_gravity}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{specific\_gravity}{specific\_gravity}}
+{\footnotesize\ttfamily double Params\+::specific\+\_\+gravity}
+
+
+
+比重 
+
+
+
+ Params.\+hpp の 151 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a329aff01650d59aa20eb6a0f840308c7}\label{classParams_a329aff01650d59aa20eb6a0f840308c7}} 
+\index{Params@{Params}!specularity@{specularity}}
+\index{specularity@{specularity}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{specularity}{specularity}}
+{\footnotesize\ttfamily double Params\+::specularity}
+
+
+
+Specularity 
+
+
+
+ Params.\+hpp の 131 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ae565801842b6c92ff855ef38e77225ad}\label{classParams_ae565801842b6c92ff855ef38e77225ad}} 
+\index{Params@{Params}!spherical\_coordinate@{spherical\_coordinate}}
+\index{spherical\_coordinate@{spherical\_coordinate}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{spherical\_coordinate}{spherical\_coordinate}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSphericalCoordinate}{Spherical\+Coordinate}} Params\+::spherical\+\_\+coordinate}
+
+
+
+ Params.\+hpp の 255 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a782d4353ba21342c61d8fbf3f77fff38}\label{classParams_a782d4353ba21342c61d8fbf3f77fff38}} 
+\index{Params@{Params}!test@{test}}
+\index{test@{test}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{test}{test}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} Params\+::test}
+
+
+
+ Params.\+hpp の 281 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a6d8395b05db0d115b23b3df9880c03b2}\label{classParams_a6d8395b05db0d115b23b3df9880c03b2}} 
+\index{Params@{Params}!test2@{test2}}
+\index{test2@{test2}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{test2}{test2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} Params\+::test2}
+
+
+
+ Params.\+hpp の 282 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a8e7941200b9779cd688a91b677e2c1b1}\label{classParams_a8e7941200b9779cd688a91b677e2c1b1}} 
+\index{Params@{Params}!test3@{test3}}
+\index{test3@{test3}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{test3}{test3}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classC}{C}} Params\+::test3}
+
+
+
+ Params.\+hpp の 283 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a743b6794d720e03568218359e1f621cf}\label{classParams_a743b6794d720e03568218359e1f621cf}} 
+\index{Params@{Params}!theta@{theta}}
+\index{theta@{theta}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{theta}{theta}}
+{\footnotesize\ttfamily double Params\+::theta}
+
+
+
+ Params.\+hpp の 200 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_ab65b6420e294986fbdc1fc1263de892b}\label{classParams_ab65b6420e294986fbdc1fc1263de892b}} 
+\index{Params@{Params}!theta\_d@{theta\_d}}
+\index{theta\_d@{theta\_d}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{theta\_d}{theta\_d}}
+{\footnotesize\ttfamily double Params\+::theta\+\_\+d}
+
+
+
+ Params.\+hpp の 203 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a7c7ab8d849b63239b28b13f71cc73861}\label{classParams_a7c7ab8d849b63239b28b13f71cc73861}} 
+\index{Params@{Params}!theta\_dd@{theta\_dd}}
+\index{theta\_dd@{theta\_dd}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{theta\_dd}{theta\_dd}}
+{\footnotesize\ttfamily double Params\+::theta\+\_\+dd}
+
+
+
+ Params.\+hpp の 209 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_af2541672edd665742ff56e7005254ab9}\label{classParams_af2541672edd665742ff56e7005254ab9}} 
+\index{Params@{Params}!thicken\_coefficient@{thicken\_coefficient}}
+\index{thicken\_coefficient@{thicken\_coefficient}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{thicken\_coefficient}{thicken\_coefficient}}
+{\footnotesize\ttfamily double Params\+::thicken\+\_\+coefficient}
+
+
+
+角の膜厚 
+
+
+
+ Params.\+hpp の 239 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a222efb1c437294cfc9c6f612d67657e8}\label{classParams_a222efb1c437294cfc9c6f612d67657e8}} 
+\index{Params@{Params}!Vref@{Vref}}
+\index{Vref@{Vref}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{Vref}{Vref}}
+{\footnotesize\ttfamily double Params\+::\+Vref}
+
+
+
+基準速度 100 \mbox{[}mm\mbox{]} 
+
+
+
+ Params.\+hpp の 106 行目に定義があります。
+
+\mbox{\Hypertarget{classParams_a47adfd38fe2e92fe9a871561f1b30351}\label{classParams_a47adfd38fe2e92fe9a871561f1b30351}} 
+\index{Params@{Params}!water\_rho@{water\_rho}}
+\index{water\_rho@{water\_rho}!Params@{Params}}
+\doxysubsubsection{\texorpdfstring{water\_rho}{water\_rho}}
+{\footnotesize\ttfamily double Params\+::water\+\_\+rho}
+
+
+
+水の密度 \mbox{[}kg/mm$^\wedge$3\mbox{]} 
+
+
+
+ Params.\+hpp の 149 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/hpp/\+Base/\mbox{\hyperlink{Params_8hpp}{Params.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,674 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Multi Particle Method: /home/hhhhhhhhhhhhhhhhhh/kyutech/research/MultiParticleMethod/src/hpp/MyLibrary/MatrixCalc.hpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Multi Particle Method
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('MatrixCalc_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MatrixCalc.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="MatrixCalc_8hpp.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef MatrixCalc_hpp</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define MatrixCalc_hpp</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/* include header files */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/* end include header files*/</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/* include standard files */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span>   <span class="comment">// for debug writing</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span>     <span class="comment">// useful for reading and writing</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span>     <span class="comment">// 動的配列</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span>  <span class="comment">// vectorの最大値を取得する</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span>      <span class="comment">// fabs</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span>  <span class="comment">// ifstream, ofstream</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span>  <span class="comment">// istringstream</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/* end include standard files */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/* usingnamespace declaration(名前空間の宣言) */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using</span> std::cout;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using</span> std::endl;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using</span> std::flush;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">using</span> std::string;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">using</span> std::vector;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/* end usingnamespace declaration*/</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/* declaration MACRO */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/* end declaration MACRO */</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/* prototype declaration */</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">class </span>Matrix;  <span class="comment">// クラスの前方宣言</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/* end prototype declaration*/</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/* declaration enumlation */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483af">   56</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afa057f6808bbd8190011980a2fabc74d20">   57</a></span>&#160;    <a class="code" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afa057f6808bbd8190011980a2fabc74d20">DO_NOT_SORT</a>,</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afadb62b28d843a4dd5657bcc71c1f868a8">   58</a></span>&#160;    <a class="code" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afadb62b28d843a4dd5657bcc71c1f868a8">SORT_DECREASING_ARRAY</a>,</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afab7684562b3e58b36b96aebcb59c684a3">   59</a></span>&#160;    <a class="code" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afab7684562b3e58b36b96aebcb59c684a3">SORT_INCREASING_ARRAY</a>,</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afaad2cd3865ad4336e1a3937a4c2a34a03">   60</a></span>&#160;    <a class="code" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afaad2cd3865ad4336e1a3937a4c2a34a03">SORT_DECREASING_ABS_ARRAY</a>,</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afae877bb07e87c941aee24c88701059b19">   61</a></span>&#160;    <a class="code" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afae877bb07e87c941aee24c88701059b19">SORT_INCREASING_ABS_ARRAY</a></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;} <a class="code" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483af">SortMode</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/* declaration namespace */</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/* end declaration namespace */</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">class </span><a class="code" href="classMatrixCalc.html">MatrixCalc</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">class </span><a class="code" href="classRotationMatrixCalc.html">RotationMatrixCalc</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classMatrixCalc.html">   74</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMatrixCalc.html">MatrixCalc</a> {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// vector&lt;vector&lt;double&gt;&gt; matrix;</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classMatrixCalc.html#a4ec2f3c924721a544c78ee8d256997d7">innerProductCalc</a>(vector&lt;double&gt; <span class="keyword">const</span>&amp; matrixA,</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                            vector&lt;double&gt; <span class="keyword">const</span>&amp; matrixB);  <span class="comment">// 内積を求める。</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#ac2a39ae0ae49d0fc64e7da7dccbad5a4">plusMatrix</a>(vector&lt;double&gt; <span class="keyword">const</span>&amp; mA, vector&lt;double&gt; <span class="keyword">const</span>&amp; mB,</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    vector&lt;double&gt;&amp; plusres);  <span class="comment">// 行列の足し算</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#a671a9c975331689061a27807439ae419">minMatrix</a>(vector&lt;double&gt; <span class="keyword">const</span>&amp; mA, vector&lt;double&gt; <span class="keyword">const</span>&amp; mB,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                   vector&lt;double&gt;&amp; minres);  <span class="comment">// 行列の引き算</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classMatrixCalc.html#aa46ab9ff3340255321fa2899c8ea53d5">matrixProduct</a>(vector&lt;double&gt; <span class="keyword">const</span>&amp; matrixA,</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                         vector&lt;double&gt; <span class="keyword">const</span>&amp; matrixB);  <span class="comment">// nx1 1xn 行列の積</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#aa46ab9ff3340255321fa2899c8ea53d5">matrixProduct</a>(vector&lt;vector&lt;double&gt;&gt; <span class="keyword">const</span>&amp; matrixA,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                       vector&lt;double&gt; <span class="keyword">const</span>&amp; matrixB,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                       vector&lt;double&gt;&amp; out_matrix);  <span class="comment">// 行列の積</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#aa46ab9ff3340255321fa2899c8ea53d5">matrixProduct</a>(vector&lt;vector&lt;double&gt;&gt; <span class="keyword">const</span>&amp; matrixA,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                       vector&lt;vector&lt;double&gt;&gt; <span class="keyword">const</span>&amp; matrixB,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                       vector&lt;vector&lt;double&gt;&gt;&amp; out_matrix);  <span class="comment">// 行列の積</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    vector&lt;double&gt; <a class="code" href="classMatrixCalc.html#a4c4d9dee8f4147628c39d857e5da5541">matrixProductCalc</a>(<span class="keyword">const</span> vector&lt;vector&lt;double&gt;&gt;&amp; matrixA,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                     <span class="keyword">const</span> vector&lt;double&gt;&amp; matrixB);  <span class="comment">// 行列の積</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    vector&lt;vector&lt;double&gt;&gt; <a class="code" href="classMatrixCalc.html#a4c4d9dee8f4147628c39d857e5da5541">matrixProductCalc</a>(<span class="keyword">const</span> vector&lt;vector&lt;double&gt;&gt;&amp; matrixA,</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                             <span class="keyword">const</span> vector&lt;vector&lt;double&gt;&gt;&amp; matrixB);  <span class="comment">// 行列の積</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    vector&lt;vector&lt;double&gt;&gt; <a class="code" href="classMatrixCalc.html#a8d1713830568a036eeafa78f0e742882">transpose_matrix</a>(<span class="keyword">const</span> vector&lt;vector&lt;double&gt;&gt;&amp;);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#add55453aaa1d8c06707ea392d9b7ca8b">printMatrix</a>(vector&lt;double&gt; <span class="keyword">const</span>&amp; v);          <span class="comment">// 行列を表示する</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#add55453aaa1d8c06707ea392d9b7ca8b">printMatrix</a>(vector&lt;vector&lt;double&gt;&gt; <span class="keyword">const</span>&amp; v);  <span class="comment">// 行列を表示する</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#a45dcc15c072c2afdc8296c99f2a1f291">matrixScalarProduct</a>(</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordtype">double</span> <span class="keyword">const</span>&amp; scalar, vector&lt;double&gt; <span class="keyword">const</span>&amp; in_matrix,</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        vector&lt;double&gt;&amp; out_matrix);  <span class="comment">// 行列の全要素をx倍する</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#a3df3521937c279d1b4a2f9ba6b6cf44c">matrixScalarDiv</a>(</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">double</span> <span class="keyword">const</span>&amp; scalar, vector&lt;double&gt; <span class="keyword">const</span>&amp; in_matrix,</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        vector&lt;double&gt;&amp; out_matrix);  <span class="comment">// 行列の全要素を1/x倍し、係数を返す</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classMatrixCalc.html#a707c346da8aea150d6ddaf0bb418be86">maxMatrix</a>(vector&lt;vector&lt;double&gt;&gt; <span class="keyword">const</span>&amp; in_matrix, <span class="keywordtype">double</span>&amp; max_value,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                     <span class="keywordtype">int</span>&amp; maxi,</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                     <span class="keywordtype">int</span>&amp; maxj);  <span class="comment">// 行列の全要素の最大値を返す。</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classMatrixCalc.html#aabc83596dd6dbccc4cd624656dc706fd">maxMatrix_n</a>(vector&lt;vector&lt;double&gt;&gt; <span class="keyword">const</span>&amp; in_matrix, <span class="keywordtype">double</span>&amp; max_value,</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                       <span class="keywordtype">int</span>&amp; maxi,</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                       <span class="keywordtype">int</span>&amp; maxj);  <span class="comment">// 行列の全要素の最大値を返す。</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#a58808cb482b378562b153aa9a93b3235">SortRows</a>(vector&lt;double&gt;&amp; arr, vector&lt;vector&lt;double&gt;&gt;&amp; vec,</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                  <a class="code" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483af">SortMode</a> <span class="keyword">const</span>&amp; sort_mode);  <span class="comment">// 配列、行列をソートする。</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;};</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#a4ec2f3c924721a544c78ee8d256997d7">  121</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classMatrixCalc.html#a4ec2f3c924721a544c78ee8d256997d7">MatrixCalc::innerProductCalc</a>(vector&lt;double&gt; <span class="keyword">const</span>&amp; matrixA, vector&lt;double&gt; <span class="keyword">const</span>&amp; matrixB) {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">double</span> outnum = 0;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">int</span> size      = matrixA.size();  <span class="comment">// matrixAの要素数を格納する</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i++) {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        outnum += matrixA[i] * matrixB[i];</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">return</span> outnum;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#ac2a39ae0ae49d0fc64e7da7dccbad5a4">  138</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#ac2a39ae0ae49d0fc64e7da7dccbad5a4">MatrixCalc::plusMatrix</a>(vector&lt;double&gt; <span class="keyword">const</span>&amp; mA, vector&lt;double&gt; <span class="keyword">const</span>&amp; mB, vector&lt;double&gt;&amp; plusres) {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordtype">int</span> size = mA.size();  <span class="comment">// vectorAの要素数を格納する</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i++) {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        plusres[i] = mA[i] + mB[i];</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#a671a9c975331689061a27807439ae419">  153</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#a671a9c975331689061a27807439ae419">MatrixCalc::minMatrix</a>(vector&lt;double&gt; <span class="keyword">const</span>&amp; mA, vector&lt;double&gt; <span class="keyword">const</span>&amp; mB, vector&lt;double&gt;&amp; minres) {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordtype">int</span> size = mA.size();  <span class="comment">// vectorAの要素数を格納する</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i++) {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        minres[i] = mA[i] - mB[i];</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#aa46ab9ff3340255321fa2899c8ea53d5">  168</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classMatrixCalc.html#aa46ab9ff3340255321fa2899c8ea53d5">MatrixCalc::matrixProduct</a>(vector&lt;double&gt; <span class="keyword">const</span>&amp; matrixA, vector&lt;double&gt; <span class="keyword">const</span>&amp; matrixB) {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordtype">int</span> size   = matrixA.size();  <span class="comment">// in_matrixの要素数を格納する</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordtype">double</span> out = 0;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i++) {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        out += matrixA[i] * matrixB[i];</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#ae92d947c4bcfae506a1e096f4ddedc42">  185</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#aa46ab9ff3340255321fa2899c8ea53d5">MatrixCalc::matrixProduct</a>(vector&lt;vector&lt;double&gt;&gt; <span class="keyword">const</span>&amp; matrixA, vector&lt;double&gt; <span class="keyword">const</span>&amp; matrixB, vector&lt;double&gt;&amp; out_matrix) {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordtype">int</span> size = matrixA.size();  <span class="comment">// matrixAの要素数を格納する</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i++) {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        out_matrix[i] = 0;  <span class="comment">// 初期化</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; size; j++) {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            out_matrix[i] += matrixA[i][j] * matrixB[j];</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#a225c22c35131b70eaae76fd4b5393a72">  203</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#aa46ab9ff3340255321fa2899c8ea53d5">MatrixCalc::matrixProduct</a>(vector&lt;vector&lt;double&gt;&gt; <span class="keyword">const</span>&amp; matrixA, vector&lt;vector&lt;double&gt;&gt; <span class="keyword">const</span>&amp; matrixB, vector&lt;vector&lt;double&gt;&gt;&amp; out_matrix) {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordtype">int</span> size = matrixA.size();  <span class="comment">// matrixAの要素数を格納する</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordtype">int</span> n_rows = matrixA.size();</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordtype">int</span> n_cols = matrixA[0].size();</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    out_matrix.assign(n_rows, vector&lt;double&gt;(n_cols, 0));</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i++) {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; size; j++) {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            out_matrix[i][j] = matrixA[i][j] * matrixB[j][i];</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;}</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#a4c4d9dee8f4147628c39d857e5da5541">  225</a></span>&#160;vector&lt;double&gt; <a class="code" href="classMatrixCalc.html#a4c4d9dee8f4147628c39d857e5da5541">MatrixCalc::matrixProductCalc</a>(<span class="keyword">const</span> vector&lt;vector&lt;double&gt;&gt;&amp; matrixA, <span class="keyword">const</span> vector&lt;double&gt;&amp; matrixB) {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordtype">int</span> size = matrixA.size();  <span class="comment">// matrixAの要素数を格納する</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    vector&lt;double&gt; out_matrix(size, 0);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i++) {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; size; j++) {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            out_matrix[i] += matrixA[i][j] * matrixB[j];</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordflow">return</span> out_matrix;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;}</div>
+<div class="line"><a name="l00244"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#adfc1d70618c379d0a6b9c09a763807ff">  244</a></span>&#160;vector&lt;vector&lt;double&gt;&gt; <a class="code" href="classMatrixCalc.html#a4c4d9dee8f4147628c39d857e5da5541">MatrixCalc::matrixProductCalc</a>(<span class="keyword">const</span> vector&lt;vector&lt;double&gt;&gt;&amp; matrixA, <span class="keyword">const</span> vector&lt;vector&lt;double&gt;&gt;&amp; matrixB) {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keywordtype">int</span> n_rows_A    = matrixA.size();</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordtype">int</span> n_columns_A = matrixA[0].size();</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordtype">int</span> n_rows_B    = matrixB.size();</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordtype">int</span> n_columns_B = matrixB[0].size();</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="comment">// out_matrix.assign(n_rows, vector&lt;double&gt;(n_cols, 0));</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">if</span> (n_columns_A != n_rows_B) {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;No match row and column on matrixProductCalc&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        abort();</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    vector&lt;vector&lt;double&gt;&gt; out_matrix(n_rows_A, vector&lt;double&gt;(n_columns_B, 0));</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n_rows_A; i++) {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; n_columns_B; j++) {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = 0; k &lt; n_columns_A; k++) {</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                out_matrix[i][j] += matrixA[i][k] * matrixB[k][j];</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        }</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    }</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keywordflow">return</span> out_matrix;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;}</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#a8d1713830568a036eeafa78f0e742882">  268</a></span>&#160;vector&lt;vector&lt;double&gt;&gt; <a class="code" href="classMatrixCalc.html#a8d1713830568a036eeafa78f0e742882">MatrixCalc::transpose_matrix</a>(<span class="keyword">const</span> vector&lt;vector&lt;double&gt;&gt;&amp; matrixA) {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="keywordtype">int</span> n_rows    = matrixA.size();</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordtype">int</span> n_columns = matrixA[0].size();</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    vector&lt;vector&lt;double&gt;&gt; Ret(n_columns, vector&lt;double&gt;(n_rows));</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n_columns; i++) {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; n_rows; j++) {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            Ret[i][j] = matrixA[j][i];</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="keywordflow">return</span> Ret;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;}</div>
+<div class="line"><a name="l00286"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#add55453aaa1d8c06707ea392d9b7ca8b">  286</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#add55453aaa1d8c06707ea392d9b7ca8b">MatrixCalc::printMatrix</a>(vector&lt;double&gt; <span class="keyword">const</span>&amp; v) {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="comment">// cout &lt;&lt; &quot;Print Matrix&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keywordtype">int</span> size = v.size();  <span class="comment">// vの要素数を格納する</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;-----------&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i++) {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        cout &lt;&lt; v[i] &lt;&lt; <span class="stringliteral">&quot;,&quot;</span>;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    cout &lt;&lt; endl;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;-----------&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;}</div>
+<div class="line"><a name="l00302"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#accd335a7e23172a9f4b962527fcc7910">  302</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#add55453aaa1d8c06707ea392d9b7ca8b">MatrixCalc::printMatrix</a>(vector&lt;vector&lt;double&gt;&gt; <span class="keyword">const</span>&amp; v) {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="comment">// cout &lt;&lt; &quot;Print Matrix&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordtype">int</span> row    = v.size();     <span class="comment">// vの行の要素数を格納する</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keywordtype">int</span> colunm = v[0].size();  <span class="comment">// vの列の要素数を格納する</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;-----------&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; row; i++) {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; colunm; j++) {</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            cout &lt;&lt; v[i][j] &lt;&lt; <span class="stringliteral">&quot;,&quot;</span>;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        cout &lt;&lt; endl;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    }</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;-----------&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;}</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#a45dcc15c072c2afdc8296c99f2a1f291">  324</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#a45dcc15c072c2afdc8296c99f2a1f291">MatrixCalc::matrixScalarProduct</a>(<span class="keywordtype">double</span> <span class="keyword">const</span>&amp; scalar, vector&lt;double&gt; <span class="keyword">const</span>&amp; in_matrix, vector&lt;double&gt;&amp; out_matrix) {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keywordtype">int</span> size = in_matrix.size();  <span class="comment">// in_matrixの要素数を格納する</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i++) {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        out_matrix[i] = scalar * in_matrix[i];</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    }</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;}</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00339"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#a3df3521937c279d1b4a2f9ba6b6cf44c">  339</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#a3df3521937c279d1b4a2f9ba6b6cf44c">MatrixCalc::matrixScalarDiv</a>(<span class="keywordtype">double</span> <span class="keyword">const</span>&amp; scalar, vector&lt;double&gt; <span class="keyword">const</span>&amp; in_matrix, vector&lt;double&gt;&amp; out_matrix) {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="keywordtype">int</span> size = in_matrix.size();  <span class="comment">// in_matrixの要素数を格納する</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; i++) {</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        out_matrix[i] = in_matrix[i] / scalar;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    }</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;}</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
+<div class="line"><a name="l00356"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#a707c346da8aea150d6ddaf0bb418be86">  356</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classMatrixCalc.html#a707c346da8aea150d6ddaf0bb418be86">MatrixCalc::maxMatrix</a>(vector&lt;vector&lt;double&gt;&gt; <span class="keyword">const</span>&amp; in_matrix, <span class="keywordtype">double</span>&amp; max_value, <span class="keywordtype">int</span>&amp; maxi, <span class="keywordtype">int</span>&amp; maxj) {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keywordtype">int</span> size  = in_matrix.size();  <span class="comment">// in_matrixの要素数を格納する</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="keywordtype">double</span> a  = 0;                 <span class="comment">// maxの値を一時的に保管する。</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    max_value = 0;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    maxi      = 0;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    maxj      = 0;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size - 1; i++) {</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = i; j &lt; size; j++) {</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            a = std::max(fabs(max_value), fabs(in_matrix[i][j]));</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            <span class="keywordflow">if</span> (fabs(max_value) &lt; a) {</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                max_value = in_matrix[i][j];</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                maxi      = i;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                maxj      = j;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            }</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        }</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    }</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="keywordflow">return</span> max_value;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;}</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00385"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#aabc83596dd6dbccc4cd624656dc706fd">  385</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="classMatrixCalc.html#aabc83596dd6dbccc4cd624656dc706fd">MatrixCalc::maxMatrix_n</a>(vector&lt;vector&lt;double&gt;&gt; <span class="keyword">const</span>&amp; in_matrix, <span class="keywordtype">double</span>&amp; max_value, <span class="keywordtype">int</span>&amp; maxi, <span class="keywordtype">int</span>&amp; maxj) {</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="keywordtype">int</span> size = in_matrix.size();  <span class="comment">// in_matrixの要素数を格納する</span></div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordtype">double</span> a = 0;                 <span class="comment">// maxの値を一時的に保管する。</span></div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160; </div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <span class="comment">// 初期化</span></div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    max_value = 0;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    maxi      = 0;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    maxj      = 0;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size - 1; i++) {</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = i; j &lt; size; j++) {</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            <span class="keywordflow">if</span> (i != j) {</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                a = std::max(fabs(max_value), fabs(in_matrix[i][j]));</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                <span class="keywordflow">if</span> (fabs(max_value) &lt; a) {</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                    max_value = in_matrix[i][j];</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                    maxi      = i;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                    maxj      = j;</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                }</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            }</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        }</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    }</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="keywordflow">return</span> max_value;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;}</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160; </div>
+<div class="line"><a name="l00418"></a><span class="lineno"><a class="line" href="classMatrixCalc.html#a58808cb482b378562b153aa9a93b3235">  418</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMatrixCalc.html#a58808cb482b378562b153aa9a93b3235">MatrixCalc::SortRows</a>(vector&lt;double&gt;&amp; arr, vector&lt;vector&lt;double&gt;&gt;&amp; vec, <a class="code" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483af">SortMode</a> <span class="keyword">const</span>&amp; sort_mode) {</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="keywordtype">int</span> n = arr.size();</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n - 1; i++) {</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        <span class="keywordtype">int</span> i_max = i;</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = i + 1; j &lt; n; j++) {</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            <span class="comment">// find the &quot;maximum&quot; element in the array starting at position i+1</span></div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            <span class="keywordflow">switch</span> (sort_mode) {</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afadb62b28d843a4dd5657bcc71c1f868a8">SORT_DECREASING_ARRAY</a>:</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                    <span class="keywordflow">if</span> (arr[j] &gt; arr[i_max])</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                        i_max = j;</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afab7684562b3e58b36b96aebcb59c684a3">SORT_INCREASING_ARRAY</a>:</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                    <span class="keywordflow">if</span> (arr[j] &lt; arr[i_max])</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                        i_max = j;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afaad2cd3865ad4336e1a3937a4c2a34a03">SORT_DECREASING_ABS_ARRAY</a>:</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="DataSet_8hpp.html#a48c0e9af3de44d063a435d6e53401134">std::abs</a>(arr[j]) &gt; <a class="code" href="DataSet_8hpp.html#a48c0e9af3de44d063a435d6e53401134">std::abs</a>(arr[i_max]))</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                        i_max = j;</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afae877bb07e87c941aee24c88701059b19">SORT_INCREASING_ABS_ARRAY</a>:</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="DataSet_8hpp.html#a48c0e9af3de44d063a435d6e53401134">std::abs</a>(arr[j]) &lt; <a class="code" href="DataSet_8hpp.html#a48c0e9af3de44d063a435d6e53401134">std::abs</a>(arr[i_max]))</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                        i_max = j;</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            }</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;        }</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        std::swap(arr[i], arr[i_max]);  <span class="comment">// sort &quot;arr&quot;</span></div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = 0; k &lt; n; k++)</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;            std::swap(vec[i][k], vec[i_max][k]);  <span class="comment">// sort &quot;vec&quot;</span></div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    }</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;}</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160; </div>
+<div class="line"><a name="l00451"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html">  451</a></span>&#160;<span class="keyword">class </span><a class="code" href="classRotationMatrixCalc.html">RotationMatrixCalc</a> {</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    <span class="comment">// vector&lt;vector&lt;double&gt;&gt; rotation_matrix_x(3, vector&lt;double&gt;(3, 0));</span></div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    <span class="comment">// vector&lt;vector&lt;double&gt;&gt; rotation_matrix_y(3, vector&lt;double&gt;(3, 0));</span></div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    <span class="comment">// vector&lt;vector&lt;double&gt;&gt; rotation_matrix_z(3, vector&lt;double&gt;(3, 0));</span></div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160; </div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    <span class="comment">// constructor</span></div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    <span class="comment">// member function</span></div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    vector&lt;vector&lt;double&gt;&gt; <a class="code" href="classRotationMatrixCalc.html#ab648c3db825dec0a1cf2f624254bbbc4">set_x</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp;);</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    vector&lt;vector&lt;double&gt;&gt; <a class="code" href="classRotationMatrixCalc.html#aa8a6e8d4d1b867a593ee8ac594ac5a73">set_y</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp;);</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    vector&lt;vector&lt;double&gt;&gt; <a class="code" href="classRotationMatrixCalc.html#ac2d84f375cb9c0bd34eecd9cd49dab27">set_z</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp;);</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160; </div>
+<div class="line"><a name="l00463"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a7241580aa37cc3427e06068f008a7543">  463</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classRotationMatrixCalc.html#a7241580aa37cc3427e06068f008a7543">angle_1</a>;</div>
+<div class="line"><a name="l00464"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a9a3fa45fd42c9a133459c4afda77a156">  464</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classRotationMatrixCalc.html#a9a3fa45fd42c9a133459c4afda77a156">angle_2</a>;</div>
+<div class="line"><a name="l00465"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a1293f61d74b31e5678974840f853355b">  465</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classRotationMatrixCalc.html#a1293f61d74b31e5678974840f853355b">angle_3</a>;</div>
+<div class="line"><a name="l00466"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a733969684c16e3fddf9ce1adfad6c7ac">  466</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classRotationMatrixCalc.html#a733969684c16e3fddf9ce1adfad6c7ac">rotation_axis_order_1</a>;</div>
+<div class="line"><a name="l00467"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a32ade175fb67af987f57e2c7a24b4c4a">  467</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classRotationMatrixCalc.html#a32ade175fb67af987f57e2c7a24b4c4a">rotation_axis_order_2</a>;</div>
+<div class="line"><a name="l00468"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a71832bc2cb26165d2c5f56cb00ed01fc">  468</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classRotationMatrixCalc.html#a71832bc2cb26165d2c5f56cb00ed01fc">rotation_axis_order_3</a>;</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160; </div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00471"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#ad33df02986d0936a4743b0c4fe3d47a7">  471</a></span>&#160;    <a class="code" href="classMatrixCalc.html">MatrixCalc</a> <a class="code" href="classRotationMatrixCalc.html#ad33df02986d0936a4743b0c4fe3d47a7">mc</a>;</div>
+<div class="line"><a name="l00472"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a26697aa91d0851a0441674a9dc105bde">  472</a></span>&#160;    vector&lt;vector&lt;vector&lt;double&gt;&gt;&gt; <a class="code" href="classRotationMatrixCalc.html#a26697aa91d0851a0441674a9dc105bde">rotation_matrix</a>;</div>
+<div class="line"><a name="l00473"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#ad33775bfa36b911bde8c9b1962c110ac">  473</a></span>&#160;    vector&lt;vector&lt;double&gt;&gt; <a class="code" href="classRotationMatrixCalc.html#ad33775bfa36b911bde8c9b1962c110ac">rotation_matrix_conv</a>;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160; </div>
+<div class="line"><a name="l00475"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a2f2a56e9d6efbe9aa7300181bac0f1a6">  475</a></span>&#160;    vector&lt;double&gt; <a class="code" href="classRotationMatrixCalc.html#a2f2a56e9d6efbe9aa7300181bac0f1a6">angles</a>;</div>
+<div class="line"><a name="l00477"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#ac362c8f7ac1140235afffd1858950e0c">  477</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classRotationMatrixCalc.html#ac362c8f7ac1140235afffd1858950e0c">rotation_axis_order</a>;</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160; </div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#abe49241725482055c3e7b689887d875b">RotationMatrixCalc</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#abe49241725482055c3e7b689887d875b">RotationMatrixCalc</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;);</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#abe49241725482055c3e7b689887d875b">RotationMatrixCalc</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;);</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRotationMatrixCalc.html#a90ac282ec258629d4a750bcef0491404">set_rotation_axis</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp;);</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRotationMatrixCalc.html#acbc693480da20329aa210cf10bc2627c">set</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;);</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRotationMatrixCalc.html#acbc693480da20329aa210cf10bc2627c">set</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;);</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRotationMatrixCalc.html#a7f102d83d41f8176e956a2a456ec99ae">set_angle</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRotationMatrixCalc.html#a7f102d83d41f8176e956a2a456ec99ae">set_angle</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;);</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classRotationMatrixCalc.html#a9b67b1c0d75c9185f98e076cde4da495">set_rotation_matrix</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    vector&lt;double&gt; <a class="code" href="classRotationMatrixCalc.html#a008002fb592ee1b145aee9d45ba9d9e5">rotate</a>(<span class="keyword">const</span> vector&lt;double&gt;&amp;);</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    vector&lt;double&gt; <a class="code" href="classRotationMatrixCalc.html#a40c1feb28f50192114182cf93b5f6d28">vec_rotate</a>(<span class="keyword">const</span> vector&lt;double&gt;&amp;);</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160; </div>
+<div class="line"><a name="l00491"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a08d64560d8dd74a19cf58f06afc1aef7">  491</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classRotationMatrixCalc.html#a08d64560d8dd74a19cf58f06afc1aef7">iequals</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; a, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; b) {</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        <span class="keywordflow">return</span> std::equal(</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;            a.begin(), a.end(), b.begin(), b.end(),</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;            [](<span class="keywordtype">char</span> a, <span class="keywordtype">char</span> b) { return tolower(a) == tolower(b); });</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;    }</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;};</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160; </div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;<span class="comment">// constructor</span></div>
+<div class="line"><a name="l00499"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#abe49241725482055c3e7b689887d875b">  499</a></span>&#160;<a class="code" href="classRotationMatrixCalc.html#abe49241725482055c3e7b689887d875b">RotationMatrixCalc::RotationMatrixCalc</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#abe49241725482055c3e7b689887d875b">RotationMatrixCalc</a>(0, 0, 0);</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;}</div>
+<div class="line"><a name="l00502"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a68c0efa4eac235b8923b83278f34200c">  502</a></span>&#160;<a class="code" href="classRotationMatrixCalc.html#abe49241725482055c3e7b689887d875b">RotationMatrixCalc::RotationMatrixCalc</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_1, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_2, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_3) {</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#abe49241725482055c3e7b689887d875b">RotationMatrixCalc</a>(<span class="stringliteral">&quot;zyz&quot;</span>, a_1, a_2, a_3);</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;}</div>
+<div class="line"><a name="l00505"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a241ee2b01ae53263f6fe944875749c7b">  505</a></span>&#160;<a class="code" href="classRotationMatrixCalc.html#abe49241725482055c3e7b689887d875b">RotationMatrixCalc::RotationMatrixCalc</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; rao, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_1, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_2, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_3) {</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#a26697aa91d0851a0441674a9dc105bde">rotation_matrix</a>.resize(3);</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#acbc693480da20329aa210cf10bc2627c">set</a>(rao, a_1, a_2, a_3);</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;}</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160; </div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;<span class="comment">// member function</span></div>
+<div class="line"><a name="l00511"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a90ac282ec258629d4a750bcef0491404">  511</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classRotationMatrixCalc.html#a90ac282ec258629d4a750bcef0491404">RotationMatrixCalc::set_rotation_axis</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; rao) {</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#ac362c8f7ac1140235afffd1858950e0c">rotation_axis_order</a>   = rao;</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#a733969684c16e3fddf9ce1adfad6c7ac">rotation_axis_order_1</a> = rao.substr(0, 1);</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#a32ade175fb67af987f57e2c7a24b4c4a">rotation_axis_order_2</a> = rao.substr(1, 1);</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#a71832bc2cb26165d2c5f56cb00ed01fc">rotation_axis_order_3</a> = rao.substr(2, 1);</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;};</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160; </div>
+<div class="line"><a name="l00518"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a7f102d83d41f8176e956a2a456ec99ae">  518</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classRotationMatrixCalc.html#a7f102d83d41f8176e956a2a456ec99ae">RotationMatrixCalc::set_angle</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#a7f102d83d41f8176e956a2a456ec99ae">set_angle</a>(<a class="code" href="classRotationMatrixCalc.html#a7241580aa37cc3427e06068f008a7543">angle_1</a>, <a class="code" href="classRotationMatrixCalc.html#a9a3fa45fd42c9a133459c4afda77a156">angle_2</a>, <a class="code" href="classRotationMatrixCalc.html#a1293f61d74b31e5678974840f853355b">angle_3</a>);</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;}</div>
+<div class="line"><a name="l00521"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a1924d0ba779094328103df2f5f4e6a58">  521</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classRotationMatrixCalc.html#a7f102d83d41f8176e956a2a456ec99ae">RotationMatrixCalc::set_angle</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_1, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_2, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_3) {</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#a7241580aa37cc3427e06068f008a7543">angle_1</a> = a_1;</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#a9a3fa45fd42c9a133459c4afda77a156">angle_2</a> = a_2;</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#a1293f61d74b31e5678974840f853355b">angle_3</a> = a_3;</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#a2f2a56e9d6efbe9aa7300181bac0f1a6">angles</a>  = {</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;        <a class="code" href="classRotationMatrixCalc.html#a7241580aa37cc3427e06068f008a7543">angle_1</a>,</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;        <a class="code" href="classRotationMatrixCalc.html#a9a3fa45fd42c9a133459c4afda77a156">angle_2</a>,</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        <a class="code" href="classRotationMatrixCalc.html#a1293f61d74b31e5678974840f853355b">angle_3</a>,</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;    };</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;}</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160; </div>
+<div class="line"><a name="l00532"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#ab648c3db825dec0a1cf2f624254bbbc4">  532</a></span>&#160;vector&lt;vector&lt;double&gt;&gt; <a class="code" href="classRotationMatrixCalc.html#ab648c3db825dec0a1cf2f624254bbbc4">RotationMatrixCalc::set_x</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp; angle) {</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    vector&lt;vector&lt;double&gt;&gt; Ret = {</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;        {1, 0, 0},</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;        {0, cos(angle), -sin(angle)},</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;        {0, sin(angle), cos(angle)},</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    };</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    <span class="keywordflow">return</span> Ret;</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;}</div>
+<div class="line"><a name="l00540"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#aa8a6e8d4d1b867a593ee8ac594ac5a73">  540</a></span>&#160;vector&lt;vector&lt;double&gt;&gt; <a class="code" href="classRotationMatrixCalc.html#aa8a6e8d4d1b867a593ee8ac594ac5a73">RotationMatrixCalc::set_y</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp; angle) {</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;    vector&lt;vector&lt;double&gt;&gt; Ret = {</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;        {cos(angle), 0, sin(angle)},</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;        {0, 1, 0},</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;        {-sin(angle), 0, cos(angle)},</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;    };</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;    <span class="keywordflow">return</span> Ret;</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;}</div>
+<div class="line"><a name="l00548"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#ac2d84f375cb9c0bd34eecd9cd49dab27">  548</a></span>&#160;vector&lt;vector&lt;double&gt;&gt; <a class="code" href="classRotationMatrixCalc.html#ac2d84f375cb9c0bd34eecd9cd49dab27">RotationMatrixCalc::set_z</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp; angle) {</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    vector&lt;vector&lt;double&gt;&gt; Ret = {</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;        {cos(angle), -sin(angle), 0},</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        {sin(angle), cos(angle), 0},</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;        {0, 0, 1},</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    };</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;    <span class="keywordflow">return</span> Ret;</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;}</div>
+<div class="line"><a name="l00556"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#acbc693480da20329aa210cf10bc2627c">  556</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classRotationMatrixCalc.html#acbc693480da20329aa210cf10bc2627c">RotationMatrixCalc::set</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_1, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_2, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_3) {</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#a7f102d83d41f8176e956a2a456ec99ae">set_angle</a>(a_1, a_2, a_3);</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;    <span class="comment">// cout &lt;&lt; angles[0] &lt;&lt; &quot;,&quot; &lt;&lt; angles[1] &lt;&lt; &quot;,&quot; &lt;&lt; angles[2] &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#a26697aa91d0851a0441674a9dc105bde">rotation_matrix</a>.resize(3);</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160; </div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; i++) {</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        <span class="comment">// cout &lt;&lt; &quot;i:&quot; &lt;&lt; i &lt;&lt;endl;</span></div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;        <span class="comment">// cout &lt;&lt; &quot;rao:&quot; &lt;&lt; rotation_axis_order.substr(i, 1) &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classRotationMatrixCalc.html#a08d64560d8dd74a19cf58f06afc1aef7">iequals</a>(<a class="code" href="classRotationMatrixCalc.html#ac362c8f7ac1140235afffd1858950e0c">rotation_axis_order</a>.substr(i, 1), <span class="stringliteral">&quot;x&quot;</span>)) {</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;            <a class="code" href="classRotationMatrixCalc.html#a26697aa91d0851a0441674a9dc105bde">rotation_matrix</a>[i] = <a class="code" href="classRotationMatrixCalc.html#ab648c3db825dec0a1cf2f624254bbbc4">set_x</a>(<a class="code" href="classRotationMatrixCalc.html#a2f2a56e9d6efbe9aa7300181bac0f1a6">angles</a>[i]);</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="classRotationMatrixCalc.html#a08d64560d8dd74a19cf58f06afc1aef7">iequals</a>(<a class="code" href="classRotationMatrixCalc.html#ac362c8f7ac1140235afffd1858950e0c">rotation_axis_order</a>.substr(i, 1), <span class="stringliteral">&quot;y&quot;</span>)) {</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;            <a class="code" href="classRotationMatrixCalc.html#a26697aa91d0851a0441674a9dc105bde">rotation_matrix</a>[i] = <a class="code" href="classRotationMatrixCalc.html#aa8a6e8d4d1b867a593ee8ac594ac5a73">set_y</a>(<a class="code" href="classRotationMatrixCalc.html#a2f2a56e9d6efbe9aa7300181bac0f1a6">angles</a>[i]);</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="classRotationMatrixCalc.html#a08d64560d8dd74a19cf58f06afc1aef7">iequals</a>(<a class="code" href="classRotationMatrixCalc.html#ac362c8f7ac1140235afffd1858950e0c">rotation_axis_order</a>.substr(i, 1), <span class="stringliteral">&quot;z&quot;</span>)) {</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;            <a class="code" href="classRotationMatrixCalc.html#a26697aa91d0851a0441674a9dc105bde">rotation_matrix</a>[i] = <a class="code" href="classRotationMatrixCalc.html#ac2d84f375cb9c0bd34eecd9cd49dab27">set_z</a>(<a class="code" href="classRotationMatrixCalc.html#a2f2a56e9d6efbe9aa7300181bac0f1a6">angles</a>[i]);</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;rotation_axis_order is not found&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;            abort();</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;        }</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;        <span class="comment">// mc.printMatrix(rotation_matrix[i]);</span></div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;    }</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#a9b67b1c0d75c9185f98e076cde4da495">set_rotation_matrix</a>();</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;    <span class="comment">// rotation_matrix[0] = set_x(a_x);</span></div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    <span class="comment">// rotation_matrix[1] = set_y(a_y);</span></div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;    <span class="comment">// rotation_matrix[2] = set_z(a_z);</span></div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;}</div>
+<div class="line"><a name="l00581"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#ae1d010736d68a9cc299500d0b95727eb">  581</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classRotationMatrixCalc.html#acbc693480da20329aa210cf10bc2627c">RotationMatrixCalc::set</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; rao, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_1, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_2, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_3) {</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#a90ac282ec258629d4a750bcef0491404">set_rotation_axis</a>(rao);</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#acbc693480da20329aa210cf10bc2627c">set</a>(a_1, a_2, a_3);</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;}</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160; </div>
+<div class="line"><a name="l00591"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a9b67b1c0d75c9185f98e076cde4da495">  591</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classRotationMatrixCalc.html#a9b67b1c0d75c9185f98e076cde4da495">RotationMatrixCalc::set_rotation_matrix</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;    <a class="code" href="classRotationMatrixCalc.html#ad33775bfa36b911bde8c9b1962c110ac">rotation_matrix_conv</a> = <a class="code" href="classRotationMatrixCalc.html#ad33df02986d0936a4743b0c4fe3d47a7">mc</a>.<a class="code" href="classMatrixCalc.html#a4c4d9dee8f4147628c39d857e5da5541">matrixProductCalc</a>(<a class="code" href="classRotationMatrixCalc.html#a26697aa91d0851a0441674a9dc105bde">rotation_matrix</a>[2], <a class="code" href="classRotationMatrixCalc.html#ad33df02986d0936a4743b0c4fe3d47a7">mc</a>.<a class="code" href="classMatrixCalc.html#a4c4d9dee8f4147628c39d857e5da5541">matrixProductCalc</a>(<a class="code" href="classRotationMatrixCalc.html#a26697aa91d0851a0441674a9dc105bde">rotation_matrix</a>[1], <a class="code" href="classRotationMatrixCalc.html#a26697aa91d0851a0441674a9dc105bde">rotation_matrix</a>[0]));</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;}</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160; </div>
+<div class="line"><a name="l00596"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a008002fb592ee1b145aee9d45ba9d9e5">  596</a></span>&#160;vector&lt;double&gt; <a class="code" href="classRotationMatrixCalc.html#a008002fb592ee1b145aee9d45ba9d9e5">RotationMatrixCalc::rotate</a>(<span class="keyword">const</span> vector&lt;double&gt;&amp; matrix) {</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;    vector&lt;double&gt; Ret = <a class="code" href="classRotationMatrixCalc.html#ad33df02986d0936a4743b0c4fe3d47a7">mc</a>.<a class="code" href="classMatrixCalc.html#a4c4d9dee8f4147628c39d857e5da5541">matrixProductCalc</a>(<a class="code" href="classRotationMatrixCalc.html#ad33775bfa36b911bde8c9b1962c110ac">rotation_matrix_conv</a>, matrix);</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;    <span class="keywordflow">return</span> Ret;</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;}</div>
+<div class="line"><a name="l00600"></a><span class="lineno"><a class="line" href="classRotationMatrixCalc.html#a40c1feb28f50192114182cf93b5f6d28">  600</a></span>&#160;vector&lt;double&gt; <a class="code" href="classRotationMatrixCalc.html#a40c1feb28f50192114182cf93b5f6d28">RotationMatrixCalc::vec_rotate</a>(<span class="keyword">const</span> vector&lt;double&gt;&amp; matrix) {</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;    vector&lt;double&gt; Ret = <a class="code" href="classRotationMatrixCalc.html#ad33df02986d0936a4743b0c4fe3d47a7">mc</a>.<a class="code" href="classMatrixCalc.html#a4c4d9dee8f4147628c39d857e5da5541">matrixProductCalc</a>(<a class="code" href="classRotationMatrixCalc.html#ad33df02986d0936a4743b0c4fe3d47a7">mc</a>.<a class="code" href="classMatrixCalc.html#a8d1713830568a036eeafa78f0e742882">transpose_matrix</a>(<a class="code" href="classRotationMatrixCalc.html#ad33775bfa36b911bde8c9b1962c110ac">rotation_matrix_conv</a>), matrix);</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;    <span class="comment">// cout &lt;&lt; &quot;R1:&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;    <span class="comment">// mc.printMatrix(rotation_matrix[0]);</span></div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;    <span class="comment">// mc.printMatrix(rotation_matrix[1]);</span></div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;    <span class="comment">// mc.printMatrix(rotation_matrix[2]);</span></div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160; </div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;    <span class="comment">// cout &lt;&lt; &quot;R21:&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;    <span class="comment">// mc.printMatrix(mc.matrixProductCalc(rotation_matrix[1], rotation_matrix[0]));</span></div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160; </div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    <span class="comment">// cout &lt;&lt; &quot;R:&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;    <span class="comment">// mc.printMatrix(rotation_matrix_conv);</span></div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;    <span class="comment">// cout &lt;&lt; &quot;\n R^T:&quot; &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;    <span class="comment">// mc.printMatrix(mc.transpose_matrix(rotation_matrix_conv));</span></div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;    <span class="keywordflow">return</span> Ret;</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;}</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160; </div>
+<div class="line"><a name="l00617"></a><span class="lineno"><a class="line" href="classSphericalCoordinate.html">  617</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSphericalCoordinate.html">SphericalCoordinate</a> {</div>
+<div class="line"><a name="l00618"></a><span class="lineno"><a class="line" href="classSphericalCoordinate.html#ab4a2450b1649f74b9e262f38cb687396">  618</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classSphericalCoordinate.html#ab4a2450b1649f74b9e262f38cb687396">radius</a>;</div>
+<div class="line"><a name="l00619"></a><span class="lineno"><a class="line" href="classSphericalCoordinate.html#a2d4ebc168df9faf7892322662d9dd699">  619</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classSphericalCoordinate.html#a2d4ebc168df9faf7892322662d9dd699">angle_1</a>;</div>
+<div class="line"><a name="l00620"></a><span class="lineno"><a class="line" href="classSphericalCoordinate.html#a7dbdb77768fc7e24d3ee46e2c57927bd">  620</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classSphericalCoordinate.html#a7dbdb77768fc7e24d3ee46e2c57927bd">angle_2</a>;</div>
+<div class="line"><a name="l00621"></a><span class="lineno"><a class="line" href="classSphericalCoordinate.html#abf4dd15d9860621622f5d61f6ce631d8">  621</a></span>&#160;    vector&lt;double&gt; <a class="code" href="classSphericalCoordinate.html#abf4dd15d9860621622f5d61f6ce631d8">xyz</a>;</div>
+<div class="line"><a name="l00622"></a><span class="lineno"><a class="line" href="classSphericalCoordinate.html#a08997197ccc898481817190252d63243">  622</a></span>&#160;    vector&lt;double&gt; <a class="code" href="classSphericalCoordinate.html#a08997197ccc898481817190252d63243">spherical_coordinates</a>;</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160; </div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    <a class="code" href="classSphericalCoordinate.html#a911c4a3dc460f8939e1fe2ceafdc0cd4">SphericalCoordinate</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;    <a class="code" href="classSphericalCoordinate.html#a911c4a3dc460f8939e1fe2ceafdc0cd4">SphericalCoordinate</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;);</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSphericalCoordinate.html#a8819ce01bf9edcfc69282ee69d5e0f14">set</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp;);</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160; </div>
+<div class="line"><a name="l00629"></a><span class="lineno"><a class="line" href="classSphericalCoordinate.html#ac23a26e7d770be0254d42b16ed2f6d31">  629</a></span>&#160;    <a class="code" href="classMatrixCalc.html">MatrixCalc</a> <a class="code" href="classSphericalCoordinate.html#ac23a26e7d770be0254d42b16ed2f6d31">mc</a>;</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;    <span class="comment">// vector&lt;double&gt; transform(const vector&lt;double&gt;&amp;);</span></div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;    vector&lt;double&gt; <a class="code" href="classSphericalCoordinate.html#a1ccfd50a9856eab054c8e81f61c20ed5">transform</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;};</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160; </div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;<span class="comment">// constructor</span></div>
+<div class="line"><a name="l00635"></a><span class="lineno"><a class="line" href="classSphericalCoordinate.html#a911c4a3dc460f8939e1fe2ceafdc0cd4">  635</a></span>&#160;<a class="code" href="classSphericalCoordinate.html#a911c4a3dc460f8939e1fe2ceafdc0cd4">SphericalCoordinate::SphericalCoordinate</a>(<span class="keywordtype">void</span>) { <a class="code" href="classSphericalCoordinate.html#a911c4a3dc460f8939e1fe2ceafdc0cd4">SphericalCoordinate</a>(0, 0, 0); }</div>
+<div class="line"><a name="l00636"></a><span class="lineno"><a class="line" href="classSphericalCoordinate.html#ab6c4356e7b87278148301f5b736af1a8">  636</a></span>&#160;<a class="code" href="classSphericalCoordinate.html#a911c4a3dc460f8939e1fe2ceafdc0cd4">SphericalCoordinate::SphericalCoordinate</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp; r, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_1, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_2) {</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;    <a class="code" href="classSphericalCoordinate.html#a8819ce01bf9edcfc69282ee69d5e0f14">set</a>(r, a_1, a_2);</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;}</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160; </div>
+<div class="line"><a name="l00640"></a><span class="lineno"><a class="line" href="classSphericalCoordinate.html#a8819ce01bf9edcfc69282ee69d5e0f14">  640</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classSphericalCoordinate.html#a8819ce01bf9edcfc69282ee69d5e0f14">SphericalCoordinate::set</a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp; r, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_1, <span class="keyword">const</span> <span class="keywordtype">double</span>&amp; a_2) {</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;    <a class="code" href="classSphericalCoordinate.html#abf4dd15d9860621622f5d61f6ce631d8">xyz</a>.resize(3);</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    <a class="code" href="classSphericalCoordinate.html#ab4a2450b1649f74b9e262f38cb687396">radius</a>  = r;</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    <a class="code" href="classSphericalCoordinate.html#a2d4ebc168df9faf7892322662d9dd699">angle_1</a> = a_1;</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;    <a class="code" href="classSphericalCoordinate.html#a7dbdb77768fc7e24d3ee46e2c57927bd">angle_2</a> = a_2;</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;}</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160; </div>
+<div class="line"><a name="l00647"></a><span class="lineno"><a class="line" href="classSphericalCoordinate.html#a1ccfd50a9856eab054c8e81f61c20ed5">  647</a></span>&#160;vector&lt;double&gt; <a class="code" href="classSphericalCoordinate.html#a1ccfd50a9856eab054c8e81f61c20ed5">SphericalCoordinate::transform</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    <a class="code" href="classSphericalCoordinate.html#abf4dd15d9860621622f5d61f6ce631d8">xyz</a>.resize(3);</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;    <a class="code" href="classSphericalCoordinate.html#abf4dd15d9860621622f5d61f6ce631d8">xyz</a>[0] = <a class="code" href="classSphericalCoordinate.html#ab4a2450b1649f74b9e262f38cb687396">radius</a> * sin(<a class="code" href="classSphericalCoordinate.html#a2d4ebc168df9faf7892322662d9dd699">angle_1</a>) * cos(<a class="code" href="classSphericalCoordinate.html#a7dbdb77768fc7e24d3ee46e2c57927bd">angle_2</a>);</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    <a class="code" href="classSphericalCoordinate.html#abf4dd15d9860621622f5d61f6ce631d8">xyz</a>[1] = <a class="code" href="classSphericalCoordinate.html#ab4a2450b1649f74b9e262f38cb687396">radius</a> * sin(<a class="code" href="classSphericalCoordinate.html#a2d4ebc168df9faf7892322662d9dd699">angle_1</a>) * sin(<a class="code" href="classSphericalCoordinate.html#a7dbdb77768fc7e24d3ee46e2c57927bd">angle_2</a>);</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;    <a class="code" href="classSphericalCoordinate.html#abf4dd15d9860621622f5d61f6ce631d8">xyz</a>[2] = <a class="code" href="classSphericalCoordinate.html#ab4a2450b1649f74b9e262f38cb687396">radius</a> * cos(<a class="code" href="classSphericalCoordinate.html#a2d4ebc168df9faf7892322662d9dd699">angle_1</a>);</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classSphericalCoordinate.html#abf4dd15d9860621622f5d61f6ce631d8">xyz</a>;</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;}</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160; </div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;<span class="preprocessor">#endif  // ヘッダーファイルの終了</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclassSphericalCoordinate_html_a8819ce01bf9edcfc69282ee69d5e0f14"><div class="ttname"><a href="classSphericalCoordinate.html#a8819ce01bf9edcfc69282ee69d5e0f14">SphericalCoordinate::set</a></div><div class="ttdeci">void set(const double &amp;, const double &amp;, const double &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00640">MatrixCalc.hpp:640</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_a71832bc2cb26165d2c5f56cb00ed01fc"><div class="ttname"><a href="classRotationMatrixCalc.html#a71832bc2cb26165d2c5f56cb00ed01fc">RotationMatrixCalc::rotation_axis_order_3</a></div><div class="ttdeci">string rotation_axis_order_3</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00468">MatrixCalc.hpp:468</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_ad33df02986d0936a4743b0c4fe3d47a7"><div class="ttname"><a href="classRotationMatrixCalc.html#ad33df02986d0936a4743b0c4fe3d47a7">RotationMatrixCalc::mc</a></div><div class="ttdeci">MatrixCalc mc</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00471">MatrixCalc.hpp:471</a></div></div>
+<div class="ttc" id="aMatrixCalc_8hpp_html_a031b34ab1dee47da0d616042a95483afaad2cd3865ad4336e1a3937a4c2a34a03"><div class="ttname"><a href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afaad2cd3865ad4336e1a3937a4c2a34a03">SORT_DECREASING_ABS_ARRAY</a></div><div class="ttdeci">@ SORT_DECREASING_ABS_ARRAY</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00060">MatrixCalc.hpp:60</a></div></div>
+<div class="ttc" id="aclassMatrixCalc_html_a671a9c975331689061a27807439ae419"><div class="ttname"><a href="classMatrixCalc.html#a671a9c975331689061a27807439ae419">MatrixCalc::minMatrix</a></div><div class="ttdeci">void minMatrix(vector&lt; double &gt; const &amp;mA, vector&lt; double &gt; const &amp;mB, vector&lt; double &gt; &amp;minres)</div><div class="ttdoc">行列の引き算</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00153">MatrixCalc.hpp:153</a></div></div>
+<div class="ttc" id="aclassMatrixCalc_html_a58808cb482b378562b153aa9a93b3235"><div class="ttname"><a href="classMatrixCalc.html#a58808cb482b378562b153aa9a93b3235">MatrixCalc::SortRows</a></div><div class="ttdeci">void SortRows(vector&lt; double &gt; &amp;arr, vector&lt; vector&lt; double &gt;&gt; &amp;vec, SortMode const &amp;sort_mode)</div><div class="ttdoc">配列の値でソートする</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00418">MatrixCalc.hpp:418</a></div></div>
+<div class="ttc" id="aclassMatrixCalc_html_add55453aaa1d8c06707ea392d9b7ca8b"><div class="ttname"><a href="classMatrixCalc.html#add55453aaa1d8c06707ea392d9b7ca8b">MatrixCalc::printMatrix</a></div><div class="ttdeci">void printMatrix(vector&lt; double &gt; const &amp;v)</div><div class="ttdoc">行列を表示する</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00286">MatrixCalc.hpp:286</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html"><div class="ttname"><a href="classRotationMatrixCalc.html">RotationMatrixCalc</a></div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00451">MatrixCalc.hpp:451</a></div></div>
+<div class="ttc" id="aclassSphericalCoordinate_html_a08997197ccc898481817190252d63243"><div class="ttname"><a href="classSphericalCoordinate.html#a08997197ccc898481817190252d63243">SphericalCoordinate::spherical_coordinates</a></div><div class="ttdeci">vector&lt; double &gt; spherical_coordinates</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00622">MatrixCalc.hpp:622</a></div></div>
+<div class="ttc" id="aclassMatrixCalc_html_aabc83596dd6dbccc4cd624656dc706fd"><div class="ttname"><a href="classMatrixCalc.html#aabc83596dd6dbccc4cd624656dc706fd">MatrixCalc::maxMatrix_n</a></div><div class="ttdeci">double maxMatrix_n(vector&lt; vector&lt; double &gt;&gt; const &amp;in_matrix, double &amp;max_value, int &amp;maxi, int &amp;maxj)</div><div class="ttdoc">行列の非対角要素での絶対値の最大値を返す。</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00385">MatrixCalc.hpp:385</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_acbc693480da20329aa210cf10bc2627c"><div class="ttname"><a href="classRotationMatrixCalc.html#acbc693480da20329aa210cf10bc2627c">RotationMatrixCalc::set</a></div><div class="ttdeci">void set(const double &amp;, const double &amp;, const double &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00556">MatrixCalc.hpp:556</a></div></div>
+<div class="ttc" id="aclassMatrixCalc_html_a4c4d9dee8f4147628c39d857e5da5541"><div class="ttname"><a href="classMatrixCalc.html#a4c4d9dee8f4147628c39d857e5da5541">MatrixCalc::matrixProductCalc</a></div><div class="ttdeci">vector&lt; double &gt; matrixProductCalc(const vector&lt; vector&lt; double &gt;&gt; &amp;matrixA, const vector&lt; double &gt; &amp;matrixB)</div><div class="ttdoc">nxn と nx1 行列の積</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00225">MatrixCalc.hpp:225</a></div></div>
+<div class="ttc" id="aclassMatrixCalc_html_a8d1713830568a036eeafa78f0e742882"><div class="ttname"><a href="classMatrixCalc.html#a8d1713830568a036eeafa78f0e742882">MatrixCalc::transpose_matrix</a></div><div class="ttdeci">vector&lt; vector&lt; double &gt; &gt; transpose_matrix(const vector&lt; vector&lt; double &gt;&gt; &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00268">MatrixCalc.hpp:268</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_a08d64560d8dd74a19cf58f06afc1aef7"><div class="ttname"><a href="classRotationMatrixCalc.html#a08d64560d8dd74a19cf58f06afc1aef7">RotationMatrixCalc::iequals</a></div><div class="ttdeci">bool iequals(const string &amp;a, const string &amp;b)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00491">MatrixCalc.hpp:491</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_abe49241725482055c3e7b689887d875b"><div class="ttname"><a href="classRotationMatrixCalc.html#abe49241725482055c3e7b689887d875b">RotationMatrixCalc::RotationMatrixCalc</a></div><div class="ttdeci">RotationMatrixCalc(void)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00499">MatrixCalc.hpp:499</a></div></div>
+<div class="ttc" id="aMatrixCalc_8hpp_html_a031b34ab1dee47da0d616042a95483afa057f6808bbd8190011980a2fabc74d20"><div class="ttname"><a href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afa057f6808bbd8190011980a2fabc74d20">DO_NOT_SORT</a></div><div class="ttdeci">@ DO_NOT_SORT</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00057">MatrixCalc.hpp:57</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_ac2d84f375cb9c0bd34eecd9cd49dab27"><div class="ttname"><a href="classRotationMatrixCalc.html#ac2d84f375cb9c0bd34eecd9cd49dab27">RotationMatrixCalc::set_z</a></div><div class="ttdeci">vector&lt; vector&lt; double &gt; &gt; set_z(const double &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00548">MatrixCalc.hpp:548</a></div></div>
+<div class="ttc" id="aclassSphericalCoordinate_html_a7dbdb77768fc7e24d3ee46e2c57927bd"><div class="ttname"><a href="classSphericalCoordinate.html#a7dbdb77768fc7e24d3ee46e2c57927bd">SphericalCoordinate::angle_2</a></div><div class="ttdeci">double angle_2</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00620">MatrixCalc.hpp:620</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_a7241580aa37cc3427e06068f008a7543"><div class="ttname"><a href="classRotationMatrixCalc.html#a7241580aa37cc3427e06068f008a7543">RotationMatrixCalc::angle_1</a></div><div class="ttdeci">double angle_1</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00463">MatrixCalc.hpp:463</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_ab648c3db825dec0a1cf2f624254bbbc4"><div class="ttname"><a href="classRotationMatrixCalc.html#ab648c3db825dec0a1cf2f624254bbbc4">RotationMatrixCalc::set_x</a></div><div class="ttdeci">vector&lt; vector&lt; double &gt; &gt; set_x(const double &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00532">MatrixCalc.hpp:532</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_a7f102d83d41f8176e956a2a456ec99ae"><div class="ttname"><a href="classRotationMatrixCalc.html#a7f102d83d41f8176e956a2a456ec99ae">RotationMatrixCalc::set_angle</a></div><div class="ttdeci">void set_angle(void)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00518">MatrixCalc.hpp:518</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_a26697aa91d0851a0441674a9dc105bde"><div class="ttname"><a href="classRotationMatrixCalc.html#a26697aa91d0851a0441674a9dc105bde">RotationMatrixCalc::rotation_matrix</a></div><div class="ttdeci">vector&lt; vector&lt; vector&lt; double &gt; &gt; &gt; rotation_matrix</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00472">MatrixCalc.hpp:472</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_a2f2a56e9d6efbe9aa7300181bac0f1a6"><div class="ttname"><a href="classRotationMatrixCalc.html#a2f2a56e9d6efbe9aa7300181bac0f1a6">RotationMatrixCalc::angles</a></div><div class="ttdeci">vector&lt; double &gt; angles</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00475">MatrixCalc.hpp:475</a></div></div>
+<div class="ttc" id="aclassMatrixCalc_html_a45dcc15c072c2afdc8296c99f2a1f291"><div class="ttname"><a href="classMatrixCalc.html#a45dcc15c072c2afdc8296c99f2a1f291">MatrixCalc::matrixScalarProduct</a></div><div class="ttdeci">void matrixScalarProduct(double const &amp;scalar, vector&lt; double &gt; const &amp;in_matrix, vector&lt; double &gt; &amp;out_matrix)</div><div class="ttdoc">行列の全要素をx倍する</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00324">MatrixCalc.hpp:324</a></div></div>
+<div class="ttc" id="aclassSphericalCoordinate_html_abf4dd15d9860621622f5d61f6ce631d8"><div class="ttname"><a href="classSphericalCoordinate.html#abf4dd15d9860621622f5d61f6ce631d8">SphericalCoordinate::xyz</a></div><div class="ttdeci">vector&lt; double &gt; xyz</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00621">MatrixCalc.hpp:621</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_aa8a6e8d4d1b867a593ee8ac594ac5a73"><div class="ttname"><a href="classRotationMatrixCalc.html#aa8a6e8d4d1b867a593ee8ac594ac5a73">RotationMatrixCalc::set_y</a></div><div class="ttdeci">vector&lt; vector&lt; double &gt; &gt; set_y(const double &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00540">MatrixCalc.hpp:540</a></div></div>
+<div class="ttc" id="aMatrixCalc_8hpp_html_a031b34ab1dee47da0d616042a95483afae877bb07e87c941aee24c88701059b19"><div class="ttname"><a href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afae877bb07e87c941aee24c88701059b19">SORT_INCREASING_ABS_ARRAY</a></div><div class="ttdeci">@ SORT_INCREASING_ABS_ARRAY</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00061">MatrixCalc.hpp:61</a></div></div>
+<div class="ttc" id="aclassMatrixCalc_html_a4ec2f3c924721a544c78ee8d256997d7"><div class="ttname"><a href="classMatrixCalc.html#a4ec2f3c924721a544c78ee8d256997d7">MatrixCalc::innerProductCalc</a></div><div class="ttdeci">double innerProductCalc(vector&lt; double &gt; const &amp;matrixA, vector&lt; double &gt; const &amp;matrixB)</div><div class="ttdoc">内積を計算する</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00121">MatrixCalc.hpp:121</a></div></div>
+<div class="ttc" id="aMatrixCalc_8hpp_html_a031b34ab1dee47da0d616042a95483afab7684562b3e58b36b96aebcb59c684a3"><div class="ttname"><a href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afab7684562b3e58b36b96aebcb59c684a3">SORT_INCREASING_ARRAY</a></div><div class="ttdeci">@ SORT_INCREASING_ARRAY</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00059">MatrixCalc.hpp:59</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_ad33775bfa36b911bde8c9b1962c110ac"><div class="ttname"><a href="classRotationMatrixCalc.html#ad33775bfa36b911bde8c9b1962c110ac">RotationMatrixCalc::rotation_matrix_conv</a></div><div class="ttdeci">vector&lt; vector&lt; double &gt; &gt; rotation_matrix_conv</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00473">MatrixCalc.hpp:473</a></div></div>
+<div class="ttc" id="aMatrixCalc_8hpp_html_a031b34ab1dee47da0d616042a95483afadb62b28d843a4dd5657bcc71c1f868a8"><div class="ttname"><a href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483afadb62b28d843a4dd5657bcc71c1f868a8">SORT_DECREASING_ARRAY</a></div><div class="ttdeci">@ SORT_DECREASING_ARRAY</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00058">MatrixCalc.hpp:58</a></div></div>
+<div class="ttc" id="aDataSet_8hpp_html_a48c0e9af3de44d063a435d6e53401134"><div class="ttname"><a href="DataSet_8hpp.html#a48c0e9af3de44d063a435d6e53401134">abs</a></div><div class="ttdeci">double abs(const C &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="DataSet_8hpp_source.html#l00402">DataSet.hpp:402</a></div></div>
+<div class="ttc" id="aclassSphericalCoordinate_html_a1ccfd50a9856eab054c8e81f61c20ed5"><div class="ttname"><a href="classSphericalCoordinate.html#a1ccfd50a9856eab054c8e81f61c20ed5">SphericalCoordinate::transform</a></div><div class="ttdeci">vector&lt; double &gt; transform(void)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00647">MatrixCalc.hpp:647</a></div></div>
+<div class="ttc" id="aclassMatrixCalc_html_aa46ab9ff3340255321fa2899c8ea53d5"><div class="ttname"><a href="classMatrixCalc.html#aa46ab9ff3340255321fa2899c8ea53d5">MatrixCalc::matrixProduct</a></div><div class="ttdeci">double matrixProduct(vector&lt; double &gt; const &amp;matrixA, vector&lt; double &gt; const &amp;matrixB)</div><div class="ttdoc">1xn と nx1 行列の積</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00168">MatrixCalc.hpp:168</a></div></div>
+<div class="ttc" id="aclassMatrixCalc_html"><div class="ttname"><a href="classMatrixCalc.html">MatrixCalc</a></div><div class="ttdoc">行列を扱うクラス</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00074">MatrixCalc.hpp:74</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_a9a3fa45fd42c9a133459c4afda77a156"><div class="ttname"><a href="classRotationMatrixCalc.html#a9a3fa45fd42c9a133459c4afda77a156">RotationMatrixCalc::angle_2</a></div><div class="ttdeci">double angle_2</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00464">MatrixCalc.hpp:464</a></div></div>
+<div class="ttc" id="aclassSphericalCoordinate_html_a2d4ebc168df9faf7892322662d9dd699"><div class="ttname"><a href="classSphericalCoordinate.html#a2d4ebc168df9faf7892322662d9dd699">SphericalCoordinate::angle_1</a></div><div class="ttdeci">double angle_1</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00619">MatrixCalc.hpp:619</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_a008002fb592ee1b145aee9d45ba9d9e5"><div class="ttname"><a href="classRotationMatrixCalc.html#a008002fb592ee1b145aee9d45ba9d9e5">RotationMatrixCalc::rotate</a></div><div class="ttdeci">vector&lt; double &gt; rotate(const vector&lt; double &gt; &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00596">MatrixCalc.hpp:596</a></div></div>
+<div class="ttc" id="aclassMatrixCalc_html_ac2a39ae0ae49d0fc64e7da7dccbad5a4"><div class="ttname"><a href="classMatrixCalc.html#ac2a39ae0ae49d0fc64e7da7dccbad5a4">MatrixCalc::plusMatrix</a></div><div class="ttdeci">void plusMatrix(vector&lt; double &gt; const &amp;mA, vector&lt; double &gt; const &amp;mB, vector&lt; double &gt; &amp;plusres)</div><div class="ttdoc">行列の足し算</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00138">MatrixCalc.hpp:138</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_ac362c8f7ac1140235afffd1858950e0c"><div class="ttname"><a href="classRotationMatrixCalc.html#ac362c8f7ac1140235afffd1858950e0c">RotationMatrixCalc::rotation_axis_order</a></div><div class="ttdeci">string rotation_axis_order</div><div class="ttdoc">3 charactor (zyz)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00477">MatrixCalc.hpp:477</a></div></div>
+<div class="ttc" id="aclassMatrixCalc_html_a707c346da8aea150d6ddaf0bb418be86"><div class="ttname"><a href="classMatrixCalc.html#a707c346da8aea150d6ddaf0bb418be86">MatrixCalc::maxMatrix</a></div><div class="ttdeci">double maxMatrix(vector&lt; vector&lt; double &gt;&gt; const &amp;in_matrix, double &amp;max_value, int &amp;maxi, int &amp;maxj)</div><div class="ttdoc">行列の全要素の最大値を返す。</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00356">MatrixCalc.hpp:356</a></div></div>
+<div class="ttc" id="aclassSphericalCoordinate_html"><div class="ttname"><a href="classSphericalCoordinate.html">SphericalCoordinate</a></div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00617">MatrixCalc.hpp:617</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_a90ac282ec258629d4a750bcef0491404"><div class="ttname"><a href="classRotationMatrixCalc.html#a90ac282ec258629d4a750bcef0491404">RotationMatrixCalc::set_rotation_axis</a></div><div class="ttdeci">void set_rotation_axis(const string &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00511">MatrixCalc.hpp:511</a></div></div>
+<div class="ttc" id="aclassSphericalCoordinate_html_a911c4a3dc460f8939e1fe2ceafdc0cd4"><div class="ttname"><a href="classSphericalCoordinate.html#a911c4a3dc460f8939e1fe2ceafdc0cd4">SphericalCoordinate::SphericalCoordinate</a></div><div class="ttdeci">SphericalCoordinate(void)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00635">MatrixCalc.hpp:635</a></div></div>
+<div class="ttc" id="aclassSphericalCoordinate_html_ac23a26e7d770be0254d42b16ed2f6d31"><div class="ttname"><a href="classSphericalCoordinate.html#ac23a26e7d770be0254d42b16ed2f6d31">SphericalCoordinate::mc</a></div><div class="ttdeci">MatrixCalc mc</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00629">MatrixCalc.hpp:629</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_a40c1feb28f50192114182cf93b5f6d28"><div class="ttname"><a href="classRotationMatrixCalc.html#a40c1feb28f50192114182cf93b5f6d28">RotationMatrixCalc::vec_rotate</a></div><div class="ttdeci">vector&lt; double &gt; vec_rotate(const vector&lt; double &gt; &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00600">MatrixCalc.hpp:600</a></div></div>
+<div class="ttc" id="aclassMatrixCalc_html_a3df3521937c279d1b4a2f9ba6b6cf44c"><div class="ttname"><a href="classMatrixCalc.html#a3df3521937c279d1b4a2f9ba6b6cf44c">MatrixCalc::matrixScalarDiv</a></div><div class="ttdeci">void matrixScalarDiv(double const &amp;scalar, vector&lt; double &gt; const &amp;in_matrix, vector&lt; double &gt; &amp;out_matrix)</div><div class="ttdoc">行列の全要素を1/x倍し、係数をくくりだす。</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00339">MatrixCalc.hpp:339</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_a1293f61d74b31e5678974840f853355b"><div class="ttname"><a href="classRotationMatrixCalc.html#a1293f61d74b31e5678974840f853355b">RotationMatrixCalc::angle_3</a></div><div class="ttdeci">double angle_3</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00465">MatrixCalc.hpp:465</a></div></div>
+<div class="ttc" id="aclassSphericalCoordinate_html_ab4a2450b1649f74b9e262f38cb687396"><div class="ttname"><a href="classSphericalCoordinate.html#ab4a2450b1649f74b9e262f38cb687396">SphericalCoordinate::radius</a></div><div class="ttdeci">double radius</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00618">MatrixCalc.hpp:618</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_a9b67b1c0d75c9185f98e076cde4da495"><div class="ttname"><a href="classRotationMatrixCalc.html#a9b67b1c0d75c9185f98e076cde4da495">RotationMatrixCalc::set_rotation_matrix</a></div><div class="ttdeci">void set_rotation_matrix(void)</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00591">MatrixCalc.hpp:591</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_a32ade175fb67af987f57e2c7a24b4c4a"><div class="ttname"><a href="classRotationMatrixCalc.html#a32ade175fb67af987f57e2c7a24b4c4a">RotationMatrixCalc::rotation_axis_order_2</a></div><div class="ttdeci">string rotation_axis_order_2</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00467">MatrixCalc.hpp:467</a></div></div>
+<div class="ttc" id="aclassRotationMatrixCalc_html_a733969684c16e3fddf9ce1adfad6c7ac"><div class="ttname"><a href="classRotationMatrixCalc.html#a733969684c16e3fddf9ce1adfad6c7ac">RotationMatrixCalc::rotation_axis_order_1</a></div><div class="ttdeci">string rotation_axis_order_1</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00466">MatrixCalc.hpp:466</a></div></div>
+<div class="ttc" id="aMatrixCalc_8hpp_html_a031b34ab1dee47da0d616042a95483af"><div class="ttname"><a href="MatrixCalc_8hpp.html#a031b34ab1dee47da0d616042a95483af">SortMode</a></div><div class="ttdeci">SortMode</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCalc_8hpp_source.html#l00056">MatrixCalc.hpp:56</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_561701c8e79d5dfd48e3536aae5218c5.html">hpp</a></li><li class="navelem"><a class="el" href="dir_517d5ff5edace05c51a9df57ddf9d4ed.html">MyLibrary</a></li><li class="navelem"><a class="el" href="MatrixCalc_8hpp.html">MatrixCalc.hpp</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wextra -Ofast -flto -lm -fopenmp   CMakeFiles/main.dir/src/cpp/main.cpp.o  -o ../bin/main 

@@ -1,0 +1,143 @@
+\hypertarget{main_8cpp}{}\doxysection{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/cpp/main.cpp ファイル}
+\label{main_8cpp}\index{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/MultiParticleMethod/src/cpp/main.cpp@{/home/hhhhhhhhhhhhhhhhhh/kyutech/research/MultiParticleMethod/src/cpp/main.cpp}}
+
+
+main関数があるファイル、エラー処理しか行わない  
+
+
+{\ttfamily \#include \char`\"{}Library\+\_\+header.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Color.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Definition\+Of\+Situation.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}csv.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Multi\+Particle.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Initial\+Conditions.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Base\+Calc.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Virtual\+Particle\+Calc.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Thickness\+Calc.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Force\+Calc.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Get\+New\+Coordinate.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Console.\+hpp\char`\"{}}\newline
+main.\+cpp の依存先関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{型定義}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \mbox{\hyperlink{main_8cpp_a76e2836e241b3572082da1229bc53021}{M\+A\+I\+N\+\_\+\+E\+R\+R\+O\+R\+\_\+\+F\+U\+NC}}) ()
+\end{DoxyCompactItemize}
+\doxysubsection*{関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_a2950c0a5abdda61ef9ede28dbb5c636f}{my\+Name\+Is}} ()
+\begin{DoxyCompactList}\small\item\em report \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_ae54f2790e74717abf0c2bb5e33425623}{arg\+Error}} ()
+\item 
+void \mbox{\hyperlink{main_8cpp_a300ecc2c01a20c36e0ffdf631d8800d7}{unknown\+Error}} ()
+\item 
+void \mbox{\hyperlink{main_8cpp_a2f8504040f11e6e49acb95020f477ed5}{csv\+Error}} ()
+\item 
+void \mbox{\hyperlink{main_8cpp_a60437786578c4b20bba44753812be146}{calc\+Func}} (int const  \&i, int const  \&j, int const  \&k)
+\begin{DoxyCompactList}\small\item\em 引数がない or 引数が2つ の実行の場合に呼び出される \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\doxysubsection*{変数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{SimpleTensile_8cpp_a76e2836e241b3572082da1229bc53021}{M\+A\+I\+N\+\_\+\+E\+R\+R\+O\+R\+\_\+\+F\+U\+NC}} \mbox{\hyperlink{main_8cpp_a33240a2de4e6166c193502e55556c33a}{main\+\_\+error\+\_\+func}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+main関数があるファイル、エラー処理しか行わない 
+
+///////////////////////////////////////////////////////////////////////////////
+
+コマンドライン引数次第でエラーが出たり処理が変わったりするらしい。普段はint 1が入るのみかな？
+
+/////////////////////////////////////////////////////////////////////////////// 
+
+\doxysubsection{型定義詳解}
+\mbox{\Hypertarget{main_8cpp_a76e2836e241b3572082da1229bc53021}\label{main_8cpp_a76e2836e241b3572082da1229bc53021}} 
+\index{main.cpp@{main.cpp}!MAIN\_ERROR\_FUNC@{MAIN\_ERROR\_FUNC}}
+\index{MAIN\_ERROR\_FUNC@{MAIN\_ERROR\_FUNC}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{MAIN\_ERROR\_FUNC}{MAIN\_ERROR\_FUNC}}
+{\footnotesize\ttfamily typedef void($\ast$ M\+A\+I\+N\+\_\+\+E\+R\+R\+O\+R\+\_\+\+F\+U\+NC) ()}
+
+
+
+ main.\+cpp の 44 行目に定義があります。
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{main_8cpp_ae54f2790e74717abf0c2bb5e33425623}\label{main_8cpp_ae54f2790e74717abf0c2bb5e33425623}} 
+\index{main.cpp@{main.cpp}!argError@{argError}}
+\index{argError@{argError}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{argError()}{argError()}}
+{\footnotesize\ttfamily void arg\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ main.\+cpp の 166 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{166 \{ cout << \textcolor{stringliteral}{"Execution argument error."} << endl; \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8cpp_a60437786578c4b20bba44753812be146}\label{main_8cpp_a60437786578c4b20bba44753812be146}} 
+\index{main.cpp@{main.cpp}!calcFunc@{calcFunc}}
+\index{calcFunc@{calcFunc}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{calcFunc()}{calcFunc()}}
+{\footnotesize\ttfamily void calc\+Func (\begin{DoxyParamCaption}\item[{int const \&}]{i,  }\item[{int const \&}]{j,  }\item[{int const \&}]{k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+引数がない or 引数が2つ の実行の場合に呼び出される 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em int} & i：i-\/\+Position \\
+\hline
+\mbox{\texttt{ in}}  & {\em int} & j：j-\/\+Position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{}
+
+\end{DoxyParagraph}
+\begin{DoxyNote}{覚え書き}
+
+\end{DoxyNote}
+Multi\+Particleクラスを引数(i, j)で作成 Multi\+Particleメソッドのsimulatemothodを実行 
+
+ main.\+cpp の 182 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{182                                                                \{}
+\DoxyCodeLine{183     \mbox{\hyperlink{classMultiParticle}{MultiParticle}} mp(i, j, k);}
+\DoxyCodeLine{184     \textcolor{comment}{/*}}
+\DoxyCodeLine{185 \textcolor{comment}{    MPI\_Comm\_rank( MPI\_COMM\_WORLD, \&st.rank );}}
+\DoxyCodeLine{186 \textcolor{comment}{    MPI\_Comm\_size( MPI\_COMM\_WORLD, \&st.proc );}}
+\DoxyCodeLine{187 \textcolor{comment}{}}
+\DoxyCodeLine{188 \textcolor{comment}{    if( st.rank == 0 )\{}}
+\DoxyCodeLine{189 \textcolor{comment}{            ( *main\_error\_func[ 0 ] )();}}
+\DoxyCodeLine{190 \textcolor{comment}{            cout    << "procs: "}}
+\DoxyCodeLine{191 \textcolor{comment}{                            << st.proc}}
+\DoxyCodeLine{192 \textcolor{comment}{                            << " i:"}}
+\DoxyCodeLine{193 \textcolor{comment}{                            << st.param-\/>m\_iNum}}
+\DoxyCodeLine{194 \textcolor{comment}{                            << " j:"}}
+\DoxyCodeLine{195 \textcolor{comment}{                            << st.param-\/>m\_jNum}}
+\DoxyCodeLine{196 \textcolor{comment}{                            << endl;}}
+\DoxyCodeLine{197 \textcolor{comment}{    \}}}
+\DoxyCodeLine{198 \textcolor{comment}{  */}}
+\DoxyCodeLine{199     mp.simulateMethod();}
+\DoxyCodeLine{200 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:

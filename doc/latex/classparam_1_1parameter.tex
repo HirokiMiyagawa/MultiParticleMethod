@@ -1,0 +1,457 @@
+\hypertarget{classparam_1_1parameter}{}\doxysection{param\+::parameter クラス}
+\label{classparam_1_1parameter}\index{param::parameter@{param::parameter}}
+
+
+{\ttfamily \#include $<$Input\+Param.\+hpp$>$}
+
+
+
+param\+::parameter 連携図
+% FIG 0
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classparam_1_1parameter_a811db3e107026b441ee970e2da581dab}{parameter}} (const std\+::string filename)
+\item 
+\mbox{\hyperlink{classparam_1_1parameter_ab01357f66b666341a2db9e382535f4b3}{operator bool}} () const
+\item 
+void \mbox{\hyperlink{classparam_1_1parameter_a2264f026909350dd4ad9f411550df419}{loadfromfile}} (const std\+::string filename)
+\item 
+void \mbox{\hyperlink{classparam_1_1parameter_a359d6f1e25ab2274f3eb986d4c39cb51}{readfromstream}} (std\+::istream \&is)
+\item 
+void \mbox{\hyperlink{classparam_1_1parameter_a52e070eeaadc130628006f231b0c4dba}{check\+\_\+key}} (std\+::string \&key) const
+\item 
+{\footnotesize template$<$class T $>$ }\\T \mbox{\hyperlink{classparam_1_1parameter_a6dc9159a9e793a34002eadcbe29af9f8}{get}} (std\+::string)
+\item 
+{\footnotesize template$<$class T $>$ }\\T \mbox{\hyperlink{classparam_1_1parameter_a9bcf6bceeac054d7c0810d60e7edcbf8}{get}} (std\+::string, T value)
+\item 
+template$<$$>$ bool \mbox{\hyperlink{classparam_1_1parameter_a55e534dacdb092249eda507b380c740f}{get}} (std\+::string key, bool value)
+\item 
+template$<$$>$ bool \mbox{\hyperlink{classparam_1_1parameter_aead00bf807ef7ad45d2b6922dc747a1c}{get}} (std\+::string key)
+\item 
+template$<$$>$ int \mbox{\hyperlink{classparam_1_1parameter_a4a8d1b841995fe9f48f388c6b7a580ec}{get}} (std\+::string key, int value)
+\item 
+template$<$$>$ double \mbox{\hyperlink{classparam_1_1parameter_ab9d3c4795707d93abcdf2a1ac208c9c1}{get}} (std\+::string key, double value)
+\item 
+template$<$$>$ std\+::string \mbox{\hyperlink{classparam_1_1parameter_a79d607d762d5689e909feedc2d6c8faa}{get}} (std\+::string key, std\+::string value)
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa}{contains}} (std\+::string \&key) const
+\item 
+bool \mbox{\hyperlink{classparam_1_1parameter_ab0eb0c1493c448129530ca720be638ca}{iequals}} (const string \&a, const string \&b)
+\end{DoxyCompactItemize}
+\doxysubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceparam_aa34187ef472a6162b27d884e1a042dff}{ptype}} \mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}
+\item 
+bool \mbox{\hyperlink{classparam_1_1parameter_aece4d986ab1cb9a56415f2948727e20b}{valid}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ Input\+Param.\+hpp の 70 行目に定義があります。
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classparam_1_1parameter_a811db3e107026b441ee970e2da581dab}\label{classparam_1_1parameter_a811db3e107026b441ee970e2da581dab}} 
+\index{param::parameter@{param::parameter}!parameter@{parameter}}
+\index{parameter@{parameter}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{parameter()}{parameter()}}
+{\footnotesize\ttfamily param\+::parameter\+::parameter (\begin{DoxyParamCaption}\item[{const std\+::string}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Input\+Param.\+hpp の 86 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{86                                         : \mbox{\hyperlink{classparam_1_1parameter_aece4d986ab1cb9a56415f2948727e20b}{valid}}(\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{87         \mbox{\hyperlink{classparam_1_1parameter_a2264f026909350dd4ad9f411550df419}{loadfromfile}}(filename);}
+\DoxyCodeLine{88     \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparam_1_1parameter_a811db3e107026b441ee970e2da581dab_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classparam_1_1parameter_a52e070eeaadc130628006f231b0c4dba}\label{classparam_1_1parameter_a52e070eeaadc130628006f231b0c4dba}} 
+\index{param::parameter@{param::parameter}!check\_key@{check\_key}}
+\index{check\_key@{check\_key}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{check\_key()}{check\_key()}}
+{\footnotesize\ttfamily void param\+::parameter\+::check\+\_\+key (\begin{DoxyParamCaption}\item[{std\+::string \&}]{key }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Input\+Param.\+hpp の 116 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{116                                          \{}
+\DoxyCodeLine{117         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa}{contains}}(key)) \{}
+\DoxyCodeLine{118             std::cerr << \textcolor{stringliteral}{"No such key: "} << key << std::endl;}
+\DoxyCodeLine{119             std::abort();}
+\DoxyCodeLine{120         \}}
+\DoxyCodeLine{121     \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparam_1_1parameter_a52e070eeaadc130628006f231b0c4dba_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparam_1_1parameter_a52e070eeaadc130628006f231b0c4dba_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa}\label{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa}} 
+\index{param::parameter@{param::parameter}!contains@{contains}}
+\index{contains@{contains}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily bool param\+::parameter\+::contains (\begin{DoxyParamCaption}\item[{std\+::string \&}]{key }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+ Input\+Param.\+hpp の 75 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{75                                         \{}
+\DoxyCodeLine{76         \textcolor{keywordflow}{return} \mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}.find(key) != \mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}.end();}
+\DoxyCodeLine{77     \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classparam_1_1parameter_aead00bf807ef7ad45d2b6922dc747a1c}\label{classparam_1_1parameter_aead00bf807ef7ad45d2b6922dc747a1c}} 
+\index{param::parameter@{param::parameter}!get@{get}}
+\index{get@{get}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+std\+::string param\+::parameter\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{key }\end{DoxyParamCaption})}
+
+
+
+ Input\+Param.\+hpp の 147 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{147                                  \{}
+\DoxyCodeLine{148     \mbox{\hyperlink{classparam_1_1parameter_a52e070eeaadc130628006f231b0c4dba}{check\_key}}(key);}
+\DoxyCodeLine{149     \textcolor{keywordflow}{return} get<bool>(key, \textcolor{keyword}{false});}
+\DoxyCodeLine{150 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparam_1_1parameter_aead00bf807ef7ad45d2b6922dc747a1c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classparam_1_1parameter_a55e534dacdb092249eda507b380c740f}\label{classparam_1_1parameter_a55e534dacdb092249eda507b380c740f}} 
+\index{param::parameter@{param::parameter}!get@{get}}
+\index{get@{get}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+bool param\+::parameter\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{key,  }\item[{bool}]{value }\end{DoxyParamCaption})}
+
+
+
+ Input\+Param.\+hpp の 133 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{133                                                    \{}
+\DoxyCodeLine{134     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa}{contains}}(key)) \{}
+\DoxyCodeLine{135         \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{136     \}}
+\DoxyCodeLine{137     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classparam_1_1parameter_ab0eb0c1493c448129530ca720be638ca}{iequals}}(\mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}[key], \textcolor{stringliteral}{"yes"}) || \mbox{\hyperlink{classparam_1_1parameter_ab0eb0c1493c448129530ca720be638ca}{iequals}}(\mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}[key], \textcolor{stringliteral}{"true"}) ||}
+\DoxyCodeLine{138         \mbox{\hyperlink{classparam_1_1parameter_ab0eb0c1493c448129530ca720be638ca}{iequals}}(\mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}[key], \textcolor{stringliteral}{"1"})) \{}
+\DoxyCodeLine{139         \textcolor{comment}{// (std::stoi(params[key]) == 1)}}
+\DoxyCodeLine{140         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{141     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{142         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{143     \}}
+\DoxyCodeLine{144 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+% FIG 1
+\mbox{\Hypertarget{classparam_1_1parameter_ab9d3c4795707d93abcdf2a1ac208c9c1}\label{classparam_1_1parameter_ab9d3c4795707d93abcdf2a1ac208c9c1}} 
+\index{param::parameter@{param::parameter}!get@{get}}
+\index{get@{get}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+double param\+::parameter\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{key,  }\item[{double}]{value }\end{DoxyParamCaption})}
+
+
+
+ Input\+Param.\+hpp の 167 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{167                                                  \{}
+\DoxyCodeLine{168     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa}{contains}}(key)) \{}
+\DoxyCodeLine{169         \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{170     \}}
+\DoxyCodeLine{171     \textcolor{keywordflow}{return} std::stod(\mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}[key]);}
+\DoxyCodeLine{172 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparam_1_1parameter_ab9d3c4795707d93abcdf2a1ac208c9c1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classparam_1_1parameter_a4a8d1b841995fe9f48f388c6b7a580ec}\label{classparam_1_1parameter_a4a8d1b841995fe9f48f388c6b7a580ec}} 
+\index{param::parameter@{param::parameter}!get@{get}}
+\index{get@{get}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+int param\+::parameter\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{key,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+ Input\+Param.\+hpp の 153 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{153                                            \{}
+\DoxyCodeLine{154     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa}{contains}}(key)) \{}
+\DoxyCodeLine{155         \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{156     \}}
+\DoxyCodeLine{157     \textcolor{keywordflow}{return} std::stoi(\mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}[key]);}
+\DoxyCodeLine{158 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparam_1_1parameter_a4a8d1b841995fe9f48f388c6b7a580ec_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classparam_1_1parameter_a79d607d762d5689e909feedc2d6c8faa}\label{classparam_1_1parameter_a79d607d762d5689e909feedc2d6c8faa}} 
+\index{param::parameter@{param::parameter}!get@{get}}
+\index{get@{get}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+std\+::string param\+::parameter\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{key,  }\item[{std\+::string}]{value }\end{DoxyParamCaption})}
+
+
+
+ Input\+Param.\+hpp の 181 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{181                                                        \{}
+\DoxyCodeLine{182     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classparam_1_1parameter_aba87a06a29b36512ec6f50662e55bafa}{contains}}(key)) \{}
+\DoxyCodeLine{183         \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{184     \}}
+\DoxyCodeLine{185     \textcolor{keywordflow}{return} \mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}[key];}
+\DoxyCodeLine{186 \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparam_1_1parameter_a79d607d762d5689e909feedc2d6c8faa_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classparam_1_1parameter_a6dc9159a9e793a34002eadcbe29af9f8}\label{classparam_1_1parameter_a6dc9159a9e793a34002eadcbe29af9f8}} 
+\index{param::parameter@{param::parameter}!get@{get}}
+\index{get@{get}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T param\+::parameter\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Input\+Param.\+hpp の 124 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{124 \{\}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 2
+\mbox{\Hypertarget{classparam_1_1parameter_a9bcf6bceeac054d7c0810d60e7edcbf8}\label{classparam_1_1parameter_a9bcf6bceeac054d7c0810d60e7edcbf8}} 
+\index{param::parameter@{param::parameter}!get@{get}}
+\index{get@{get}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T param\+::parameter\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{,  }\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Input\+Param.\+hpp の 127 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{127                               \{}
+\DoxyCodeLine{128         \textcolor{keywordflow}{return} value;}
+\DoxyCodeLine{129     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classparam_1_1parameter_ab0eb0c1493c448129530ca720be638ca}\label{classparam_1_1parameter_ab0eb0c1493c448129530ca720be638ca}} 
+\index{param::parameter@{param::parameter}!iequals@{iequals}}
+\index{iequals@{iequals}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{iequals()}{iequals()}}
+{\footnotesize\ttfamily bool param\+::parameter\+::iequals (\begin{DoxyParamCaption}\item[{const string \&}]{a,  }\item[{const string \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+ Input\+Param.\+hpp の 79 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{79                                                    \{}
+\DoxyCodeLine{80         \textcolor{keywordflow}{return} std::equal(}
+\DoxyCodeLine{81             a.begin(), a.end(), b.begin(), b.end(),}
+\DoxyCodeLine{82             [](\textcolor{keywordtype}{char} a, \textcolor{keywordtype}{char} b) \{ return tolower(a) == tolower(b); \});}
+\DoxyCodeLine{83     \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+% FIG 3
+\mbox{\Hypertarget{classparam_1_1parameter_a2264f026909350dd4ad9f411550df419}\label{classparam_1_1parameter_a2264f026909350dd4ad9f411550df419}} 
+\index{param::parameter@{param::parameter}!loadfromfile@{loadfromfile}}
+\index{loadfromfile@{loadfromfile}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{loadfromfile()}{loadfromfile()}}
+{\footnotesize\ttfamily void param\+::parameter\+::loadfromfile (\begin{DoxyParamCaption}\item[{const std\+::string}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Input\+Param.\+hpp の 92 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{92                                                 \{}
+\DoxyCodeLine{93         std::ifstream is(filename);}
+\DoxyCodeLine{94         \textcolor{keywordflow}{if} (is.fail()) \{}
+\DoxyCodeLine{95             std::cerr << \textcolor{stringliteral}{"Could not open file "} << filename << std::endl;}
+\DoxyCodeLine{96             \mbox{\hyperlink{classparam_1_1parameter_aece4d986ab1cb9a56415f2948727e20b}{valid}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{97         \}}
+\DoxyCodeLine{98         \mbox{\hyperlink{classparam_1_1parameter_a359d6f1e25ab2274f3eb986d4c39cb51}{readfromstream}}(is);}
+\DoxyCodeLine{99     \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparam_1_1parameter_a2264f026909350dd4ad9f411550df419_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparam_1_1parameter_a2264f026909350dd4ad9f411550df419_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classparam_1_1parameter_ab01357f66b666341a2db9e382535f4b3}\label{classparam_1_1parameter_ab01357f66b666341a2db9e382535f4b3}} 
+\index{param::parameter@{param::parameter}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily param\+::parameter\+::operator bool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+ Input\+Param.\+hpp の 90 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{90 \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classparam_1_1parameter_aece4d986ab1cb9a56415f2948727e20b}{valid}}; \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classparam_1_1parameter_a359d6f1e25ab2274f3eb986d4c39cb51}\label{classparam_1_1parameter_a359d6f1e25ab2274f3eb986d4c39cb51}} 
+\index{param::parameter@{param::parameter}!readfromstream@{readfromstream}}
+\index{readfromstream@{readfromstream}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{readfromstream()}{readfromstream()}}
+{\footnotesize\ttfamily void param\+::parameter\+::readfromstream (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ Input\+Param.\+hpp の 101 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{101                                         \{}
+\DoxyCodeLine{102         std::string line;}
+\DoxyCodeLine{103         \textcolor{keywordflow}{while} (getline(is, line)) \{}
+\DoxyCodeLine{104             \textcolor{keywordflow}{if} (*(line.end() -\/ 1) == 0x0d) line.pop\_back();}
+\DoxyCodeLine{105             \textcolor{keywordflow}{if} (line.length() > 0 \&\& line[0] == \textcolor{charliteral}{'\#'}) \{}
+\DoxyCodeLine{106                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{107             \}}
+\DoxyCodeLine{108             \textcolor{keywordtype}{size\_t} index = line.find(\textcolor{stringliteral}{"="});}
+\DoxyCodeLine{109             \textcolor{keywordflow}{if} (std::string::npos != index) \{}
+\DoxyCodeLine{110                 std::string key   = line.substr(0, index);}
+\DoxyCodeLine{111                 std::string value = line.substr(index + 1, line.length());}
+\DoxyCodeLine{112                 \mbox{\hyperlink{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}{params}}.insert(ptype::value\_type(key, value));}
+\DoxyCodeLine{113             \}}
+\DoxyCodeLine{114         \}}
+\DoxyCodeLine{115     \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparam_1_1parameter_a359d6f1e25ab2274f3eb986d4c39cb51_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}\label{classparam_1_1parameter_ab3504f7de0e093a278aaff7b04bc704b}} 
+\index{param::parameter@{param::parameter}!params@{params}}
+\index{params@{params}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{params}{params}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceparam_aa34187ef472a6162b27d884e1a042dff}{ptype}} param\+::parameter\+::params\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Input\+Param.\+hpp の 72 行目に定義があります。
+
+\mbox{\Hypertarget{classparam_1_1parameter_aece4d986ab1cb9a56415f2948727e20b}\label{classparam_1_1parameter_aece4d986ab1cb9a56415f2948727e20b}} 
+\index{param::parameter@{param::parameter}!valid@{valid}}
+\index{valid@{valid}!param::parameter@{param::parameter}}
+\doxysubsubsection{\texorpdfstring{valid}{valid}}
+{\footnotesize\ttfamily bool param\+::parameter\+::valid\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ Input\+Param.\+hpp の 73 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+/home/hhhhhhhhhhhhhhhhhh/kyutech/research/\+Multi\+Particle\+Method/src/hpp/\+My\+Library/\mbox{\hyperlink{InputParam_8hpp}{Input\+Param.\+hpp}}\end{DoxyCompactItemize}

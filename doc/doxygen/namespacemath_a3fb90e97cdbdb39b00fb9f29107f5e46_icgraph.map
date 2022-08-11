@@ -1,0 +1,5 @@
+<map id="math::pi" name="math::pi">
+<area shape="rect" id="node1" title="円周率 π" alt="" coords="231,31,307,57"/>
+<area shape="rect" id="node2" href="$namespacemath.html#af3d38f453e4e6ff9e22ba37fe0dc36a3" title="角度をラジアンに変換する" alt="" coords="5,5,183,32"/>
+<area shape="rect" id="node3" href="$namespacemath.html#a47b42e10e4633e4996df2ce02e8ba6ca" title="ラジアンを角度に変換する" alt="" coords="5,56,183,83"/>
+</map>

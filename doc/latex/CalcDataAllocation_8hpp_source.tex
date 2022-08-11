@@ -1,0 +1,323 @@
+\hypertarget{CalcDataAllocation_8hpp_source}{}\doxysection{Calc\+Data\+Allocation.\+hpp}
+\label{CalcDataAllocation_8hpp_source}\index{/home/raptel/workspace/research/MultiParticleMethod/src/hpp/Base/CalcDataAllocation.hpp@{/home/raptel/workspace/research/MultiParticleMethod/src/hpp/Base/CalcDataAllocation.hpp}}
+\mbox{\hyperlink{CalcDataAllocation_8hpp}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00009}00009 \textcolor{comment}{//header}}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00010}00010 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{DataSet_8hpp}{./DataSet.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00012}00012 \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00019}\mbox{\hyperlink{classParticles}{00019}} \textcolor{keyword}{class }\mbox{\hyperlink{classParticles}{Particles}}}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00021}00021 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00023}\mbox{\hyperlink{classParticles_ac5203a8b24eb67712c24750ceec97995}{00023}}     vector<vector<vector<int>>> \mbox{\hyperlink{classParticles_ac5203a8b24eb67712c24750ceec97995}{flag}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00024}\mbox{\hyperlink{classParticles_a81033b7bea657bacf9cf3c0a78dd8fa4}{00024}}     vector<vector<vector<Communication>>> \mbox{\hyperlink{classParticles_a81033b7bea657bacf9cf3c0a78dd8fa4}{commflag}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00026}\mbox{\hyperlink{classParticles_a1377b5ad84922491f09e9df394284aa4}{00026}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_a1377b5ad84922491f09e9df394284aa4}{c}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00028}\mbox{\hyperlink{classParticles_a353c994760728a3dd6eb4efbf2a4ebc4}{00028}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_a353c994760728a3dd6eb4efbf2a4ebc4}{new\_c}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00030}\mbox{\hyperlink{classParticles_a24d839c09fc733040bb42b00e846579e}{00030}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_a24d839c09fc733040bb42b00e846579e}{vc\_Bottom}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00032}\mbox{\hyperlink{classParticles_a9273dd7c369bad02e0562d5388597141}{00032}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_a9273dd7c369bad02e0562d5388597141}{vc\_Top}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00034}\mbox{\hyperlink{classParticles_a022c09eb71a6de67c54d2538cc56e94e}{00034}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_a022c09eb71a6de67c54d2538cc56e94e}{vc\_Right}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00036}\mbox{\hyperlink{classParticles_a514d7ea8eba97fd7ff10048f201b26e4}{00036}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_a514d7ea8eba97fd7ff10048f201b26e4}{vc\_Left}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00039}\mbox{\hyperlink{classParticles_abb0bd9e79cca586cdaecfffef9527ae1}{00039}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_abb0bd9e79cca586cdaecfffef9527ae1}{vc\_tmp}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00041}\mbox{\hyperlink{classParticles_a529dff7c4590266b114035435fcbb426}{00041}}     vector<vector<vector<VirtualParticle>>> \mbox{\hyperlink{classParticles_a529dff7c4590266b114035435fcbb426}{vp}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00044}\mbox{\hyperlink{classParticles_a8c094317ea0c561dd562ea0713483610}{00044}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_a8c094317ea0c561dd562ea0713483610}{mi}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00046}\mbox{\hyperlink{classParticles_ad4707eae65e641a64d5fa9fb673c7850}{00046}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_ad4707eae65e641a64d5fa9fb673c7850}{mj}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00047}\mbox{\hyperlink{classParticles_a7c9b9414dd1db7771f17c24232499650}{00047}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_a7c9b9414dd1db7771f17c24232499650}{mi0}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00048}\mbox{\hyperlink{classParticles_af4a59b95b099db07dc385b2e7e04bb69}{00048}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_af4a59b95b099db07dc385b2e7e04bb69}{mj0}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00050}\mbox{\hyperlink{classParticles_a26b833f319bd527ba03742d82347c643}{00050}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_a26b833f319bd527ba03742d82347c643}{v}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00052}\mbox{\hyperlink{classParticles_acfe4892af7f831c485f217c09579efcd}{00052}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_acfe4892af7f831c485f217c09579efcd}{new\_v}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00054}\mbox{\hyperlink{classParticles_ae774ffc4667416403470d44df363a31b}{00054}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_ae774ffc4667416403470d44df363a31b}{g}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00056}\mbox{\hyperlink{classParticles_aeec9eaa7596ec8a56b85a9d62d98885c}{00056}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_aeec9eaa7596ec8a56b85a9d62d98885c}{g0}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00058}\mbox{\hyperlink{classParticles_a2b43b854e2f0d731cf6ffc58cb7bb4fb}{00058}}     vector<vector<vector<Vector>>> \mbox{\hyperlink{classParticles_a2b43b854e2f0d731cf6ffc58cb7bb4fb}{li}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00060}\mbox{\hyperlink{classParticles_a92d507b33db3d775510b8fd53c777645}{00060}}     vector<vector<vector<Vector>>> \mbox{\hyperlink{classParticles_a92d507b33db3d775510b8fd53c777645}{lj}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00062}\mbox{\hyperlink{classParticles_a65ba878040fee67a4b2320bb027c39f7}{00062}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_a65ba878040fee67a4b2320bb027c39f7}{li0}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00064}\mbox{\hyperlink{classParticles_ace63e82b0c03513160175613f85b8946}{00064}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_ace63e82b0c03513160175613f85b8946}{lj0}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00066}\mbox{\hyperlink{classParticles_a3b4f4481bb0db67c377dc8ee719f6744}{00066}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_a3b4f4481bb0db67c377dc8ee719f6744}{hi}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00068}\mbox{\hyperlink{classParticles_aa19ca0d37365c3d04dc8d7f4b2891bac}{00068}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_aa19ca0d37365c3d04dc8d7f4b2891bac}{hj}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00070}\mbox{\hyperlink{classParticles_a687135810d6e149aedf0eaf02800012f}{00070}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_a687135810d6e149aedf0eaf02800012f}{h\_ave}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00072}\mbox{\hyperlink{classParticles_a981f96a73a1eecb4606e1cdce63034d8}{00072}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_a981f96a73a1eecb4606e1cdce63034d8}{h\_ave3}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00075}\mbox{\hyperlink{classParticles_a688f92b4f2dc10c8f6d62edc80c1c529}{00075}}     vector<vector<vector<Area>>> \mbox{\hyperlink{classParticles_a688f92b4f2dc10c8f6d62edc80c1c529}{S}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00077}\mbox{\hyperlink{classParticles_a84dde25fb3eb719a7ff266d4ba30dcd9}{00077}}     vector<vector<vector<Area>>> \mbox{\hyperlink{classParticles_a84dde25fb3eb719a7ff266d4ba30dcd9}{Si}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00079}\mbox{\hyperlink{classParticles_a70e3078b2c99c00122b8e12739a99e8e}{00079}}     vector<vector<vector<Area>>> \mbox{\hyperlink{classParticles_a70e3078b2c99c00122b8e12739a99e8e}{Sj}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00081}\mbox{\hyperlink{classParticles_a32261052104cac29561fffe9b68be6cc}{00081}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_a32261052104cac29561fffe9b68be6cc}{S0}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00082}\mbox{\hyperlink{classParticles_a0ffad42c6d2339c202ec8e97fe36be43}{00082}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_a0ffad42c6d2339c202ec8e97fe36be43}{Si0}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00083}\mbox{\hyperlink{classParticles_aabecf25eeb69c3f615ddbcd04e55e2e6}{00083}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_aabecf25eeb69c3f615ddbcd04e55e2e6}{Sj0}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00085}\mbox{\hyperlink{classParticles_aef95cfbdefce6ae15e2d74f207de8d59}{00085}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_aef95cfbdefce6ae15e2d74f207de8d59}{Fti}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00086}\mbox{\hyperlink{classParticles_afcad122d0f4c29af13da12d9481688a4}{00086}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_afcad122d0f4c29af13da12d9481688a4}{Ftj}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00089}\mbox{\hyperlink{classParticles_a01472136090863ccd31bd5e53ac8d219}{00089}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_a01472136090863ccd31bd5e53ac8d219}{f}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00092}\mbox{\hyperlink{classParticles_a21b2b164195c3a3f366b54ba0b6796ab}{00092}}     vector<vector<vector<Quarter>>> \mbox{\hyperlink{classParticles_a21b2b164195c3a3f366b54ba0b6796ab}{beta}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00094}\mbox{\hyperlink{classParticles_ad122c6f8801655990cb2bd5d9217588b}{00094}}     vector<vector<vector<Quarter>>> \mbox{\hyperlink{classParticles_ad122c6f8801655990cb2bd5d9217588b}{beta0}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00096}\mbox{\hyperlink{classParticles_a88adfe59af09bd20e5c5338c6f169797}{00096}}     vector<vector<vector<Quarter>>> \mbox{\hyperlink{classParticles_a88adfe59af09bd20e5c5338c6f169797}{gamma}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00098}\mbox{\hyperlink{classParticles_aef997402fb077893a841f01a4e22c72b}{00098}}     vector<vector<vector<Quarter>>> \mbox{\hyperlink{classParticles_aef997402fb077893a841f01a4e22c72b}{Fsi}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00100}\mbox{\hyperlink{classParticles_adee189cecb6a17b8aac1525697c46d76}{00100}}     vector<vector<vector<Quarter>>> \mbox{\hyperlink{classParticles_adee189cecb6a17b8aac1525697c46d76}{Fsj}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00103}\mbox{\hyperlink{classParticles_a5266808ffeb3457b081db73fde702440}{00103}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_a5266808ffeb3457b081db73fde702440}{epsilonli}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00105}\mbox{\hyperlink{classParticles_abcc75546f2683677e64dcb3c547caf0b}{00105}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_abcc75546f2683677e64dcb3c547caf0b}{epsilonlj}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00107}\mbox{\hyperlink{classParticles_a21b6c3eb7be1f1e1ba6fe18fa04d19a0}{00107}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_a21b6c3eb7be1f1e1ba6fe18fa04d19a0}{epsilongi}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00108}\mbox{\hyperlink{classParticles_ac049480821fc175d116e94c0a41f1832}{00108}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_ac049480821fc175d116e94c0a41f1832}{epsilongj}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00109}00109 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00111}\mbox{\hyperlink{classParticles_af5fe7fc555037848d985bc9b2b736e5d}{00111}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_af5fe7fc555037848d985bc9b2b736e5d}{Ii}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00113}\mbox{\hyperlink{classParticles_aae90775d6978af76b5632dd39ab32b05}{00113}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_aae90775d6978af76b5632dd39ab32b05}{Ij}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00115}\mbox{\hyperlink{classParticles_ab0aa32ced59ada8d587d70243307449a}{00115}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_ab0aa32ced59ada8d587d70243307449a}{alphai}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00117}\mbox{\hyperlink{classParticles_afb4db2cf34f0dafa02f9efde63259d7e}{00117}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_afb4db2cf34f0dafa02f9efde63259d7e}{alphaj}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00120}\mbox{\hyperlink{classParticles_a62280e44e6cb6a153f7885a6a4d0d6fd}{00120}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_a62280e44e6cb6a153f7885a6a4d0d6fd}{etai}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00122}\mbox{\hyperlink{classParticles_aba89291eeaa16985241e5d9893cecacb}{00122}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_aba89291eeaa16985241e5d9893cecacb}{etaj}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00124}\mbox{\hyperlink{classParticles_ad20a6cc6f43fcc2cc43987f539f07a31}{00124}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_ad20a6cc6f43fcc2cc43987f539f07a31}{etai0}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00126}\mbox{\hyperlink{classParticles_a849990165b94718da65401bb6860dc7f}{00126}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_a849990165b94718da65401bb6860dc7f}{etaj0}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00128}\mbox{\hyperlink{classParticles_abdf7eedf5bb4d44c991f54cd41b58bef}{00128}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_abdf7eedf5bb4d44c991f54cd41b58bef}{diff\_etai}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00130}\mbox{\hyperlink{classParticles_aa33de9e5d62de00fd12e523113e84719}{00130}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_aa33de9e5d62de00fd12e523113e84719}{diff\_etaj}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00131}00131 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00133}\mbox{\hyperlink{classParticles_ae5d1b3e78c13e299352a6025b7705b44}{00133}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_ae5d1b3e78c13e299352a6025b7705b44}{Mi}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00135}\mbox{\hyperlink{classParticles_a9c4cdcd127caedd0eb39f3e59af5ea56}{00135}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_a9c4cdcd127caedd0eb39f3e59af5ea56}{Mj}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00138}\mbox{\hyperlink{classParticles_a3e3c430d6aee6f98fbbf43bd32e20aae}{00138}}     vector<vector<vector<PreDirection>>> \mbox{\hyperlink{classParticles_a3e3c430d6aee6f98fbbf43bd32e20aae}{Fb}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00140}\mbox{\hyperlink{classParticles_ac29b6a59a0b6cfcb2747e2cfa3713bf5}{00140}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_ac29b6a59a0b6cfcb2747e2cfa3713bf5}{pressure}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00142}\mbox{\hyperlink{classParticles_a98ceb15b0eb9270de568d54b6e5850b4}{00142}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_a98ceb15b0eb9270de568d54b6e5850b4}{Fa}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00144}\mbox{\hyperlink{classParticles_a1926761b0a83028de33d32d147ff8684}{00144}}     vector<vector<vector<C>>> \mbox{\hyperlink{classParticles_a1926761b0a83028de33d32d147ff8684}{disturbance}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00146}\mbox{\hyperlink{classParticles_a480dd10471160a874bf0c908cae51cb7}{00146}}     vector<vector<vector<double>>> \mbox{\hyperlink{classParticles_a480dd10471160a874bf0c908cae51cb7}{Fd}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00148}\mbox{\hyperlink{classParticles_a9c5d8e9eaba57df526b84a19dea55d5e}{00148}}     vector<vector<vector<Direction>>> \mbox{\hyperlink{classParticles_a9c5d8e9eaba57df526b84a19dea55d5e}{F}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00149}00149 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00151}\mbox{\hyperlink{classParticles_a3d841b440ecd89ac7d49f8b2553754af}{00151}}     vector<vector<vector<OuterMostParameter>>> \mbox{\hyperlink{classParticles_a3d841b440ecd89ac7d49f8b2553754af}{omp}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00153}\mbox{\hyperlink{classParticles_afa87f084488a65522143f49d1a46576b}{00153}}     \mbox{\hyperlink{structTmp}{Tmp}} \mbox{\hyperlink{classParticles_afa87f084488a65522143f49d1a46576b}{tmp}};}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00154}00154 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00155}\mbox{\hyperlink{classParticles_a0ed6ae582ef2c3274e9290619d409ea0}{00155}}     \mbox{\hyperlink{classParticles_a0ed6ae582ef2c3274e9290619d409ea0}{Particles}}(\textcolor{keywordtype}{int} iNum, \textcolor{keywordtype}{int} jNum, \textcolor{keywordtype}{int} kNum)}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00156}00156     \{}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00157}00157         \mbox{\hyperlink{classParticles_ac5203a8b24eb67712c24750ceec97995}{flag}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00158}00158         \mbox{\hyperlink{classParticles_a81033b7bea657bacf9cf3c0a78dd8fa4}{commflag}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00159}00159         \textcolor{comment}{// C型のkNum個の配列のポインタを格納}}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00160}00160         \mbox{\hyperlink{classParticles_a1377b5ad84922491f09e9df394284aa4}{c}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00161}00161         \mbox{\hyperlink{classParticles_a353c994760728a3dd6eb4efbf2a4ebc4}{new\_c}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00162}00162         \mbox{\hyperlink{classParticles_a514d7ea8eba97fd7ff10048f201b26e4}{vc\_Left}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00163}00163         \mbox{\hyperlink{classParticles_a022c09eb71a6de67c54d2538cc56e94e}{vc\_Right}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00164}00164         \mbox{\hyperlink{classParticles_a9273dd7c369bad02e0562d5388597141}{vc\_Top}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00165}00165         \mbox{\hyperlink{classParticles_a24d839c09fc733040bb42b00e846579e}{vc\_Bottom}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00166}00166         \mbox{\hyperlink{classParticles_abb0bd9e79cca586cdaecfffef9527ae1}{vc\_tmp}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00167}00167         \mbox{\hyperlink{classParticles_a529dff7c4590266b114035435fcbb426}{vp}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00168}00168         \mbox{\hyperlink{classParticles_a8c094317ea0c561dd562ea0713483610}{mi}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00169}00169         \mbox{\hyperlink{classParticles_ad4707eae65e641a64d5fa9fb673c7850}{mj}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00170}00170         \mbox{\hyperlink{classParticles_a7c9b9414dd1db7771f17c24232499650}{mi0}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00171}00171         \mbox{\hyperlink{classParticles_af4a59b95b099db07dc385b2e7e04bb69}{mj0}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00172}00172         \mbox{\hyperlink{classParticles_a26b833f319bd527ba03742d82347c643}{v}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00173}00173         \mbox{\hyperlink{classParticles_acfe4892af7f831c485f217c09579efcd}{new\_v}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00174}00174         \mbox{\hyperlink{classParticles_ae774ffc4667416403470d44df363a31b}{g}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00175}00175         \mbox{\hyperlink{classParticles_aeec9eaa7596ec8a56b85a9d62d98885c}{g0}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00176}00176         \mbox{\hyperlink{classParticles_a2b43b854e2f0d731cf6ffc58cb7bb4fb}{li}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00177}00177         \mbox{\hyperlink{classParticles_a92d507b33db3d775510b8fd53c777645}{lj}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00178}00178         \mbox{\hyperlink{classParticles_a65ba878040fee67a4b2320bb027c39f7}{li0}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00179}00179         \mbox{\hyperlink{classParticles_ace63e82b0c03513160175613f85b8946}{lj0}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00180}00180         \mbox{\hyperlink{classParticles_a3b4f4481bb0db67c377dc8ee719f6744}{hi}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00181}00181         \mbox{\hyperlink{classParticles_aa19ca0d37365c3d04dc8d7f4b2891bac}{hj}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00182}00182         \mbox{\hyperlink{classParticles_a687135810d6e149aedf0eaf02800012f}{h\_ave}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00183}00183         \mbox{\hyperlink{classParticles_a981f96a73a1eecb4606e1cdce63034d8}{h\_ave3}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00185}00185         \mbox{\hyperlink{classParticles_a688f92b4f2dc10c8f6d62edc80c1c529}{S}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00186}00186         \mbox{\hyperlink{classParticles_a84dde25fb3eb719a7ff266d4ba30dcd9}{Si}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00187}00187         \mbox{\hyperlink{classParticles_a70e3078b2c99c00122b8e12739a99e8e}{Sj}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00188}00188         \mbox{\hyperlink{classParticles_a32261052104cac29561fffe9b68be6cc}{S0}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00189}00189         \mbox{\hyperlink{classParticles_a0ffad42c6d2339c202ec8e97fe36be43}{Si0}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00190}00190         \mbox{\hyperlink{classParticles_aabecf25eeb69c3f615ddbcd04e55e2e6}{Sj0}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00191}00191 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00192}00192         \mbox{\hyperlink{classParticles_aef95cfbdefce6ae15e2d74f207de8d59}{Fti}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00193}00193         \mbox{\hyperlink{classParticles_afcad122d0f4c29af13da12d9481688a4}{Ftj}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00194}00194 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00195}00195         \mbox{\hyperlink{classParticles_a01472136090863ccd31bd5e53ac8d219}{f}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00196}00196 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00197}00197         \mbox{\hyperlink{classParticles_a21b2b164195c3a3f366b54ba0b6796ab}{beta}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00198}00198         \mbox{\hyperlink{classParticles_ad122c6f8801655990cb2bd5d9217588b}{beta0}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00199}00199         \mbox{\hyperlink{classParticles_a88adfe59af09bd20e5c5338c6f169797}{gamma}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00200}00200         \mbox{\hyperlink{classParticles_aef997402fb077893a841f01a4e22c72b}{Fsi}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00201}00201         \mbox{\hyperlink{classParticles_adee189cecb6a17b8aac1525697c46d76}{Fsj}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00202}00202         \mbox{\hyperlink{classParticles_a5266808ffeb3457b081db73fde702440}{epsilonli}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00203}00203         \mbox{\hyperlink{classParticles_abcc75546f2683677e64dcb3c547caf0b}{epsilonlj}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00204}00204         \mbox{\hyperlink{classParticles_a21b6c3eb7be1f1e1ba6fe18fa04d19a0}{epsilongi}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00205}00205         \mbox{\hyperlink{classParticles_ac049480821fc175d116e94c0a41f1832}{epsilongj}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00206}00206         \mbox{\hyperlink{classParticles_af5fe7fc555037848d985bc9b2b736e5d}{Ii}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00207}00207         \mbox{\hyperlink{classParticles_aae90775d6978af76b5632dd39ab32b05}{Ij}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00208}00208         \mbox{\hyperlink{classParticles_ab0aa32ced59ada8d587d70243307449a}{alphai}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00209}00209         \mbox{\hyperlink{classParticles_afb4db2cf34f0dafa02f9efde63259d7e}{alphaj}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00210}00210 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00211}00211         \mbox{\hyperlink{classParticles_a62280e44e6cb6a153f7885a6a4d0d6fd}{etai}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00212}00212         \mbox{\hyperlink{classParticles_aba89291eeaa16985241e5d9893cecacb}{etaj}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00213}00213         \mbox{\hyperlink{classParticles_ad20a6cc6f43fcc2cc43987f539f07a31}{etai0}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00214}00214         \mbox{\hyperlink{classParticles_a849990165b94718da65401bb6860dc7f}{etaj0}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00215}00215         \mbox{\hyperlink{classParticles_abdf7eedf5bb4d44c991f54cd41b58bef}{diff\_etai}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00216}00216         \mbox{\hyperlink{classParticles_aa33de9e5d62de00fd12e523113e84719}{diff\_etaj}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00217}00217 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00218}00218         \mbox{\hyperlink{classParticles_ae5d1b3e78c13e299352a6025b7705b44}{Mi}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00219}00219         \mbox{\hyperlink{classParticles_a9c4cdcd127caedd0eb39f3e59af5ea56}{Mj}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00220}00220 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00221}00221         \mbox{\hyperlink{classParticles_ac29b6a59a0b6cfcb2747e2cfa3713bf5}{pressure}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00222}00222         \mbox{\hyperlink{classParticles_a1926761b0a83028de33d32d147ff8684}{disturbance}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00223}00223         \mbox{\hyperlink{classParticles_a480dd10471160a874bf0c908cae51cb7}{Fd}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00224}00224         \mbox{\hyperlink{classParticles_a3e3c430d6aee6f98fbbf43bd32e20aae}{Fb}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00225}00225         \mbox{\hyperlink{classParticles_a98ceb15b0eb9270de568d54b6e5850b4}{Fa}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00226}00226         \mbox{\hyperlink{classParticles_a9c5d8e9eaba57df526b84a19dea55d5e}{F}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00227}00227         \mbox{\hyperlink{classParticles_a3d841b440ecd89ac7d49f8b2553754af}{omp}}.resize(iNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00228}00228 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00229}00229         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < iNum; i++)}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00230}00230         \{}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00231}00231             \mbox{\hyperlink{classParticles_ac5203a8b24eb67712c24750ceec97995}{flag}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00232}00232             \mbox{\hyperlink{classParticles_a81033b7bea657bacf9cf3c0a78dd8fa4}{commflag}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00233}00233             \textcolor{comment}{// C型のkNum個の配列のポインタを格納}}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00234}00234             \mbox{\hyperlink{classParticles_a1377b5ad84922491f09e9df394284aa4}{c}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00235}00235             \mbox{\hyperlink{classParticles_a353c994760728a3dd6eb4efbf2a4ebc4}{new\_c}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00236}00236             \mbox{\hyperlink{classParticles_a514d7ea8eba97fd7ff10048f201b26e4}{vc\_Left}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00237}00237             \mbox{\hyperlink{classParticles_a022c09eb71a6de67c54d2538cc56e94e}{vc\_Right}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00238}00238             \mbox{\hyperlink{classParticles_a9273dd7c369bad02e0562d5388597141}{vc\_Top}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00239}00239             \mbox{\hyperlink{classParticles_a24d839c09fc733040bb42b00e846579e}{vc\_Bottom}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00240}00240             \mbox{\hyperlink{classParticles_abb0bd9e79cca586cdaecfffef9527ae1}{vc\_tmp}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00241}00241             \mbox{\hyperlink{classParticles_a529dff7c4590266b114035435fcbb426}{vp}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00242}00242             \mbox{\hyperlink{classParticles_a8c094317ea0c561dd562ea0713483610}{mi}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00243}00243             \mbox{\hyperlink{classParticles_ad4707eae65e641a64d5fa9fb673c7850}{mj}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00244}00244             \mbox{\hyperlink{classParticles_a7c9b9414dd1db7771f17c24232499650}{mi0}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00245}00245             \mbox{\hyperlink{classParticles_af4a59b95b099db07dc385b2e7e04bb69}{mj0}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00246}00246             \mbox{\hyperlink{classParticles_a26b833f319bd527ba03742d82347c643}{v}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00247}00247             \mbox{\hyperlink{classParticles_acfe4892af7f831c485f217c09579efcd}{new\_v}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00248}00248             \mbox{\hyperlink{classParticles_ae774ffc4667416403470d44df363a31b}{g}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00249}00249             \mbox{\hyperlink{classParticles_aeec9eaa7596ec8a56b85a9d62d98885c}{g0}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00250}00250             \mbox{\hyperlink{classParticles_a2b43b854e2f0d731cf6ffc58cb7bb4fb}{li}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00251}00251             \mbox{\hyperlink{classParticles_a92d507b33db3d775510b8fd53c777645}{lj}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00252}00252             \mbox{\hyperlink{classParticles_a65ba878040fee67a4b2320bb027c39f7}{li0}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00253}00253             \mbox{\hyperlink{classParticles_ace63e82b0c03513160175613f85b8946}{lj0}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00254}00254             \mbox{\hyperlink{classParticles_a3b4f4481bb0db67c377dc8ee719f6744}{hi}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00255}00255             \mbox{\hyperlink{classParticles_aa19ca0d37365c3d04dc8d7f4b2891bac}{hj}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00256}00256             \mbox{\hyperlink{classParticles_a687135810d6e149aedf0eaf02800012f}{h\_ave}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00257}00257             \mbox{\hyperlink{classParticles_a981f96a73a1eecb4606e1cdce63034d8}{h\_ave3}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00258}00258 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00259}00259             \mbox{\hyperlink{classParticles_a688f92b4f2dc10c8f6d62edc80c1c529}{S}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00260}00260             \mbox{\hyperlink{classParticles_a84dde25fb3eb719a7ff266d4ba30dcd9}{Si}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00261}00261             \mbox{\hyperlink{classParticles_a70e3078b2c99c00122b8e12739a99e8e}{Sj}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00262}00262             \mbox{\hyperlink{classParticles_a32261052104cac29561fffe9b68be6cc}{S0}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00263}00263             \mbox{\hyperlink{classParticles_a0ffad42c6d2339c202ec8e97fe36be43}{Si0}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00264}00264             \mbox{\hyperlink{classParticles_aabecf25eeb69c3f615ddbcd04e55e2e6}{Sj0}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00265}00265 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00266}00266             \mbox{\hyperlink{classParticles_aef95cfbdefce6ae15e2d74f207de8d59}{Fti}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00267}00267             \mbox{\hyperlink{classParticles_afcad122d0f4c29af13da12d9481688a4}{Ftj}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00268}00268 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00269}00269             \mbox{\hyperlink{classParticles_a01472136090863ccd31bd5e53ac8d219}{f}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00270}00270 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00271}00271             \mbox{\hyperlink{classParticles_a21b2b164195c3a3f366b54ba0b6796ab}{beta}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00272}00272             \mbox{\hyperlink{classParticles_ad122c6f8801655990cb2bd5d9217588b}{beta0}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00273}00273             \mbox{\hyperlink{classParticles_a88adfe59af09bd20e5c5338c6f169797}{gamma}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00274}00274             \mbox{\hyperlink{classParticles_aef997402fb077893a841f01a4e22c72b}{Fsi}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00275}00275             \mbox{\hyperlink{classParticles_adee189cecb6a17b8aac1525697c46d76}{Fsj}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00276}00276             \mbox{\hyperlink{classParticles_a5266808ffeb3457b081db73fde702440}{epsilonli}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00277}00277             \mbox{\hyperlink{classParticles_abcc75546f2683677e64dcb3c547caf0b}{epsilonlj}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00278}00278             \mbox{\hyperlink{classParticles_a21b6c3eb7be1f1e1ba6fe18fa04d19a0}{epsilongi}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00279}00279             \mbox{\hyperlink{classParticles_ac049480821fc175d116e94c0a41f1832}{epsilongj}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00280}00280             \mbox{\hyperlink{classParticles_af5fe7fc555037848d985bc9b2b736e5d}{Ii}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00281}00281             \mbox{\hyperlink{classParticles_aae90775d6978af76b5632dd39ab32b05}{Ij}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00282}00282             \mbox{\hyperlink{classParticles_ab0aa32ced59ada8d587d70243307449a}{alphai}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00283}00283             \mbox{\hyperlink{classParticles_afb4db2cf34f0dafa02f9efde63259d7e}{alphaj}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00284}00284 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00285}00285             \mbox{\hyperlink{classParticles_a62280e44e6cb6a153f7885a6a4d0d6fd}{etai}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00286}00286             \mbox{\hyperlink{classParticles_aba89291eeaa16985241e5d9893cecacb}{etaj}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00287}00287             \mbox{\hyperlink{classParticles_ad20a6cc6f43fcc2cc43987f539f07a31}{etai0}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00288}00288             \mbox{\hyperlink{classParticles_a849990165b94718da65401bb6860dc7f}{etaj0}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00289}00289             \mbox{\hyperlink{classParticles_abdf7eedf5bb4d44c991f54cd41b58bef}{diff\_etai}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00290}00290             \mbox{\hyperlink{classParticles_aa33de9e5d62de00fd12e523113e84719}{diff\_etaj}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00291}00291 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00292}00292             \mbox{\hyperlink{classParticles_ae5d1b3e78c13e299352a6025b7705b44}{Mi}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00293}00293             \mbox{\hyperlink{classParticles_a9c4cdcd127caedd0eb39f3e59af5ea56}{Mj}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00294}00294 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00295}00295             \mbox{\hyperlink{classParticles_a3e3c430d6aee6f98fbbf43bd32e20aae}{Fb}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00296}00296             \mbox{\hyperlink{classParticles_ac29b6a59a0b6cfcb2747e2cfa3713bf5}{pressure}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00297}00297             \mbox{\hyperlink{classParticles_a98ceb15b0eb9270de568d54b6e5850b4}{Fa}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00298}00298             \mbox{\hyperlink{classParticles_a1926761b0a83028de33d32d147ff8684}{disturbance}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00299}00299             \mbox{\hyperlink{classParticles_a480dd10471160a874bf0c908cae51cb7}{Fd}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00300}00300             \mbox{\hyperlink{classParticles_a9c5d8e9eaba57df526b84a19dea55d5e}{F}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00301}00301             \mbox{\hyperlink{classParticles_a3d841b440ecd89ac7d49f8b2553754af}{omp}}[i].resize(jNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00302}00302 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00303}00303             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < jNum; j++)}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00304}00304             \{}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00305}00305                 \mbox{\hyperlink{classParticles_ac5203a8b24eb67712c24750ceec97995}{flag}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00306}00306                 \mbox{\hyperlink{classParticles_a81033b7bea657bacf9cf3c0a78dd8fa4}{commflag}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00307}00307                 \textcolor{comment}{// C型のkNum個の配列のポインタを格納}}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00308}00308                 \mbox{\hyperlink{classParticles_a1377b5ad84922491f09e9df394284aa4}{c}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00309}00309                 \mbox{\hyperlink{classParticles_a353c994760728a3dd6eb4efbf2a4ebc4}{new\_c}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00310}00310                 \mbox{\hyperlink{classParticles_a514d7ea8eba97fd7ff10048f201b26e4}{vc\_Left}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00311}00311                 \mbox{\hyperlink{classParticles_a022c09eb71a6de67c54d2538cc56e94e}{vc\_Right}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00312}00312                 \mbox{\hyperlink{classParticles_a9273dd7c369bad02e0562d5388597141}{vc\_Top}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00313}00313                 \mbox{\hyperlink{classParticles_a24d839c09fc733040bb42b00e846579e}{vc\_Bottom}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00314}00314                 \mbox{\hyperlink{classParticles_abb0bd9e79cca586cdaecfffef9527ae1}{vc\_tmp}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00315}00315                 \mbox{\hyperlink{classParticles_a529dff7c4590266b114035435fcbb426}{vp}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00316}00316                 \mbox{\hyperlink{classParticles_a8c094317ea0c561dd562ea0713483610}{mi}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00317}00317                 \mbox{\hyperlink{classParticles_ad4707eae65e641a64d5fa9fb673c7850}{mj}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00318}00318                 \mbox{\hyperlink{classParticles_a7c9b9414dd1db7771f17c24232499650}{mi0}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00319}00319                 \mbox{\hyperlink{classParticles_af4a59b95b099db07dc385b2e7e04bb69}{mj0}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00320}00320                 \mbox{\hyperlink{classParticles_a26b833f319bd527ba03742d82347c643}{v}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00321}00321                 \mbox{\hyperlink{classParticles_acfe4892af7f831c485f217c09579efcd}{new\_v}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00322}00322                 \mbox{\hyperlink{classParticles_ae774ffc4667416403470d44df363a31b}{g}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00323}00323                 \mbox{\hyperlink{classParticles_aeec9eaa7596ec8a56b85a9d62d98885c}{g0}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00324}00324                 \mbox{\hyperlink{classParticles_a2b43b854e2f0d731cf6ffc58cb7bb4fb}{li}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00325}00325                 \mbox{\hyperlink{classParticles_a92d507b33db3d775510b8fd53c777645}{lj}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00326}00326                 \mbox{\hyperlink{classParticles_a65ba878040fee67a4b2320bb027c39f7}{li0}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00327}00327                 \mbox{\hyperlink{classParticles_ace63e82b0c03513160175613f85b8946}{lj0}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00328}00328                 \mbox{\hyperlink{classParticles_a3b4f4481bb0db67c377dc8ee719f6744}{hi}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00329}00329                 \mbox{\hyperlink{classParticles_aa19ca0d37365c3d04dc8d7f4b2891bac}{hj}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00330}00330                 \mbox{\hyperlink{classParticles_a687135810d6e149aedf0eaf02800012f}{h\_ave}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00331}00331                 \mbox{\hyperlink{classParticles_a981f96a73a1eecb4606e1cdce63034d8}{h\_ave3}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00332}00332 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00333}00333                 \mbox{\hyperlink{classParticles_a688f92b4f2dc10c8f6d62edc80c1c529}{S}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00334}00334                 \mbox{\hyperlink{classParticles_a84dde25fb3eb719a7ff266d4ba30dcd9}{Si}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00335}00335                 \mbox{\hyperlink{classParticles_a70e3078b2c99c00122b8e12739a99e8e}{Sj}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00336}00336                 \mbox{\hyperlink{classParticles_a32261052104cac29561fffe9b68be6cc}{S0}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00337}00337                 \mbox{\hyperlink{classParticles_a0ffad42c6d2339c202ec8e97fe36be43}{Si0}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00338}00338                 \mbox{\hyperlink{classParticles_aabecf25eeb69c3f615ddbcd04e55e2e6}{Sj0}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00339}00339 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00340}00340                 \mbox{\hyperlink{classParticles_aef95cfbdefce6ae15e2d74f207de8d59}{Fti}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00341}00341                 \mbox{\hyperlink{classParticles_afcad122d0f4c29af13da12d9481688a4}{Ftj}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00342}00342 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00343}00343                 \mbox{\hyperlink{classParticles_a01472136090863ccd31bd5e53ac8d219}{f}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00344}00344 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00345}00345                 \mbox{\hyperlink{classParticles_a21b2b164195c3a3f366b54ba0b6796ab}{beta}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00346}00346                 \mbox{\hyperlink{classParticles_ad122c6f8801655990cb2bd5d9217588b}{beta0}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00347}00347                 \mbox{\hyperlink{classParticles_a88adfe59af09bd20e5c5338c6f169797}{gamma}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00348}00348                 \mbox{\hyperlink{classParticles_aef997402fb077893a841f01a4e22c72b}{Fsi}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00349}00349                 \mbox{\hyperlink{classParticles_adee189cecb6a17b8aac1525697c46d76}{Fsj}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00350}00350                 \mbox{\hyperlink{classParticles_a5266808ffeb3457b081db73fde702440}{epsilonli}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00351}00351                 \mbox{\hyperlink{classParticles_abcc75546f2683677e64dcb3c547caf0b}{epsilonlj}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00352}00352                 \mbox{\hyperlink{classParticles_a21b6c3eb7be1f1e1ba6fe18fa04d19a0}{epsilongi}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00353}00353                 \mbox{\hyperlink{classParticles_ac049480821fc175d116e94c0a41f1832}{epsilongj}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00354}00354                 \mbox{\hyperlink{classParticles_af5fe7fc555037848d985bc9b2b736e5d}{Ii}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00355}00355                 \mbox{\hyperlink{classParticles_aae90775d6978af76b5632dd39ab32b05}{Ij}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00356}00356                 \mbox{\hyperlink{classParticles_ab0aa32ced59ada8d587d70243307449a}{alphai}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00357}00357                 \mbox{\hyperlink{classParticles_afb4db2cf34f0dafa02f9efde63259d7e}{alphaj}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00358}00358 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00359}00359                 \mbox{\hyperlink{classParticles_a62280e44e6cb6a153f7885a6a4d0d6fd}{etai}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00360}00360                 \mbox{\hyperlink{classParticles_aba89291eeaa16985241e5d9893cecacb}{etaj}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00361}00361                 \mbox{\hyperlink{classParticles_ad20a6cc6f43fcc2cc43987f539f07a31}{etai0}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00362}00362                 \mbox{\hyperlink{classParticles_a849990165b94718da65401bb6860dc7f}{etaj0}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00363}00363                 \mbox{\hyperlink{classParticles_abdf7eedf5bb4d44c991f54cd41b58bef}{diff\_etai}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00364}00364                 \mbox{\hyperlink{classParticles_aa33de9e5d62de00fd12e523113e84719}{diff\_etaj}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00365}00365 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00366}00366                 \mbox{\hyperlink{classParticles_ae5d1b3e78c13e299352a6025b7705b44}{Mi}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00367}00367                 \mbox{\hyperlink{classParticles_a9c4cdcd127caedd0eb39f3e59af5ea56}{Mj}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00368}00368 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00369}00369                 \mbox{\hyperlink{classParticles_a3e3c430d6aee6f98fbbf43bd32e20aae}{Fb}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00370}00370                 \mbox{\hyperlink{classParticles_ac29b6a59a0b6cfcb2747e2cfa3713bf5}{pressure}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00371}00371                 \mbox{\hyperlink{classParticles_a98ceb15b0eb9270de568d54b6e5850b4}{Fa}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00372}00372                 \mbox{\hyperlink{classParticles_a1926761b0a83028de33d32d147ff8684}{disturbance}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00373}00373                 \mbox{\hyperlink{classParticles_a480dd10471160a874bf0c908cae51cb7}{Fd}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00374}00374                 \mbox{\hyperlink{classParticles_a9c5d8e9eaba57df526b84a19dea55d5e}{F}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00375}00375                 \mbox{\hyperlink{classParticles_a3d841b440ecd89ac7d49f8b2553754af}{omp}}[i][j].resize(kNum);}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00376}00376             \}}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00377}00377         \}}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00378}00378     \}}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00379}00379 }
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00380}\mbox{\hyperlink{classParticles_a06dde9ff5c48d92d9ae273ad9501daa3}{00380}}     \mbox{\hyperlink{classParticles_a06dde9ff5c48d92d9ae273ad9501daa3}{\string~Particles}}()}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00381}00381     \{}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00382}00382     \}}
+\DoxyCodeLine{\Hypertarget{CalcDataAllocation_8hpp_source_l00383}00383 \};}
+
+\end{DoxyCode}
