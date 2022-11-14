@@ -303,7 +303,7 @@ float stoff(const std::string& str) {
 }
 
 /**
- * @brief           //文字列型の引数をとり、分割処理をした後にvector<string>という複数の文字列を保持できる型に、分割したそれぞれを全て入れ込んで返します。
+ * @brief           文字列型の引数をとり、分割処理をした後にvector<string>という複数の文字列を保持できる型に、分割したそれぞれを全て入れ込んで返します。
  * @param[in] input  読み込む対象のファイル名（パス）
  * @param[in] delimiter  通常は ","
  * @note   csvファイル処理用関数
@@ -313,7 +313,7 @@ std::vector<float> Basic::split(string& input, char delimiter)
     //DEBUG
     //std::cout << "split function" << std::endl;
     //
-    
+
     std::istringstream stream(input);
     std::string field;
     std::vector<float> result;

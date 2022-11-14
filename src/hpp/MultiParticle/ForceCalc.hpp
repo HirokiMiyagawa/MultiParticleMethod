@@ -4164,8 +4164,8 @@ void MultiParticle::ExternalForceCalc(const int& i, const int& j,
                                       const int& k) {
     // cout << "run ExternalForceCalc" << endl;
 #ifdef __CREASE__
-    if (i == 13) {
-        p->external_force[i][j][k].x = 0.0025;
+    if (i == (local_iNum - 1)) {
+        p->external_force[i][j][k].y = 0.0006;
     }
 #endif
 
