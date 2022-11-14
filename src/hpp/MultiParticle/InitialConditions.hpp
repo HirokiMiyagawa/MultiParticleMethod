@@ -6,7 +6,7 @@
  * ///////////////////////////////////////////////////////////////////////////////
  */
 
-
+#include "Basic.hpp"
 
 /**
  * @brief set particle and flag depend shape
@@ -371,64 +371,87 @@ void MultiParticle::setInitialConditionsEquallyDividedModeling() {
  * CreaseTestinitialCoordinate.xlseを参考
  */
 void MultiParticle::setInitialConditionsCreaseModeling() {
-    for (int i = 0; i < local_iNum; i++) {
-        for (int j = 0; j < local_jNum; j++) {
-            for (int k = 0; k < local_kNum; k++) {
-                switch(i){
-                    case 0:
-                        p->c[i][j][k].x = -0.5;
-                        p->c[i][j][k].y = j;
-                        p->c[i][j][k].z = 0;
-                        break;
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 11:
-                    case 12:
-                    case 13:
-                        p->c[i][j][k].x = p->c[i-1][j][k].x +param->m_Lref_x / (local_iNum - 4);
-                        p->c[i][j][k].y = j;
-                        p->c[i][j][k].z = 0;
-                        break;
+    for (int j = 0; j < local_jNum; j++) {
+        std::ifstream position(param->read_PositionFile);
+        if (position.fail()) {
+            std::cerr << "Could not open file: " << param->read_PositionFile << std::endl;
+        }
+        
+        std::string line;
+        //csvファイルの最後の行までループ
+        //getline関数で1行ずつ読み込んだ文字列をlineというstring型の変数に格納しています。
+        int i = 0;
+        while (getline(position, line)) {
+            
+            vector<float> strvec = basic->split(line, ',');
+            
+            p->c[i][j][0].x = strvec[0];
+            p->c[i][j][0].y = strvec[1];
+            p->c[i][j][0].z = param->m_Lref_y * j / (local_jNum - 1);
+            i++;
+        }
+    }
+    // for (int i = 0; i < local_iNum; i++) {
+    //     for (int j = 0; j < local_jNum; j++) {
+    //         for (int k = 0; k < local_kNum; k++) {
 
-                    case 4:
-                    case 10:
-                        p->c[i][j][k].x = p->c[i-1][j][k].x +param->m_Lref_x / (local_iNum - 4);
-                        p->c[i][j][k].y = j;
-                        p->c[i][j][k].z = (-3+sqrt(6)) * param->m_Lref_x /10;
-                        break;
+                
+                
+    //             // switch(i){
+    //             //     case 0:
+    //             //         p->c[i][j][k].x = -0.5;
+    //             //         p->c[i][j][k].y = j;
+    //             //         p->c[i][j][k].z = 0;
+    //             //         break;
+    //             //     case 1:
+    //             //     case 2:
+    //             //     case 3:
+    //             //     case 11:
+    //             //     case 12:
+    //             //     case 13:
+    //             //         p->c[i][j][k].x = p->c[i-1][j][k].x +param->m_Lref_x / (local_iNum - 4);
+    //             //         p->c[i][j][k].y = j;
+    //             //         p->c[i][j][k].z = 0;
+    //             //         break;
 
-                    case 5:
-                        p->c[i][j][k].x = p->c[i-1][j][k].x + param->m_Lref_x / (local_iNum - 4);
-                        p->c[i][j][k].y = j;
-                        p->c[i][j][k].z = (-3+sqrt(3)) * param->m_Lref_x /10;
-                        break;
+    //             //     case 4:
+    //             //     case 10:
+    //             //         p->c[i][j][k].x = p->c[i-1][j][k].x +param->m_Lref_x / (local_iNum - 4);
+    //             //         p->c[i][j][k].y = j;
+    //             //         p->c[i][j][k].z = (-3+sqrt(6)) * param->m_Lref_x /10;
+    //             //         break;
 
-                    case 9:
-                        p->c[i][j][k].x = p->c[i-1][j][k].x + (param->m_Lref_x / (local_iNum - 4)) / 2;
-                        p->c[i][j][k].y = j;
-                        p->c[i][j][k].z = (-3+sqrt(3)) * param->m_Lref_x /10;
-                        break;
+    //             //     case 5:
+    //             //         p->c[i][j][k].x = p->c[i-1][j][k].x + param->m_Lref_x / (local_iNum - 4);
+    //             //         p->c[i][j][k].y = j;
+    //             //         p->c[i][j][k].z = (-3+sqrt(3)) * param->m_Lref_x /10;
+    //             //         break;
 
-                    case 6:
-                    case 8:
-                        p->c[i][j][k].x = p->c[i-1][j][k].x + (param->m_Lref_x / (local_iNum - 4)) / 2;
-                        p->c[i][j][k].y = j;
-                        p->c[i][j][k].z = (-3+sqrt(6)/2) * param->m_Lref_x /10;
-                        break;
+    //             //     case 9:
+    //             //         p->c[i][j][k].x = p->c[i-1][j][k].x + (param->m_Lref_x / (local_iNum - 4)) / 2;
+    //             //         p->c[i][j][k].y = j;
+    //             //         p->c[i][j][k].z = (-3+sqrt(3)) * param->m_Lref_x /10;
+    //             //         break;
 
-                    case 7:
-                        p->c[i][j][k].x = p->c[i-1][j][k].x + (param->m_Lref_x / (local_iNum - 4)) / 2;
-                        p->c[i][j][k].y = j;
-                        p->c[i][j][k].z = -3 * param->m_Lref_x /10;
-                        break;
+    //             //     case 6:
+    //             //     case 8:
+    //             //         p->c[i][j][k].x = p->c[i-1][j][k].x + (param->m_Lref_x / (local_iNum - 4)) / 2;
+    //             //         p->c[i][j][k].y = j;
+    //             //         p->c[i][j][k].z = (-3+sqrt(6)/2) * param->m_Lref_x /10;
+    //             //         break;
+
+    //             //     case 7:
+    //             //         p->c[i][j][k].x = p->c[i-1][j][k].x + (param->m_Lref_x / (local_iNum - 4)) / 2;
+    //             //         p->c[i][j][k].y = j;
+    //             //         p->c[i][j][k].z = -3 * param->m_Lref_x /10;
+    //             //         break;
 
                         
                 
-                }
-            }
-        }
-    }
+    //             // }
+    //         }
+    //     }
+    // }
 }
 
 

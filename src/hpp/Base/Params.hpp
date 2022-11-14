@@ -342,7 +342,7 @@ class Params {
             std::cout << "Input Cube" << endl;
         } else if (SolarSail) {
             read_filename = "./data/input_file/SolarSail.cfg";
-            read_PositionFile = "./data/input_file/Position.csv";
+            read_PositionFile = "./data/position/InitialPosition.csv";
             std::cout << "Input SolarSail" << endl;
         } else {
             read_filename = "./data/input_file/default.cfg";

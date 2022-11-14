@@ -91,6 +91,10 @@ class Basic {
         const std::string& filepath,
         std::vector<std::vector<double>>&
             dataset);  //  csvファイルからn個の (x,y)の2次元座標を取得する
+
+     //文字列型の引数をとり、分割処理をした後にvector<string>という複数の文字列を保持できる型に、分割したそれぞれを全て入れ込んで返します。
+    std::vector<float> split(string& input, char delimiter);
+
 };
 
 /**
@@ -281,6 +285,49 @@ void Basic::create_utf8_stream(const std::string& path) {
     ofs.write((char*)bom, sizeof(bom));
 
     ofs.close();
+}
+
+float stoff(const std::string& str) {
+  const char* p = str.c_str();
+  char* end;
+  errno = 0;
+  double x = std::strtof(p, &end);
+  if (p == end) {
+    throw std::invalid_argument("stoff");
+  }
+  if (errno == ERANGE) {
+    throw std::out_of_range("stoff");
+  }
+  
+  return static_cast<float>(x);
+}
+
+/**
+ * @brief           //文字列型の引数をとり、分割処理をした後にvector<string>という複数の文字列を保持できる型に、分割したそれぞれを全て入れ込んで返します。
+ * @param[in] input  読み込む対象のファイル名（パス）
+ * @param[in] delimiter  通常は ","
+ * @note   csvファイル処理用関数
+ */
+std::vector<float> Basic::split(string& input, char delimiter)
+{
+    //DEBUG
+    //std::cout << "split function" << std::endl;
+    //
+    
+    std::istringstream stream(input);
+    std::string field;
+    std::vector<float> result;
+    while (getline(stream, field, delimiter)) {
+        // result.push_back(stoff(field));
+        try {
+             result.push_back(stoff(field));
+        } catch (...) { // ... で何でも受け取れる
+            std::cout << "エラーが起きたのでTは強制的に1にしました。" << std::endl;
+            result.push_back(1);;
+        }
+    }
+    
+    return result;
 }
 
 #endif  // ヘッダーファイルの終了
