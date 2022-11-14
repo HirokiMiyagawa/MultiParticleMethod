@@ -1,0 +1,29 @@
+{
+	"folders": [
+		
+		{
+			"path": "./cpp/"
+		},
+		{
+			"path": "./hpp/Base"
+		},
+		{
+			"path": "./hpp/DataExchangeExternalParty"
+		},
+		{
+			"path": "./hpp/DefinitionOfSituation"
+		},
+		{
+			"path": "./hpp/Global"
+		},
+		{
+			"path": "./hpp/MultiParticle"
+		},
+		{
+			"path": "./hpp/MyLibrary"
+		},
+		{
+			"path": "./hpp/Readcsv"
+		},
+	]
+}
