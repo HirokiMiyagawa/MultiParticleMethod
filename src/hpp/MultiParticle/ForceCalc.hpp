@@ -4186,9 +4186,9 @@ void MultiParticle::RotationInertiaForceCalc(const int& i, const int& j, const i
 void MultiParticle::ExternalForceCalc(const int& i, const int& j,
                                       const int& k) {
     // cout << "run ExternalForceCalc" << endl;
-//#ifdef __CREASE__    0.002
+//#ifdef __CREASE__    
     if (i == (local_iNum - 1)) {
-        p->external_force[i][j][k].x = 1;
+        p->external_force[i][j][k].y = 1;
     }
 //#endif //__CREASE__
 

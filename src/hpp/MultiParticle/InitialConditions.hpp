@@ -358,6 +358,7 @@ void MultiParticle::setInitialConditionsEquallyDividedModeling() {
     for (int i = 0; i < local_iNum; i++) {
         for (int j = 0; j < local_jNum; j++) {
             for (int k = 0; k < local_kNum; k++) {
+                std::cout << param->m_Lref_x << std::endl;
                 p->c[i][j][k].x = param->m_Lref_x * i / (local_iNum - 1);
                 p->c[i][j][k].y = param->m_Lref_y * j / (local_jNum - 1);
             }
@@ -395,7 +396,7 @@ void MultiParticle::setInitialConditionsCreaseModeling() {
             p->c[i][j][0].x = strvec[0];
             p->c[i][j][0].y = strvec[1];
             p->c[i][j][0].z = param->m_Lref_y * j / (local_jNum - 1);
-            p->i_specialflag[i][j][0] = strvec[2];//1とつけば折り目
+            //p->i_specialflag[i][j][0] = strvec[2];//1とつけば折り目
               i++;
         }
     }
