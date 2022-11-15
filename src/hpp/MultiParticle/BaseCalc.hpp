@@ -385,6 +385,19 @@ double MultiParticle::MCalc(double const& I, double const& diff_eta,
 }
 
 /**
+ * @brief		曲げモーメント Mを計算する。折り目バージョン
+ * @param[in] 	double I 断面2次モーメント
+ * @param[in] 	double diff_eta モーメント方向の曲率
+ * @param[in] 	double diff_etav モーメントと直行する方向の曲率
+ * @return		double モーメントの計算結果
+ * @details     新しいヤング率でかけ古いヤング率で割ることでこの曲げばねのみヤング率の変更をする
+ */
+double MultiParticle::MCalc(double const& I, double const& diff_eta,
+                            double const& diff_etav, double m_new_E) {
+    return param->m_preCalc4 * I * (diff_eta + param->m_nu * diff_etav) * (m_new_E / param->m_E) /
+           param->m_h0;
+}
+/**
  * @brief
  *
  * @param[in] Fb_v  bend force previous or next

@@ -322,7 +322,7 @@ std::vector<float> Basic::split(string& input, char delimiter)
         try {
              result.push_back(stoff(field));
         } catch (...) { // ... で何でも受け取れる
-            std::cout << "エラーが起きたのでTは強制的に1にしました。" << std::endl;
+            //std::cout << "エラーが起きたのでTは強制的に1にしました。" << std::endl;
             result.push_back(1);;
         }
     }

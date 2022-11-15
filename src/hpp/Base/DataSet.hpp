@@ -33,6 +33,8 @@ enum Positions {
     LeftBottom  = 0b00000110,
     LeftTop     = 0b00001010,
 
+    Crease = 0b10000000,//折り目
+
     // Center = 0x00,
     // Left   = 0x01,
     // Right  = 0x02,

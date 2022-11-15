@@ -136,6 +136,8 @@ class Params {
     double Length_y;
     //! ヤング率 [N/mm^2 MPa] / 野里さんのE = 35.5 MPaを使用している
     double m_E;
+    //! 折り目用の新しいヤング率
+    double m_newE;
     //! 無次元化した基準長さ (膜の縦と横の長さ)
     double m_Lref_x;
     double m_Lref_y;

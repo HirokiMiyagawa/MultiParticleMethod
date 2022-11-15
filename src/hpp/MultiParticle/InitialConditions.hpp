@@ -366,9 +366,8 @@ void MultiParticle::setInitialConditionsEquallyDividedModeling() {
 }
 
 /**
- * @brief	折り目テスト 粒子数はiが１４個前提
- * @note
- * CreaseTestinitialCoordinate.xlseを参考
+ * @brief	折り目ありの粒子配置と折り目特有のFlagの代入
+ * @note　　折り目ありの場合のみ用いる  
  */
 void MultiParticle::setInitialConditionsCreaseModeling() {
     for (int j = 0; j < local_jNum; j++) {
@@ -380,15 +379,24 @@ void MultiParticle::setInitialConditionsCreaseModeling() {
         std::string line;
         //csvファイルの最後の行までループ
         //getline関数で1行ずつ読み込んだ文字列をlineというstring型の変数に格納しています。
-        int i = 0;
+        int i = -1;
         while (getline(position, line)) {
             
             vector<float> strvec = basic->split(line, ',');
             
+            if (i == -1){
+                i++;
+                continue;
+            }
+            if (i == local_iNum) {
+                param->m_newE = strvec[1];
+                continue;
+            }
             p->c[i][j][0].x = strvec[0];
             p->c[i][j][0].y = strvec[1];
             p->c[i][j][0].z = param->m_Lref_y * j / (local_jNum - 1);
-            i++;
+            p->i_specialflag[i][j][0] = strvec[2];//1とつけば折り目
+              i++;
         }
     }
     // for (int i = 0; i < local_iNum; i++) {

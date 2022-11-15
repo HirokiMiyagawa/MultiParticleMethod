@@ -2,6 +2,7 @@
  * ///////////////////////////////////////////////////////////////////////////////
  * @file	ForceCalc.hpp
  * @brief	各粒子に作用する力を計算する
+ * @note    Cubeとそれ以外で処理が大きく分かれてる
  * @details
  * @par
  * ///////////////////////////////////////////////////////////////////////////////
@@ -2798,7 +2799,18 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
                                    p->diff_etaj[i][j][k]);
             p->Mj[i][j][k] = MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k],
                                    p->diff_etai[i][j][k]);
+#ifdef __CREASE__
+            if (p->i_specialflag[i][j][0] == 1) {
+                //DEBUG
+                //std::cout << "Considered about Crease" << param->m_newE << std::endl;
+                //
+                p->Mi[i][j][k] = MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k],
+                    p->diff_etaj[i][j][k], param->m_newE);
+                p->Mj[i][j][k] = MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k],
+                    p->diff_etai[i][j][k]);
 
+            }
+#endif //__CREASE__
             p->Fb[i][j][k].ipv = -1 * p->Mi[i][j][k] / p->li[i][j][k].norm;
             p->Fb[i][j][k].imv = -1 * p->Mi[i][j][k] / p->li[i - 1][j][k].norm;
             p->Fb[i][j][k].jpv = -1 * p->Mj[i][j][k] / p->lj[i][j][k].norm;
@@ -3809,7 +3821,18 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
         MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k], p->diff_etaj[i][j][k]);
     p->Mj[i][j][k] =
         MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k], p->diff_etai[i][j][k]);
+#ifdef __CREASE__
+            if (p->i_specialflag[i][j][0] == 1) {
+                //DEBUG
+                //std::cout << "Considered about Crease" << param->m_newE << std::endl;
+                //
+                p->Mi[i][j][k] = MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k],
+                    p->diff_etaj[i][j][k], param->m_newE);
+                p->Mj[i][j][k] =
+                    MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k], p->diff_etai[i][j][k]);
 
+            }
+#endif //__CREASE__
     if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
         p->Fb[i][j][k].ipv = -1 * p->Mi[i][j][k] / p->li[i][j][k].norm;
     }
@@ -4163,11 +4186,11 @@ void MultiParticle::RotationInertiaForceCalc(const int& i, const int& j, const i
 void MultiParticle::ExternalForceCalc(const int& i, const int& j,
                                       const int& k) {
     // cout << "run ExternalForceCalc" << endl;
-#ifdef __CREASE__
+//#ifdef __CREASE__    0.002
     if (i == (local_iNum - 1)) {
-        p->external_force[i][j][k].y = 0.0006;
+        p->external_force[i][j][k].x = 1;
     }
-#endif
+//#endif //__CREASE__
 
     if (SimpleTensile) {
         if (p->flag[i][j][k] & BIT_RIGHT) {
@@ -4431,12 +4454,11 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
         // abort();
     }
 
-//about crease
-#ifdef __CREASE__
+//#ifdef __CREASE__
     if((i == 0) || (i == 1)) {
         return;
     }
-#endif
+//#endif //__CREASE__
 
     if (p->flag[i][j][k] == Center) {
         if (param->roll_inertia_system) {

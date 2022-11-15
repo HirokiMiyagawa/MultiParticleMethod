@@ -3,6 +3,7 @@
  * @file	CalcDataAllocation.cpp
  * @brief	初期値が決まっていないパラメーターの宣言を行うファイル
  * @details 配列の動的確保のためにresizeで変数の初期化を行う
+ * @note　　メンバ変数はp->...とあらわしてる
  * ///////////////////////////////////////////////////////////////////////////////
  */
 
@@ -20,6 +21,8 @@ class Particles {
    public:
     //! Particle's Flag
     vector<vector<vector<int>>> flag;
+    //! particle's special flag
+    vector<vector<vector<int>>> i_specialflag;
     vector<vector<vector<int>>> surround_particle_exsit;
     vector<vector<vector<Communication>>> commflag;
     //! Particle Coordinates (x,y,z) 粒子の座標を格納する (Particle Coordinates)
@@ -210,6 +213,7 @@ class Particles {
     // void initialize_member(int iNum, int jum, int Knum);
     Particles(int iNum, int jNum, int kNum) {
         flag.resize(iNum);
+        i_specialflag.resize(iNum);
         surround_particle_exsit.resize(iNum);
         commflag.resize(iNum);
         // C型のkNum個の配列のポインタを格納
@@ -310,6 +314,7 @@ class Particles {
 
         for (int i = 0; i < iNum; i++) {
             flag[i].resize(jNum);
+            i_specialflag[i].resize(jNum);
             surround_particle_exsit[i].resize(jNum);
             commflag[i].resize(jNum);
             // C型のkNum個の配列のポインタを格納
@@ -410,6 +415,7 @@ class Particles {
 
             for (int j = 0; j < jNum; j++) {
                 flag[i][j].resize(kNum);
+                i_specialflag[i][j].resize(kNum);
                 surround_particle_exsit[i][j].resize(kNum);
                 commflag[i][j].resize(kNum);
                 // C型のkNum個の配列のポインタを格納

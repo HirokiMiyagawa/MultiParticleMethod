@@ -741,6 +741,7 @@ class MultiParticle {
             foutparam << "(i.j.k),"
                       << "Flag,"
                       << "ExistFlag,"
+                      << "SpecialFlagNum,"
                       << "Time,"
                       << "X-axis,"
                       << "Y-axis,"
@@ -999,6 +1000,7 @@ class MultiParticle {
                             << reFlag[p->flag[i][j][k]] << ","
                             << std::bitset<8>(
                                    p->surround_particle_exsit[i][j][k])
+                            << "," << p->i_specialflag[i][j][k]
                             << "," << time * param->m_dt * param->m_sheet_skip
                             << "," << p->new_c[i][j][k].x << ","
                             << p->new_c[i][j][k].y << "," << p->new_c[i][j][k].z
@@ -1231,6 +1233,7 @@ class MultiParticle {
         foutinitial << "(i.j.k),"
                     << "Flag,"
                     << "FlagNum,"
+                    << "SpecialFlagNum"
                     << "X-axis,"
                     << "Y-axis,"
                     << "Z-axis,"
@@ -1273,6 +1276,7 @@ class MultiParticle {
                             << "(" << i << "." << j << "." << k << "),"
                             << reFlag[p->flag[i][j][k]] << ","
                             << std::bitset<8>(p->flag[i][j][k]) << ","
+                            << p->i_specialflag[i][j][k] << ","
                             << p->c[i][j][k].x << "," << p->c[i][j][k].y << ","
                             << p->c[i][j][k].z << "," << p->v[i][j][k].x << ","
                             << p->v[i][j][k].y << "," << p->v[i][j][k].z << ","
@@ -1829,6 +1833,7 @@ class MultiParticle {
     double FtCalc(double const&, double const&, double const&, double const&);
     double etaCalc(double const&, double const&, double const&);
     double MCalc(double const&, double const&, double const&);
+    double MCalc(double const&, double const&, double const&, double);
     double get_random();
     void disturbance_Calc(C&, double const&);
 

@@ -17,7 +17,7 @@
 
 //  analysis crease(wrinkle)
 //---------------------------------------
-#define __CREASE__
+//#define __CREASE__
 //---------------------------------------
 
 // Particle shape
