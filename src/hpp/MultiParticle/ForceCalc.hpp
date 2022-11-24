@@ -3,10 +3,14 @@
  * @file	ForceCalc.hpp
  * @brief	各粒子に作用する力を計算する
  * @note    Cubeとそれ以外で処理が大きく分かれてる
+ * @note    current functionの部分を現在用いている
  * @details
  * @par
  * ///////////////////////////////////////////////////////////////////////////////
  */
+
+ int difinition_A = 1;
+
 
 #if defined __SHAPE_CUBE__
 void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
@@ -2760,6 +2764,7 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
  * 					せん断力 Fs
  * 					垂直ひずみ ε
  * 					伸縮力 Ft
+ * @note       今は使ってない
  */
 void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
 #ifdef __DEBUG__
@@ -2806,8 +2811,8 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
                 //
                 p->Mi[i][j][k] = MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k],
                     p->diff_etaj[i][j][k], param->m_newE);
-                p->Mj[i][j][k] = MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k],
-                    p->diff_etai[i][j][k]);
+                // p->Mj[i][j][k] = MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k],
+                //     p->diff_etai[i][j][k], param->m_newE);
 
             }
 #endif //__CREASE__
@@ -2878,6 +2883,18 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
                 normCalcV2(p->g[i][j][k], p->mj[i][j][k]) +
                     normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]),
                 p->hj[i][j][k], p->epsilonlj[i][j][k], p->epsilongi[i][j][k]);
+#ifdef __CREASE__
+            if (p->i_specialflag[i][j][0] == difinition_A) {
+                //DEBUG
+                //std::cout << "Considered about Crease" << param->m_newE << std::endl;
+                //
+                p->Ftj[i][j][k] = FtCalcChange(
+                normCalcV2(p->g[i][j][k], p->mj[i][j][k]) +
+                    normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]),
+                p->hj[i][j][k], p->epsilonlj[i][j][k], p->epsilongi[i][j][k]);
+
+            }
+#endif //__CREASE__
             break;
 
         case Right:
@@ -2973,6 +2990,17 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
             p->Ftj[i][j][k] = FtCalc(
                 normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]), p->hj[i][j][k],
                 p->epsilonlj[i][j][k], p->epsilongi[i][j][k]);
+#ifdef __CREASE__
+            if (p->i_specialflag[i][j][0] == difinition_A) {
+                //DEBUG
+                //std::cout << "Considered about Crease" << param->m_newE << std::endl;
+                //
+                p->Ftj[i][j][k] = FtCalcChange(
+                normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]), p->hj[i][j][k],
+                p->epsilonlj[i][j][k], p->epsilongi[i][j][k]);
+
+            }
+#endif //__CREASE__
             break;
 
         case Bottom:
@@ -3035,6 +3063,17 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
                 normCalcV2(p->g[i][j][k], p->mj[i][j][k]) +
                     normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]),
                 p->hj[i][j][k], p->epsilonlj[i][j][k], p->epsilongi[i][j][k]);
+#ifdef __CREASE__
+            if (p->i_specialflag[i][j][0] == difinition_A) {
+                //DEBUG
+                //std::cout << "Considered about Crease" << param->m_newE << std::endl;
+                //
+                p->Ftj[i][j][k] = FtCalcChange(
+                normCalcV2(p->g[i][j][k], p->mj[i][j][k]) +
+                    normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]),
+                p->hj[i][j][k], p->epsilonlj[i][j][k], p->epsilongi[i][j][k]);
+            }
+#endif //__CREASE__
             break;
 
         case Top:
@@ -3174,6 +3213,17 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
             p->Ftj[i][j][k]           = FtCalc(normCalcV2(p->g[i][j][k], p->mj[i][j][k]),
                                                p->hj[i][j][k], p->epsilonlj[i][j][k],
                                                p->epsilongi[i][j][k]);
+#ifdef __CREASE__
+            if (p->i_specialflag[i][j][0] == difinition_A) {
+                //DEBUG
+                //std::cout << "Considered about Crease" << param->m_newE << std::endl;
+                //
+                p->Ftj[i][j][k] = FtCalcChange(normCalcV2(p->g[i][j][k], p->mj[i][j][k]),
+                                               p->hj[i][j][k], p->epsilonlj[i][j][k],
+                                               p->epsilongi[i][j][k]);
+            }
+#endif //__CREASE__
+
 #ifdef __CYLINDER_NON_BOUNDARY__
             p->omp[i][j][k].epsilongj = epsilongCalc(
                 (normCalcV2(p->omp[i][j][k].g, p->omp[i][j][k].mi) +
@@ -3348,6 +3398,13 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
             p->Ftj[i][j][k]           = FtCalc(normCalcV2(p->g[i][j][k], p->mj[i][j][k]),
                                                p->hj[i][j][k], p->epsilonlj[i][j][k],
                                                p->epsilongi[i][j][k]);
+#ifdef __CREASE__
+            if (p->i_specialflag[i][j][0] == difinition_A) {
+                p->Ftj[i][j][k]           = FtCalcChange(normCalcV2(p->g[i][j][k], p->mj[i][j][k]),
+                                               p->hj[i][j][k], p->epsilonlj[i][j][k],
+                                               p->epsilongi[i][j][k]);
+            }
+#endif //__CREASE__
 #ifdef __CYLINDER_NON_BOUNDARY__
             p->omp[i][j][k].epsilongj = epsilongCalc(
                 (normCalcV2(p->omp[i][j][k].g, p->omp[i][j][k].mi)),
@@ -3490,6 +3547,21 @@ void MultiParticle::TensileForceCalc(const int& i, const int& j, const int& k) {
         }
         p->Fti[i][j][k] = FtCalc(length, p->hi[i][j][k], p->epsilonli[i][j][k],
                                  p->epsilongj[i][j][k]);
+        
+        //DEBUG
+        if (p->Fti[i][j][k] > 0.0000001) {
+            std::cout << "l* = "
+                      << length
+                      << ", epsilonli = "
+                      << p->epsilonli[i][j][k]
+                      << ", epsilonj = "
+                      << p->epsilongj[i][j][k]
+                      << ", Fti = "
+                      << p->Fti[i][j][k]
+                      << std::endl;
+        }
+        //
+        
     } else {
         p->Fti[i][j][k] = 0;
     }
@@ -3505,6 +3577,17 @@ void MultiParticle::TensileForceCalc(const int& i, const int& j, const int& k) {
         }
         p->Ftj[i][j][k] = FtCalc(length, p->hj[i][j][k], p->epsilonlj[i][j][k],
                                  p->epsilongi[i][j][k]);
+#ifdef __CREASE__
+            if (p->i_specialflag[i][j][0] == difinition_A) {
+                //DEBUG
+                // std::cout << "Considered about Crease" << param->m_newE << std::endl;
+                //
+                // p->Fti[i][j][k] = FtCalcChange(length, p->hi[i][j][k], p->epsilonli[i][j][k],
+                //                  p->epsilongj[i][j][k]);
+                p->Ftj[i][j][k] = FtCalcChange(length, p->hj[i][j][k], p->epsilonlj[i][j][k],
+                                 p->epsilongi[i][j][k]);
+            }
+#endif //__CREASE__
     } else {
         p->Ftj[i][j][k] = 0;
     }
@@ -3567,9 +3650,20 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
                                          p->li[i][j][k].norm, p->hi[i][j][k]);
         p->Fsi[i][j][k].pm = -1 * FsCalc(p->gamma[i][j][k].pm,
                                          p->li[i][j][k].norm, p->hi[i][j][k]);
+#ifdef __CREASE__
+        if (p->i_specialflag[i][j][0] == 1) {
+
+            p->Fsi[i][j][k].pp = -1 * FsCalcChange(p->gamma[i][j][k].pp,
+                                        p->li[i][j][k].norm, p->hi[i][j][k]);
+            p->Fsi[i][j][k].pm = -1 * FsCalcChange(p->gamma[i][j][k].pm,
+                                        p->li[i][j][k].norm, p->hi[i][j][k]);
+
+        }
+#endif //__CREASE__
     } else {
         p->Fsi[i][j][k].pp = 0;
         p->Fsi[i][j][k].pm = 0;
+
     }
 
     if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
@@ -3579,9 +3673,21 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
         p->Fsi[i][j][k].mm =
             -1 * FsCalc(p->gamma[i][j][k].mm, p->li[i - 1][j][k].norm,
                         p->hi[i - 1][j][k]);
+
+#ifdef __CREASE__
+        if (p->i_specialflag[i][j][0] == 1) {
+            p->Fsi[i][j][k].mp =
+            -1 * FsCalcChange(p->gamma[i][j][k].mp, p->li[i - 1][j][k].norm,
+                        p->hi[i - 1][j][k]);
+        p->Fsi[i][j][k].mm =
+            -1 * FsCalcChange(p->gamma[i][j][k].mm, p->li[i - 1][j][k].norm,
+                        p->hi[i - 1][j][k]);
+        }
+#endif //__CREASE__
     } else {
         p->Fsi[i][j][k].mp = 0;
         p->Fsi[i][j][k].mm = 0;
+
         // double li_l_norm   = normCalc(p->c[i][j][k] - p->vc_Left[i][j][k]);
 
         // C Si_i;
@@ -3625,6 +3731,15 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
                                          p->lj[i][j][k].norm, p->hj[i][j][k]);
         p->Fsj[i][j][k].mp = -1 * FsCalc(p->gamma[i][j][k].mp,
                                          p->lj[i][j][k].norm, p->hj[i][j][k]);
+                                
+#ifdef __CREASE__
+        if (p->i_specialflag[i][j][0] == 1) {
+            p->Fsj[i][j][k].pp = -1 * FsCalcChange(p->gamma[i][j][k].pp,
+                                            p->lj[i][j][k].norm, p->hj[i][j][k]);
+            p->Fsj[i][j][k].mp = -1 * FsCalcChange(p->gamma[i][j][k].mp,
+                                            p->lj[i][j][k].norm, p->hj[i][j][k]);
+        }
+#endif //__CREASE__
     } else {
         p->Fsj[i][j][k].pp = 0;
         p->Fsj[i][j][k].mp = 0;
@@ -3636,6 +3751,17 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
         p->Fsj[i][j][k].mm =
             -1 * FsCalc(p->gamma[i][j][k].mm, p->lj[i][j - 1][k].norm,
                         p->hj[i][j - 1][k]);
+
+#ifdef __CREASE__
+        if (p->i_specialflag[i][j][0] == 1) {
+            p->Fsj[i][j][k].pm =
+                -1 * FsCalcChange(p->gamma[i][j][k].pm, p->lj[i][j - 1][k].norm,
+                            p->hj[i][j - 1][k]);
+            p->Fsj[i][j][k].mm =
+                -1 * FsCalcChange(p->gamma[i][j][k].mm, p->lj[i][j - 1][k].norm,
+                            p->hj[i][j - 1][k]);
+        }
+#endif //__CREASE__
     } else {
         p->Fsj[i][j][k].pm = 0;
         p->Fsj[i][j][k].mm = 0;
@@ -3743,7 +3869,7 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
         } else {
             minus = p->vc_Bottom[i][j][k];
         }
-        p->alphaj[i][j][k] = angleCalc2(p->c[i][j][k], plus, minus, "j");
+        p->alphaj[i][j][k] = angleCalc2(p->c[i][j][k], plus, minus, "j", p->alphaj_identification[i][j][k]);
     }
 
     {
@@ -3759,7 +3885,7 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
         } else {
             minus = p->vc_Left[i][j][k];
         }
-        p->alphai[i][j][k] = angleCalc2(p->c[i][j][k], plus, minus, "i");
+        p->alphai[i][j][k] = angleCalc2(p->c[i][j][k], plus, minus, "i", p->alphai_identification[i][j][k]);
 
         // if ((p->surround_particle_exsit[i][j][k] & BIT_RIGHT) &&
         //     (p->surround_particle_exsit[i][j][k] & BIT_LEFT)) {
@@ -3824,12 +3950,12 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
 #ifdef __CREASE__
             if (p->i_specialflag[i][j][0] == 1) {
                 //DEBUG
-                //std::cout << "Considered about Crease" << param->m_newE << std::endl;
+                // std::cout << "Considered about Crease" << "i = " << i << ", newE = " << param->m_newE << std::endl;
                 //
                 p->Mi[i][j][k] = MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k],
                     p->diff_etaj[i][j][k], param->m_newE);
-                p->Mj[i][j][k] =
-                    MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k], p->diff_etai[i][j][k]);
+                // p->Mj[i][j][k] =
+                //     MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k], p->diff_etai[i][j][k], param->m_newE);
 
             }
 #endif //__CREASE__
@@ -4186,11 +4312,23 @@ void MultiParticle::RotationInertiaForceCalc(const int& i, const int& j, const i
 void MultiParticle::ExternalForceCalc(const int& i, const int& j,
                                       const int& k) {
     // cout << "run ExternalForceCalc" << endl;
-//#ifdef __CREASE__    
+#ifdef __CREASE__    
+    //p->external_force[i][j][k].x = param->C_MG * p->S0[i][j][k];
+    float Fexternal = 0.0066;
     if (i == (local_iNum - 1)) {
-        p->external_force[i][j][k].y = 1;
+        p->external_force[i][j][k].x = Fexternal * param->C_EX;
+
+        // if ( (count_culculate * param->m_dt) > 100) {
+        //     p->external_force[i][j][k].x = 0.0003;
+        // }
+        // else {
+        //     p->external_force[i][j][k].x = 0.0001 * count_culculate * param->m_dt /100;
+        // }
+        // if (j == 0) {
+        //     count_culculate ++;
+        // }
     }
-//#endif //__CREASE__
+#endif //__CREASE__
 
     if (SimpleTensile) {
         if (p->flag[i][j][k] & BIT_RIGHT) {
@@ -4454,11 +4592,11 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
         // abort();
     }
 
-//#ifdef __CREASE__
-    if((i == 0) || (i == 1)) {
-        return;
-    }
-//#endif //__CREASE__
+#ifdef __CREASE__
+    // if((i == 0) || (i == 1)) {
+    //     return;
+    // }
+#endif //__CREASE__
 
     if (p->flag[i][j][k] == Center) {
         if (param->roll_inertia_system) {

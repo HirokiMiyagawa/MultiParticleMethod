@@ -3,6 +3,7 @@
  * @file
  * @brief
  * @details
+ * @note param->と記述される
  * ///////////////////////////////////////////////////////////////////////////////
  */
 
@@ -249,6 +250,12 @@ class Params {
     double C_EI;
     //! 空気力と弾性力の比を表す無次元パラメータ
     double C_AE;
+    //! 重力と弾性力の日を表す無次元パラメータ
+    double C_MG;
+    //! 外力にかかる無次元パラメータ
+    double C_EX;
+    //! 重力加速度[mm/sec]
+    double gravity;
 
     //! Matrix for Pressure
     RotationMatrixCalc rotation_matrix;
@@ -502,9 +509,12 @@ class Params {
         // XXX: Why add Pref?
         // m_k = sqrt(m_kx * m_kx + m_ky * m_ky + m_kz * m_kz) + Pref;
         m_k = sqrt(m_kx * m_kx + m_ky * m_ky + m_kz * m_kz);
+        gravity = 9806;
 
         // C_EI = m_E / (m_rho * Vref * Vref * m_k);
         C_EI = m_E / (m_rho * Vref * Vref);
+        C_MG = (m_rho * Lref * gravity) / m_E;
+        C_EX = 1 / (m_E *h0 * Lref);
         if (SimplePressure) {
             C_AE = (Pc * Lref) / (m_E * h0);
         } else {

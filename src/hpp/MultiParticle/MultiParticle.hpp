@@ -52,7 +52,8 @@ class MultiParticle {
     int local_jNum;
     //! k方向の計算回数
     int local_kNum;
-    //!
+    //! 計算回数を数える変数
+    int count_culculate;
     int calc_jStart;
     int calc_jEnd;
     bool loop_end_flag        = false;
@@ -117,6 +118,7 @@ class MultiParticle {
 
         setExecEnv();
         p = new Particles(local_iNum, local_jNum, local_kNum);
+        count_culculate = 0;
     }
 
     ~MultiParticle() {
@@ -720,7 +722,7 @@ class MultiParticle {
 
     /**
      * @brief
-     * 引数の時間が1列目になるようなdatファイルとして出力する
+     * 引数の時間が1列目になるようなdatファイルとして出力する.出力用関数（csvも）
      * @param[in]	double const& time：現在の時間
      * @param[in]   time_point
      * start_time：シミュレーションを開始してからの時間
@@ -742,6 +744,7 @@ class MultiParticle {
                       << "Flag,"
                       << "ExistFlag,"
                       << "SpecialFlagNum,"
+                      << "NewYoung,"
                       << "Time,"
                       << "X-axis,"
                       << "Y-axis,"
@@ -1001,6 +1004,7 @@ class MultiParticle {
                             << std::bitset<8>(
                                    p->surround_particle_exsit[i][j][k])
                             << "," << p->i_specialflag[i][j][k]
+                            << ", " << param->m_newE 
                             << "," << time * param->m_dt * param->m_sheet_skip
                             << "," << p->new_c[i][j][k].x << ","
                             << p->new_c[i][j][k].y << "," << p->new_c[i][j][k].z
@@ -1071,11 +1075,11 @@ class MultiParticle {
                                   << p->vc_Right[i][j][k].y << ","
                                   << p->vc_Right[i][j][k].z << ",";
                         foutparam
-                            << p->Fti[i][j][k] << "," << p->Fti[i][j][k]
+                            << p->Fti[i][j][k] << "," << p->Ftj[i][j][k]
                             << ","
-                            << p->Fsi[i][j][k].pp + p->Fsi[i][j][k].pm
+                            << p->Fsi[i][j][k].pp + p->Fsi[i][j][k].mp
                             << ","
-                            << p->Fsi[i][j][k].pm + p->Fsi[i][j][k].pm
+                            << p->Fsi[i][j][k].pm + p->Fsi[i][j][k].mm
                             << ","
                             << p->Fsj[i][j][k].pp + p->Fsj[i][j][k].mp
                             << ","
@@ -1726,6 +1730,18 @@ class MultiParticle {
                               pow(p->v[itr_x][itr_y][itr_z].y, 2));
             return false;
         } else if (SolarSail) {
+#ifdef __CREASE__
+            int itr_x = p->v.size() - 1;
+            int itr_y = 0;
+            int itr_z = 0;
+            std::cout << "c.x:" << p->c[itr_x][itr_y][itr_z].x << ","
+                      << std::string(3, ' ')
+                      << "v.x:" << p->v[itr_x][itr_y][itr_z].x << ","
+                      << std::string(3, ' ')
+                      << "a.x:" << p->v[itr_x][itr_y][itr_z].x - pre_vector
+                      << std::flush;
+                    pre_vector = p->v[itr_x][itr_y][itr_z].x;
+#else
             int itr_x = p->v.size() - 1;
             int itr_y = p->v[0].size() / 2;
             int itr_z = p->v[0][0].size() / 2;
@@ -1766,6 +1782,8 @@ class MultiParticle {
                  << std::string(3, ' ')
                  << "psi:" << param->psi
                  << flush;
+                 pre_vector = p->v[itr_x][itr_y][itr_z].z; //折り目用に場所変更してるので後でコメントアウトしとく
+#endif
             // angle
             // cout << "," << string(3, ' ') << "theta:" << theta << ","
             //      << string(3, ' ') << "theta_a:" << theta - pre_theta
@@ -1777,7 +1795,7 @@ class MultiParticle {
                 return true;
             }
             // pre_theta  = theta;
-            pre_vector = p->v[itr_x][itr_y][itr_z].z;
+            // pre_vector = p->v[itr_x][itr_y][itr_z].z;  //折り目用にコメントアウトしてる。後で復活させとく
             return false;
         } else if (!(SimplePressure || CylinderPressure || CubePressure)) {
             int itr_x = p->h_ave.size() / 2;
@@ -1826,18 +1844,21 @@ class MultiParticle {
     double angleCalc(C const&, C const&, C const&);
     double angleCalc2(C const&, C const&, C const&, int);
     double angleCalc2(const C&, const C&, const C&, const string&);
+    double angleCalc2(const C&, const C&, const C&, const string&, const bool&);
     double gammaCalc(double const&, double const&);
     double hCalc(double const&, double const&);
     double epsilongCalc(double const&, double const&);
     double FsCalc(double const&, double const&, double const&);
+    double FsCalcChange(double const&, double const&, double const&);
     double FtCalc(double const&, double const&, double const&, double const&);
+    double FtCalcChange(double const&, double const&, double const&, double const&);
     double etaCalc(double const&, double const&, double const&);
     double MCalc(double const&, double const&, double const&);
     double MCalc(double const&, double const&, double const&, double);
     double get_random();
     void disturbance_Calc(C&, double const&);
 
-    void fConv(int const&, int const&, int const&);
+    void fConv(int const&, int const&, int const&);// 合力 Fをベクトル Fに変換する
 
     double innerProductCalc(C const&, C const&);
     void crossProductCalc(C&, C const&, C const&);

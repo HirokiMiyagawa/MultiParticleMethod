@@ -121,6 +121,10 @@ class Particles {
     vector<vector<vector<double>>> alphai;
     //! 曲げ角度
     vector<vector<vector<double>>> alphaj;
+    //! 曲げ角度判定用変数
+    vector<vector<vector<bool>>> alphai_identification;
+    //! 曲げ角度判定用変数
+    vector<vector<vector<bool>>> alphaj_identification;
 
     //! 曲率
     vector<vector<vector<double>>> etai;
@@ -269,6 +273,8 @@ class Particles {
         Ij.resize(iNum);
         alphai.resize(iNum);
         alphaj.resize(iNum);
+        alphai_identification.resize(iNum);
+        alphaj_identification.resize(iNum);
 
         etai.resize(iNum);
         etaj.resize(iNum);
@@ -370,6 +376,8 @@ class Particles {
             Ij[i].resize(jNum);
             alphai[i].resize(jNum);
             alphaj[i].resize(jNum);
+            alphai_identification[i].resize(jNum);
+            alphaj_identification[i].resize(jNum);
 
             etai[i].resize(jNum);
             etaj[i].resize(jNum);
@@ -471,6 +479,8 @@ class Particles {
                 Ij[i][j].resize(kNum);
                 alphai[i][j].resize(kNum);
                 alphaj[i][j].resize(kNum);
+                alphai_identification[i][j].resize(kNum);
+                alphaj_identification[i][j].resize(kNum);
 
                 etai[i][j].resize(kNum);
                 etaj[i][j].resize(kNum);

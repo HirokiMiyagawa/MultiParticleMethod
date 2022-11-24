@@ -369,6 +369,7 @@ void MultiParticle::setInitialConditionsEquallyDividedModeling() {
 /**
  * @brief	折り目ありの粒子配置と折り目特有のFlagの代入
  * @note　　折り目ありの場合のみ用いる  
+ * @note    注意：x-y平面方面に折れ曲げさせない。ソーラーセイルの解析と同じ向きにする
  */
 void MultiParticle::setInitialConditionsCreaseModeling() {
     for (int j = 0; j < local_jNum; j++) {
@@ -394,73 +395,12 @@ void MultiParticle::setInitialConditionsCreaseModeling() {
                 continue;
             }
             p->c[i][j][0].x = strvec[0];
-            p->c[i][j][0].y = strvec[1];
-            p->c[i][j][0].z = param->m_Lref_y * j / (local_jNum - 1);
-            //p->i_specialflag[i][j][0] = strvec[2];//1とつけば折り目
+            p->c[i][j][0].y = param->m_Lref_y * j / (local_jNum - 1);
+            p->c[i][j][0].z = strvec[1];
+            p->i_specialflag[i][j][0] = strvec[2];//1とつけば折り目
               i++;
         }
     }
-    // for (int i = 0; i < local_iNum; i++) {
-    //     for (int j = 0; j < local_jNum; j++) {
-    //         for (int k = 0; k < local_kNum; k++) {
-
-                
-                
-    //             // switch(i){
-    //             //     case 0:
-    //             //         p->c[i][j][k].x = -0.5;
-    //             //         p->c[i][j][k].y = j;
-    //             //         p->c[i][j][k].z = 0;
-    //             //         break;
-    //             //     case 1:
-    //             //     case 2:
-    //             //     case 3:
-    //             //     case 11:
-    //             //     case 12:
-    //             //     case 13:
-    //             //         p->c[i][j][k].x = p->c[i-1][j][k].x +param->m_Lref_x / (local_iNum - 4);
-    //             //         p->c[i][j][k].y = j;
-    //             //         p->c[i][j][k].z = 0;
-    //             //         break;
-
-    //             //     case 4:
-    //             //     case 10:
-    //             //         p->c[i][j][k].x = p->c[i-1][j][k].x +param->m_Lref_x / (local_iNum - 4);
-    //             //         p->c[i][j][k].y = j;
-    //             //         p->c[i][j][k].z = (-3+sqrt(6)) * param->m_Lref_x /10;
-    //             //         break;
-
-    //             //     case 5:
-    //             //         p->c[i][j][k].x = p->c[i-1][j][k].x + param->m_Lref_x / (local_iNum - 4);
-    //             //         p->c[i][j][k].y = j;
-    //             //         p->c[i][j][k].z = (-3+sqrt(3)) * param->m_Lref_x /10;
-    //             //         break;
-
-    //             //     case 9:
-    //             //         p->c[i][j][k].x = p->c[i-1][j][k].x + (param->m_Lref_x / (local_iNum - 4)) / 2;
-    //             //         p->c[i][j][k].y = j;
-    //             //         p->c[i][j][k].z = (-3+sqrt(3)) * param->m_Lref_x /10;
-    //             //         break;
-
-    //             //     case 6:
-    //             //     case 8:
-    //             //         p->c[i][j][k].x = p->c[i-1][j][k].x + (param->m_Lref_x / (local_iNum - 4)) / 2;
-    //             //         p->c[i][j][k].y = j;
-    //             //         p->c[i][j][k].z = (-3+sqrt(6)/2) * param->m_Lref_x /10;
-    //             //         break;
-
-    //             //     case 7:
-    //             //         p->c[i][j][k].x = p->c[i-1][j][k].x + (param->m_Lref_x / (local_iNum - 4)) / 2;
-    //             //         p->c[i][j][k].y = j;
-    //             //         p->c[i][j][k].z = -3 * param->m_Lref_x /10;
-    //             //         break;
-
-                        
-                
-    //             // }
-    //         }
-    //     }
-    // }
 }
 
 
@@ -717,235 +657,200 @@ void MultiParticle::setInitialConditionsCrease(){
                     p->v[i][j][k].x       = 0;
                     p->v[i][j][k].y       = 0;
                     p->v[i][j][k].z       = 0;
-                switch (p->flag[i][j][k]) {
-                    case Center:
-                        p->h_ave[i][j][k] = (p->hi[i][j][k] + p->hj[i][j][k] +
-                                            p->hi[i - 1][j][k] + p->hj[i][j - 1][k]) /
-                                            4;
-                        p->h_ave3[i][j][k] =
-                            p->h_ave[i][j][k] * p->h_ave[i][j][k] * p->h_ave[i][j][k];
 
-                        p->Ii[i][j][k]     = ((normCalcV2(p->mj[i][j][k], p->c[i][j][k]) +
-                                        normCalcV2(p->c[i][j][k], p->mj[i][j - 1][k])) *
-                                        p->h_ave3[i][j][k]);
-                        p->alphaj[i][j][k] = angleCalc2(p->c[i][j][k], p->c[i][j + 1][k],
-                                                        p->c[i][j - 1][k], 1);
-                        p->Ij[i][j][k]     = ((normCalcV2(p->mi[i][j][k], p->c[i][j][k]) +
-                                        normCalcV2(p->c[i][j][k], p->mi[i - 1][j][k])) *
-                                        p->h_ave3[i][j][k]);
-                        p->alphai[i][j][k] = angleCalc2(p->c[i][j][k], p->c[i + 1][j][k],
-                                                        p->c[i - 1][j][k], 0);
-
-                        p->etai[i][j][k] = etaCalc(p->alphai[i][j][k], p->li[i][j][k].norm,
-                                                p->li[i - 1][j][k].norm);
-                        p->etaj[i][j][k] = etaCalc(p->alphaj[i][j][k], p->lj[i][j][k].norm,
-                                                p->lj[i][j - 1][k].norm);
-
-                        p->Mi[i][j][k] = 0;
-                        p->Mj[i][j][k] = 0;
-
-                        p->beta[i][j][k].pp =
-                            angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j + 1][k]);
-                        p->beta[i][j][k].pm =
-                            angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j - 1][k]);
-                        p->beta[i][j][k].mp =
-                            angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->c[i][j + 1][k]);
-                        p->beta[i][j][k].mm =
-                            angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->c[i][j - 1][k]);
-                        p->gamma[i][j][k].pp =
-                            gammaCalc(p->beta[i][j][k].pp, p->beta0[i][j][k].pp);
-                        p->gamma[i][j][k].pm =
-                            gammaCalc(p->beta[i][j][k].pm, p->beta0[i][j][k].pm);
-                        p->gamma[i][j][k].mp =
-                            gammaCalc(p->beta[i][j][k].mp, p->beta0[i][j][k].mp);
-                        p->gamma[i][j][k].mm =
-                            gammaCalc(p->beta[i][j][k].mm, p->beta0[i][j][k].mm);
-
-                        p->epsilongi[i][j][k] = 0;
-                        p->epsilongj[i][j][k] = 0;
-
-                        //	l_gj = g(i+1/2, j+1/2)とmiの長さ + g(i+1/2, j-1/2)とmiの長さ
-                        p->Fti[i][j][k] = 0;
-                        p->Ftj[i][j][k] = 0;
-                        break;
-
-                    case Right:
-
-                        p->beta[i][j][k].pp = angleCalc(p->c[i][j][k], p->vc_Right[i][j][k],
-                                                        p->c[i][j + 1][k]);
-                        p->beta[i][j][k].pm = angleCalc(p->c[i][j][k], p->vc_Right[i][j][k],
-                                                        p->c[i][j - 1][k]);
-                        p->beta[i][j][k].mp =
-                            angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->c[i][j + 1][k]);
-                        p->beta[i][j][k].mm =
-                            angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->c[i][j - 1][k]);
-                        p->gamma[i][j][k].pp =
-                            gammaCalc(p->beta[i][j][k].pp, p->beta0[i][j][k].pp);
-                        p->gamma[i][j][k].pm =
-                            gammaCalc(p->beta[i][j][k].pm, p->beta0[i][j][k].pm);
-                        p->gamma[i][j][k].mp =
-                            gammaCalc(p->beta[i][j][k].mp, p->beta0[i][j][k].mp);
-                        p->gamma[i][j][k].mm =
-                            gammaCalc(p->beta[i][j][k].mm, p->beta0[i][j][k].mm);
-
-
-                        p->epsilongi[i][j][k] = 0;
-
-                        p->Ftj[i][j][k] = 0;
-                        break;
-
-                    case Bottom:
-
-                        p->beta[i][j][k].pp =
-                            angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j + 1][k]);
-                        p->beta[i][j][k].pm = angleCalc(p->c[i][j][k], p->c[i + 1][j][k],
-                                                        p->vc_Bottom[i][j][k]);
-                        p->beta[i][j][k].mp =
-                            angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->c[i][j + 1][k]);
-                        p->beta[i][j][k].mm = angleCalc(p->c[i][j][k], p->c[i - 1][j][k],
-                                                        p->vc_Bottom[i][j][k]);
-                        p->gamma[i][j][k].pp =
-                            gammaCalc(p->beta[i][j][k].pp, p->beta0[i][j][k].pp);
-                        p->gamma[i][j][k].pm =
-                            gammaCalc(p->beta[i][j][k].pm, p->beta0[i][j][k].pm);
-                        p->gamma[i][j][k].mp =
-                            gammaCalc(p->beta[i][j][k].mp, p->beta0[i][j][k].mp);
-                        p->gamma[i][j][k].mm =
-                            gammaCalc(p->beta[i][j][k].mm, p->beta0[i][j][k].mm);
-
-                        p->epsilongi[i][j][k] = 0;
-                        p->epsilongj[i][j][k] = 0;
-
-                        p->Fti[i][j][k] = 0;
-                        p->Ftj[i][j][k] = 0;
-                        break;
-
-                    case Top:
-
-                        p->beta[i][j][k].pp =
-                            angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->vc_Top[i][j][k]);
-                        p->beta[i][j][k].pm =
-                            angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j - 1][k]);
-                        p->beta[i][j][k].mp =
-                            angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->vc_Top[i][j][k]);
-                        p->beta[i][j][k].mm =
-                            angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->c[i][j - 1][k]);
-                        p->gamma[i][j][k].pp =
-                            gammaCalc(p->beta[i][j][k].pp, p->beta0[i][j][k].pp);
-                        p->gamma[i][j][k].pm =
-                            gammaCalc(p->beta[i][j][k].pm, p->beta0[i][j][k].pm);
-                        p->gamma[i][j][k].mp =
-                            gammaCalc(p->beta[i][j][k].mp, p->beta0[i][j][k].mp);
-                        p->gamma[i][j][k].mm =
-                            gammaCalc(p->beta[i][j][k].mm, p->beta0[i][j][k].mm);
-
-                        p->epsilongj[i][j][k] = 0;
-
-                        p->Fti[i][j][k] = 0;
-                        p->Ftj[i][j][k] = 0;
-                        break;
-
-                    case Left:
-
-                        p->beta[i][j][k].pp =
-                            angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j + 1][k]);
-                        p->beta[i][j][k].pm =
-                            angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j - 1][k]);
-                        p->beta[i][j][k].mp = angleCalc(p->c[i][j][k], p->vc_Left[i][j][k],
-                                                        p->c[i][j + 1][k]);
-                        p->beta[i][j][k].mm = angleCalc(p->c[i][j][k], p->vc_Left[i][j][k],
-                                                        p->c[i][j - 1][k]);
-                        p->gamma[i][j][k].pp =
-                            gammaCalc(p->beta[i][j][k].pp, p->beta0[i][j][k].pp);
-                        p->gamma[i][j][k].pm =
-                            gammaCalc(p->beta[i][j][k].pm, p->beta0[i][j][k].pm);
-                        p->gamma[i][j][k].mp =
-                            gammaCalc(p->beta[i][j][k].mp, p->beta0[i][j][k].mp);
-                        p->gamma[i][j][k].mm =
-                            gammaCalc(p->beta[i][j][k].mm, p->beta0[i][j][k].mm);
-
-                        p->epsilongi[i][j][k] = 0;
-                        p->epsilongj[i][j][k] = 0;
-                        p->Fti[i][j][k] = 0;
-                        p->Ftj[i][j][k] = 0;
-
-                        break;
-
-                    case LeftTop:
-
-                        p->beta[i][j][k].pp =
-                            angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->vc_Top[i][j][k]);
-                        p->beta[i][j][k].pm =
-                            angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j - 1][k]);
-                        p->beta[i][j][k].mp = angleCalc(p->c[i][j][k], p->vc_Left[i][j][k],
-                                                        p->vc_Top[i][j][k]);
-                        p->beta[i][j][k].mm = angleCalc(p->c[i][j][k], p->vc_Left[i][j][k],
-                                                        p->c[i][j - 1][k]);
-                        p->gamma[i][j][k].pp =
-                            gammaCalc(p->beta[i][j][k].pp, p->beta0[i][j][k].pp);
-                        p->gamma[i][j][k].pm =
-                            gammaCalc(p->beta[i][j][k].pm, p->beta0[i][j][k].pm);
-                        p->gamma[i][j][k].mp =
-                            gammaCalc(p->beta[i][j][k].mp, p->beta0[i][j][k].mp);
-                        p->gamma[i][j][k].mm =
-                            gammaCalc(p->beta[i][j][k].mm, p->beta0[i][j][k].mm);
-
-                        p->epsilongj[i][j][k] = 0;
-
-                        p->Fti[i][j][k] = 0;
-                        p->Ftj[i][j][k] = 0;
-
-                        break;
-
-                    case LeftBottom:
-
-                        p->beta[i][j][k].pp =
-                            angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j + 1][k]);
-                        p->beta[i][j][k].pm = angleCalc(p->c[i][j][k], p->c[i + 1][j][k],
-                                                        p->vc_Bottom[i][j][k]);
-                        p->beta[i][j][k].mp = angleCalc(p->c[i][j][k], p->vc_Left[i][j][k],
-                                                        p->c[i][j + 1][k]);
-                        p->beta[i][j][k].mm = angleCalc(p->c[i][j][k], p->vc_Left[i][j][k],
-                                                        p->vc_Bottom[i][j][k]);
-                        p->gamma[i][j][k].pp =
-                            gammaCalc(p->beta[i][j][k].pp, p->beta0[i][j][k].pp);
-                        p->gamma[i][j][k].pm =
-                            gammaCalc(p->beta[i][j][k].pm, p->beta0[i][j][k].pm);
-                        p->gamma[i][j][k].mp =
-                            gammaCalc(p->beta[i][j][k].mp, p->beta0[i][j][k].mp);
-                        p->gamma[i][j][k].mm =
-                            gammaCalc(p->beta[i][j][k].mm, p->beta0[i][j][k].mm);
-
-                        p->epsilongi[i][j][k] = 0;
-                        p->epsilongj[i][j][k] = 0;
-                        p->Fti[i][j][k] = 0;
-                        p->Ftj[i][j][k] = 0;
-
-                        break;
-
-                    case RightBottom:
                     
-                        p->beta[i][j][k].pp = angleCalc(p->c[i][j][k], p->vc_Right[i][j][k],
-                                                        p->c[i][j + 1][k]);
-                        p->beta[i][j][k].pm = angleCalc(p->c[i][j][k], p->vc_Right[i][j][k],
-                                                        p->vc_Bottom[i][j][k]);
-                        p->beta[i][j][k].mp =
-                            angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->c[i][j + 1][k]);
-                        p->beta[i][j][k].mm = angleCalc(p->c[i][j][k], p->c[i - 1][j][k],
-                                                        p->vc_Bottom[i][j][k]);
-                        p->gamma[i][j][k].pp =
-                            gammaCalc(p->beta[i][j][k].pp, p->beta0[i][j][k].pp);
-                        p->gamma[i][j][k].pm =
-                            gammaCalc(p->beta[i][j][k].pm, p->beta0[i][j][k].pm);
-                        p->gamma[i][j][k].mp =
-                            gammaCalc(p->beta[i][j][k].mp, p->beta0[i][j][k].mp);
-                        p->gamma[i][j][k].mm =
-                            gammaCalc(p->beta[i][j][k].mm, p->beta0[i][j][k].mm);
-                        p->Ftj[i][j][k] = 0;
+                // switch (p->flag[i][j][k]) {
+                //     case Center:
+                //         p->alphaj[i][j][k] = angleCalc2Initial(p->c[i][j][k], p->c[i][j + 1][k],
+                //                                         p->c[i][j - 1][k], 1);
+                //         if (p->alphaj < math::pi()) {
+                //             p->alphaj_identification[i][j][k] = true;
+                //         }
+                //         else {
+                //             p->alphaj_identification[i][j][k] = false;
+                //         }
+                //         p->alphai[i][j][k] = angleCalc2Initial(p->c[i][j][k], p->c[i + 1][j][k],
+                //                                         p->c[i - 1][j][k], 0);
+                //         if (p->alphai < math::pi()) {
+                //             p->alphai_identification[i][j][k] = true;
+                //         }
+                //         else {
+                //             p->alphai_identification[i][j][k] = false;
+                //         }
+                //         p->etai[i][j][k] = etaCalc(p->alphai[i][j][k], p->li[i][j][k].norm,
+                //                                 p->li[i - 1][j][k].norm);
+                //         p->etaj[i][j][k] = etaCalc(p->alphaj[i][j][k], p->lj[i][j][k].norm,
+                //                                 p->lj[i][j - 1][k].norm);
 
-                        break;
+
+                //         p->beta[i][j][k].pp =
+                //             angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j + 1][k]);
+                //         p->beta[i][j][k].pm =
+                //             angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j - 1][k]);
+                //         p->beta[i][j][k].mp =
+                //             angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->c[i][j + 1][k]);
+                //         p->beta[i][j][k].mm =
+                //             angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->c[i][j - 1][k]);
+
+                //         p->epsilongi[i][j][k] = 0;
+                //         p->epsilongj[i][j][k] = 0;
+
+                //         //	l_gj = g(i+1/2, j+1/2)とmiの長さ + g(i+1/2, j-1/2)とmiの長さ
+                //         p->Fti[i][j][k] = 0;
+                //         p->Ftj[i][j][k] = 0;
+                //         break;
+
+                //     case Right:
+
+                //         p->beta[i][j][k].pp = angleCalc(p->c[i][j][k], p->vc_Right[i][j][k],
+                //                                         p->c[i][j + 1][k]);
+                //         p->beta[i][j][k].pm = angleCalc(p->c[i][j][k], p->vc_Right[i][j][k],
+                //                                         p->c[i][j - 1][k]);
+                //         p->beta[i][j][k].mp =
+                //             angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->c[i][j + 1][k]);
+                //         p->beta[i][j][k].mm =
+                //             angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->c[i][j - 1][k]);
+
+                //         p->epsilongi[i][j][k] = 0;
+
+                //         p->Ftj[i][j][k] = 0;
+                //         break;
+
+                //     case Bottom:
+
+                //         p->beta[i][j][k].pp =
+                //             angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j + 1][k]);
+                //         p->beta[i][j][k].pm = angleCalc(p->c[i][j][k], p->c[i + 1][j][k],
+                //                                         p->vc_Bottom[i][j][k]);
+                //         p->beta[i][j][k].mp =
+                //             angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->c[i][j + 1][k]);
+                //         p->beta[i][j][k].mm = angleCalc(p->c[i][j][k], p->c[i - 1][j][k],
+                //                                         p->vc_Bottom[i][j][k]);
+                //         p->epsilongi[i][j][k] = 0;
+                //         p->epsilongj[i][j][k] = 0;
+
+                //         p->Fti[i][j][k] = 0;
+                //         p->Ftj[i][j][k] = 0;
+                //         break;
+
+                //     case Top:
+
+                //         p->beta[i][j][k].pp =
+                //             angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->vc_Top[i][j][k]);
+                //         p->beta[i][j][k].pm =
+                //             angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j - 1][k]);
+                //         p->beta[i][j][k].mp =
+                //             angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->vc_Top[i][j][k]);
+                //         p->beta[i][j][k].mm =
+                //             angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->c[i][j - 1][k]);
+
+                //         p->epsilongj[i][j][k] = 0;
+
+                //         p->Fti[i][j][k] = 0;
+                //         p->Ftj[i][j][k] = 0;
+                //         break;
+
+                //     case Left:
+
+                //         p->beta[i][j][k].pp =
+                //             angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j + 1][k]);
+                //         p->beta[i][j][k].pm =
+                //             angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j - 1][k]);
+                //         p->beta[i][j][k].mp = angleCalc(p->c[i][j][k], p->vc_Left[i][j][k],
+                //                                         p->c[i][j + 1][k]);
+                //         p->beta[i][j][k].mm = angleCalc(p->c[i][j][k], p->vc_Left[i][j][k],
+                //                                         p->c[i][j - 1][k]);
+                //         p->gamma[i][j][k].pp =
+                //             gammaCalc(p->beta[i][j][k].pp, p->beta0[i][j][k].pp);
+                //         p->gamma[i][j][k].pm =
+                //             gammaCalc(p->beta[i][j][k].pm, p->beta0[i][j][k].pm);
+                //         p->gamma[i][j][k].mp =
+                //             gammaCalc(p->beta[i][j][k].mp, p->beta0[i][j][k].mp);
+                //         p->gamma[i][j][k].mm =
+                //             gammaCalc(p->beta[i][j][k].mm, p->beta0[i][j][k].mm);
+
+                //         p->epsilongi[i][j][k] = 0;
+                //         p->epsilongj[i][j][k] = 0;
+                //         p->Fti[i][j][k] = 0;
+                //         p->Ftj[i][j][k] = 0;
+
+                //         break;
+
+                //     case LeftTop:
+
+                //         p->beta[i][j][k].pp =
+                //             angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->vc_Top[i][j][k]);
+                //         p->beta[i][j][k].pm =
+                //             angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j - 1][k]);
+                //         p->beta[i][j][k].mp = angleCalc(p->c[i][j][k], p->vc_Left[i][j][k],
+                //                                         p->vc_Top[i][j][k]);
+                //         p->beta[i][j][k].mm = angleCalc(p->c[i][j][k], p->vc_Left[i][j][k],
+                //                                         p->c[i][j - 1][k]);
+                //         p->gamma[i][j][k].pp =
+                //             gammaCalc(p->beta[i][j][k].pp, p->beta0[i][j][k].pp);
+                //         p->gamma[i][j][k].pm =
+                //             gammaCalc(p->beta[i][j][k].pm, p->beta0[i][j][k].pm);
+                //         p->gamma[i][j][k].mp =
+                //             gammaCalc(p->beta[i][j][k].mp, p->beta0[i][j][k].mp);
+                //         p->gamma[i][j][k].mm =
+                //             gammaCalc(p->beta[i][j][k].mm, p->beta0[i][j][k].mm);
+
+                //         p->epsilongj[i][j][k] = 0;
+
+                //         p->Fti[i][j][k] = 0;
+                //         p->Ftj[i][j][k] = 0;
+
+                //         break;
+
+                //     case LeftBottom:
+
+                //         p->beta[i][j][k].pp =
+                //             angleCalc(p->c[i][j][k], p->c[i + 1][j][k], p->c[i][j + 1][k]);
+                //         p->beta[i][j][k].pm = angleCalc(p->c[i][j][k], p->c[i + 1][j][k],
+                //                                         p->vc_Bottom[i][j][k]);
+                //         p->beta[i][j][k].mp = angleCalc(p->c[i][j][k], p->vc_Left[i][j][k],
+                //                                         p->c[i][j + 1][k]);
+                //         p->beta[i][j][k].mm = angleCalc(p->c[i][j][k], p->vc_Left[i][j][k],
+                //                                         p->vc_Bottom[i][j][k]);
+                //         p->gamma[i][j][k].pp =
+                //             gammaCalc(p->beta[i][j][k].pp, p->beta0[i][j][k].pp);
+                //         p->gamma[i][j][k].pm =
+                //             gammaCalc(p->beta[i][j][k].pm, p->beta0[i][j][k].pm);
+                //         p->gamma[i][j][k].mp =
+                //             gammaCalc(p->beta[i][j][k].mp, p->beta0[i][j][k].mp);
+                //         p->gamma[i][j][k].mm =
+                //             gammaCalc(p->beta[i][j][k].mm, p->beta0[i][j][k].mm);
+
+                //         p->epsilongi[i][j][k] = 0;
+                //         p->epsilongj[i][j][k] = 0;
+                //         p->Fti[i][j][k] = 0;
+                //         p->Ftj[i][j][k] = 0;
+
+                //         break;
+
+                //     case RightBottom:
+                    
+                //         p->beta[i][j][k].pp = angleCalc(p->c[i][j][k], p->vc_Right[i][j][k],
+                //                                         p->c[i][j + 1][k]);
+                //         p->beta[i][j][k].pm = angleCalc(p->c[i][j][k], p->vc_Right[i][j][k],
+                //                                         p->vc_Bottom[i][j][k]);
+                //         p->beta[i][j][k].mp =
+                //             angleCalc(p->c[i][j][k], p->c[i - 1][j][k], p->c[i][j + 1][k]);
+                //         p->beta[i][j][k].mm = angleCalc(p->c[i][j][k], p->c[i - 1][j][k],
+                //                                         p->vc_Bottom[i][j][k]);
+                //         p->gamma[i][j][k].pp =
+                //             gammaCalc(p->beta[i][j][k].pp, p->beta0[i][j][k].pp);
+                //         p->gamma[i][j][k].pm =
+                //             gammaCalc(p->beta[i][j][k].pm, p->beta0[i][j][k].pm);
+                //         p->gamma[i][j][k].mp =
+                //             gammaCalc(p->beta[i][j][k].mp, p->beta0[i][j][k].mp);
+                //         p->gamma[i][j][k].mm =
+                //             gammaCalc(p->beta[i][j][k].mm, p->beta0[i][j][k].mm);
+                //         p->Ftj[i][j][k] = 0;
+
+                //         break;
                 
-                }
+                // }
             }
         }
     }
@@ -4526,12 +4431,23 @@ void MultiParticle::setInitialConditionsCopy() {
                 p->Si0[i][j][k] = p->Si[i][j][k].cp.norm;
                 p->Sj0[i][j][k] = p->Sj[i][j][k].cp.norm;
 
-                // p->etai0[i][j][k] = 0;
-                // p->etaj0[i][j][k] = 0;
+
                 p->etai0[i][j][k] = p->etai[i][j][k];
                 p->etaj0[i][j][k] = p->etaj[i][j][k];
-                // p->etai[i][j][k] = 0;
-                // p->etaj[i][j][k] = 0;
+                //曲げ角度、分岐判定
+                if (p->alphai[i][j][k] < math::pi()) {
+                    p->alphai_identification[i][j][k] = true;
+                }
+                else {
+                    p->alphai_identification[i][j][k] = false;
+                }
+                if (p->alphaj[i][j][k] < math::pi()) {
+                    p->alphaj_identification[i][j][k] = true;
+                }
+                else {
+                    p->alphaj_identification[i][j][k] = false;
+                }
+
 
                 // cout << p->Si[i][j][k].cp.norm << endl;
 #ifdef __CYLINDER_NON_BOUNDARY__
