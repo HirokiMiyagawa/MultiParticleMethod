@@ -496,7 +496,7 @@ double MultiParticle::MCalc(double const& I, double const& diff_eta,
  * @details     新しいヤング率でかけ古いヤング率で割ることでこの曲げばねのみヤング率の変更をする
  */
 double MultiParticle::MCalc(double const& I, double const& diff_eta,
-                            double const& diff_etav, double m_new_E) {
+                            double const& diff_etav, double Long) {
     double eta_pow, etav_pow, result;
     eta_pow = pow(diff_eta, difinition_B);
     etav_pow = pow(diff_etav, difinition_B);
@@ -515,8 +515,10 @@ double MultiParticle::MCalc(double const& I, double const& diff_eta,
         etav_pow = diff_etav;
     }
     //断面二次モーメントで膜厚の三乗してる
-    result = param->m_preCalc4 * (I * pow(Creaseh, 3)) * (eta_pow + param->m_nu * etav_pow) * (m_new_E / param->m_E) /
+    result = param->m_preCalc4 * (I * pow(Creaseh, 3)) * (eta_pow + param->m_nu * etav_pow) * (param->m_newE / param->m_E) /
            param->m_h0;
+    // result = param->m_preCalc4 * (eta_pow + param->m_nu * etav_pow) * (param->m_newE / param->m_E) /
+    //        (param->m_h0 * Long);
     if (!(std::isfinite(result))) {
         //DEBUG
         std::cout << "MCalc missed..." 
@@ -531,8 +533,7 @@ double MultiParticle::MCalc(double const& I, double const& diff_eta,
                   << std::endl;
         //
     }
-    return param->m_preCalc4 * I * (eta_pow + param->m_nu * etav_pow) * (m_new_E / param->m_E) /
-           param->m_h0;
+    return result;
 
 }
 /**
@@ -1143,6 +1144,19 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
         // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].jmv, p->Sj[i][j -
         // 1][k]);
     }
+
+    // if (i == 0) {// test
+    //     p->f[i][j][k].x -= -1.31399434838027E-07;
+    //     p->f[i][j][k].z -= 5.0439518792893E-08;
+    // }
+    // else if (i == 1) {
+    //     p->f[i][j][k].z -= -1.00879037585786E-07;
+    // }
+    // else if (i == 2) {
+    //     p->f[i][j][k].x -= 1.31399434838027E-07;
+    //     p->f[i][j][k].z -= 5.0439518792893E-08;
+    // }
+
 }
 #endif
 

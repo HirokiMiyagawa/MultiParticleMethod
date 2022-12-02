@@ -4,6 +4,7 @@
  * @brief
  * @details
  * @note param->と記述される
+ * @note m_とある変数は無次元数
  * ///////////////////////////////////////////////////////////////////////////////
  */
 
@@ -503,13 +504,14 @@ class Params {
         m_h0     = h0 / Lref;
         m_hc0    = m_h0 * 2;
         m_Pc     = Pc / Pref;
-        m_fx     = m_kx * m_Lref_x;
+        // m_fx     = m_kx * m_Lref_x;
+        m_fx     = m_kx; // test?
         m_fy     = m_ky * m_Lref_x;
         m_fz     = m_kz * m_Lref_x;
         // XXX: Why add Pref?
         // m_k = sqrt(m_kx * m_kx + m_ky * m_ky + m_kz * m_kz) + Pref;
         m_k = sqrt(m_kx * m_kx + m_ky * m_ky + m_kz * m_kz);
-        gravity = 9806;
+        gravity = 9.806;
 
         // C_EI = m_E / (m_rho * Vref * Vref * m_k);
         C_EI = m_E / (m_rho * Vref * Vref);

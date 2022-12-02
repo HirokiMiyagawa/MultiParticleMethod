@@ -392,10 +392,16 @@ void MultiParticle::setInitialConditionsCreaseModeling() {
             }
             if (i == local_iNum) {
                 param->m_newE = strvec[1];
+                i++;
+                continue;
+            }
+            if (i > local_iNum) {
                 continue;
             }
             p->c[i][j][0].x = strvec[0];
+            //p->c[i][j][0].x = param->m_Lref_x * i / (local_iNum - 1);
             p->c[i][j][0].y = param->m_Lref_y * j / (local_jNum - 1);
+            //p->c[i][j][0].z = 0;
             p->c[i][j][0].z = strvec[1];
             p->i_specialflag[i][j][0] = strvec[2];//1とつけば折り目
               i++;
@@ -4434,6 +4440,8 @@ void MultiParticle::setInitialConditionsCopy() {
 
                 p->etai0[i][j][k] = p->etai[i][j][k];
                 p->etaj0[i][j][k] = p->etaj[i][j][k];
+                // p->etai0[i][j][k] = 0; //test
+                // p->etaj0[i][j][k] = 0; //test
                 //曲げ角度、分岐判定
                 if (p->alphai[i][j][k] < math::pi()) {
                     p->alphai_identification[i][j][k] = true;

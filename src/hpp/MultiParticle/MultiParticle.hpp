@@ -1005,7 +1005,7 @@ class MultiParticle {
                                    p->surround_particle_exsit[i][j][k])
                             << "," << p->i_specialflag[i][j][k]
                             << ", " << param->m_newE 
-                            << "," << time * param->m_dt * param->m_sheet_skip
+                            << "," << time * param->m_dt * param->m_sheet_skip * param->Lref / param->Vref
                             << "," << p->new_c[i][j][k].x << ","
                             << p->new_c[i][j][k].y << "," << p->new_c[i][j][k].z
                             << "," << p->new_v[i][j][k].x << ","
@@ -1525,7 +1525,7 @@ class MultiParticle {
         // execution monitor (現在の計算時間を表示する)
         //
         std::cout << "\r"
-                  << "time: " << time * param->m_dt * param->m_sheet_skip
+                  << "time: " << time * param->m_dt * param->m_sheet_skip * param->Lref / param->Vref
                   << std::setprecision(15) << "," << std::string(2, ' ');
         std::cout << std::setprecision(5);
 
