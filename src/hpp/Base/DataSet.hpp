@@ -11,8 +11,6 @@
 #ifndef __DATASET_HPP__
 #define __DATASET_HPP__
 
-
-
 #include "InputParam.hpp"
 #include <vector>  // 動的配列
 using std::vector;
@@ -32,8 +30,6 @@ enum Positions {
     RightTop    = 0b00001001,
     LeftBottom  = 0b00000110,
     LeftTop     = 0b00001010,
-
-    Crease = 0b10000000,//折り目
 
     // Center = 0x00,
     // Left   = 0x01,

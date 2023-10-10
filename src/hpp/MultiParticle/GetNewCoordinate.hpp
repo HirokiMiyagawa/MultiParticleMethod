@@ -715,7 +715,6 @@ void MultiParticle::GetNewCoordinate(int const& i, int const& j, int const& k) {
             p->Fti[i][j][k] + p->Fsi[i][j][k].pp + p->Fsi[i][j][k].pm;
         // bend
         p->F[i][j][k].ipv = p->Fb[i][j][k].ipv - p->Fb[i + 1][j][k].imv;
-        
         // p->F[i][j][k].ipv = p->Fb[i + 1][j][k].imv;
     } else {
         p->F[i][j][k].ip  = 0;

@@ -15,11 +15,6 @@
 // #define __SIMPLE_SHARE__
 // #define __SUPPORT_SHARE__
 
-//  analysis crease(wrinkle)
-//---------------------------------------
- #define __CREASE__
-//---------------------------------------
-
 // Particle shape
 //---------------------------------------
 // #define __EQUALLY_DEVIDED__

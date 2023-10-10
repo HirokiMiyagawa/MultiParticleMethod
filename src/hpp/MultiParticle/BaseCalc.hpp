@@ -10,8 +10,6 @@
 #include <cmath>
 #include <string>
 
-float Creaseh = 1;
-float difinition_B = 1;
 /**
  * @brief		粒子間距離 lを求める
  * @param[out] Vector myl
@@ -100,7 +98,7 @@ double MultiParticle::angleCalc(C const& myc, C const& A, C const& B) {
 }
 
 /**
- * @brief		曲げ角度 αを求める   今使ってない
+ * @brief		曲げ角度 αを求める
  * @param[in]	A：次
  * @param[in]	B：前
  * @param[in]	int xy：1のとき、αi、0のときαjを求める
@@ -263,7 +261,7 @@ double MultiParticle::angleCalc2(C const& myc, C const& A, C const& B, int xy) {
 }
 
 /**
- * @brief		曲げ角度 αを求める  使ってない
+ * @brief		曲げ角度 αを求める
  * @param[in]	A：次
  * @param[in]	B：前
  * @param[in]	int xy：1のとき、αi、0のときαjを求める
@@ -300,90 +298,11 @@ double MultiParticle::angleCalc2(const C& myc, const C& A, const C& B,
         abort();
         return math::pi();
     } else {
-        //追加
-        // if (((direction == "i") && (fabs(Cp.y) < 0.000001)) || (direction == "j" && fabs(Cp.x) < 0.000001)) {
-        //     return Ret;
-        // }
-
-        if ((direction == "i" && 0 < Cp.y) || (direction == "j" && Cp.x < 0)) {//true
-            
+        if ((direction == "i" && 0 < Cp.y) || (direction == "j" && Cp.x < 0)) {
             return Ret;
             // return math::sacos(innerProductCalc(Adif, Bdif) /
             //                    (normCalc(Adif) * normCalc(Bdif)));
-        } else {//false
-            
-            return (2 * math::pi()) - Ret;
-            // return (2 * math::pi()) -
-            //        (math::sacos(innerProductCalc(Adif, Bdif) /
-            //                     (normCalc(Adif) * normCalc(Bdif))));
-        }
-    }
-}
-
-/**
- * @brief		曲げ角度 αを求める
- * @param[in]	A：次
- * @param[in]	B：前
- * @param[in]	int xy：1のとき、αi、0のときαjを求める
- * @note		ifの条件はacos()の引数になるのか
- * acos()の引数が-1<= 引数 <= 1かどうか
- * xy==0のとき、(0 < Cp.y)が条件で曲げ角度の設定を行う
- * また、xy != 0のとき、(Cp.x < 0)が条件となる
- * 外積のxやyが条件文に記載されている理由は不明
- * Cylinderのときは180-αが内側の角度となる
- * Aが先
- * xとyが正のとき、
- */
-double MultiParticle::angleCalc2(const C& myc, const C& A, const C& B,
-                                 const string& direction, const bool& identification) {
-    C Adif;
-    C Bdif;
-    C Cp;
-    Adif = A - myc;
-    Bdif = B - myc;
-    crossProductCalc(Cp, Adif, Bdif);
-    double radian =
-        innerProductCalc(Adif, Bdif) / (normCalc(Adif) * normCalc(Bdif));
-    // if (fabs(radian) > 1.0) {
-    //     cout << "radian:" << radian << endl;
-    //     cout << myc.x << "," << myc.y << "," << myc.z << "\n" << endl;
-    // }
-    double Ret = math::sacos(radian);
-    if ((normCalc(Adif) * normCalc(Bdif) == 0)) {
-        cout << "on angleCalc2. same 3 point coordinate" << endl;
-        cout << "myc:" << myc.x << ',' << myc.y << ',' << myc.z << endl;
-        cout << "A:" << A.x << ',' << A.y << ',' << A.z << endl;
-        cout << "B:" << B.x << ',' << B.y << ',' << B.z << endl;
-        cout << direction << endl;
-        abort();
-        return math::pi();
-    } else {
-        //追加
-        // if (((direction == "i") && (fabs(Cp.y) < 0.000001)) || (direction == "j" && fabs(Cp.x) < 0.000001)) {
-        //     return Ret;
-        // }
-        // if (fabs(Ret - math::pi()) > 0.001) {
-        //     if ((direction == "i") && (identification == true)) {
-        //         return Ret;
-        //     }
-        //     else if ((direction == "i") && (identification == false)) {
-        //         return (2 * math::pi()) - Ret;
-        //     }
-        //     else if ((direction == "j") && (identification == true)) {
-        //         return Ret;
-        //     }
-        //     else if ((direction == "j") && (identification == false)) {
-        //         return (2 * math::pi()) - Ret;
-        //     }
-        // }
-
-        if ((direction == "i" && 0 < Cp.y) || (direction == "j" && Cp.x < 0)) {//true
-            
-            return Ret;
-            // return math::sacos(innerProductCalc(Adif, Bdif) /
-            //                    (normCalc(Adif) * normCalc(Bdif)));
-        } else {//false
-            
+        } else {
             return (2 * math::pi()) - Ret;
             // return (2 * math::pi()) -
             //        (math::sacos(innerProductCalc(Adif, Bdif) /
@@ -424,34 +343,12 @@ double MultiParticle::FsCalc(double const& gamma, double const& l,
 }
 
 /**
- * @brief	せん断力 Fs  折り目バージョン
- * @note 	preCalc2 = 1 / 4(1+ν)
- */
-double MultiParticle::FsCalcChange(double const& gamma, double const& l,
-                             double const& h) {
-    //return param->m_preCalc2 * (h) * (l) * (gamma) * (param->m_newE / param->m_E) / param->m_h0;
-    return param->m_preCalc2 * (h * Creaseh) * (l) * (gamma) * (param->m_newE / param->m_E) / param->m_h0;
-}
-
-/**
  * @brief	伸縮力 Ft
  */
 double MultiParticle::FtCalc(double const& L, double const& h,
                              double const& epsilonl, double const& epsilong) {
     return param->m_preCalc1 * (h)*L * ((epsilonl) + param->m_nu * (epsilong)) /
            param->m_h0;
-}
-
-/**
- * @brief	伸縮力 Ft  折り目バージョン
- * @details 新しいヤング率でかけ古いヤング率で割ることでこの曲げばねのみヤング率の変更をする
- */
-double MultiParticle::FtCalcChange(double const& L, double const& h,
-                             double const& epsilonl, double const& epsilong) {
-    return param->m_preCalc1 * (h * Creaseh) *L * ((epsilonl) + param->m_nu * (epsilong))  * (param->m_newE / param->m_E) /
-           param->m_h0;
-    // return param->m_preCalc1 * (h * Creaseh)*L * ((epsilonl) + param->m_nu * (epsilong))  * (param->m_newE / param->m_E) /
-    //        param->m_h0;
 }
 
 /**
@@ -488,54 +385,18 @@ double MultiParticle::MCalc(double const& I, double const& diff_eta,
 }
 
 /**
- * @brief		曲げモーメント Mを計算する。折り目バージョン
- * @param[in] 	double I 断面2次モーメント
- * @param[in] 	double diff_eta モーメント方向の曲率
- * @param[in] 	double diff_etav モーメントと直行する方向の曲率
+ * @brief		ねじりモーメント Tを計算する
+ * @param[in] 	double Ip 断面2次極モーメント
+ * @param[in] 	double diff_theta ねじれ角の差
+ * @param[in] 	double lon 軸の長さ
  * @return		double モーメントの計算結果
- * @details     新しいヤング率でかけ古いヤング率で割ることでこの曲げばねのみヤング率の変更をする
  */
-double MultiParticle::MCalc(double const& I, double const& diff_eta,
-                            double const& diff_etav, double Long) {
-    double eta_pow, etav_pow, result;
-    eta_pow = pow(diff_eta, difinition_B);
-    etav_pow = pow(diff_etav, difinition_B);
-    // 符号を合わせる
-    if ((eta_pow > 0) && (diff_eta < 0)) {
-        eta_pow = - eta_pow;
-    }
-    if ((etav_pow > 0) && (diff_etav < 0)) {
-        etav_pow = - etav_pow;
-    }
-    // Δηの差が1より小さいときは累乗しない
-    if (fabs(diff_eta) < 1) {
-        eta_pow = diff_eta;
-    }
-    if (fabs(diff_etav) < 1) {
-        etav_pow = diff_etav;
-    }
-    //断面二次モーメントで膜厚の三乗してる
-    result = param->m_preCalc4 * (I * pow(Creaseh, 3)) * (eta_pow + param->m_nu * etav_pow) * (param->m_newE / param->m_E) /
-           param->m_h0;
-    // result = param->m_preCalc4 * (eta_pow + param->m_nu * etav_pow) * (param->m_newE / param->m_E) /
-    //        (param->m_h0 * Long);
-    if (!(std::isfinite(result))) {
-        //DEBUG
-        std::cout << "MCalc missed..." 
-                  << "I = "
-                  << I
-                  << ", eta_pow = "
-                  << eta_pow
-                  << ", etav_pow = "
-                  << etav_pow
-                  << ", h0 = "
-                  << param->m_h0
-                  << std::endl;
-        //
-    }
-    return result;
-
+double MultiParticle::TCalc(double const& Ip, double const& diff_theta,
+                            double const& lon) {
+    return param->m_preCalc5 * Ip * diff_theta /
+           (lon * param->m_h0);
 }
+
 /**
  * @brief
  *
@@ -672,28 +533,29 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
             p->f[i][j][k].z += (p->F[i][j][k].sv * p->S[i][j][k].cp.vector.z /
                                 p->S[i][j][k].cp.norm);
         }
-            // 面外の曲げによる力を計算
-            if (p->F[i][j][k].ipv != 0) {
-                p->f[i][j][k].x += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector.x /
-                                    p->Si[i][j][k].cp.norm);
-                p->f[i][j][k].y += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector.y /
-                                    p->Si[i][j][k].cp.norm);
-                p->f[i][j][k].z += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector.z /
-                                    p->Si[i][j][k].cp.norm);
-            }
 
-            if (p->F[i][j][k].imv != 0) {
-                p->f[i][j][k].x +=
-                    (p->F[i][j][k].imv * p->Si[i][j - 1][k].cp.vector.x /
-                    p->Si[i][j - 1][k].cp.norm);
-                p->f[i][j][k].y +=
-                    (p->F[i][j][k].imv * p->Si[i][j - 1][k].cp.vector.y /
-                    p->Si[i][j - 1][k].cp.norm);
-                p->f[i][j][k].z +=
-                    (p->F[i][j][k].imv * p->Si[i][j - 1][k].cp.vector.z /
-                    p->Si[i][j - 1][k].cp.norm);
-            }
-        
+        // 面外の曲げによる力を計算
+        if (p->F[i][j][k].ipv != 0) {
+            p->f[i][j][k].x += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector.x /
+                                p->Si[i][j][k].cp.norm);
+            p->f[i][j][k].y += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector.y /
+                                p->Si[i][j][k].cp.norm);
+            p->f[i][j][k].z += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector.z /
+                                p->Si[i][j][k].cp.norm);
+        }
+
+        if (p->F[i][j][k].imv != 0) {
+            p->f[i][j][k].x +=
+                (p->F[i][j][k].imv * p->Si[i][j - 1][k].cp.vector.x /
+                 p->Si[i][j - 1][k].cp.norm);
+            p->f[i][j][k].y +=
+                (p->F[i][j][k].imv * p->Si[i][j - 1][k].cp.vector.y /
+                 p->Si[i][j - 1][k].cp.norm);
+            p->f[i][j][k].z +=
+                (p->F[i][j][k].imv * p->Si[i][j - 1][k].cp.vector.z /
+                 p->Si[i][j - 1][k].cp.norm);
+        }
+
         if (p->F[i][j][k].jpv != 0) {
             p->f[i][j][k].x += (p->F[i][j][k].jpv * p->Sj[i][j][k].cp.vector.x /
                                 p->Sj[i][j][k].cp.norm);
@@ -1144,19 +1006,6 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
         // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].jmv, p->Sj[i][j -
         // 1][k]);
     }
-
-    // if (i == 0) {// test
-    //     p->f[i][j][k].x -= -1.31399434838027E-07;
-    //     p->f[i][j][k].z -= 5.0439518792893E-08;
-    // }
-    // else if (i == 1) {
-    //     p->f[i][j][k].z -= -1.00879037585786E-07;
-    // }
-    // else if (i == 2) {
-    //     p->f[i][j][k].x -= 1.31399434838027E-07;
-    //     p->f[i][j][k].z -= 5.0439518792893E-08;
-    // }
-
 }
 #endif
 
@@ -1293,7 +1142,7 @@ double MultiParticle::RK4Two(double const& v, double const& f,
 
 /*                       TEST (Trial)                              */
 /**
- * @brief		ルンゲクッタ法。ソーラーセイル用はこっち
+ * @brief		ルンゲクッタ法
  * @param[in] 	double r = p_>c[i][j]
  * @param[in] 	double v = p_>v[i][j]
  * @param[in] 	double f = p_>f[i][j]

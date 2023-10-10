@@ -3,8 +3,6 @@
  * @file
  * @brief
  * @details
- * @note param->と記述される
- * @note m_とある変数は無次元数
  * ///////////////////////////////////////////////////////////////////////////////
  */
 
@@ -93,8 +91,6 @@ class Params {
 
    public:
     std::string read_filename;
-    //! 粒子の初期座標の入った座標
-    std::string read_PositionFile;
     //! i方向の粒子数
     int m_iNum;
     //! j方向の粒子数
@@ -138,8 +134,6 @@ class Params {
     double Length_y;
     //! ヤング率 [N/mm^2 MPa] / 野里さんのE = 35.5 MPaを使用している
     double m_E;
-    //! 折り目用の新しいヤング率
-    double m_newE;
     //! 無次元化した基準長さ (膜の縦と横の長さ)
     double m_Lref_x;
     double m_Lref_y;
@@ -251,12 +245,6 @@ class Params {
     double C_EI;
     //! 空気力と弾性力の比を表す無次元パラメータ
     double C_AE;
-    //! 重力と弾性力の日を表す無次元パラメータ
-    double C_MG;
-    //! 外力にかかる無次元パラメータ
-    double C_EX;
-    //! 重力加速度[mm/sec]
-    double gravity;
 
     //! Matrix for Pressure
     RotationMatrixCalc rotation_matrix;
@@ -274,6 +262,8 @@ class Params {
     double m_preCalc3;
     //! 1/(12*(1-(ν^2))) モーメント Mの計算で使用する
     double m_preCalc4;
+    //! 1/(24*(1+ν)) ねじりモーメント Tの計算で使用する
+    double m_preCalc5;
 
     //! (1+rs) r:reflectance, s:Specularity
     double pre_eta_n;
@@ -352,7 +342,6 @@ class Params {
             std::cout << "Input Cube" << endl;
         } else if (SolarSail) {
             read_filename = "./data/input_file/SolarSail.cfg";
-            read_PositionFile = "./data/position/InitialPosition.csv";
             std::cout << "Input SolarSail" << endl;
         } else {
             read_filename = "./data/input_file/default.cfg";
@@ -504,19 +493,15 @@ class Params {
         m_h0     = h0 / Lref;
         m_hc0    = m_h0 * 2;
         m_Pc     = Pc / Pref;
-        // m_fx     = m_kx * m_Lref_x;
-        m_fx     = m_kx; // test?
+        m_fx     = m_kx * m_Lref_x;
         m_fy     = m_ky * m_Lref_x;
         m_fz     = m_kz * m_Lref_x;
         // XXX: Why add Pref?
         // m_k = sqrt(m_kx * m_kx + m_ky * m_ky + m_kz * m_kz) + Pref;
         m_k = sqrt(m_kx * m_kx + m_ky * m_ky + m_kz * m_kz);
-        gravity = 9.806;
 
         // C_EI = m_E / (m_rho * Vref * Vref * m_k);
         C_EI = m_E / (m_rho * Vref * Vref);
-        C_MG = (m_rho * Lref * gravity) / m_E;
-        C_EX = 1 / (m_E *h0 * Lref);
         if (SimplePressure) {
             C_AE = (Pc * Lref) / (m_E * h0);
         } else {
@@ -535,6 +520,7 @@ class Params {
 
         // m_preCalc4		= h0 * h0 * m_preCalc1 / ( 12 * Lref * Lref );
         m_preCalc4 = m_preCalc1 / 12;
+        m_preCalc5 = 1 / (24 * (1 + m_nu));
         pre_eta_n  = (1 + reflectance * specularity);
         pre_eta_t  = (1 - reflectance * specularity);
 

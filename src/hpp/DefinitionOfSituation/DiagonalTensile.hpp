@@ -27,8 +27,5 @@
 #define __DIAGONAL_TENSILE__
 //---------------------------------------
 
-
-
-
 // Mode
 // #define __DEBUG__

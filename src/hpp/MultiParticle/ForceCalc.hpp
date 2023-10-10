@@ -2,15 +2,10 @@
  * ///////////////////////////////////////////////////////////////////////////////
  * @file	ForceCalc.hpp
  * @brief	各粒子に作用する力を計算する
- * @note    Cubeとそれ以外で処理が大きく分かれてる
- * @note    current functionの部分を現在用いている
  * @details
  * @par
  * ///////////////////////////////////////////////////////////////////////////////
  */
-
- int difinition_A = 3;
-
 
 #if defined __SHAPE_CUBE__
 void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
@@ -2764,7 +2759,6 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
  * 					せん断力 Fs
  * 					垂直ひずみ ε
  * 					伸縮力 Ft
- * @note       今は使ってない
  */
 void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
 #ifdef __DEBUG__
@@ -2804,18 +2798,7 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
                                    p->diff_etaj[i][j][k]);
             p->Mj[i][j][k] = MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k],
                                    p->diff_etai[i][j][k]);
-#ifdef __CREASE__
-            if (p->i_specialflag[i][j][0] == 1) {
-                //DEBUG
-                //std::cout << "Considered about Crease" << param->m_newE << std::endl;
-                //
-                p->Mi[i][j][k] = MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k],
-                    p->diff_etaj[i][j][k], param->m_newE);
-                // p->Mj[i][j][k] = MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k],
-                //     p->diff_etai[i][j][k], param->m_newE);
 
-            }
-#endif //__CREASE__
             p->Fb[i][j][k].ipv = -1 * p->Mi[i][j][k] / p->li[i][j][k].norm;
             p->Fb[i][j][k].imv = -1 * p->Mi[i][j][k] / p->li[i - 1][j][k].norm;
             p->Fb[i][j][k].jpv = -1 * p->Mj[i][j][k] / p->lj[i][j][k].norm;
@@ -2883,18 +2866,6 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
                 normCalcV2(p->g[i][j][k], p->mj[i][j][k]) +
                     normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]),
                 p->hj[i][j][k], p->epsilonlj[i][j][k], p->epsilongi[i][j][k]);
-#ifdef __CREASE__
-            if (p->i_specialflag[i][j][0] == difinition_A) {
-                //DEBUG
-                //std::cout << "Considered about Crease" << param->m_newE << std::endl;
-                //
-                p->Ftj[i][j][k] = FtCalcChange(
-                normCalcV2(p->g[i][j][k], p->mj[i][j][k]) +
-                    normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]),
-                p->hj[i][j][k], p->epsilonlj[i][j][k], p->epsilongi[i][j][k]);
-
-            }
-#endif //__CREASE__
             break;
 
         case Right:
@@ -2990,17 +2961,6 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
             p->Ftj[i][j][k] = FtCalc(
                 normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]), p->hj[i][j][k],
                 p->epsilonlj[i][j][k], p->epsilongi[i][j][k]);
-#ifdef __CREASE__
-            if (p->i_specialflag[i][j][0] == difinition_A) {
-                //DEBUG
-                //std::cout << "Considered about Crease" << param->m_newE << std::endl;
-                //
-                p->Ftj[i][j][k] = FtCalcChange(
-                normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]), p->hj[i][j][k],
-                p->epsilonlj[i][j][k], p->epsilongi[i][j][k]);
-
-            }
-#endif //__CREASE__
             break;
 
         case Bottom:
@@ -3063,17 +3023,6 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
                 normCalcV2(p->g[i][j][k], p->mj[i][j][k]) +
                     normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]),
                 p->hj[i][j][k], p->epsilonlj[i][j][k], p->epsilongi[i][j][k]);
-#ifdef __CREASE__
-            if (p->i_specialflag[i][j][0] == difinition_A) {
-                //DEBUG
-                //std::cout << "Considered about Crease" << param->m_newE << std::endl;
-                //
-                p->Ftj[i][j][k] = FtCalcChange(
-                normCalcV2(p->g[i][j][k], p->mj[i][j][k]) +
-                    normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]),
-                p->hj[i][j][k], p->epsilonlj[i][j][k], p->epsilongi[i][j][k]);
-            }
-#endif //__CREASE__
             break;
 
         case Top:
@@ -3213,17 +3162,6 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
             p->Ftj[i][j][k]           = FtCalc(normCalcV2(p->g[i][j][k], p->mj[i][j][k]),
                                                p->hj[i][j][k], p->epsilonlj[i][j][k],
                                                p->epsilongi[i][j][k]);
-#ifdef __CREASE__
-            if (p->i_specialflag[i][j][0] == difinition_A) {
-                //DEBUG
-                //std::cout << "Considered about Crease" << param->m_newE << std::endl;
-                //
-                p->Ftj[i][j][k] = FtCalcChange(normCalcV2(p->g[i][j][k], p->mj[i][j][k]),
-                                               p->hj[i][j][k], p->epsilonlj[i][j][k],
-                                               p->epsilongi[i][j][k]);
-            }
-#endif //__CREASE__
-
 #ifdef __CYLINDER_NON_BOUNDARY__
             p->omp[i][j][k].epsilongj = epsilongCalc(
                 (normCalcV2(p->omp[i][j][k].g, p->omp[i][j][k].mi) +
@@ -3398,13 +3336,6 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
             p->Ftj[i][j][k]           = FtCalc(normCalcV2(p->g[i][j][k], p->mj[i][j][k]),
                                                p->hj[i][j][k], p->epsilonlj[i][j][k],
                                                p->epsilongi[i][j][k]);
-#ifdef __CREASE__
-            if (p->i_specialflag[i][j][0] == difinition_A) {
-                p->Ftj[i][j][k]           = FtCalcChange(normCalcV2(p->g[i][j][k], p->mj[i][j][k]),
-                                               p->hj[i][j][k], p->epsilonlj[i][j][k],
-                                               p->epsilongi[i][j][k]);
-            }
-#endif //__CREASE__
 #ifdef __CYLINDER_NON_BOUNDARY__
             p->omp[i][j][k].epsilongj = epsilongCalc(
                 (normCalcV2(p->omp[i][j][k].g, p->omp[i][j][k].mi)),
@@ -3503,7 +3434,6 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
 
             p->Ftj[i][j][k] = 0;
             break;
-    
     }
 }
 #endif
@@ -3547,21 +3477,6 @@ void MultiParticle::TensileForceCalc(const int& i, const int& j, const int& k) {
         }
         p->Fti[i][j][k] = FtCalc(length, p->hi[i][j][k], p->epsilonli[i][j][k],
                                  p->epsilongj[i][j][k]);
-        
-        //DEBUG
-        // if (p->Fti[i][j][k] > 0.0000001) {
-        //     std::cout << "l* = "
-        //               << length
-        //               << ", epsilonli = "
-        //               << p->epsilonli[i][j][k]
-        //               << ", epsilonj = "
-        //               << p->epsilongj[i][j][k]
-        //               << ", Fti = "
-        //               << p->Fti[i][j][k]
-        //               << std::endl;
-        // }
-        //
-        
     } else {
         p->Fti[i][j][k] = 0;
     }
@@ -3577,16 +3492,6 @@ void MultiParticle::TensileForceCalc(const int& i, const int& j, const int& k) {
         }
         p->Ftj[i][j][k] = FtCalc(length, p->hj[i][j][k], p->epsilonlj[i][j][k],
                                  p->epsilongi[i][j][k]);
-#ifdef __CREASE__
-            if (p->i_specialflag[i][j][0] == difinition_A) {
-               
-                
-                // p->Fti[i][j][k] = FtCalcChange(length, p->hi[i][j][k], p->epsilonli[i][j][k],
-                //                  p->epsilongj[i][j][k]);
-                p->Ftj[i][j][k] = FtCalcChange(length, p->hj[i][j][k], p->epsilonlj[i][j][k],
-                                 p->epsilongi[i][j][k]);
-            }
-#endif //__CREASE__
     } else {
         p->Ftj[i][j][k] = 0;
     }
@@ -3649,20 +3554,9 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
                                          p->li[i][j][k].norm, p->hi[i][j][k]);
         p->Fsi[i][j][k].pm = -1 * FsCalc(p->gamma[i][j][k].pm,
                                          p->li[i][j][k].norm, p->hi[i][j][k]);
-#ifdef __CREASE__
-        if (p->i_specialflag[i][j][0] == difinition_A) {
-
-            // p->Fsi[i][j][k].pp = -1 * FsCalcChange(p->gamma[i][j][k].pp,
-            //                             p->li[i][j][k].norm, p->hi[i][j][k]);
-            // p->Fsi[i][j][k].pm = -1 * FsCalcChange(p->gamma[i][j][k].pm,
-            //                             p->li[i][j][k].norm, p->hi[i][j][k]);
-
-        }
-#endif //__CREASE__
     } else {
         p->Fsi[i][j][k].pp = 0;
         p->Fsi[i][j][k].pm = 0;
-
     }
 
     if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
@@ -3672,21 +3566,9 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
         p->Fsi[i][j][k].mm =
             -1 * FsCalc(p->gamma[i][j][k].mm, p->li[i - 1][j][k].norm,
                         p->hi[i - 1][j][k]);
-
-#ifdef __CREASE__
-        if (p->i_specialflag[i][j][0] == difinition_A) {
-            p->Fsi[i][j][k].mp =
-            -1 * FsCalcChange(p->gamma[i][j][k].mp, p->li[i - 1][j][k].norm,
-                        p->hi[i - 1][j][k]);
-            p->Fsi[i][j][k].mm =
-                -1 * FsCalcChange(p->gamma[i][j][k].mm, p->li[i - 1][j][k].norm,
-                            p->hi[i - 1][j][k]);
-        }
-#endif //__CREASE__
     } else {
         p->Fsi[i][j][k].mp = 0;
         p->Fsi[i][j][k].mm = 0;
-
         // double li_l_norm   = normCalc(p->c[i][j][k] - p->vc_Left[i][j][k]);
 
         // C Si_i;
@@ -3730,15 +3612,6 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
                                          p->lj[i][j][k].norm, p->hj[i][j][k]);
         p->Fsj[i][j][k].mp = -1 * FsCalc(p->gamma[i][j][k].mp,
                                          p->lj[i][j][k].norm, p->hj[i][j][k]);
-                                
-#ifdef __CREASE__
-        if (p->i_specialflag[i][j][0] == difinition_A) {
-            p->Fsj[i][j][k].pp = -1 * FsCalcChange(p->gamma[i][j][k].pp,
-                                            p->lj[i][j][k].norm, p->hj[i][j][k]);
-            p->Fsj[i][j][k].mp = -1 * FsCalcChange(p->gamma[i][j][k].mp,
-                                            p->lj[i][j][k].norm, p->hj[i][j][k]);
-        }
-#endif //__CREASE__
     } else {
         p->Fsj[i][j][k].pp = 0;
         p->Fsj[i][j][k].mp = 0;
@@ -3750,17 +3623,6 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
         p->Fsj[i][j][k].mm =
             -1 * FsCalc(p->gamma[i][j][k].mm, p->lj[i][j - 1][k].norm,
                         p->hj[i][j - 1][k]);
-
-#ifdef __CREASE__
-        if (p->i_specialflag[i][j][0] == difinition_A) {
-            p->Fsj[i][j][k].pm =
-                -1 * FsCalcChange(p->gamma[i][j][k].pm, p->lj[i][j - 1][k].norm,
-                            p->hj[i][j - 1][k]);
-            p->Fsj[i][j][k].mm =
-                -1 * FsCalcChange(p->gamma[i][j][k].mm, p->lj[i][j - 1][k].norm,
-                            p->hj[i][j - 1][k]);
-        }
-#endif //__CREASE__
     } else {
         p->Fsj[i][j][k].pm = 0;
         p->Fsj[i][j][k].mm = 0;
@@ -3868,7 +3730,7 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
         } else {
             minus = p->vc_Bottom[i][j][k];
         }
-        p->alphaj[i][j][k] = angleCalc2(p->c[i][j][k], plus, minus, "j", p->alphaj_identification[i][j][k]);
+        p->alphaj[i][j][k] = angleCalc2(p->c[i][j][k], plus, minus, "j");
     }
 
     {
@@ -3884,7 +3746,7 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
         } else {
             minus = p->vc_Left[i][j][k];
         }
-        p->alphai[i][j][k] = angleCalc2(p->c[i][j][k], plus, minus, "i", p->alphai_identification[i][j][k]);
+        p->alphai[i][j][k] = angleCalc2(p->c[i][j][k], plus, minus, "i");
 
         // if ((p->surround_particle_exsit[i][j][k] & BIT_RIGHT) &&
         //     (p->surround_particle_exsit[i][j][k] & BIT_LEFT)) {
@@ -3899,10 +3761,11 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
         //                                     p->vc_Left[i][j][k], 0);
         // }
     }
-    C li_left, li_right;
-    double li_left_norm  = 0;
-    double li_right_norm = 0;
+
     {
+        C li_left, li_right;
+        double li_left_norm  = 0;
+        double li_right_norm = 0;
         if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
             li_right_norm = p->li[i][j][k].norm;
         } else {
@@ -3945,18 +3808,7 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
         MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k], p->diff_etaj[i][j][k]);
     p->Mj[i][j][k] =
         MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k], p->diff_etai[i][j][k]);
-#ifdef __CREASE__
-            if (p->i_specialflag[i][j][0] == 1) {
-                //DEBUG
-                // std::cout << "Considered about Crease" << "i = " << i << ", newE = " << param->m_newE << std::endl;
-                //
-                p->Mi[i][j][k] = MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k],
-                    p->diff_etaj[i][j][k], (li_right_norm+li_left_norm)/2);
-                // p->Mj[i][j][k] =
-                //     MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k], p->diff_etai[i][j][k], param->m_newE);
 
-            }
-#endif //__CREASE__
     if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
         p->Fb[i][j][k].ipv = -1 * p->Mi[i][j][k] / p->li[i][j][k].norm;
     }
@@ -4003,6 +3855,316 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
         }
     }
 }
+
+
+/**
+ * @brief TwistForceCalc
+ *
+ * @param i
+ * @param j
+ * @param k
+ * @notion まだ12で割っていない
+ */
+void MultiParticle::TwistForceCalc(const int& i, const int& j, const int& k) {
+    // 最初は完全な平面を想定して計算。初期角度が0でない場合には少し変更する必要あり
+    if (
+        (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) 
+        && (p->surround_particle_exsit[i][j][k] & BIT_TOP)
+    ){
+        //i方向（x軸方向）
+        double h_ave_i, h_ave3_i, Ip1_i, Ip2_i;
+        double norm_j_plus  = 0;
+        double norm_j_minus = 0;
+        double norm3_j = 0;
+        C Insec;
+        C Insec_plus;
+        C Unit;
+        C Cp;
+        double projec_minus = 0;
+        double projec_plus = 0;
+        double radian = 0;
+        Vector Hr_minus;
+        Vector Hr_plus;
+
+
+        h_ave_i = (p->hj[i][j][k] + p->hj[i + 1][j][k]) / 2;
+        h_ave3_i =
+            h_ave_i * h_ave_i * h_ave_i;
+
+        norm_j_minus = normCalcV2(p->mj[i][j][k], p->c[i][j][k]);
+        norm_j_plus = normCalcV2(p->mj[i + 1][j][k], p->c[i + 1][j][k]);
+        norm3_j = 
+            (norm_j_plus + norm_j_minus) * (norm_j_plus + norm_j_minus) * (norm_j_plus + norm_j_minus);
+        Ip1_i = (norm_j_plus + norm_j_minus) * h_ave3_i;
+        Ip2_i = norm3_j * h_ave_i;
+        p->Ipi[i][j][k] = Ip1_i + Ip2_i; 
+
+        // 時間あれば、ここの角度求めるところ関数にしてもわかりやすいかも
+        lCalc(p->axis_i[i][j][k], p->mj[i][j][k], p->mj[i + 1][j][k]); // 軸ベクトルの計算
+        Unit.x = p->axis_i[i][j][k].vector.x / p->axis_i[i][j][k].norm;// 軸の単位ベクトルの計算
+        Unit.y = p->axis_i[i][j][k].vector.y / p->axis_i[i][j][k].norm;
+        Unit.z = p->axis_i[i][j][k].vector.z / p->axis_i[i][j][k].norm;
+        projec_minus = 
+            ((p->c[i][j][k].x - p->mj[i][j][k].x) * Unit.x + (p->c[i][j][k].y - p->mj[i][j][k].y) * Unit.y 
+            + (p->c[i][j][k].z - p->mj[i][j][k].z) * Unit.z);
+        Insec.x = p->mj[i][j][k].x + projec_minus * Unit.x;
+        Insec.y = p->mj[i][j][k].y + projec_minus * Unit.y;
+        Insec.z = p->mj[i][j][k].z + projec_minus * Unit.z;
+
+
+        // lCalc(Hr_minus, Insec, p->c[i][j][k]);
+        // projec_plus = 
+        //     ((p->c[i + 1][j][k].x - p->mj[i + 1][j][k].x) * Unit.x + (p->c[i + 1][j][k].y - p->mj[i + 1][j][k].y) * Unit.y 
+        //     + (p->c[i + 1][j][k].z - p->mj[i + 1][j][k].z) * Unit.z);
+        // Insec_plus.x = p->mj[i + 1][j][k].x + projec_plus * Unit.x;
+        // Insec_plus.y = p->mj[i + 1][j][k].y + projec_plus * Unit.y;
+        // Insec_plus.z = p->mj[i + 1][j][k].z + projec_plus * Unit.z;
+        lCalc(Hr_plus, Insec_plus, p->c[i + 1][j][k]);
+        crossProductCalc(Cp, Hr_minus.vector, Hr_plus.vector);
+        radian = 
+            innerProductCalc(Hr_plus.vector, Hr_minus.vector) / (Hr_plus.norm * Hr_minus.norm);
+        if (Cp.x > 0) {
+            p->diffang_i[i][j][k] = math::sacos(radian);
+        }
+        else {
+            p->diffang_i[i][j][k] = -1 * math::sacos(radian);
+        }
+
+        p->Torque_i[i][j][k] = 
+            TCalc(p->Ipi[i][j][k], p->diffang_i[i][j][k], p->axis_i[i][j][k]);
+
+        //j方向（y軸方向）
+        double h_ave_j, h_ave3_j, Ip1_j, Ip2_j;
+        double norm_i_plus  = 0;
+        double norm_i_minus = 0;
+        double norm3_i = 0;
+
+
+        h_ave_j = (p->hi[i][j][k] + p->hi[i][j + 1][k]) / 2;
+        h_ave3_j =
+            h_ave_j * h_ave_j * h_ave_j;
+
+        norm_i_minus = normCalcV2(p->mi[i][j][k], p->c[i][j][k]);
+        norm_i_plus = normCalcV2(p->mi[i][j + 1][k], p->c[i][j + 1][k]);
+        norm3_i = 
+            (norm_i_plus + norm_i_minus) * (norm_i_plus + norm_i_minus) * (norm_i_plus + norm_i_minus);
+        Ip1_j = (norm_i_plus + norm_i_minus) * h_ave3_j;
+        Ip2_j = norm3_i * h_ave_j;
+        p->Ipj[i][j][k] = Ip1_j + Ip2_j; 
+
+        // 時間あれば、ここの角度求めるところ関数にしてもわかりやすいかも
+        lCalc(p->axis_j[i][j][k], p->mi[i][j][k], p->mi[i][j + 1][k]); // 軸ベクトルの計算
+        Unit.x = p->axis_j[i][j][k].vector.x / p->axis_j[i][j][k].norm;// 単位ベクトル計算
+        Unit.y = p->axis_j[i][j][k].vector.y / p->axis_j[i][j][k].norm;
+        Unit.z = p->axis_j[i][j][k].vector.z / p->axis_j[i][j][k].norm;
+        projec_minus = 
+            ((p->c[i][j][k].x - p->mi[i][j][k].x) * Unit.x + (p->c[i][j][k].y - p->mi[i][j][k].y) * Unit.y 
+            + (p->c[i][j][k].z - p->mi[i][j][k].z) * Unit.z);
+        Insec.x = p->mi[i][j][k].x + projec_minus * Unit.x;
+        Insec.y = p->mi[i][j][k].y + projec_minus * Unit.y;
+        Insec.z = p->mi[i][j][k].z + projec_minus * Unit.z;
+        lCalc(Hr_minus, Insec, p->c[i][j][k]);
+        projec_plus = 
+            ((p->c[i][j + 1][k].x - p->mi[i][j + 1][k].x) * Unit.x + (p->c[i][j + 1][k].y - p->mi[i][j + 1][k].y) * Unit.y 
+            + (p->c[i][j + 1][k].z - p->mi[i][j + 1][k].z) * Unit.z);
+        Insec.x = p->mi[i][j + 1][k].x + projec_minus * Unit.x;
+        Insec.y = p->mi[i][j + 1][k].y + projec_minus * Unit.y;
+        Insec.z = p->mi[i][j + 1][k].z + projec_minus * Unit.z;
+        lCalc(Hr_plus, Insec_plus, p->c[i][j + 1][k]);
+        crossProductCalc(Cp, Hr_minus.vector, Hr_plus.vector);
+        radian = 
+            innerProductCalc(Hr_plus.vector, Hr_minus.vector) / (Hr_plus.norm * Hr_minus.norm);
+        if (Cp.y > 0) {
+            p->diffang_j[i][j][k] = math::sacos(radian);
+        }
+        else {
+            p->diffang_j[i][j][k] = -1 * math::sacos(radian);
+        }
+
+        p->Torque_j[i][j][k] = 
+            TCalc(p->Ipj[i][j][k], p->diffang_j[i][j][k], p->axis_j[i][j][k]); 
+
+    }
+
+    if (
+        (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) 
+        && (p->surround_particle_exsit[i][j][k] & BIT_TOP)
+    ) {
+        p->Fb[i][j][k].ipv = -1 * p->Mi[i][j][k] / p->li[i][j][k].norm;
+    }
+    if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
+        p->Fb[i][j][k].imv = -1 * p->Mi[i][j][k] / p->li[i - 1][j][k].norm;
+    }
+    if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
+        p->Fb[i][j][k].jpv = -1 * p->Mj[i][j][k] / p->lj[i][j][k].norm;
+    }
+    if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM) {
+        p->Fb[i][j][k].jmv = -1 * p->Mj[i][j][k] / p->lj[i][j - 1][k].norm;
+    }
+
+    {
+        double norm_j_plus  = 0;
+        double norm_j_minus = 0;
+        if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
+            norm_j_plus = normCalcV2(p->mj[i][j][k], p->c[i][j][k]);
+        }
+        if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM) {
+            norm_j_minus = normCalcV2(p->c[i][j][k], p->mj[i][j - 1][k]);
+        }
+        p->Ii[i][j][k] = (norm_j_plus + norm_j_minus) * p->h_ave3[i][j][k];
+    }
+
+    {
+        double norm_i_plus  = 0;
+        double norm_i_minus = 0;
+        if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
+            norm_i_plus = normCalcV2(p->mi[i][j][k], p->c[i][j][k]);
+        }
+        if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
+            norm_i_minus = normCalcV2(p->c[i][j][k], p->mi[i - 1][j][k]);
+        }
+        p->Ij[i][j][k] = (norm_i_plus + norm_i_minus) * p->h_ave3[i][j][k];
+    }
+
+    {
+        C plus;
+        C minus;
+        if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
+            plus = p->c[i][j + 1][k];
+        } else {
+            plus = p->vc_Top[i][j][k];
+        }
+        if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM) {
+            minus = p->c[i][j - 1][k];
+        } else {
+            minus = p->vc_Bottom[i][j][k];
+        }
+        p->alphaj[i][j][k] = angleCalc2(p->c[i][j][k], plus, minus, "j");
+    }
+
+    {
+        C plus;
+        C minus;
+        if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
+            plus = p->c[i + 1][j][k];
+        } else {
+            plus = p->vc_Right[i][j][k];
+        }
+        if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
+            minus = p->c[i - 1][j][k];
+        } else {
+            minus = p->vc_Left[i][j][k];
+        }
+        p->alphai[i][j][k] = angleCalc2(p->c[i][j][k], plus, minus, "i");
+
+        // if ((p->surround_particle_exsit[i][j][k] & BIT_RIGHT) &&
+        //     (p->surround_particle_exsit[i][j][k] & BIT_LEFT)) {
+        //     p->alphai[i][j][k] = angleCalc2(p->c[i][j][k], p->c[i + 1][j][k],
+        //                                     p->c[i - 1][j][k], 0);
+        // } else if (!(p->surround_particle_exsit[i][j][k] & BIT_RIGHT)) {
+        //     p->alphai[i][j][k] = angleCalc2(p->c[i][j][k],
+        //     p->vc_Right[i][j][k],
+        //                                     p->c[i - 1][j][k], 0);
+        // } else if (!(p->surround_particle_exsit[i][j][k] & BIT_LEFT)) {
+        //     p->alphai[i][j][k] = ngleCalc2(p->c[i][j][k], p->c[i + 1][j][k],
+        //                                     p->vc_Left[i][j][k], 0);
+        // }
+    }
+
+    {
+        C li_left, li_right;
+        double li_left_norm  = 0;
+        double li_right_norm = 0;
+        if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
+            li_right_norm = p->li[i][j][k].norm;
+        } else {
+            li_right      = p->vc_Right[i][j][k] - p->c[i][j][k];
+            li_right_norm = normCalc(li_right);
+        }
+        if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
+            li_left_norm = p->li[i - 1][j][k].norm;
+        } else {
+            li_left      = p->c[i][j][k] - p->vc_Left[i][j][k];
+            li_left_norm = normCalc(li_left);
+        }
+        p->etai[i][j][k] =
+            etaCalc(p->alphai[i][j][k], li_right_norm, li_left_norm);
+    }
+    {
+        C lj_bottom, lj_top;
+        double lj_bottom_norm = 0;
+        double lj_top_norm    = 0;
+        if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
+            lj_top_norm = p->lj[i][j][k].norm;
+        } else {
+            lj_top      = p->vc_Top[i][j][k] - p->c[i][j][k];
+            lj_top_norm = normCalc(lj_top);
+        }
+        if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM) {
+            lj_bottom_norm = p->lj[i][j - 1][k].norm;
+        } else {
+            lj_bottom      = p->c[i][j][k] - p->vc_Bottom[i][j][k];
+            lj_bottom_norm = normCalc(lj_bottom);
+        }
+        p->etaj[i][j][k] =
+            etaCalc(p->alphaj[i][j][k], lj_top_norm, lj_bottom_norm);
+    }
+
+    p->diff_etai[i][j][k] = p->etai[i][j][k] - p->etai0[i][j][k];
+    p->diff_etaj[i][j][k] = p->etaj[i][j][k] - p->etaj0[i][j][k];
+
+    p->Mi[i][j][k] =
+        MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k], p->diff_etaj[i][j][k]);
+    p->Mj[i][j][k] =
+        MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k], p->diff_etai[i][j][k]);
+
+    if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
+        p->Fb[i][j][k].ipv = -1 * p->Mi[i][j][k] / p->li[i][j][k].norm;
+    }
+    if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
+        p->Fb[i][j][k].imv = -1 * p->Mi[i][j][k] / p->li[i - 1][j][k].norm;
+    }
+    if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
+        p->Fb[i][j][k].jpv = -1 * p->Mj[i][j][k] / p->lj[i][j][k].norm;
+    }
+    if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM) {
+        p->Fb[i][j][k].jmv = -1 * p->Mj[i][j][k] / p->lj[i][j - 1][k].norm;
+    }
+
+    if (p->flag[i][j][k] & Right) {
+        if (!param->boundary.right_bend_fix) {
+            p->Fb[i][j][k].ipv = 0;
+            if (!param->boundary.right_free) {
+                p->Fb[i][j][k].imv = 0;
+            }
+        }
+    }
+    if (p->flag[i][j][k] & Left) {
+        if (!param->boundary.left_bend_fix) {
+            if (!param->boundary.left_free) {
+                p->Fb[i][j][k].ipv = 0;
+            }
+            p->Fb[i][j][k].imv = 0;
+        }
+    }
+    if (p->flag[i][j][k] & Top) {
+        if (!param->boundary.top_bend_fix) {
+            p->Fb[i][j][k].jpv = 0;
+            if (!param->boundary.top_free) {
+                p->Fb[i][j][k].jmv = 0;
+            }
+        }
+    }
+    if (p->flag[i][j][k] & Bottom) {
+        if (!param->boundary.bottom_bend_fix) {
+            if (!param->boundary.bottom_free) {
+                p->Fb[i][j][k].jpv = 0;
+            }
+            p->Fb[i][j][k].jmv = 0;
+        }
+    }
+}
+
 
 /**
  * @brief Air Force and Disturbance calc
@@ -4310,65 +4472,6 @@ void MultiParticle::RotationInertiaForceCalc(const int& i, const int& j, const i
 void MultiParticle::ExternalForceCalc(const int& i, const int& j,
                                       const int& k) {
     // cout << "run ExternalForceCalc" << endl;
-#ifdef __CREASE__  
-//     p->external_force[i][j][k].x = param->C_MG * p->S0[i][j][k];
-//    if (p->flag[i][j][k] & BIT_RIGHT) {//simple tensile
-//         double length;
-//         if (!(p->surround_particle_exsit[i][j][k] & BIT_BOTTOM)) {
-//             length = p->mj[i][j][k].y - p->c[i][j][k].y;
-//         } else if (!(p->surround_particle_exsit[i][j][k] & BIT_TOP)) {
-//             length = p->c[i][j][k].y - p->mj[i][j - 1][k].y;
-//         } else {
-//             length = p->mj[i][j][k].y - p->mj[i][j - 1][k].y;
-//         }
-//         p->external_force[i][j][k].x +=
-//             ((param->m_fx * length) / param->m_Lref_y);
-//         // p->external_force[i][j][k].x =
-//         //     ((param->m_fx * (p->mj[i][j][k].y - p->mj[i][j - 1][k].y)) /
-//         //  param->m_Lref_x);
-//         return;
-//     }
-    double m_k;
-    m_k = param->m_fx /(param->m_E * param->h0 * param->Lref);
-    p->external_force[i][j][k].x = param->C_MG * p->S0[i][j][k];
-    if (p->flag[i][j][k] & BIT_RIGHT) {
-        double length;
-        if (!(p->surround_particle_exsit[i][j][k] & BIT_BOTTOM)) {
-            length = p->mj[i][j][k].y - p->c[i][j][k].y;
-        } else if (!(p->surround_particle_exsit[i][j][k] & BIT_TOP)) {
-            length = p->c[i][j][k].y - p->mj[i][j - 1][k].y;
-        } else {
-            length = p->mj[i][j][k].y - p->mj[i][j - 1][k].y;
-        }
-        p->external_force[i][j][k].x +=
-            ((m_k * length) / param->m_Lref_y);
-        return;
-    }
-
-
-    // p->external_force[i][j][k].x = param->C_MG * p->S0[i][j][k];
-
-    // float Fexternal = 100;
-    // if (i == (local_iNum - 1)) {
-    //     p->external_force[i][j][k].x = Fexternal * param->C_EX;
-        // std::cout << "Young_Module = " << param->m_E
-        //           << "h0 = " << param->h0
-        //           << "Lref = " << param->Lref 
-        //           << endl;
-        // std::cout << "C_EX = " << param->C_EX << std::endl;
-        // std::cout << "external_force = " << p->external_force[i][j][k].x << std::endl;
-        // if ( (count_culculate * param->m_dt) > 100) {
-        //     p->external_force[i][j][k].x = 0.0003;
-        // }
-        // else {
-        //     p->external_force[i][j][k].x = 0.0001 * count_culculate * param->m_dt /100;
-        // }
-        // if (j == 0) {
-        //     count_culculate ++;
-        // }
-    // }
-#endif //__CREASE__
-
     if (SimpleTensile) {
         if (p->flag[i][j][k] & BIT_RIGHT) {
             double length;
@@ -4569,14 +4672,7 @@ void MultiParticle::ExternalForceCalc(const int& i, const int& j,
     }
     return;
 }
-/**
- * @brief		ルンゲクッタ法を用いて粒子を動かす
- * @param[in] 	double i = i方向の粒子番号
- * @param[in] 	double j = j方向の粒子番号
- * @param[in] 	double k = 膜だと大体1
- * @note		固定するのかどうかもここで行っている。
- * 		        固定する場合は粒子の位置はそのまま
- */
+
 void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
                                              const int& k) {
     // center point fix
@@ -4587,7 +4683,6 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
         }
     }
 
-// about boom
     if (param->oblique_rigid) {
         if (param->oblique_move == "allFix") {
             if (i == j || j == (((int)p->flag.size() - 1) - i)) {
@@ -4630,12 +4725,6 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
         // cout << "oblique_move is empty" << endl;
         // abort();
     }
-
-#ifdef __CREASE__
-    // if((i == 0) || (i == 1)) {
-    //     return;
-    // }
-#endif //__CREASE__
 
     if (p->flag[i][j][k] == Center) {
         if (param->roll_inertia_system) {

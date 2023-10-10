@@ -3,7 +3,6 @@
  * @file	CalcDataAllocation.cpp
  * @brief	初期値が決まっていないパラメーターの宣言を行うファイル
  * @details 配列の動的確保のためにresizeで変数の初期化を行う
- * @note　　メンバ変数はp->...とあらわしてる
  * ///////////////////////////////////////////////////////////////////////////////
  */
 
@@ -21,8 +20,6 @@ class Particles {
    public:
     //! Particle's Flag
     vector<vector<vector<int>>> flag;
-    //! particle's special flag
-    vector<vector<vector<int>>> i_specialflag;
     vector<vector<vector<int>>> surround_particle_exsit;
     vector<vector<vector<Communication>>> commflag;
     //! Particle Coordinates (x,y,z) 粒子の座標を格納する (Particle Coordinates)
@@ -44,7 +41,7 @@ class Particles {
     vector<vector<vector<VirtualParticle>>> vp;
 
     //!	Midpoint particle(i,j) and (i+1,j).
-    //!粒子(i,j)と粒子(i+1,j)sの中間点。Ij(i,j)とljgを求めるのに使用する。mi[i][j]とmi[i-1][j]の和で粒子(i,j)の前後の長さli(i,j)を求めれる。
+    //!粒子(i,j)と粒子(i+1,j)の中間点。Ij(i,j)とljgを求めるのに使用する。mi[i][j]とmi[i-1][j]の和で粒子(i,j)の前後の長さli(i,j)を求めれる。
     vector<vector<vector<C>>> mi;
     //!	Midpoint particle(i,j) and (i,j+1).
     //!粒子(i,j)と粒子(i,j+1)の中間点。Ii(i,j)とligを求めるのに使用する。これで、粒子(i,j)の前後の長さを求めれる。
@@ -68,14 +65,18 @@ class Particles {
     vector<vector<vector<double>>> li0;
     //! Initial Length in j-direction. 無負荷時のj方向の長さ
     vector<vector<vector<double>>> lj0;
-    //! Thickness in i-direction. i方向の膜厚
+    //! Thickness in i-direction. i方向の膜厚 h(i+1/2,j)
     vector<vector<vector<double>>> hi;
-    //! Thickness in j-direction. j方向の膜厚
+    //! Thickness in j-direction. j方向の膜厚 h(i,j+1/2)
     vector<vector<vector<double>>> hj;
     //! Average thickness.
     vector<vector<vector<double>>> h_ave;
     //! Average thickness.
     vector<vector<vector<double>>> h_ave3;
+    //! 粒子(i,j)と粒子(i,j+1)の中点と粒子(i+1,j)と粒子(i+1,j+1)の中点を結んだ長さ
+    vector<vector<vector<Vector>>> axis_i;
+    //! 粒子(i,j)と粒子(i+1,j)の中点と粒子(i,j+1)と粒子(i+1,j+1)の中点を結んだ長さ
+    vector<vector<vector<Vector>>> axis_j;
 
     //! Influence area. 影響面積 S(i,j)
     vector<vector<vector<Area>>> S;
@@ -117,14 +118,14 @@ class Particles {
     vector<vector<vector<double>>> Ii;
     //! 断面2次モーメント
     vector<vector<vector<double>>> Ij;
+    //! 断面2次極モーメント(ねじりモーメント用)
+    vector<vector<vector<double>>> Ipi;
+    //! 断面2次極モーメント（ねじりモーメント用）
+    vector<vector<vector<double>>> Ipj;
     //! 曲げ角度
     vector<vector<vector<double>>> alphai;
     //! 曲げ角度
     vector<vector<vector<double>>> alphaj;
-    //! 曲げ角度判定用変数
-    vector<vector<vector<bool>>> alphai_identification;
-    //! 曲げ角度判定用変数
-    vector<vector<vector<bool>>> alphaj_identification;
 
     //! 曲率
     vector<vector<vector<double>>> etai;
@@ -143,6 +144,10 @@ class Particles {
     vector<vector<vector<double>>> Mi;
     //! Bending moment in j-direction j方向の曲げモーメント
     vector<vector<vector<double>>> Mj;
+    //! twist moment in i-direction (i方向のねじりモーメント)
+    vector<vector<vector<double>>> Torque_i;
+    //! twist moment in j-direction j方向のねじりモーメント
+    vector<vector<vector<double>>> Torque_j;
 
     //! Force by bending
     vector<vector<vector<PreDirection>>> Fb;
@@ -217,7 +222,6 @@ class Particles {
     // void initialize_member(int iNum, int jum, int Knum);
     Particles(int iNum, int jNum, int kNum) {
         flag.resize(iNum);
-        i_specialflag.resize(iNum);
         surround_particle_exsit.resize(iNum);
         commflag.resize(iNum);
         // C型のkNum個の配列のポインタを格納
@@ -247,6 +251,8 @@ class Particles {
         hj.resize(iNum);
         h_ave.resize(iNum);
         h_ave3.resize(iNum);
+        axis_i.resize(iNum);
+        axis_j.resize(iNum);
 
         S.resize(iNum);
         Si.resize(iNum);
@@ -271,10 +277,10 @@ class Particles {
         epsilongj.resize(iNum);
         Ii.resize(iNum);
         Ij.resize(iNum);
+        Ipi.resize(iNum);
+        Ipj.resize(iNum);
         alphai.resize(iNum);
         alphaj.resize(iNum);
-        alphai_identification.resize(iNum);
-        alphaj_identification.resize(iNum);
 
         etai.resize(iNum);
         etaj.resize(iNum);
@@ -285,6 +291,8 @@ class Particles {
 
         Mi.resize(iNum);
         Mj.resize(iNum);
+        Torque_i.resize(iNum);
+        Torque_j.resize(iNum);
 
         Fb.resize(iNum);
         pressure.resize(iNum);
@@ -320,7 +328,6 @@ class Particles {
 
         for (int i = 0; i < iNum; i++) {
             flag[i].resize(jNum);
-            i_specialflag[i].resize(jNum);
             surround_particle_exsit[i].resize(jNum);
             commflag[i].resize(jNum);
             // C型のkNum個の配列のポインタを格納
@@ -350,6 +357,8 @@ class Particles {
             hj[i].resize(jNum);
             h_ave[i].resize(jNum);
             h_ave3[i].resize(jNum);
+            axis_i[i].resize(jNum);
+            axis_j[i].resize(jNum);
 
             S[i].resize(jNum);
             Si[i].resize(jNum);
@@ -374,10 +383,10 @@ class Particles {
             epsilongj[i].resize(jNum);
             Ii[i].resize(jNum);
             Ij[i].resize(jNum);
+            Ipi[i].resize(jNum);
+            Ipj[i].resize(jNum);
             alphai[i].resize(jNum);
             alphaj[i].resize(jNum);
-            alphai_identification[i].resize(jNum);
-            alphaj_identification[i].resize(jNum);
 
             etai[i].resize(jNum);
             etaj[i].resize(jNum);
@@ -388,6 +397,8 @@ class Particles {
 
             Mi[i].resize(jNum);
             Mj[i].resize(jNum);
+            Torque_i[i].resize(jNum);
+            Torque_j[i].resize(jNum);
 
             Fb[i].resize(jNum);
             pressure[i].resize(jNum);
@@ -423,7 +434,6 @@ class Particles {
 
             for (int j = 0; j < jNum; j++) {
                 flag[i][j].resize(kNum);
-                i_specialflag[i][j].resize(kNum);
                 surround_particle_exsit[i][j].resize(kNum);
                 commflag[i][j].resize(kNum);
                 // C型のkNum個の配列のポインタを格納
@@ -453,6 +463,8 @@ class Particles {
                 hj[i][j].resize(kNum);
                 h_ave[i][j].resize(kNum);
                 h_ave3[i][j].resize(kNum);
+                axis_i[i][j].resize(kNum);
+                axis_j[i][j].resize(kNum);
 
                 S[i][j].resize(kNum);
                 Si[i][j].resize(kNum);
@@ -477,10 +489,10 @@ class Particles {
                 epsilongj[i][j].resize(kNum);
                 Ii[i][j].resize(kNum);
                 Ij[i][j].resize(kNum);
+                Ipi[i][j].resize(kNum);
+                Ipj[i][j].resize(kNum);
                 alphai[i][j].resize(kNum);
                 alphaj[i][j].resize(kNum);
-                alphai_identification[i][j].resize(kNum);
-                alphaj_identification[i][j].resize(kNum);
 
                 etai[i][j].resize(kNum);
                 etaj[i][j].resize(kNum);
@@ -491,6 +503,8 @@ class Particles {
 
                 Mi[i][j].resize(kNum);
                 Mj[i][j].resize(kNum);
+                Torque_i[i][j].resize(kNum);
+                Torque_j[i][j].resize(kNum);
 
                 Fb[i][j].resize(kNum);
                 pressure[i][j].resize(kNum);
