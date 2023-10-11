@@ -465,6 +465,17 @@ struct PreDirection {
 };
 
 /**
+ * @brief   i,j方向にプラスマイナスかつベクトルの構造体
+ * @note    ねじりによる力を格納する ねじりによる力Ftw_quater
+ */
+struct PreDirectionVector {
+    Vector ipv;
+    Vector imv;
+    Vector jpv;
+    Vector jmv;
+};
+
+/**
  * @brief	iとjのプラマイ方向を2つずつ格納する
  * @note	合力で使用する (F)
  */

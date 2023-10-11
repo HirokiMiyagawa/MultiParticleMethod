@@ -372,6 +372,73 @@ double MultiParticle::etaCalc(double const& alpha, double const& lp,
 }
 
 /**
+ * @brief	ねじりの際の軸と粒子の交点と粒子の距離（x,y,z座標も込み）を計算する
+ * @param[out] intersect
+ * @param[in] i
+ * @param[in] j
+ * @param[in] k
+ * @param[in] const string& direction ばねがi方向なのかj方向なのか
+ * @note	ばねがi方向なのかj方向なのかで分岐
+ *         
+ *
+ */
+void MultiParticle::interSectionLengthCalc(const int& i, const int& j, const int& k,
+                                        const string& direction, Vector& intersect_minus,
+                                        Vector& intersect_plus) {
+    C Unit;
+    C Insec;
+    C Insec_plus;
+    double projec_minus = 0;
+    double projec_plus = 0;
+    if (direction == "i"){
+        lCalc(p->axis_i[i][j][k], p->mj[i][j][k], p->mj[i + 1][j][k]); // 軸ベクトルの計算
+        Unit.x = p->axis_i[i][j][k].vector.x / p->axis_i[i][j][k].norm;// 軸の単位ベクトルの計算
+        Unit.y = p->axis_i[i][j][k].vector.y / p->axis_i[i][j][k].norm;
+        Unit.z = p->axis_i[i][j][k].vector.z / p->axis_i[i][j][k].norm;
+        projec_minus = 
+            ((p->c[i][j][k].x - p->mj[i][j][k].x) * Unit.x + (p->c[i][j][k].y - p->mj[i][j][k].y) * Unit.y 
+            + (p->c[i][j][k].z - p->mj[i][j][k].z) * Unit.z);
+        Insec.x = p->mj[i][j][k].x + projec_minus * Unit.x;
+        Insec.y = p->mj[i][j][k].y + projec_minus * Unit.y;
+        Insec.z = p->mj[i][j][k].z + projec_minus * Unit.z;
+        lCalc(intersect_minus, Insec, p->c[i][j][k]);
+
+        projec_plus = 
+            ((p->c[i + 1][j][k].x - p->mj[i + 1][j][k].x) * Unit.x + (p->c[i + 1][j][k].y - p->mj[i + 1][j][k].y) * Unit.y 
+            + (p->c[i + 1][j][k].z - p->mj[i + 1][j][k].z) * Unit.z);
+        Insec_plus.x = p->mj[i + 1][j][k].x + projec_plus * Unit.x;
+        Insec_plus.y = p->mj[i + 1][j][k].y + projec_plus * Unit.y;
+        Insec_plus.z = p->mj[i + 1][j][k].z + projec_plus * Unit.z;
+        lCalc(intersect_plus, Insec_plus, p->c[i + 1][j][k]);
+    }
+    else if (direction == "j"){
+        lCalc(p->axis_j[i][j][k], p->mi[i][j][k], p->mi[i][j + 1][k]); // 軸ベクトルの計算
+        Unit.x = p->axis_j[i][j][k].vector.x / p->axis_j[i][j][k].norm;// 軸の単位ベクトル計算
+        Unit.y = p->axis_j[i][j][k].vector.y / p->axis_j[i][j][k].norm;
+        Unit.z = p->axis_j[i][j][k].vector.z / p->axis_j[i][j][k].norm;
+        projec_minus = 
+            ((p->c[i][j][k].x - p->mi[i][j][k].x) * Unit.x + (p->c[i][j][k].y - p->mi[i][j][k].y) * Unit.y 
+            + (p->c[i][j][k].z - p->mi[i][j][k].z) * Unit.z);
+        Insec.x = p->mi[i][j][k].x + projec_minus * Unit.x;
+        Insec.y = p->mi[i][j][k].y + projec_minus * Unit.y;
+        Insec.z = p->mi[i][j][k].z + projec_minus * Unit.z;
+        lCalc(intersect_minus, Insec, p->c[i][j][k]);
+
+        projec_plus = 
+            ((p->c[i][j + 1][k].x - p->mi[i][j + 1][k].x) * Unit.x + (p->c[i][j + 1][k].y - p->mi[i][j + 1][k].y) * Unit.y 
+            + (p->c[i][j + 1][k].z - p->mi[i][j + 1][k].z) * Unit.z);
+        Insec.x = p->mi[i][j + 1][k].x + projec_plus * Unit.x;
+        Insec.y = p->mi[i][j + 1][k].y + projec_plus * Unit.y;
+        Insec.z = p->mi[i][j + 1][k].z + projec_plus * Unit.z;
+        lCalc(intersect_plus, Insec_plus, p->c[i][j + 1][k]);
+    }
+    else{
+        cout << "can't calculate intersection because direction is not valid"
+             << endl;
+    }
+}
+
+/**
  * @brief		曲げモーメント Mを計算する
  * @param[in] 	double I 断面2次モーメント
  * @param[in] 	double diff_eta モーメント方向の曲率

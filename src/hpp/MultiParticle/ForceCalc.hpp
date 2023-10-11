@@ -3863,7 +3863,8 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
  * @param i
  * @param j
  * @param k
- * @notion まだ12で割っていない
+ * @continue ここに交点の関数を入れる
+ * 
  */
 void MultiParticle::TwistForceCalc(const int& i, const int& j, const int& k) {
     // 最初は完全な平面を想定して計算。初期角度が0でない場合には少し変更する必要あり
@@ -3883,7 +3884,9 @@ void MultiParticle::TwistForceCalc(const int& i, const int& j, const int& k) {
         double projec_minus = 0;
         double projec_plus = 0;
         double radian = 0;
-        Vector Hr_minus;
+        double p = 0;
+        Vector Hr_minus;// 粒子i,jと軸との垂線
+        Vector intersec;// 粒子i+1,jと軸との垂線
         Vector Hr_plus;
 
 
@@ -3900,26 +3903,36 @@ void MultiParticle::TwistForceCalc(const int& i, const int& j, const int& k) {
         p->Ipi[i][j][k] = Ip1_i + Ip2_i; 
 
         // 時間あれば、ここの角度求めるところ関数にしてもわかりやすいかも
-        lCalc(p->axis_i[i][j][k], p->mj[i][j][k], p->mj[i + 1][j][k]); // 軸ベクトルの計算
-        Unit.x = p->axis_i[i][j][k].vector.x / p->axis_i[i][j][k].norm;// 軸の単位ベクトルの計算
-        Unit.y = p->axis_i[i][j][k].vector.y / p->axis_i[i][j][k].norm;
-        Unit.z = p->axis_i[i][j][k].vector.z / p->axis_i[i][j][k].norm;
-        projec_minus = 
-            ((p->c[i][j][k].x - p->mj[i][j][k].x) * Unit.x + (p->c[i][j][k].y - p->mj[i][j][k].y) * Unit.y 
-            + (p->c[i][j][k].z - p->mj[i][j][k].z) * Unit.z);
-        Insec.x = p->mj[i][j][k].x + projec_minus * Unit.x;
-        Insec.y = p->mj[i][j][k].y + projec_minus * Unit.y;
-        Insec.z = p->mj[i][j][k].z + projec_minus * Unit.z;
+        interSectionLengthCalc(i, j, k, "i", Hr_minus, intersec);
 
-
+        // lCalc(p->axis_i[i][j][k], p->mj[i][j][k], p->mj[i + 1][j][k]); // 軸ベクトルの計算
+        // Unit.x = p->axis_i[i][j][k].vector.x / p->axis_i[i][j][k].norm;// 軸の単位ベクトルの計算
+        // Unit.y = p->axis_i[i][j][k].vector.y / p->axis_i[i][j][k].norm;
+        // Unit.z = p->axis_i[i][j][k].vector.z / p->axis_i[i][j][k].norm;
+        // projec_minus = 
+        //     ((p->c[i][j][k].x - p->mj[i][j][k].x) * Unit.x + (p->c[i][j][k].y - p->mj[i][j][k].y) * Unit.y 
+        //     + (p->c[i][j][k].z - p->mj[i][j][k].z) * Unit.z);
+        // Insec.x = p->mj[i][j][k].x + projec_minus * Unit.x;
+        // Insec.y = p->mj[i][j][k].y + projec_minus * Unit.y;
+        // Insec.z = p->mj[i][j][k].z + projec_minus * Unit.z;
         // lCalc(Hr_minus, Insec, p->c[i][j][k]);
+
+        //ここの過程も交点の関数に入れる Hr_plusもそこで求める
+        p = (Unit.x * (p->c[i + 1][j][k].x - p->c[i][j][k].x)
+            + Unit.y * (p->c[i + 1][j][k].y - p->c[i][j][k].y)
+            + Unit.z * (p->c[i + 1][j][k].z - p->c[i][j][k].z))
+            / (Unit.x*Unit.x + Unit.y*Unit.y + Unit.z*Unit.z);
+        Insec_plus.x = p->c[i + 1][j][k].x + p * Unit.x;
+        Insec_plus.y = p->c[i + 1][j][k].y + p * Unit.y;
+        Insec_plus.x = p->c[i + 1][j][k].z + p * Unit.z;
+        
         // projec_plus = 
         //     ((p->c[i + 1][j][k].x - p->mj[i + 1][j][k].x) * Unit.x + (p->c[i + 1][j][k].y - p->mj[i + 1][j][k].y) * Unit.y 
         //     + (p->c[i + 1][j][k].z - p->mj[i + 1][j][k].z) * Unit.z);
         // Insec_plus.x = p->mj[i + 1][j][k].x + projec_plus * Unit.x;
         // Insec_plus.y = p->mj[i + 1][j][k].y + projec_plus * Unit.y;
         // Insec_plus.z = p->mj[i + 1][j][k].z + projec_plus * Unit.z;
-        lCalc(Hr_plus, Insec_plus, p->c[i + 1][j][k]);
+        lCalc(Hr_plus, Insec, Insec_plus);
         crossProductCalc(Cp, Hr_minus.vector, Hr_plus.vector);
         radian = 
             innerProductCalc(Hr_plus.vector, Hr_minus.vector) / (Hr_plus.norm * Hr_minus.norm);
@@ -3954,7 +3967,7 @@ void MultiParticle::TwistForceCalc(const int& i, const int& j, const int& k) {
 
         // 時間あれば、ここの角度求めるところ関数にしてもわかりやすいかも
         lCalc(p->axis_j[i][j][k], p->mi[i][j][k], p->mi[i][j + 1][k]); // 軸ベクトルの計算
-        Unit.x = p->axis_j[i][j][k].vector.x / p->axis_j[i][j][k].norm;// 単位ベクトル計算
+        Unit.x = p->axis_j[i][j][k].vector.x / p->axis_j[i][j][k].norm;// 軸の単位ベクトル計算
         Unit.y = p->axis_j[i][j][k].vector.y / p->axis_j[i][j][k].norm;
         Unit.z = p->axis_j[i][j][k].vector.z / p->axis_j[i][j][k].norm;
         projec_minus = 
@@ -3964,12 +3977,20 @@ void MultiParticle::TwistForceCalc(const int& i, const int& j, const int& k) {
         Insec.y = p->mi[i][j][k].y + projec_minus * Unit.y;
         Insec.z = p->mi[i][j][k].z + projec_minus * Unit.z;
         lCalc(Hr_minus, Insec, p->c[i][j][k]);
-        projec_plus = 
-            ((p->c[i][j + 1][k].x - p->mi[i][j + 1][k].x) * Unit.x + (p->c[i][j + 1][k].y - p->mi[i][j + 1][k].y) * Unit.y 
-            + (p->c[i][j + 1][k].z - p->mi[i][j + 1][k].z) * Unit.z);
-        Insec.x = p->mi[i][j + 1][k].x + projec_minus * Unit.x;
-        Insec.y = p->mi[i][j + 1][k].y + projec_minus * Unit.y;
-        Insec.z = p->mi[i][j + 1][k].z + projec_minus * Unit.z;
+
+        p = (Unit.x * (p->c[i][j + 1][k].x - p->c[i][j][k].x)
+            + Unit.y * (p->c[i][j + 1][k].y - p->c[i][j][k].y)
+            + Unit.z * (p->c[i][j + 1][k].z - p->c[i][j][k].z))
+            / (Unit.x*Unit.x + Unit.y*Unit.y + Unit.z*Unit.z);
+        Insec_plus.x = p->c[i][j + 1][k].x + p * Unit.x;
+        Insec_plus.y = p->c[i][j + 1][k].y + p * Unit.y;
+        Insec_plus.x = p->c[i][j + 1][k].z + p * Unit.z;
+        // projec_plus = 
+        //     ((p->c[i][j + 1][k].x - p->mi[i][j + 1][k].x) * Unit.x + (p->c[i][j + 1][k].y - p->mi[i][j + 1][k].y) * Unit.y 
+        //     + (p->c[i][j + 1][k].z - p->mi[i][j + 1][k].z) * Unit.z);
+        // Insec.x = p->mi[i][j + 1][k].x + projec_minus * Unit.x;
+        // Insec.y = p->mi[i][j + 1][k].y + projec_minus * Unit.y;
+        // Insec.z = p->mi[i][j + 1][k].z + projec_minus * Unit.z;
         lCalc(Hr_plus, Insec_plus, p->c[i][j + 1][k]);
         crossProductCalc(Cp, Hr_minus.vector, Hr_plus.vector);
         radian = 
@@ -4002,134 +4023,7 @@ void MultiParticle::TwistForceCalc(const int& i, const int& j, const int& k) {
         p->Fb[i][j][k].jmv = -1 * p->Mj[i][j][k] / p->lj[i][j - 1][k].norm;
     }
 
-    {
-        double norm_j_plus  = 0;
-        double norm_j_minus = 0;
-        if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
-            norm_j_plus = normCalcV2(p->mj[i][j][k], p->c[i][j][k]);
-        }
-        if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM) {
-            norm_j_minus = normCalcV2(p->c[i][j][k], p->mj[i][j - 1][k]);
-        }
-        p->Ii[i][j][k] = (norm_j_plus + norm_j_minus) * p->h_ave3[i][j][k];
-    }
-
-    {
-        double norm_i_plus  = 0;
-        double norm_i_minus = 0;
-        if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
-            norm_i_plus = normCalcV2(p->mi[i][j][k], p->c[i][j][k]);
-        }
-        if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
-            norm_i_minus = normCalcV2(p->c[i][j][k], p->mi[i - 1][j][k]);
-        }
-        p->Ij[i][j][k] = (norm_i_plus + norm_i_minus) * p->h_ave3[i][j][k];
-    }
-
-    {
-        C plus;
-        C minus;
-        if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
-            plus = p->c[i][j + 1][k];
-        } else {
-            plus = p->vc_Top[i][j][k];
-        }
-        if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM) {
-            minus = p->c[i][j - 1][k];
-        } else {
-            minus = p->vc_Bottom[i][j][k];
-        }
-        p->alphaj[i][j][k] = angleCalc2(p->c[i][j][k], plus, minus, "j");
-    }
-
-    {
-        C plus;
-        C minus;
-        if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
-            plus = p->c[i + 1][j][k];
-        } else {
-            plus = p->vc_Right[i][j][k];
-        }
-        if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
-            minus = p->c[i - 1][j][k];
-        } else {
-            minus = p->vc_Left[i][j][k];
-        }
-        p->alphai[i][j][k] = angleCalc2(p->c[i][j][k], plus, minus, "i");
-
-        // if ((p->surround_particle_exsit[i][j][k] & BIT_RIGHT) &&
-        //     (p->surround_particle_exsit[i][j][k] & BIT_LEFT)) {
-        //     p->alphai[i][j][k] = angleCalc2(p->c[i][j][k], p->c[i + 1][j][k],
-        //                                     p->c[i - 1][j][k], 0);
-        // } else if (!(p->surround_particle_exsit[i][j][k] & BIT_RIGHT)) {
-        //     p->alphai[i][j][k] = angleCalc2(p->c[i][j][k],
-        //     p->vc_Right[i][j][k],
-        //                                     p->c[i - 1][j][k], 0);
-        // } else if (!(p->surround_particle_exsit[i][j][k] & BIT_LEFT)) {
-        //     p->alphai[i][j][k] = ngleCalc2(p->c[i][j][k], p->c[i + 1][j][k],
-        //                                     p->vc_Left[i][j][k], 0);
-        // }
-    }
-
-    {
-        C li_left, li_right;
-        double li_left_norm  = 0;
-        double li_right_norm = 0;
-        if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
-            li_right_norm = p->li[i][j][k].norm;
-        } else {
-            li_right      = p->vc_Right[i][j][k] - p->c[i][j][k];
-            li_right_norm = normCalc(li_right);
-        }
-        if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
-            li_left_norm = p->li[i - 1][j][k].norm;
-        } else {
-            li_left      = p->c[i][j][k] - p->vc_Left[i][j][k];
-            li_left_norm = normCalc(li_left);
-        }
-        p->etai[i][j][k] =
-            etaCalc(p->alphai[i][j][k], li_right_norm, li_left_norm);
-    }
-    {
-        C lj_bottom, lj_top;
-        double lj_bottom_norm = 0;
-        double lj_top_norm    = 0;
-        if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
-            lj_top_norm = p->lj[i][j][k].norm;
-        } else {
-            lj_top      = p->vc_Top[i][j][k] - p->c[i][j][k];
-            lj_top_norm = normCalc(lj_top);
-        }
-        if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM) {
-            lj_bottom_norm = p->lj[i][j - 1][k].norm;
-        } else {
-            lj_bottom      = p->c[i][j][k] - p->vc_Bottom[i][j][k];
-            lj_bottom_norm = normCalc(lj_bottom);
-        }
-        p->etaj[i][j][k] =
-            etaCalc(p->alphaj[i][j][k], lj_top_norm, lj_bottom_norm);
-    }
-
-    p->diff_etai[i][j][k] = p->etai[i][j][k] - p->etai0[i][j][k];
-    p->diff_etaj[i][j][k] = p->etaj[i][j][k] - p->etaj0[i][j][k];
-
-    p->Mi[i][j][k] =
-        MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k], p->diff_etaj[i][j][k]);
-    p->Mj[i][j][k] =
-        MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k], p->diff_etai[i][j][k]);
-
-    if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
-        p->Fb[i][j][k].ipv = -1 * p->Mi[i][j][k] / p->li[i][j][k].norm;
-    }
-    if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
-        p->Fb[i][j][k].imv = -1 * p->Mi[i][j][k] / p->li[i - 1][j][k].norm;
-    }
-    if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
-        p->Fb[i][j][k].jpv = -1 * p->Mj[i][j][k] / p->lj[i][j][k].norm;
-    }
-    if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM) {
-        p->Fb[i][j][k].jmv = -1 * p->Mj[i][j][k] / p->lj[i][j - 1][k].norm;
-    }
+    
 
     if (p->flag[i][j][k] & Right) {
         if (!param->boundary.right_bend_fix) {

@@ -144,13 +144,17 @@ class Particles {
     vector<vector<vector<double>>> Mi;
     //! Bending moment in j-direction j方向の曲げモーメント
     vector<vector<vector<double>>> Mj;
-    //! twist moment in i-direction (i方向のねじりモーメント)
+    //! twist moment in i-direction 粒子(i+1/2, j+1/2)の(i方向のねじりモーメント)
     vector<vector<vector<double>>> Torque_i;
-    //! twist moment in j-direction j方向のねじりモーメント
+    //! twist moment in j-direction 粒子(i+1/2, j+1/2)のj方向のねじりモーメント
     vector<vector<vector<double>>> Torque_j;
 
     //! Force by bending
     vector<vector<vector<PreDirection>>> Fb;
+    //! Force by twist 粒子(i+1/2, j+1/2)
+    vector<vector<vector<PreDirectionVector>>> Ftw_quater;
+    //! Force by twist 粒子(i, j)にかかるFtwの合力
+    vector<vector<vector<C>>> Ftw;
     //! Pressure
     vector<vector<vector<C>>> pressure;
     //! Force by air (Pressure)
@@ -295,6 +299,8 @@ class Particles {
         Torque_j.resize(iNum);
 
         Fb.resize(iNum);
+        Ftw_quater.resize(iNum);
+        Ftw.resize(iNum);
         pressure.resize(iNum);
         Fa.resize(iNum);
         Fnormal.resize(iNum);
@@ -401,6 +407,8 @@ class Particles {
             Torque_j[i].resize(jNum);
 
             Fb[i].resize(jNum);
+            Ftw_quater[i].resize(jNum);
+            Ftw[i].resize(jNum);
             pressure[i].resize(jNum);
             Fa[i].resize(jNum);
             Fnormal[i].resize(jNum);
@@ -507,6 +515,8 @@ class Particles {
                 Torque_j[i][j].resize(kNum);
 
                 Fb[i][j].resize(kNum);
+                Ftw_quater[i][j].resize(kNum);
+                Ftw[i][j].resize(kNum);
                 pressure[i][j].resize(kNum);
                 Fa[i][j].resize(kNum);
                 Fnormal[i][j].resize(kNum);
