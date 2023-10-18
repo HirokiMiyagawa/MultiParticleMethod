@@ -374,6 +374,7 @@ double MultiParticle::etaCalc(double const& alpha, double const& lp,
 /**
  * @brief	ねじりの際の軸と粒子の交点と粒子の距離（x,y,z座標も込み）を計算する
  * @param[out] intersect
+ * @param[out] Hr 粒子をもう片方の粒子を通る軸に垂直の平面におろしたときの交点と軸の距離
  * @param[in] i
  * @param[in] j
  * @param[in] k
@@ -382,60 +383,185 @@ double MultiParticle::etaCalc(double const& alpha, double const& lp,
  *         
  *
  */
-void MultiParticle::interSectionLengthCalc(const int& i, const int& j, const int& k,
-                                        const string& direction, Vector& intersect_minus,
-                                        Vector& intersect_plus) {
+void MultiParticle::interSectionLengthCalc(Vector& axis, const C& m_small, const C& m_large,
+                                        const C& c_small, const C& c_large, Vector& intersect_minus,
+                                        Vector& intersect_plus, Vector& Hr) {
     C Unit;
     C Insec;
     C Insec_plus;
     double projec_minus = 0;
     double projec_plus = 0;
-    if (direction == "i"){
-        lCalc(p->axis_i[i][j][k], p->mj[i][j][k], p->mj[i + 1][j][k]); // 軸ベクトルの計算
-        Unit.x = p->axis_i[i][j][k].vector.x / p->axis_i[i][j][k].norm;// 軸の単位ベクトルの計算
-        Unit.y = p->axis_i[i][j][k].vector.y / p->axis_i[i][j][k].norm;
-        Unit.z = p->axis_i[i][j][k].vector.z / p->axis_i[i][j][k].norm;
-        projec_minus = 
-            ((p->c[i][j][k].x - p->mj[i][j][k].x) * Unit.x + (p->c[i][j][k].y - p->mj[i][j][k].y) * Unit.y 
-            + (p->c[i][j][k].z - p->mj[i][j][k].z) * Unit.z);
-        Insec.x = p->mj[i][j][k].x + projec_minus * Unit.x;
-        Insec.y = p->mj[i][j][k].y + projec_minus * Unit.y;
-        Insec.z = p->mj[i][j][k].z + projec_minus * Unit.z;
-        lCalc(intersect_minus, Insec, p->c[i][j][k]);
+    double p = 0;
+    
+    //Caluculate intersect minus
 
-        projec_plus = 
-            ((p->c[i + 1][j][k].x - p->mj[i + 1][j][k].x) * Unit.x + (p->c[i + 1][j][k].y - p->mj[i + 1][j][k].y) * Unit.y 
-            + (p->c[i + 1][j][k].z - p->mj[i + 1][j][k].z) * Unit.z);
-        Insec_plus.x = p->mj[i + 1][j][k].x + projec_plus * Unit.x;
-        Insec_plus.y = p->mj[i + 1][j][k].y + projec_plus * Unit.y;
-        Insec_plus.z = p->mj[i + 1][j][k].z + projec_plus * Unit.z;
-        lCalc(intersect_plus, Insec_plus, p->c[i + 1][j][k]);
-    }
-    else if (direction == "j"){
-        lCalc(p->axis_j[i][j][k], p->mi[i][j][k], p->mi[i][j + 1][k]); // 軸ベクトルの計算
-        Unit.x = p->axis_j[i][j][k].vector.x / p->axis_j[i][j][k].norm;// 軸の単位ベクトル計算
-        Unit.y = p->axis_j[i][j][k].vector.y / p->axis_j[i][j][k].norm;
-        Unit.z = p->axis_j[i][j][k].vector.z / p->axis_j[i][j][k].norm;
-        projec_minus = 
-            ((p->c[i][j][k].x - p->mi[i][j][k].x) * Unit.x + (p->c[i][j][k].y - p->mi[i][j][k].y) * Unit.y 
-            + (p->c[i][j][k].z - p->mi[i][j][k].z) * Unit.z);
-        Insec.x = p->mi[i][j][k].x + projec_minus * Unit.x;
-        Insec.y = p->mi[i][j][k].y + projec_minus * Unit.y;
-        Insec.z = p->mi[i][j][k].z + projec_minus * Unit.z;
-        lCalc(intersect_minus, Insec, p->c[i][j][k]);
+    lCalc(axis, m_small, m_large); // 軸ベクトルの計算
+    Unit.x = axis.vector.x / axis.norm;// 軸の単位ベクトルの計算
+    Unit.y = axis.vector.y / axis.norm;
+    Unit.z = axis.vector.z / axis.norm;
+    projec_minus = 
+        ((c_small.x - m_small.x) * Unit.x + (c_small.y - m_small.y) * Unit.y 
+        + (c_small.z - m_small.z) * Unit.z);
+    Insec.x = m_small.x + projec_minus * Unit.x;
+    Insec.y = m_small.y + projec_minus * Unit.y;
+    Insec.z = m_small.z + projec_minus * Unit.z;
+    lCalc(intersect_minus, Insec, c_small);
 
-        projec_plus = 
-            ((p->c[i][j + 1][k].x - p->mi[i][j + 1][k].x) * Unit.x + (p->c[i][j + 1][k].y - p->mi[i][j + 1][k].y) * Unit.y 
-            + (p->c[i][j + 1][k].z - p->mi[i][j + 1][k].z) * Unit.z);
-        Insec.x = p->mi[i][j + 1][k].x + projec_plus * Unit.x;
-        Insec.y = p->mi[i][j + 1][k].y + projec_plus * Unit.y;
-        Insec.z = p->mi[i][j + 1][k].z + projec_plus * Unit.z;
-        lCalc(intersect_plus, Insec_plus, p->c[i][j + 1][k]);
+    // cout << "inter.x=" << intersect_minus.vector.x
+    //         << ", inter.y=" << intersect_minus.vector.y
+    //         << ", inter.z=" << intersect_minus.vector.z
+    //         << ", Insec.x=" << Insec.x
+    //         << ", Insec.y=" << Insec.y
+    //         << ", Insec.z=" << Insec.z
+    //         << ", c.x=" << c_small.x
+    //         << ", c.y=" << c_small.y
+    //         << ", c.z=" << c_small.z
+    //         << ", projec=" << projec_minus
+    //         << endl;
+    // Calculate intersect plus
+    projec_plus = 
+        ((c_large.x - m_large.x) * Unit.x + (c_large.y - m_large.y) * Unit.y 
+        + (c_large.z - m_large.z) * Unit.z);
+    Insec_plus.x = m_large.x + projec_plus * Unit.x;
+    Insec_plus.y = m_large.y + projec_plus * Unit.y;
+    Insec_plus.z = m_large.z + projec_plus * Unit.z;
+    lCalc(intersect_plus, Insec_plus, c_large);
+
+    // Calculate Hr
+    p = (Unit.x * (c_large.x - c_small.x)
+        + Unit.y * (c_large.y - c_small.y)
+        + Unit.z * (c_large.z - c_small.z))
+        / (Unit.x*Unit.x + Unit.y*Unit.y + Unit.z*Unit.z);
+    Insec_plus.x = c_large.x + p * Unit.x;
+    Insec_plus.y = c_large.y + p * Unit.y;
+    Insec_plus.x = c_large.z + p * Unit.z;
+    lCalc(Hr, Insec, Insec_plus);
+        // lCalc(p->axis_i[i][j][k], p->mj[i][j][k], p->mj[i + 1][j][k]); // 軸ベクトルの計算
+        // Unit.x = p->axis_i[i][j][k].vector.x / p->axis_i[i][j][k].norm;// 軸の単位ベクトルの計算
+        // Unit.y = p->axis_i[i][j][k].vector.y / p->axis_i[i][j][k].norm;
+        // Unit.z = p->axis_i[i][j][k].vector.z / p->axis_i[i][j][k].norm;
+        // projec_minus = 
+        //     ((p->c[i][j][k].x - p->mj[i][j][k].x) * Unit.x + (p->c[i][j][k].y - p->mj[i][j][k].y) * Unit.y 
+        //     + (p->c[i][j][k].z - p->mj[i][j][k].z) * Unit.z);
+        // Insec.x = p->mj[i][j][k].x + projec_minus * Unit.x;
+        // Insec.y = p->mj[i][j][k].y + projec_minus * Unit.y;
+        // Insec.z = p->mj[i][j][k].z + projec_minus * Unit.z;
+        // lCalc(intersect_minus, Insec, p->c[i][j][k]);
+
+        // // Calculate intersect plus
+        // projec_plus = 
+        //     ((p->c[i + 1][j][k].x - p->mj[i + 1][j][k].x) * Unit.x + (p->c[i + 1][j][k].y - p->mj[i + 1][j][k].y) * Unit.y 
+        //     + (p->c[i + 1][j][k].z - p->mj[i + 1][j][k].z) * Unit.z);
+        // Insec_plus.x = p->mj[i + 1][j][k].x + projec_plus * Unit.x;
+        // Insec_plus.y = p->mj[i + 1][j][k].y + projec_plus * Unit.y;
+        // Insec_plus.z = p->mj[i + 1][j][k].z + projec_plus * Unit.z;
+        // lCalc(intersect_plus, Insec_plus, p->c[i + 1][j][k]);
+
+        // // Calculate Hr
+        // p = (Unit.x * (p->c[i + 1][j][k].x - p->c[i][j][k].x)
+        //     + Unit.y * (p->c[i + 1][j][k].y - p->c[i][j][k].y)
+        //     + Unit.z * (p->c[i + 1][j][k].z - p->c[i][j][k].z))
+        //     / (Unit.x*Unit.x + Unit.y*Unit.y + Unit.z*Unit.z);
+        // Insec_plus.x = p->c[i + 1][j][k].x + p * Unit.x;
+        // Insec_plus.y = p->c[i + 1][j][k].y + p * Unit.y;
+        // Insec_plus.x = p->c[i + 1][j][k].z + p * Unit.z;
+        // lCalc(Hr, Insec, Insec_plus);
+    
+    // else if (direction == "j"){
+    //     // Calculate intersect minus
+    //     lCalc(p->axis_j[i][j][k], p->mi[i][j][k], p->mi[i][j + 1][k]); // 軸ベクトルの計算
+    //     Unit.x = p->axis_j[i][j][k].vector.x / p->axis_j[i][j][k].norm;// 軸の単位ベクトル計算
+    //     Unit.y = p->axis_j[i][j][k].vector.y / p->axis_j[i][j][k].norm;
+    //     Unit.z = p->axis_j[i][j][k].vector.z / p->axis_j[i][j][k].norm;
+    //     projec_minus = 
+    //         ((p->c[i][j][k].x - p->mi[i][j][k].x) * Unit.x + (p->c[i][j][k].y - p->mi[i][j][k].y) * Unit.y 
+    //         + (p->c[i][j][k].z - p->mi[i][j][k].z) * Unit.z);
+    //     Insec.x = p->mi[i][j][k].x + projec_minus * Unit.x;
+    //     Insec.y = p->mi[i][j][k].y + projec_minus * Unit.y;
+    //     Insec.z = p->mi[i][j][k].z + projec_minus * Unit.z;
+    //     lCalc(intersect_minus, Insec, p->c[i][j][k]);
+
+    //     // Calculate intersect plus
+    //     projec_plus = 
+    //         ((p->c[i][j + 1][k].x - p->mi[i][j + 1][k].x) * Unit.x + (p->c[i][j + 1][k].y - p->mi[i][j + 1][k].y) * Unit.y 
+    //         + (p->c[i][j + 1][k].z - p->mi[i][j + 1][k].z) * Unit.z);
+    //     Insec.x = p->mi[i][j + 1][k].x + projec_plus * Unit.x;
+    //     Insec.y = p->mi[i][j + 1][k].y + projec_plus * Unit.y;
+    //     Insec.z = p->mi[i][j + 1][k].z + projec_plus * Unit.z;
+    //     lCalc(intersect_plus, Insec_plus, p->c[i][j + 1][k]);
+        
+    //     // Calculate Hr
+    //     p = (Unit.x * (p->c[i][j + 1][k].x - p->c[i][j][k].x)
+    //         + Unit.y * (p->c[i][j + 1][k].y - p->c[i][j][k].y)
+    //         + Unit.z * (p->c[i][j + 1][k].z - p->c[i][j][k].z))
+    //         / (Unit.x*Unit.x + Unit.y*Unit.y + Unit.z*Unit.z);
+    //     Insec_plus.x = p->c[i][j + 1][k].x + p * Unit.x;
+    //     Insec_plus.y = p->c[i][j + 1][k].y + p * Unit.y;
+    //     Insec_plus.x = p->c[i][j + 1][k].z + p * Unit.z;
+    //     lCalc(Hr, Insec, Insec_plus);
+    // }
+    // else{
+    //     cout << "can't calculate intersection because direction is not valid"
+    //          << endl;
+    // }
+}
+
+/**
+ * @brief	ねじりの際の軸と粒子の交点と粒子の距離（x,y,z座標も込み）を計算する
+ * @param[out] intersect
+ * @param[out] Hr 粒子をもう片方の粒子を通る軸に垂直の平面におろしたときの交点と軸の距離
+ * @param[in] i
+ * @param[in] j
+ * @param[in] k
+ * @param[in] const string& direction ばねがi方向なのかj方向なのか
+ * @note	ばねがi方向なのかj方向なのかで分岐
+ *         
+ *
+ */
+void MultiParticle::FtwVector(const C& c_plus, const C& c_minus, const C& axis,
+                                const C& c_ex, Vector& ftw) {
+    double s = 0;
+    Vector Ftw_vector; // Ftwのベクトルを計算するときに使う、平面に垂直なベクトル。
+                       // 単位ベクトルに変換してからFtwの計算に用いる
+    Vector normal; // Ftwのベクトルを計算するときに使う、平面に垂直なベクトル。間接的に用いる
+    C H; // Ftwのベクトルを計算するときに使う、粒子から垂線を下した交点
+
+    crossProductCalc(normal.vector, c_plus - c_minus, axis);
+    normal.norm = normCalc(normal.vector);
+    normal.vector.x /= normal.norm;
+    normal.vector.y /= normal.norm;
+    normal.vector.z /= normal.norm;
+    if (normal.norm == 0){
+        normal.vector.x = 0;
+        normal.vector.y = 0;
+        normal.vector.z = 0;
     }
-    else{
-        cout << "can't calculate intersection because direction is not valid"
-             << endl;
+    s = innerProductCalc(normal.vector, c_ex - c_minus);
+    H.x = c_ex.x - s * normal.vector.x;
+    H.y = c_ex.y - s * normal.vector.y;
+    H.z = c_ex.z - s * normal.vector.z;
+    Ftw_vector.vector = c_ex - H;
+    Ftw_vector.norm = normCalc(Ftw_vector.vector);
+    Ftw_vector.vector.x /= Ftw_vector.norm;
+    Ftw_vector.vector.y /= Ftw_vector.norm;
+    Ftw_vector.vector.z /= Ftw_vector.norm;
+    if (Ftw_vector.norm == 0){//std::isnanがきちんと動作してくれなかったため、これで代用
+        Ftw_vector.vector.x = 0;
+        Ftw_vector.vector.y = 0;
+        Ftw_vector.vector.z = 0;
+        // cout << "Ftw is nan"
+        //      << endl;
     }
+    // cout << ", Ftwp.x=" << Ftw_vector.vector.x
+    //     << ", Ftwp.y=" << Ftw_vector.vector.y
+    //     << ", Ftwp.z=" << Ftw_vector.vector.z
+    //     << ", isfinite = " << std::isnan(Ftw_vector.vector.x)
+    //     << ", isnan_1 = " << std::isnan(1)
+    //     << endl;
+    ftw.vector.x = ftw.norm * Ftw_vector.vector.x;
+    ftw.vector.y = ftw.norm * Ftw_vector.vector.y;
+    ftw.vector.z = ftw.norm * Ftw_vector.vector.z;
+   
 }
 
 /**
@@ -459,8 +585,8 @@ double MultiParticle::MCalc(double const& I, double const& diff_eta,
  * @return		double モーメントの計算結果
  */
 double MultiParticle::TCalc(double const& Ip, double const& diff_theta,
-                            double const& lon) {
-    return param->m_preCalc5 * Ip * diff_theta /
+                            double const& lon, double const& k1) {
+    return param->m_preCalc5 * Ip * diff_theta * k1 /
            (lon * param->m_h0);
 }
 
@@ -1073,6 +1199,29 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
         // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].jmv, p->Sj[i][j -
         // 1][k]);
     }
+
+#ifdef __TWIST__ //ねじりによる力を計算
+    // if (j == 20 && i == 20){
+    //      cout << "f.x=" << p->f[i][j][k].x
+    //           << ", f.y=" << p->f[i][j][k].y
+    //           << ", f.z=" << p->f[i][j][k].z
+    //           << endl;
+    // }
+    p->f[i][j][k] += p->Ftw[i][j][k];
+    // if (j == 20 && i == 20){
+    //      cout << "after, "
+    //           << "ftw.x=" << p->Ftw[i][j][k].x
+    //           << ", ftw.y=" << p->Ftw[i][j][k].y
+    //           << ", ftw.z=" << p->Ftw[i][j][k].z
+    //           << endl;
+    //     cout << "after     f.x=" << p->f[i][j][k].x
+    //           << ", f.y=" << p->f[i][j][k].y
+    //           << ", f.z=" << p->f[i][j][k].z
+    //           << endl;
+    // }
+
+#endif
+
 }
 #endif
 

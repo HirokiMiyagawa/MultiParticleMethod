@@ -92,7 +92,7 @@ class Particles {
     vector<vector<vector<double>>> Fti;
     vector<vector<vector<double>>> Ftj;
 
-    //! 構造体C、x,y,z方向の力を格納する
+    //! 構造体C、x,y,z方向の力を格納する 膜の内力、外力すべてを足し合わせたもの。最終的にルンゲクッタでは、これを用いる
     vector<vector<vector<C>>> f;
 
     //! せん断角度
@@ -139,6 +139,10 @@ class Particles {
     vector<vector<vector<double>>> diff_etai;
     //! 曲率の変位
     vector<vector<vector<double>>> diff_etaj;
+    //! 曲率の変位
+    vector<vector<vector<double>>> diffang_i;
+    //! 曲率の変位
+    vector<vector<vector<double>>> diffang_j;
 
     //! Bending moment in i-direction (i方向の曲げモーメント)
     vector<vector<vector<double>>> Mi;
@@ -292,6 +296,8 @@ class Particles {
         etaj0.resize(iNum);
         diff_etai.resize(iNum);
         diff_etaj.resize(iNum);
+        diffang_i.resize(iNum);
+        diffang_j.resize(iNum);
 
         Mi.resize(iNum);
         Mj.resize(iNum);
@@ -400,6 +406,8 @@ class Particles {
             etaj0[i].resize(jNum);
             diff_etai[i].resize(jNum);
             diff_etaj[i].resize(jNum);
+            diffang_i[i].resize(jNum);
+            diffang_j[i].resize(jNum);
 
             Mi[i].resize(jNum);
             Mj[i].resize(jNum);
@@ -508,6 +516,8 @@ class Particles {
                 etaj0[i][j].resize(kNum);
                 diff_etai[i][j].resize(kNum);
                 diff_etaj[i][j].resize(kNum);
+                diffang_i[i][j].resize(kNum);
+                diffang_j[i][j].resize(kNum);
 
                 Mi[i][j].resize(kNum);
                 Mj[i][j].resize(kNum);

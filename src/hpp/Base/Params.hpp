@@ -520,7 +520,7 @@ class Params {
 
         // m_preCalc4		= h0 * h0 * m_preCalc1 / ( 12 * Lref * Lref );
         m_preCalc4 = m_preCalc1 / 12;
-        m_preCalc5 = 1 / (24 * (1 + m_nu));
+        m_preCalc5 = 1 / (2 * (1 + m_nu));
         pre_eta_n  = (1 + reflectance * specularity);
         pre_eta_t  = (1 - reflectance * specularity);
 

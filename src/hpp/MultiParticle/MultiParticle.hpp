@@ -16,6 +16,7 @@
 
 #include <signal.h>  // sigction
 #include <map>       // std::mapを使用するため
+#include <stdbool.h> // bool型の変数宣言を使用するため
 //---------------------------------------
 #define DEBUG_MODE
 
@@ -133,6 +134,12 @@ class MultiParticle {
         setInitialAnalysisShape(param->analysis_shape, param->grid_pattern);
         setInitialConditions();
         console(2);
+#if defined __TWIST__ //ねじりによる力を計算
+
+    cout << "Considered twist force"
+         << endl;
+
+#endif
 
         //! delete all csv files
         // delete_file(parameter_dir.c_str());
@@ -567,6 +574,7 @@ class MultiParticle {
                         TensileForceCalc(i, j, k);
                         ShareForceCalc(i, j, k);
                         BendForceCalc(i, j, k);
+                        TwistForceCalc(i, j, k); 
                         AirForceCalc(i, j, k);
                         RotationInertiaForceCalc(i, j, k);
                     }
@@ -718,7 +726,7 @@ class MultiParticle {
 
     /**
      * @brief
-     * 引数の時間が1列目になるようなdatファイルとして出力する
+     * 引数の時間が1列目になるようなdatファイルとして出力する. 出力用関数（csvも）
      * @param[in]	double const& time：現在の時間
      * @param[in]   time_point
      * start_time：シミュレーションを開始してからの時間
@@ -795,6 +803,8 @@ class MultiParticle {
                       << "Ij,"
                       << "Mi,"
                       << "Mj,"
+                      << "Δangi,"
+                      << "Δangj,"
                       << "Px,"
                       << "Py,"
                       << "Pz,"
@@ -840,6 +850,13 @@ class MultiParticle {
                       << "Fb(i.j).x,"
                       << "Fb(i.j).y,"
                       << "Fb(i.j).z,"
+                      << "Ftw(i+.j),"
+                      << "Ftw(i-.j),"
+                      << "Ftw(i.j+),"
+                      << "Ftw(i.j-),"
+                      << "Ftw(i.j).x,"
+                      << "Ftw(i.j).y,"
+                      << "Ftw(i.j).z,"
                       << "Fa,"
                       << "Fall.ip,"
                       << "Fall.im,"
@@ -1042,6 +1059,8 @@ class MultiParticle {
                             << p->epsilongi[i][j][k] << "," << p->Ii[i][j][k]
                             << "," << p->Ij[i][j][k] << "," << p->Mi[i][j][k]
                             << "," << p->Mj[i][j][k] << ","
+                            << p->diffang_i[i][j][k] << ","
+                            << p->diffang_j[i][j][k] << ","
                             << p->pressure[i][j][k].x << ","
                             << p->pressure[i][j][k].y << ","
                             << p->pressure[i][j][k].z << "," << pressure << ",";
@@ -1090,6 +1109,13 @@ class MultiParticle {
                             << Fb.x << ","
                             << Fb.y << ","
                             << Fb.z << ","
+                            << p->Ftw_quater[i][j][k].ipv.norm << ","
+                            << p->Ftw_quater[i][j][k].imv.norm << ","
+                            << p->Ftw_quater[i][j][k].jpv.norm << ","
+                            << p->Ftw_quater[i][j][k].jmv.norm << ","
+                            << p->Ftw[i][j][k].x << ","
+                            << p->Ftw[i][j][k].y << ","
+                            << p->Ftw[i][j][k].z << ","
                             << p->Fa[i][j][k] << "," << p->F[i][j][k].ip
                             << "," << p->F[i][j][k].im << ","
                             << p->F[i][j][k].jp << "," << p->F[i][j][k].jm
@@ -1521,45 +1547,47 @@ class MultiParticle {
 
         double divergence = 10;
         if (SimpleTensile) {
-            int itr_x = p->v.size() - 1;
+            int itr_x = p->v.size() / 2;
             int itr_y = p->v[0].size() / 2;
             int itr_z = p->v[0][0].size() / 2;
 
             cout << std::setprecision(9);
-            std::cout << "c.x:" << p->c[itr_x][itr_y][itr_z].x << ','
+            std::cout << "c.z:" << p->c[itr_x][itr_y][itr_z].z << ','
                       << std::string(3, ' ') << std::setprecision(5)
-                      << "v.x:" << p->v[itr_x][itr_y][itr_z].x << ","
+                      << "v.z:" << p->v[itr_x][itr_y][itr_z].z << ","
                       << std::string(3, ' ')
-                      << "a.x:" << p->v[itr_x][itr_y][itr_z].x - pre_vector
+                      << "a.z:" << p->v[itr_x][itr_y][itr_z].z - pre_vector
                       << std::string(3, ' ') << std::flush;
-            if (divergence <= fabs(p->v[itr_x][itr_y][itr_z].x)) {
+            if (divergence <= fabs(p->v[itr_x][itr_y][itr_z].z)) {
                 std::cout << std::endl;
                 std::cout << "Divergence" << std::endl;
                 return true;
             };
-            pre_vector = p->v[itr_x][itr_y][itr_z].x;
+            pre_vector = p->v[itr_x][itr_y][itr_z].z;
             return false;
         } else if (SimpleShare) {
-            int itr_x = p->v.size() - 1;
-            int itr_y = p->v[0].size() - 1;
+            int itr_x = p->v.size() / 2;
+            int itr_y = p->v[0].size() / 2;
+            // int itr_x = 9;
+            // int itr_y = 8;
             int itr_z = p->v[0][0].size() / 2;
 
-            std::cout << "c.y:" << p->c[itr_x][itr_y][itr_z].y << ','
+            std::cout << "c.z:" << p->c[itr_x][itr_y][itr_z].z << ','
                       << std::string(3, ' ')
-                      << "v.y:" << p->v[itr_x][itr_y][itr_z].y << ","
+                      << "v.z:" << p->v[itr_x][itr_y][itr_z].z << ","
                       << std::string(3, ' ')
-                      << "a.y:" << p->v[itr_x][itr_y][itr_z].y - pre_vector
+                      << "a.z:" << p->v[itr_x][itr_y][itr_z].z - pre_vector
                       << std::string(3, ' ') << std::flush;
-            if (divergence <= fabs(p->v[itr_x][itr_y][itr_z].x)) {
+            if (divergence <= fabs(p->v[itr_x][itr_y][itr_z].z)) {
                 std::cout << std::endl;
                 std::cout << "Divergence" << std::endl;
                 return true;
             }
-            pre_vector = p->v[itr_x][itr_y][itr_z].y;
+            pre_vector = p->v[itr_x][itr_y][itr_z].z;
             return false;
         } else if (SimpleBend) {
             int itr_x = p->v.size() - 1;
-            int itr_y = p->v[0].size() / 2;
+            int itr_y = p->v[0].size() - 1;
             int itr_z = p->v[0][0].size() / 2;
 
             std::cout << "c.z:" << p->c[itr_x][itr_y][itr_z].z << ','
@@ -1603,22 +1631,22 @@ class MultiParticle {
             return false;
         } else if (SimpleCompression) {
             divergence = 10 ^ 4;
-            int itr_x  = p->v.size() - 1;
+            int itr_x  = p->v.size() / 2;
             int itr_y  = p->v[0].size() / 2;
             int itr_z  = p->v[0][0].size() / 2;
 
-            std::cout << "c.x:" << p->c[itr_x][itr_y][itr_z].x << ','
+            std::cout << "c.z:" << p->c[itr_x][itr_y][itr_z].z << ','
                       << std::string(3, ' ')
-                      << "v.x:" << p->v[itr_x][itr_y][itr_z].x << ','
+                      << "v.z:" << p->v[itr_x][itr_y][itr_z].z << ','
                       << std::string(3, ' ')
-                      << "a.x:" << p->v[itr_x][itr_y][itr_z].x - pre_vector
+                      << "a.z:" << p->v[itr_x][itr_y][itr_z].z - pre_vector
                       << std::string(3, ' ') << std::flush;
-            if (divergence <= fabs(p->v[itr_x][itr_y][itr_z].x)) {
+            if (divergence <= fabs(p->v[itr_x][itr_y][itr_z].z)) {
                 std::cout << std::endl;
                 std::cout << "Divergence" << std::endl;
                 return true;
             };
-            pre_vector = p->v[itr_x][itr_y][itr_z].x;
+            pre_vector = p->v[itr_x][itr_y][itr_z].z;
             return false;
         } else if (CubePressure) {
             int itr_x = p->c.size() / 2;
@@ -1806,6 +1834,7 @@ class MultiParticle {
     void TensileForceCalc(const int&, const int&, const int&);
     void ShareForceCalc(const int&, const int&, const int&);
     void BendForceCalc(const int&, const int&, const int&);
+    void TwistForceCalc(const int&, const int&, const int&);
     void ContradictBendForceCalc(const int&, const int&, const int&);
     void AirForceCalc(const int&, const int&, const int&);
     void RotationInertiaForceCalc(const int&, const int&, const int&);
@@ -1826,8 +1855,11 @@ class MultiParticle {
     double FsCalc(double const&, double const&, double const&);
     double FtCalc(double const&, double const&, double const&, double const&);
     double etaCalc(double const&, double const&, double const&);
+    void interSectionLengthCalc(Vector&, const C&, const C&,
+                                        const C&, const C&, Vector&, Vector&, Vector&);
+    void FtwVector(const C&, const C&, const C&, const C&, Vector&);
     double MCalc(double const&, double const&, double const&);
-    double TCalc(double const&, double const&, double const&);
+    double TCalc(double const&, double const&, double const&, double const&);
     double get_random();
     void disturbance_Calc(C&, double const&);
 

@@ -267,7 +267,9 @@ void MultiParticle::setInitialConditionsSetParam() {
     for (int i = 0; i < local_iNum; i++) {
         for (int j = 0; j < local_jNum; j++) {
             for (int k = 0; k < local_kNum; k++) {
+#ifndef __GEOMETRYDISTURBANCE__
                 p->c[i][j][k].z       = 0;
+#endif
                 p->alphai[i][j][k]    = math::pi();
                 p->alphaj[i][j][k]    = math::pi();
                 p->etai[i][j][k]      = 0;
@@ -343,11 +345,35 @@ void MultiParticle::setInitialConditionsSetParamShapeCylinder() {
  * ここで、m_Lref_x(膜の長さ)を等分割で分割し、粒子に座標を設定している
  */
 void MultiParticle::setInitialConditionsEquallyDividedModeling() {
+    C distub;
+    disturbance_Calc(distub, param->disturbance_range);
     for (int i = 0; i < local_iNum; i++) {
         for (int j = 0; j < local_jNum; j++) {
             for (int k = 0; k < local_kNum; k++) {
                 p->c[i][j][k].x = param->m_Lref_x * i / (local_iNum - 1);
                 p->c[i][j][k].y = param->m_Lref_y * j / (local_jNum - 1);
+#ifdef __GEOMETRYDISTURBANCE__
+            if (p->flag[i][j][k] == Center) {
+                p->c[i][j][k].z = param->disturbance_range * get_random();
+            }
+                
+                // cout << "z = "
+                //      << p->c[i][j][k].z
+                //      << endl;
+#else
+                // if (p->flag[i][j][k] == Right) {
+                    if (param->add_disturbance) {
+                        disturbance_Calc(p->disturbance[i][j][k], param->disturbance_range);
+                        // p->disturbance[i][j][k] = distub;
+                        if (param->disturbance_mode == "direct") {//ここのFdは、計算には用いていない
+                            p->Fd[i][j][k] = normCalc(distub);
+                        } else {
+                            p->Fd[i][j][k] = innerProductCalc(p->disturbance[i][j][k],
+                                                            p->S[i][j][k].cp.vector);
+                        }
+                    }
+                // }
+#endif
             }
         }
     }
@@ -369,6 +395,7 @@ void MultiParticle::setInitialConditionsUnEquallyDividedModeling() {
             }
         }
     }
+   
 }
 
 /**
@@ -4153,6 +4180,9 @@ void MultiParticle::setInitialConditionsCopy() {
         for (int j = 0; j < local_jNum; j++) {
             for (int k = 0; k < local_kNum; k++) {
                 p->new_c[i][j][k] = p->c[i][j][k];
+                // cout << "z = "
+                //      << p->c[i][j][k].z
+                //      << endl;
                 p->new_v[i][j][k] = p->v[i][j][k];
 
                 p->li0[i][j][k] = p->li[i][j][k].norm;

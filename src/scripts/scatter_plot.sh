@@ -11,7 +11,7 @@ Shape=${3:-"sail"}
 imagePath="visualize/fig/${Shape}_deformation.png"
 plotScript="${PATH_DIR_SCRIPT}/scatter_gplot.plt"
 xy_min=-0.2
-xy_max=1.2
+xy_max=1.5
 z_min=-0.15
 z_max=0.15
 
