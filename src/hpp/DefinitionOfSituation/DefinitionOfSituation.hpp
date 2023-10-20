@@ -10,7 +10,7 @@
 // #define __Natural_Frequency__
 // #define __Oblique__
 
-#define __SIMPLE_BEND__  //ねじりの検証はこれでやる
+// #define __SIMPLE_BEND__  //ねじりの検証はこれでやる
 // #define __SIMPLE_PRESSURE__
 
 // #define __SIMPLE_SHARE__
@@ -52,7 +52,7 @@
 //---------------------------------------
 // #define __SIMPLE_TENSILE__
 // #define __SIMPLE_SHARE__
-// #define __SIMPLE_BEND__
+#define __SIMPLE_BEND__
 // #define __SIMPLE_PRESSURE__
 // #define __CYLINDER_PRESSURE__
 // #define __CUBE_PRESSURE__

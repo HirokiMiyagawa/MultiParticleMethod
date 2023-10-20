@@ -755,14 +755,14 @@ class MultiParticle {
                       << "V.y,"
                       << "V.z,";
 
-            foutparam << "li.x,"
-                      << "li.y,"
-                      << "li.z,"
-                      << "lj.x,"
-                      << "lj.y,"
-                      << "lj.z,"
-                      << "li,"
-                      << "lj,"
+            foutparam << "longi.x,"
+                      << "longi.y,"
+                      << "longi.z,"
+                      << "longj.x,"
+                      << "longj.y,"
+                      << "longj.z,"
+                      << "longi,"
+                      << "longj,"
                       << "g.x,"
                       << "g.y,"
                       << "g.z,"
@@ -805,6 +805,8 @@ class MultiParticle {
                       << "Mj,"
                       << "Δangi,"
                       << "Δangj,"
+                      << "Torquei,"
+                      << "Torquej,"
                       << "Px,"
                       << "Py,"
                       << "Pz,"
@@ -1061,6 +1063,8 @@ class MultiParticle {
                             << "," << p->Mj[i][j][k] << ","
                             << p->diffang_i[i][j][k] << ","
                             << p->diffang_j[i][j][k] << ","
+                            << p->Torque_i[i][j][k] << ","
+                            << p->Torque_j[i][j][k] << ","
                             << p->pressure[i][j][k].x << ","
                             << p->pressure[i][j][k].y << ","
                             << p->pressure[i][j][k].z << "," << pressure << ",";
@@ -1086,7 +1090,7 @@ class MultiParticle {
                                   << p->vc_Right[i][j][k].y << ","
                                   << p->vc_Right[i][j][k].z << ",";
                         foutparam
-                            << p->Fti[i][j][k] << "," << p->Fti[i][j][k]
+                            << p->Fti[i][j][k] << "," << p->Ftj[i][j][k]
                             << ","
                             << p->Fsi[i][j][k].pp + p->Fsi[i][j][k].pm
                             << ","
@@ -1634,13 +1638,184 @@ class MultiParticle {
             int itr_x  = p->v.size() / 2;
             int itr_y  = p->v[0].size() / 2;
             int itr_z  = p->v[0][0].size() / 2;
+            int i = itr_x;
+            int j = itr_y;
+            int k = itr_z;
+            double compEne = 0;
+            double compEnej = 0;
+            double bendEne = 0;
+            for (int i = 0; i < local_iNum; i++) {
+                for (int j = 0; j < local_jNum; j++) {
+                    for (int k = 0; k < local_kNum; k++) {
 
-            std::cout << "c.z:" << p->c[itr_x][itr_y][itr_z].z << ','
+                            double norm_j_plus  = 0;
+                            double norm_j_minus = 0;
+                            double norm_i_plus  = 0;
+                            double norm_i_minus = 0;
+                            int sum_counti = 0;
+                            int sum_countj = 0;
+                            double height = 0.01;
+                            if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
+                                norm_j_plus = normCalcV2(p->mj[i][j][k], p->c[i][j][k]);
+                                sum_countj ++;
+                            }
+                            if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM) {
+                                norm_j_minus = normCalcV2(p->c[i][j][k], p->mj[i][j - 1][k]);
+                                sum_countj ++;
+                            }
+                            if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
+                                norm_i_plus = normCalcV2(p->mi[i][j][k], p->c[i][j][k]);
+                                sum_counti ++;
+                                // norm_i_plus = 0.025;
+                            }
+                            if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
+                                norm_i_minus = normCalcV2(p->c[i][j][k], p->mi[i - 1][j][k]);
+                                sum_counti ++;
+                                // norm_i_minus = 0.025;
+                            }
+                            if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
+                                height = p->hi[i][j][k];
+                            }
+                            compEne += ((p->Fti[i][j][k])/((norm_j_plus + norm_j_minus)
+                                         * height) * p->epsilongi[i][j][k])
+                                         * ((norm_j_plus + norm_j_minus) * height *p->li[i][j][k].norm ) / 2;
+                            compEnej += ((p->Ftj[i][j][k])/((norm_i_plus + norm_i_minus)
+                                         * height) * p->epsilongj[i][j][k])
+                                         * ((norm_i_plus + norm_i_minus) * height *p->lj[i][j][k].norm ) / 2;// 伸びによるひずみエネルギー
+                            bendEne += (p->Mi[i][j][k] * p->Mi[i][j][k]) / (2 * param->m_E * p->Ii[i][j][k])
+                                         * (norm_i_plus + norm_i_minus) / sum_counti;
+                            bendEne += (p->Mj[i][j][k] * p->Mj[i][j][k]) / (2 * param->m_E * p->Ij[i][j][k])
+                                         * (norm_j_plus + norm_j_minus) / sum_countj;
+                    }
+                }
+            }
+            C Fb;
+            Fb.reset();
+            
+                Fb += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector /
+                          p->Si[i][j][k].cp.norm);
+                Fb += (p->F[i][j][k].imv * p->Si[i - 1][j][k].cp.vector /
+                          p->Si[i - 1][j][k].cp.norm);
+                // p->F[i][j][k].jpv = p->Fb[i][j + 1][k].jmv;
+                Fb += (p->F[i][j][k].jpv * p->Sj[i][j][k].cp.vector /
+                          p->Sj[i][j][k].cp.norm);
+                // Tensile and Share
+                Fb += (p->F[i][j][k].jmv * p->Sj[i][j - 1][k].cp.vector /
+                          p->Sj[i][j - 1][k].cp.norm);
+                // p->F[i][j][k].jmv = p->Fb[i][j - 1][k].jpv;
+            double ft_z = (p->F[i][j][k].ip * p->li[i][j][k].vector.z /
+                                p->li[i][j][k].norm)
+                            +(p->F[i][j][k].im * -1 * p->li[i-1][j][k].vector.z /
+                            p->li[i-1][j][k].norm)
+                            + (p->F[i][j][k].jp * p->lj[i][j][k].vector.z /
+                                p->lj[i][j][k].norm)
+                            + (p->F[i][j][k].jm * -1 * p->lj[i][j-1][k].vector.z /
+                                p->lj[i][j-1][k].norm);
+                    
+            std::cout << "10.10"
+                      << "c.z:" << p->c[itr_x][itr_y][itr_z].z << ','
                       << std::string(3, ' ')
                       << "v.z:" << p->v[itr_x][itr_y][itr_z].z << ','
                       << std::string(3, ' ')
                       << "a.z:" << p->v[itr_x][itr_y][itr_z].z - pre_vector
-                      << std::string(3, ' ') << std::flush;
+                      << std::string(3, ' ') 
+                      // << "ft.z:" << ft_z << ','
+                      // << std::string(3, ' ')
+                      // << "fb.z:" << Fb.z << ','
+                      // << std::string(3, ' ')
+                      << "compEnergy_j:" << compEnej << ','
+                      << std::string(3, ' ')
+                      << "compEnergy:" <<compEne << ','
+                      << std::string(3, ' ')
+                      << "bendEnergy:" << bendEne << ','
+                      << std::string(3, ' ')
+                      << std::endl;
+            
+            // itr_x  = 5;
+            // itr_y  = 10;
+            // itr_z  = p->v[0][0].size() / 2;
+            // i = itr_x;
+            // j = itr_y;
+            // k = itr_z;
+            
+            // Fb.reset();
+            
+            //     Fb += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector /
+            //               p->Si[i][j][k].cp.norm);
+            //     Fb += (p->F[i][j][k].imv * p->Si[i - 1][j][k].cp.vector /
+            //               p->Si[i - 1][j][k].cp.norm);
+            //     // p->F[i][j][k].jpv = p->Fb[i][j + 1][k].jmv;
+            //     Fb += (p->F[i][j][k].jpv * p->Sj[i][j][k].cp.vector /
+            //               p->Sj[i][j][k].cp.norm);
+            //     // Tensile and Share
+            //     Fb += (p->F[i][j][k].jmv * p->Sj[i][j - 1][k].cp.vector /
+            //               p->Sj[i][j - 1][k].cp.norm);
+            //     // p->F[i][j][k].jmv = p->Fb[i][j - 1][k].jpv;
+            // ft_z = (p->F[i][j][k].ip * p->li[i][j][k].vector.z /
+            //                     p->li[i][j][k].norm)
+            //                 +(p->F[i][j][k].im * -1 * p->li[i-1][j][k].vector.z /
+            //                 p->li[i-1][j][k].norm)
+            //                 + (p->F[i][j][k].jp * p->lj[i][j][k].vector.z /
+            //                     p->lj[i][j][k].norm)
+            //                 + (p->F[i][j][k].jm * -1 * p->lj[i][j-1][k].vector.z /
+            //                     p->lj[i][j-1][k].norm);
+            // std::cout  << "5.10"
+            //           << "c.z:" << p->c[itr_x][itr_y][itr_z].z << ','
+            //           << std::string(3, ' ')
+            //           << "v.z:" << p->v[itr_x][itr_y][itr_z].z << ','
+            //           << std::string(3, ' ')
+            //           << "a.z:" << p->v[itr_x][itr_y][itr_z].z - pre_vector
+            //           << std::string(3, ' ') 
+            //           << "ft.z:" << ft_z << ','
+            //           << std::string(3, ' ')
+            //           << "fb.z:" << Fb.z << ','
+            //           << std::string(3, ' ')
+            //           << "f.z:" << p->f[itr_x][itr_y][itr_z].z << ','
+            //           << std::string(3, ' ')
+            //           << std::endl;
+                    
+            // itr_x  = 15;
+            // itr_y  = 10;
+            // itr_z  = p->v[0][0].size() / 2;
+            // i = itr_x;
+            // j = itr_y;
+            // k = itr_z;
+            
+            // Fb.reset();
+            
+            //     Fb += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector /
+            //               p->Si[i][j][k].cp.norm);
+            //     Fb += (p->F[i][j][k].imv * p->Si[i - 1][j][k].cp.vector /
+            //               p->Si[i - 1][j][k].cp.norm);
+            //     // p->F[i][j][k].jpv = p->Fb[i][j + 1][k].jmv;
+            //     Fb += (p->F[i][j][k].jpv * p->Sj[i][j][k].cp.vector /
+            //               p->Sj[i][j][k].cp.norm);
+            //     // Tensile and Share
+            //     Fb += (p->F[i][j][k].jmv * p->Sj[i][j - 1][k].cp.vector /
+            //               p->Sj[i][j - 1][k].cp.norm);
+            //     // p->F[i][j][k].jmv = p->Fb[i][j - 1][k].jpv;
+            // ft_z = (p->F[i][j][k].ip * p->li[i][j][k].vector.z /
+            //                     p->li[i][j][k].norm)
+            //                 +(p->F[i][j][k].im * -1 * p->li[i-1][j][k].vector.z /
+            //                 p->li[i-1][j][k].norm)
+            //                 + (p->F[i][j][k].jp * p->lj[i][j][k].vector.z /
+            //                     p->lj[i][j][k].norm)
+            //                 + (p->F[i][j][k].jm * -1 * p->lj[i][j-1][k].vector.z /
+            //                     p->lj[i][j-1][k].norm);
+            // std::cout << "15.10" 
+            //           << "c.z:" << p->c[itr_x][itr_y][itr_z].z << ','
+            //           << std::string(3, ' ')
+            //           << "v.z:" << p->v[itr_x][itr_y][itr_z].z << ','
+            //           << std::string(3, ' ')
+            //           << "a.z:" << p->v[itr_x][itr_y][itr_z].z - pre_vector
+            //           << std::string(3, ' ') 
+            //           << "ft.z:" << ft_z << ','
+            //           << std::string(3, ' ')
+            //           << "fb.z:" << Fb.z << ','
+            //           << std::string(3, ' ')
+            //           << "f.z:" << p->f[itr_x][itr_y][itr_z].z << ','
+            //           << std::string(3, ' ')
+            //           << std::endl;
             if (divergence <= fabs(p->v[itr_x][itr_y][itr_z].z)) {
                 std::cout << std::endl;
                 std::cout << "Divergence" << std::endl;

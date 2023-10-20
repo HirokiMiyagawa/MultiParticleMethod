@@ -159,6 +159,8 @@ class Particles {
     vector<vector<vector<PreDirectionVector>>> Ftw_quater;
     //! Force by twist 粒子(i, j)にかかるFtwの合力
     vector<vector<vector<C>>> Ftw;
+    //! 仮想粒子とのねじり力
+    vector<vector<vector<PreDirectionVector>>> ftw_ver;
     //! Pressure
     vector<vector<vector<C>>> pressure;
     //! Force by air (Pressure)
@@ -307,6 +309,7 @@ class Particles {
         Fb.resize(iNum);
         Ftw_quater.resize(iNum);
         Ftw.resize(iNum);
+        ftw_ver.resize(iNum);
         pressure.resize(iNum);
         Fa.resize(iNum);
         Fnormal.resize(iNum);
@@ -417,6 +420,7 @@ class Particles {
             Fb[i].resize(jNum);
             Ftw_quater[i].resize(jNum);
             Ftw[i].resize(jNum);
+            ftw_ver[i].resize(jNum);
             pressure[i].resize(jNum);
             Fa[i].resize(jNum);
             Fnormal[i].resize(jNum);
@@ -527,6 +531,7 @@ class Particles {
                 Fb[i][j].resize(kNum);
                 Ftw_quater[i][j].resize(kNum);
                 Ftw[i][j].resize(kNum);
+                ftw_ver[i][j].resize(kNum);
                 pressure[i][j].resize(kNum);
                 Fa[i][j].resize(kNum);
                 Fnormal[i][j].resize(kNum);
