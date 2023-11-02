@@ -3477,8 +3477,16 @@ void MultiParticle::TensileForceCalc(const int& i, const int& j, const int& k) {
         }
         p->Fti[i][j][k] = FtCalc(length, p->hi[i][j][k], p->epsilonli[i][j][k],
                                  p->epsilongj[i][j][k]);
+
+#ifdef __DAMPER__
+        p->cti[i][j][k] = CtCalc(length, p->hi[i][j][k], p->Si0[i][j][k], p->li0[i][j][k]);
+#endif  
+
     } else {
         p->Fti[i][j][k] = 0;
+#ifdef __DAMPER__
+        p->cti[i][j][k] = 0;
+#endif  
     }
 
     if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
@@ -3492,9 +3500,19 @@ void MultiParticle::TensileForceCalc(const int& i, const int& j, const int& k) {
         }
         p->Ftj[i][j][k] = FtCalc(length, p->hj[i][j][k], p->epsilonlj[i][j][k],
                                  p->epsilongi[i][j][k]);
+
+#ifdef __DAMPER__
+        p->ctj[i][j][k] = CtCalc(length, p->hj[i][j][k], p->Sj0[i][j][k], p->lj0[i][j][k]);
+#endif  
+
     } else {
         p->Ftj[i][j][k] = 0;
-    }
+
+#ifdef __DAMPER__
+        p->ctj[i][j][k] = 0;
+#endif  
+
+    }  
 }
 
 /**
@@ -3554,9 +3572,19 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
                                          p->li[i][j][k].norm, p->hi[i][j][k]);
         p->Fsi[i][j][k].pm = -1 * FsCalc(p->gamma[i][j][k].pm,
                                          p->li[i][j][k].norm, p->hi[i][j][k]);
+
+#ifdef __DAMPER__
+        p->cs[i][j][k].ip = CsCalc(p->hi[i][j][k], p->Si0[i][j][k]);
+#endif  
+
     } else {
         p->Fsi[i][j][k].pp = 0;
         p->Fsi[i][j][k].pm = 0;
+
+#ifdef __DAMPER__
+        p->cs[i][j][k].ip = 0;
+#endif  
+
     }
 
     if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
@@ -3566,9 +3594,19 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
         p->Fsi[i][j][k].mm =
             -1 * FsCalc(p->gamma[i][j][k].mm, p->li[i - 1][j][k].norm,
                         p->hi[i - 1][j][k]);
+                        
+#ifdef __DAMPER__
+        p->cs[i][j][k].im = CsCalc(p->hi[i - 1][j][k], p->Si0[i - 1][j][k]);
+#endif  
+
     } else {
         p->Fsi[i][j][k].mp = 0;
         p->Fsi[i][j][k].mm = 0;
+        
+#ifdef __DAMPER__
+        p->cs[i][j][k].im = 0;
+#endif  
+
         // double li_l_norm   = normCalc(p->c[i][j][k] - p->vc_Left[i][j][k]);
 
         // C Si_i;
@@ -3612,9 +3650,19 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
                                          p->lj[i][j][k].norm, p->hj[i][j][k]);
         p->Fsj[i][j][k].mp = -1 * FsCalc(p->gamma[i][j][k].mp,
                                          p->lj[i][j][k].norm, p->hj[i][j][k]);
+                                         
+#ifdef __DAMPER__
+        p->cs[i][j][k].jp = CsCalc(p->hj[i][j][k], p->Sj0[i][j][k]);
+#endif  
+
     } else {
         p->Fsj[i][j][k].pp = 0;
         p->Fsj[i][j][k].mp = 0;
+                                                 
+#ifdef __DAMPER__
+        p->cs[i][j][k].jp = 0;
+#endif  
+
     }
     if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM) {
         p->Fsj[i][j][k].pm =
@@ -3623,9 +3671,19 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
         p->Fsj[i][j][k].mm =
             -1 * FsCalc(p->gamma[i][j][k].mm, p->lj[i][j - 1][k].norm,
                         p->hj[i][j - 1][k]);
+                                                                 
+#ifdef __DAMPER__
+        p->cs[i][j][k].jm = CsCalc(p->hj[i][j - 1][k], p->Sj0[i][j - 1][k]);
+#endif  
+
     } else {
         p->Fsj[i][j][k].pm = 0;
         p->Fsj[i][j][k].mm = 0;
+                                                 
+#ifdef __DAMPER__
+        p->cs[i][j][k].jm = 0;
+#endif  
+
     }
 
     if (p->flag[i][j][k] & Right) {
@@ -3634,6 +3692,14 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
             p->Fsj[i][j][k].pm = 0;
             p->Fsj[i][j][k].mp = 0;
             p->Fsj[i][j][k].mm = 0;
+                                                     
+#ifdef __DAMPER__
+            p->cs[i][j][k].jp = 0;
+            p->cs[i][j][k].jm = 0;
+            p->cs[i][j][k].ip = 0;
+            p->cs[i][j][k].im = 0;
+#endif  
+
         }
     }
     if (p->flag[i][j][k] & Left) {
@@ -3642,6 +3708,14 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
             p->Fsj[i][j][k].pm = 0;
             p->Fsj[i][j][k].mp = 0;
             p->Fsj[i][j][k].mm = 0;
+                                                                 
+#ifdef __DAMPER__
+            p->cs[i][j][k].jp = 0;
+            p->cs[i][j][k].jm = 0;
+            p->cs[i][j][k].ip = 0;
+            p->cs[i][j][k].im = 0;
+#endif  
+
         }
     }
     if (p->flag[i][j][k] & Top) {
@@ -3650,6 +3724,14 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
             p->Fsi[i][j][k].pm = 0;
             p->Fsi[i][j][k].mp = 0;
             p->Fsi[i][j][k].mm = 0;
+                                                                 
+#ifdef __DAMPER__
+            p->cs[i][j][k].jp = 0;
+            p->cs[i][j][k].jm = 0;
+            p->cs[i][j][k].ip = 0;
+            p->cs[i][j][k].im = 0;
+#endif  
+
         }
     }
     if (p->flag[i][j][k] & Bottom) {
@@ -3658,12 +3740,20 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
             p->Fsi[i][j][k].pm = 0;
             p->Fsi[i][j][k].mp = 0;
             p->Fsi[i][j][k].mm = 0;
+                                                                 
+#ifdef __DAMPER__
+            p->cs[i][j][k].jp = 0;
+            p->cs[i][j][k].jm = 0;
+            p->cs[i][j][k].ip = 0;
+            p->cs[i][j][k].im = 0;
+#endif  
+
         }
     }
 }
 
 /**
- * @brief BendForceCalc
+ * @brief BendForceCalc  ここから（減衰項の追加）
  *
  * @param i
  * @param j

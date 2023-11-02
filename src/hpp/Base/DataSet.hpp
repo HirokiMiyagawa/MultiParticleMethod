@@ -443,6 +443,16 @@ struct Quarter {
     double mm;
     Quarter& operator=(const Quarter&);
 };
+/**
+ * @brief   i,j方向にプラスマイナスの構造体
+ * @note    せん断力の減衰項 csで使用する
+ */
+struct Quarterij {
+    double ip;
+    double im;
+    double jp;
+    double jm;
+};
 inline Quarter& Quarter::operator=(const Quarter& q) {
     pp = q.pp;
     pm = q.pm;

@@ -343,12 +343,29 @@ double MultiParticle::FsCalc(double const& gamma, double const& l,
 }
 
 /**
+ * @brief	せん断ばねに並列につなぐ減衰項 cs
+ */
+double MultiParticle::CsCalc(double const& h, double const& Area) {
+    return 2 * param->m_Cv * sqrt(param->m_preCalc5 * Area * h / (param->m_h0)) / sqrt(param->C_EI);
+    
+}
+
+/**
  * @brief	伸縮力 Ft
  */
 double MultiParticle::FtCalc(double const& L, double const& h,
                              double const& epsilonl, double const& epsilong) {
     return param->m_preCalc1 * (h)*L * ((epsilonl) + param->m_nu * (epsilong)) /
            param->m_h0;
+}
+
+/**
+ * @brief	伸縮ばねに並列につなぐ減衰項 ct
+ */
+double MultiParticle::CtCalc(double const& L, double const& h,
+                             double const& Area, double const& L0) {
+    return 2 * param->m_Cv * sqrt(L * Area * h / (L0 * param->m_h0)) / sqrt(param->C_EI);
+    
 }
 
 /**

@@ -2028,7 +2028,9 @@ class MultiParticle {
     double hCalc(double const&, double const&);
     double epsilongCalc(double const&, double const&);
     double FsCalc(double const&, double const&, double const&);
+    double CsCalc(double const&, double const&);
     double FtCalc(double const&, double const&, double const&, double const&);
+    double CtCalc(double const&, double const&, double const&, double const&);
     double etaCalc(double const&, double const&, double const&);
     void interSectionLengthCalc(Vector&, const C&, const C&,
                                         const C&, const C&, Vector&, Vector&, Vector&);

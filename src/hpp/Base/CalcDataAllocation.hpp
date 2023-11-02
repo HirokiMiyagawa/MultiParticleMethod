@@ -91,6 +91,9 @@ class Particles {
 
     vector<vector<vector<double>>> Fti;
     vector<vector<vector<double>>> Ftj;
+    //! 伸縮ばねに並列につなぐ減衰項 
+    vector<vector<vector<double>>> cti;
+    vector<vector<vector<double>>> ctj;
 
     //! 構造体C、x,y,z方向の力を格納する 膜の内力、外力すべてを足し合わせたもの。最終的にルンゲクッタでは、これを用いる
     vector<vector<vector<C>>> f;
@@ -105,6 +108,8 @@ class Particles {
     vector<vector<vector<Quarter>>> Fsi;
     //! j方向のせん断力
     vector<vector<vector<Quarter>>> Fsj;
+    //! せん断ばねに並列につなぐ減衰項
+    vector<vector<vector<Quarterij>>> cs;
 
     //! 垂直ひずみ
     vector<vector<vector<double>>> epsilonli;
@@ -273,6 +278,8 @@ class Particles {
 
         Fti.resize(iNum);
         Ftj.resize(iNum);
+        cti.resize(iNum);
+        ctj.resize(iNum);
 
         f.resize(iNum);
 
@@ -281,6 +288,7 @@ class Particles {
         gamma.resize(iNum);
         Fsi.resize(iNum);
         Fsj.resize(iNum);
+        cs.resize(iNum);
         epsilonli.resize(iNum);
         epsilonlj.resize(iNum);
         epsilongi.resize(iNum);
@@ -384,6 +392,8 @@ class Particles {
 
             Fti[i].resize(jNum);
             Ftj[i].resize(jNum);
+            cti[i].resize(jNum);
+            ctj[i].resize(jNum);
 
             f[i].resize(jNum);
 
@@ -392,6 +402,7 @@ class Particles {
             gamma[i].resize(jNum);
             Fsi[i].resize(jNum);
             Fsj[i].resize(jNum);
+            cs[i].resize(jNum);
             epsilonli[i].resize(jNum);
             epsilonlj[i].resize(jNum);
             epsilongi[i].resize(jNum);
@@ -495,6 +506,8 @@ class Particles {
 
                 Fti[i][j].resize(kNum);
                 Ftj[i][j].resize(kNum);
+                cti[i][j].resize(kNum);
+                ctj[i][j].resize(kNum);
 
                 f[i][j].resize(kNum);
 
@@ -503,6 +516,7 @@ class Particles {
                 gamma[i][j].resize(kNum);
                 Fsi[i][j].resize(kNum);
                 Fsj[i][j].resize(kNum);
+                cs[i][j].resize(kNum);
                 epsilonli[i][j].resize(kNum);
                 epsilonlj[i][j].resize(kNum);
                 epsilongi[i][j].resize(kNum);

@@ -2,7 +2,7 @@
 // #define __STRONG_DEBUG__
 
 // Situation
-// #define __SolarSail__  //最近はこれを加えることが多いので、検証が終わり次第これのコメントを外す（メモ）
+#define __SolarSail__  //最近はこれを加えることが多いので、検証が終わり次第これのコメントを外す（メモ）
 
 // #define __Plate_Revolution__
 // #define __DIAGONAL_TENSILE__
@@ -52,7 +52,7 @@
 //---------------------------------------
 // #define __SIMPLE_TENSILE__
 // #define __SIMPLE_SHARE__
-#define __SIMPLE_BEND__
+// #define __SIMPLE_BEND__
 // #define __SIMPLE_PRESSURE__
 // #define __CYLINDER_PRESSURE__
 // #define __CUBE_PRESSURE__
@@ -173,6 +173,8 @@
 
 // --------------------------------------------- その他
 // -----------------------------------------------------------
-#define __TWIST__ //ねじりによる力を計算する
+// #define __TWIST__ //ねじりによる力を計算する
 // #define __GEOMETRYDISTURBANCE__ //z座標にランダムな初期不良を与える
 // #define  __EVERYSHARE__
+#define __DAMPER__ //それぞれのばねに並列に速度に比例するダンパーをつけるかこれまでのように粘性減衰を計算するか
+#define __GRAVITY__ //重力を計算するか否か
