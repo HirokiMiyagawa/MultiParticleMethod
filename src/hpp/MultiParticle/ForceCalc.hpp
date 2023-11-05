@@ -3479,7 +3479,8 @@ void MultiParticle::TensileForceCalc(const int& i, const int& j, const int& k) {
                                  p->epsilongj[i][j][k]);
 
 #ifdef __DAMPER__
-        p->cti[i][j][k] = CtCalc(length, p->hi[i][j][k], p->Si0[i][j][k], p->li0[i][j][k]);
+        p->cti[i][j][k] = CtCalc(length, p->hi[i][j][k], p->Si0[i][j][k], p->li0[i][j][k])
+                            * (p->v[i + 1][j][k] - p->v[i][j][k]);
 #endif  
 
     } else {
@@ -3502,7 +3503,8 @@ void MultiParticle::TensileForceCalc(const int& i, const int& j, const int& k) {
                                  p->epsilongi[i][j][k]);
 
 #ifdef __DAMPER__
-        p->ctj[i][j][k] = CtCalc(length, p->hj[i][j][k], p->Sj0[i][j][k], p->lj0[i][j][k]);
+        p->ctj[i][j][k] = CtCalc(length, p->hj[i][j][k], p->Sj0[i][j][k], p->lj0[i][j][k])
+                            * (p->v[i][j + 1][k] - p->v[i][j][k]);
 #endif  
 
     } else {
@@ -3528,6 +3530,7 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
         C argim;
         C argjp;
         C argjm;
+        Quarter delgamma; //前のgamma - 今のgamma。
 
         if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
             argip = p->c[i + 1][j][k];
@@ -3557,6 +3560,11 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
     }
 
     {
+        delgamma.pp = p->gamma[i][j][k].pp;
+        delgamma.pm = p->gamma[i][j][k].pm;
+        delgamma.mp = p->gamma[i][j][k].mp;
+        delgamma.mm = p->gamma[i][j][k].mm;
+
         p->gamma[i][j][k].pp =
             gammaCalc(p->beta[i][j][k].pp, p->beta0[i][j][k].pp);
         p->gamma[i][j][k].pm =
@@ -3565,6 +3573,11 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
             gammaCalc(p->beta[i][j][k].mp, p->beta0[i][j][k].mp);
         p->gamma[i][j][k].mm =
             gammaCalc(p->beta[i][j][k].mm, p->beta0[i][j][k].mm);
+
+        delgamma.pp -= p->gamma[i][j][k].pp;
+        delgamma.pm -= p->gamma[i][j][k].pm;
+        delgamma.mp -= p->gamma[i][j][k].mp;
+        delgamma.mm -= p->gamma[i][j][k].mm;
     }
 
     if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
@@ -3574,7 +3587,8 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
                                          p->li[i][j][k].norm, p->hi[i][j][k]);
 
 #ifdef __DAMPER__
-        p->cs[i][j][k].ip = CsCalc(p->hi[i][j][k], p->Si0[i][j][k]);
+        p->cs[i][j][k].ip = CsCalc(p->hi[i][j][k], p->Si0[i][j][k])
+                                * (delgamma.pp + delgamma.pm) / 2;
 #endif  
 
     } else {
@@ -3596,7 +3610,8 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
                         p->hi[i - 1][j][k]);
                         
 #ifdef __DAMPER__
-        p->cs[i][j][k].im = CsCalc(p->hi[i - 1][j][k], p->Si0[i - 1][j][k]);
+        p->cs[i][j][k].im = CsCalc(p->hi[i - 1][j][k], p->Si0[i - 1][j][k])
+                                * (delgamma.mp + delgamma.mm) / 2;
 #endif  
 
     } else {
@@ -3652,7 +3667,8 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
                                          p->lj[i][j][k].norm, p->hj[i][j][k]);
                                          
 #ifdef __DAMPER__
-        p->cs[i][j][k].jp = CsCalc(p->hj[i][j][k], p->Sj0[i][j][k]);
+        p->cs[i][j][k].jp = CsCalc(p->hj[i][j][k], p->Sj0[i][j][k])
+                                * (delgamma.pp + delgamma.mp) / 2;
 #endif  
 
     } else {
@@ -3673,7 +3689,8 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
                         p->hj[i][j - 1][k]);
                                                                  
 #ifdef __DAMPER__
-        p->cs[i][j][k].jm = CsCalc(p->hj[i][j - 1][k], p->Sj0[i][j - 1][k]);
+        p->cs[i][j][k].jm = CsCalc(p->hj[i][j - 1][k], p->Sj0[i][j - 1][k])
+                                * (delgamma.pm + delgamma.mm) / 2;
 #endif  
 
     } else {
@@ -4383,7 +4400,7 @@ void MultiParticle::TwistForceCalc(const int& i, const int& j, const int& k) {
 
 
 /**
- * @brief Air Force and Disturbance calc
+ * @brief Air Force and Disturbance calc and gravity calc
  *
  * @param i
  * @param j
@@ -4473,6 +4490,7 @@ void MultiParticle::AirForceCalc(const int& i, const int& j, const int& k) {
     
     p->Fa[i][j][k] =
         innerProductCalc(p->pressure[i][j][k], p->S[i][j][k].cp.vector);
+
 }
 
 void MultiParticle::ContradictBendForceCalc(const int& i, const int& j,
@@ -5053,18 +5071,24 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
     if (p->flag[i][j][k] == Center) {
         if (param->roll_inertia_system) {
             RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                 p->f[i][j][k].x + p->external_force[i][j][k].x + p->F_roll[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                 p->f[i][j][k].x + p->external_force[i][j][k].x + p->F_roll[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x,
+                 p->damper[i][j][k].x);
             RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                 p->f[i][j][k].y + p->external_force[i][j][k].y + p->F_roll[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                 p->f[i][j][k].y + p->external_force[i][j][k].y + p->F_roll[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y,
+                 p->damper[i][j][k].y);
             RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                 p->f[i][j][k].z + p->external_force[i][j][k].z + p->F_roll[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                 p->f[i][j][k].z + p->external_force[i][j][k].z + p->F_roll[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z,
+                 p->damper[i][j][k].z);
         } else {
             RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                 p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                 p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x,
+                 p->damper[i][j][k].x);
             RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                 p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                 p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y,
+                 p->damper[i][j][k].y);
             RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                 p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                 p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z,
+                 p->damper[i][j][k].z);
         }
         return;
     }
@@ -5075,60 +5099,72 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
         if (p->flag[i][j][k] & Right) {
             if (param->boundary.right_move.x) {
                 RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                     p->f[i][j][k].x + p->external_force[i][j][k].x + p->F_roll[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                     p->f[i][j][k].x + p->external_force[i][j][k].x + p->F_roll[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x,
+                     p->damper[i][j][k].x);
             }
             if (param->boundary.right_move.y) {
                 RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                     p->f[i][j][k].y + p->external_force[i][j][k].y + p->F_roll[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                     p->f[i][j][k].y + p->external_force[i][j][k].y + p->F_roll[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y,
+                     p->damper[i][j][k].y);
             }
             if (param->boundary.right_move.z) {
                 RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                     p->f[i][j][k].z + p->external_force[i][j][k].z + p->F_roll[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                     p->f[i][j][k].z + p->external_force[i][j][k].z + p->F_roll[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z,
+                     p->damper[i][j][k].z);
             }
             return;
         }
         if (p->flag[i][j][k] & Left) {
             if (param->boundary.left_move.x) {
                 RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                     p->f[i][j][k].x + p->external_force[i][j][k].x + p->F_roll[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                     p->f[i][j][k].x + p->external_force[i][j][k].x + p->F_roll[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x,
+                     p->damper[i][j][k].x);
             }
             if (param->boundary.left_move.y) {
                 RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                     p->f[i][j][k].y + p->external_force[i][j][k].y + p->F_roll[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                     p->f[i][j][k].y + p->external_force[i][j][k].y + p->F_roll[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y,
+                     p->damper[i][j][k].y);
             }
             if (param->boundary.left_move.z) {
                 RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                     p->f[i][j][k].z + p->external_force[i][j][k].z + p->F_roll[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                     p->f[i][j][k].z + p->external_force[i][j][k].z + p->F_roll[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z,
+                     p->damper[i][j][k].z);
             }
             return;
         }
         if (p->flag[i][j][k] & Top) {
             if (param->boundary.top_move.x) {
                 RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                     p->f[i][j][k].x + p->external_force[i][j][k].x + p->F_roll[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                     p->f[i][j][k].x + p->external_force[i][j][k].x + p->F_roll[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x,
+                     p->damper[i][j][k].x);
             }
             if (param->boundary.top_move.y) {
                 RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                     p->f[i][j][k].y + p->external_force[i][j][k].y + p->F_roll[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                     p->f[i][j][k].y + p->external_force[i][j][k].y + p->F_roll[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y,
+                     p->damper[i][j][k].y);
             }
             if (param->boundary.top_move.z) {
                 RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                     p->f[i][j][k].z + p->external_force[i][j][k].z + p->F_roll[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                     p->f[i][j][k].z + p->external_force[i][j][k].z + p->F_roll[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z,
+                     p->damper[i][j][k].z);
             }
             return;
         }
         if (p->flag[i][j][k] & Bottom) {
             if (param->boundary.bottom_move.x) {
                 RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                     p->f[i][j][k].x + p->external_force[i][j][k].x + p->F_roll[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                     p->f[i][j][k].x + p->external_force[i][j][k].x + p->F_roll[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x,
+                     p->damper[i][j][k].x);
             }
             if (param->boundary.bottom_move.y) {
                 RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                     p->f[i][j][k].y + p->external_force[i][j][k].y + p->F_roll[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                     p->f[i][j][k].y + p->external_force[i][j][k].y + p->F_roll[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y,
+                     p->damper[i][j][k].y);
             }
             if (param->boundary.bottom_move.z) {
                 RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                     p->f[i][j][k].z + p->external_force[i][j][k].z + p->F_roll[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                     p->f[i][j][k].z + p->external_force[i][j][k].z + p->F_roll[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z,
+                     p->damper[i][j][k].z);
             }
             return;
         }
@@ -5146,7 +5182,8 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
 #endif
                 if (param->boundary.right_move.x) {
                     RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                        p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                        p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x,
+                        p->damper[i][j][k].x);
                 }
 
 #ifdef __SIMPLE_COMPRESSION__
@@ -5154,11 +5191,13 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
 #endif
                 if (param->boundary.right_move.y) {
                     RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                        p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                        p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y,
+                        p->damper[i][j][k].y);
                 }
                 if (param->boundary.right_move.z) {
                     RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                        p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                        p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z,
+                        p->damper[i][j][k].z);
                 }
             // }
             return;
@@ -5170,18 +5209,21 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
 #endif
             if (param->boundary.left_move.x) {
                 RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x,
+                     p->damper[i][j][k].x);
             }
 #ifdef __SIMPLE_COMPRESSION__
                 if (j == 10){ return;}// only simple compression
 #endif
             if (param->boundary.left_move.y) {
                 RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y,
+                     p->damper[i][j][k].y);
             }
             if (param->boundary.left_move.z) {
                 RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z,
+                     p->damper[i][j][k].z);
             }
             return;
         }
@@ -5189,15 +5231,18 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
         if (!(p->surround_particle_exsit[i][j][k] & BIT_TOP)) {
             if (param->boundary.top_move.x) {
                 RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x,
+                     p->damper[i][j][k].x);
             }
             if (param->boundary.top_move.y) {
                 RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y,
+                     p->damper[i][j][k].y);
             }
             if (param->boundary.top_move.z) {
                 RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z,
+                     p->damper[i][j][k].z);
             }
             return;
         }
@@ -5208,15 +5253,18 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
 #endif
             if (param->boundary.bottom_move.x) {
                 RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x,
+                     p->damper[i][j][k].x);
             }
             if (param->boundary.bottom_move.y) {
                 RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y,
+                     p->damper[i][j][k].y);
             }
             if (param->boundary.bottom_move.z) {
                 RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z,
+                     p->damper[i][j][k].z);
             }
             return;
         }

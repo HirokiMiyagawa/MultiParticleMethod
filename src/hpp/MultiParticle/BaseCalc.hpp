@@ -369,6 +369,15 @@ double MultiParticle::CtCalc(double const& L, double const& h,
 }
 
 /**
+ * @brief	重力 mg 次続きやる
+ */
+double MultiParticle::MgCalc(double const& Area) {
+    double g = 9806.65;// [mm / s^2]
+    g = g * param->Lref * param->Lref / (param->Vref * param->Vref * param->Vref);//　無次元化
+    return Area * g / (param->C_EI);
+}
+
+/**
  * @brief	曲率 η
  * @note	条件分岐でプラマイの判別
  *
@@ -1026,6 +1035,9 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
     p->f[i][j][k].x = 0;
     p->f[i][j][k].y = 0;
     p->f[i][j][k].z = 0;
+    p->damper[i][j][k].x = 0;
+    p->damper[i][j][k].y = 0;
+    p->damper[i][j][k].z = 0;
 
     if (CylinderPressure) {
         if (param->boundary.cylinder_boundary) {
@@ -1087,7 +1099,7 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
             p->f[i][j][k].z += (p->F[i][j][k].sv * p->S[i][j][k].cp.vector.z /
                                 p->S[i][j][k].cp.norm);
         }
-    } else {
+    } else { //Current part
         if (p->F[i][j][k].ip != 0) {
             // p->f[i][j][k].x += (p->F[i][j][k].ip * p->li[i][j][k].vector.x /
             //                     p->li[i][j][k].norm);
@@ -1097,6 +1109,10 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
             //                     p->li[i][j][k].norm);
 
             p->f[i][j][k] += (p->F[i][j][k].ip * p->li[i][j][k].vector /
+                              p->li[i][j][k].norm);
+
+            p->damper[i][j][k] += p->cti[i][j][k];
+            p->damper[i][j][k] += (p->cs[i][j][k].ip * p->li[i][j][k].vector /
                               p->li[i][j][k].norm);
             // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].ip,
             // p->li[i][j][k]);
@@ -1128,6 +1144,10 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
 
         p->f[i][j][k] += (p->F[i][j][k].im * -1 * p->li[i - 1][j][k].vector /
                           p->li[i - 1][j][k].norm);
+
+        p->damper[i][j][k] -= p->cti[i - 1][j][k];
+        p->damper[i][j][k] += (p->cs[i][j][k].im  * -1 * p->li[i - 1][j][k].vector /
+                                p->li[i - 1][j][k].norm);
         // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].im, p->li[i -
         // 1][j][k]);
     }
@@ -1142,6 +1162,10 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
 
         p->f[i][j][k] +=
             (p->F[i][j][k].jp * p->lj[i][j][k].vector / p->lj[i][j][k].norm);
+
+        p->damper[i][j][k] += p->ctj[i][j][k];
+        p->damper[i][j][k] += (p->cs[i][j][k].jp 
+                                * p->lj[i][j][k].vector / p->lj[i][j][k].norm);
         // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].jp, p->lj[i][j][k]);
     }
 
@@ -1157,6 +1181,10 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
         //      p->lj[i][j - 1][k].norm);
 
         p->f[i][j][k] += (p->F[i][j][k].jm * -1 * p->lj[i][j - 1][k].vector /
+                          p->lj[i][j - 1][k].norm);
+
+        p->damper[i][j][k] -= p->ctj[i][j - 1][k];
+        p->damper[i][j][k] += (p->cs[i][j][k].jm * -1 * p->lj[i][j - 1][k].vector /
                           p->lj[i][j - 1][k].norm);
         // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].jm, p->lj[i][j -
         // 1][k]);
@@ -1374,6 +1402,7 @@ double MultiParticle::RK4Two(double const& v, double const& f,
 }
 
 /*                       TEST (Trial)                              */
+// おそらくこちらが使われている？
 /**
  * @brief		ルンゲクッタ法
  * @param[in] 	double r = p_>c[i][j]
@@ -1388,7 +1417,7 @@ double MultiParticle::RK4Two(double const& v, double const& f,
  */
 void MultiParticle::RK4M(double& myr, double& myv, const double& f,
                          const double& S0,
-                         const double& Fair) {
+                         const double& Fair, const double& c) {
     //   if (Fair != 0) {
     //     cout << "arguments number" << endl;
     //     cout << myr << ":" << myv << ":" << f << ":" <<
@@ -1406,25 +1435,25 @@ void MultiParticle::RK4M(double& myr, double& myv, const double& f,
     double k41, k42;
 
     k11 = param->m_dt * RK4One(myv);
-    k12 = param->m_dt * RK4Two(myv, f, S0, Fair);
+    k12 = param->m_dt * RK4Two(myv, f, S0, Fair, c);
     //   if (k11 != 0 && k12 != 0) {
     //     cout << "k11,k12: " << k11 << "," << k12 << endl;
     //   }
 
     k21 = param->m_dt * RK4One(myv + k12 / 2);
-    k22 = param->m_dt * RK4Two(myv + k12 / 2, f, S0, Fair);
+    k22 = param->m_dt * RK4Two(myv + k12 / 2, f, S0, Fair, c);
     //   if (k21 != 0 && k22 != 0) {
     //     cout << "k21,k22: " << k21 << "," << k22 << endl;
     //   }
 
     k31 = param->m_dt * RK4One(myv + k22 / 2);
-    k32 = param->m_dt * RK4Two(myv + k22 / 2, f, S0, Fair);
+    k32 = param->m_dt * RK4Two(myv + k22 / 2, f, S0, Fair, c);
     //   if (k31 != 0 && k32 != 0) {
     //     cout << "k31,k32: " << k31 << "," << k32 << endl;
     //   }
 
     k41 = param->m_dt * RK4One(myv + k32 / 2);
-    k42 = param->m_dt * RK4Two(myv + k32 / 2, f, S0, Fair);
+    k42 = param->m_dt * RK4Two(myv + k32 / 2, f, S0, Fair, c);
     //   if (k41 != 0 && k42 != 0) {
     //     cout << "k41,k42: " << k41 << "," << k42 << endl;
     //   }
@@ -1454,11 +1483,16 @@ void MultiParticle::RK4M(double& myr, double& myv, const double& f,
  */
 double MultiParticle::RK4Two(const double& v, const double& f,
                              const double& S0,
-                             const double& Fair) {
+                             const double& Fair, const double& c) {
     //! vの微小変化を求める式、C_EI * (f - Cv * v) / S ここで、Cvは粘性項
+
+#ifdef __DAMPER__
+    return (((param->C_EI * (f - c)) / S0) + ((param->C_EI * param->C_AE * Fair) / S0));
+#else
     return (((param->C_EI * f) / S0) + ((param->C_EI * param->C_AE * Fair) / S0)) - ((param->C_EI * param->m_Cv * v) / S0);
 
     return (param->C_EI * (f - param->m_Cv * v) / S0 +
             (param->C_EI * param->C_AE) * (Fair - param->m_Cv * v) /
                 S0);
+#endif  
 }

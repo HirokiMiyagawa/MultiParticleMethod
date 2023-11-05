@@ -92,11 +92,13 @@ class Particles {
     vector<vector<vector<double>>> Fti;
     vector<vector<vector<double>>> Ftj;
     //! 伸縮ばねに並列につなぐ減衰項 
-    vector<vector<vector<double>>> cti;
-    vector<vector<vector<double>>> ctj;
+    vector<vector<vector<C>>> cti;
+    vector<vector<vector<C>>> ctj;
 
     //! 構造体C、x,y,z方向の力を格納する 膜の内力、外力すべてを足し合わせたもの。最終的にルンゲクッタでは、これを用いる
     vector<vector<vector<C>>> f;
+    //! 減衰項をすべて足し合わせたもの。最終的にルンゲクッタでは、これを用いる
+    vector<vector<vector<C>>> damper;
 
     //! せん断角度
     vector<vector<vector<Quarter>>> beta;
@@ -170,6 +172,8 @@ class Particles {
     vector<vector<vector<C>>> pressure;
     //! Force by air (Pressure)
     vector<vector<vector<double>>> Fa;
+    //! Force by gravity
+    vector<vector<vector<double>>> Fg;
     //! Force by sun Normal
     vector<vector<vector<C>>> Fnormal;
     //! Force by sun transverse
@@ -282,6 +286,7 @@ class Particles {
         ctj.resize(iNum);
 
         f.resize(iNum);
+        damper.resize(iNum);
 
         beta.resize(iNum);
         beta0.resize(iNum);
@@ -320,6 +325,7 @@ class Particles {
         ftw_ver.resize(iNum);
         pressure.resize(iNum);
         Fa.resize(iNum);
+        Fg.resize(iNum);
         Fnormal.resize(iNum);
         Ftrans.resize(iNum);
         Ftrans_i.resize(iNum);
@@ -396,6 +402,7 @@ class Particles {
             ctj[i].resize(jNum);
 
             f[i].resize(jNum);
+            damper[i].resize(jNum);
 
             beta[i].resize(jNum);
             beta0[i].resize(jNum);
@@ -434,6 +441,7 @@ class Particles {
             ftw_ver[i].resize(jNum);
             pressure[i].resize(jNum);
             Fa[i].resize(jNum);
+            Fg[i].resize(jNum);
             Fnormal[i].resize(jNum);
             Ftrans[i].resize(jNum);
             Ftrans_i[i].resize(jNum);
@@ -510,6 +518,7 @@ class Particles {
                 ctj[i][j].resize(kNum);
 
                 f[i][j].resize(kNum);
+                damper[i][j].resize(kNum);
 
                 beta[i][j].resize(kNum);
                 beta0[i][j].resize(kNum);
@@ -548,6 +557,7 @@ class Particles {
                 ftw_ver[i][j].resize(kNum);
                 pressure[i][j].resize(kNum);
                 Fa[i][j].resize(kNum);
+                Fg[i][j].resize(kNum);
                 Fnormal[i][j].resize(kNum);
                 Ftrans[i][j].resize(kNum);
                 Ftrans_i[i][j].resize(kNum);

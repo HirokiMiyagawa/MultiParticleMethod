@@ -1998,6 +1998,7 @@ class MultiParticle {
         return true;
     }
 
+    //! 関数一覧
     void dataCalc();
     typedef void (MultiParticle::*CALC_FUNC)(int const&, int const&);
     void OldVirtualParticleCalc(int const&, int const&, int const&);
@@ -2031,6 +2032,7 @@ class MultiParticle {
     double CsCalc(double const&, double const&);
     double FtCalc(double const&, double const&, double const&, double const&);
     double CtCalc(double const&, double const&, double const&, double const&);
+    double MgCalc(double const&);
     double etaCalc(double const&, double const&, double const&);
     void interSectionLengthCalc(Vector&, const C&, const C&,
                                         const C&, const C&, Vector&, Vector&, Vector&);
@@ -2047,7 +2049,7 @@ class MultiParticle {
     double normCalc(C const&);
     double normCalcV2(C const&, C const&);
 
-    void RK4M(double&, double&, double const&, double const&);
+    void RK4M(double&, double&, double const&, double const&); //ルンゲクッタ法
     double RK4One(double const&);
     double RK4Two(double const&, double const&, double const&);
     void RK4M(double&, double&, const double&, const double&, const double&);

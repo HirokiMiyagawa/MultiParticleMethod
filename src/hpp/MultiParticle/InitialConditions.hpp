@@ -59,6 +59,8 @@ void MultiParticle::setInitialConditions() {
     param->itr_max_y  = p->c[param->itr_max_x].size() - 1;
     param->itr_max_z  = p->c[param->itr_max_x][param->itr_max_y].size() - 1;
 
+    
+
     // cout << "param->center_i:" << param->center_i << endl;
     // cout << "param->center_j:" << param->center_j << endl;
     // cout << "param->itr_harf_x:" << param->itr_harf_x << endl;
@@ -122,6 +124,16 @@ void MultiParticle::setInitialConditions() {
         setInitialConditionsSetParamShapeCylinder();
     }
     setInitialConditionsCopy();
+
+#ifdef __GRAVITY__
+    for (int i = 0; i < local_iNum; i++) {
+        for (int j = 0; j < local_jNum; j++) {
+            for (int k = 0; k < local_kNum; k++) {
+                p->Fg[i][j][k] = MgCalc(p->S0[i][j][k]);
+            }
+        }
+    }
+#endif
 }
 
 // #if defined __SHAPE_CUBE__
