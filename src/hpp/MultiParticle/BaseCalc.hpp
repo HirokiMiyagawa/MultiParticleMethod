@@ -369,7 +369,7 @@ double MultiParticle::CtCalc(double const& L, double const& h,
 }
 
 /**
- * @brief	重力 mg 次続きやる
+ * @brief	重力 mg 
  */
 double MultiParticle::MgCalc(double const& Area) {
     double g = 9806.65;// [mm / s^2]
@@ -395,6 +395,15 @@ double MultiParticle::etaCalc(double const& alpha, double const& lp,
     } else {
         return 0;
     }
+}
+
+/**
+ * @brief	曲げばねに並列につなぐ減衰項 cb
+ */
+double MultiParticle::CbCalc(double const& L, double const& I,
+                             double const& Area, double const& Ldash) {
+    return 2 * param->m_Cv * sqrt(2 * Area * I / (L * L * Ldash * param->m_h0)) / sqrt(param->C_EI);
+    
 }
 
 /**
@@ -1117,7 +1126,7 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
             // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].ip,
             // p->li[i][j][k]);
         }
-        if (p->F[i][j][k].sv != 0) {
+        if (p->F[i][j][k].sv != 0) {// 今はこれ使ってないはず
             // p->f[i][j][k].x += (p->F[i][j][k].sv * p->S[i][j][k].cp.vector.x /
             //                     p->S[i][j][k].cp.norm);
             // p->f[i][j][k].y += (p->F[i][j][k].sv * p->S[i][j][k].cp.vector.y /
@@ -1201,6 +1210,8 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
 
         p->f[i][j][k] += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector /
                           p->Si[i][j][k].cp.norm);
+        p->damper[i][j][k] += (p->cb[i][j][k].ipv - p->cb[i + 1][j][k].imv) 
+                                * p->Si[i][j][k].cp.vector / p->Si[i][j][k].cp.norm;
         // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].ipv, p->Si[i][j][k]);
     }
 
@@ -1214,6 +1225,8 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
 
         p->f[i][j][k] += (p->F[i][j][k].imv * p->Si[i - 1][j][k].cp.vector /
                           p->Si[i - 1][j][k].cp.norm);
+        p->damper[i][j][k] += (p->cb[i][j][k].imv - p->cb[i - 1][j][k].ipv) 
+                            * p->Si[i - 1][j][k].cp.vector / p->Si[i - 1][j][k].cp.norm;
         // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].imv, p->Si[i][j -
         // 1][k]);
     }
@@ -1228,6 +1241,8 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
 
         p->f[i][j][k] += (p->F[i][j][k].jpv * p->Sj[i][j][k].cp.vector /
                           p->Sj[i][j][k].cp.norm);
+        p->damper[i][j][k] += (p->cb[i][j][k].jpv - p->cb[i][j + 1][k].jmv) 
+                            * p->Sj[i][j][k].cp.vector / p->Sj[i][j][k].cp.norm;
         // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].jpv, p->Sj[i][j][k]);
     }
 
@@ -1241,6 +1256,8 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
 
         p->f[i][j][k] += (p->F[i][j][k].jmv * p->Sj[i][j - 1][k].cp.vector /
                           p->Sj[i][j - 1][k].cp.norm);
+        p->damper[i][j][k] += (p->cb[i][j][k].jmv - p->cb[i][j - 1][k].jpv) 
+                            * p->Sj[i][j - 1][k].cp.vector / p->Sj[i][j - 1][k].cp.norm);
         // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].jmv, p->Sj[i][j -
         // 1][k]);
     }

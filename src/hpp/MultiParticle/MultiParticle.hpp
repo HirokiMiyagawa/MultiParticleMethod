@@ -2034,6 +2034,7 @@ class MultiParticle {
     double CtCalc(double const&, double const&, double const&, double const&);
     double MgCalc(double const&);
     double etaCalc(double const&, double const&, double const&);
+    double CbCalc(double const&, double const&, double const&, double const&)
     void interSectionLengthCalc(Vector&, const C&, const C&,
                                         const C&, const C&, Vector&, Vector&, Vector&);
     void FtwVector(const C&, const C&, const C&, const C&, Vector&);

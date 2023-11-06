@@ -162,6 +162,8 @@ class Particles {
 
     //! Force by bending
     vector<vector<vector<PreDirection>>> Fb;
+    //! 曲げばねに並列につなぐ減衰項
+    vector<vector<vector<PreDirection>>> cb;
     //! Force by twist 粒子(i+1/2, j+1/2)
     vector<vector<vector<PreDirectionVector>>> Ftw_quater;
     //! Force by twist 粒子(i, j)にかかるFtwの合力
@@ -320,6 +322,7 @@ class Particles {
         Torque_j.resize(iNum);
 
         Fb.resize(iNum);
+        cb.resize(iNum);
         Ftw_quater.resize(iNum);
         Ftw.resize(iNum);
         ftw_ver.resize(iNum);
@@ -436,6 +439,7 @@ class Particles {
             Torque_j[i].resize(jNum);
 
             Fb[i].resize(jNum);
+            cb[i].resize(jNum);
             Ftw_quater[i].resize(jNum);
             Ftw[i].resize(jNum);
             ftw_ver[i].resize(jNum);
@@ -552,6 +556,7 @@ class Particles {
                 Torque_j[i][j].resize(kNum);
 
                 Fb[i][j].resize(kNum);
+                cb[i][j].resize(kNum);
                 Ftw_quater[i][j].resize(kNum);
                 Ftw[i][j].resize(kNum);
                 ftw_ver[i][j].resize(kNum);
