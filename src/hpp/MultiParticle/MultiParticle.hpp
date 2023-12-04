@@ -187,6 +187,11 @@ class MultiParticle {
         OutputInitial();
         OutputCondition();
 
+#ifdef __InputPosition__
+        cout << "Input particle coordinate from csv file..." << endl; 
+        setInitialConditionsParticleSetFromcsv();
+#endif
+
         std::cout << "Start Analysis" << endl;
         //!	計算回数
         int time = 0;
@@ -513,6 +518,7 @@ class MultiParticle {
     void setInitialConditionsSetParamShapeCylinder();
     void setInitialConditionsEquallyDividedModeling();
     void setInitialConditionsUnEquallyDividedModeling();
+    void setInitialConditionsParticleSetFromcsv();
     void setInitialConditionsObliqueAlignmentModeling();
     void setInitialConditionsShapeCylinder();
     void setInitialConditionsShapeCube();

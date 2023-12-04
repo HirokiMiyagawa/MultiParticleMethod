@@ -91,6 +91,8 @@ class Params {
 
    public:
     std::string read_filename;
+    std::string read_positionfilename;
+    
     //! i方向の粒子数
     int m_iNum;
     //! j方向の粒子数
@@ -346,6 +348,7 @@ class Params {
             std::cout << "Not define force situation." << std::endl;
         }
         std::cout << "\033[m" << std::flush;
+        read_positionfilename = "./data/position/InitialPosition.csv";
 
         param = new param::parameter(read_filename);
         // この構文が利用可能かわからない。 newが失敗とき!paramになるのか？

@@ -376,6 +376,71 @@ void MultiParticle::setInitialConditionsUnEquallyDividedModeling() {
 }
 
 /**
+ * @brief	粒子の座標をcsvファイルから読み込む。（速度も入れれば、途中からの解析も可能となる）
+ * @note 
+ */
+void MultiParticle::setInitialConditionsParticleSetFromcsv(){
+
+    // Open the file
+    std::ifstream position(param->read_positionfilename);
+    if (position.fail()) {
+        std::cerr << "Could not open file: " << param->read_positionfilename << std::endl;
+        // return 1;  // Return an error code
+    }
+
+    std::string line;
+    int i = 0;
+    int j = 0;
+    int k = 0;
+
+    // Read each line from the file
+    while (getline(position, line)) {
+        // Skip lines starting with an alphabet character
+        if (isalpha(line[1])) {
+            continue;
+        }
+
+        // Split the line into a vector of floats
+        std::vector<float> strvec = basic->split(line, ',');
+
+        // Check if the vector size is as expected
+        if (strvec.size() != 4) {
+            std::cerr << "Error: Invalid data format on line(粒子位置のインプットファイルの入力形式が違います) " << i + 1 << std::endl;
+            // return 1;  // Return an error code
+        }
+
+        // Assign values to the Container
+        p->c[i][j][k].x = strvec[1];  // X-axis
+        p->c[i][j][k].y = strvec[2];  // Y-axis
+        p->c[i][j][k].z = strvec[3];  // Z-axis
+
+        // Print the values for verification
+        // std::cout << "i = " << i << ", j = " << j << ", x = " << p->c[i][j][k].x << ", y = " << p->c[i][j][k].y
+        //           << ", z = " << p->c[i][j][k].z << std::endl;
+
+        // Increment indices
+        i++;
+        if (i == local_iNum) {
+            i = 0;
+            j++;
+            if (j == local_jNum) {
+                j = 0;
+                k++;
+            }
+        }
+    }
+
+    // Check if the number of input elements matches expectations
+    if (i != 0 || j != 0) {
+        std::cerr << "Error: Number of input elements does not match expectations." << std::endl;
+        // return 1;  // Return an error code
+    }
+
+    // Close the file
+    position.close();
+}
+
+/**
  * @brief Diagonal Particle Model
  * @note
  *
