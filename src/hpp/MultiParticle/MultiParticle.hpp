@@ -16,7 +16,7 @@
 
 #include <signal.h>  // sigction
 #include <map>       // std::mapを使用するため
-#include <stdbool.h> // bool型の変数宣言を使用するため
+#include <openacc.h>
 //---------------------------------------
 #define DEBUG_MODE
 
@@ -134,12 +134,6 @@ class MultiParticle {
         setInitialAnalysisShape(param->analysis_shape, param->grid_pattern);
         setInitialConditions();
         console(2);
-#if defined __TWIST__ //ねじりによる力を計算
-
-    cout << "Considered twist force"
-         << endl;
-
-#endif
 
         //! delete all csv files
         // delete_file(parameter_dir.c_str());
@@ -332,6 +326,7 @@ class MultiParticle {
                     //                     }
                     CalcMainSimulation();
 #pragma omp parallel
+// #pragma acc kernels
                     {
 #pragma omp for private(j) private(k) schedule(static)
                         for (i = 0; i < local_iNum; i++) {
@@ -530,6 +525,7 @@ class MultiParticle {
     void setInitialConditionsSjCalc();
     void setInitialConditionsAreaCalc();
     void setInitialConditionsCopy();
+    void setGravity();
     void setInitialConditionsSetVirtualParticle(int const&, int const&);
 
     inline void CalcMainSimulation() {
@@ -537,21 +533,50 @@ class MultiParticle {
 #pragma omp parallel
         {
             //	iはプライベート(各スレッドで共有しない)、分割はstatic
-#pragma omp for private(j) private(k) schedule(static)
-            for (i = 0; i < local_iNum; i++) {
-                for (j = 0; j < local_jNum; j++) {
-                    for (k = 0; k < local_kNum; k++) {
-                        // cout << i << "," << j << "," << k << endl;
-                        p->new_c[i][j][k] = p->c[i][j][k];
-                        p->new_v[i][j][k] = p->v[i][j][k];
-                        // cout << "Run VirtualParticleCalc" << endl;
-                        // OldVirtualParticleCalc(i, j, k);
-
-                        VirtualParticleCalc(i, j, k);
-                    }
-                }
-            }
-
+// #pragma acc parallel loop gang present(p) 
+#pragma omp for collapse(3) private(j, k) schedule(static)
+// C a[30][30][1];
+// C b[30][30][1];
+// for (i = 0; i < local_iNum; i++) {
+//     for (j = 0; j < local_jNum; j++) {
+//         for (k = 0; k < local_kNum; k++) {
+//            b[i][j][k].x = i;
+//            b[i][j][k].y = j;
+//            b[i][j][k].z = k;
+//         }
+//     }
+// }
+// #pragma acc parallel
+// #pragma acc parallel loop collapse(3) 
+for (i = 0; i < local_iNum; i++) {
+    for (j = 0; j < local_jNum; j++) {
+        for (k = 0; k < local_kNum; k++) {
+            // double a;
+            // cout << i << "," << j << "," << k << endl;
+            // a[i][j][k] = p->c[i][j][0].x;
+            p->new_c[i][j][k] = p->c[i][j][k];
+            p->new_v[i][j][k] = p->v[i][j][k];
+            // cout << "Run VirtualParticleCalc" << endl;
+            // OldVirtualParticleCalc(i, j, k);
+            VirtualParticleCalc(i, j, k);
+        }
+    }
+}
+// #pragma acc parallel loop collapse(3) copyin(b[0:local_iNum][0:local_jNum][0:local_kNum]) \
+//                                 copyout(a[0:30][0:30][0])
+// for (i = 0; i < local_iNum; i++) {
+//     for (j = 0; j < local_jNum; j++) {
+//         for (k = 0; k < local_kNum; k++) {
+//             // double a;
+//             // cout << i << "," << j << "," << k << endl;
+//             a[i][j][k] = b[i][j][0];
+            
+//         }
+//     }
+// }
+// cout << "a= " << a[5][1][0].x << ", " <<  a[5][1][0].y << ", " <<  b[5][1][0].z << ", " << endl;
+// #pragma acc parallel
+// #pragma acc parallel loop collapse(3) 
 #pragma omp for private(j) private(k) schedule(static)
             for (i = 0; i < local_iNum; i++) {
                 for (j = 0; j < local_jNum; j++) {
@@ -563,7 +588,7 @@ class MultiParticle {
                     }
                 }
             }
-
+#pragma acc parallel loop collapse(3) 
 #pragma omp for private(j) private(k) schedule(static)
             for (i = 0; i < local_iNum; i++) {
                 for (j = 0; j < local_jNum; j++) {
@@ -571,10 +596,9 @@ class MultiParticle {
                         // cout << "Run ForceCalc" << endl;
                         // ForceCalc(i, j, k);
 
-                        TensileForceCalc(i, j, k);
+                        TensileForceCalc(i, j, k); // openaccで問題発生なし
                         ShareForceCalc(i, j, k);
                         BendForceCalc(i, j, k);
-                        TwistForceCalc(i, j, k); 
                         AirForceCalc(i, j, k);
                         RotationInertiaForceCalc(i, j, k);
                     }
@@ -726,7 +750,7 @@ class MultiParticle {
 
     /**
      * @brief
-     * 引数の時間が1列目になるようなdatファイルとして出力する. 出力用関数（csvも）
+     * 引数の時間が1列目になるようなdatファイルとして出力する
      * @param[in]	double const& time：現在の時間
      * @param[in]   time_point
      * start_time：シミュレーションを開始してからの時間
@@ -755,14 +779,14 @@ class MultiParticle {
                       << "V.y,"
                       << "V.z,";
 
-            foutparam << "longi.x,"
-                      << "longi.y,"
-                      << "longi.z,"
-                      << "longj.x,"
-                      << "longj.y,"
-                      << "longj.z,"
-                      << "longi,"
-                      << "longj,"
+            foutparam << "li.x,"
+                      << "li.y,"
+                      << "li.z,"
+                      << "lj.x,"
+                      << "lj.y,"
+                      << "lj.z,"
+                      << "li,"
+                      << "lj,"
                       << "g.x,"
                       << "g.y,"
                       << "g.z,"
@@ -803,10 +827,6 @@ class MultiParticle {
                       << "Ij,"
                       << "Mi,"
                       << "Mj,"
-                      << "Δangi,"
-                      << "Δangj,"
-                      << "Torquei,"
-                      << "Torquej,"
                       << "Px,"
                       << "Py,"
                       << "Pz,"
@@ -852,13 +872,6 @@ class MultiParticle {
                       << "Fb(i.j).x,"
                       << "Fb(i.j).y,"
                       << "Fb(i.j).z,"
-                      << "Ftw(i+.j),"
-                      << "Ftw(i-.j),"
-                      << "Ftw(i.j+),"
-                      << "Ftw(i.j-),"
-                      << "Ftw(i.j).x,"
-                      << "Ftw(i.j).y,"
-                      << "Ftw(i.j).z,"
                       << "Fa,"
                       << "Fall.ip,"
                       << "Fall.im,"
@@ -1061,10 +1074,6 @@ class MultiParticle {
                             << p->epsilongi[i][j][k] << "," << p->Ii[i][j][k]
                             << "," << p->Ij[i][j][k] << "," << p->Mi[i][j][k]
                             << "," << p->Mj[i][j][k] << ","
-                            << p->diffang_i[i][j][k] << ","
-                            << p->diffang_j[i][j][k] << ","
-                            << p->Torque_i[i][j][k] << ","
-                            << p->Torque_j[i][j][k] << ","
                             << p->pressure[i][j][k].x << ","
                             << p->pressure[i][j][k].y << ","
                             << p->pressure[i][j][k].z << "," << pressure << ",";
@@ -1090,7 +1099,7 @@ class MultiParticle {
                                   << p->vc_Right[i][j][k].y << ","
                                   << p->vc_Right[i][j][k].z << ",";
                         foutparam
-                            << p->Fti[i][j][k] << "," << p->Ftj[i][j][k]
+                            << p->Fti[i][j][k] << "," << p->Fti[i][j][k]
                             << ","
                             << p->Fsi[i][j][k].pp + p->Fsi[i][j][k].pm
                             << ","
@@ -1113,13 +1122,6 @@ class MultiParticle {
                             << Fb.x << ","
                             << Fb.y << ","
                             << Fb.z << ","
-                            << p->Ftw_quater[i][j][k].ipv.norm << ","
-                            << p->Ftw_quater[i][j][k].imv.norm << ","
-                            << p->Ftw_quater[i][j][k].jpv.norm << ","
-                            << p->Ftw_quater[i][j][k].jmv.norm << ","
-                            << p->Ftw[i][j][k].x << ","
-                            << p->Ftw[i][j][k].y << ","
-                            << p->Ftw[i][j][k].z << ","
                             << p->Fa[i][j][k] << "," << p->F[i][j][k].ip
                             << "," << p->F[i][j][k].im << ","
                             << p->F[i][j][k].jp << "," << p->F[i][j][k].jm
@@ -1551,47 +1553,45 @@ class MultiParticle {
 
         double divergence = 10;
         if (SimpleTensile) {
-            int itr_x = p->v.size() / 2;
+            int itr_x = p->v.size() - 1;
             int itr_y = p->v[0].size() / 2;
             int itr_z = p->v[0][0].size() / 2;
 
             cout << std::setprecision(9);
-            std::cout << "c.z:" << p->c[itr_x][itr_y][itr_z].z << ','
+            std::cout << "c.x:" << p->c[itr_x][itr_y][itr_z].x << ','
                       << std::string(3, ' ') << std::setprecision(5)
-                      << "v.z:" << p->v[itr_x][itr_y][itr_z].z << ","
+                      << "v.x:" << p->v[itr_x][itr_y][itr_z].x << ","
                       << std::string(3, ' ')
-                      << "a.z:" << p->v[itr_x][itr_y][itr_z].z - pre_vector
+                      << "a.x:" << p->v[itr_x][itr_y][itr_z].x - pre_vector
                       << std::string(3, ' ') << std::flush;
-            if (divergence <= fabs(p->v[itr_x][itr_y][itr_z].z)) {
+            if (divergence <= fabs(p->v[itr_x][itr_y][itr_z].x)) {
                 std::cout << std::endl;
                 std::cout << "Divergence" << std::endl;
                 return true;
             };
-            pre_vector = p->v[itr_x][itr_y][itr_z].z;
+            pre_vector = p->v[itr_x][itr_y][itr_z].x;
             return false;
         } else if (SimpleShare) {
-            int itr_x = p->v.size() / 2;
-            int itr_y = p->v[0].size() / 2;
-            // int itr_x = 9;
-            // int itr_y = 8;
+            int itr_x = p->v.size() - 1;
+            int itr_y = p->v[0].size() - 1;
             int itr_z = p->v[0][0].size() / 2;
 
-            std::cout << "c.z:" << p->c[itr_x][itr_y][itr_z].z << ','
+            std::cout << "c.y:" << p->c[itr_x][itr_y][itr_z].y << ','
                       << std::string(3, ' ')
-                      << "v.z:" << p->v[itr_x][itr_y][itr_z].z << ","
+                      << "v.y:" << p->v[itr_x][itr_y][itr_z].y << ","
                       << std::string(3, ' ')
-                      << "a.z:" << p->v[itr_x][itr_y][itr_z].z - pre_vector
+                      << "a.y:" << p->v[itr_x][itr_y][itr_z].y - pre_vector
                       << std::string(3, ' ') << std::flush;
-            if (divergence <= fabs(p->v[itr_x][itr_y][itr_z].z)) {
+            if (divergence <= fabs(p->v[itr_x][itr_y][itr_z].x)) {
                 std::cout << std::endl;
                 std::cout << "Divergence" << std::endl;
                 return true;
             }
-            pre_vector = p->v[itr_x][itr_y][itr_z].z;
+            pre_vector = p->v[itr_x][itr_y][itr_z].y;
             return false;
         } else if (SimpleBend) {
             int itr_x = p->v.size() - 1;
-            int itr_y = p->v[0].size() - 1;
+            int itr_y = p->v[0].size() / 2;
             int itr_z = p->v[0][0].size() / 2;
 
             std::cout << "c.z:" << p->c[itr_x][itr_y][itr_z].z << ','
@@ -1635,193 +1635,22 @@ class MultiParticle {
             return false;
         } else if (SimpleCompression) {
             divergence = 10 ^ 4;
-            int itr_x  = p->v.size() / 2;
+            int itr_x  = p->v.size() - 1;
             int itr_y  = p->v[0].size() / 2;
             int itr_z  = p->v[0][0].size() / 2;
-            int i = itr_x;
-            int j = itr_y;
-            int k = itr_z;
-            double compEne = 0;
-            double compEnej = 0;
-            double bendEne = 0;
-            for (int i = 0; i < local_iNum; i++) {
-                for (int j = 0; j < local_jNum; j++) {
-                    for (int k = 0; k < local_kNum; k++) {
 
-                            double norm_j_plus  = 0;
-                            double norm_j_minus = 0;
-                            double norm_i_plus  = 0;
-                            double norm_i_minus = 0;
-                            int sum_counti = 0;
-                            int sum_countj = 0;
-                            double height = 0.01;
-                            if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
-                                norm_j_plus = normCalcV2(p->mj[i][j][k], p->c[i][j][k]);
-                                sum_countj ++;
-                            }
-                            if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM) {
-                                norm_j_minus = normCalcV2(p->c[i][j][k], p->mj[i][j - 1][k]);
-                                sum_countj ++;
-                            }
-                            if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
-                                norm_i_plus = normCalcV2(p->mi[i][j][k], p->c[i][j][k]);
-                                sum_counti ++;
-                                // norm_i_plus = 0.025;
-                            }
-                            if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
-                                norm_i_minus = normCalcV2(p->c[i][j][k], p->mi[i - 1][j][k]);
-                                sum_counti ++;
-                                // norm_i_minus = 0.025;
-                            }
-                            if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
-                                height = p->hi[i][j][k];
-                            }
-                            compEne += ((p->Fti[i][j][k])/((norm_j_plus + norm_j_minus)
-                                         * height) * p->epsilongi[i][j][k])
-                                         * ((norm_j_plus + norm_j_minus) * height *p->li[i][j][k].norm ) / 2;
-                            compEnej += ((p->Ftj[i][j][k])/((norm_i_plus + norm_i_minus)
-                                         * height) * p->epsilongj[i][j][k])
-                                         * ((norm_i_plus + norm_i_minus) * height *p->lj[i][j][k].norm ) / 2;// 伸びによるひずみエネルギー
-                            bendEne += (p->Mi[i][j][k] * p->Mi[i][j][k]) / (2 * param->m_E * p->Ii[i][j][k])
-                                         * (norm_i_plus + norm_i_minus) / sum_counti;
-                            bendEne += (p->Mj[i][j][k] * p->Mj[i][j][k]) / (2 * param->m_E * p->Ij[i][j][k])
-                                         * (norm_j_plus + norm_j_minus) / sum_countj;
-                    }
-                }
-            }
-            C Fb;
-            Fb.reset();
-            
-                Fb += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector /
-                          p->Si[i][j][k].cp.norm);
-                Fb += (p->F[i][j][k].imv * p->Si[i - 1][j][k].cp.vector /
-                          p->Si[i - 1][j][k].cp.norm);
-                // p->F[i][j][k].jpv = p->Fb[i][j + 1][k].jmv;
-                Fb += (p->F[i][j][k].jpv * p->Sj[i][j][k].cp.vector /
-                          p->Sj[i][j][k].cp.norm);
-                // Tensile and Share
-                Fb += (p->F[i][j][k].jmv * p->Sj[i][j - 1][k].cp.vector /
-                          p->Sj[i][j - 1][k].cp.norm);
-                // p->F[i][j][k].jmv = p->Fb[i][j - 1][k].jpv;
-            double ft_z = (p->F[i][j][k].ip * p->li[i][j][k].vector.z /
-                                p->li[i][j][k].norm)
-                            +(p->F[i][j][k].im * -1 * p->li[i-1][j][k].vector.z /
-                            p->li[i-1][j][k].norm)
-                            + (p->F[i][j][k].jp * p->lj[i][j][k].vector.z /
-                                p->lj[i][j][k].norm)
-                            + (p->F[i][j][k].jm * -1 * p->lj[i][j-1][k].vector.z /
-                                p->lj[i][j-1][k].norm);
-                    
-            std::cout << "10.10"
-                      << "c.z:" << p->c[itr_x][itr_y][itr_z].z << ','
+            std::cout << "c.x:" << p->c[itr_x][itr_y][itr_z].x << ','
                       << std::string(3, ' ')
-                      << "v.z:" << p->v[itr_x][itr_y][itr_z].z << ','
+                      << "v.x:" << p->v[itr_x][itr_y][itr_z].x << ','
                       << std::string(3, ' ')
-                      << "a.z:" << p->v[itr_x][itr_y][itr_z].z - pre_vector
-                      << std::string(3, ' ') 
-                      // << "ft.z:" << ft_z << ','
-                      // << std::string(3, ' ')
-                      // << "fb.z:" << Fb.z << ','
-                      // << std::string(3, ' ')
-                      << "compEnergy_j:" << compEnej << ','
-                      << std::string(3, ' ')
-                      << "compEnergy:" <<compEne << ','
-                      << std::string(3, ' ')
-                      << "bendEnergy:" << bendEne << ','
-                      << std::string(3, ' ')
-                      << std::endl;
-            
-            // itr_x  = 5;
-            // itr_y  = 10;
-            // itr_z  = p->v[0][0].size() / 2;
-            // i = itr_x;
-            // j = itr_y;
-            // k = itr_z;
-            
-            // Fb.reset();
-            
-            //     Fb += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector /
-            //               p->Si[i][j][k].cp.norm);
-            //     Fb += (p->F[i][j][k].imv * p->Si[i - 1][j][k].cp.vector /
-            //               p->Si[i - 1][j][k].cp.norm);
-            //     // p->F[i][j][k].jpv = p->Fb[i][j + 1][k].jmv;
-            //     Fb += (p->F[i][j][k].jpv * p->Sj[i][j][k].cp.vector /
-            //               p->Sj[i][j][k].cp.norm);
-            //     // Tensile and Share
-            //     Fb += (p->F[i][j][k].jmv * p->Sj[i][j - 1][k].cp.vector /
-            //               p->Sj[i][j - 1][k].cp.norm);
-            //     // p->F[i][j][k].jmv = p->Fb[i][j - 1][k].jpv;
-            // ft_z = (p->F[i][j][k].ip * p->li[i][j][k].vector.z /
-            //                     p->li[i][j][k].norm)
-            //                 +(p->F[i][j][k].im * -1 * p->li[i-1][j][k].vector.z /
-            //                 p->li[i-1][j][k].norm)
-            //                 + (p->F[i][j][k].jp * p->lj[i][j][k].vector.z /
-            //                     p->lj[i][j][k].norm)
-            //                 + (p->F[i][j][k].jm * -1 * p->lj[i][j-1][k].vector.z /
-            //                     p->lj[i][j-1][k].norm);
-            // std::cout  << "5.10"
-            //           << "c.z:" << p->c[itr_x][itr_y][itr_z].z << ','
-            //           << std::string(3, ' ')
-            //           << "v.z:" << p->v[itr_x][itr_y][itr_z].z << ','
-            //           << std::string(3, ' ')
-            //           << "a.z:" << p->v[itr_x][itr_y][itr_z].z - pre_vector
-            //           << std::string(3, ' ') 
-            //           << "ft.z:" << ft_z << ','
-            //           << std::string(3, ' ')
-            //           << "fb.z:" << Fb.z << ','
-            //           << std::string(3, ' ')
-            //           << "f.z:" << p->f[itr_x][itr_y][itr_z].z << ','
-            //           << std::string(3, ' ')
-            //           << std::endl;
-                    
-            // itr_x  = 15;
-            // itr_y  = 10;
-            // itr_z  = p->v[0][0].size() / 2;
-            // i = itr_x;
-            // j = itr_y;
-            // k = itr_z;
-            
-            // Fb.reset();
-            
-            //     Fb += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector /
-            //               p->Si[i][j][k].cp.norm);
-            //     Fb += (p->F[i][j][k].imv * p->Si[i - 1][j][k].cp.vector /
-            //               p->Si[i - 1][j][k].cp.norm);
-            //     // p->F[i][j][k].jpv = p->Fb[i][j + 1][k].jmv;
-            //     Fb += (p->F[i][j][k].jpv * p->Sj[i][j][k].cp.vector /
-            //               p->Sj[i][j][k].cp.norm);
-            //     // Tensile and Share
-            //     Fb += (p->F[i][j][k].jmv * p->Sj[i][j - 1][k].cp.vector /
-            //               p->Sj[i][j - 1][k].cp.norm);
-            //     // p->F[i][j][k].jmv = p->Fb[i][j - 1][k].jpv;
-            // ft_z = (p->F[i][j][k].ip * p->li[i][j][k].vector.z /
-            //                     p->li[i][j][k].norm)
-            //                 +(p->F[i][j][k].im * -1 * p->li[i-1][j][k].vector.z /
-            //                 p->li[i-1][j][k].norm)
-            //                 + (p->F[i][j][k].jp * p->lj[i][j][k].vector.z /
-            //                     p->lj[i][j][k].norm)
-            //                 + (p->F[i][j][k].jm * -1 * p->lj[i][j-1][k].vector.z /
-            //                     p->lj[i][j-1][k].norm);
-            // std::cout << "15.10" 
-            //           << "c.z:" << p->c[itr_x][itr_y][itr_z].z << ','
-            //           << std::string(3, ' ')
-            //           << "v.z:" << p->v[itr_x][itr_y][itr_z].z << ','
-            //           << std::string(3, ' ')
-            //           << "a.z:" << p->v[itr_x][itr_y][itr_z].z - pre_vector
-            //           << std::string(3, ' ') 
-            //           << "ft.z:" << ft_z << ','
-            //           << std::string(3, ' ')
-            //           << "fb.z:" << Fb.z << ','
-            //           << std::string(3, ' ')
-            //           << "f.z:" << p->f[itr_x][itr_y][itr_z].z << ','
-            //           << std::string(3, ' ')
-            //           << std::endl;
-            if (divergence <= fabs(p->v[itr_x][itr_y][itr_z].z)) {
+                      << "a.x:" << p->v[itr_x][itr_y][itr_z].x - pre_vector
+                      << std::string(3, ' ') << std::flush;
+            if (divergence <= fabs(p->v[itr_x][itr_y][itr_z].x)) {
                 std::cout << std::endl;
                 std::cout << "Divergence" << std::endl;
                 return true;
             };
-            pre_vector = p->v[itr_x][itr_y][itr_z].z;
+            pre_vector = p->v[itr_x][itr_y][itr_z].x;
             return false;
         } else if (CubePressure) {
             int itr_x = p->c.size() / 2;
@@ -1998,7 +1827,6 @@ class MultiParticle {
         return true;
     }
 
-    //! 関数一覧
     void dataCalc();
     typedef void (MultiParticle::*CALC_FUNC)(int const&, int const&);
     void OldVirtualParticleCalc(int const&, int const&, int const&);
@@ -2010,7 +1838,6 @@ class MultiParticle {
     void TensileForceCalc(const int&, const int&, const int&);
     void ShareForceCalc(const int&, const int&, const int&);
     void BendForceCalc(const int&, const int&, const int&);
-    void TwistForceCalc(const int&, const int&, const int&);
     void ContradictBendForceCalc(const int&, const int&, const int&);
     void AirForceCalc(const int&, const int&, const int&);
     void RotationInertiaForceCalc(const int&, const int&, const int&);
@@ -2029,17 +1856,9 @@ class MultiParticle {
     double hCalc(double const&, double const&);
     double epsilongCalc(double const&, double const&);
     double FsCalc(double const&, double const&, double const&);
-    double CsCalc(double const&, double const&);
     double FtCalc(double const&, double const&, double const&, double const&);
-    double CtCalc(double const&, double const&, double const&, double const&);
-    double MgCalc(double const&);
     double etaCalc(double const&, double const&, double const&);
-    double CbCalc(double const&, double const&, double const&, double const&)
-    void interSectionLengthCalc(Vector&, const C&, const C&,
-                                        const C&, const C&, Vector&, Vector&, Vector&);
-    void FtwVector(const C&, const C&, const C&, const C&, Vector&);
     double MCalc(double const&, double const&, double const&);
-    double TCalc(double const&, double const&, double const&, double const&);
     double get_random();
     void disturbance_Calc(C&, double const&);
 
@@ -2050,7 +1869,7 @@ class MultiParticle {
     double normCalc(C const&);
     double normCalcV2(C const&, C const&);
 
-    void RK4M(double&, double&, double const&, double const&); //ルンゲクッタ法
+    void RK4M(double&, double&, double const&, double const&);
     double RK4One(double const&);
     double RK4Two(double const&, double const&, double const&);
     void RK4M(double&, double&, const double&, const double&, const double&);

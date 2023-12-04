@@ -262,8 +262,6 @@ class Params {
     double m_preCalc3;
     //! 1/(12*(1-(ν^2))) モーメント Mの計算で使用する
     double m_preCalc4;
-    //! 1/(24*(1+ν)) ねじりモーメント Tの計算で使用する
-    double m_preCalc5;
 
     //! (1+rs) r:reflectance, s:Specularity
     double pre_eta_n;
@@ -520,7 +518,6 @@ class Params {
 
         // m_preCalc4		= h0 * h0 * m_preCalc1 / ( 12 * Lref * Lref );
         m_preCalc4 = m_preCalc1 / 12;
-        m_preCalc5 = 1 / (2 * (1 + m_nu));
         pre_eta_n  = (1 + reflectance * specularity);
         pre_eta_t  = (1 - reflectance * specularity);
 

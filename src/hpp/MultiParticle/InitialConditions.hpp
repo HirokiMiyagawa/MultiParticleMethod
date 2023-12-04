@@ -59,8 +59,6 @@ void MultiParticle::setInitialConditions() {
     param->itr_max_y  = p->c[param->itr_max_x].size() - 1;
     param->itr_max_z  = p->c[param->itr_max_x][param->itr_max_y].size() - 1;
 
-    
-
     // cout << "param->center_i:" << param->center_i << endl;
     // cout << "param->center_j:" << param->center_j << endl;
     // cout << "param->itr_harf_x:" << param->itr_harf_x << endl;
@@ -126,13 +124,7 @@ void MultiParticle::setInitialConditions() {
     setInitialConditionsCopy();
 
 #ifdef __GRAVITY__
-    for (int i = 0; i < local_iNum; i++) {
-        for (int j = 0; j < local_jNum; j++) {
-            for (int k = 0; k < local_kNum; k++) {
-                p->Fg[i][j][k] = MgCalc(p->S0[i][j][k]);
-            }
-        }
-    }
+    setGravity();
 #endif
 }
 
@@ -279,9 +271,7 @@ void MultiParticle::setInitialConditionsSetParam() {
     for (int i = 0; i < local_iNum; i++) {
         for (int j = 0; j < local_jNum; j++) {
             for (int k = 0; k < local_kNum; k++) {
-#ifndef __GEOMETRYDISTURBANCE__
                 p->c[i][j][k].z       = 0;
-#endif
                 p->alphai[i][j][k]    = math::pi();
                 p->alphaj[i][j][k]    = math::pi();
                 p->etai[i][j][k]      = 0;
@@ -357,35 +347,11 @@ void MultiParticle::setInitialConditionsSetParamShapeCylinder() {
  * ここで、m_Lref_x(膜の長さ)を等分割で分割し、粒子に座標を設定している
  */
 void MultiParticle::setInitialConditionsEquallyDividedModeling() {
-    C distub;
-    disturbance_Calc(distub, param->disturbance_range);
     for (int i = 0; i < local_iNum; i++) {
         for (int j = 0; j < local_jNum; j++) {
             for (int k = 0; k < local_kNum; k++) {
                 p->c[i][j][k].x = param->m_Lref_x * i / (local_iNum - 1);
                 p->c[i][j][k].y = param->m_Lref_y * j / (local_jNum - 1);
-#ifdef __GEOMETRYDISTURBANCE__
-            if (p->flag[i][j][k] == Center) {
-                p->c[i][j][k].z = param->disturbance_range * get_random();
-            }
-                
-                // cout << "z = "
-                //      << p->c[i][j][k].z
-                //      << endl;
-#else
-                // if (p->flag[i][j][k] == Right) {
-                    if (param->add_disturbance) {
-                        disturbance_Calc(p->disturbance[i][j][k], param->disturbance_range);
-                        // p->disturbance[i][j][k] = distub;
-                        if (param->disturbance_mode == "direct") {//ここのFdは、計算には用いていない
-                            p->Fd[i][j][k] = normCalc(distub);
-                        } else {
-                            p->Fd[i][j][k] = innerProductCalc(p->disturbance[i][j][k],
-                                                            p->S[i][j][k].cp.vector);
-                        }
-                    }
-                // }
-#endif
             }
         }
     }
@@ -407,7 +373,6 @@ void MultiParticle::setInitialConditionsUnEquallyDividedModeling() {
             }
         }
     }
-   
 }
 
 /**
@@ -4185,6 +4150,25 @@ void MultiParticle::setInitialConditionsSjCalc() {
 }
 
 /**
+ * @brief	重力の値を計算する
+ */
+void MultiParticle::setGravity() {
+    double g = 9.806; //[mm/s^2] ただし、入力してるヤング率の単位が違うので、×10^-3してる。
+                      // 収束性の問題と、熱応力込みで計算した場合でもヤング率の単位違っても影響はないことから、こちらの数値を変えている
+    g *=  param->Lref / (param->Vref * param->Vref);
+    for (int i = 0; i < local_iNum; i++) {
+        for (int j = 0; j < local_jNum; j++) {
+            for (int k = 0; k < local_kNum; k++) {
+                p->external_force[i][j][k].z = -1 * (p->S0[i][j][k] * g) / param->C_EI;
+                // 物を吊り下げることによる外力
+                if (i == (local_iNum - 1) && j == ((local_jNum - 1) / 2)) { p->external_force[i][j][k].z -= (0.06 * 9.806) / (param->m_E * param->h0 * param->Lref); }
+                // if (i == 25 && j == 13) { p->external_force[i][j][k].z -= (0.0298 * 9.806) / (param->m_E * param->h0 * param->Lref); }
+            }
+        }
+    }
+}
+
+/**
  * @brief	計算した値を初期値を格納する変数に代入する
  */
 void MultiParticle::setInitialConditionsCopy() {
@@ -4192,9 +4176,6 @@ void MultiParticle::setInitialConditionsCopy() {
         for (int j = 0; j < local_jNum; j++) {
             for (int k = 0; k < local_kNum; k++) {
                 p->new_c[i][j][k] = p->c[i][j][k];
-                // cout << "z = "
-                //      << p->c[i][j][k].z
-                //      << endl;
                 p->new_v[i][j][k] = p->v[i][j][k];
 
                 p->li0[i][j][k] = p->li[i][j][k].norm;

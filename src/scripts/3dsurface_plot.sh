@@ -23,7 +23,7 @@ conditionPath="data/csv/condition.csv"
 SearchLine="jNum"
 plotMode=${2:-"gray"}
 xy_min=-0.2
-xy_max=1.5
+xy_max=1.2
 z_min=-0.15
 z_max=0.15
 

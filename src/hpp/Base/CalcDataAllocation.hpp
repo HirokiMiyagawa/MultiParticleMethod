@@ -41,7 +41,7 @@ class Particles {
     vector<vector<vector<VirtualParticle>>> vp;
 
     //!	Midpoint particle(i,j) and (i+1,j).
-    //!粒子(i,j)と粒子(i+1,j)の中間点。Ij(i,j)とljgを求めるのに使用する。mi[i][j]とmi[i-1][j]の和で粒子(i,j)の前後の長さli(i,j)を求めれる。
+    //!粒子(i,j)と粒子(i+1,j)sの中間点。Ij(i,j)とljgを求めるのに使用する。mi[i][j]とmi[i-1][j]の和で粒子(i,j)の前後の長さli(i,j)を求めれる。
     vector<vector<vector<C>>> mi;
     //!	Midpoint particle(i,j) and (i,j+1).
     //!粒子(i,j)と粒子(i,j+1)の中間点。Ii(i,j)とligを求めるのに使用する。これで、粒子(i,j)の前後の長さを求めれる。
@@ -65,18 +65,14 @@ class Particles {
     vector<vector<vector<double>>> li0;
     //! Initial Length in j-direction. 無負荷時のj方向の長さ
     vector<vector<vector<double>>> lj0;
-    //! Thickness in i-direction. i方向の膜厚 h(i+1/2,j)
+    //! Thickness in i-direction. i方向の膜厚
     vector<vector<vector<double>>> hi;
-    //! Thickness in j-direction. j方向の膜厚 h(i,j+1/2)
+    //! Thickness in j-direction. j方向の膜厚
     vector<vector<vector<double>>> hj;
     //! Average thickness.
     vector<vector<vector<double>>> h_ave;
     //! Average thickness.
     vector<vector<vector<double>>> h_ave3;
-    //! 粒子(i,j)と粒子(i,j+1)の中点と粒子(i+1,j)と粒子(i+1,j+1)の中点を結んだ長さ
-    vector<vector<vector<Vector>>> axis_i;
-    //! 粒子(i,j)と粒子(i+1,j)の中点と粒子(i,j+1)と粒子(i+1,j+1)の中点を結んだ長さ
-    vector<vector<vector<Vector>>> axis_j;
 
     //! Influence area. 影響面積 S(i,j)
     vector<vector<vector<Area>>> S;
@@ -91,14 +87,9 @@ class Particles {
 
     vector<vector<vector<double>>> Fti;
     vector<vector<vector<double>>> Ftj;
-    //! 伸縮ばねに並列につなぐ減衰項 
-    vector<vector<vector<C>>> cti;
-    vector<vector<vector<C>>> ctj;
 
-    //! 構造体C、x,y,z方向の力を格納する 膜の内力、外力すべてを足し合わせたもの。最終的にルンゲクッタでは、これを用いる
+    //! 構造体C、x,y,z方向の力を格納する
     vector<vector<vector<C>>> f;
-    //! 減衰項をすべて足し合わせたもの。最終的にルンゲクッタでは、これを用いる
-    vector<vector<vector<C>>> damper;
 
     //! せん断角度
     vector<vector<vector<Quarter>>> beta;
@@ -110,8 +101,6 @@ class Particles {
     vector<vector<vector<Quarter>>> Fsi;
     //! j方向のせん断力
     vector<vector<vector<Quarter>>> Fsj;
-    //! せん断ばねに並列につなぐ減衰項
-    vector<vector<vector<Quarterij>>> cs;
 
     //! 垂直ひずみ
     vector<vector<vector<double>>> epsilonli;
@@ -125,10 +114,6 @@ class Particles {
     vector<vector<vector<double>>> Ii;
     //! 断面2次モーメント
     vector<vector<vector<double>>> Ij;
-    //! 断面2次極モーメント(ねじりモーメント用)
-    vector<vector<vector<double>>> Ipi;
-    //! 断面2次極モーメント（ねじりモーメント用）
-    vector<vector<vector<double>>> Ipj;
     //! 曲げ角度
     vector<vector<vector<double>>> alphai;
     //! 曲げ角度
@@ -146,36 +131,18 @@ class Particles {
     vector<vector<vector<double>>> diff_etai;
     //! 曲率の変位
     vector<vector<vector<double>>> diff_etaj;
-    //! 曲率の変位
-    vector<vector<vector<double>>> diffang_i;
-    //! 曲率の変位
-    vector<vector<vector<double>>> diffang_j;
 
     //! Bending moment in i-direction (i方向の曲げモーメント)
     vector<vector<vector<double>>> Mi;
     //! Bending moment in j-direction j方向の曲げモーメント
     vector<vector<vector<double>>> Mj;
-    //! twist moment in i-direction 粒子(i+1/2, j+1/2)の(i方向のねじりモーメント)
-    vector<vector<vector<double>>> Torque_i;
-    //! twist moment in j-direction 粒子(i+1/2, j+1/2)のj方向のねじりモーメント
-    vector<vector<vector<double>>> Torque_j;
 
     //! Force by bending
     vector<vector<vector<PreDirection>>> Fb;
-    //! 曲げばねに並列につなぐ減衰項
-    vector<vector<vector<PreDirection>>> cb;
-    //! Force by twist 粒子(i+1/2, j+1/2)
-    vector<vector<vector<PreDirectionVector>>> Ftw_quater;
-    //! Force by twist 粒子(i, j)にかかるFtwの合力
-    vector<vector<vector<C>>> Ftw;
-    //! 仮想粒子とのねじり力
-    vector<vector<vector<PreDirectionVector>>> ftw_ver;
     //! Pressure
     vector<vector<vector<C>>> pressure;
     //! Force by air (Pressure)
     vector<vector<vector<double>>> Fa;
-    //! Force by gravity
-    vector<vector<vector<double>>> Fg;
     //! Force by sun Normal
     vector<vector<vector<C>>> Fnormal;
     //! Force by sun transverse
@@ -272,8 +239,6 @@ class Particles {
         hj.resize(iNum);
         h_ave.resize(iNum);
         h_ave3.resize(iNum);
-        axis_i.resize(iNum);
-        axis_j.resize(iNum);
 
         S.resize(iNum);
         Si.resize(iNum);
@@ -284,26 +249,20 @@ class Particles {
 
         Fti.resize(iNum);
         Ftj.resize(iNum);
-        cti.resize(iNum);
-        ctj.resize(iNum);
 
         f.resize(iNum);
-        damper.resize(iNum);
 
         beta.resize(iNum);
         beta0.resize(iNum);
         gamma.resize(iNum);
         Fsi.resize(iNum);
         Fsj.resize(iNum);
-        cs.resize(iNum);
         epsilonli.resize(iNum);
         epsilonlj.resize(iNum);
         epsilongi.resize(iNum);
         epsilongj.resize(iNum);
         Ii.resize(iNum);
         Ij.resize(iNum);
-        Ipi.resize(iNum);
-        Ipj.resize(iNum);
         alphai.resize(iNum);
         alphaj.resize(iNum);
 
@@ -313,22 +272,13 @@ class Particles {
         etaj0.resize(iNum);
         diff_etai.resize(iNum);
         diff_etaj.resize(iNum);
-        diffang_i.resize(iNum);
-        diffang_j.resize(iNum);
 
         Mi.resize(iNum);
         Mj.resize(iNum);
-        Torque_i.resize(iNum);
-        Torque_j.resize(iNum);
 
         Fb.resize(iNum);
-        cb.resize(iNum);
-        Ftw_quater.resize(iNum);
-        Ftw.resize(iNum);
-        ftw_ver.resize(iNum);
         pressure.resize(iNum);
         Fa.resize(iNum);
-        Fg.resize(iNum);
         Fnormal.resize(iNum);
         Ftrans.resize(iNum);
         Ftrans_i.resize(iNum);
@@ -389,8 +339,6 @@ class Particles {
             hj[i].resize(jNum);
             h_ave[i].resize(jNum);
             h_ave3[i].resize(jNum);
-            axis_i[i].resize(jNum);
-            axis_j[i].resize(jNum);
 
             S[i].resize(jNum);
             Si[i].resize(jNum);
@@ -401,26 +349,20 @@ class Particles {
 
             Fti[i].resize(jNum);
             Ftj[i].resize(jNum);
-            cti[i].resize(jNum);
-            ctj[i].resize(jNum);
 
             f[i].resize(jNum);
-            damper[i].resize(jNum);
 
             beta[i].resize(jNum);
             beta0[i].resize(jNum);
             gamma[i].resize(jNum);
             Fsi[i].resize(jNum);
             Fsj[i].resize(jNum);
-            cs[i].resize(jNum);
             epsilonli[i].resize(jNum);
             epsilonlj[i].resize(jNum);
             epsilongi[i].resize(jNum);
             epsilongj[i].resize(jNum);
             Ii[i].resize(jNum);
             Ij[i].resize(jNum);
-            Ipi[i].resize(jNum);
-            Ipj[i].resize(jNum);
             alphai[i].resize(jNum);
             alphaj[i].resize(jNum);
 
@@ -430,22 +372,13 @@ class Particles {
             etaj0[i].resize(jNum);
             diff_etai[i].resize(jNum);
             diff_etaj[i].resize(jNum);
-            diffang_i[i].resize(jNum);
-            diffang_j[i].resize(jNum);
 
             Mi[i].resize(jNum);
             Mj[i].resize(jNum);
-            Torque_i[i].resize(jNum);
-            Torque_j[i].resize(jNum);
 
             Fb[i].resize(jNum);
-            cb[i].resize(jNum);
-            Ftw_quater[i].resize(jNum);
-            Ftw[i].resize(jNum);
-            ftw_ver[i].resize(jNum);
             pressure[i].resize(jNum);
             Fa[i].resize(jNum);
-            Fg[i].resize(jNum);
             Fnormal[i].resize(jNum);
             Ftrans[i].resize(jNum);
             Ftrans_i[i].resize(jNum);
@@ -506,8 +439,6 @@ class Particles {
                 hj[i][j].resize(kNum);
                 h_ave[i][j].resize(kNum);
                 h_ave3[i][j].resize(kNum);
-                axis_i[i][j].resize(kNum);
-                axis_j[i][j].resize(kNum);
 
                 S[i][j].resize(kNum);
                 Si[i][j].resize(kNum);
@@ -518,26 +449,20 @@ class Particles {
 
                 Fti[i][j].resize(kNum);
                 Ftj[i][j].resize(kNum);
-                cti[i][j].resize(kNum);
-                ctj[i][j].resize(kNum);
 
                 f[i][j].resize(kNum);
-                damper[i][j].resize(kNum);
 
                 beta[i][j].resize(kNum);
                 beta0[i][j].resize(kNum);
                 gamma[i][j].resize(kNum);
                 Fsi[i][j].resize(kNum);
                 Fsj[i][j].resize(kNum);
-                cs[i][j].resize(kNum);
                 epsilonli[i][j].resize(kNum);
                 epsilonlj[i][j].resize(kNum);
                 epsilongi[i][j].resize(kNum);
                 epsilongj[i][j].resize(kNum);
                 Ii[i][j].resize(kNum);
                 Ij[i][j].resize(kNum);
-                Ipi[i][j].resize(kNum);
-                Ipj[i][j].resize(kNum);
                 alphai[i][j].resize(kNum);
                 alphaj[i][j].resize(kNum);
 
@@ -547,22 +472,13 @@ class Particles {
                 etaj0[i][j].resize(kNum);
                 diff_etai[i][j].resize(kNum);
                 diff_etaj[i][j].resize(kNum);
-                diffang_i[i][j].resize(kNum);
-                diffang_j[i][j].resize(kNum);
 
                 Mi[i][j].resize(kNum);
                 Mj[i][j].resize(kNum);
-                Torque_i[i][j].resize(kNum);
-                Torque_j[i][j].resize(kNum);
 
                 Fb[i][j].resize(kNum);
-                cb[i][j].resize(kNum);
-                Ftw_quater[i][j].resize(kNum);
-                Ftw[i][j].resize(kNum);
-                ftw_ver[i][j].resize(kNum);
                 pressure[i][j].resize(kNum);
                 Fa[i][j].resize(kNum);
-                Fg[i][j].resize(kNum);
                 Fnormal[i][j].resize(kNum);
                 Ftrans[i][j].resize(kNum);
                 Ftrans_i[i][j].resize(kNum);
@@ -593,7 +509,10 @@ class Particles {
                 omp[i][j].resize(kNum);
             }
         }
+        #pragma acc data copyin(c[0:iNum][0:jNum][0:kNum])
     }
+
+    
 
     ~Particles() {}
 };

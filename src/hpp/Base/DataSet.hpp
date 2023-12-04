@@ -443,16 +443,6 @@ struct Quarter {
     double mm;
     Quarter& operator=(const Quarter&);
 };
-/**
- * @brief   i,j方向にプラスマイナスの構造体
- * @note    せん断力の減衰項 csで使用する
- */
-struct Quarterij {
-    double ip;
-    double im;
-    double jp;
-    double jm;
-};
 inline Quarter& Quarter::operator=(const Quarter& q) {
     pp = q.pp;
     pm = q.pm;
@@ -497,17 +487,6 @@ struct Direction {
 struct Vector {
     C vector;
     double norm;
-};
-
-/**
- * @brief   i,j方向にプラスマイナスかつベクトルの構造体
- * @note    ねじりによる力を格納する ねじりによる力Ftw_quater
- */
-struct PreDirectionVector {
-    Vector ipv; // 粒子i+1,jにかかる力
-    Vector imv; // 粒子i,jにかかる力
-    Vector jpv; // 粒子i,j+1にかかる力
-    Vector jmv; // 粒子i,jにかかる力
 };
 
 /**
