@@ -136,6 +136,8 @@ class Params {
     double Length_y;
     //! ヤング率 [N/mm^2 MPa] / 野里さんのE = 35.5 MPaを使用している
     double m_E;
+    //! 折り目係数
+    double m_newE;
     //! 無次元化した基準長さ (膜の縦と横の長さ)
     double m_Lref_x;
     double m_Lref_y;
@@ -264,6 +266,8 @@ class Params {
     double m_preCalc3;
     //! 1/(12*(1-(ν^2))) モーメント Mの計算で使用する
     double m_preCalc4;
+    //! 折り目のモーメントの計算で使用する
+    double m_preCalc5;
 
     //! (1+rs) r:reflectance, s:Specularity
     double pre_eta_n;
@@ -521,6 +525,7 @@ class Params {
 
         // m_preCalc4		= h0 * h0 * m_preCalc1 / ( 12 * Lref * Lref );
         m_preCalc4 = m_preCalc1 / 12;
+        m_preCalc5 = m_preCalc1 / (m_E * Lref * Lref * m_h0);
         pre_eta_n  = (1 + reflectance * specularity);
         pre_eta_t  = (1 - reflectance * specularity);
 

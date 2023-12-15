@@ -396,9 +396,26 @@ double MultiParticle::etaCalc(double const& alpha, double const& lp,
  */
 double MultiParticle::MCalc(double const& I, double const& diff_eta,
                             double const& diff_etav) {
+
     return param->m_preCalc4 * I * (diff_eta + param->m_nu * diff_etav) /
            param->m_h0;
 }
+
+/**
+ * @brief		折り目用の曲げモーメント Mを計算する
+ * @param[in] 	double
+ * @param[in] 	double diff_eta モーメント方向の角度
+ * @param[in] 	double diff_etav モーメントと直行する方向の角度
+ * @return		double モーメントの計算結果
+ */
+double MultiParticle::creaseMCalc(double const& width, double const& diff_eta,
+                            double const& diff_etav) {
+
+    double newE = 0.00123; // [N/rad]
+    return param->m_preCalc5 * (diff_eta + param->m_nu * diff_etav) * newE * width;
+
+}
+
 
 /**
  * @brief

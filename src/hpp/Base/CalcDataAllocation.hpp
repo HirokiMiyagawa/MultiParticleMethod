@@ -20,6 +20,9 @@ class Particles {
    public:
     //! Particle's Flag
     vector<vector<vector<int>>> flag;
+    //! particle's special flag (crease)
+    vector<vector<vector<bool>>> i_specialflag; //judge to exist crease on l(i+1/2, j)
+    vector<vector<vector<bool>>> j_specialflag; //judge to exist crease on l(i, j+1.2)
     vector<vector<vector<int>>> surround_particle_exsit;
     vector<vector<vector<Communication>>> commflag;
     //! Particle Coordinates (x,y,z) 粒子の座標を格納する (Particle Coordinates)
@@ -118,6 +121,10 @@ class Particles {
     vector<vector<vector<double>>> alphai;
     //! 曲げ角度
     vector<vector<vector<double>>> alphaj;
+    //! 無負荷時の曲げ角度
+    vector<vector<vector<double>>> alphai0;
+    //! 無負荷時の曲げ角度
+    vector<vector<vector<double>>> alphaj0;
 
     //! 曲率
     vector<vector<vector<double>>> etai;
@@ -215,6 +222,8 @@ class Particles {
     // void initialize_member(int iNum, int jum, int Knum);
     Particles(int iNum, int jNum, int kNum) {
         flag.resize(iNum);
+        i_specialflag.resize(iNum);
+        j_specialflag.resize(iNum);
         surround_particle_exsit.resize(iNum);
         commflag.resize(iNum);
         // C型のkNum個の配列のポインタを格納
@@ -270,6 +279,8 @@ class Particles {
         Ij.resize(iNum);
         alphai.resize(iNum);
         alphaj.resize(iNum);
+        alphai0.resize(iNum);
+        alphaj0.resize(iNum);
 
         etai.resize(iNum);
         etaj.resize(iNum);
@@ -317,6 +328,8 @@ class Particles {
 
         for (int i = 0; i < iNum; i++) {
             flag[i].resize(jNum);
+            i_specialflag[i].resize(jNum);
+            j_specialflag[i].resize(jNum);
             surround_particle_exsit[i].resize(jNum);
             commflag[i].resize(jNum);
             // C型のkNum個の配列のポインタを格納
@@ -372,6 +385,8 @@ class Particles {
             Ij[i].resize(jNum);
             alphai[i].resize(jNum);
             alphaj[i].resize(jNum);
+            alphai0[i].resize(jNum);
+            alphaj0[i].resize(jNum);
 
             etai[i].resize(jNum);
             etaj[i].resize(jNum);
@@ -419,6 +434,8 @@ class Particles {
 
             for (int j = 0; j < jNum; j++) {
                 flag[i][j].resize(kNum);
+                i_specialflag[i][j].resize(kNum);
+                j_specialflag[i][j].resize(kNum);
                 surround_particle_exsit[i][j].resize(kNum);
                 commflag[i][j].resize(kNum);
                 // C型のkNum個の配列のポインタを格納
@@ -474,6 +491,8 @@ class Particles {
                 Ij[i][j].resize(kNum);
                 alphai[i][j].resize(kNum);
                 alphaj[i][j].resize(kNum);
+                alphai0[i][j].resize(kNum);
+                alphaj0[i][j].resize(kNum);
 
                 etai[i][j].resize(kNum);
                 etaj[i][j].resize(kNum);

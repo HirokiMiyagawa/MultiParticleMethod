@@ -3673,6 +3673,10 @@ void MultiParticle::ShareForceCalc(const int& i, const int& j, const int& k) {
  * @param k
  */
 void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
+    double norm_j_plus  = 0;
+    double norm_j_minus = 0;
+    double norm_i_plus  = 0;
+    double norm_i_minus = 0;
     {
         p->h_ave[i][j][k] = 0;
         int sum_count     = 0;
@@ -3697,8 +3701,6 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
             p->h_ave[i][j][k] * p->h_ave[i][j][k] * p->h_ave[i][j][k];
     }
     {
-        double norm_j_plus  = 0;
-        double norm_j_minus = 0;
         if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
             norm_j_plus = normCalcV2(p->mj[i][j][k], p->c[i][j][k]);
         }
@@ -3709,8 +3711,6 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
     }
 
     {
-        double norm_i_plus  = 0;
-        double norm_i_minus = 0;
         if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
             norm_i_plus = normCalcV2(p->mi[i][j][k], p->c[i][j][k]);
         }
@@ -3807,11 +3807,30 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
     p->diff_etai[i][j][k] = p->etai[i][j][k] - p->etai0[i][j][k];
     p->diff_etaj[i][j][k] = p->etaj[i][j][k] - p->etaj0[i][j][k];
 
-    p->Mi[i][j][k] =
-        MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k], p->diff_etaj[i][j][k]);
-    p->Mj[i][j][k] =
-        MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k], p->diff_etai[i][j][k]);
+#ifdef __CREASE__
+    if(p->j_specialflag[i][j][k]){
+        p->Mi[i][j][k] = 
+            creaseMCalc(norm_j_plus+norm_j_minus, -p->alphai[i][j][k]+p->alphai0[i][j][k], -p->alphaj[i][j][k]+p->alphaj0[i][j][k]);
+    }
+    else {
+        p->Mi[i][j][k] =
+            MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k], p->diff_etaj[i][j][k]);
+    }
+    if(p->i_specialflag[i][j][k]){
+        p->Mj[i][j][k] = 
+            creaseMCalc(norm_i_plus+norm_i_minus, -p->alphaj[i][j][k]+p->alphaj0[i][j][k], -p->alphai[i][j][k]+p->alphai0[i][j][k]);
+    }
+    else {
+        p->Mj[i][j][k] =
+            MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k], p->diff_etai[i][j][k]);
 
+    }
+#else
+    p->Mi[i][j][k] =
+        MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k], p->diff_etaj[i][j][k], p->i_specialflag[i][j][k]);
+    p->Mj[i][j][k] =
+        MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k], p->diff_etai[i][j][k], p->j_specialflag[i][j][k]);
+#endif
     if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
         p->Fb[i][j][k].ipv = -1 * p->Mi[i][j][k] / p->li[i][j][k].norm;
     }
@@ -4380,9 +4399,66 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
 
     if (param->oblique_rigid) {
         if (param->oblique_move == "allFix") {
-            if (i == j || j == (((int)p->flag.size() - 1) - i)) {
-                return;
+            // if (i == j || j == (((int)p->flag.size() - 1) - i)) {
+            switch(i){
+                case 0:
+                case 1:
+                case 2:
+                     if (i == j || j == ((19 - 1) - i)) {
+                        return;
+                     }
+                     break;
+                case 4:
+                    if (j == 3 || j == 15){ return;}
+                    break;
+                case 6:
+                case 7:
+                    if ((i - 2) == j || j == ((19 - 1) - (i - 2))) {
+                        return;
+                     }
+                     break;
+                case 9:
+                    if (j == 6 || j == 12){ return;}
+                    break;
+                case 11:
+                case 12:
+                    if ((i - 4) == j || j == ((19 - 1) - (i - 4))) {
+                        return;
+                     }
+                     break;
+                case 14:
+                    if (j == 9){ return;}
+                    break;
+                case 16:
+                case 17:
+                    if ((i - 6) == j || j == ((19 - 1) - (i - 6))) {
+                        return;
+                     }
+                     break;
+                case 19:
+                    if (j == 12 || j == 6){ return;}
+                    break;
+                case 21:
+                case 22:
+                    if ((i - 8) == j || j == ((19 - 1) - (i - 8))) {
+                        return;
+                     }
+                     break;
+                case 24:
+                    if (j == 15 || j == 3){ return;}
+                    break;
+                case 26:
+                case 27:
+                case 28:
+                    if ((i - 10) == j || j == ((19 - 1) - (i - 10))) {
+                        return;
+                     }
+                     break;
+                default:
+                    break;
             }
+
+            
         }
         if (param->oblique_move == "pointFix") {
             if (i == j || j == (((int)p->flag.size() - 1) - i)) {

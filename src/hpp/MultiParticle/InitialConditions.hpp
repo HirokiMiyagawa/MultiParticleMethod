@@ -24,7 +24,13 @@ void MultiParticle::setInitialAnalysisShape(std::string const& analysis_shape,
         } else if (analysis_shape == "square" ||
                    analysis_shape == "quadrangle") {
             if (grid_pattern == "equally") {
+#ifdef __CREASE__
+                std::cout << "set initial particle..." << std::endl;
+                setInitialConditionsParticleSetFromcsv();
+#else
                 setInitialConditionsEquallyDividedModeling();
+#endif
+                 std::cout << "finish initial particle..." << std::endl;
             } else if (grid_pattern == "unequally") {
                 setInitialConditionsUnEquallyDividedModeling();
             } else if (grid_pattern == "oblique") {
@@ -405,7 +411,7 @@ void MultiParticle::setInitialConditionsParticleSetFromcsv(){
 
         // Check if the vector size is as expected
         if (strvec.size() != 7) {
-            std::cerr << "Error: Invalid data format on line(粒子位置のインプットファイルの入力形式が違います) " << i + 1 << std::endl;
+            // std::cerr << "Error: Invalid data format on line(粒子位置のインプットファイルの入力形式が違います) " << i + 1 << std::endl;
             // return 1;  // Return an error code
         }
 
@@ -419,16 +425,20 @@ void MultiParticle::setInitialConditionsParticleSetFromcsv(){
         p->v[i][j][k].y = strvec[5];  // Y-axis
         p->v[i][j][k].z = strvec[6];  // Z-axis
 #endif
+#ifdef __CREASE__
+        p->i_specialflag[i][j][k] = strvec[7];
+        p->j_specialflag[i][j][k] = strvec[8];
+#endif
         // Print the values for verification
         // std::cout << "i = " << i << ", j = " << j << ", x = " << p->c[i][j][k].x << ", y = " << p->c[i][j][k].y
         //           << ", z = " << p->c[i][j][k].z << std::endl;
 
         // Increment indices
         j++;
-        if (j == local_iNum) {
+        if (j == local_jNum) {
             j = 0;
             i++;
-            if (i == local_jNum) {
+            if (i == local_iNum) {
                 i = 0;
                 k++;
             }
@@ -4267,6 +4277,29 @@ void MultiParticle::setInitialConditionsCopy() {
                 p->etaj0[i][j][k] = p->etaj[i][j][k];
                 // p->etai[i][j][k] = 0;
                 // p->etaj[i][j][k] = 0;
+#ifdef __CREASE__
+                if(p->j_specialflag[i][j][k]){
+                    // std::cout << "creaseflag" << std::endl;
+                    if (i == 4){
+                        p->alphai0[i][j][k] = math::pi()/2;
+                    }
+                    if (i == 9){
+                        p->alphai0[i][j][k] = 3 * math::pi()/2;
+                    }
+                    if (i == 14){
+                        p->alphai0[i][j][k] = math::pi()/2;
+                    }
+                    if (i == 19){
+                        p->alphai0[i][j][k] = 3 * math::pi()/2;
+                    }
+                    if (i == 24){
+                        p->alphai0[i][j][k] = math::pi()/2;
+                    }
+                }
+                if(p->i_specialflag[i][j][k]){
+                    p->alphaj0[i][j][k] = math::pi() / 2;
+                }
+#endif
 
                 // cout << p->Si[i][j][k].cp.norm << endl;
 #ifdef __CYLINDER_NON_BOUNDARY__

@@ -780,6 +780,8 @@ for (i = 0; i < local_iNum; i++) {
             foutparam << "(i.j.k),"
                       << "Flag,"
                       << "ExistFlag,"
+                      << "crease(i+1/2.j),"
+                      << "crease(i.j+1/2),"
                       << "Time,"
                       << "X-axis,"
                       << "Y-axis,"
@@ -1039,6 +1041,8 @@ for (i = 0; i < local_iNum; i++) {
                             << reFlag[p->flag[i][j][k]] << ","
                             << std::bitset<8>(
                                    p->surround_particle_exsit[i][j][k])
+                            << "," << p->i_specialflag[i][j][k]
+                            << "," << p->j_specialflag[i][j][k]
                             << "," << time * param->m_dt * param->m_sheet_skip
                             << "," << p->new_c[i][j][k].x << ","
                             << p->new_c[i][j][k].y << "," << p->new_c[i][j][k].z
@@ -1870,6 +1874,7 @@ for (i = 0; i < local_iNum; i++) {
     double FtCalc(double const&, double const&, double const&, double const&, Vector const&, double&);
     double etaCalc(double const&, double const&, double const&);
     double MCalc(double const&, double const&, double const&);
+    double creaseMCalc(double const&, double const&, double const&);
     double get_random();
     void disturbance_Calc(C&, double const&);
 
