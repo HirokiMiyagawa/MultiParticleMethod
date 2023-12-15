@@ -8,6 +8,7 @@
  */
 
 #if defined __SHAPE_CUBE__
+/*
 void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
     if (p->flag[i][j][k] & BIT_CEILING) {
         switch (p->flag[i][j][k]) {
@@ -2733,7 +2734,7 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
     }
 #endif
 }
-
+*/
 //////////////////////////////////////////////////////////////
 /////////////////////// Cube以外  ////////////////////////////
 //////////////////////////////////////////////////////////////
@@ -2760,6 +2761,7 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
  * 					垂直ひずみ ε
  * 					伸縮力 Ft
  */
+ /*
 void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
 #ifdef __DEBUG__
     cout << "Run Force Calc" << endl;
@@ -2861,11 +2863,11 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
             p->Fti[i][j][k] = FtCalc(
                 normCalcV2(p->g[i][j][k], p->mi[i][j][k]) +
                     normCalcV2(p->mi[i][j][k], p->g[i][j - 1][k]),
-                p->hi[i][j][k], p->epsilonli[i][j][k], p->epsilongj[i][j][k]);
+                p->hi[i][j][k], p->epsilonli[i][j][k], p->epsilongj[i][j][k], p->S[i][j][k].cp);
             p->Ftj[i][j][k] = FtCalc(
                 normCalcV2(p->g[i][j][k], p->mj[i][j][k]) +
                     normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]),
-                p->hj[i][j][k], p->epsilonlj[i][j][k], p->epsilongi[i][j][k]);
+                p->hj[i][j][k], p->epsilonlj[i][j][k], p->epsilongi[i][j][k], p->S[i][j][k].cp);
             break;
 
         case Right:
@@ -2952,7 +2954,7 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
                 normCalcV2(p->omp[i][j][k].g, p->omp[i][j][k].mi) +
                     normCalcV2(p->omp[i][j][k].mi, p->omp[i][j - 1][k].g),
                 p->omp[i][j][k].hi, p->omp[i][j][k].epsilonli,
-                p->omp[i][j][k].epsilongj);
+                p->omp[i][j][k].epsilongj, p->S[i][j][k].cp);
             // p->Fti[i][j][k] = FtCalc(normCalcV2(p->g[i][j][k],
             // p->mi[i][j][k]) + normCalcV2(p->mi[i][j][k], p->g[i][j - 1][k]),
             // p->hi[i][j][k], p->epsilonli[i][j][k], p->epsilongj[i][j][k]);
@@ -2960,7 +2962,7 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
 #endif
             p->Ftj[i][j][k] = FtCalc(
                 normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]), p->hj[i][j][k],
-                p->epsilonlj[i][j][k], p->epsilongi[i][j][k]);
+                p->epsilonlj[i][j][k], p->epsilongi[i][j][k], p->S[i][j][k].cp);
             break;
 
         case Bottom:
@@ -3018,11 +3020,11 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
 
             p->Fti[i][j][k] = FtCalc(normCalcV2(p->g[i][j][k], p->mi[i][j][k]),
                                      p->hi[i][j][k], p->epsilonli[i][j][k],
-                                     p->epsilongj[i][j][k]);
+                                     p->epsilongj[i][j][k], p->S[i][j][k].cp);
             p->Ftj[i][j][k] = FtCalc(
                 normCalcV2(p->g[i][j][k], p->mj[i][j][k]) +
                     normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]),
-                p->hj[i][j][k], p->epsilonlj[i][j][k], p->epsilongi[i][j][k]);
+                p->hj[i][j][k], p->epsilonlj[i][j][k], p->epsilongi[i][j][k], p->S[i][j][k].cp);
             break;
 
         case Top:
@@ -3076,7 +3078,7 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
 
             p->Fti[i][j][k] = FtCalc(
                 normCalcV2(p->mi[i][j][k], p->g[i][j - 1][k]), p->hi[i][j][k],
-                p->epsilonli[i][j][k], p->epsilongj[i][j][k]);
+                p->epsilonli[i][j][k], p->epsilongj[i][j][k], p->S[i][j][k].cp);
             p->Ftj[i][j][k] = 0;
             break;
 
@@ -3158,10 +3160,10 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
             p->Fti[i][j][k] = FtCalc(
                 normCalcV2(p->g[i][j][k], p->mi[i][j][k]) +
                     normCalcV2(p->mi[i][j][k], p->g[i][j - 1][k]),
-                p->hi[i][j][k], p->epsilonli[i][j][k], p->epsilongj[i][j][k]);
+                p->hi[i][j][k], p->epsilonli[i][j][k], p->epsilongj[i][j][k], p->S[i][j][k].cp);
             p->Ftj[i][j][k]           = FtCalc(normCalcV2(p->g[i][j][k], p->mj[i][j][k]),
                                                p->hj[i][j][k], p->epsilonlj[i][j][k],
-                                               p->epsilongi[i][j][k]);
+                                               p->epsilongi[i][j][k], p->S[i][j][k].cp);
 #ifdef __CYLINDER_NON_BOUNDARY__
             p->omp[i][j][k].epsilongj = epsilongCalc(
                 (normCalcV2(p->omp[i][j][k].g, p->omp[i][j][k].mi) +
@@ -3172,7 +3174,7 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
                 normCalcV2(p->omp[i][j][k].g, p->omp[i][j][k].mi) +
                     normCalcV2(p->omp[i][j][k].mi, p->omp[i][j - 1][k].g),
                 p->omp[i][j][k].hi, p->omp[i][j][k].epsilonli,
-                p->omp[i][j][k].epsilongj);
+                p->omp[i][j][k].epsilongj, p->S[i][j][k].cp);
 #endif
             break;
 
@@ -3249,7 +3251,7 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
                 FtCalc(normCalcV2(p->g[i][j][k], p->mi[i][j][k]) +
                            normCalcV2(p->mi[i][j][k], p->g[i][j - 1][k]),
                        p->hi[i][j][k], p->epsilonli[i][j][k],
-                       p->omp[i][j][k].epsilongj);
+                       p->omp[i][j][k].epsilongj, p->S[i][j][k].cp);
             p->Ftj[i][j][k]           = 0;
 #ifdef __CYLINDER_NON_BOUNDARY__
             p->omp[i][j][k].epsilongj = epsilongCalc(
@@ -3258,7 +3260,7 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
             p->omp[i][j][k].Fti =
                 FtCalc(normCalcV2(p->omp[i][j][k].g, p->omp[i][j][k].mi),
                        p->omp[i][j][k].hi, p->omp[i][j][k].epsilonli,
-                       p->epsilongj[i][j][k]);
+                       p->epsilongj[i][j][k], p->S[i][j][k].cp);
 #endif
             break;
 
@@ -3332,10 +3334,10 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
                              (normCalcV2(p->g0[i][j][k], p->mi0[i][j][k])));
             p->Fti[i][j][k]           = FtCalc(normCalcV2(p->g[i][j][k], p->mi[i][j][k]),
                                                p->hi[i][j][k], p->epsilonli[i][j][k],
-                                               p->epsilongj[i][j][k]);
+                                               p->epsilongj[i][j][k], p->S[i][j][k].cp);
             p->Ftj[i][j][k]           = FtCalc(normCalcV2(p->g[i][j][k], p->mj[i][j][k]),
                                                p->hj[i][j][k], p->epsilonlj[i][j][k],
-                                               p->epsilongi[i][j][k]);
+                                               p->epsilongi[i][j][k], p->S[i][j][k].cp);
 #ifdef __CYLINDER_NON_BOUNDARY__
             p->omp[i][j][k].epsilongj = epsilongCalc(
                 (normCalcV2(p->omp[i][j][k].g, p->omp[i][j][k].mi)),
@@ -3343,7 +3345,7 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
             p->omp[i][j][k].Fti =
                 FtCalc(normCalcV2(p->omp[i][j][k].g, p->omp[i][j][k].mi),
                        p->omp[i][j][k].hi, p->omp[i][j][k].epsilonli,
-                       p->omp[i][j][k].epsilongj);
+                       p->omp[i][j][k].epsilongj, p->S[i][j][k].cp);
 #endif
             break;
 
@@ -3424,7 +3426,7 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
                     p->omp[i][j][k].Fti = FtCalc(
                         normCalcV2(p->omp[i][j][k].g, p->omp[i][j][k].mi),
                         p->omp[i][j][k].hi, p->omp[i][j][k].epsilonli,
-                        p->omp[i][j][k].epsilongj);
+                        p->omp[i][j][k].epsilongj, p->S[i][j][k].cp);
                     // p->Fti[i][j][k] = FtCalc(normCalcV2(p->g[i][j][k],
                     // p->mi[i][j][k]) + normCalcV2(p->mi[i][j][k], p->g[i][j -
                     // 1][k]), p->hi[i][j][k], p->epsilonli[i][j][k],
@@ -3436,6 +3438,7 @@ void MultiParticle::ForceCalc(int const& i, int const& j, int const& k) {
             break;
     }
 }
+*/
 #endif
 
 ////////////////////////////////// Current Function ////////////////////////////
@@ -3476,7 +3479,7 @@ void MultiParticle::TensileForceCalc(const int& i, const int& j, const int& k) {
             length += normCalcV2(p->mi[i][j][k], p->g[i][j - 1][k]);
         }
         p->Fti[i][j][k] = FtCalc(length, p->hi[i][j][k], p->epsilonli[i][j][k],
-                                 p->epsilongj[i][j][k]);
+                                 p->epsilongj[i][j][k], p->S[i][j][k].cp, p->temperature[i][j][k]);
     } else {
         p->Fti[i][j][k] = 0;
     }
@@ -3491,7 +3494,7 @@ void MultiParticle::TensileForceCalc(const int& i, const int& j, const int& k) {
             length += normCalcV2(p->mj[i][j][k], p->g[i - 1][j][k]);
         }
         p->Ftj[i][j][k] = FtCalc(length, p->hj[i][j][k], p->epsilonlj[i][j][k],
-                                 p->epsilongi[i][j][k]);
+                                 p->epsilongi[i][j][k], p->S[i][j][k].cp, p->temperature[i][j][k]);
     } else {
         p->Ftj[i][j][k] = 0;
     }
@@ -3913,11 +3916,13 @@ void MultiParticle::AirForceCalc(const int& i, const int& j, const int& k) {
     if (SolarSail) {
         p->pressure[i][j][k] = param->pressure_initial;
 
+        //! 正規化してから内積しているので、問題なし
         p->angle_surface_sun[i][j][k] =
             math::sacos(innerProductCalc(-1.0 * p->pressure[i][j][k].unit(),
                                          p->S[i][j][k].cp.vector.unit()));
 
-        p->Fnormal[i][j][k] = -1.0 * param->m_Pc * p->S[i][j][k].cp.norm * param->pre_eta_n * pow(cos(p->angle_surface_sun[i][j][k]), 2) * p->S[i][j][k].cp.vector.unit();
+        p->Fnormal[i][j][k] = -1.0 * param->m_Pc * p->S[i][j][k].cp.norm * param->pre_eta_n
+                                * pow(cos(p->angle_surface_sun[i][j][k]), 2) * p->S[i][j][k].cp.vector.unit();
         // innerProductCalc(p->pressure[i][j][k].unit(), p->S[i][j][k].cp.vector.unit())
         C transverse;
         if (p->angle_surface_sun[i][j][k] == 0) {

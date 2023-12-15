@@ -190,6 +190,9 @@ class MultiParticle {
 #ifdef __InputPosition__
         cout << "Input particle coordinate from csv file..." << endl; 
         setInitialConditionsParticleSetFromcsv();
+#ifdef __ContinueAnalysis__
+        cout << "Continue Analysis..." << endl;
+#endif
 #endif
 
         std::cout << "Start Analysis" << endl;
@@ -933,7 +936,8 @@ for (i = 0; i < local_iNum; i++) {
                 << "Fi.z,"
                 << "F_roll.x,"
                 << "F_roll.y,"
-                << "F_roll.z,";
+                << "F_roll.z,"
+                << "temperature,";
 
             if (CylinderPressure && !param->boundary.cylinder_boundary) {
                 foutparam << "omp.ci.x,"
@@ -1180,7 +1184,8 @@ for (i = 0; i < local_iNum; i++) {
                             << p->F_Euler[i][j][k].z << ","
                             << p->F_roll[i][j][k].x << ","
                             << p->F_roll[i][j][k].y << ","
-                            << p->F_roll[i][j][k].z << ",";
+                            << p->F_roll[i][j][k].z << ","
+                            << p->temperature[i][j][k] << ",";
 
                         if (CylinderPressure &&
                             !param->boundary.cylinder_boundary) {
@@ -1862,7 +1867,7 @@ for (i = 0; i < local_iNum; i++) {
     double hCalc(double const&, double const&);
     double epsilongCalc(double const&, double const&);
     double FsCalc(double const&, double const&, double const&);
-    double FtCalc(double const&, double const&, double const&, double const&);
+    double FtCalc(double const&, double const&, double const&, double const&, Vector const&, double&);
     double etaCalc(double const&, double const&, double const&);
     double MCalc(double const&, double const&, double const&);
     double get_random();
@@ -1883,6 +1888,8 @@ for (i = 0; i < local_iNum; i++) {
 
     C UnitVectorCalc(const double&, const Area&);
     C UnitVectorCalc(const double&, const Vector&);
+
+    double SolarRadiationHeat(Vector const& S);
 };
 
 /**

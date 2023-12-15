@@ -543,6 +543,7 @@ void Params::set_pressure_initial(void) {
     spherical_coordinate.set(-m_Pc, Psun_angle_s_theta, Psun_angle_s_phi);
     // spherical_coordinate.set(-m_Pc, Psun_angle_s_theta, Psun_angle_s_phi + psi);
 
+    // 太陽輻射圧を球面座標系から直交座標に変換
     vector<double> spherical_xyz = spherical_coordinate.transform();
     pressure_initial.set(spherical_xyz);
     // pressure_initial.print();

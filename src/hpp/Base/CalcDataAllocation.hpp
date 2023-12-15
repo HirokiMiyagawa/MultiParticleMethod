@@ -151,7 +151,7 @@ class Particles {
     vector<vector<vector<C>>> Ftrans_i;
     //! Force by sun transverse in j
     vector<vector<vector<C>>> Ftrans_j;
-    //! Angle between the normal vector of surface ant the sun light in frame sunlight and transverse
+    //! Angle between the normal vector of surface ant the sun light in frame sunlight and transverse (面積に垂直なベクトルと太陽光線のなす角)
     vector<vector<vector<double>>> angle_surface_sun;
     //! Angle between the normal vector of surface ant the sun light in i
     vector<vector<vector<double>>> angle_surface_sun_i;
@@ -204,6 +204,11 @@ class Particles {
 
     //! Outer most parameters (最外殻粒子のパラメーター)
     vector<vector<vector<OuterMostParameter>>> omp;
+
+    //! solar radiation flux(太陽流束)
+    vector<vector<vector<double>>> SolarFlux;
+    //! Temperature
+    vector<vector<vector<double>>> temperature;
 
     Tmp tmp;
 
@@ -307,6 +312,8 @@ class Particles {
         external_force.resize(iNum);
         external_force_by_pressure.resize(iNum);
         omp.resize(iNum);
+        SolarFlux.resize(iNum);
+        temperature.resize(iNum);
 
         for (int i = 0; i < iNum; i++) {
             flag[i].resize(jNum);
@@ -407,6 +414,8 @@ class Particles {
             external_force[i].resize(jNum);
             external_force_by_pressure[i].resize(jNum);
             omp[i].resize(jNum);
+            SolarFlux[i].resize(jNum);
+            temperature[i].resize(jNum);
 
             for (int j = 0; j < jNum; j++) {
                 flag[i][j].resize(kNum);
@@ -507,9 +516,11 @@ class Particles {
                 external_force[i][j].resize(kNum);
                 external_force_by_pressure[i][j].resize(kNum);
                 omp[i][j].resize(kNum);
+                SolarFlux[i][j].resize(kNum);
+                temperature[i][j].resize(kNum);
             }
         }
-        #pragma acc data copyin(c[0:iNum][0:jNum][0:kNum])
+        // #pragma acc data copyin(c[0:iNum][0:jNum][0:kNum])
     }
 
     

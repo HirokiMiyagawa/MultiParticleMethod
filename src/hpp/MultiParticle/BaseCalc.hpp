@@ -346,13 +346,25 @@ double MultiParticle::FsCalc(double const& gamma, double const& l,
  * @brief	伸縮力 Ft
  */
 double MultiParticle::FtCalc(double const& L, double const& h,
-                             double const& epsilonl, double const& epsilong) {
+                             double const& epsilonl, double const& epsilong, Vector const& S, double& temperature) {
+    
+#ifdef __ThermalForce__
+    double cte = 25 * 0.000001;// 後でcsvファイルから入力できるように
+#ifdef __ThermalAnalysis__
+    double angle_sun = math::sacos(innerProductCalc(-1.0 * param->pressure_initial.unit(),
+                                        S.vector.unit()));
+    temperature = 100 * pow((1368 * cos(angle_sun)) / 11.34, 0.25) - 273.16;
+    double delta_temp = temperature - 20;
+#else
+    double delta_temp = 38.252;// 高温側 今の温度 - 室温（基準温度）
+#endif
+    return (h) * L * ((param->m_preCalc1 * ((epsilonl) + param->m_nu * (epsilong))) - (cte * delta_temp)) /
+           param->m_h0;
+#else // 熱応力なし
     return param->m_preCalc1 * (h)*L * ((epsilonl) + param->m_nu * (epsilong)) /
            param->m_h0;
-    // double cte = 25 * 0.000001;
-    // double delta_temp = 80;// 高温側 今の温度 - 室温（基準温度）
-    // return (h) * L * ((param->m_preCalc1 * ((epsilonl) + param->m_nu * (epsilong))) - (cte * delta_temp)) /
-    //        param->m_h0;
+#endif
+
 }
 
 /**
@@ -1219,4 +1231,31 @@ double MultiParticle::RK4Two(const double& v, const double& f,
     return (param->C_EI * (f - param->m_Cv * v) / S0 +
             (param->C_EI * param->C_AE) * (Fair - param->m_Cv * v) /
                 S0);
+}
+
+////////////////////////////////////////////////////////
+///   伝熱解析　thermal analysis
+////////////////////////////////////////////////////////
+
+/**
+ * @brief  		太陽輻射圧による輻射熱の計算
+ * @param[in] 	int j
+ * @param[in]	int i
+ * @details		
+ * @note
+ */
+double MultiParticle::SolarRadiationHeat(Vector const& S){
+    double lightspeed = 299792458000 / param->Vref;
+    double SolarFlux = param->m_Pc * lightspeed;
+
+    // p->pressure[i][j][k] = param->pressure_initial;
+    //! 正規化してから内積しているので、問題なし
+    double angle_surface_sun =
+        math::sacos(innerProductCalc(-1.0 * param->pressure_initial.unit(),
+                                        S.vector.unit()));
+
+    // 吸収率 = 1 - param->reflectance;
+    // p->S[i][j][k].cp.norm
+
+    return SolarFlux * cos(angle_surface_sun) * (1 - param->reflectance) * S.norm;
 }

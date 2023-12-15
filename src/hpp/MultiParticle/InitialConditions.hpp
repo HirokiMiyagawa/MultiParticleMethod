@@ -117,10 +117,10 @@ void MultiParticle::setInitialConditions() {
     
 
     setInitialConditionsCopy();
-    if (param->analysis_shape == "cylinder" ||
-        param->analysis_shape == "cuboid") {
-        setInitialConditionsSetParamShapeCylinder();
-    }
+    // if (param->analysis_shape == "cylinder" ||
+    //     param->analysis_shape == "cuboid") {
+    //     setInitialConditionsSetParamShapeCylinder();
+    // }
     setInitialConditionsCopy();
 
 #ifdef __GRAVITY__
@@ -404,7 +404,7 @@ void MultiParticle::setInitialConditionsParticleSetFromcsv(){
         std::vector<float> strvec = basic->split(line, ',');
 
         // Check if the vector size is as expected
-        if (strvec.size() != 4) {
+        if (strvec.size() != 7) {
             std::cerr << "Error: Invalid data format on line(粒子位置のインプットファイルの入力形式が違います) " << i + 1 << std::endl;
             // return 1;  // Return an error code
         }
@@ -413,18 +413,23 @@ void MultiParticle::setInitialConditionsParticleSetFromcsv(){
         p->c[i][j][k].x = strvec[1];  // X-axis
         p->c[i][j][k].y = strvec[2];  // Y-axis
         p->c[i][j][k].z = strvec[3];  // Z-axis
-
+#ifdef __ContinueAnalysis__
+        // velocity
+        p->v[i][j][k].x = strvec[4];  // X-axis
+        p->v[i][j][k].y = strvec[5];  // Y-axis
+        p->v[i][j][k].z = strvec[6];  // Z-axis
+#endif
         // Print the values for verification
         // std::cout << "i = " << i << ", j = " << j << ", x = " << p->c[i][j][k].x << ", y = " << p->c[i][j][k].y
         //           << ", z = " << p->c[i][j][k].z << std::endl;
 
         // Increment indices
-        i++;
-        if (i == local_iNum) {
-            i = 0;
-            j++;
-            if (j == local_jNum) {
-                j = 0;
+        j++;
+        if (j == local_iNum) {
+            j = 0;
+            i++;
+            if (i == local_jNum) {
+                i = 0;
                 k++;
             }
         }

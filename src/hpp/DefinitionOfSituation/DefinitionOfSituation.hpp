@@ -176,3 +176,6 @@
 
 // #define __GRAVITY__
 // #define __InputPosition__ // 粒子位置をcsvファイルから入力する場合のもの
+// #define __ContinueAnalysis__ // 以前の解析結果を引き継いで解析を続けるときに宣言する。粒子速度をcsvファイルから入力する
+#define __ThermalForce__ // 熱応力を入れるか否か
+#define __ThermalAnalysis__ // 伝熱解析を入れるか否か(非均一)
