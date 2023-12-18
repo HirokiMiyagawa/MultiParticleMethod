@@ -3808,17 +3808,17 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
     p->diff_etaj[i][j][k] = p->etaj[i][j][k] - p->etaj0[i][j][k];
 
 #ifdef __CREASE__
-    if(p->j_specialflag[i][j][k]){
+    if(p->j_specialflag[i][j][k] == 1){
         p->Mi[i][j][k] = 
-            creaseMCalc(norm_j_plus+norm_j_minus, -p->alphai[i][j][k]+p->alphai0[i][j][k], -p->alphaj[i][j][k]+p->alphaj0[i][j][k]);
+            creaseMCalc(norm_j_plus+norm_j_minus, -1*p->alphai[i][j][k]+p->alphai0[i][j][k], -1*p->alphaj[i][j][k]+p->alphaj0[i][j][k]);
     }
     else {
         p->Mi[i][j][k] =
             MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k], p->diff_etaj[i][j][k]);
     }
-    if(p->i_specialflag[i][j][k]){
+    if(p->i_specialflag[i][j][k] == 1){
         p->Mj[i][j][k] = 
-            creaseMCalc(norm_i_plus+norm_i_minus, -p->alphaj[i][j][k]+p->alphaj0[i][j][k], -p->alphai[i][j][k]+p->alphai0[i][j][k]);
+            creaseMCalc(norm_i_plus+norm_i_minus, -1*p->alphaj[i][j][k]+p->alphaj0[i][j][k], -1*p->alphai[i][j][k]+p->alphai0[i][j][k]);
     }
     else {
         p->Mj[i][j][k] =
@@ -4398,6 +4398,7 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
     }
 
     if (param->oblique_rigid) {
+        // 折り目用の処理。後で書き換える
         if (param->oblique_move == "allFix") {
             // if (i == j || j == (((int)p->flag.size() - 1) - i)) {
             switch(i){
@@ -4506,12 +4507,34 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
             RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
                  p->f[i][j][k].z + p->external_force[i][j][k].z + p->F_roll[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
         } else {
+#ifdef __CREASE__
+            if((p->i_specialflag[i][j][k]) || (p->j_specialflag[i][j][k])){
+                RK4MCrease(p->c[i][j][k].x, p->v[i][j][k].x,
+                    p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                RK4MCrease(p->c[i][j][k].y, p->v[i][j][k].y,
+                    p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                RK4MCrease(p->c[i][j][k].z, p->v[i][j][k].z,
+                    p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+        
+            }
+            else{
+                RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
+                    p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
+                    p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
+                    p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+        
+            }
+#else
             RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                 p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
             RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                 p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
             RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                 p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+    
+#endif
         }
         return;
     }

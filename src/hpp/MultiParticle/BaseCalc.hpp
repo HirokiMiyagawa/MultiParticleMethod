@@ -836,6 +836,7 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
     p->f[i][j][k].x = 0;
     p->f[i][j][k].y = 0;
     p->f[i][j][k].z = 0;
+    double creasecv = 0;
 
     if (CylinderPressure) {
         if (param->boundary.cylinder_boundary) {
@@ -980,9 +981,21 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
         //                     p->Si[i][j][k].cp.norm);
         // p->f[i][j][k].z += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector.z /
         //                     p->Si[i][j][k].cp.norm);
-
         p->f[i][j][k] += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector /
                           p->Si[i][j][k].cp.norm);
+
+#ifdef __CREASE__
+        if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT){
+            if (p->j_specialflag[i + 1][j][k] == 1){
+                p->f[i][j][k] -= (p->Fb[i + 1][j][k].imv * p->Si[i][j][k].cp.vector /
+                                    p->Si[i][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+            }
+            else if (p->j_specialflag[i][j][k] == 1){
+                p->f[i][j][k] += (p->Fb[i][j][k].ipv * p->Si[i][j][k].cp.vector /
+                                    p->Si[i][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+            }
+        }
+#endif
         // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].ipv, p->Si[i][j][k]);
     }
 
@@ -996,6 +1009,18 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
 
         p->f[i][j][k] += (p->F[i][j][k].imv * p->Si[i - 1][j][k].cp.vector /
                           p->Si[i - 1][j][k].cp.norm);
+#ifdef __CREASE__
+        if (p->surround_particle_exsit[i][j][k] & BIT_LEFT){
+            if (p->j_specialflag[i - 1][j][k] == 1){
+                p->f[i][j][k] -= (p->Fb[i - 1][j][k].ipv * p->Si[i - 1][j][k].cp.vector /
+                                    p->Si[i - 1][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+            }
+            else if (p->j_specialflag[i][j][k] == 1){
+                p->f[i][j][k] += (p->Fb[i][j][k].imv * p->Si[i - 1][j][k].cp.vector /
+                                    p->Si[i - 1][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+            }
+        }
+#endif
         // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].imv, p->Si[i][j -
         // 1][k]);
     }
@@ -1010,6 +1035,18 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
 
         p->f[i][j][k] += (p->F[i][j][k].jpv * p->Sj[i][j][k].cp.vector /
                           p->Sj[i][j][k].cp.norm);
+#ifdef __CREASE__
+        if (p->surround_particle_exsit[i][j][k] & BIT_TOP){
+           if (p->i_specialflag[i][j + 1][k] == 1){
+                p->f[i][j][k] -= (p->Fb[i][j + 1][k].jmv * p->Sj[i][j][k].cp.vector /
+                                    p->Sj[i][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+            }
+            else if (p->i_specialflag[i][j][k] == 1){
+                p->f[i][j][k] += (p->Fb[i][j][k].jpv * p->Sj[i][j][k].cp.vector /
+                                    p->Sj[i][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+            }
+        }
+#endif
         // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].jpv, p->Sj[i][j][k]);
     }
 
@@ -1023,6 +1060,18 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
 
         p->f[i][j][k] += (p->F[i][j][k].jmv * p->Sj[i][j - 1][k].cp.vector /
                           p->Sj[i][j - 1][k].cp.norm);
+#ifdef __CREASE__
+        if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM){
+           if (p->i_specialflag[i][j - 1][k] == 1){
+                p->f[i][j][k] -= (p->Fb[i][j - 1][k].jpv * p->Sj[i][j - 1][k].cp.vector /
+                                    p->Sj[i][j - 1][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+            }
+            else if (p->i_specialflag[i][j][k] == 1){
+                p->f[i][j][k] += (p->Fb[i][j][k].jmv * p->Sj[i][j - 1][k].cp.vector /
+                                    p->Sj[i][j - 1][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+            }
+        }
+#endif
         // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].jmv, p->Sj[i][j -
         // 1][k]);
     }
@@ -1220,6 +1269,42 @@ void MultiParticle::RK4M(double& myr, double& myv, const double& f,
     myv = myv + (k12 + 2 * k22 + 2 * k32 + k42) / 6;
 }
 
+/**
+ * @brief		ルンゲクッタ法
+ * @param[in] 	double r = p_>c[i][j]
+ * @param[in] 	double v = p_>v[i][j]
+ * @param[in] 	double f = p_>f[i][j]
+ * @param[in] 	double S = p_>S0[i][j]
+ * @details		この関数単体では1度しか計算を行わない
+ * @note		BaseCalc.hppで定義
+ * GetNewCoordinate.hppで使用されている
+ * RK4Mの折り目version
+ */
+void MultiParticle::RK4MCrease(double& myr, double& myv, const double& f,
+                         const double& S0,
+                         const double& Fair) {
+
+    double k11, k12;
+    double k21, k22;
+    double k31, k32;
+    double k41, k42;
+
+    k11 = param->m_dt * RK4One(myv);
+    k12 = param->m_dt * RK4TwoCrease(myv, f, S0, Fair);
+
+    k21 = param->m_dt * RK4One(myv + k12 / 2);
+    k22 = param->m_dt * RK4TwoCrease(myv + k12 / 2, f, S0, Fair);
+
+    k31 = param->m_dt * RK4One(myv + k22 / 2);
+    k32 = param->m_dt * RK4TwoCrease(myv + k22 / 2, f, S0, Fair);
+
+    k41 = param->m_dt * RK4One(myv + k32 / 2);
+    k42 = param->m_dt * RK4TwoCrease(myv + k32 / 2, f, S0, Fair);
+
+    myr = myr + (k11 + 2 * k21 + 2 * k31 + k41) / 6;
+    myv = myv + (k12 + 2 * k22 + 2 * k32 + k42) / 6;
+}
+
 //-----------------------------------
 //
 // Runge Kutta Calc Method 4th Order function one.
@@ -1234,7 +1319,7 @@ void MultiParticle::RK4M(double& myr, double& myv, const double& f,
 //-----------------------------------
 //
 // Runge Kutta Calc Method 4th Order funciton two.
-//
+//今使ってるのはこっち
 //-----------------------------------
 /**
  * @brief	ルンゲクッタ法のvの微小変化を求める式
@@ -1250,8 +1335,22 @@ double MultiParticle::RK4Two(const double& v, const double& f,
                 S0);
 }
 
+/**
+ * @brief	RK4Twoの折り目version
+ */
+double MultiParticle::RK4TwoCrease(const double& v, const double& f,
+                             const double& S0,
+                             const double& Fair) {
+    //! vの微小変化を求める式、C_EI * (f - Cv * v) / S ここで、Cvは粘性項
+    return (((param->C_EI * f) / S0) + ((param->C_EI * param->C_AE * Fair) / S0)) - ((param->C_EI * (param->m_Cv*1) * v) / S0);
+
+    return (param->C_EI * (f - (param->m_Cv*10) * v) / S0 +
+            (param->C_EI * param->C_AE) * (Fair - param->m_Cv * v) /
+                S0);
+}
+
 ////////////////////////////////////////////////////////
-///   伝熱解析　thermal analysis
+///   熱解析　thermal analysis
 ////////////////////////////////////////////////////////
 
 /**

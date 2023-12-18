@@ -21,8 +21,8 @@ class Particles {
     //! Particle's Flag
     vector<vector<vector<int>>> flag;
     //! particle's special flag (crease)
-    vector<vector<vector<bool>>> i_specialflag; //judge to exist crease on l(i+1/2, j)
-    vector<vector<vector<bool>>> j_specialflag; //judge to exist crease on l(i, j+1.2)
+    vector<vector<vector<int>>> i_specialflag; //judge to exist crease on l(i+1/2, j)
+    vector<vector<vector<int>>> j_specialflag; //judge to exist crease on l(i, j+1.2)
     vector<vector<vector<int>>> surround_particle_exsit;
     vector<vector<vector<Communication>>> commflag;
     //! Particle Coordinates (x,y,z) 粒子の座標を格納する (Particle Coordinates)

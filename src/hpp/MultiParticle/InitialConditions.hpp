@@ -26,7 +26,68 @@ void MultiParticle::setInitialAnalysisShape(std::string const& analysis_shape,
             if (grid_pattern == "equally") {
 #ifdef __CREASE__
                 std::cout << "set initial particle..." << std::endl;
-                setInitialConditionsParticleSetFromcsv();
+                // setInitialConditionsParticleSetFromcsv();
+                 // Open the file
+                std::ifstream position(param->read_positionfilename);
+                if (position.fail()) {
+                    std::cerr << "Could not open file: " << param->read_positionfilename << std::endl;
+                    // return 1;  // Return an error code
+                }
+
+                std::string line;
+                int i = 0;
+                int j = 0;
+                int k = 0;
+
+                // Read each line from the file
+                while (getline(position, line)) {
+                    // Skip lines starting with an alphabet character
+                    if (isalpha(line[1])) {
+                        continue;
+                    }
+
+                    // Split the line into a vector of floats
+                    std::vector<float> strvec = basic->split(line, ',');
+
+                    // Check if the vector size is as expected
+                    if (strvec.size() != 7) {
+                        // std::cerr << "Error: Invalid data format on line(粒子位置のインプットファイルの入力形式が違います) " << i + 1 << std::endl;
+                        // return 1;  // Return an error code
+                    }
+
+                    // Assign values to the Container
+                    p->c[i][j][k].x = strvec[9];  // X-axis
+                    p->c[i][j][k].y = strvec[10];  // Y-axis
+                    p->c[i][j][k].z = strvec[11];  // Z-axis
+
+                    p->i_specialflag[i][j][k] = strvec[7];
+                    p->j_specialflag[i][j][k] = strvec[8];
+
+
+                    // Print the values for verification
+                    // std::cout << "i = " << i << ", j = " << j << ", x = " << p->c[i][j][k].x << ", y = " << p->c[i][j][k].y
+                    //           << ", z = " << p->c[i][j][k].z << std::endl;
+
+                    // Increment indices
+                    j++;
+                    if (j == local_jNum) {
+                        j = 0;
+                        i++;
+                        if (i == local_iNum) {
+                            i = 0;
+                            k++;
+                        }
+                    }
+                }
+
+                // Check if the number of input elements matches expectations
+                if (i != 0 || j != 0) {
+                    std::cerr << "Error: Number of input elements does not match expectations." << std::endl;
+                    // return 1;  // Return an error code
+                }
+
+                // Close the file
+                position.close();
 #else
                 setInitialConditionsEquallyDividedModeling();
 #endif
@@ -4278,12 +4339,14 @@ void MultiParticle::setInitialConditionsCopy() {
                 // p->etai[i][j][k] = 0;
                 // p->etaj[i][j][k] = 0;
 #ifdef __CREASE__
-                if(p->j_specialflag[i][j][k]){
-                    // std::cout << "creaseflag" << std::endl;
+                if(p->j_specialflag[i][j][k] == 1){
+                    // std::cout << "creaseflag0, " << i << std::endl;
                     if (i == 4){
+                        // std::cout << "creaseflag" << std::endl;
                         p->alphai0[i][j][k] = math::pi()/2;
                     }
                     if (i == 9){
+                        // std::cout << "creaseflag2" << std::endl;
                         p->alphai0[i][j][k] = 3 * math::pi()/2;
                     }
                     if (i == 14){
@@ -4296,7 +4359,7 @@ void MultiParticle::setInitialConditionsCopy() {
                         p->alphai0[i][j][k] = math::pi()/2;
                     }
                 }
-                if(p->i_specialflag[i][j][k]){
+                if(p->i_specialflag[i][j][k] == 1){
                     p->alphaj0[i][j][k] = math::pi() / 2;
                 }
 #endif

@@ -1325,8 +1325,8 @@ for (i = 0; i < local_iNum; i++) {
                             << "," << p->g0[i][j][k].z << "," << p->li0[i][j][k]
                             << "," << p->lj0[i][j][k] << "," << p->Si0[i][j][k]
                             << "," << p->Sj0[i][j][k] << "," << p->S0[i][j][k]
-                            << "," << p->alphai[i][j][k] * 180 / math::pi()
-                            << "," << p->alphaj[i][j][k] * 180 / math::pi()
+                            << "," << p->alphai0[i][j][k] * 180 / math::pi()
+                            << "," << p->alphaj0[i][j][k] * 180 / math::pi()
                             << "," << p->etai0[i][j][k] << ","
                             << p->etaj0[i][j][k] << ","
                             << p->beta[i][j][k].pp * 180 / math::pi() << ","
@@ -1890,6 +1890,8 @@ for (i = 0; i < local_iNum; i++) {
     double RK4Two(double const&, double const&, double const&);
     void RK4M(double&, double&, const double&, const double&, const double&);
     double RK4Two(const double&, const double&, const double&, const double&);
+    void RK4MCrease(double&, double&, const double&, const double&, const double&);
+    double RK4TwoCrease(const double&, const double&, const double&, const double&);
 
     C UnitVectorCalc(const double&, const Area&);
     C UnitVectorCalc(const double&, const Vector&);
