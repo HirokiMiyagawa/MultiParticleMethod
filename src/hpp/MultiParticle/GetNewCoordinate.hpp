@@ -716,9 +716,11 @@ void MultiParticle::GetNewCoordinate(int const& i, int const& j, int const& k) {
         // bend
 #ifdef __CREASE__ 
         if (p->j_specialflag[i + 1][j][k] == 1){
+            cout << "this is a crease" << endl;
             p->F[i][j][k].ipv = p->Fb[i][j][k].ipv;
         }
         else if (p->j_specialflag[i][j][k] == 1){
+            cout << "this is a crease" << endl;
             p->F[i][j][k].ipv = -1 * p->Fb[i + 1][j][k].imv;
         }
         else{
@@ -740,9 +742,11 @@ void MultiParticle::GetNewCoordinate(int const& i, int const& j, int const& k) {
         // bend
 #ifdef __CREASE__ 
         if (p->j_specialflag[i - 1][j][k] == 1){
+            cout << "this is a crease" << endl;
             p->F[i][j][k].imv = p->Fb[i][j][k].imv;
         }
         else if (p->j_specialflag[i][j][k] == 1){
+            cout << "this is a crease" << endl;
             p->F[i][j][k].imv = -1 * p->Fb[i - 1][j][k].ipv;
         }
         else{
@@ -764,9 +768,11 @@ void MultiParticle::GetNewCoordinate(int const& i, int const& j, int const& k) {
         // bend
 #ifdef __CREASE__ 
         if (p->i_specialflag[i][j + 1][k] == 1){
+            cout << "this is a crease" << endl;
             p->F[i][j][k].jpv = p->Fb[i][j][k].jpv;
         }
         else if (p->i_specialflag[i][j][k] == 1){
+            cout << "this is a crease" << endl;
             p->F[i][j][k].jpv = -1 * p->Fb[i][j + 1][k].jmv;
         }
         else{
@@ -788,9 +794,11 @@ void MultiParticle::GetNewCoordinate(int const& i, int const& j, int const& k) {
         // bend
 #ifdef __CREASE__ 
         if (p->i_specialflag[i][j - 1][k] == 1){
+            cout << "this is a crease" << endl;
             p->F[i][j][k].jmv = p->Fb[i][j][k].jmv;
         }
         else if (p->i_specialflag[i][j][k] == 1){
+            cout << "this is a crease" << endl;
             p->F[i][j][k].jmv = -1 * p->Fb[i][j - 1][k].jpv;
         }
         else{

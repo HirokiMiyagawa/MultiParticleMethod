@@ -3811,6 +3811,7 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
     if(p->j_specialflag[i][j][k] == 1){
         p->Mi[i][j][k] = 
             creaseMCalc(norm_j_plus+norm_j_minus, -1*p->alphai[i][j][k]+p->alphai0[i][j][k], -1*p->alphaj[i][j][k]+p->alphaj0[i][j][k]);
+        cout << "this is a crease" << endl;
     }
     else {
         p->Mi[i][j][k] =
@@ -3819,6 +3820,7 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
     if(p->i_specialflag[i][j][k] == 1){
         p->Mj[i][j][k] = 
             creaseMCalc(norm_i_plus+norm_i_minus, -1*p->alphaj[i][j][k]+p->alphaj0[i][j][k], -1*p->alphai[i][j][k]+p->alphai0[i][j][k]);
+        cout << "this is a crease" << endl;
     }
     else {
         p->Mj[i][j][k] =
@@ -3827,9 +3829,9 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
     }
 #else
     p->Mi[i][j][k] =
-        MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k], p->diff_etaj[i][j][k], p->i_specialflag[i][j][k]);
+        MCalc(p->Ii[i][j][k], p->diff_etai[i][j][k], p->diff_etaj[i][j][k]);
     p->Mj[i][j][k] =
-        MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k], p->diff_etai[i][j][k], p->j_specialflag[i][j][k]);
+        MCalc(p->Ij[i][j][k], p->diff_etaj[i][j][k], p->diff_etai[i][j][k]);
 #endif
     if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
         p->Fb[i][j][k].ipv = -1 * p->Mi[i][j][k] / p->li[i][j][k].norm;
@@ -4400,7 +4402,7 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
     if (param->oblique_rigid) {
         // 折り目用の処理。後で書き換える
         if (param->oblique_move == "allFix") {
-            // if (i == j || j == (((int)p->flag.size() - 1) - i)) {
+#ifdef __CREASE__
             switch(i){
                 case 0:
                 case 1:
@@ -4410,7 +4412,16 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
                      }
                      break;
                 case 4:
-                    if (j == 3 || j == 15){ return;}
+                    if (j == 3 || j == 15){ 
+                        // RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
+                        //     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                        // RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
+                        //     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                        // RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
+                        //     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                
+                        return;
+                    }
                     break;
                 case 6:
                 case 7:
@@ -4419,7 +4430,16 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
                      }
                      break;
                 case 9:
-                    if (j == 6 || j == 12){ return;}
+                    if (j == 6 || j == 12){ 
+                        // RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
+                        //     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                        // RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
+                        //     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                        // RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
+                        //     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                
+                        return;
+                    }
                     break;
                 case 11:
                 case 12:
@@ -4428,7 +4448,16 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
                      }
                      break;
                 case 14:
-                    if (j == 9){ return;}
+                    if (j == 9){ 
+                        // RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
+                        //     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                        // RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
+                        //     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                        // RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
+                        //     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                
+                        return;
+                    }
                     break;
                 case 16:
                 case 17:
@@ -4437,7 +4466,16 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
                      }
                      break;
                 case 19:
-                    if (j == 12 || j == 6){ return;}
+                    if (j == 12 || j == 6){ 
+                        // RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
+                        //     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                        // RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
+                        //     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                        // RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
+                        //     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                
+                        return;
+                    }
                     break;
                 case 21:
                 case 22:
@@ -4446,7 +4484,16 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
                      }
                      break;
                 case 24:
-                    if (j == 15 || j == 3){ return;}
+                    if (j == 15 || j == 3){ 
+                        // RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
+                        //     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+                        // RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
+                        //     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+                        // RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
+                        //     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                
+                        return;
+                    }
                     break;
                 case 26:
                 case 27:
@@ -4458,7 +4505,14 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
                 default:
                     break;
             }
-
+            if (p->j_specialflag[i][j][k] == 3){
+                return;
+            }
+#else
+            if (i == j || j == (((int)p->flag.size() - 1) - i)) {
+                return;
+            }
+#endif
             
         }
         if (param->oblique_move == "pointFix") {
@@ -4515,7 +4569,7 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
                     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
                 RK4MCrease(p->c[i][j][k].z, p->v[i][j][k].z,
                     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
-        
+                cout << "this is a crease" << endl;
             }
             else{
                 RK4M(p->c[i][j][k].x, p->v[i][j][k].x,

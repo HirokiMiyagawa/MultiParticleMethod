@@ -24,7 +24,7 @@ void MultiParticle::setInitialAnalysisShape(std::string const& analysis_shape,
         } else if (analysis_shape == "square" ||
                    analysis_shape == "quadrangle") {
             if (grid_pattern == "equally") {
-#ifdef __CREASE__
+#ifdef __INPUT_INITIALPOSITION__
                 std::cout << "set initial particle..." << std::endl;
                 // setInitialConditionsParticleSetFromcsv();
                  // Open the file
@@ -59,10 +59,10 @@ void MultiParticle::setInitialAnalysisShape(std::string const& analysis_shape,
                     p->c[i][j][k].x = strvec[9];  // X-axis
                     p->c[i][j][k].y = strvec[10];  // Y-axis
                     p->c[i][j][k].z = strvec[11];  // Z-axis
-
+#ifdef __CREASE__
                     p->i_specialflag[i][j][k] = strvec[7];
                     p->j_specialflag[i][j][k] = strvec[8];
-
+#endif
 
                     // Print the values for verification
                     // std::cout << "i = " << i << ", j = " << j << ", x = " << p->c[i][j][k].x << ", y = " << p->c[i][j][k].y
@@ -4339,8 +4339,10 @@ void MultiParticle::setInitialConditionsCopy() {
                 // p->etai[i][j][k] = 0;
                 // p->etaj[i][j][k] = 0;
 #ifdef __CREASE__
+                p->alphaj0[i][j][k] = math::pi();
+                p->alphai0[i][j][k] = math::pi();
                 if(p->j_specialflag[i][j][k] == 1){
-                    // std::cout << "creaseflag0, " << i << std::endl;
+                    std::cout << "creaseflag0, " << i << std::endl;
                     if (i == 4){
                         // std::cout << "creaseflag" << std::endl;
                         p->alphai0[i][j][k] = math::pi()/2;

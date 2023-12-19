@@ -175,8 +175,9 @@
 // -----------------------------------------------------------
 
 // #define __GRAVITY__
-#define __InputPosition__ // 粒子位置をcsvファイルから入力する場合のもの
+// #define __InputPosition__ // 粒子位置をcsvファイルから入力する場合のもの
 // #define __ContinueAnalysis__ // 以前の解析結果を引き継いで解析を続けるときに宣言する。粒子速度をcsvファイルから入力する
 // #define __ThermalForce__ // 熱応力を入れるか否か
 // #define __ThermalAnalysis__ // ソーラーセイルの変形後の形状を考慮して温度計算するか否か（非均一）（基本的に上のものとセットで考える）
-#define __CREASE__ // 折り目を考慮するか否か
+// #define __CREASE__ // 折り目を考慮するか否か
+// #define __INPUT_INITIALPOSITION__ // 初期粒子位置をcsvファイルから入力する場合のもの
