@@ -3700,7 +3700,7 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
         p->h_ave3[i][j][k] =
             p->h_ave[i][j][k] * p->h_ave[i][j][k] * p->h_ave[i][j][k];
     }
-    {
+    {//TODO
         if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
             norm_j_plus = normCalcV2(p->mj[i][j][k], p->c[i][j][k]);
         }
@@ -3734,6 +3734,10 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
             minus = p->vc_Bottom[i][j][k];
         }
         p->alphaj[i][j][k] = angleCalc2(p->c[i][j][k], plus, minus, "j");
+#ifdef __INERTIAMOMENT__
+        p->Ii[i][j][k] = InertiaMomentCalc(p->alphaj[i][j][k] / 2, norm_j_plus,
+                              norm_j_minus, p->h_ave[i][j][k]);
+#endif
     }
 
     {
@@ -3751,6 +3755,10 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
         }
         p->alphai[i][j][k] = angleCalc2(p->c[i][j][k], plus, minus, "i");
 
+#ifdef __INERTIAMOMENT__
+        p->Ij[i][j][k] = InertiaMomentCalc(p->alphai[i][j][k] / 2, norm_i_plus,
+                              norm_i_minus, p->h_ave[i][j][k]);
+#endif
         // if ((p->surround_particle_exsit[i][j][k] & BIT_RIGHT) &&
         //     (p->surround_particle_exsit[i][j][k] & BIT_LEFT)) {
         //     p->alphai[i][j][k] = angleCalc2(p->c[i][j][k], p->c[i + 1][j][k],
@@ -3811,7 +3819,7 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
     if(p->j_specialflag[i][j][k] == 1){
         p->Mi[i][j][k] = 
             creaseMCalc(norm_j_plus+norm_j_minus, -1*p->alphai[i][j][k]+p->alphai0[i][j][k], -1*p->alphaj[i][j][k]+p->alphaj0[i][j][k]);
-        cout << "this is a crease" << endl;
+        // cout << "this is a crease" << endl;
     }
     else {
         p->Mi[i][j][k] =
@@ -3820,7 +3828,7 @@ void MultiParticle::BendForceCalc(const int& i, const int& j, const int& k) {
     if(p->i_specialflag[i][j][k] == 1){
         p->Mj[i][j][k] = 
             creaseMCalc(norm_i_plus+norm_i_minus, -1*p->alphaj[i][j][k]+p->alphaj0[i][j][k], -1*p->alphai[i][j][k]+p->alphai0[i][j][k]);
-        cout << "this is a crease" << endl;
+        // cout << "this is a crease" << endl;
     }
     else {
         p->Mj[i][j][k] =
@@ -4402,113 +4410,116 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
     if (param->oblique_rigid) {
         // 折り目用の処理。後で書き換える
         if (param->oblique_move == "allFix") {
-#ifdef __CREASE__
-            switch(i){
-                case 0:
-                case 1:
-                case 2:
-                     if (i == j || j == ((19 - 1) - i)) {
-                        return;
-                     }
-                     break;
-                case 4:
-                    if (j == 3 || j == 15){ 
-                        // RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                        //     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
-                        // RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                        //     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
-                        // RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                        //     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
-                
-                        return;
-                    }
-                    break;
-                case 6:
-                case 7:
-                    if ((i - 2) == j || j == ((19 - 1) - (i - 2))) {
-                        return;
-                     }
-                     break;
-                case 9:
-                    if (j == 6 || j == 12){ 
-                        // RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                        //     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
-                        // RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                        //     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
-                        // RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                        //     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
-                
-                        return;
-                    }
-                    break;
-                case 11:
-                case 12:
-                    if ((i - 4) == j || j == ((19 - 1) - (i - 4))) {
-                        return;
-                     }
-                     break;
-                case 14:
-                    if (j == 9){ 
-                        // RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                        //     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
-                        // RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                        //     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
-                        // RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                        //     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
-                
-                        return;
-                    }
-                    break;
-                case 16:
-                case 17:
-                    if ((i - 6) == j || j == ((19 - 1) - (i - 6))) {
-                        return;
-                     }
-                     break;
-                case 19:
-                    if (j == 12 || j == 6){ 
-                        // RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                        //     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
-                        // RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                        //     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
-                        // RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                        //     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
-                
-                        return;
-                    }
-                    break;
-                case 21:
-                case 22:
-                    if ((i - 8) == j || j == ((19 - 1) - (i - 8))) {
-                        return;
-                     }
-                     break;
-                case 24:
-                    if (j == 15 || j == 3){ 
-                        // RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
-                        //     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
-                        // RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
-                        //     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
-                        // RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
-                        //     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
-                
-                        return;
-                    }
-                    break;
-                case 26:
-                case 27:
-                case 28:
-                    if ((i - 10) == j || j == ((19 - 1) - (i - 10))) {
-                        return;
-                     }
-                     break;
-                default:
-                    break;
-            }
-            if (p->j_specialflag[i][j][k] == 3){
+#ifdef __CREASE__ //TODO
+            if (p->boomflag[i][j][k] == 1){
                 return;
             }
-#else
+            // switch(i){
+            //     case 0:
+            //     case 1:
+            //     case 2:
+            //          if (i == j || j == ((19 - 1) - i)) {
+            //             return;
+            //          }
+            //          break;
+            //     case 4:
+            //         if (j == 3 || j == 15){ 
+            //             // RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
+            //             //     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+            //             // RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
+            //             //     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+            //             // RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
+            //             //     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                
+            //             return;
+            //         }
+            //         break;
+            //     case 6:
+            //     case 7:
+            //         if ((i - 2) == j || j == ((19 - 1) - (i - 2))) {
+            //             return;
+            //          }
+            //          break;
+            //     case 9:
+            //         if (j == 6 || j == 12){ 
+            //             // RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
+            //             //     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+            //             // RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
+            //             //     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+            //             // RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
+            //             //     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                
+            //             return;
+            //         }
+            //         break;
+            //     case 11:
+            //     case 12:
+            //         if ((i - 4) == j || j == ((19 - 1) - (i - 4))) {
+            //             return;
+            //          }
+            //          break;
+            //     case 14:
+            //         if (j == 9){ 
+            //             // RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
+            //             //     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+            //             // RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
+            //             //     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+            //             // RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
+            //             //     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                
+            //             return;
+            //         }
+            //         break;
+            //     case 16:
+            //     case 17:
+            //         if ((i - 6) == j || j == ((19 - 1) - (i - 6))) {
+            //             return;
+            //          }
+            //          break;
+            //     case 19:
+            //         if (j == 12 || j == 6){ 
+            //             // RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
+            //             //     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+            //             // RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
+            //             //     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+            //             // RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
+            //             //     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                
+            //             return;
+            //         }
+            //         break;
+            //     case 21:
+            //     case 22:
+            //         if ((i - 8) == j || j == ((19 - 1) - (i - 8))) {
+            //             return;
+            //          }
+            //          break;
+            //     case 24:
+            //         if (j == 15 || j == 3){ 
+            //             // RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
+            //             //     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
+            //             // RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
+            //             //     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
+            //             // RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
+            //             //     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
+                
+            //             return;
+            //         }
+            //         break;
+            //     case 26:
+            //     case 27:
+            //     case 28:
+            //         if ((i - 10) == j || j == ((19 - 1) - (i - 10))) {
+            //             return;
+            //          }
+            //          break;
+            //     default:
+            //         break;
+            // }
+            // if (p->j_specialflag[i][j][k] == 3){
+            //     return;
+            // }
+#else // not crease
             if (i == j || j == (((int)p->flag.size() - 1) - i)) {
                 return;
             }
@@ -4569,7 +4580,7 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
                     p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
                 RK4MCrease(p->c[i][j][k].z, p->v[i][j][k].z,
                     p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
-                cout << "this is a crease" << endl;
+                // cout << "this is a crease" << endl;
             }
             else{
                 RK4M(p->c[i][j][k].x, p->v[i][j][k].x,

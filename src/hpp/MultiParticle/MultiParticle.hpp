@@ -571,6 +571,7 @@ for (i = 0; i < local_iNum; i++) {
         }
     }
 }
+// std::cout << "checkpoint2.1..." << std::endl;
 // #pragma acc parallel loop collapse(3) copyin(b[0:local_iNum][0:local_jNum][0:local_kNum]) \
 //                                 copyout(a[0:30][0:30][0])
 // for (i = 0; i < local_iNum; i++) {
@@ -597,6 +598,7 @@ for (i = 0; i < local_iNum; i++) {
                     }
                 }
             }
+            // std::cout << "checkpoint2.2..." << std::endl;
 #pragma acc parallel loop collapse(3) 
 #pragma omp for private(j) private(k) schedule(static)
             for (i = 0; i < local_iNum; i++) {
@@ -1873,6 +1875,8 @@ for (i = 0; i < local_iNum; i++) {
     double FsCalc(double const&, double const&, double const&);
     double FtCalc(double const&, double const&, double const&, double const&, Vector const&, double&);
     double etaCalc(double const&, double const&, double const&);
+    double InertiaMomentCalc(double const&, double const&,
+                              double const&, double const&); 
     double MCalc(double const&, double const&, double const&);
     double creaseMCalc(double const&, double const&, double const&);
     double get_random();

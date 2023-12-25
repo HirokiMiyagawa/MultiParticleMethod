@@ -388,6 +388,45 @@ double MultiParticle::etaCalc(double const& alpha, double const& lp,
 }
 
 /**
+ * @brief	断面二次モーメント Ｉ
+ * @note	二次元板を仮定しないときに使う
+ * alphaは、2で割ってから、格納する
+ */
+double MultiParticle::InertiaMomentCalc(double const& alpha, double const& lp,
+                              double const& lm, double const& h) {
+
+    if (sin(alpha) != 0) {
+        if ((math::pi()/2) < alpha) {
+            double Ap = lp * sin(alpha);
+            double Bp = lp * cos(alpha) + (h / sin(alpha));
+            double Cp = lp * cos(alpha);
+
+            double Am = lm * sin(alpha);
+            double Bm = lm * cos(alpha) + (h / sin(alpha));
+            double Cm = lm * cos(alpha);
+            double Ip = Ap * ((Bp * pow(Bp - 2*Cp, 2)) + (Cp * (Bp * Bp - 2 * Cp * Cp))) / 6;
+            double Im = Am * ((Bm * pow(Bm - 2*Cm, 2)) + (Cm * (Bm * Bm - 2 * Cm * Cm))) / 6;
+            return (Im + Ip) * 12;
+
+        } else {
+            double Ap = lp * sin(math::pi() - alpha);
+            double Bp = lp * cos(math::pi() - alpha) + (h / sin(math::pi() - alpha));
+            double Cp = lp * cos(math::pi() - alpha);
+
+            double Am = lm * sin(math::pi() - alpha);
+            double Bm = lm * cos(math::pi() - alpha) + (h / sin(math::pi() - alpha));
+            double Cm = lm * cos(math::pi() - alpha);
+            double Ip = Ap * ((Bp * pow(Bp - 2*Cp, 2)) + (Cp * (Bp * Bp - 2 * Cp * Cp))) / 6;
+            double Im = Am * ((Bm * pow(Bm - 2*Cm, 2)) + (Cm * (Bm * Bm - 2 * Cm * Cm))) / 6;
+            return (Im + Ip) * 12;
+        }
+    } else {
+        // cout << "can not calculate moment of inertia: " << alpha << endl;
+        return 0;
+    }
+}
+
+/**
  * @brief		曲げモーメント Mを計算する
  * @param[in] 	double I 断面2次モーメント
  * @param[in] 	double diff_eta モーメント方向の曲率
@@ -836,7 +875,7 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
     p->f[i][j][k].x = 0;
     p->f[i][j][k].y = 0;
     p->f[i][j][k].z = 0;
-    double creasecv = 10;
+    double creasecv = 2;
 
     if (CylinderPressure) {
         if (param->boundary.cylinder_boundary) {
@@ -979,7 +1018,7 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
             if (p->j_specialflag[i + 1][j][k] == 1){
                 p->f[i][j][k] -= (p->Fb[i + 1][j][k].imv * p->Si[i][j][k].cp.vector /
                                     p->Si[i][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
-                cout << "this is a crease" << endl;
+                // cout << "this is a crease" << endl;
             }
             else if (p->j_specialflag[i][j][k] == 1){
                 p->f[i][j][k] += (p->Fb[i][j][k].ipv * p->Si[i][j][k].cp.vector /
@@ -1006,7 +1045,7 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
             if (p->j_specialflag[i - 1][j][k] == 1){
                 p->f[i][j][k] -= (p->Fb[i - 1][j][k].ipv * p->Si[i - 1][j][k].cp.vector /
                                     p->Si[i - 1][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
-                cout << "this is a crease" << endl;
+                // cout << "this is a crease" << endl;
             }
             else if (p->j_specialflag[i][j][k] == 1){
                 p->f[i][j][k] += (p->Fb[i][j][k].imv * p->Si[i - 1][j][k].cp.vector /
@@ -1034,7 +1073,7 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
            if (p->i_specialflag[i][j + 1][k] == 1){
                 p->f[i][j][k] -= (p->Fb[i][j + 1][k].jmv * p->Sj[i][j][k].cp.vector /
                                     p->Sj[i][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
-            cout << "this is a crease" << endl;
+            // cout << "this is a crease" << endl;
             }
             else if (p->i_specialflag[i][j][k] == 1){
                 p->f[i][j][k] += (p->Fb[i][j][k].jpv * p->Sj[i][j][k].cp.vector /
@@ -1061,7 +1100,7 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
            if (p->i_specialflag[i][j - 1][k] == 1){
                 p->f[i][j][k] -= (p->Fb[i][j - 1][k].jpv * p->Sj[i][j - 1][k].cp.vector /
                                     p->Sj[i][j - 1][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
-            cout << "this is a crease" << endl;
+            // cout << "this is a crease" << endl;
             }
             else if (p->i_specialflag[i][j][k] == 1){
                 p->f[i][j][k] += (p->Fb[i][j][k].jmv * p->Sj[i][j - 1][k].cp.vector /

@@ -60,10 +60,16 @@ void MultiParticle::setInitialAnalysisShape(std::string const& analysis_shape,
                     p->c[i][j][k].y = strvec[10];  // Y-axis
                     p->c[i][j][k].z = strvec[11];  // Z-axis
 #ifdef __CREASE__
+                    
                     p->i_specialflag[i][j][k] = strvec[7];
                     p->j_specialflag[i][j][k] = strvec[8];
+                    p->boomflag[i][j][k] = strvec[12];
+                    p->alphai0[i][j][k] = strvec[13];
+                    p->alphaj0[i][j][k] = strvec[14];
+                    // cout << p->i_specialflag[i][j][k] << ", " << p->j_specialflag[i][j][k] << endl;
+                    
 #endif
-
+                    // std::cout << "crease 1 " << i << std::endl;
                     // Print the values for verification
                     // std::cout << "i = " << i << ", j = " << j << ", x = " << p->c[i][j][k].x << ", y = " << p->c[i][j][k].y
                     //           << ", z = " << p->c[i][j][k].z << std::endl;
@@ -115,7 +121,7 @@ void MultiParticle::setInitialConditions() {
     setInitialConditionsSCalc();
     setInitialConditionsSiCalc();
     setInitialConditionsSjCalc();
-
+    // std::cout << "checkpoint1..." << std::endl;
     param->center_i   = p->c.size() / 2;
     param->center_j   = p->c[param->center_i].size() / 2;
     param->center_k   = p->c[param->center_i][param->center_j].size() / 2;
@@ -134,8 +140,9 @@ void MultiParticle::setInitialConditions() {
     // cout << "param->itr_max_x:" << param->itr_max_x << endl;
     // cout << "param->itr_max_y:" << param->itr_max_y << endl;
     // cout << "param->itr_max_z:" << param->itr_max_z << endl;
-
+    // std::cout << "checkpoint2..." << std::endl;
     CalcMainSimulation();
+    // std::cout << "checkpoint3..." << std::endl;
     //     int i, j, k;
     // #pragma omp parallel
     //     {
@@ -485,10 +492,6 @@ void MultiParticle::setInitialConditionsParticleSetFromcsv(){
         p->v[i][j][k].x = strvec[4];  // X-axis
         p->v[i][j][k].y = strvec[5];  // Y-axis
         p->v[i][j][k].z = strvec[6];  // Z-axis
-#endif
-#ifdef __CREASE__
-        p->i_specialflag[i][j][k] = strvec[7];
-        p->j_specialflag[i][j][k] = strvec[8];
 #endif
         // Print the values for verification
         // std::cout << "i = " << i << ", j = " << j << ", x = " << p->c[i][j][k].x << ", y = " << p->c[i][j][k].y
@@ -4339,25 +4342,31 @@ void MultiParticle::setInitialConditionsCopy() {
                 // p->etai[i][j][k] = 0;
                 // p->etaj[i][j][k] = 0;
 #ifdef __CREASE__
+                // std::cout << "Calculate Crease " << i << std::endl;
                 p->alphaj0[i][j][k] = math::pi();
                 p->alphai0[i][j][k] = math::pi();
                 if(p->j_specialflag[i][j][k] == 1){
-                    std::cout << "creaseflag0, " << i << std::endl;
+                    
                     if (i == 4){
                         // std::cout << "creaseflag" << std::endl;
+                        // p->alphai0[i][j][k] = 3 * math::pi()/4;
                         p->alphai0[i][j][k] = math::pi()/2;
                     }
                     if (i == 9){
                         // std::cout << "creaseflag2" << std::endl;
+                        // p->alphai0[i][j][k] = 7 * math::pi()/4;
                         p->alphai0[i][j][k] = 3 * math::pi()/2;
                     }
                     if (i == 14){
+                        // p->alphai0[i][j][k] = 3 * math::pi()/4;
                         p->alphai0[i][j][k] = math::pi()/2;
                     }
                     if (i == 19){
+                        // p->alphai0[i][j][k] = 7 * math::pi()/4;
                         p->alphai0[i][j][k] = 3 * math::pi()/2;
                     }
                     if (i == 24){
+                        // p->alphai0[i][j][k] = 3 * math::pi()/4;
                         p->alphai0[i][j][k] = math::pi()/2;
                     }
                 }

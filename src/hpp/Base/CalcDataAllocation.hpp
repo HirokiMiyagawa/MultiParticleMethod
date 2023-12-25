@@ -23,6 +23,8 @@ class Particles {
     //! particle's special flag (crease)
     vector<vector<vector<int>>> i_specialflag; //judge to exist crease on l(i+1/2, j)
     vector<vector<vector<int>>> j_specialflag; //judge to exist crease on l(i, j+1.2)
+    //! ブームとして固定するかどうかのFlag (CREASEの時のみ使う)
+    vector<vector<vector<int>>> boomflag; //judge to exist crease on l(i, j+1.2)
     vector<vector<vector<int>>> surround_particle_exsit;
     vector<vector<vector<Communication>>> commflag;
     //! Particle Coordinates (x,y,z) 粒子の座標を格納する (Particle Coordinates)
@@ -224,6 +226,7 @@ class Particles {
         flag.resize(iNum);
         i_specialflag.resize(iNum);
         j_specialflag.resize(iNum);
+        boomflag.resize(iNum);
         surround_particle_exsit.resize(iNum);
         commflag.resize(iNum);
         // C型のkNum個の配列のポインタを格納
@@ -330,6 +333,7 @@ class Particles {
             flag[i].resize(jNum);
             i_specialflag[i].resize(jNum);
             j_specialflag[i].resize(jNum);
+            boomflag[i].resize(jNum);
             surround_particle_exsit[i].resize(jNum);
             commflag[i].resize(jNum);
             // C型のkNum個の配列のポインタを格納
@@ -436,6 +440,7 @@ class Particles {
                 flag[i][j].resize(kNum);
                 i_specialflag[i][j].resize(kNum);
                 j_specialflag[i][j].resize(kNum);
+                boomflag[i][j].resize(kNum);
                 surround_particle_exsit[i][j].resize(kNum);
                 commflag[i][j].resize(kNum);
                 // C型のkNum個の配列のポインタを格納
