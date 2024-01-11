@@ -809,6 +809,8 @@ void MultiParticle::OldVirtualParticleCalc(int const& i, int const& j,
 ////////////////////////////////////////////
 ///////////// 2次元的な形状 /////////////////
 ////////////////////////////////////////////
+
+
 void MultiParticle::OldVirtualParticleCalc(int const& i, int const& j,
                                            int const& k) {
     switch (p->flag[i][j][k]) {
@@ -1348,14 +1350,32 @@ void MultiParticle::OldVirtualParticleCalc(int const& i, int const& j,
 }
 
 #endif
-
+////////////////////////////////////////////
+// Current function
+////////////////////////////////////////////
 void MultiParticle::VirtualParticleCalc(const int& i, const int& j,
                                         const int& k) {
     if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
         lCalc(p->li[i][j][k], p->c[i][j][k], p->c[i + 1][j][k]);
+#ifdef __CREASECALUCULATION__
+            // if ((p->j_specialflag[i + 1][j][k] == 3) || (p->j_specialflag[i + 1][j][k] == 4)){
+            //     lCalc(p->li[i][j][k], p->c[i][j][k], p->c[i + 2][j][k]);
+            // }
+            // if ((p->j_specialflag[i][j][k] == 3) || (p->j_specialflag[i][j][k] == 4)){
+            //     lCalc(p->li[i][j][k], p->c[i - 1][j][k], p->c[i + 1][j][k]);
+            // }
+#endif //__CREASECALUCULATION__
     }
     if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
         lCalc(p->lj[i][j][k], p->c[i][j][k], p->c[i][j + 1][k]);
+#ifdef __CREASECALUCULATION__
+            // if ((p->i_specialflag[i][j + 1][k] == 3) || (p->i_specialflag[i][j + 1][k] == 4)){
+            //     lCalc(p->lj[i][j][k], p->c[i][j][k], p->c[i][j + 2][k]);
+            // }
+            // if ((p->i_specialflag[i][j][k] == 3) || (p->i_specialflag[i][j][k] == 4)){
+            //     lCalc(p->lj[i][j][k], p->c[i][j - 1][k], p->c[i][j + 1][k]);
+            // }
+#endif //__CREASECALUCULATION__
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -1598,16 +1618,47 @@ void MultiParticle::VirtualParticleCalc(const int& i, const int& j,
         p->g[i][j][k] = p->c[i][j][k];
         if ((p->surround_particle_exsit[i][j][k] & BIT_RIGHT)) {
             num += 1;
+#ifdef __CREASECALUCULATION__
+            // if ((p->j_specialflag[i + 1][j][k] == 3) || (p->j_specialflag[i + 1][j][k] == 4)){
+            //     p->g[i][j][k] += p->c[i + 2][j][k];
+            // }
+            // else{
+                p->g[i][j][k] += p->c[i + 1][j][k];
+            // }
+#else // not crease
             p->g[i][j][k] += p->c[i + 1][j][k];
+#endif //__CREASECALUCULATION__
         }
         if ((p->surround_particle_exsit[i][j][k] & BIT_TOP)) {
             num += 1;
+#ifdef __CREASECALUCULATION__
+            // if ((p->i_specialflag[i][j + 1][k] == 3) || (p->i_specialflag[i][j + 1][k] == 4)){
+            //     p->g[i][j][k] += p->c[i][j + 2][k];
+            // }
+            // else{
+                p->g[i][j][k] += p->c[i][j + 1][k];
+            // }
+#else // not crease
             p->g[i][j][k] += p->c[i][j + 1][k];
+#endif //__CREASECALUCULATION__
         }
         if ((p->surround_particle_exsit[i][j][k] & BIT_RIGHT) &&
             (p->surround_particle_exsit[i][j][k] & BIT_TOP)) {
             num += 1;
+#ifdef __CREASECALUCULATION__
+//ここifの条件式違う気がする
+            // if ((p->i_specialflag[i + 1][j + 1][k] == 3) || (p->i_specialflag[i + 1][j + 1][k] == 4)){
+            //     p->g[i][j][k] += p->c[i + 1][j + 2][k];
+            // }
+            // else if ((p->j_specialflag[i + 1][j + 1][k] == 3) || (p->j_specialflag[i + 1][j + 1][k] == 4)){
+            //    p->g[i][j][k] += p->c[i + 2][j + 1][k];
+            // }
+            // else{
+                p->g[i][j][k] += p->c[i + 1][j + 1][k];
+            // }
+#else // not crease
             p->g[i][j][k] += p->c[i + 1][j + 1][k];
+#endif //__CREASECALUCULATION__
         }
         // cout << i << "," << j << ',' << k << endl;
         p->g[i][j][k] /= num;
@@ -1641,15 +1692,31 @@ void MultiParticle::VirtualParticleCalc(const int& i, const int& j,
         p->epsilonlj[i][j][k] =
             epsilonlCulc(p->lj[i][j][k].norm, p->lj0[i][j][k]);
     }
-
+    //from here
     if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
         p->mi[i][j][k] = ((p->c[i][j][k] + p->c[i + 1][j][k]) / 2);
+#ifdef __CREASECALUCULATION__
+        // if ((p->j_specialflag[i + 1][j][k] == 3) || (p->j_specialflag[i + 1][j][k] == 4)){
+        //     p->mi[i][j][k] = ((p->c[i][j][k] + p->c[i + 2][j][k]) / 2);
+        // }
+        // if ((p->j_specialflag[i][j][k] == 3) || (p->j_specialflag[i][j][k] == 4)){
+        //     p->mi[i][j][k] = ((p->c[i - 1][j][k] + p->c[i + 1][j][k]) / 2);
+        // }
+#endif //__CREASECALUCULATION__
     } else {
         p->mi[i][j][k] = ((p->c[i][j][k] + p->vc_Right[i][j][k]) / 2);
     }
 
     if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
         p->mj[i][j][k] = ((p->c[i][j][k] + p->c[i][j + 1][k]) / 2);
+#ifdef __CREASECALUCULATION__
+        // if ((p->i_specialflag[i][j + 1][k] == 3) || (p->i_specialflag[i][j + 1][k] == 4)){
+        //     p->mj[i][j][k] = ((p->c[i][j][k] + p->c[i][j + 2][k]) / 2);
+        // }
+        // if ((p->i_specialflag[i][j][k] == 3) || (p->i_specialflag[i][j][k] == 4)){
+        //     p->mj[i][j][k] = ((p->c[i][j - 1][k] + p->c[i][j + 1][k]) / 2);
+        // }
+#endif //__CREASECALUCULATION__
     } else {
         p->mj[i][j][k] = ((p->c[i][j][k] + p->vc_Top[i][j][k]) / 2);
     }

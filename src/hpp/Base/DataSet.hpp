@@ -497,6 +497,8 @@ struct Area {
     C j;
     //!	cross productの略。vector i, vector jの外積 cpベクトルを格納する (Normal Vector)
     Vector cp;
+    //! Area
+    double area;
 
     //! transverse vector in i
     // Vector ti;

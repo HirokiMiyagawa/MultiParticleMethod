@@ -81,6 +81,8 @@ class Particles {
 
     //! Influence area. 影響面積 S(i,j)
     vector<vector<vector<Area>>> S;
+    //! Influence area. S(i+1/2,j+1/2) new one. for calculating srp
+    vector<vector<vector<Area>>> S_ij;
     //! 影響面積 S(i+1/2,j)
     vector<vector<vector<Area>>> Si;
     //! 影響面積 S(i,j+1/2)
@@ -154,8 +156,12 @@ class Particles {
     vector<vector<vector<double>>> Fa;
     //! Force by sun Normal
     vector<vector<vector<C>>> Fnormal;
+    //! Force by sun Normal f_n(i+1/2, j+1/2)
+    vector<vector<vector<C>>> Fnormal_surface;
     //! Force by sun transverse
     vector<vector<vector<C>>> Ftrans;
+    //! Force by sun transverse f_t(i+1/2, j+1/2)
+    vector<vector<vector<C>>> Ftrans_surface;
     //! Force by sun transverse in i
     vector<vector<vector<C>>> Ftrans_i;
     //! Force by sun transverse in j
@@ -260,6 +266,7 @@ class Particles {
         S.resize(iNum);
         Si.resize(iNum);
         Sj.resize(iNum);
+        S_ij.resize(iNum);
         S0.resize(iNum);
         Si0.resize(iNum);
         Sj0.resize(iNum);
@@ -299,7 +306,9 @@ class Particles {
         pressure.resize(iNum);
         Fa.resize(iNum);
         Fnormal.resize(iNum);
+        Fnormal_surface.resize(iNum);
         Ftrans.resize(iNum);
+        Ftrans_surface.resize(iNum);
         Ftrans_i.resize(iNum);
         Ftrans_j.resize(iNum);
         disturbance.resize(iNum);
@@ -367,6 +376,7 @@ class Particles {
             S[i].resize(jNum);
             Si[i].resize(jNum);
             Sj[i].resize(jNum);
+            S_ij[i].resize(jNum);
             S0[i].resize(jNum);
             Si0[i].resize(jNum);
             Sj0[i].resize(jNum);
@@ -406,7 +416,9 @@ class Particles {
             pressure[i].resize(jNum);
             Fa[i].resize(jNum);
             Fnormal[i].resize(jNum);
+            Fnormal_surface[i].resize(jNum);
             Ftrans[i].resize(jNum);
+            Ftrans_surface[i].resize(jNum);
             Ftrans_i[i].resize(jNum);
             Ftrans_j[i].resize(jNum);
             disturbance[i].resize(jNum);
@@ -474,6 +486,7 @@ class Particles {
                 S[i][j].resize(kNum);
                 Si[i][j].resize(kNum);
                 Sj[i][j].resize(kNum);
+                S_ij[i][j].resize(kNum);
                 S0[i][j].resize(kNum);
                 Si0[i][j].resize(kNum);
                 Sj0[i][j].resize(kNum);
@@ -513,7 +526,9 @@ class Particles {
                 pressure[i][j].resize(kNum);
                 Fa[i][j].resize(kNum);
                 Fnormal[i][j].resize(kNum);
+                Fnormal_surface[i][j].resize(kNum);
                 Ftrans[i][j].resize(kNum);
+                Ftrans_surface[i][j].resize(kNum);
                 Ftrans_i[i][j].resize(kNum);
                 Ftrans_j[i][j].resize(kNum);
                 disturbance[i][j].resize(kNum);

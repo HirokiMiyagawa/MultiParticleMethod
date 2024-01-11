@@ -396,7 +396,7 @@ double MultiParticle::InertiaMomentCalc(double const& alpha, double const& lp,
                               double const& lm, double const& h) {
 
     if (sin(alpha) != 0) {
-        if ((math::pi()/2) < alpha) {
+        if ((math::pi()/2) > alpha) {
             double Ap = lp * sin(alpha);
             double Bp = lp * cos(alpha) + (h / sin(alpha));
             double Cp = lp * cos(alpha);
@@ -436,8 +436,10 @@ double MultiParticle::InertiaMomentCalc(double const& alpha, double const& lp,
 double MultiParticle::MCalc(double const& I, double const& diff_eta,
                             double const& diff_etav) {
 
-    return param->m_preCalc4 * I * (diff_eta + param->m_nu * diff_etav) /
+    return param->m_preCalc4 * I * (diff_eta) * 0.91 /
            param->m_h0;
+    // return param->m_preCalc4 * I * (diff_eta + param->m_nu * diff_etav) /
+    //        param->m_h0;
 }
 
 /**
@@ -448,10 +450,11 @@ double MultiParticle::MCalc(double const& I, double const& diff_eta,
  * @return		double モーメントの計算結果
  */
 double MultiParticle::creaseMCalc(double const& width, double const& diff_eta,
-                            double const& diff_etav) {
+                            double const& diff_etav, double const& I) {
 
-    double newE = 0.00123; // [N/rad]
-    return param->m_preCalc5 * (diff_eta + param->m_nu * diff_etav) * newE * width;
+    double newE = 0.00123 / 5; // [N/rad]
+    double InitialI = 1.39E-23;
+    return param->m_preCalc5 * (diff_eta) *0.91 * newE * width * I / InitialI;
 
 }
 
@@ -863,6 +866,7 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
 }
 #else
 // -- Cube 以外 -- //
+// current function
 /**
  * @brief  		合力 Fをベクトル Fに変換する
  * @param[in] 	int j
@@ -875,7 +879,7 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
     p->f[i][j][k].x = 0;
     p->f[i][j][k].y = 0;
     p->f[i][j][k].z = 0;
-    double creasecv = 2;
+    double creasecv = 0;
 
     if (CylinderPressure) {
         if (param->boundary.cylinder_boundary) {
@@ -937,7 +941,7 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
             p->f[i][j][k].z += (p->F[i][j][k].sv * p->S[i][j][k].cp.vector.z /
                                 p->S[i][j][k].cp.norm);
         }
-    } else {
+    } else {// currently part
         if (p->F[i][j][k].ip != 0) {
             // p->f[i][j][k].x += (p->F[i][j][k].ip * p->li[i][j][k].vector.x /
             //                     p->li[i][j][k].norm);
@@ -1014,18 +1018,18 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
 
     // 面外の曲げによる力を計算
 #ifdef __CREASE__
-        if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT){
-            if (p->j_specialflag[i + 1][j][k] == 1){
-                p->f[i][j][k] -= (p->Fb[i + 1][j][k].imv * p->Si[i][j][k].cp.vector /
-                                    p->Si[i][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
-                // cout << "this is a crease" << endl;
-            }
-            else if (p->j_specialflag[i][j][k] == 1){
-                p->f[i][j][k] += (p->Fb[i][j][k].ipv * p->Si[i][j][k].cp.vector /
-                                    p->Si[i][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+        // if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT){
+        //     if (p->j_specialflag[i + 1][j][k] == 10){
+        //         p->f[i][j][k] -= (p->Fb[i + 1][j][k].imv * p->Si[i][j][k].cp.vector /
+        //                             p->Si[i][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+        //         // cout << "this is a crease" << endl;
+        //     }
+        //     else if (p->j_specialflag[i][j][k] == 10){
+        //         p->f[i][j][k] += (p->Fb[i][j][k].ipv * p->Si[i][j][k].cp.vector /
+        //                             p->Si[i][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
                 
-            }
-        }
+        //     }
+        // }
 #endif
     if (p->F[i][j][k].ipv != 0) {
         // p->f[i][j][k].x += (p->F[i][j][k].ipv * p->Si[i][j][k].cp.vector.x /
@@ -1041,17 +1045,17 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
         // p->f[i][j][k] += UnitVectorCalc(p->F[i][j][k].ipv, p->Si[i][j][k]);
     }
 #ifdef __CREASE__
-        if (p->surround_particle_exsit[i][j][k] & BIT_LEFT){
-            if (p->j_specialflag[i - 1][j][k] == 1){
-                p->f[i][j][k] -= (p->Fb[i - 1][j][k].ipv * p->Si[i - 1][j][k].cp.vector /
-                                    p->Si[i - 1][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
-                // cout << "this is a crease" << endl;
-            }
-            else if (p->j_specialflag[i][j][k] == 1){
-                p->f[i][j][k] += (p->Fb[i][j][k].imv * p->Si[i - 1][j][k].cp.vector /
-                                    p->Si[i - 1][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
-            }
-        }
+        // if (p->surround_particle_exsit[i][j][k] & BIT_LEFT){
+        //     if (p->j_specialflag[i - 1][j][k] == 10){
+        //         p->f[i][j][k] -= (p->Fb[i - 1][j][k].ipv * p->Si[i - 1][j][k].cp.vector /
+        //                             p->Si[i - 1][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+        //         // cout << "this is a crease" << endl;
+        //     }
+        //     else if (p->j_specialflag[i][j][k] == 10){
+        //         p->f[i][j][k] += (p->Fb[i][j][k].imv * p->Si[i - 1][j][k].cp.vector /
+        //                             p->Si[i - 1][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+        //     }
+        // }
 #endif
     if (p->F[i][j][k].imv != 0) {
         // p->f[i][j][k].x += (p->F[i][j][k].imv * p->Si[i - 1][j][k].cp.vector.x /
@@ -1069,17 +1073,17 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
     }
 
 #ifdef __CREASE__
-        if (p->surround_particle_exsit[i][j][k] & BIT_TOP){
-           if (p->i_specialflag[i][j + 1][k] == 1){
-                p->f[i][j][k] -= (p->Fb[i][j + 1][k].jmv * p->Sj[i][j][k].cp.vector /
-                                    p->Sj[i][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
-            // cout << "this is a crease" << endl;
-            }
-            else if (p->i_specialflag[i][j][k] == 1){
-                p->f[i][j][k] += (p->Fb[i][j][k].jpv * p->Sj[i][j][k].cp.vector /
-                                    p->Sj[i][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
-            }
-        }
+        // if (p->surround_particle_exsit[i][j][k] & BIT_TOP){
+        //    if (p->i_specialflag[i][j + 1][k] == 10){
+        //         p->f[i][j][k] -= (p->Fb[i][j + 1][k].jmv * p->Sj[i][j][k].cp.vector /
+        //                             p->Sj[i][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+        //     // cout << "this is a crease" << endl;
+        //     }
+        //     else if (p->i_specialflag[i][j][k] == 10){
+        //         p->f[i][j][k] += (p->Fb[i][j][k].jpv * p->Sj[i][j][k].cp.vector /
+        //                             p->Sj[i][j][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+        //     }
+        // }
 #endif
     if (p->F[i][j][k].jpv != 0) {
         // p->f[i][j][k].x += (p->F[i][j][k].jpv * p->Sj[i][j][k].cp.vector.x /
@@ -1096,18 +1100,18 @@ void MultiParticle::fConv(int const& i, int const& j, int const& k) {
     }
 
 #ifdef __CREASE__
-        if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM){
-           if (p->i_specialflag[i][j - 1][k] == 1){
-                p->f[i][j][k] -= (p->Fb[i][j - 1][k].jpv * p->Sj[i][j - 1][k].cp.vector /
-                                    p->Sj[i][j - 1][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
-            // cout << "this is a crease" << endl;
-            }
-            else if (p->i_specialflag[i][j][k] == 1){
-                p->f[i][j][k] += (p->Fb[i][j][k].jmv * p->Sj[i][j - 1][k].cp.vector /
-                                    p->Sj[i][j - 1][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+        // if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM){
+        //    if (p->i_specialflag[i][j - 1][k] == 10){
+        //         p->f[i][j][k] -= (p->Fb[i][j - 1][k].jpv * p->Sj[i][j - 1][k].cp.vector /
+        //                             p->Sj[i][j - 1][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
+        //     // cout << "this is a crease" << endl;
+        //     }
+        //     else if (p->i_specialflag[i][j][k] == 10){
+        //         p->f[i][j][k] += (p->Fb[i][j][k].jmv * p->Sj[i][j - 1][k].cp.vector /
+        //                             p->Sj[i][j - 1][k].cp.norm) - (param->m_Cv*creasecv) * p->v[i][j][k];
                 
-            }
-        }
+        //     }
+        // }
 #endif
     if (p->F[i][j][k].jmv != 0) {
         // p->f[i][j][k].x += (p->F[i][j][k].jmv * p->Sj[i][j - 1][k].cp.vector.x /
@@ -1270,6 +1274,7 @@ double MultiParticle::RK4Two(double const& v, double const& f,
  * GetNewCoordinate.hppで使用されている
  * 問題点
  * k41, k2を求めるときに、k32を半分にしている
+ * rとvを更新
  */
 void MultiParticle::RK4M(double& myr, double& myv, const double& f,
                          const double& S0,
@@ -1391,7 +1396,7 @@ double MultiParticle::RK4TwoCrease(const double& v, const double& f,
                              const double& S0,
                              const double& Fair) {
     //! vの微小変化を求める式、C_EI * (f - Cv * v) / S ここで、Cvは粘性項
-    return (((param->C_EI * f) / S0) + ((param->C_EI * param->C_AE * Fair) / S0)) - ((param->C_EI * (param->m_Cv*1) * v) / S0);
+    return (((param->C_EI * f) / S0) + ((param->C_EI * param->C_AE * Fair) / S0)) - ((param->C_EI * (param->m_Cv*2) * v) / S0);
 
     return (param->C_EI * (f - (param->m_Cv*10) * v) / S0 +
             (param->C_EI * param->C_AE) * (Fair - param->m_Cv * v) /

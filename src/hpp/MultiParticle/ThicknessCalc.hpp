@@ -2521,8 +2521,10 @@ void MultiParticle::InfluenceAreaCalc(const int& i, const int& j,
         // S calc
         // C length;
         p->S[i][j][k].i.reset();
+        p->S_ij[i][j][k].i.reset();
         if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
             p->S[i][j][k].i += p->li[i][j][k].vector;
+            p->S_ij[i][j][k].i = p->li[i][j][k].vector;
         }
         if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
             p->S[i][j][k].i += p->li[i - 1][j][k].vector;
@@ -2534,8 +2536,10 @@ void MultiParticle::InfluenceAreaCalc(const int& i, const int& j,
         p->S[i][j][k].i /= 2;
 
         p->S[i][j][k].j.reset();
+        p->S_ij[i][j][k].j.reset();
         if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
             p->S[i][j][k].j += p->lj[i][j][k].vector;
+            p->S_ij[i][j][k].j = p->lj[i][j][k].vector;
         }
         if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM) {
             p->S[i][j][k].j += p->lj[i][j - 1][k].vector;
@@ -2545,7 +2549,10 @@ void MultiParticle::InfluenceAreaCalc(const int& i, const int& j,
         // crossProductCalc(p->S[i][j][k].cp.vector, p->S[i][j][k].i,
         //                  p->S[i][j][k].j);
         p->S[i][j][k].cp.vector = p->S[i][j][k].i * p->S[i][j][k].j;
+        p->S_ij[i][j][k].cp.vector = p->S_ij[i][j][k].i * p->S_ij[i][j][k].j;
         p->S[i][j][k].cp.norm   = normCalc(p->S[i][j][k].cp.vector);
+        p->S_ij[i][j][k].cp.norm   = normCalc(p->S_ij[i][j][k].cp.vector);
+
     }
 
     {

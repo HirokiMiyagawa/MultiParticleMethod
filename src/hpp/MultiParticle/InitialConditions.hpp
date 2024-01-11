@@ -59,11 +59,12 @@ void MultiParticle::setInitialAnalysisShape(std::string const& analysis_shape,
                     p->c[i][j][k].x = strvec[9];  // X-axis
                     p->c[i][j][k].y = strvec[10];  // Y-axis
                     p->c[i][j][k].z = strvec[11];  // Z-axis
+                     p->boomflag[i][j][k] = strvec[12];
 #ifdef __CREASE__
                     
-                    p->i_specialflag[i][j][k] = strvec[7];
-                    p->j_specialflag[i][j][k] = strvec[8];
-                    p->boomflag[i][j][k] = strvec[12];
+                    p->j_specialflag[i][j][k] = strvec[7];
+                    p->i_specialflag[i][j][k] = strvec[8];
+                    // p->boomflag[i][j][k] = strvec[12];
                     p->alphai0[i][j][k] = strvec[13];
                     p->alphaj0[i][j][k] = strvec[14];
                     // cout << p->i_specialflag[i][j][k] << ", " << p->j_specialflag[i][j][k] << endl;
@@ -83,6 +84,9 @@ void MultiParticle::setInitialAnalysisShape(std::string const& analysis_shape,
                             i = 0;
                             k++;
                         }
+                    }
+                    if(k == 1){
+                        break;
                     }
                 }
 
@@ -113,6 +117,9 @@ void MultiParticle::setInitialAnalysisShape(std::string const& analysis_shape,
  */
 void MultiParticle::setInitialConditions() {
     console(3);
+#ifdef _OPENMP
+    cout << "Use OpenMP" << endl;
+#endif
 
     setInitialConditionsLCalc();
     setInitialConditionsGCalc();
@@ -140,9 +147,9 @@ void MultiParticle::setInitialConditions() {
     // cout << "param->itr_max_x:" << param->itr_max_x << endl;
     // cout << "param->itr_max_y:" << param->itr_max_y << endl;
     // cout << "param->itr_max_z:" << param->itr_max_z << endl;
-    // std::cout << "checkpoint2..." << std::endl;
+    std::cout << "checkpoint2..." << std::endl;
     CalcMainSimulation();
-    // std::cout << "checkpoint3..." << std::endl;
+    std::cout << "checkpoint3..." << std::endl;
     //     int i, j, k;
     // #pragma omp parallel
     //     {
@@ -507,6 +514,9 @@ void MultiParticle::setInitialConditionsParticleSetFromcsv(){
                 k++;
             }
         }
+        if(k == 1){
+            break;
+        }
     }
 
     // Check if the number of input elements matches expectations
@@ -846,7 +856,7 @@ void MultiParticle::setInitialConditionsLCalc() {
                                 break;
                         }
                     }
-                } else if (!CubePressure) {
+                } else if (!CubePressure) {//current part
                     switch (p->flag[i][j][k]) {
                         case Center:
                         case LeftBottom:
@@ -856,6 +866,21 @@ void MultiParticle::setInitialConditionsLCalc() {
                                   p->c[i + 1][j][k]);
                             lCalc(p->lj[i][j][k], p->c[i][j][k],
                                   p->c[i][j + 1][k]);
+#ifdef __CREASECALUCULATION__
+                            // if ((p->j_specialflag[i + 1][j][k] == 3) || (p->j_specialflag[i + 1][j][k] == 4)){
+                            //     lCalc(p->li[i][j][k], p->c[i][j][k], p->c[i + 2][j][k]);
+                            // }
+                            // if ((p->j_specialflag[i][j][k] == 3) || (p->j_specialflag[i][j][k] == 4)){
+                            //     lCalc(p->li[i][j][k], p->c[i - 1][j][k], p->c[i + 1][j][k]);
+                            // }
+                            // if ((p->i_specialflag[i][j + 1][k] == 3) || (p->i_specialflag[i][j + 1][k] == 4)){
+                            //     lCalc(p->lj[i][j][k], p->c[i][j][k], p->c[i][j + 2][k]);
+                            // }
+                            // if ((p->i_specialflag[i][j][k] == 3) || (p->i_specialflag[i][j][k] == 4)){
+                            //     lCalc(p->lj[i][j][k], p->c[i][j - 1][k], p->c[i][j + 1][k]);
+                            // }
+            
+#endif //CREASE
                             break;
 
                         case RightTop:
@@ -865,12 +890,31 @@ void MultiParticle::setInitialConditionsLCalc() {
                         case RightBottom:
                             lCalc(p->lj[i][j][k], p->c[i][j][k],
                                   p->c[i][j + 1][k]);
+#ifdef __CREASECALUCULATION__
+                            
+                            // if ((p->i_specialflag[i][j + 1][k] == 3) || (p->i_specialflag[i][j + 1][k] == 4)){
+                            //     lCalc(p->lj[i][j][k], p->c[i][j][k], p->c[i][j + 2][k]);
+                            // }
+                            // if ((p->i_specialflag[i][j][k] == 3) || (p->i_specialflag[i][j][k] == 4)){
+                            //     lCalc(p->lj[i][j][k], p->c[i][j - 1][k], p->c[i][j + 1][k]);
+                            // }
+            
+#endif //CREASE
                             break;
 
                         case Top:
                         case LeftTop:
                             lCalc(p->li[i][j][k], p->c[i][j][k],
                                   p->c[i + 1][j][k]);
+#ifdef __CREASECALUCULATION__
+                            // if ((p->j_specialflag[i + 1][j][k] == 3) || (p->j_specialflag[i + 1][j][k] == 4)){
+                            //     lCalc(p->li[i][j][k], p->c[i][j][k], p->c[i + 2][j][k]);
+                            // }
+                            // if ((p->j_specialflag[i][j][k] == 3) || (p->j_specialflag[i][j][k] == 4)){
+                            //     lCalc(p->li[i][j][k], p->c[i - 1][j][k], p->c[i + 1][j][k]);
+                            // }
+            
+#endif //CREASE
                             break;
                         default:
                             console(4);
@@ -1067,7 +1111,7 @@ void MultiParticle::setInitialConditionsGCalc() {
                                 break;
                         }
                     }
-                } else if (!CubePressure) {
+                } else if (!CubePressure) {// current part
                     switch (p->flag[i][j][k]) {
                         case Center:
                         case LeftBottom:
@@ -1088,6 +1132,34 @@ void MultiParticle::setInitialConditionsGCalc() {
                                   p->c[i][j + 1][k].z +
                                   p->c[i + 1][j + 1][k].z) /
                                  4);
+#ifdef __CREASECALUCULATION__
+                                // p->g[i][j][k] = p->c[i][j][k];
+
+                                // if ((p->j_specialflag[i + 1][j][k] == 3) || (p->j_specialflag[i + 1][j][k] == 4)){
+                                //     p->g[i][j][k] += p->c[i + 2][j][k];
+                                // }
+                                // else{
+                                //     p->g[i][j][k] += p->c[i + 1][j][k];
+                                // }
+
+                                // if ((p->i_specialflag[i][j + 1][k] == 3) || (p->i_specialflag[i][j + 1][k] == 4)){
+                                //     p->g[i][j][k] += p->c[i][j + 2][k];
+                                // }
+                                // else{
+                                //     p->g[i][j][k] += p->c[i][j + 1][k];
+                                // }
+
+                                // if ((p->i_specialflag[i + 1][j + 1][k] == 3) || (p->i_specialflag[i + 1][j + 1][k] == 4)){
+                                //     p->g[i][j][k] += p->c[i + 1][j + 2][k];
+                                // }
+                                // else if ((p->j_specialflag[i + 1][j + 1][k] == 3) || (p->j_specialflag[i + 1][j + 1][k] == 4)){
+                                // p->g[i][j][k] += p->c[i + 2][j + 1][k];
+                                // }
+                                // else{
+                                //     p->g[i][j][k] += p->c[i + 1][j + 1][k];
+                                // }
+                                // p->g[i][j][k] /= 4;
+#endif //__CREASECALUCULATION__
                             break;
 
                         case RightTop:
@@ -1104,6 +1176,25 @@ void MultiParticle::setInitialConditionsGCalc() {
                                 ((p->c[i][j][k].y + p->c[i][j + 1][k].y) / 2);
                             p->g[i][j][k].z =
                                 ((p->c[i][j][k].z + p->c[i][j + 1][k].z) / 2);
+#ifdef __CREASECALUCULATION__
+                            // if ((p->i_specialflag[i][j + 1][k] == 3) || (p->i_specialflag[i][j + 1][k] == 4)){
+                            //     p->g[i][j][k].x =
+                            //         ((p->c[i][j][k].x + p->c[i][j + 2][k].x) / 2);
+                            //     p->g[i][j][k].y =
+                            //         ((p->c[i][j][k].y + p->c[i][j + 2][k].y) / 2);
+                            //     p->g[i][j][k].z =
+                            //         ((p->c[i][j][k].z + p->c[i][j + 2][k].z) / 2);
+                            // }
+                            // else{
+                            //     p->g[i][j][k].x =
+                            //         ((p->c[i][j][k].x + p->c[i][j + 1][k].x) / 2);
+                            //     p->g[i][j][k].y =
+                            //         ((p->c[i][j][k].y + p->c[i][j + 1][k].y) / 2);
+                            //     p->g[i][j][k].z =
+                            //         ((p->c[i][j][k].z + p->c[i][j + 1][k].z) / 2);
+                            // }
+#endif //__CREASECALUCULATION__
+
                             break;
 
                         case Top:
@@ -1114,6 +1205,24 @@ void MultiParticle::setInitialConditionsGCalc() {
                                 ((p->c[i][j][k].y + p->c[i + 1][j][k].y) / 2);
                             p->g[i][j][k].z =
                                 ((p->c[i][j][k].z + p->c[i + 1][j][k].z) / 2);
+#ifdef __CREASECALUCULATION__
+                            // if ((p->j_specialflag[i + 1][j][k] == 3) || (p->j_specialflag[i + 1][j][k] == 4)){
+                            //     p->g[i][j][k].x =
+                            //         ((p->c[i][j][k].x + p->c[i + 2][j][k].x) / 2);
+                            //     p->g[i][j][k].y =
+                            //         ((p->c[i][j][k].y + p->c[i + 2][j][k].y) / 2);
+                            //     p->g[i][j][k].z =
+                            //         ((p->c[i][j][k].z + p->c[i + 2][j][k].z) / 2);
+                            // }
+                            // else{
+                            //     p->g[i][j][k].x =
+                            //         ((p->c[i][j][k].x + p->c[i + 1][j][k].x) / 2);
+                            //     p->g[i][j][k].y =
+                            //         ((p->c[i][j][k].y + p->c[i + 1][j][k].y) / 2);
+                            //     p->g[i][j][k].z =
+                            //         ((p->c[i][j][k].z + p->c[i + 1][j][k].z) / 2);
+                            // }
+#endif //__CREASECALUCULATION__
                             break;
 
                         default:
@@ -1234,7 +1343,7 @@ void MultiParticle::setInitialConditionsMiCalc() {
                         }
                     }
                 }
-                if (!CubePressure) {
+                if (!CubePressure) {// current part
                     switch (p->flag[i][j][k]) {
                         case Center:
                         case LeftBottom:
@@ -1246,6 +1355,7 @@ void MultiParticle::setInitialConditionsMiCalc() {
                                 ((p->c[i][j][k].y + p->c[i + 1][j][k].y) / 2);
                             p->mi[i][j][k].z =
                                 ((p->c[i][j][k].z + p->c[i + 1][j][k].z) / 2);
+                            
                             break;
 
                         case RightTop:
@@ -4330,7 +4440,57 @@ void MultiParticle::setInitialConditionsCopy() {
                 p->mj0[i][j][k] = p->mj[i][j][k];
 
                 p->beta0[i][j][k] = p->beta[i][j][k];
+#ifdef __CREASECALUCULATION__
+//TODO
+                p->S[i][j][k].i.reset();
+                if (p->surround_particle_exsit[i][j][k] & BIT_RIGHT) {
+            
+                    if ((p->j_specialflag[i + 1][j][k] == 3) || (p->j_specialflag[i + 1][j][k] == 4)){
+                        p->S[i][j][k].i += p->li[i][j][k].vector + p->li[i + 1][j][k].vector;
+                    }
+                    else{
+                        p->S[i][j][k].i += p->li[i][j][k].vector;
+                    }
+                    
+                }
+                if (p->surround_particle_exsit[i][j][k] & BIT_LEFT) {
+                    if ((p->j_specialflag[i - 1][j][k] == 3) || (p->j_specialflag[i - 1][j][k] == 4)){
+                        p->S[i][j][k].i += p->li[i - 1][j][k].vector + p->li[i - 2][j][k].vector;
+                    }
+                    else{
+                        p->S[i][j][k].i += p->li[i - 1][j][k].vector;
+                    }
+                    
+                } else {
+                    if (!param->boundary.cylinder_boundary) {
+                        p->S[i][j][k].i += p->omp[i][j][k].li.vector;
+                    }
+                }
+                p->S[i][j][k].i /= 2;
 
+                p->S[i][j][k].j.reset();
+                if (p->surround_particle_exsit[i][j][k] & BIT_TOP) {
+                    if ((p->i_specialflag[i][j + 1][k] == 3) || (p->i_specialflag[i][j + 1][k] == 4)){
+                        p->S[i][j][k].j += p->lj[i][j][k].vector + p->lj[i][j + 1][k].vector;
+                    }
+                    else{
+                        p->S[i][j][k].j += p->lj[i][j][k].vector;
+                    }
+                    
+                }
+                if (p->surround_particle_exsit[i][j][k] & BIT_BOTTOM) {
+                    if ((p->i_specialflag[i][j - 1][k] == 3) || (p->i_specialflag[i][j - 1][k] == 4)){
+                        p->S[i][j][k].j += p->lj[i][j - 1][k].vector + p->lj[i][j - 2][k].vector;
+                    }
+                    else{
+                        p->S[i][j][k].j += p->lj[i][j - 1][k].vector;
+                    }
+                }
+                p->S[i][j][k].j /= 2;
+
+                p->S[i][j][k].cp.vector = p->S[i][j][k].i * p->S[i][j][k].j;
+                p->S[i][j][k].cp.norm   = normCalc(p->S[i][j][k].cp.vector);
+#endif
                 p->S0[i][j][k]  = p->S[i][j][k].cp.norm;
                 p->Si0[i][j][k] = p->Si[i][j][k].cp.norm;
                 p->Sj0[i][j][k] = p->Sj[i][j][k].cp.norm;
@@ -4343,19 +4503,30 @@ void MultiParticle::setInitialConditionsCopy() {
                 // p->etaj[i][j][k] = 0;
 #ifdef __CREASE__
                 // std::cout << "Calculate Crease " << i << std::endl;
-                p->alphaj0[i][j][k] = math::pi();
-                p->alphai0[i][j][k] = math::pi();
+                // p->alphaj0[i][j][k] = math::pi();
+                // p->alphai0[i][j][k] = math::pi();
                 if(p->j_specialflag[i][j][k] == 1){
-                    
+                    p->etai0[i][j][k] =
+                        etaCalc(p->alphai0[i][j][k], p->li[i][j][k].norm, p->li[i - 1][j][k].norm);
+                }
+                if(p->i_specialflag[i][j][k] == 1){
+                    p->etaj0[i][j][k] =
+                        etaCalc(p->alphaj0[i][j][k], p->lj[i][j][k].norm, p->lj[i][j - 1][k].norm);
+                }
+#ifdef __CREASEDEBUG__
+                if(p->j_specialflag[i][j][k] == 1){
+                    // p->alphai0[i][j][k] = math::pi()/2;
                     if (i == 4){
                         // std::cout << "creaseflag" << std::endl;
                         // p->alphai0[i][j][k] = 3 * math::pi()/4;
                         p->alphai0[i][j][k] = math::pi()/2;
+                        // p->alphai0[i][j][k] = 3 * math::pi()/2;
                     }
                     if (i == 9){
                         // std::cout << "creaseflag2" << std::endl;
                         // p->alphai0[i][j][k] = 7 * math::pi()/4;
                         p->alphai0[i][j][k] = 3 * math::pi()/2;
+                        // p->alphai0[i][j][k] = math::pi()/2;
                     }
                     if (i == 14){
                         // p->alphai0[i][j][k] = 3 * math::pi()/4;
@@ -4364,15 +4535,21 @@ void MultiParticle::setInitialConditionsCopy() {
                     if (i == 19){
                         // p->alphai0[i][j][k] = 7 * math::pi()/4;
                         p->alphai0[i][j][k] = 3 * math::pi()/2;
+                        // p->alphai0[i][j][k] = math::pi()/2;
                     }
                     if (i == 24){
                         // p->alphai0[i][j][k] = 3 * math::pi()/4;
                         p->alphai0[i][j][k] = math::pi()/2;
+                        // p->alphai0[i][j][k] = 3 * math::pi()/2;
                     }
+
+                    p->etai0[i][j][k] =
+                        etaCalc(p->alphai0[i][j][k], p->li[i][j][k].norm, p->li[i - 1][j][k].norm);
                 }
-                if(p->i_specialflag[i][j][k] == 1){
-                    p->alphaj0[i][j][k] = math::pi() / 2;
-                }
+                // if(p->i_specialflag[i][j][k] == 1){
+                //     p->alphaj0[i][j][k] = math::pi() / 2;
+                // }
+#endif //__CREASEDEBUG__
 #endif
 
                 // cout << p->Si[i][j][k].cp.norm << endl;

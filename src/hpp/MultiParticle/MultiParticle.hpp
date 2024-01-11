@@ -345,6 +345,54 @@ class MultiParticle {
                                 }
                             }
                         }
+#ifdef __CREASECALUCULATION__
+#pragma omp for private(j) private(k) schedule(static)
+                        for (i = 0; i < local_iNum; i++) {
+                            for (j = 0; j < local_jNum; j++) {
+                                for (k = 0; k < local_kNum; k++) {
+                                    
+                                    // 必要のない折り目付近の粒子を粒子の間に配置する
+                                    if (p->j_specialflag[i][j][k] == 3){// Notice
+                                        Vector particlelong;
+                                        lCalc(particlelong, p->c[i - 1][j][k], p->c[i + 1][j][k]);
+                                        p->c[i][j][k] = p->c[i + 1][j][k] - (particlelong.vector.unit() * 0.00005);
+                                        //   cout << "x = " << p->c[i][j][k].x << ", y = " << p->c[i][j][k].y <<
+                                        //     ", z = " << p->c[i][j][k].z << endl;
+                                        //  p->c[i][j][k] = p->c[i + 1][j][k] - ((particlelong.vector * 0.00005) / 
+                                        //    (particlelong.norm * (1 / (19 - 1))));
+                                        // return;
+                                    }
+                                    else if (p->j_specialflag[i][j][k] == 4){// Notice
+                                        Vector particlelong;
+                                        lCalc(particlelong, p->c[i - 1][j][k], p->c[i + 1][j][k]);
+                                        p->c[i][j][k] = p->c[i - 1][j][k] + (particlelong.vector.unit() * 0.00005);
+                                        // p->c[i][j][k] = p->c[i - 1][j][k] + ((particlelong.vector * 0.00005) / 
+                                        //     (particlelong.norm * (1 / (19 - 1))));
+                                        // return;
+                                    }
+                                    if (p->i_specialflag[i][j][k] == 3){// Notice
+                                        Vector particlelong;
+                                        lCalc(particlelong, p->c[i][j - 1][k], p->c[i][j + 1][k]);
+                                        p->c[i][j][k] = p->c[i][j + 1][k] - (particlelong.vector.unit() * 0.00005);
+                                        //   cout << "x = " << p->c[i][j][k].x << ", y = " << p->c[i][j][k].y <<
+                                        //     ", z = " << p->c[i][j][k].z << endl;
+                                        //  p->c[i][j][k] = p->c[i + 1][j][k] - ((particlelong.vector * 0.00005) / 
+                                        //    (particlelong.norm * (1 / (19 - 1))));
+                                        // return;
+                                    }
+                                    else if (p->i_specialflag[i][j][k] == 4){// Notice
+                                        Vector particlelong;
+                                        lCalc(particlelong, p->c[i][j - 1][k], p->c[i][j + 1][k]);
+                                        p->c[i][j][k] = p->c[i][j - 1][k] + (particlelong.vector.unit() * 0.00005);
+                                        // p->c[i][j][k] = p->c[i - 1][j][k] + ((particlelong.vector * 0.00005) / 
+                                        //     (particlelong.norm * (1 / (19 - 1))));
+                                        // return;
+                                    }
+
+                                }
+                            }
+                        }
+#endif // __CREASECALUCULATION__
 
                         // #pragma omp for private(j) private(k) schedule(static)
                         //                         for (i = 0; i < local_iNum; i++) {
@@ -626,6 +674,7 @@ for (i = 0; i < local_iNum; i++) {
                     }
                 }
             }
+            // cout << "Run GetNewCoordinate" << endl;
         }
     }
     /**
@@ -701,6 +750,7 @@ for (i = 0; i < local_iNum; i++) {
 
             foutparam << "(i.j.k),"
                       << "Flag,"
+                      << "boomflag,"
                       << "Time,"
                       << "X-axis,"
                       << "Y-axis,"
@@ -743,6 +793,7 @@ for (i = 0; i < local_iNum; i++) {
                         foutparam
                             << "(" << i << "." << j << "." << k << "),"
                             << reFlag[p->flag[i][j][k]] << ","
+                            << p->boomflag[i][j][k] << ","
                             << time * param->m_dt * param->m_sheet_skip << ","
                             << p->new_c[i][j][k].x << "," << p->new_c[i][j][k].y
                             << "," << p->new_c[i][j][k].z << ","
@@ -1878,7 +1929,7 @@ for (i = 0; i < local_iNum; i++) {
     double InertiaMomentCalc(double const&, double const&,
                               double const&, double const&); 
     double MCalc(double const&, double const&, double const&);
-    double creaseMCalc(double const&, double const&, double const&);
+    double creaseMCalc(double const&, double const&, double const&, double const&);
     double get_random();
     void disturbance_Calc(C&, double const&);
 
