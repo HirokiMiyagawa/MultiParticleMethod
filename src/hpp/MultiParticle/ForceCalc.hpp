@@ -4873,9 +4873,9 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
             //     return;
             // }
 #else // not crease
-            // if (i == j || j == (((int)p->flag.size() - 1) - i)) {
-            //     return;
-            // }
+            if (i == j || j == (((int)p->flag.size() - 1) - i)) {
+                return;
+            }
             if (p->boomflag[i][j][k] == 1){//DEBUG
                 return;
             }

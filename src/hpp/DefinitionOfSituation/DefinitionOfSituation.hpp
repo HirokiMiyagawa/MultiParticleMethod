@@ -175,15 +175,15 @@
 // -----------------------------------------------------------
 
 // #define __GRAVITY__
-// #define __InputPosition__ // 変形後の粒子位置をcsvファイルから入力する場合のもの
-// #define __ContinueAnalysis__ // 以前の解析結果を引き継いで解析を続けるときに宣言する。粒子速度をcsvファイルから入力する
-// #define __ThermalForce__ // 熱応力を入れるか否か
+#define __InputPosition__ // 変形後の粒子位置をcsvファイルから入力する場合のもの
+#define __ContinueAnalysis__ // 以前の解析結果を引き継いで解析を続けるときに宣言する。粒子速度をcsvファイルから入力する
+#define __ThermalForce__ // 熱応力を入れるか否か
 // #define __ThermalAnalysis__ // ソーラーセイルの変形後の形状を考慮して温度計算するか否か（非均一）エラー出るかもなので、今はコメントアウト外さないようにする.
-#define __CREASE__ // 折り目を考慮するか否か
-#define __CREASESRP__ // 折り目の際に曲げ角度の大きさを考慮して、SRPの修正をする
-#define __CREASECALUCULATION__ //折り目用に新しく配置した粒子で、折り目とは関係ない物の計算用
-#define __INPUT_INITIALPOSITION__ // 初期粒子位置をcsvファイルから入力する場合のもの
+// #define __CREASE__ // 折り目を考慮するか否か
+// #define __CREASESRP__ // 折り目の際に曲げ角度の大きさを考慮して、SRPの修正をする
+// #define __CREASECALUCULATION__ //折り目用に新しく配置した粒子で、折り目とは関係ない物の計算用.少しおかしいので今は使わない。
+// #define __INPUT_INITIALPOSITION__ // 初期粒子位置をcsvファイルから入力する場合のもの
 #define __INERTIAMOMENT__  // 断面二次モーメントを二次元板と仮定せずに、変形を考慮して計算する。
-// #define __CREASESTOP__ //折り目の部分を固定する場合のもの       
+// #define __CREASESTOP__ //折り目の部分を固定する場合のもの.宣言するときは、ContinueAnalysisをコメントアウトする
 
 // #define __CREASEDEBUG__ //creaseのテスト用。普段はコメントアウトしとく

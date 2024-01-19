@@ -4546,9 +4546,9 @@ void MultiParticle::setInitialConditionsCopy() {
                     p->etai0[i][j][k] =
                         etaCalc(p->alphai0[i][j][k], p->li[i][j][k].norm, p->li[i - 1][j][k].norm);
                 }
-                // if(p->i_specialflag[i][j][k] == 1){
-                //     p->alphaj0[i][j][k] = math::pi() / 2;
-                // }
+                if(p->i_specialflag[i][j][k] == 1){
+                    p->alphaj0[i][j][k] = math::pi() / 2;
+                }
 #endif //__CREASEDEBUG__
 #endif
 

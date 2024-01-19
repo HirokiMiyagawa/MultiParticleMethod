@@ -323,7 +323,13 @@ double MultiParticle::gammaCalc(double const& B, double const& A) {
  * @note	preCalc3 = ν/(1-ν)
  */
 double MultiParticle::hCalc(double const& S, double const& S0) {
+#ifdef __ThermalForce__
+    double cte = 25 * 0.000001;
+    double delta_temp = 182.06;// 高温側 今の温度 - 室温（基準温度）
+    return param->m_h0 * ((S0) / (param->m_preCalc3 * ((S) - (S0)) + (S0)) + cte * delta_temp);
+#else
     return param->m_h0 * (S0) / (param->m_preCalc3 * ((S) - (S0)) + (S0));
+#endif
 }
 
 /**
@@ -356,7 +362,7 @@ double MultiParticle::FtCalc(double const& L, double const& h,
     temperature = 100 * pow((1368 * cos(angle_sun)) / 11.34, 0.25) - 273.16;
     double delta_temp = temperature - 20;
 #else
-    double delta_temp = 38.252;// 高温側 今の温度 - 室温（基準温度）
+    double delta_temp = 182.06;// 高温側 今の温度 - 室温（基準温度）
 #endif
     return (h) * L * ((param->m_preCalc1 * ((epsilonl) + param->m_nu * (epsilong))) - (cte * delta_temp)) /
            param->m_h0;

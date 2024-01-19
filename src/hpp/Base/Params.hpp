@@ -113,6 +113,8 @@ class Params {
     double m_Pc;
     //! Pressure by sun light
     double Psun;
+    //! distance from sun
+    double SolarDistance;
     //! Pressure by sun light angle axis (default: zyz)
     string Psun_angle_axis;
     //! Pressure by sun light angle 1 (input degree. save radian)
@@ -376,6 +378,8 @@ class Params {
         Vref = param->get<double>("Vref");
         Pref = param->get<double>("Pref");
         Psun = param->get<double>("Psun", 0);
+        SolarDistance = param->get<double>("SolarDistance", 0);
+        Psun = Psun * pow(SolarDistance, -2.0);
         Pc   = Pref;
         if (SolarSail) {
             Pc = Psun;
