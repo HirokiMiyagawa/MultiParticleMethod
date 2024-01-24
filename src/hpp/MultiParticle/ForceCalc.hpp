@@ -4639,6 +4639,11 @@ void MultiParticle::ExternalForceCalc(const int& i, const int& j,
         // }
 #endif //__CREASECALUCULATION__
         p->external_force_by_pressure[i][j][k] = p->Fnormal[i][j][k] + p->Ftrans[i][j][k];
+        // p->external_force[i][j][k].x = (param->m_rho * p->S0[i][j][k] * g) / (param->m_E * param->Lref);
+        if (p->flag[i][j][k] & BIT_RIGHT) {
+            double extforce = 0.01502; //[kg]
+            p->external_force[i][j][k].x = (extforce * 9.806) / (param->m_E * param->h0 * param->Lref);
+        }
         // p->external_force_by_pressure[i][j][k] = UnitVectorCalc(p->Fa[i][j][k], p->S[i][j][k]);
         return;
     }
@@ -4939,6 +4944,7 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
             //     // cout << "this is a crease" << endl;
             // }
             // else{
+                
                 RK4M(p->c[i][j][k].x, p->v[i][j][k].x,
                     p->f[i][j][k].x + p->external_force[i][j][k].x, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].x);
                 RK4M(p->c[i][j][k].y, p->v[i][j][k].y,

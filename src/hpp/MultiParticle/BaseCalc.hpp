@@ -457,10 +457,16 @@ double MultiParticle::MCalc(double const& I, double const& diff_eta,
  */
 double MultiParticle::creaseMCalc(double const& width, double const& diff_eta,
                             double const& diff_etav, double const& I) {
-
-    double newE = 0.00123 / 5; // [N/rad]
+                                //TODO newE を5で割る
+    // double newE = 0.00123; // [N/rad] per width
+    double newE = 0.00207; // [N/rad] per width
     double InitialI = 1.39E-23;
-    return param->m_preCalc5 * (diff_eta) *0.91 * newE * width * I / InitialI;
+#ifdef __INERTIAMOMENT__
+    cout << "Attention!!: please change (creaseMCalc) " << endl;
+    // return param->m_preCalc5 * (diff_eta) *0.91 * newE * width * I / InitialI;
+#else
+    return param->m_preCalc5 * (diff_eta) * newE * width;
+#endif
 
 }
 

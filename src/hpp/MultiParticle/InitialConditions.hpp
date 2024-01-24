@@ -62,8 +62,8 @@ void MultiParticle::setInitialAnalysisShape(std::string const& analysis_shape,
                      p->boomflag[i][j][k] = strvec[12];
 #ifdef __CREASE__
                     
-                    p->j_specialflag[i][j][k] = strvec[7];
-                    p->i_specialflag[i][j][k] = strvec[8];
+                    p->i_specialflag[i][j][k] = strvec[7];
+                    p->j_specialflag[i][j][k] = strvec[8];
                     // p->boomflag[i][j][k] = strvec[12];
                     p->alphai0[i][j][k] = strvec[13];
                     p->alphaj0[i][j][k] = strvec[14];
@@ -352,7 +352,9 @@ void MultiParticle::setInitialConditionsSetParam() {
     for (int i = 0; i < local_iNum; i++) {
         for (int j = 0; j < local_jNum; j++) {
             for (int k = 0; k < local_kNum; k++) {
+#ifndef __INPUT_INITIALPOSITION__
                 p->c[i][j][k].z       = 0;
+#endif
                 p->alphai[i][j][k]    = math::pi();
                 p->alphaj[i][j][k]    = math::pi();
                 p->etai[i][j][k]      = 0;
@@ -4409,13 +4411,13 @@ void MultiParticle::setInitialConditionsSjCalc() {
 void MultiParticle::setGravity() {
     double g = 9.806; //[mm/s^2] ただし、入力してるヤング率の単位が違うので、×10^-3してる。
                       // 収束性の問題と、熱応力込みで計算した場合でもヤング率の単位違っても影響はないことから、こちらの数値を変えている
-    g *=  param->Lref / (param->Vref * param->Vref);
+    // g *=  param->Lref / (param->Vref * param->Vref);
     for (int i = 0; i < local_iNum; i++) {
         for (int j = 0; j < local_jNum; j++) {
             for (int k = 0; k < local_kNum; k++) {
-                p->external_force[i][j][k].z = -1 * (p->S0[i][j][k] * g) / param->C_EI;
+                p->external_force[i][j][k].x = (param->m_rho * p->S0[i][j][k] * g) / (param->m_E * param->Lref);
                 // 物を吊り下げることによる外力
-                if (i == (local_iNum - 1) && j == ((local_jNum - 1) / 2)) { p->external_force[i][j][k].z -= (0.06 * 9.806) / (param->m_E * param->h0 * param->Lref); }
+                // if (i == (local_iNum - 1) && j == ((local_jNum - 1) / 2)) { p->external_force[i][j][k].z -= (0.06 * 9.806) / (param->m_E * param->h0 * param->Lref); }
                 // if (i == 25 && j == 13) { p->external_force[i][j][k].z -= (0.0298 * 9.806) / (param->m_E * param->h0 * param->Lref); }
             }
         }
@@ -4505,6 +4507,9 @@ void MultiParticle::setInitialConditionsCopy() {
                 // std::cout << "Calculate Crease " << i << std::endl;
                 // p->alphaj0[i][j][k] = math::pi();
                 // p->alphai0[i][j][k] = math::pi();
+#ifdef __CREASEEXPERIMENT__
+                // p->etai0[i][j][k] = 8.486039326;
+#endif 
                 if(p->j_specialflag[i][j][k] == 1){
                     p->etai0[i][j][k] =
                         etaCalc(p->alphai0[i][j][k], p->li[i][j][k].norm, p->li[i - 1][j][k].norm);
