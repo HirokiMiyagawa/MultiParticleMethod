@@ -4640,11 +4640,33 @@ void MultiParticle::ExternalForceCalc(const int& i, const int& j,
 #endif //__CREASECALUCULATION__
         p->external_force_by_pressure[i][j][k] = p->Fnormal[i][j][k] + p->Ftrans[i][j][k];
         // p->external_force[i][j][k].x = (param->m_rho * p->S0[i][j][k] * g) / (param->m_E * param->Lref);
+#ifdef __CREASEEXPERIMENT__        
         if (p->flag[i][j][k] & BIT_RIGHT) {
-            double extforce = 0.01502; //[kg]
+            double extforce = 0.000025; //[kg]
             p->external_force[i][j][k].x = (extforce * 9.806) / (param->m_E * param->h0 * param->Lref);
         }
+#endif //__CREASEEXPERIMENT__
         // p->external_force_by_pressure[i][j][k] = UnitVectorCalc(p->Fa[i][j][k], p->S[i][j][k]);
+#ifdef __CREASESTRECTH__
+        double extforce = 38; //[N]
+        if (p->flag[i][j][k] == LeftBottom) {
+            p->external_force[i][j][k].x = -1 * (extforce) / (param->m_E * param->h0 * param->Lref * sqrt(2));
+            p->external_force[i][j][k].y = -1 * (extforce) / (param->m_E * param->h0 * param->Lref * sqrt(2));
+        }
+        else if (p->flag[i][j][k] == RightBottom) {
+            p->external_force[i][j][k].x = (extforce) / (param->m_E * param->h0 * param->Lref * sqrt(2));
+            p->external_force[i][j][k].y = -1 * (extforce) / (param->m_E * param->h0 * param->Lref * sqrt(2));
+        }
+        else if (p->flag[i][j][k] == LeftTop) {
+            p->external_force[i][j][k].x = -1 * (extforce) / (param->m_E * param->h0 * param->Lref * sqrt(2));
+            p->external_force[i][j][k].y = (extforce) / (param->m_E * param->h0 * param->Lref * sqrt(2));
+        }
+        else if (p->flag[i][j][k] == RightTop) {
+            p->external_force[i][j][k].x = (extforce) / (param->m_E * param->h0 * param->Lref * sqrt(2));
+            p->external_force[i][j][k].y = (extforce) / (param->m_E * param->h0 * param->Lref * sqrt(2));
+        }
+            
+#endif //__CREASESTRECTH__        
         return;
     }
     if (PlateRevolution) {
@@ -5039,6 +5061,14 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
                 RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
                      p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
             }
+#ifdef __CREASESTRECTH__
+            // if (p->flag[i][j][k] == RightBottom) {
+            //     return;
+            // }
+            // else if (p->flag[i][j][k] == RightTop) {
+            //     return;
+            // }
+#endif
             if (param->boundary.right_move.z) {
                 RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
                      p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);
@@ -5054,6 +5084,14 @@ void MultiParticle::MoveParticleByRungeKutta(const int& i, const int& j,
                 RK4M(p->c[i][j][k].y, p->v[i][j][k].y,
                      p->f[i][j][k].y + p->external_force[i][j][k].y, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].y);
             }
+#ifdef __CREASESTRECTH__
+            // if (p->flag[i][j][k] == LeftBottom) {
+            //     return;
+            // }
+            // else if (p->flag[i][j][k] == LeftTop) {
+            //     return;
+            // }
+#endif
             if (param->boundary.left_move.z) {
                 RK4M(p->c[i][j][k].z, p->v[i][j][k].z,
                      p->f[i][j][k].z + p->external_force[i][j][k].z, p->S0[i][j][k], p->external_force_by_pressure[i][j][k].z);

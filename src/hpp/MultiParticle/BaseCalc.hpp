@@ -324,8 +324,8 @@ double MultiParticle::gammaCalc(double const& B, double const& A) {
  */
 double MultiParticle::hCalc(double const& S, double const& S0) {
 #ifdef __ThermalForce__
-    double cte = 25 * 0.000001;
-    double delta_temp = 182.06;// 高温側 今の温度 - 室温（基準温度）
+    double cte = 27 * 0.000001;
+    double delta_temp = 54.53771;// 高温側 今の温度 - 室温（基準温度）
     return param->m_h0 * ((S0) / (param->m_preCalc3 * ((S) - (S0)) + (S0)) + cte * delta_temp);
 #else
     return param->m_h0 * (S0) / (param->m_preCalc3 * ((S) - (S0)) + (S0));
@@ -355,14 +355,14 @@ double MultiParticle::FtCalc(double const& L, double const& h,
                              double const& epsilonl, double const& epsilong, Vector const& S, double& temperature) {
     
 #ifdef __ThermalForce__
-    double cte = 25 * 0.000001;// 後でcsvファイルから入力できるように
+    double cte = 27 * 0.000001;// 後でcsvファイルから入力できるように
 #ifdef __ThermalAnalysis__
     double angle_sun = math::sacos(innerProductCalc(-1.0 * param->pressure_initial.unit(),
                                         S.vector.unit()));
     temperature = 100 * pow((1368 * cos(angle_sun)) / 11.34, 0.25) - 273.16;
     double delta_temp = temperature - 20;
 #else
-    double delta_temp = 182.06;// 高温側 今の温度 - 室温（基準温度）
+    double delta_temp = 54.53771;// 高温側 今の温度 - 室温（基準温度）
 #endif
     return (h) * L * ((param->m_preCalc1 * ((epsilonl) + param->m_nu * (epsilong))) - (cte * delta_temp)) /
            param->m_h0;
@@ -459,7 +459,7 @@ double MultiParticle::creaseMCalc(double const& width, double const& diff_eta,
                             double const& diff_etav, double const& I) {
                                 //TODO newE を5で割る
     // double newE = 0.00123; // [N/rad] per width
-    double newE = 0.00207; // [N/rad] per width
+    double newE = 0.0028; // [N/rad] per width
     double InitialI = 1.39E-23;
 #ifdef __INERTIAMOMENT__
     cout << "Attention!!: please change (creaseMCalc) " << endl;

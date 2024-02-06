@@ -4505,8 +4505,8 @@ void MultiParticle::setInitialConditionsCopy() {
                 // p->etaj[i][j][k] = 0;
 #ifdef __CREASE__
                 // std::cout << "Calculate Crease " << i << std::endl;
-                // p->alphaj0[i][j][k] = math::pi();
-                // p->alphai0[i][j][k] = math::pi();
+                p->alphaj0[i][j][k] = p->alphaj[i][j][k];
+                p->alphai0[i][j][k] = p->alphai[i][j][k];
 #ifdef __CREASEEXPERIMENT__
                 // p->etai0[i][j][k] = 8.486039326;
 #endif 
